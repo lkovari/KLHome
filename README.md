@@ -1,6 +1,7 @@
 # KLHome
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
+
 My first Angular 2 app, I used a template in it, I not too proud for it, but I will rewrite, as soon as I have enough time for it. 
 
 ## Development server
