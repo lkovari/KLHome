@@ -1,0 +1,168 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+  <ul class="list-group">
+    <a routerLink="/aboutme-page" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-fw">About me</i>
+    </a>
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages1')">
+        <span><i class="fa fa-plus"></i>&nbsp;Angular 4 ~ 2017</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages1'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/angular-page/angular-page-content1" >At the begining</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages2')">
+        <span><i class="fa fa-plus"></i>&nbsp;JavaScript ~ 2016</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages2'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/javascript-page/javascript-page-content1" >JavaScript</a>
+          </li>
+          <li>
+            <a routerLink="/javascript-page/javascript-page-content2" >Node.JS</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages3')">
+        <span><i class="fa fa-plus"></i>&nbsp;iOS ~ 2011</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages3'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/ios-page/ios-page-content1" >Why not...</a>
+          </li>
+          <li>
+            <a routerLink="/ios-page/ios-page-content2" >The Calculator</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages4')">
+        <span><i class="fa fa-plus"></i>&nbsp;Android ~ 2010</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages4'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/android-page/android-page-content1" >AE. Mobile</a>
+          </li>
+          <li>
+            <a routerLink="/android-page/android-page-content2" >GTL.</a>
+          </li>
+          <li>
+            <a routerLink="/android-page/android-page-content3" >Built-in Sensors</a>
+          </li>
+          <li>
+            <a routerLink="/android-page/android-page-content4" >MNB.</a>
+          </li>
+          <li>
+            <a routerLink="/android-page/android-page-content5" >Traffic Signals</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages5')">
+        <span><i class="fa fa-plus"></i>&nbsp;J2EE ~ 2007</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages5'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/j2ee-page/j2ee-page-content1" >Java Passion Course</a>
+          </li>
+          <li>
+            <a routerLink="/j2ee-page/j2ee-page-content2" >WordBook</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages6')">
+        <span><i class="fa fa-plus"></i>&nbsp;J2SE ~ 2004</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages6'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/j2se-page/j2se-page-content1" >Date & Time Picker</a>
+          </li>
+          <li>
+            <a routerLink="/j2se-page/j2se-page-content2" >Scheduler</a>
+          </li>
+          <li>
+            <a routerLink="/j2se-page/j2se-page-content3" >RPN. Calculator</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages7')">
+        <span><i class="fa fa-plus"></i>&nbsp;ASP.NET C# ~ 2003</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages7'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/csharp-page/csharp-page-content1" >MS. Official Courses</a>
+          </li>
+          <li>
+            <a routerLink="/csharp-page/csharp-page-content2" >Mitsubishi cars</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages8')">
+        <span><i class="fa fa-plus"></i>&nbsp;Delphi ~ 1998</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages8'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/delphi-page/delphi-page-content1" >Memory Leak Detector</a>
+          </li>
+          <li>
+            <a routerLink="/delphi-page/delphi-page-content2" >Debug Event Tracer</a>
+          </li>
+          <li>
+            <a routerLink="/delphi-page/delphi-page-content3" >Small "Stuffs"</a>
+          </li>
+          <li>
+            <a routerLink="/delphi-page/delphi-page-content4" >Turbo Pascal Era</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages9')">
+        <span><i class="fa fa-plus"></i>&nbsp;MASM. ~ 1983</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages9'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/masm-page/masm-page-content1" >Assembly</a>
+          </li>
+          <li>
+            <a routerLink="/masm-page/masm-page-content2" >The BIG Treasure</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+    <a [routerLink]="['/welcome-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      Home
+    </a>
+  </ul>
+</nav>
