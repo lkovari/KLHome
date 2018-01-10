@@ -9,11 +9,13 @@ export class AngularPageContent1Component implements OnInit {
   fullImagePathRF: string;
   fullImagePathSCSS: string;
   fullImagePathSASS: string;
-  
-  constructor() { 
+  fullImagePathA5: string;
+
+  constructor() {
     this.fullImagePathRF = 'assets/images/reactiveformsbydt.jpg';
     this.fullImagePathSCSS = 'assets/images/UC-XRLSVCSR.jpg';
     this.fullImagePathSASS = 'assets/images/UC-NLUM4IQ0.jpg';
+    this.fullImagePathA5 = 'assets/images/UC-9GVOGJGJ.jpg';
   }
 
   ngOnInit() {

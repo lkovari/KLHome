@@ -26,16 +26,4 @@ export class HeaderComponent implements OnInit {
     dom.classList.toggle('rtl');
   }
 
-  navitemAClick() {
-    alert('Nav Item A Clicked!');
-  }
-
-  navitemBClick() {
-    alert('Nav Item B Clicked!');
-  }
-
-  navitemCClick() {
-    alert('Nav Item C Clicked!');
-  }
-
 }
