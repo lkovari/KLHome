@@ -4,7 +4,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
-import { HeaderComponent, SidebarComponent, LayoutPageTitleComponent } from '../shared';
+import { HeaderComponent, SidebarComponent } from '../shared';
 
 import { WelcomePageModule } from './welcome-page/welcome-page.module';
 import { AboutmePageModule } from './aboutme-page/aboutme-page.module';
@@ -17,11 +17,13 @@ import { J2sePageModule } from './j2se-page/j2se-page.module';
 import { CsharpPageModule } from './csharp-page/csharp-page.module';
 import { DelphiPageModule } from './delphi-page/delphi-page.module';
 import { MasmPageModule } from './masm-page/masm-page.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbDropdownModule.forRoot(),
+    SharedModule,
     LayoutRoutingModule,
     WelcomePageModule,
     AboutmePageModule,
@@ -38,11 +40,10 @@ import { MasmPageModule } from './masm-page/masm-page.module';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    SidebarComponent,
-    LayoutPageTitleComponent
+    SidebarComponent
   ],
   exports: [
-    LayoutPageTitleComponent
+
   ]
 })
 export class LayoutModule { }

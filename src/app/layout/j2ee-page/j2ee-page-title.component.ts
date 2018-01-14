@@ -6,12 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./j2ee-page-title.component.scss']
 })
 export class J2eePageTitleComponent implements OnInit {
-  public years: number;
 
   constructor() {
   }
 
   ngOnInit() {
-    this.years = 1;
   }
 }

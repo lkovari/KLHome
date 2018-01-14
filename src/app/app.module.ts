@@ -6,6 +6,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SharedModule } from 'app/shared/shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AppComponent } from './app.component';
         BrowserModule,
         FormsModule,
         HttpModule,
-        AppRoutingModule
+        AppRoutingModule,
+        SharedModule
     ],
   // prevent 404 Forbidden error when refresh the page
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],

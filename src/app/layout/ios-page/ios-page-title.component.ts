@@ -6,12 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ios-page-title.component.scss']
 })
 export class IosPageTitleComponent implements OnInit {
-  public years: number;
-
   constructor() {
   }
 
   ngOnInit() {
-    this.years = 1;
   }
 }

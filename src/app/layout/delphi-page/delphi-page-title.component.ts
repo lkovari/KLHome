@@ -6,12 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delphi-page-title.component.scss']
 })
 export class DelphiPageTitleComponent implements OnInit {
-  public years: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.years = 2006 - 1998;
   }
 
 }

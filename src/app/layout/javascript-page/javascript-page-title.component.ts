@@ -6,13 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./javascript-page-title.component.scss']
 })
 export class JavascriptPageTitleComponent implements OnInit {
-  public years: number;
 
   constructor() {
   }
 
   ngOnInit() {
-    const date = new Date();
-    this.years = date.getFullYear() - 2016;
   }
 }

@@ -6,13 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./android-page-title.component.scss']
 })
 export class AndroidPageTitleComponent implements OnInit {
-  public years: number;
-
   constructor() { }
 
   ngOnInit() {
-    const date = new Date();
-    this.years = date.getFullYear() - 2010;
   }
 
 }

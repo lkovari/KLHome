@@ -10,12 +10,14 @@ import { AndroidPageContent3Component } from './android-page-content3/android-pa
 import { AndroidPageContent4Component } from './android-page-content4/android-page-content4.component';
 import { AndroidPageContent5Component } from './android-page-content5/android-page-content5.component';
 import { AndroidPageRoutingModule } from './android-page-routing.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgbModule.forRoot(),
+    SharedModule,
     AndroidPageRoutingModule
   ],
   declarations: [AndroidPageTitleComponent, AndroidPageContent1Component,

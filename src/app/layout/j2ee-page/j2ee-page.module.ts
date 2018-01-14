@@ -7,12 +7,14 @@ import { J2eePageTitleComponent } from './j2ee-page-title.component';
 import { J2eePageContent1Component } from './j2ee-page-content1/j2ee-page-content1.component';
 import { J2eePageContent2Component } from './j2ee-page-content2/j2ee-page-content2.component';
 import { J2eePageRoutingModule } from './j2ee-page-routing.module';
+import { SharedModule } from 'app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgbModule.forRoot(),
+    SharedModule,
     J2eePageRoutingModule
   ],
   declarations: [J2eePageTitleComponent, J2eePageContent1Component, J2eePageContent2Component],

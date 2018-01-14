@@ -27,15 +27,32 @@ export class LayoutPageTitleComponent implements OnInit {
     let years = 0;
     let months = 0;
 
-    months = (date2.getFullYear() - date1.getFullYear()) * 12;
+    const fullYear1 = date1.getFullYear();
+    const fullYear2 = date2.getFullYear();
+    months = (fullYear2 - fullYear1) * 12;
     months -= date1.getMonth() + 1;
     months += date2.getMonth();
     months = months <= 0 ? 0 : months;
-    if (months > 12) {
-      years = months % 12;
-      months = (months - (years * 12));
+    if (months >= 12) {
+      if ((months % 12) === 0) {
+        years = months / 12;
+        months = 0;
+      } else {
+        const monthsRemainder = months % 12;
+        years = (months - (monthsRemainder % 12)) / 12;
+        months = monthsRemainder;
+      }
     }
-    res = '' + years + ' year ' + (years > 1 ? 's' : '') + months + ' month' + (months > 1 ? 's' : '');
+    if (years === 0) {
+      res = '' + months + ' month' + (months > 1 ? 's' : '');
+
+    } else {
+      if (months === 0) {
+        res = '' + years + ' year' + (years > 1 ? 's' : '');
+      } else {
+        res = '' + years + ' year' + (years > 1 ? 's ' : ' ') + months + ' month' + (months > 1 ? 's' : '');
+      }
+    }
     return res;
   }
 
