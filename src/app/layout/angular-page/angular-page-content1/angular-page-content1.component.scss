@@ -1,20 +1,25 @@
-
-
-.img-responsive {
-    width: 160rem;
-    height: 119rem;
-    float: left;
-    margin-right:2rem;
-    border-radius: 50%;
-    shape-outside:circle();
-}
-
-.img-responsive-right {
-    width: 8rem;
-    height: 5rem;
-    // float: right;
-    margin-left:3rem;
-    border-radius:25%;
-    shape-outside:circle();
-   
+.layout-angular-page {
+    .angular-description {
+        padding: 0.5Rem;
+    }
+    .angular-courses {
+        padding-left: 0.5rem;
+        .img-responsive-right {
+            width: 8rem;
+            height: 5rem; 
+            margin-left: 3rem;
+            border-radius: 25%; 
+        }
+        .course {
+            font-weight: normal;
+            padding-top: 0.5rem;
+            .course-title {
+                padding-left: 0.5rem !important;
+            }
+        }
+        .courses-subtitle {
+            padding-bottom: 1rem;
+            font-weight: bold;
+        }
+    }
 }

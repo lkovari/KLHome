@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as angular from '@angular/forms';
 
 @Component({
   selector: 'app-angular-page-content1',
@@ -10,15 +11,19 @@ export class AngularPageContent1Component implements OnInit {
   fullImagePathSCSS: string;
   fullImagePathSASS: string;
   fullImagePathA5: string;
+  fullImagePathA5Rx: string;
+  angularVersion: any;
 
   constructor() {
     this.fullImagePathRF = 'assets/images/reactiveformsbydt.jpg';
     this.fullImagePathSCSS = 'assets/images/UC-XRLSVCSR.jpg';
     this.fullImagePathSASS = 'assets/images/UC-NLUM4IQ0.jpg';
     this.fullImagePathA5 = 'assets/images/UC-9GVOGJGJ.jpg';
+    this.fullImagePathA5Rx = 'assets/images/A5RxJsReactiveProg.png';
   }
 
   ngOnInit() {
+    this.angularVersion = angular.VERSION.full;
   }
 
 }

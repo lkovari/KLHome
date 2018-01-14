@@ -8,10 +8,10 @@ import { PageHeaderModule } from './../../shared/index';
 })
 export class AngularPageTitleComponent implements OnInit {
   public years: number;
-  
+
     constructor() {
     }
-  
+
     ngOnInit() {
       const date = new Date();
       this.years = date.getFullYear() - 2017;

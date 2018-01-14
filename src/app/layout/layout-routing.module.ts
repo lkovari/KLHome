@@ -45,15 +45,18 @@ import { DelphiPageContent4Component } from './delphi-page/delphi-page-content4/
 import { MasmPageTitleComponent } from './masm-page/masm-page-title.component';
 import { MasmPageContent1Component } from './masm-page/masm-page-content1/masm-page-content1.component';
 import { MasmPageContent2Component } from './masm-page/masm-page-content2/masm-page-content2.component';
+import { WelcomePageComponent } from 'app/layout/welcome-page/welcome-page.component';
+import { AboutmeContentComponent } from 'app/layout/aboutme-page/aboutme-content.component';
 
 
 const routes: Routes = [
   {
     path: '', component: LayoutComponent,
     children: [
-      {path: 'welcome-page', loadChildren: './welcome-page/welcome-page.module#WelcomePageModule'},
+      // {path: 'welcome-page', loadChildren: './welcome-page/welcome-page.module#WelcomePageModule'},
+      {path: 'welcome-page', component: WelcomePageComponent},
 
-      {path: 'aboutme-page', loadChildren: './aboutme-page/aboutme-page.module#AboutmePageModule'},
+      {path: 'aboutme-page', component: AboutmeContentComponent},
 
       {path: 'angular-page', component: AngularPageTitleComponent,
         children: [

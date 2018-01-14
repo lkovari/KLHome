@@ -2,7 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0.
 
-My first Angular 2 app, I used a template in it, I not too proud for it, but I will rewrite, as soon as I have enough time for it. 
+My first Angular 5 app (formerly Angular 2, 4), I used a template for built it, and I simply put my previous site content.
+I will rewrite it, as soon as I have enough time for it. Similar as I did with the Angular 5 page.
 
 ## Development server
 

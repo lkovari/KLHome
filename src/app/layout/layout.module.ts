@@ -4,7 +4,7 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
-import { HeaderComponent, SidebarComponent } from '../shared';
+import { HeaderComponent, SidebarComponent, LayoutPageTitleComponent } from '../shared';
 
 import { WelcomePageModule } from './welcome-page/welcome-page.module';
 import { AboutmePageModule } from './aboutme-page/aboutme-page.module';
@@ -39,6 +39,10 @@ import { MasmPageModule } from './masm-page/masm-page.module';
     LayoutComponent,
     HeaderComponent,
     SidebarComponent,
+    LayoutPageTitleComponent
+  ],
+  exports: [
+    LayoutPageTitleComponent
   ]
 })
 export class LayoutModule { }
