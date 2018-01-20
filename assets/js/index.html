@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>JavaScript101 Lesson 19 Bubbling</title>
+
+    <style>
+
+        #box1 {
+
+            background-color: lightblue;
+
+            height: 200px;
+
+            left: 30px;
+
+            position: absolute;
+
+            top: 200px;
+
+            width: 200px;
+
+        }
+
+        #box2 {
+
+            background-color: darkseagreen;
+
+            height: 150px;
+
+            left: 25px;
+
+            position: absolute;
+
+            top: 25px;
+
+            width: 150px;
+
+        }
+
+        #box3 {
+
+            background-color: yellow;
+
+            height: 100px;
+
+            left: 25px;
+
+            position: absolute;
+
+            top: 25px;
+
+            width: 100px;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Bubbling vs. Capturing Example</h1>
+
+    <h2>02/07/2016</h2>
+
+
+
+    <br>
+
+    <input id="radioBubbling" type="radio" name="eventDispatchMode" value="0">Bubbling (inside to outside)<br>
+
+    <input id="radioCapturing" type="radio" name="eventDispatchMode" value="2" checked>Capturing (outside to inside)<br>
+
+    <br>
+
+    <!-- the topmost -->
+
+    <div id="box1" class="BoxBlue">Blue
+
+        <div id="box2" class="BoxGreen">Green
+
+            <!-- the innermost -->
+
+            <div id="box3" class="BoxYellow" onclick="">Yellow
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="eventUtilities.js"></script>
+
+    <script src="script_bubbling.js"></script>
+
+</body>
+
+</html>
