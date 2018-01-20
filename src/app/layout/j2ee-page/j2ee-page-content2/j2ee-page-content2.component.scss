@@ -1,11 +1,13 @@
-.floated-imgs {
-  float: right;
-}
-
-.floated-imgs .img-fluid {
-  display: block;
-}
-
-.img-fluid {
-  margin-bottom: 40px;
+.layout-j2ee-wordbook-page {
+    .j2ee-wordbook-description {
+        .floated-imgs {
+            float: right;
+        }
+        .floated-imgs .img-fluid {
+            display: block;
+        }
+        .img-fluid {
+            margin-bottom: 40px;
+        }
+    }
 }
