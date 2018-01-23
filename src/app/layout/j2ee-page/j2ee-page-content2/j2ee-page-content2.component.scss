@@ -1,13 +1,10 @@
 .layout-j2ee-wordbook-page {
     .j2ee-wordbook-description {
-        .floated-imgs {
-            float: right;
-        }
-        .floated-imgs .img-fluid {
-            display: block;
-        }
+        padding: 0.5Rem;
         .img-fluid {
+            padding-top: 0.5rem;
+            margin-right: 40px;
             margin-bottom: 40px;
-        }
+          }        
     }
 }
