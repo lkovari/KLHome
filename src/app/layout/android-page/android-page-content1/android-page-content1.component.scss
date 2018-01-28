@@ -1,8 +1,24 @@
-#aemobile-slides {
-  margin: auto;
+
+.layout-android-aemobile-page {
+  .android-ae-mobile-description {
+    padding-left: 1rem;
+    .android-ae-mobile-description-title {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .android-aemobile-features {
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .aemobile-slides {
+    text-align: center;
+    margin: auto;
+    .carousel-inner > .carousel-item > img,
+    .carousel-inner > carousel-item > a > img{
+      margin: auto;
+    }    
+  }
 }
 
-.carousel-inner > .carousel-item > img,
-.carousel-inner > carousel-item > a > img{
-  margin: auto;
-}
+
+
