@@ -21,7 +21,8 @@ import { SharedModule } from 'app/shared/shared.module';
         SharedModule
     ],
   // prevent 404 Forbidden error when refresh the page
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  // providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

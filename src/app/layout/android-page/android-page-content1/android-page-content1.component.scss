@@ -1,8 +1,18 @@
-#aemobile-slides {
-  margin: auto;
+.layout-android-aemobile-page {
+  .layout-android-aemobile-description-title {
+  }
+  .layout-android-aemobile-description {
+      margin-top: 1rem;
+  }
+  .layout-android-aemobile-carousel {
+      padding-top: 1rem;
+      text-align: -webkit-center;
+      margin: auto;
+      .carousel-caption {
+          color: #c99765;
+      }
+  }
 }
 
-.carousel-inner > .carousel-item > img,
-.carousel-inner > carousel-item > a > img{
-  margin: auto;
-}
+
+
