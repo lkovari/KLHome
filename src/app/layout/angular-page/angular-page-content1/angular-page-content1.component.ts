@@ -12,6 +12,7 @@ export class AngularPageContent1Component implements OnInit {
   fullImagePathSASS: string;
   fullImagePathA5: string;
   fullImagePathA5Rx: string;
+  fullImagePrimeNg: string;
   angularVersion: any;
 
   constructor() {
@@ -20,6 +21,7 @@ export class AngularPageContent1Component implements OnInit {
     this.fullImagePathSASS = 'assets/images/UC-NLUM4IQ0.jpg';
     this.fullImagePathA5 = 'assets/images/UC-9GVOGJGJ.jpg';
     this.fullImagePathA5Rx = 'assets/images/A5RxJsReactiveProg.png';
+    this.fullImagePrimeNg = 'assets/images/cert-primeng.png';
   }
 
   ngOnInit() {
