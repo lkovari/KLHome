@@ -1,0 +1,20 @@
+<div>
+    <p-calendar [(ngModel)]="date" 
+                selectOtherMonths="true"
+                [disabledDays]="disabledDays"
+                mask="99/99/9999"
+                placeholder="mm/dd/yyyy"
+                selectOtherMonths="true"
+                slotChar="mm/dd/yyyy"
+                showButtonBar="showButtonBar"
+                tabindex="tabindex"
+                (onSelect)="onSelect($event)"
+                (ngModelChange)="onNgModelChange($event)"
+                (onTodayClick)="onTodayClick($event)"
+                (onClearClick)="onClearClick($event)"
+                name="name"
+                #calendarModel="ngModel"
+                showIcon="showIcon"
+                [required]="required">
+    </p-calendar>
+  </div>

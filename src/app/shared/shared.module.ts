@@ -3,14 +3,18 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LayoutPageTitleComponent } from 'app/shared/components/layout-page-title/layout-page-title.component';
+import { TextInputComponent } from './components/text-input/text-input.component';
+import { DateCalendarComponent } from './components/date-calendar/date-calendar.component';
+import { CalendarModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    CalendarModule
   ],
-  declarations: [LayoutPageTitleComponent],
-  exports: [LayoutPageTitleComponent]
+  declarations: [LayoutPageTitleComponent, TextInputComponent, DateCalendarComponent],
+  exports: [LayoutPageTitleComponent, TextInputComponent, DateCalendarComponent]
 })
 export class SharedModule { }

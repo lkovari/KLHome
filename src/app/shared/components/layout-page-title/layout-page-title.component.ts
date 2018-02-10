@@ -1,3 +1,6 @@
+/**
+ * Created by lkovari on 2017.11.30.
+ */
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({

@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +15,7 @@ import { SharedModule } from 'app/shared/shared.module';
         AppComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
         HttpModule,

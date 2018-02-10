@@ -7,6 +7,7 @@ import { AngularPageTitleComponent } from './angular-page-title.component';
 import { AngularPageContent1Component } from './angular-page-content1/angular-page-content1.component';
 import { AngularPageRoutingModule } from './angular-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { AngularPageContent2Component } from './angular-page-content2/angular-page-content2.component';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { SharedModule } from 'app/shared/shared.module';
     SharedModule,
     AngularPageRoutingModule
   ],
-  declarations: [AngularPageTitleComponent, AngularPageContent1Component],
-  exports: [AngularPageTitleComponent, AngularPageContent1Component]
+  declarations: [AngularPageTitleComponent, AngularPageContent1Component, AngularPageContent2Component],
+  exports: [AngularPageTitleComponent, AngularPageContent1Component, AngularPageContent2Component]
 })
 export class AngularPageModule { }

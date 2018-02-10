@@ -7,6 +7,7 @@ import { LayoutComponent } from './layout.component';
 
 import { AngularPageTitleComponent } from './angular-page/angular-page-title.component';
 import { AngularPageContent1Component } from './angular-page/angular-page-content1/angular-page-content1.component';
+import { AngularPageContent2Component } from './angular-page/angular-page-content2/angular-page-content2.component';
 
 import { JavascriptPageTitleComponent } from './javascript-page/javascript-page-title.component';
 import { JavascriptPageContent1Component } from './javascript-page/javascript-page-content1/javascript-page-content1.component';
@@ -60,7 +61,8 @@ const routes: Routes = [
 
       {path: 'angular-page', component: AngularPageTitleComponent,
         children: [
-          {path: 'angular-page-content1', component: AngularPageContent1Component}
+          {path: 'angular-page-content1', component: AngularPageContent1Component},
+          {path: 'angular-page-content2', component: AngularPageContent2Component}
         ]
       },
       {path: 'javascript-page', component: JavascriptPageTitleComponent,

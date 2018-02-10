@@ -18,6 +18,7 @@ import { CsharpPageModule } from './csharp-page/csharp-page.module';
 import { DelphiPageModule } from './delphi-page/delphi-page.module';
 import { MasmPageModule } from './masm-page/masm-page.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { LayoutPageTitleComponent } from 'app/shared/components/layout-page-title/layout-page-title.component';
 
 @NgModule({
   imports: [
