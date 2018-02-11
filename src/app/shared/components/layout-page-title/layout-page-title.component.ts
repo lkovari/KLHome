@@ -13,6 +13,7 @@ export class LayoutPageTitleComponent implements OnInit {
   @Input() pageSubtitle: string;
   @Input() startTime: string;
   @Input() endTime: string;
+  @Input() pageDescription: string;
   duration: string;
   startDate: Date;
   endDate: Date;

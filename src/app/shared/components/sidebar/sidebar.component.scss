@@ -118,14 +118,14 @@ $topnav-background-color: #392613;
 }
 @media screen and (max-width: 992px) {
   .sidebar {
-    top: 54px;
+    top: 100px;
     left: 0px;
   }
 }
 .text-style {
   color: #999;
-  padding-left:  0.75rem;
+  padding-left: 1.2rem;
   position: absolute;
-  // bottom: 1rem;
-  top: 0.5rem;
+  top: 3.5rem;
+  font-size: 0.7rem;
 }
