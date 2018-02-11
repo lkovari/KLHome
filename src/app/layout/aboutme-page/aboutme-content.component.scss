@@ -1,39 +1,59 @@
 // I know, all scss code I would have been covered with the main scss form class to prevent to overwrite the formerly declared classes
-.aboutme_wrapper {
+.aboutme-page-layout {
   background-color: #f2e6d9;
+  padding: 0.5rem;
+  .page-title {
+    font-weight: bold;
+  }
+  .img-responsive {
+    width: auto;
+    height: auto;
+    float: left;
+    margin-right:2rem;
+    border-radius: 50%;
+    shape-outside:circle();
+  }
+
+  .img-responsive-right {
+    width: auto;
+    height: auto;
+    float: right;
+    margin-left:3rem;
+    border-radius:25%;
+    shape-outside:circle();
+   
+  }
+  .txt {
+    line-height: 150%;
+    text-align: justify;
+    margin: 2% 2% 2% 2%;
+    text-indent: 2em;
+  }
+  .my-cv {
+    color: black;
+    font-style: italic;
+  }
+  .copyright-msg {
+    color: red;
+  }
+  .table-rows {
+    padding-left: 1rem;
+    padding-top: 2rem;
+  }
+  .row-top {
+    padding-top: 2rem;
+  }
+  .text-style {
+    padding-left:  1rem;
+    position: absolute;
+    bottom: 2rem;
+  }
 }
 
-.img-responsive {
-  width: auto;
-  height: auto;
-  float: left;
-  margin-right:2rem;
-  border-radius: 50%;
-  shape-outside:circle();
-}
 
-.img-responsive-right {
-  width: auto;
-  height: auto;
-  float: right;
-  margin-left:3rem;
-  border-radius:25%;
-  shape-outside:circle();
- 
-}
 
-.txt {
-  line-height: 150%;
-  text-align: justify;
-  margin: 2% 2% 2% 2%;
-  text-indent: 2em;
-}
 
-#my-cv {
-  color: black;
-  font-style: italic;
-}
 
-#copyright-msg {
-  color: red;
-}
+
+
+

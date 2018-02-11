@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LayoutPageTitleComponent } from 'app/shared/components/layout-page-title/layout-page-title.component';
 import { TextInputComponent } from './components/text-input/text-input.component';
-import { DateCalendarComponent } from './components/date-calendar/date-calendar.component';
 import { CalendarModule } from 'primeng/primeng';
+import { CustomCalendarComponent } from './components/custom-calendar/custom-calendar.component';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import { CalendarModule } from 'primeng/primeng';
     FormsModule,
     CalendarModule
   ],
-  declarations: [LayoutPageTitleComponent, TextInputComponent, DateCalendarComponent],
-  exports: [LayoutPageTitleComponent, TextInputComponent, DateCalendarComponent]
+  declarations: [LayoutPageTitleComponent, TextInputComponent, CustomCalendarComponent],
+  exports: [LayoutPageTitleComponent, TextInputComponent, CustomCalendarComponent]
 })
 export class SharedModule { }

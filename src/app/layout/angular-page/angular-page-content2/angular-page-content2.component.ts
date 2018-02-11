@@ -15,10 +15,11 @@ export class AngularPageContent2Component implements OnInit {
   selectedDate: Date;
   customText: string;
   minLength = 7;
+  submitted = false;
 
   form_data = {
-    appcalendardate: '',
-    textfield: ''
+    customcalendar: '',
+    customtextinput: ''
   };
 
   constructor() { }
@@ -50,8 +51,8 @@ export class AngularPageContent2Component implements OnInit {
     this.formData.form.setValue(
       // this.formData.form.patchValue(
       {
-        appcalendardate: new Date('02/02/1993'),
-        textinput: 'abraka'
+        customcalendar: new Date('02/02/1993'),
+        customtextinput: 'abraka'
       }
     );
     Object.keys( this.formData.controls).forEach(key => {
@@ -66,8 +67,8 @@ export class AngularPageContent2Component implements OnInit {
   clearValues(form) {
     this.formData.form.setValue(
       {
-        appcalendardate: null,
-        textinput: ''
+        customcalendar: null,
+        customtextinput: ''
       }
     );
     Object.keys( this.formData.controls).forEach(key => {
@@ -77,8 +78,9 @@ export class AngularPageContent2Component implements OnInit {
   }
 
   onSubmit(userForm: NgForm) {
-    this.form_data.appcalendardate = this.formData.value.appcalendardate;
-    this.form_data.textfield = this.formData.value.customText;
+    this.submitted = true;
+    this.form_data.customcalendar = this.formData.value.customcalendar;
+    this.form_data.customtextinput = this.formData.value.customtextinput;
     // reset the form same as when reloaded
     this.formData.reset();
     console.log(this.formData);
