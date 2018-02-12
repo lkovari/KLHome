@@ -8,16 +8,14 @@
       <b>Act #1</b> Custom Input Component with Validation
     </div>
     <div class="sub-topic">
-      <b>Some days ago</b> I faced the following problem in my workplace, how can I include custom components into the NgForm validation
-      mechanism. I wanted to see the custom component as a
+      Formerly I faced the following problem, how can I include custom components into the NgForm validation mechanism. I wanted to see the custom component as a
       <a href="https://angular.io/api/forms/FormControl">FormControl</a> in the collection of controls of form, and would like to see it is participating in the Form validation
-      mechanism. I spent a couple of hours to investigate how can I do that, I found in the <a href="https://angular.io/docs">Angular documentation</a> the
+      mechanism.  I spent a lot of time to investigate how can I do that, I found in the <a href="https://angular.io/docs">Angular documentation</a> the
       <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a> interface.
       <p>
-        <mark>I saw it clearly, there will be no time in working time for create an example project for it and practicing
-        this technology, how can I implement correctly the
-        <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>, therefore in my spare time (usually at night) I spent a couple of times for create the following
-        examples.</mark>
+        <mark>Interested in this technology very much me, therefore I spent really a lot of time in my spare time (usually at night) for exploring and practicing how can I implement it, in the best way. 
+        I would like to implement correctly the
+        <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>.</mark>
       </p>
       At first I created a simple input component the class name of it
       <i>
@@ -41,7 +39,7 @@
       <a href="https://www.primefaces.org/primeng/#/">PrimeNG</a>
       source code, and I noticed the original third party component is also implemented the
       <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course I know to wrap a component without good reason, is a dangerous venture, because
-      the developer should consider what parameters move to the wrapper component and what not, because can hide the wrapped component parameters.
+      the developer should consider what parameters move to the wrapper component and what not, because we can hide the wrapped component parameters.
       <mark>I should also mention, although this is not an exhaustive implementation, but the aspect of implementation of the
         <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>
         it will be more than enough.</mark>
@@ -49,10 +47,14 @@
     <div class="sub-topic">
       <b>Act #3</b> A simple Form with the Components
       <i>
-        <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/text-input">TextInputComponent</a>
+        <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/text-input">
+          <img src="./../../../../assets/images/GitHub-Mark-32px.png" width="16" height="16">
+        </a>TextInputComponent
       </i> and
       <i>
-        <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/custom-calendar">CustomCalendarComponent</a>
+        <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/custom-calendar">
+          <img src="./../../../../assets/images/GitHub-Mark-32px.png" width="16" height="16">
+        </a>CustomCalendarComponent
       </i> which I mentioned above.
     </div>
     <div class="sub-topic">
@@ -72,7 +74,9 @@
       </div>
       <div class="form-border">
         <label class="text-primary">
-          <a href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content2">Form Validation example</a>
+          <a href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content2">
+            <img src="./../../../../assets/images/GitHub-Mark-32px.png" width="16" height="16">
+          </a>Form Validation example
         </label>
         <br>
         <form (ngSubmit)="onSubmit(formData)" #formData="ngForm" novalidate>
