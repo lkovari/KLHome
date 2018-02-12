@@ -16,6 +16,7 @@ export class AngularPageContent2Component implements OnInit {
   customText: string;
   minLength = 7;
   submitted = false;
+  githubLogoPath: string;
 
   form_data = {
     customcalendar: '',
@@ -25,6 +26,7 @@ export class AngularPageContent2Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
   onDateSelected(event) {
