@@ -12,13 +12,13 @@
       <b>Some days ago</b> I faced the following problem in my workplace, how can I include custom components into NgForm validation
       mechanism. I wanted to see the custom component as a
       <a href="https://angular.io/api/forms/FormControl">FormControl</a> in the collection of controls of form, and would like to see it is participated in the Form validation
-      mechanism. I spent some time with investigate how can I do that, I found in the Angular documentation the
+      mechanism. I spent a couple of hours with investigate how can I do that, I found in the <a href="https://angular.io/docs">Angular documentation</a> the
       <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a> interface.
       <p>
-        <mark>I saw it clearly,</mark> during my working time, I have no time for create an example project for it and practicing
+        <mark>I saw it clearly, there will be no time in working time for create an example project for it and practicing
         this technology, how can I implement correctly the
-        <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>, therefore in my spare time (usually at night) I spent some time for create the following
-        examples.
+        <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>, therefore in my spare time (usually at night) I spent a couple of times for create the following
+        examples.</mark>
       </p>
       At first I created a simple input component the class name of it
       <i>
@@ -41,11 +41,11 @@
       <i>'app-custom-calendar'</i>. I took a look to the
       <a href="https://www.primefaces.org/primeng/#/">PrimeNG</a>
       source code, and I noticed the original third party component is also implemented the
-      <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course I know to wrap a component without good cause, is a dangerous venture, because
-      the developer should consider what parameters move to the wrapper component and what not.
-      <mark>I should also mention, although this is not an exhaustive implementation but the aspect of implementation of the
+      <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course I know to wrap a component without good reason, is a dangerous venture, because
+      the developer should consider what parameters move to the wrapper component and what not, because can hide the wrapped component parameters.
+      <mark>I should also mention, although this is not an exhaustive implementation, but the aspect of implementation of the
         <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>
-        it will be good.</mark>>
+        it will be more than enough.</mark>
     </div>
     <div class="sub-topic">
       <b>Act #3</b> A simple Form with the Components
@@ -57,15 +57,19 @@
       </i> which I mentioned above.
     </div>
     <div class="sub-topic">
-      I just created a simple form with two input fields, one of is the text input component and the another is the date calendar
-      component. The Submit button will enable if the form is valid which means, the fields content is mathed with validation
-      rules. On the form there are two another button titled
-      <span class="text-primary">"Set Data"</span> and
-      <span class="text-primary">"Clear Data"</span> which call the appropriate function in the .ts file.
+      I just created a simple form with two input fields, one of is the text input component and the other is the date calendar
+      component. The Submit button will enable if the form is valid which means, the field content is mathes with validation
+      rules. Usage of the
+      <i>setValues(form)</i> and
+      <i>clearValues(form)</i> are the best example how can we load the data into the fields before the form open and how
+      can be clear about that.
       <div class="sub-topic">
         <span class="text-primary">The validation rules are the following</span> the
-        <span class="text-warning">text field and date field are required</span> so with other word mandatory. The text field has another rules,
-        <span class="text-warning">minimum length is {{minLength}} characters and the first character should be capital letter</span>.
+        <ul>
+          <li>Custom Date field is required</li>
+          <li>Custom Text field is required, minimum length is {{minLength}} characters and the first character should be capital
+            letter</li>
+        </ul>
       </div>
       <div class="form-border">
         <label class="text-primary">
@@ -77,9 +81,9 @@
             <label for="customcalendar">Custom Date
               <span class="text-danger">*</span>
             </label>
-            <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" showButtonBar="true" class="calendar-style"
-              placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy" #customcalendar="ngModel" name="customcalendar"
-              required="true">
+            <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" [showButtonBar]="true" class="calendar-style"
+              placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy" #customcalendar="ngModel" name="customcalendar" [showOnFocus]="false"
+              [required]="true">
             </app-custom-calendar>
             <div *ngIf="customcalendar && (customcalendar.invalid && customcalendar.dirty)" class="text-danger">
               <small>Custom date is required!</small>
@@ -102,12 +106,6 @@
           <button class="btn btn-primary" type="button" (click)="clearValues(formData)">Clear Data</button>
           <button class="btn btn-primary" type="submit" [disabled]="formData.invalid">Submit</button>
         </form>
-      </div>
-      <div class="sub-topic">
-        The
-        <i>setValues(form)</i> and
-        <i>clearValues(form)</i> these methodes contains a good example how can we load the data into fields of the form, before
-        show the form UI. and how can we clear the fields.
       </div>
       <div class="sub-topic" *ngIf="submitted">
         <div class="cols-xs-12">

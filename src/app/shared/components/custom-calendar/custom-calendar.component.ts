@@ -20,9 +20,34 @@ const CUSTOM_CALENDAR_CONTROL_VALUE_ACCESSOR: ExistingProvider = {
 })
 export class CustomCalendarComponent implements OnInit, ControlValueAccessor {
   @Input() disabledDays = new Array<number>();
+  @Input() disabledDates = new Array<Date>();
+  @Input() defaultDate = null;
+  @Input() disabled = false;
+  @Input() showOnFocus = true;
   @Input() showIcon: boolean;
   @Input() required = false;
   @Input() showButtonBar = true;
+  @Input() yearNavigator = false;
+  @Input() monthNavigator = false;
+  @Input() showTime = false;
+  @Input() timeOnly = false;
+  @Input() showSeconds = false;
+  @Input() keepInvalid = false;
+  @Input() autoZIndex = true;
+  @Input() utc = false;
+  @Input() inline = false;
+  @Input() minDate: Date;
+  @Input() maxDate: Date;
+  @Input() inputId: string;
+  @Input() todayButtonStyleClass: string;
+  @Input() clearButtonStyleClass: string;
+  @Input() selectionMode = 'single';
+  @Input() style: string;
+  @Input() styleClass: string;
+  @Input() hourFormat = '24';
+  @Input() yearRange: string;
+  @Input() dateFormat = 'mm/dd/yy';
+  @Input() appendTo = null;
   private _date: Date;
   get date() {
       return this._date;
@@ -41,8 +66,6 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor {
   @Output() onDateClicked = new EventEmitter<Date>();
   @Output() onModelChanged = new EventEmitter<Date>();
   @ViewChild('Model') calendarModel: NgModel;
-
-  disabled: boolean;
 
   onModelChange: Function = () => {};
   onModelTouched: Function = () => {};
