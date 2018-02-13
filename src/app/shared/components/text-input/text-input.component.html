@@ -1,5 +1,5 @@
 <div>
     <input pInputText id="inputtext" [attr.size]="size" [disabled]="disabled" class="input" type="text" [attr.disabled]="disabled?'':null"
         autocomplete="false" [(ngModel)]="value" name="name" #pinputtext="ngModel" [required]="required" (click)="onClick($event)"
-        (keyup)="onKeyUp($event)" (input)="onChange($event)" (blur)="onBlur($event)" #in>
+        (keyup)="onKeyUp($event)" (input)="onChange($event)" (blur)="focusLost($event)" #in>
 </div>

@@ -29,24 +29,38 @@ export class AngularPageContent2Component implements OnInit {
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
-  onDateSelected(event) {
-    this.selectedDate = event;
-    console.log('onDateSelected ' + event);
-  }
 
-  onDateClear(date: Date) {
+  onClearClicked(date: Date) {
     this.selectedDate = date;
-    console.log('onDateClear ' + date);
-
+    console.log('onClearClicked event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }
 
-  onModelChanged(event) {
-    this.selectedDate = event;
-    console.log('onModelChanged ' + event);
+  onTodayClicked(date: Date) {
+    this.selectedDate = date;
+    console.log('onTodayClicked event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
+  }
+
+  onDateSelected(date: Date) {
+    this.selectedDate = date;
+    console.log('onDateSelected event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
+  }
+
+  onModelChanged(date: Date) {
+    this.selectedDate = date;
+    console.log('onModelChanged event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }
 
   onSetCustomDate(event) {
     this.customDate = new Date('02/02/1965');
+  }
+
+  onChanged(event) {
+    console.log('onChanged event arg ' + JSON.stringify(event) + ' customText ' + JSON.stringify(this.customText));
+  }
+
+
+  onBlur(event) {
+    console.log('onBlur event arg ' + JSON.stringify(event) + ' customText ' + JSON.stringify(this.customText));
   }
 
   setValues(form) {

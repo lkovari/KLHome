@@ -90,7 +90,8 @@
             </label>
             <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" [showButtonBar]="true" class="calendar-style"
               placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy" #customcalendar="ngModel" name="customcalendar" [showOnFocus]="false"
-              [required]="true">
+              [required]="true" (onTodayClicked)="onTodayClicked($event)" (onClearClicked)="onClearClicked($event)" (onDateSelected)="onDateSelected($event)" 
+              (onModelChanged)="onModelChanged($event)">
             </app-custom-calendar>
             <div *ngIf="customcalendar && (customcalendar.invalid && customcalendar.dirty)" class="text-danger">
               <small>Custom date is required!</small>
@@ -101,7 +102,7 @@
               <span class="text-danger">*</span>
             </label>
             <app-text-input id="customtextinput" name="customtextinput" [(ngModel)]="customText" #customtextinput="ngModel" [minlength]="7"
-              [capital]="true" required>
+              [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)" required>
             </app-text-input>
             <span class="text-danger" *ngIf="customtextinput && (customtextinput.invalid && !customtextinput.pristine)">
               <p *ngIf="customtextinput.errors.required">Custom text is Required</p>

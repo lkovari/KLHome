@@ -63,7 +63,8 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor {
       this._name = name;
   }
   @Output() onTodayClicked = new EventEmitter<Date>();
-  @Output() onDateClicked = new EventEmitter<Date>();
+  @Output() onDateSelected = new EventEmitter<Date>();
+  @Output() onClearClicked = new EventEmitter<Date>();
   @Output() onModelChanged = new EventEmitter<Date>();
   @ViewChild('Model') calendarModel: NgModel;
 
@@ -80,7 +81,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor {
   onSelect(event) {
       this.onModelTouched();
       this.onModelChange(event);
-      this.onDateClicked.emit(event);
+      this.onDateSelected.emit(event);
   }
 
   onTodayClick(date: Date) {
@@ -91,7 +92,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor {
   onClearClick($event) {
       this.onModelTouched();
       this.onModelChange(null);
-      this.onDateClicked.emit(null);
+      this.onClearClicked.emit(null);
   }
 
   onNgModelChange(date: Date) {

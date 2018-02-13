@@ -1,7 +1,7 @@
 /**
  * Created by lkovari on 2018.02.08.
  */
-import { Component, OnInit, ElementRef, forwardRef, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, forwardRef, Input, Output, ViewChild, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
 
 export const TEXT_INPUT_VALUE_ACCESSOR = {
@@ -72,6 +72,8 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
   set minlength(v: number) {
     this._minLength = v;
   }
+  @Output() onChanged = new EventEmitter<String>();
+  @Output() onBlur = new EventEmitter<String>();
   @ViewChild('in') input: ElementRef;
 
   onModelChange: Function = () => { };
@@ -99,16 +101,19 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
   onKeyUp(event) {
     this.onModelChange(event.currentTarget.value);
     this.onModelTouched();
+    this.onChanged.emit(event);
   }
 
   onChange(event) {
     this.onModelChange(event.currentTarget.value);
     this.onModelTouched();
+    this.onChanged.emit(event);
   }
 
-  onBlur(event) {
+  focusLost(event) {
     this.onModelChange(event.currentTarget.value);
     this.onModelTouched();
+    this.onBlur.emit(event);
   }
 
   writeValue(value: string): void {
