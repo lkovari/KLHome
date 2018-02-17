@@ -1,5 +1,5 @@
 .aboutme-page-layout {
-    background-color: #f2e6d9;
+    // background-color: #f2e6d9;
     padding: 0.5rem;
     height: calc(100vh - 86px);
     .page-title {
@@ -41,22 +41,13 @@
         bottom: 1rem;
         width: 100%;
     }
-    .table-rows {
-        padding-left: 1rem;
-        padding-top: 2rem;
+
+    .text-left {
+        float: left;
+        clear: left;
     }
-    .row-top {
-        padding-top: 2rem;
-    }
-    .text-style {
-        padding-left: 1rem;
-        position: absolute;
-        bottom: 2rem;
-    }
-    .bottom-text {
-        text-align: center;
-        position: absolute;
-        bottom: 1rem;
-        width: 100%;
-    }
+    .text-right {
+        float: right;
+        clear: right;
+    }    
 }
