@@ -1,14 +1,11 @@
-/**
- * Created by lkovari on 2017.11.30.
- */
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-layout-page-title',
-  templateUrl: './layout-page-title.component.html',
-  styleUrls: ['./layout-page-title.component.scss']
+  selector: 'app-page-header',
+  templateUrl: './page-header.component.html',
+  styleUrls: ['./page-header.component.scss']
 })
-export class LayoutPageTitleComponent implements OnInit {
+export class PageHeaderComponent implements OnInit {
   @Input() pageTitle: string;
   @Input() pageSubtitle: string;
   @Input() startTime: string;
@@ -31,11 +28,30 @@ export class LayoutPageTitleComponent implements OnInit {
     let years = 0;
     let months = 0;
 
+    const month1 = date1.getMonth() + 1;
+    const month2 = date2.getMonth() + 1;
     const fullYear1 = date1.getFullYear();
     const fullYear2 = date2.getFullYear();
-    months = (fullYear2 - fullYear1) * 12;
-    months -= date1.getMonth() + 1;
-    months += date2.getMonth();
+    let monthsAdd = 0;
+    if (month1 === month2) {
+      months = (fullYear2 - fullYear1) * 12;
+    } else {
+      if (fullYear1 === fullYear2) {
+        if (month1 < month2) {
+          monthsAdd = (month2 - month1);
+        } else if (month1 > month2) {
+          monthsAdd = ((12 - month1) + month2);
+        }
+      } else {
+        months = ((fullYear2 - fullYear1) - 1) * 12;
+        if (month1 < month2) {
+          monthsAdd = (month2 - month1);
+        } else if (month1 > month2) {
+          monthsAdd = ((12 - month1) + month2);
+        }
+      }
+    }
+    months += monthsAdd;
     months = months <= 0 ? 0 : months;
     if (months >= 12) {
       if ((months % 12) === 0) {
@@ -59,5 +75,4 @@ export class LayoutPageTitleComponent implements OnInit {
     }
     return res;
   }
-
 }
