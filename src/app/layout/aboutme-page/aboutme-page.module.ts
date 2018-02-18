@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutmeContentComponent } from './aboutme-content.component';
 import { AboutmePageRoutingModule } from './aboutme-page-routing.module';
 import { SharedModule } from 'primeng/primeng';
-import { LayoutPageTitleComponent } from 'app/shared';
+import { PageHeaderModule } from '../../shared';
 
 @NgModule({
   imports: [
@@ -14,6 +14,7 @@ import { LayoutPageTitleComponent } from 'app/shared';
     FormsModule,
     SharedModule,
     AboutmePageRoutingModule,
+    PageHeaderModule
   ],
   declarations: [AboutmeContentComponent],
   exports: [AboutmeContentComponent]

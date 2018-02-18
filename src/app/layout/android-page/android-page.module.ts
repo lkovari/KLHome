@@ -11,6 +11,7 @@ import { AndroidPageContent4Component } from './android-page-content4/android-pa
 import { AndroidPageContent5Component } from './android-page-content5/android-page-content5.component';
 import { AndroidPageRoutingModule } from './android-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { PageHeaderModule } from '../../shared';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { SharedModule } from 'app/shared/shared.module';
     FormsModule,
     NgbModule.forRoot(),
     SharedModule,
-    AndroidPageRoutingModule
+    AndroidPageRoutingModule,
+    PageHeaderModule
   ],
   declarations: [AndroidPageTitleComponent, AndroidPageContent1Component,
                 AndroidPageContent2Component, AndroidPageContent3Component,

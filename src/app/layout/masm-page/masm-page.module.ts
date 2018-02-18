@@ -8,6 +8,7 @@ import { MasmPageContent1Component } from './masm-page-content1/masm-page-conten
 import { MasmPageContent2Component } from './masm-page-content2/masm-page-content2.component';
 import { MasmPageRoutingModule } from './masm-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { PageHeaderModule } from '../../shared';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SharedModule } from 'app/shared/shared.module';
     FormsModule,
     NgbModule.forRoot(),
     SharedModule,
-    MasmPageRoutingModule
+    MasmPageRoutingModule,
+    PageHeaderModule
   ],
   declarations: [MasmPageTitleComponent, MasmPageContent1Component, MasmPageContent2Component],
   exports: [MasmPageTitleComponent, MasmPageContent1Component, MasmPageContent2Component]

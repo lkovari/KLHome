@@ -9,6 +9,7 @@ import { J2sePageContent2Component } from './j2se-page-content2/j2se-page-conten
 import { J2sePageContent3Component } from './j2se-page-content3/j2se-page-content3.component';
 import { J2sePageRoutingModule } from './j2se-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { PageHeaderModule } from '../../shared';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { SharedModule } from 'app/shared/shared.module';
     FormsModule,
     NgbModule.forRoot(),
     SharedModule,
-    J2sePageRoutingModule
+    J2sePageRoutingModule,
+    PageHeaderModule
   ],
   declarations: [J2sePageTitleComponent, J2sePageContent1Component, J2sePageContent2Component, J2sePageContent3Component],
   exports: [J2sePageTitleComponent, J2sePageContent1Component, J2sePageContent2Component, J2sePageContent3Component]

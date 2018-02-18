@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PageHeaderModule } from './../../shared/index';
 
 @Component({
   selector: 'app-angular-page-title',

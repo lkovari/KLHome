@@ -8,6 +8,7 @@ import { IosPageContent1Component } from './ios-page-content1/ios-page-content1.
 import { IosPageContent2Component } from './ios-page-content2/ios-page-content2.component';
 import { IosPageRoutingModule } from './ios-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { PageHeaderModule } from '../../shared';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SharedModule } from 'app/shared/shared.module';
     FormsModule,
     NgbModule.forRoot(),
     SharedModule,
-    IosPageRoutingModule
+    IosPageRoutingModule,
+    PageHeaderModule
   ],
   declarations: [IosPageTitleComponent, IosPageContent1Component, IosPageContent2Component],
   exports: [IosPageTitleComponent, IosPageContent1Component, IosPageContent2Component]

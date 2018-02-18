@@ -4,11 +4,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from 'app/shared/shared.module';
+import { PageHeaderModule } from '../../shared';
 import { AngularPageTitleComponent } from './angular-page-title.component';
 import { AngularPageContent1Component } from './angular-page-content1/angular-page-content1.component';
 import { AngularPageRoutingModule } from './angular-page-routing.module';
 import { AngularPageContent2Component } from './angular-page-content2/angular-page-content2.component';
-
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import { AngularPageContent2Component } from './angular-page-content2/angular-pa
     FormsModule,
     NgbModule.forRoot(),
     SharedModule,
-    AngularPageRoutingModule
+    AngularPageRoutingModule,
+    PageHeaderModule
   ],
   declarations: [AngularPageTitleComponent, AngularPageContent1Component, AngularPageContent2Component],
   exports: [AngularPageTitleComponent, AngularPageContent1Component, AngularPageContent2Component]

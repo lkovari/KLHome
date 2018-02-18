@@ -9,15 +9,17 @@ import { JavascriptPageContent1Component } from './javascript-page-content1/java
 import { JavascriptPageContent2Component } from './javascript-page-content2/javascript-page-content2.component';
 import { JavascriptPageRoutingModule } from './javascript-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { PageHeaderModule } from '../../shared';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     NgbModule.forRoot(),
     SharedModule,
     JavascriptPageRoutingModule,
-    RouterModule
+    PageHeaderModule
   ],
   declarations: [JavascriptPageTitleComponent, JavascriptPageContent1Component, JavascriptPageContent2Component],
   exports: [JavascriptPageTitleComponent, JavascriptPageContent1Component, JavascriptPageContent2Component]

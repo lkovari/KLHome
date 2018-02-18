@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('02/17/2018 08:25 PM');
+  lastUpdate = new Date('02/18/2018 04:15 PM');
 
   eventCalled() {
     this.isActive = !this.isActive;
