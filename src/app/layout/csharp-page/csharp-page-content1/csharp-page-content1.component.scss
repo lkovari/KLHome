@@ -1,0 +1,18 @@
+.layout-csharp-page {
+    .csharp-description {
+        padding: 0.5Rem;
+    }
+    .csharp-courses {
+        padding-left: 0.5rem;
+        .course {
+            font-weight: normal;
+            padding-top: 0.5rem;
+            .course-title {
+                padding-left: 0.5rem !important;
+            }
+        }
+    }
+    .footer-description {
+        padding-top: 1rem;
+    }
+}
