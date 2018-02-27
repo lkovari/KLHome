@@ -119,14 +119,15 @@ const routes: Routes = [
           {path: 'delphi-page-content4', component: DelphiPageContent4Component}
         ]
       },
-
+      /*
       {path: 'masm-page', component: MasmPageTitleComponent,
         children: [
           {path: 'masm-page-content1', component: MasmPageContent1Component},
           {path: 'masm-page-content2', component: MasmPageContent2Component}
         ]
       }
-
+      */
+     {path: 'masm-page', loadChildren: './masm-page/masm-page.module#MasmPageModule'}
     ]
   }
 ];

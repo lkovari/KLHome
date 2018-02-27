@@ -17,7 +17,8 @@ import { PageHeaderModule } from '../../shared';
     NgbModule.forRoot(),
     SharedModule,
     MasmPageRoutingModule,
-    PageHeaderModule
+    PageHeaderModule,
+    MasmPageRoutingModule
   ],
   declarations: [MasmPageTitleComponent, MasmPageContent1Component, MasmPageContent2Component],
   exports: [MasmPageTitleComponent, MasmPageContent1Component, MasmPageContent2Component]
