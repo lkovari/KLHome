@@ -1,0 +1,22 @@
+.welcome-page {
+  vertical-align: middle;
+  background-color: #f2e6d9;
+  padding: 0.5rem;
+  height: calc(100vh - 86px);
+
+  .welcome_msg {
+    color: gray;
+    text-align: center;
+    margin-top: 5rem;
+  }
+  
+  .copyright_msg {
+    color: black;
+    text-align: center;
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+  }
+    
+}
+

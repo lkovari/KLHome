@@ -1,0 +1,26 @@
+.layout-masm-page {
+    .masm-description {
+        padding: 0.5Rem;
+    }
+    .masm-stuffs {
+        padding-left: 0.5rem;
+        padding-left: 1rem;
+        .masm-stuff-title {
+            padding-bottom: 1rem;
+            padding-left: 1rem;
+            font-weight: bold;
+        }
+        .masm-publications {
+            padding-top: 1rem;
+        }
+        .btn-small {
+            height: 1.5rem !important;
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
+}

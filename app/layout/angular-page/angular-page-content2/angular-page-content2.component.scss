@@ -1,0 +1,15 @@
+.layout-angular-playground-page {
+    .angular-playground-description {
+        padding: 0.5Rem;
+    }
+    .sub-topic {
+        padding: 0.5Rem;
+    }
+    .form-border {
+        border: solid blue 1px;
+        padding: 1rem;
+    }
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+}
