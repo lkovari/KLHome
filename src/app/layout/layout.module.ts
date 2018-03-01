@@ -35,7 +35,7 @@ import { SharedModule } from 'app/shared/shared.module';
     J2sePageModule,
     CsharpPageModule,
     DelphiPageModule,
-    MasmPageModule,
+    MasmPageModule
   ],
   declarations: [
     LayoutComponent,

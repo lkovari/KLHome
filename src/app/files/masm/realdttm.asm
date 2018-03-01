@@ -1,8 +1,8 @@
 PAGE 60,132
 
 COMMENT *
-	Written by L·szlÛ Kıv·ri  1987.05.30.
-		      Last update  1988.04.17.
+	Written by L√°szl√≥ K≈ëv√°ri  1987.05.30.
+		      	 Last update  1988.04.17.
 
 	A program a valos idos orat olvassa es beallitja a rendszer
 	valos idejet. Lehetoseget ad az ido beallitasara is.
@@ -114,22 +114,22 @@ DATA	SEGMENT PARA	PUBLIC	'DATA'
 	exit		db	0			;Kilepes jelzo
 	found		db	0			;Real t. clock jelzo
 	space		db	'00','$'
-	text0		db	'VAL¢S DèTUM êS IDô',13,10,'$'
-	text1		db	'D†tum    : ','$'
-	text2		db	'Idî      : ','$'
-	text3		db	'Uj d†tum : ','$'
-	text4		db	'Uj idî   : ','$'
-	text5		db	'Copyright (C) 1987 by L·szlÛ Kıv·ri #3747321033$'
+	text0		db	'VAL√ìS D√ÅTUM √âS ID≈ê',13,10,'$'
+	text1		db	'D√°tum    : ','$'
+	text2		db	'Id?      : ','$'
+	text3		db	'Uj d√°tum : ','$'
+	text4		db	'Uj id≈ë?   : ','$'
+	text5		db	'Copyright (C) 1987 by L√°szl√≥ K≈ëv√°ri #3747321033$'
 	errms		db	'Rossz !','$'
 	clrscr		db	' ',13,10,'$'
 	clrdt		db	'                 ','$'
 	clrtm		db	'            ','$'
-	sunday		db	'Vas†rnap','$'          ;A het napjai
-	monday		db	'HÇtfî','$'
+	sunday		db	'Vas√°rnap','$'          ;A het napjai
+	monday		db	'H√©tf≈ë','$'
 	tuesday 	db	'Kedd','$'
 	wednesday	db	'Szerda','$'
-	thursday	db	'CsÅtîrtîk','$'
-	friday		db	'PÇntek','$'
+	thursday	db	'Cs≈±t√∂rt√∂k','$'
+	friday		db	'P√©ntek','$'
 	saturday	db	'Szombat','$'
 	trn		dw	0		;Cimtarolo
 

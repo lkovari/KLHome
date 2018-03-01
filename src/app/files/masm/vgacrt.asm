@@ -3,21 +3,21 @@ PAGE	66,132
 TITLE	VGA CRTC Register Seting
 
 COMMENT *
-	Written by László Kõvári  1995.02.13.
-		    Last Update  1995.02.14.
+	Written by LÃ¡szlÃ³ KÅ‘vÃ¡ri  1995.02.13.
+		    	 Last Update  1995.02.14.
 
 	Hungaryan comment
 
-	Program kezelése:
+	Program kezelï¿½se:
 
-		elözö regiszter érték kiválasztása
-		következö regiszter érték kiválasztása
-	->	regiszter érték növelése
-	<-	regiszter érték csökkentése
+		elï¿½zï¿½ regiszter ï¿½rtï¿½k kivï¿½lasztï¿½sa
+		kï¿½vetkezï¿½ regiszter ï¿½rtï¿½k kivï¿½lasztï¿½sa
+	->	regiszter ï¿½rtï¿½k nï¿½velï¿½se
+	<-	regiszter ï¿½rtï¿½k csï¿½kkentï¿½se
 	R	regiszterek alaphelyzetbe
-	H	kilépés a beállitott regiszterértékek megtartásával
-	E	regiszter érték megadása hex. formában
-	ESC	kilépés
+	H	kilï¿½pï¿½s a beï¿½llitott regiszterï¿½rtï¿½kek megtartï¿½sï¿½val
+	E	regiszter ï¿½rtï¿½k megadï¿½sa hex. formï¿½ban
+	ESC	kilï¿½pï¿½s
 
 
 	English comment:
@@ -50,11 +50,11 @@ START:
 ;	Data section.
 ;
 ;
-	Copyr	db	'Copyright (C) 1995 by László Kõvári #3647321033$'
+	Copyr	db	'Copyright (C) 1995 by Lï¿½szlï¿½ Kï¿½vï¿½ri #3647321033$'
 
 	;Default values of various video modes
 
-		;Color 80 03-as mód
+		;Color 80 03-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8003 db	 5Fh,  4Fh,  50h,  82h,  55h, 081h, 0BFh,  1Fh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -64,7 +64,7 @@ START:
 			;R24
 		db	  0
 
-		;Color 40 01-as mód
+		;Color 40 01-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco4001 db	 2Dh,	27h,  28h,  90h,  2Bh, 0A0h, 0BFh,  1Fh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -74,7 +74,7 @@ START:
 			;R24
 		db	  0
 
-		;Mono 80 07-as mód
+		;Mono 80 07-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vmo8007 db	 0FFh, 0FFh, 0FFh, 0FFh, 0FFh, 0FFh, 0FFh, 0FFh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -84,7 +84,7 @@ START:
 			;R24
 		db	  0
 
-		;Mono 40 00-as mód
+		;Mono 40 00-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vmo4000 db	  2Dh,	27h,  28h,  90h,  2Bh, 0A0h, 0BFh,  1Fh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -94,7 +94,7 @@ START:
 			;R24
 		db	  0
 
-		;Mono 80 50-as mód
+		;Mono 80 50-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8050 db	  5Fh,	4Fh,  50h,  82h,  55h,	81h,  0Bh,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -104,7 +104,7 @@ START:
 			;R24
 		db	  0
 
-		;Color 80 51-as mód
+		;Color 80 51-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8051 db	  5Fh,	4Fh,  51h,  82h,  55h,	81h,  0Bh,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -114,7 +114,7 @@ START:
 			;R24
 		db	  0
 
-		;Color 80 52-as mód
+		;Color 80 52-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8052 db	  5Fh,	4Fh,  50h,  82h,  55h,	81h,  0Bh,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -124,7 +124,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 53-as mód
+		;Color132 53-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8053 db	  9Bh,	83h,  84h,  1Eh,  87h,	1Ah, 0BFh,  1Fh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -134,7 +134,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 54-as mód
+		;Color132 54-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8054 db	  9Bh,	83h,  84h,  1Eh,  87h,	1Ah,   9h,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -144,7 +144,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 55-as mód
+		;Color132 55-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8055 db	  9Bh,	83h,  84h,  1Eh,  87h,	1Ah,   9h,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -154,7 +154,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 56-as mód
+		;Color132 56-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8056 db	  9Bh,	83h,  84h,  1Eh,  87h,	1Ah,   9h,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -164,7 +164,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 57-as mód
+		;Color132 57-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8057 db	  9Bh,	83h,  84h,  9Eh,  86h,	1Ah, 0BCh,  1Fh                                                                   
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -174,7 +174,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 58-as mód
+		;Color132 58-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8058 db	  9Bh,	83h,  84h,  9Eh,  86h,	1Ah,   7h,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -184,7 +184,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 59-as mód
+		;Color132 59-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco8059 db	  9Bh,	83h,  84h,  9Eh,  86h,	1Ah,   7h,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -194,7 +194,7 @@ START:
 			;R24
 		db	  0
 
-		;Color132 5A-as mód
+		;Color132 5A-as mï¿½d
 			;R0    R1    R2    R3	 R4    R5    R6    R7
 	vco805A db	  9Bh,	83h,  84h,  9Eh,  86h,	1Ah,   7h,  3Eh
 			;R9    R9    R10   R11	 R12   R13   R14   R15
@@ -204,7 +204,7 @@ START:
 			;R24
 		db	  0
 
-	IOAddr	dw	(3D4h)				;CRTC C¡mregiszter
+	IOAddr	dw	(3D4h)				;CRTC Cï¿½mregiszter
 	IOData	dw	(3D5h)				;CRTC Adatregiszter
 
 	R0	db	25	dup(0)			;Actual values
@@ -223,25 +223,25 @@ START:
 	Exit_	db	0
 	Transit db	0
 	NotVga	db	13,10,7,'VGA. required! Sorry...',13,10,'$'
-	Scr	db	'ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ Horizontal Total R00..............:    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿',13,10
-		db	'³  SET VGA. CRTC.  ³ Horizontal Display End R01........:    ³    COMMANDS:    ³',13,10
-		db	'³    REGISTERS     ³ Start Horizontal Blanking R02.....:    ³                 ³',13,10
-		db	'³ShareWare Program.³ End Horizontal Blanking R03.......:    ³  R = Reset CRTC.³',13,10
-		db	'³                  ³ Start Horizontal Retrace R04......:    ³  E = Enter a Hex³',13,10
-		db	'³Copyright (C) 1995³ End Horizontar Retrace R05........:    ³      Register   ³',13,10
-		db	'³ by László Kõvári ³ Vertical Total R06................:    ³      Value      ³',13,10
-		db	'ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´ Overflow R07......................:    ³   = Previous R.³',13,10
-		db	'³The 100% Assembly ³ Preset Row Scan R08...............:    ³   = Next reg.  ³',13,10
-		db	'³  Source code is  ³ Maximum Scan Line R09.............:    ³ <- = Decrement  ³',13,10
-		db	'³Available for US. ³ Cursor Start R0A..................:    ³      Reg Value  ³',13,10
-		db	'³    Dollar 10     ³ Cursor End R0B....................:    ³ -> = Increment  ³',13,10
-		db	'³     AUTHOR:      ³ Start Address High R0C............:    ³      Reg. Value ³',13,10
-		db	'³  László Kõvári   ³ Start Address Low R0D.............:    ³  H = Exit with  ³',13,10
-		db	'³22 Kazinczy str.  ³ Cursor Position High R0E..........:    ³      HOLD the   ³',13,10
-		db	'³ Sátoralja£jhely  ³ CurSor Position Low R0F...........:    ³      Reg. Values³',13,10
-		db	'³      H-3980      ³ Vertical Retrace Start R10........:    ³ESC = Exit       ³',13,10
-		db	'³     HUNGARY      ³ Vertical Retrace End R11..........:    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ',13,10
-		db	'ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ Vertical Display End R12..........:    ',13,10
+	Scr	db	'+------------------+ Horizontal Total R00..............:    +-----------------+',13,10
+		db	'|  SET VGA. CRTC.  | Horizontal Display End R01........:    |    COMMANDS:    |',13,10
+		db	'|    REGISTERS     | Start Horizontal Blanking R02.....:    |                 |',13,10
+		db	'|ShareWare Program.| End Horizontal Blanking R03.......:    |  R = Reset CRTC.|',13,10
+		db	'|                  | Start Horizontal Retrace R04......:    |  E = Enter a Hex|',13,10
+		db	'|Copyright (C) 1995| End Horizontar Retrace R05........:    |      Register   |',13,10
+		db	'| by LÃ¡szlÃ³ KÅ‘vÃ¡ri | Vertical Total R06................:    |      Value      |',13,10
+		db	'+------------------+ Overflow R07......................:    |   = Previous R.|',13,10
+		db	'|The 100% Assembly | Preset Row Scan R08...............:    |   = Next reg.  |',13,10
+		db	'|                  | Maximum Scan Line R09.............:    | <- = Decrement  |',13,10
+		db	'|                  | Cursor Start R0A..................:    |      Reg Value  |',13,10
+		db	'|                  | Cursor End R0B....................:    | -> = Increment  |',13,10
+		db	'|     AUTHOR:      | Start Address High R0C............:    |      Reg. Value |',13,10
+		db	'|  LÃ¡szlÃ³ KÅ‘vÃ¡ri   | Start Address Low R0D.............:    |  H = Exit with  |',13,10
+		db	'|22 Kazinczy str.  | Cursor Position High R0E..........:    |      HOLD the   |',13,10
+		db	'| Sï¿½toraljaï¿½jhely  | CurSor Position Low R0F...........:    |      Reg. Values|',13,10
+		db	'|      H-3980      | Vertical Retrace Start R10........:    |ESC = Exit       |',13,10
+		db	'|     HUNGARY      | Vertical Retrace End R11..........:    +-----------------+',13,10
+		db	'+------------------+ Vertical Display End R12..........:    ',13,10
 		db	'                     Offset (Logical size) R13.........:    ',13,10
 		db	'                     Underline Location R14............:    ',13,10
 		db	'                   Start Vertical Blank R15..........:    ',13,10
@@ -330,7 +330,7 @@ ENTRY:
 		push	dx
 		call	Cls			;Clear screen
 
-	;Képernyömaszk megjelenitése
+	;Kï¿½pernyï¿½maszk megjelenitï¿½se
 
 		mov	ah,9
 		mov	dx,offset Scr
@@ -361,7 +361,7 @@ ENTRY:
 
 		mov	di,offset R0		;Values of registers
 
-	;Videó mód lekérdezése
+	;Videï¿½ mï¿½d lekï¿½rdezï¿½se
 
 		mov	ah,0fh
 		int	10h
@@ -480,7 +480,7 @@ ENTRY:
 		mov	dx,IoAddr		;CRTC Address
 	;Select CRTC register
 		out	dx,al
-	;rték beolvasása
+	;ï¿½rtï¿½k beolvasï¿½sa
 		lodsb				;Read from the Table
 	;Send CRTC value
 		inc	dx			;Set to IODATA value
@@ -501,7 +501,7 @@ ENTRY:
 	CRTCRst endp
 
 ;--------------------------------------------------------
-;	Cursor engedélyezése				:
+;	Cursor engedï¿½lyezï¿½se				:
 ;--------------------------------------------------------
 
 	CrsrE	proc	near
@@ -529,7 +529,7 @@ ENTRY:
 	CrsrE	endp
 
 ;--------------------------------------------------------
-;	Cursor kikapcsolása				:
+;	Cursor kikapcsolï¿½sa				:
 ;--------------------------------------------------------
 
 	CrsrD	proc	near
@@ -811,7 +811,7 @@ ENTRY:
 		int	21h
 		cmp	al,48h			;Up
 		jnz	Next_1
-	;Regiszter léptetés fel
+	;Regiszter lï¿½ptetï¿½s fel
 		mov	al,RegCnt
 		mov	OldCnt,al
 		dec	RegCnt			;Upper a line
@@ -824,7 +824,7 @@ ENTRY:
 	Next_1:
 		cmp	al,50h			;Down
 		jnz	Next_2
-	;Regiszter léptetés le
+	;Regiszter lï¿½ptetï¿½s le
 		mov	al,RegCnt
 		mov	OldCnt,al
 		inc	RegCnt			;Down a line
@@ -837,14 +837,14 @@ ENTRY:
 	Next_2:
 		cmp	al,4dh			;Right
 		jnz	Next_3
-	;rték csökkentés
+	;ï¿½rtï¿½k csï¿½kkentï¿½s
 		stc
 		call	ModVlu			;Modify values increment
 		jmp	New_Key
 	Next_3:
 		cmp	al,4bh			;Left
 		jnz	New_Key
-	;rték növelés
+	;ï¿½rtï¿½k nï¿½velï¿½s
 		clc
 		call	ModVlu			;Modify values decrement
 		jmp	New_Key
@@ -1007,7 +1007,7 @@ ENTRY:
 	Delay_Short	ENDP
 
 ;--------------------------------------------------------
-;	Aktuális érték mezö törlése			:
+;	Aktuï¿½lis ï¿½rtï¿½k mezï¿½ tï¿½rlï¿½se			:
 ;--------------------------------------------------------
 
 	Clrf	proc	near

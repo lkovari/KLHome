@@ -3,7 +3,7 @@ PAGE	71,132
 TITLE	Memory Spy
 
 COMMENT *
-	Written by Lแszl๓ K๕vแri  1990.05.16.
+	Written by L๏ฟฝszl๏ฟฝ K๏ฟฝv๏ฟฝri  1990.05.16.
 		     Last Update  1990.05.22.
 
 	Display a real & phisical memory sizes.
@@ -26,7 +26,7 @@ START:
 
 
 ;--------------------------------------------------------
-;	Karakter kiํrแs MACRO				:
+;	Karakter ki๏ฟฝr๏ฟฝs MACRO				:
 ;--------------------------------------------------------
 
 	ChrOutp macro
@@ -46,22 +46,22 @@ START:
 
 		endm
 
-	Copyright db	'Copyright (C) 1990 by Lแszl๓ K๕vแri #!3647321033'
+	Copyright db	'Copyright (C) 1990 by Lรกszlรณ Kล‘vรกri #!3647321033'
 	CrLf	db	10,13,'$'
 	Xp	db	0			;CRSR. pos.
 	Yp	db	0
 	As	dw	0			;Current paragraph
 
-	SMask		db	'ษอออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-			db	'บ MEMORY SPY                  Freeware program! บ',10,13
-			db	'บ                                               บ',10,13
-			db	'บ   Found the total memory to be : 0000 K byte. บ',10,13
-			db	'บ   Total memory reported by DOS : 0000 K byte. บ',10,13
-			db	'บ                    Free memory : 0000 K byte. บ',10,13
-			db	'บ                                               บ',10,13
-			db	'บ      Copyright (C) 1990 by Lแszl๓ K๕vแri      บ',10,13
-			db	'บ                #!3647321033                  บ',10,13
-			db	'ศอออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	SMask		db	'+-----------------------------------------------+',10,13
+			db	'| MEMORY SPY                  Freeware program! |',10,13
+			db	'|                                               |',10,13
+			db	'|   Found the total memory to be : 0000 K byte. |',10,13
+			db	'|   Total memory reported by DOS : 0000 K byte. |',10,13
+			db	'|                    Free memory : 0000 K byte. |',10,13
+			db	'|                                               |',10,13
+			db	'|      Copyright (C) 1990 by Lรกszlรณ Kล‘vรกri      |',10,13
+			db	'|                #!3647321033                 |',10,13
+			db	'+-----------------------------------------------+',10,13,'$'
 
 
 ENTRY:

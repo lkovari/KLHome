@@ -3,8 +3,8 @@ PAGE	66,132
 TITLE	Prime Number Generator
 
 COMMENT *
-	Written by László Kõvári  1994.10.07.
-		    Last Update  1994.10.12.
+	Written by LÃ¡szlÃ³ KÅ‘vÃ¡ri  1994.10.07.
+		    	 Last Update  1994.10.12.
 
 	*
 
@@ -42,16 +42,16 @@ START:
 		db	  '            /d -> Display Prim numbers from PRIMES.DAT file',13,10
 		db	  '            /? -> This function',13,10,13,10
 		db	  '                  Possible Prime Gen. area is 2 to 600000000',13,10
-		db	  '                  Tested 2 to 20000000.The working time was 9« hours',13,10
+		db	  '                  Tested 2 to 20000000.The working time was 9ï¿½ hours',13,10
 		db	13,10
-		db	  '                  100% Assembly source available for US. dollar 10 or 1000 HUF.',13,10
-		db	  '                  Author: László Kõvári',13,10
+		db	  '                  100% Assembly source.',13,10
+		db	  '                  Author: Lï¿½szlï¿½ Kï¿½vï¿½ri',13,10
 		db	  '                          22 Kazinczy Street',13,10
-		db	  '                          S toralja£jhely',13,10
+		db	  '                          Sï¿½toraljaujhely',13,10
 		db	  '                          HUNGARY',13,10
 		db	  '                          H-3980',13,10
 		db	13,10
-	Copyr	db	'Copyright (C) 1994 by László Kõvári #3647321033',0,'$'
+	Copyr	db	'Copyright (C) 1994 by Lï¿½szlï¿½ Kï¿½vï¿½ri #3647321033',0,'$'
 
 	OpenErr db	7,'PRIMES.DAT File Not Found!',13,10,'$'
 

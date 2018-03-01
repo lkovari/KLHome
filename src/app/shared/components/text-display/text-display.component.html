@@ -1,10 +1,3 @@
-<p-dialog [(visible)]="visible" width="740" height="480" appendTo="body" [responsive]="true" [modal]="true" [closable]="false"
-  [draggable]="false" [resizable]="true" styleClass="dialog-style" [showHeader]="false" [header]="fileName">
-  <div class="text-display-dialog">
-    <!--p-header>
-        {{fileName}}
-    </p-header-->
-    <i id="iconClose" class="fa fa-close" (click)="onClose()"></i>
-    <textarea pInputTextarea [(ngModel)]="fileContent" [disabled]="true" class="text-area"></textarea>
-  </div>
-</p-dialog>
+<div class="text-display-dialog">
+  <textarea pInputTextarea [(ngModel)]="fileContent" [disabled]="true" class="text-area"></textarea>
+</div>

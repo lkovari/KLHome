@@ -1,8 +1,8 @@
 PAGE	60,132
 
 COMMENT *
-	 Written by L·szlÛ Kıv·ri  1987.04.20.
-		      Last update  1987.12.30.
+	 Written by L√°szl√≥ K≈ëv√°ri   1987.04.20.
+		      	   Last update  1987.12.30.
 
 	 Egesz szamok konvertalasa.
 		Szamrendszerhatar : 2 - 36
@@ -176,19 +176,19 @@ DATA	SEGMENT PARA	PUBLIC	'DATA'
 	Ch30	cr	<'f',0,0,0,0,70,23,45,15,70,23>
 	Ch31	cr	<'t',0,0,0,0,75,22,46,15,75,22>
 
-	TEXT0	DB	'L·szlÛ Kıv·ri Software.','$'
+	TEXT0	DB	'L√°szl√≥ K≈ëv√°ri Software.','$'
 	TEXT1	DB	'MCMLXXXVII.','$'
 	TEXT2	DB	'INPUT : ','$'
 	TEXT3	DB	'OUTPUT : ','$'
-	TEXT4	DB	'Sz†mrendszer :','$'
-	TEXT5	DB	'êrtÇk : ','$'
-	TEXT6	DB	'EGêSZ SZèMOK KONVERTèLèSA.','$'
-	TEXT7	DB	'£jra ?  I - N...','$'
-	MESS0	DB	'A program segitsigÈvel 0 Ès 262143 kˆzzÈ eso egÇsz sz†mok kon-','$'
-	MESS1	DB	'vert†lhat¢k †t m†s sz†mrendszerbe. A sz†mrendszer 2 Çs 36 kîz-','$'
-	MESS2	DB	'zÇ eshet. T£l nagy sz†m esetÇn a program figyelmeztetÇst kÅld !','$'
-	ERMS0	DB	'Hib†s sz†mrendszer ÇrtÇk !','$'
-	ERMS1	DB	'T£l nagy Çrtek !','$'
+	TEXT4	DB	'Sz√°mrendszer :','$'
+	TEXT5	DB	'√ârt√©k : ','$'
+	TEXT6	DB	'EG√âSZ SZ√ÅMOK KONVERT√ÅL√ÅSA.','$'
+	TEXT7	DB	'√öjra ?  I - N...','$'
+	MESS0	DB	'A program segits√©g√©vel 0 √©s 262143 k√∂zz√© es≈ë eg√©sz sz√°mok kon-','$'
+	MESS1	DB	'vert√°lhat√≥k √°t m√°s sz√°mrendszerbe. A sz√°mrendszer 2 √©s 36 k√∂z-','$'
+	MESS2	DB	'z√≥ eshet. T√∫l nagy sz√°m eset√©n a program figyelmeztet√©st k√∫ld !','$'
+	ERMS0	DB	'Hib√°s sz√°mrendszer √©rt√©k !','$'
+	ERMS1	DB	'T√∫l nagy √©rtek !','$'
 	CLR	DB	'                                        ','$'
 	CLSYS	DB	'                  ','$'
 	CLVLU	DB	'                        ','$'
