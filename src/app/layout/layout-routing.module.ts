@@ -127,7 +127,7 @@ const routes: Routes = [
         ]
       }
       */
-     {path: 'masm-page', loadChildren: './masm-page/masm-page.module#MasmPageModule'}
+     { path: 'masm-page', loadChildren: './masm-page/masm-page.module#MasmPageModule' }
     ]
   }
 ];
