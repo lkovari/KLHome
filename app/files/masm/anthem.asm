@@ -3,8 +3,8 @@ PAGE	71,132
 TITLE	Playing in the background the HUNGARYAN National Anthem.
 
 COMMENT *
-	Written by Lแszl๓ K๕vแri  1990.04.27.
-		     Last Update  1990.04.28.
+	Written by Lรกszlรณ Kล‘vรกri  1990.04.27.
+		     	 Last Update  1990.04.28.
 
 	 This program playing the background the HUNGARIAN NATIONAL ANTHEM.
 
@@ -57,41 +57,41 @@ START:
 	OldInt1c	dd	?
 	NewInt1c	dd	?
 
-	OnMsg	db	'ษออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-		db	'บ The ANTHEM is turn ON!                       บ',10,13
-		db	'บ                                              บ',10,13
-		db	'บ   The program playing the background in the  บ',10,13
-		db	'บ   HUNGARYAN National Anthem                  บ',10,13
-		db	'บ                                              บ',10,13
-		db	'บ                            (C) LumberJack`90 บ',10,13
-		db	'ศออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	OnMsg	db	'+----------------------------------------------+',10,13
+		db	'| The ANTHEM is turn ON!                       |',10,13
+		db	'|                                              |',10,13
+		db	'|   The program playing the background in the  |',10,13
+		db	'|   HUNGARYAN National Anthem                  |',10,13
+		db	'|                                              |',10,13
+		db	'|                              (C) Lkov๏ฟฝri '90 |',10,13
+		db	'+----------------------------------------------+',10,13,'$'
 
-	Already_Res	db	'ษออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-			db	'บ WARNING! The ANTHEM is already turn ON!      บ',10,13
-			db	'บ                                              บ',10,13
-			db	'บ                            (C) LumberJack`90 บ',10,13
-			db	'ศออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	Already_Res	db	'+----------------------------------------------+',10,13
+			db	'| WARNING! The ANTHEM is already turn ON!      |',10,13
+			db	'|                                              |',10,13
+			db	'|                              (C) Lkov๏ฟฝri '90 |',10,13
+			db	'+----------------------------------------------+',10,13,'$'
 
-	OffMsg	db	'ษออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-		db	'บ The ANTHEM is turn OFF!                      บ',10,13
-		db	'บ                                              บ',10,13
-		db	'บ                            (C) LumberJack`90 บ',10,13
-		db	'ศออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	OffMsg	db	'+----------------------------------------------+',10,13
+		db	'| The ANTHEM is turn OFF!                      |',10,13
+		db	'|                                              |',10,13
+		db	'|                              (C) Lkov๏ฟฝri '90 |',10,13
+		db	'+----------------------------------------------+',10,13,'$'
 
-	Already_InAc	db	'ษออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-			db	'บ WARNING! The ANTHEM wasn`t turn ON!          บ',10,13
-			db	'บ                                              บ',10,13
-			db	'บ                            (C) LumberJack`90 บ',10,13
-			db	'ศออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	Already_InAc	db	'+----------------------------------------------+',10,13
+			db	'| WARNING! The ANTHEM wasn`t turn ON!          |',10,13
+			db	'|                                              |',10,13
+			db	'|                              (C) Lkov๏ฟฝri '90 |',10,13
+			db	'+----------------------------------------------+',10,13,'$'
 
-	Help	db	'ษออออออออออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-		db	'บ WARNING! The command line is EMPTY!                  บ',10,13
-		db	'บ                                                      บ',10,13
-		db	'บ      Usage: ANTHEM  I  then -> turn ON the ANTHEM    บ',10,13
-		db	'บ             ANTHEM  U  then -> turn OFF the ANTHEM   บ',10,13
-		db	'บ                                                      บ',10,13
-		db	'บ                                    (C) LumberJack`90 บ',10,13
-		db	'ศออออออออออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	Help	db	'+------------------------------------------------------+',10,13
+		db	'| WARNING! The command line is EMPTY!                  |',10,13
+		db	'|                                                      |',10,13
+		db	'|      Usage: ANTHEM  I  then -> turn ON the ANTHEM    |',10,13
+		db	'|             ANTHEM  U  then -> turn OFF the ANTHEM   |',10,13
+		db	'|                                                      |',10,13
+		db	'|                                    (C) Lkovov๏ฟฝri '90 |',10,13
+		db	'+------------------------------------------------------+',10,13,'$'
 
 	Pause		dw	(0)		;Ket hang kozti szunet
 						;szamlaloja

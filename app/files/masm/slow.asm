@@ -3,8 +3,8 @@ PAGE	66,132
 TITLE	Cracker_Tool_Machine_Slow
 
 COMMENT *
-	Written by Lแszl๓ K๕vแri  1993.04.30.
-		    Last Update  1993.04.30.
+	Written by Lรกszlรณ Kล‘vรกri  1993.04.30.
+		    	 Last Update  1993.04.30.
 
 
 	*
@@ -45,7 +45,7 @@ START:
 			push	dx		;sp+06
 			push	di		;sp+04
 			push	si		;sp+02
-			push	bp		;verem tetejn
+			push	bp		;verem tetej๏ฟฝn
 
 		;00000100	CTRL
 		;00000010	Left
@@ -224,17 +224,17 @@ ENTRY:
 			mov	ah,0
 			int	20h			;kilepes
 
-	Maker	db	'ษอออออออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-		db	'บ Cracker Tool Machine Slow       Freeware program! บ',10,13
-		db	'บ    CTRL L Shift to Fast - CTRL R Shift to Slow    บ',10,13
-		db	'บ Copyright (C) 1993 by Lแszl๓ K๕vแri #!364121033 บ',10,13
-		db	'ศอออออออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	Maker	db	'+---------------------------------------------------+',10,13
+		db	'| Cracker Tool Machine Slow       Freeware program! |',10,13
+		db	'|    CTRL L Shift to Fast - CTRL R Shift to Slow    |',10,13
+		db	'| Copyright (C) 1993 by Lรกszlรณ Kล‘vรกri #!364121033 |',10,13
+		db	'+---------------------------------------------------+',10,13,'$'
 
-	Already_Res	db	'ษอออออออออออออออออออออออออออออออออออออออออออออออออออป',10,13
-			db	'บ The Machine Slow is already RESIDENT!             บ',10,13
-			db	'บ                                                   บ',10,13
-			db	'บ Copyright (C) 1993 by Lแszl๓ K๕vแri #!364121033 บ',10,13
-			db	'ศอออออออออออออออออออออออออออออออออออออออออออออออออออผ',10,13,'$'
+	Already_Res	db	'+---------------------------------------------------+',10,13
+			db	'| The Machine Slow is already RESIDENT!             |',10,13
+			db	'|                                                   |',10,13
+			db	'| Copyright (C) 1993 by Lรกszlรณ Kล‘vรกri #!364121033 |',10,13
+			db	'+---------------------------------------------------+',10,13,'$'
 
 CODE	ENDS
 

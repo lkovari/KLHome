@@ -4,39 +4,39 @@ TITLE	Find File with RECURSIV procedure
 
 COMMENT *
 
-	Written by László Kõvári  1990.12.06.
-		    Last Update  1991.01.02.
+	Written by LÃ¡szlÃ³ KÅ‘vÃ¡ri  1990.12.06.
+		    	 Last Update  1991.01.02.
 
 	Recursive algorithm:
 
-					+---------+
-					|  WALK   |
-					+---------+
-                                         | | | 	|			
-		 +-----------------------+ | |	|
-		 |	     +-------------+ |	+------------+
-		 |           |               |               |
+									+---------+
+									|  WALK   |
+									+---------+
+                                	 | | | 	|			
+			 +-----------------------+ | |	|
+			 |		     +-------------+ |	+------+
+	  		 |           |               |         |
 	    +---------+ +---------+	+---------+	+---------+
 	    |FindFirst| |CheckEnt.|	|EntryITER|	|   END   |
 	    +---------+ +---------+	+---------+	+---------+
-					     ³
-					ÚÄÄÄÄÁÄÄÄÄ¿ F1
-					³  ITER.  ³
-					ÀÄÂÄÄÂÄÄÂÄÙ
-					  ³  ³	³
-			     ÚÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³	ÀÄÄÄÄÄÄÄÄÄÄÄÄ¿
-			ÚÄÄÄÄÁÄÄÄÄ¿	ÚÄÄÄÄÁÄÄÄÄ¿	ÚÄÄÄÄÁÄÄÄÄ¿
-			³ DIR.SEL.³	³FindNext ³	³CheckEnt.³
-			ÀÄÄÄÄÂÄÄÄÄÙ	ÀÄÄÄÄÄÄÄÄÄÙ	ÀÄÄÄÄÄÄÄÄÄÙ
-			     ³
-			ÚÄÄÄÄÁÄÄÄÄ¿F2
-			³   DIR. ø³
-			ÀÄÂÄÄÂÄÄÂÄÙ
-			  ³  ³	³
-	     ÚÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³	ÀÄÄÄÄÄÄÄÄÄÄÄÄ¿
-	ÚÄÄÄÄÁÄÄÄÄ¿	ÚÄÄÄÄÁÄÄÄÄ¿	ÚÄÄÄÄÁÄÄÄÄ¿
-	³ PUSH	  ³	³CALL WALK³	³   POP   ³
-	ÀÄÄÄÄÄÄÄÄÄÙ	ÀÄÄÄÄÄÄÄÄÄÙ	ÀÄÄÄÄÄÄÄÄÄÙ
+					     |
+					+---------+ F1
+					|  ITER.  |
+					+---------+
+					  |  |	|
+			     +----+  |	+------------+
+			+---------+	+---------+	+---------+
+			| DIR.SEL.|	|FindNext |	|CheckEnt.|
+			+---------+	+---------+	+---------+
+			     |
+			+---------+ F2
+			|   DIR.  |
+			+---------+
+			  |  |	|
+		+-----+  |	+------------+
+	+---------+	+---------+	+---------+
+	| PUSH	  |	|CALL WALK|	|   POP   |
+	+---------+	+---------+	+---------+
 		     (Recursive Call)
 
 
@@ -64,14 +64,14 @@ START:
 	ErrorF	db	'File not found',13,10,'$'
 	Bad_Dr	db	'Invalid drive',13,10,'$'
 	Usage	db	'USAGE: FS dr:fn.ext /attr.',13,10,13,10
-		db	'Copyright (C) 1991 by László Kõvári'
-	CrLf	db	13,10,'$'                       ;Soremel‚s
+		db	'Copyright (C) 1991 by Lï¿½szlï¿½ Kï¿½vï¿½ri'
+	CrLf	db	13,10,'$'                       ;Soremelï¿½s
 	Address db	13,10,13,10
 		db	'         The assembly source file is available for US. $'
 	money	db	'3 or 300 HUF.',13,10
-		db	'                           Write to László Kõvári',13,10
+		db	'                           Write to Lï¿½szlï¿½ Kï¿½vï¿½ri',13,10
 		db	'                                    22 Kazinczy street',13,10
-		db	'                                    S toralja£jhely',13,10
+		db	'                                    Sï¿½toraljaï¿½jhely',13,10
 		db	'                                    3980',13,10
 		db	'                                    HUNGARY',13,10,13,10,'$'
 	Ext	db	'\*.*',0                        ;File spec.
@@ -263,7 +263,7 @@ ENTRY:
 	Correct:
 	File_Name_Correct:
 
-	;Attributum beolvas sa
+	;Attributum beolvasï¿½sa
 
 		mov	Attrib,20h		;Archiv
 		mov	di,81h
@@ -656,7 +656,7 @@ ENTRY:
 		jmp	WriteOut
 	Isnt_Sign:
 
-	;V‚g‚t keresi
+	;Vï¿½gï¿½t keresi
 
 		mov	al,0
 		mov	di,BoP

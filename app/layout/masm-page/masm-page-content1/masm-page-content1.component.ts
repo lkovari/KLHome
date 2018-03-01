@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.service';
+import { OverlayPanel } from 'primeng/primeng';
 
 @Component({
   selector: 'app-masm-page-content1',
@@ -11,6 +12,7 @@ export class MasmPageContent1Component implements OnInit {
   isDisplayText = false;
   fileName: string;
   fileContent: string;
+  @ViewChild('numconvop') numconvOverlay: OverlayPanel;
 
   constructor(private fileLoaderService: FileLoaderService) { }
 
@@ -27,48 +29,31 @@ export class MasmPageContent1Component implements OnInit {
 }
 
 
-  onClickNumconv() {
-    this.loadFileContent('numconv.asm');
-  }
-
-  onClickRealdttm() {
-    this.loadFileContent('realdttm.asm');
-  }
-
-  onClickAnthem() {
-    this.loadFileContent('anthem.asm');
-  }
-
-  onClickCmram() {
-    this.loadFileContent('cmram.asm');
-  }
-
-  onClickVgacrt() {
-    this.loadFileContent('vgacrt.asm');
-  }
-
-  onClickMaker() {
-    this.loadFileContent('maker.asm');
-  }
-
-  onClickPrime() {
-    this.loadFileContent('prime.asm');
-  }
-
-  onClickFs() {
-    this.loadFileContent('fs.asm');
-  }
-
-  onClickSlow() {
-    this.loadFileContent('slow.asm');
-  }
-
-  onClickPcinfo() {
-    this.loadFileContent('pcinfo.asm');
-  }
-
-  onClickMs() {
-    this.loadFileContent('ms.asm');
+  onTabOpen(event) {
+    const ix = event.index;
+    if (ix === 0) {
+      this.loadFileContent('numconv.asm');
+    } else if (ix === 1) {
+      this.loadFileContent('realdttm.asm');
+    } else if (ix === 2) {
+      this.loadFileContent('anthem.asm');
+    } else if (ix === 3) {
+      this.loadFileContent('cmram.asm');
+    } else if (ix === 4) {
+      this.loadFileContent('vgacrt.asm');
+    } else if (ix === 5) {
+      this.loadFileContent('maker.asm');
+    } else if (ix === 6) {
+      this.loadFileContent('prime.asm');
+    } else if (ix === 7) {
+      this.loadFileContent('fs.asm');
+    } else if (ix === 8) {
+      this.loadFileContent('slow.asm');
+    } else if (ix === 9) {
+      this.loadFileContent('pcinfo.asm');
+    } else if (ix === 10) {
+      this.loadFileContent('ms.asm');
+    }
   }
 
   textDisplayClosed(event) {

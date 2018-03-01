@@ -11,46 +11,90 @@
         </div>
         <div>Some application what I made</div>
         <div class="masm-stuffs">
-            <li>NumConv converts values between numerical systems (NUMCONV.ASM)
-                <button id="numconv" type="button" class="btn btn-link" (click)="onClickNumconv()">src</button>
-            </li>
-            <li>RealDtTm shows and sets the real time clock date and time (REALDTTM.ASM)
-                <button id="realdttm" type="button" class="btn btn-link" (click)="onClickRealdttm()">src</button>
-            </li>
-            <li>Anthem plays the Hungarian National Anthem in the background with PC speaker (ANTHEM.ASM)
-                <button id="anthem" type="button" class="btn btn-link" (click)="onClickAnthem()">src</button>
-            </li>
-            <li>CMRam reads and setup the CMOS RAM (CMRAM.ASM)
-                <button id="cmram" type="button" class="btn btn-link" (click)="onClickCmram()">src</button>
-            </li>
-            <li>VGACRT setups the VGA CRT M6811 chip which controls the monitor screen refresh etc. (VGACRT.ASM)
-                <button id="vgacrt" type="button" class="btn btn-link" (click)="onClickVgacrt()">src</button>
-            </li>
-            <li>Maker: simple demo (MAKER.ASM)
-                    <button id="maker" type="button" class="btn btn-link" (click)="onClickMaker()">src</button>                
-            </li>
-            <li>Prime prime number generator with file handling /reading and writing/ (PRIME.ASM)
-                    <button id="prime" type="button" class="btn btn-link" (click)="onClickPrime()">src</button>                
-            </li>
-            <li>Fs file search with recursive back-tracking algorythm (FS.ASM)
-                    <button id="fs" type="button" class="btn btn-link" (click)="onClickFs()">src</button>                
-            </li>
-            <li>Slow after the program runs stay resident under 1Ch interrupts, monitors the keyboard buffer and to Ctrl-left
-                Shift slows down the computer and Ctrl-right Shift increases the speed of the computer. (SLOW.ASM)
-                <button id="slow" type="button" class="btn btn-link" (click)="onClickSlow()">src</button>                
-            </li>
-            <li>PCINFO display gives internal information about your PC for example, 1st game ports, printer ports, DOS. version
-                (made 1987) RS232 cards, etc. (PCINFO.ASM)
-                <button id="pcinfo" type="button" class="btn btn-link" (click)="onClickPcinfo()">src</button>                
-            </li>
-            <li>MS memory Spy displays the physical memory size with test. This little program contains a converter between numerical
-                systems (MS.ASM)
-                <button id="maker" type="ms" class="btn btn-link" (click)="onClickMs()">src</button>                
-            </li>
-            <p class="masm-publications">I had some publication in Computer Panorama Magazine in July 1992, Feb 1995, Aug 1995</p>
+            <p-accordion (onOpen)="onTabOpen($event)">
+                <li>NumConv converts values between numerical systems
+                    <p-accordionTab header="numconv.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>RealDtTm shows and sets the real time clock date and time
+                    <p-accordionTab header="realdttm.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>Anthem plays the Hungarian National Anthem in the background with PC speaker
+                    <p-accordionTab header="anthem.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>CMRam reads and setup the CMOS RAM
+                    <p-accordionTab header="cmram.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>VGACRT setups the VGA CRT M6811 chip which controls the monitor screen refresh etc.
+                    <p-accordionTab header="vgacrt.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>Maker: simple demo, put the characters to random position and move the characters to the proper position
+                    to show a readable text
+                    <p-accordionTab header="maker.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>Prime prime number generator with file handling /reading and writing/
+                    <p-accordionTab header="prime.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>Fs file search with recursive back-tracking algorythm
+                    <p-accordionTab header="fs.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>Slow after the program runs stay resident under 1Ch interrupts, monitors the keyboard buffer and to Ctrl-left
+                    Shift slows down the computer and Ctrl-right Shift increases the speed of the computer.
+                    <p-accordionTab header="slow.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>PCINFO display gives internal information about your PC for example, 1st game ports, printer ports, DOS.
+                    version (made 1987) RS232 cards, etc.
+                    <p-accordionTab header="pcinfo.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <li>MS memory Spy displays the physical memory size with test. This little program contains a converter between
+                    numerical systems
+                    <p-accordionTab header="ms.asm" [selected]="false">
+                        <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                            (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                        </app-text-display>
+                    </p-accordionTab>
+                </li>
+                <p class="masm-publications">I had some publication in Computer Panorama Magazine in July 1992, Feb 1995, Aug 1995</p>
+            </p-accordion>
         </div>
     </div>
 </div>
-<app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
-    (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
-</app-text-display>
