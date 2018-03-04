@@ -1,3 +1,21 @@
-<p>IBM. PC. ROM. BIOS.</p>
-
-<a href="assets/bios/pc-bios.pdf">PC <b>B</b>asic <b>I</b>nput <b>O</b>utput <b>S</b>ystem in pdf</a>
+<app-page-header pageTitle="MASM." pageSubtitle="Microsoft Macro Assembler" startTime="08/30/1983" endTime="12/31/1992"></app-page-header>
+<div class="layout-bios-page">
+    IBM. PC. ROM. BIOS.
+    <div class="form">
+        <div class="masm-description form-group">
+            <div class="col-xs-12">
+                This IBM. PC. ROM. BIOS. at that time was a reallz big treasure, because the developers can see how the professionals developers
+                made the BIOS. In that case no pardon, it should develop to full safe.
+            </div>
+        </div>
+    </div>
+    <div>
+        <p-accordion>
+            <p-accordionTab header="bios.asm" [selected]="false">
+                <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                    (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                </app-text-display>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 PAGE	66,132
 
-TITLE	Cracker_Tool_Machine_Slow
+TITLE	Tool_for_Machine_Slow
 
 COMMENT *
 	Written by László Kővári  1993.04.30.
@@ -225,7 +225,7 @@ ENTRY:
 			int	20h			;kilepes
 
 	Maker	db	'+---------------------------------------------------+',10,13
-		db	'| Cracker Tool Machine Slow       Freeware program! |',10,13
+		db	'| Tool for Machine Slow           Freeware program! |',10,13
 		db	'|    CTRL L Shift to Fast - CTRL R Shift to Slow    |',10,13
 		db	'| Copyright (C) 1993 by László Kővári #!364121033 |',10,13
 		db	'+---------------------------------------------------+',10,13,'$'

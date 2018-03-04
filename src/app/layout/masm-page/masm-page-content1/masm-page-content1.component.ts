@@ -8,11 +8,10 @@ import { OverlayPanel } from 'primeng/primeng';
   styleUrls: ['./masm-page-content1.component.scss']
 })
 export class MasmPageContent1Component implements OnInit {
-  numconvFileContent: string;
   isDisplayText = false;
   fileName: string;
   fileContent: string;
-  @ViewChild('numconvop') numconvOverlay: OverlayPanel;
+
 
   constructor(private fileLoaderService: FileLoaderService) { }
 
@@ -26,7 +25,7 @@ export class MasmPageContent1Component implements OnInit {
       this.isDisplayText = true;
       // console.log('File ' + this.numconvFileContent);
     });
-}
+  }
 
 
   onTabOpen(event) {

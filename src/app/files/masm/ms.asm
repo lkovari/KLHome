@@ -3,8 +3,8 @@ PAGE	71,132
 TITLE	Memory Spy
 
 COMMENT *
-	Written by L�szl� K�v�ri  1990.05.16.
-		     Last Update  1990.05.22.
+	Written by László Kővári  1990.05.16.
+		     	 Last Update  1990.05.22.
 
 	Display a real & phisical memory sizes.
 
@@ -52,7 +52,7 @@ START:
 	Yp	db	0
 	As	dw	0			;Current paragraph
 
-	SMask		db	'+-----------------------------------------------+',10,13
+	SMask	db	'+-----------------------------------------------+',10,13
 			db	'| MEMORY SPY                  Freeware program! |',10,13
 			db	'|                                               |',10,13
 			db	'|   Found the total memory to be : 0000 K byte. |',10,13

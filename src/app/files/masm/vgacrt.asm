@@ -10,14 +10,14 @@ COMMENT *
 
 	Program kezel�se:
 
-		el�z� regiszter �rt�k kiv�laszt�sa
-		k�vetkez� regiszter �rt�k kiv�laszt�sa
-	->	regiszter �rt�k n�vel�se
-	<-	regiszter �rt�k cs�kkent�se
+		előző regiszter érték kiválasztása
+		következő regiszter érték kiválasztása
+	->	regiszter érték növelése
+	<-	regiszter érték csökkentése
 	R	regiszterek alaphelyzetbe
-	H	kil�p�s a be�llitott regiszter�rt�kek megtart�s�val
-	E	regiszter �rt�k megad�sa hex. form�ban
-	ESC	kil�p�s
+	H	kilépés a beállitott regiszterértékek megtartásával
+	E	regiszter érték megadása hex. formában
+	ESC	kilépés
 
 
 	English comment:
@@ -238,13 +238,13 @@ START:
 		db	'|     AUTHOR:      | Start Address High R0C............:    |      Reg. Value |',13,10
 		db	'|  László Kővári   | Start Address Low R0D.............:    |  H = Exit with  |',13,10
 		db	'|22 Kazinczy str.  | Cursor Position High R0E..........:    |      HOLD the   |',13,10
-		db	'| S�toralja�jhely  | CurSor Position Low R0F...........:    |      Reg. Values|',13,10
+		db	'| Sátoraljaújhely  | CurSor Position Low R0F...........:    |      Reg. Values|',13,10
 		db	'|      H-3980      | Vertical Retrace Start R10........:    |ESC = Exit       |',13,10
 		db	'|     HUNGARY      | Vertical Retrace End R11..........:    +-----------------+',13,10
 		db	'+------------------+ Vertical Display End R12..........:    ',13,10
 		db	'                     Offset (Logical size) R13.........:    ',13,10
 		db	'                     Underline Location R14............:    ',13,10
-		db	'                   Start Vertical Blank R15..........:    ',13,10
+		db	'        ☻           Start Vertical Blank R15..........:    ',13,10
 		db	'                     End Vertical Blanking R16.........:    ',13,10
 		db	'                     Mode Control R17..................:    ',13,10
 		db	'                     Line Compare R18..................:    $'

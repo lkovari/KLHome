@@ -1,6 +1,6 @@
 PAGE	71,132
 
-TITLE	Playing in the background the HUNGARYAN National Anthem.
+TITLE	Playing in the background the HUNGARIAN National Anthem.
 
 COMMENT *
 	Written by László Kővári  1990.04.27.

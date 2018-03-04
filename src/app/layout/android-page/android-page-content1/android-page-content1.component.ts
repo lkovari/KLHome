@@ -1,4 +1,4 @@
-import { Component,  ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-android-page-content1',
@@ -13,17 +13,17 @@ export class AndroidPageContent1Component implements OnInit {
   crsl: any;
 
   constructor(domElement: ElementRef) {
-    // set carousel left and right control images
-    this.carouselControlLeftArrow = 'assets/images/carousel_control_left.png';
-    this.carouselControlRightArrow = 'assets/images/carousel_control_right.png';
     // Reference : https://angular.io/docs/js/latest/api/core/index/ElementRef-class.html
     this.crsl = domElement.nativeElement.querySelector('carousel');
-    if (this.crsl != null) {
-      this.crsl.interval = 4000;
-    }
   }
 
   ngOnInit() {
+    // set carousel left and right control images
+    this.carouselControlLeftArrow = 'assets/images/carousel_control_left.png';
+    this.carouselControlRightArrow = 'assets/images/carousel_control_right.png';
+    if (this.crsl != null) {
+      this.crsl.interval = 4000;
+    }
   }
 
 }

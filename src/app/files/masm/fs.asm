@@ -1,6 +1,6 @@
 PAGE	66,132
 
-TITLE	Find File with RECURSIV procedure
+TITLE	Find File with Recursive procedure
 
 COMMENT *
 
@@ -64,7 +64,7 @@ START:
 	ErrorF	db	'File not found',13,10,'$'
 	Bad_Dr	db	'Invalid drive',13,10,'$'
 	Usage	db	'USAGE: FS dr:fn.ext /attr.',13,10,13,10
-		db	'Copyright (C) 1991 by L�szl� K�v�ri'
+		db	'Copyright (C) 1991 by László Kővári'
 	CrLf	db	13,10,'$'                       ;Soremel�s
 	Address db	13,10,13,10
 		db	'         The assembly source file is available for US. $'

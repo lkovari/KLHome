@@ -1,0 +1,35 @@
+.layout-bios-page {
+    .masm-description {
+        padding: 0.5Rem;
+    }
+    p-accordion::ng-deep {
+        .ui-accordion .ui-accordion-content {
+            border: none;
+        }
+        .ui-accordion-header {
+            border: none;
+        }
+        .ui-accordion .ui-accordion-header.ui-state-active a {
+            color: blue;
+        }
+        .ui-accordion .ui-accordion-header a {
+            padding-left: 0;
+        }
+        .ui-accordion .ui-accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover {
+            background-color: transparent;
+        }
+        .ui-state-active {
+            color: blue;
+            background-color: transparent;
+            border-color: transparent;
+        }
+        .ui-accordion .ui-accordion-header:active {
+            color: blue;
+            background-color: transparent;
+        }
+        .ui-accordion .ui-accordion-header.ui-state-active {
+            color: blue;
+            background-color: transparent;
+        }
+    }    
+}
