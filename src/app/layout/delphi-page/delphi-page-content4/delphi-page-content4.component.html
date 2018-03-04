@@ -1,6 +1,32 @@
-<p>Turbo Pascal Era</p>
-
-&nbsp;-&nbsp;A5x5 the 5x5 game solver with recursive back tracking programming technique<br>
-&nbsp;-&nbsp;NETI Net info /Novell NewWare 2.15, 3.11/<br>
-&nbsp;-&nbsp;Snake in the labyrinth game, with random labyrinth generator in multi levels<br>
-&nbsp;-&nbsp;Mersenne prime generator limited by the arithmetic capability<br>
+<div class="layout-delphi-page4">
+    Turbo Pascal Era
+    <div class="form">
+        <div class="stuffs-description form-group">
+            <div class="col-xs-12">
+                Some interest selection in mz Turbo Pascal era.
+            </div>
+        </div>
+        <div class="delphi-stuffs">
+            <li>NETI Net info /Novell NewWare 2.15, 3.11/</li>
+            <li>Mersenne prime generator limited by the arithmetic capability</li>
+            <p-accordion (onOpen)="onTabOpen($event)">
+                <div class="accordion-style">
+                    Snake in the labyrinth game, with random labyrinth generator in multi levels
+                </div>
+                <p-accordionTab header="snake.pas" [selected]="false">
+                    <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                        (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                    </app-text-display>
+                </p-accordionTab>
+                <div>
+                    A5x5 the 5x5 game solver with Recursive Back-Tracking programming technique
+                </div>
+                <p-accordionTab header="a5x5.pas" [selected]="false">
+                    <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                        (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                    </app-text-display>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+    </div>
+</div>

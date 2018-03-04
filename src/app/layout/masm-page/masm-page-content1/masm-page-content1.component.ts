@@ -19,7 +19,7 @@ export class MasmPageContent1Component implements OnInit {
   }
 
   loadFileContent(fileName: string) {
-    this.fileLoaderService.loadtTextFile(fileName).subscribe(fileContent => {
+    this.fileLoaderService.loadtTextFile('masm', fileName).subscribe(fileContent => {
       this.fileName = fileName;
       this.fileContent = fileContent;
       this.isDisplayText = true;
@@ -55,7 +55,4 @@ export class MasmPageContent1Component implements OnInit {
     }
   }
 
-  textDisplayClosed(event) {
-    this.isDisplayText = false;
-  }
 }

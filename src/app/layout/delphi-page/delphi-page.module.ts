@@ -11,6 +11,7 @@ import { DelphiPageContent4Component } from './delphi-page-content4/delphi-page-
 import { DelphiPageRoutingModule } from './delphi-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { PageHeaderModule } from '../../shared';
+import { AccordionModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { PageHeaderModule } from '../../shared';
     NgbModule.forRoot(),
     SharedModule,
     DelphiPageRoutingModule,
-    PageHeaderModule
+    PageHeaderModule,
+    AccordionModule
   ],
   declarations: [DelphiPageTitleComponent, DelphiPageContent1Component, DelphiPageContent2Component,
                 DelphiPageContent3Component, DelphiPageContent4Component],
