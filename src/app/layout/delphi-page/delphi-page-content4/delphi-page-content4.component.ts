@@ -31,6 +31,8 @@ export class DelphiPageContent4Component implements OnInit {
       this.loadFileContent('Snake.pas');
     } else if (ix === 1) {
       this.loadFileContent('a5x5.pas');
+    } else if (ix === 2) {
+      this.loadFileContent('labyr.pas');
     }
   }
 

@@ -13,16 +13,16 @@
             <li>Binary Tree example with graphical GUI.</li>
             <p-accordion (onOpen)="onTabOpen($event)">
                 <div class="accordion-style">
-                MathBase, Teaching the basic arithmetic operations with possibility to practice also for my sons, now show the base class
-                which communicate with the UI. throught events
-                </div> 
+                    MathBase, Teaching the basic arithmetic operations with possibility to practice also for my sons, now show the base class
+                    which communicate with the UI. throught events
+                </div>
                 <p-accordionTab header="ClassBase.pas" [selected]="false">
                     <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
                         (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
                     </app-text-display>
                 </p-accordionTab>
                 <div>
-                TStack class implementation in Delphi
+                    TStack class implementation in Delphi
                 </div>
                 <p-accordionTab header="Stack.pas" [selected]="false">
                     <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
