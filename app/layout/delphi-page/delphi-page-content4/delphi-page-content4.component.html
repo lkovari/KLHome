@@ -26,6 +26,26 @@
                         (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
                     </app-text-display>
                 </p-accordionTab>
+                <div>
+                    New Labyrinth generator methodology, based on my own idea. The playground in this case the screen area where we would like
+                    to show a labyrinth. At first define the corridor width of the labyrinth in pixels. The playground width
+                    and height are the whole number multiplication of corridor width. Put all point of the playground into
+                    an array which whole number multiplies of width and height. The coordinate points from the array get
+                    randomly, making sure to puck up all existing coordinate points. When picked up a coordinate point from
+                    the array, then draw a tree in directions North, East, South and West. The tree just draws in random
+                    depth and random width. Each branch line length is equal with the corridor width. End of draw when the
+                    end point of the branch line is already is the end point of another branch line so it is a wall end point.
+                    The algorithm is a recursive backtracking algorithm for all endpoints of branchline call itself, and
+                    the new branch line end point is already taken, then track back and try another directions (N,E,S,W).
+                </div>
+                <div>
+                    <a href="assets/bigfiles/labyr.rar">You can download the executable, which compressed with RAR.</a>
+                </div>
+                <p-accordionTab header="labyr.pas" [selected]="false">
+                    <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
+                        (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                    </app-text-display>
+                </p-accordionTab>
             </p-accordion>
         </div>
     </div>
