@@ -3,8 +3,8 @@ PAGE	66,132
 TITLE	CMOS RAM Utility
 
 COMMENT *
-	Written by László Kõvári  1992.03.23.
-		    Last Update  1992.03.24.
+	Written by LÃ¡szlÃ³ KÅ‘vÃ¡ri  1992.03.23.
+		    	 Last Update  1992.03.24.
 
 	70h I/O port	8. bit	=  1 NMI disable
 	71h I/O port		=  CMOS RAM data port
@@ -27,10 +27,10 @@ START:
 ;	Data section.
 ;
 ;
-	Copyr	db	'Copyright (C) 1992 by László Kõvári #!3647321033',0
+	Copyr	db	'Copyright (C) 1992 by Lï¿½szlï¿½ Kï¿½vï¿½ri #!3647321033',0
 
 	Scr	db	'               >>> CMOS RAM Utility v1.02 - Freeware Program <<<',13,10,13,10
-		db	'               Copyright (C) 1992 by László Kõvári #!3647321033',13,10,13,10,'$'
+		db	'               Copyright (C) 1992 by Lï¿½szlï¿½ Kï¿½vï¿½ri #!3647321033',13,10,13,10,'$'
 	Help	db	'               CMRAM B=BackUp CMOS RAM  CMRAM R=Restore CMOS RAM',13,10,'$'
 	Backup	db	13,10,'                   The contents of CMOS RAM now Backed Up...',13,10,13,10,'$'
 	Restore db	13,10,'                   The contents of CMOS RAM now Restored...',13,10,13,10,'$'
@@ -40,7 +40,7 @@ START:
 	Address db	13,10,13,10
 		db	'        		 The 100% assembly source.',13,10
 		db	13,10
-		db	'                           Author: László Kõvári',13,10
+		db	'                           Author: Lï¿½szlï¿½ Kï¿½vï¿½ri',13,10
 		db	'                           E-mail:lkovari@axelero.hu',13,10
 	Cr_Lf	db	13,10,'$'
 	Filen	db	' :\CMOSRAM.DAT',0

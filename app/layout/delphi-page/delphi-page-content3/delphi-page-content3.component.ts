@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileLoaderService } from 'app/shared';
 
 @Component({
   selector: 'app-delphi-page-content3',
@@ -6,10 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delphi-page-content3.component.scss']
 })
 export class DelphiPageContent3Component implements OnInit {
+  isDisplayText = false;
+  fileName: string;
+  fileContent: string;
 
-  constructor() { }
+  constructor(private fileLoaderService: FileLoaderService) { }
+
+  loadFileContent(fileName: string) {
+    this.fileLoaderService.loadtTextFile('pas', fileName).subscribe(fileContent => {
+      this.fileName = fileName;
+      this.fileContent = fileContent;
+      this.isDisplayText = true;
+      // console.log('File ' + this.numconvFileContent);
+    });
+  }
 
   ngOnInit() {
+  }
+
+  onTabOpen(event) {
+    const ix = event.index;
+    if (ix === 0) {
+      this.loadFileContent('ClassBase.pas');
+    } else if (ix === 1) {
+      this.loadFileContent('Stack.pas');
+    }
   }
 
 }

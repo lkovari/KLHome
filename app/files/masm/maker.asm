@@ -3,8 +3,8 @@ PAGE	67,132
 TITLE	Maker2nd
 
 COMMENT *
-	Written by László Kõvári  1990.06.14.
-		     Last Update  1990.06.14.
+	Written by LÃ¡szlÃ³ KÅ‘vÃ¡ri  1990.06.14.
+		     	 Last Update  1990.06.14.
 
 
 	 This program write the screen the signo of program maker.
@@ -57,12 +57,12 @@ ENTRY:
 	Cr	ends
 
 ;--------------------------------------------------------
-;	Struktura a cel poziciok ellenorzesere. 	:
+;	Struktura a cel poziciok ellenorzesere. 		:
 ;	H a egy mozgo karakter egy mar celbaert helyere :
 ;	lep akkor a mozgo torlese /mozgasa/ soran ures	:
 ;	hely keletkezik. Ezt azzal kell kikuszobolni	:
 ;	hogy utana meg kell vizsgalni hogy az a pozicio :
-;	egy celpozicio-e es hogy melyik karaktere.	:
+;	egy celpozicio-e es hogy melyik karaktere.		:
 ;--------------------------------------------------------
 
 	Dst	Struc
@@ -89,7 +89,7 @@ ENTRY:
 
 		    EndM
 
-	M	db	'Copyright (C) 1993 by László Kõvári #!364121033'
+	M	db	'Copyright (C) 1993 by Lï¿½szlï¿½ Kï¿½vï¿½ri #!364121033'
 	Stat	db	0				;
 	Xstat	db	0				;77h ha celhozert ha
 							;kell modositani
@@ -146,9 +146,9 @@ ENTRY:
 	Ch18	cr	<'e',0,0,0,0,66,2,45,4,66,2>
 	Ch19	cr	<' ',0,0,0,0,1,22,46,4,1,22>
 	Ch20	cr	<'K',0,0,0,0,5,23,47,4,5,23>
-	Ch21	cr	<'”',0,0,0,0,10,22,48,4,10,22>
+	Ch21	cr	<'ï¿½',0,0,0,0,10,22,48,4,10,22>
 	Ch22	cr	<'v',0,0,0,0,15,23,49,4,15,23>
-	Ch23	cr	<' ',0,0,0,0,20,22,50,4,20,22>
+	Ch23	cr	<'ï¿½',0,0,0,0,20,22,50,4,20,22>
 	Ch24	cr	<'r',0,0,0,0,25,23,51,4,25,23>
 	Ch25	cr	<'i',0,0,0,0,45,22,52,4,45,22>
 
@@ -179,9 +179,9 @@ ENTRY:
 	Dp18	Dst	<45,4,'e'>
 	Dp19	Dst	<46,4,' '>
 	Dp20	Dst	<47,4,'K'>
-	Dp21	Dst	<48,4,'”'>
+	Dp21	Dst	<48,4,'ï¿½'>
 	Dp22	Dst	<49,4,'v'>
-	Dp23	Dst	<50,4,' '>
+	Dp23	Dst	<50,4,'ï¿½'>
 	Dp24	Dst	<51,4,'r'>
 	Dp25	Dst	<52,4,'i'>
 
@@ -497,7 +497,7 @@ ENTRY:
 	CurPos	endp
 
 ;--------------------------------------------------------
-;	1 sec. k‚sleltet‚s				:
+;	1 sec. kï¿½sleltetï¿½s				:
 ;--------------------------------------------------------
 
 	Delayl	proc	near
@@ -526,7 +526,7 @@ ENTRY:
 	Delayl	endp
 
 ;--------------------------------------------------------
-;	1/100 sec. k‚sleltet‚s				:
+;	1/100 sec. kï¿½sleltetï¿½s				:
 ;--------------------------------------------------------
 
 	Delays	proc	near

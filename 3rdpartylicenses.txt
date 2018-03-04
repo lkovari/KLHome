@@ -2,11 +2,11 @@
 MIT
 MIT
 
-primeng@5.2.0
+@ng-bootstrap/ng-bootstrap@1.0.0
 MIT
 The MIT License (MIT)
 
-Copyright (c) 2016-2017 PrimeTek
+Copyright (c) 2015-2018 Angular ng-bootstrap team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -73,11 +73,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-@ng-bootstrap/ng-bootstrap@1.0.0
+primeng@5.2.0
 MIT
 The MIT License (MIT)
 
-Copyright (c) 2015-2018 Angular ng-bootstrap team
+Copyright (c) 2016-2017 PrimeTek
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
