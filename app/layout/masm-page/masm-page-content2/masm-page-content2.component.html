@@ -1,4 +1,4 @@
-<app-page-header pageTitle="MASM." pageSubtitle="Microsoft Macro Assembler" startTime="08/30/1983" endTime="12/31/1992"></app-page-header>
+<app-masm-page-title></app-masm-page-title>
 <div class="layout-bios-page">
     IBM. PC. ROM. BIOS.
     <div class="form">
@@ -13,7 +13,7 @@
         <p-accordion>
             <p-accordionTab header="bios.asm" [selected]="false">
                 <app-text-display id="textDisplay" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="fileName" [fileContent]="fileContent"
-                    (textDisplayClosed)="textDisplayClosed($event)" name="textDisplay">
+                    name="textDisplay">
                 </app-text-display>
             </p-accordionTab>
         </p-accordion>

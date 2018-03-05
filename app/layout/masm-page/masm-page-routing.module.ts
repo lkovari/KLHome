@@ -9,9 +9,9 @@ import { MasmPageContent1Component } from './masm-page-content1/masm-page-conten
 import { MasmPageContent2Component } from './masm-page-content2/masm-page-content2.component';
 
 const routes: Routes = [
-  { path: '', component: MasmPageTitleComponent },
-    {path: 'masm-page-content1', component: MasmPageContent1Component},
-    {path: 'masm-page-content2', component: MasmPageContent2Component}
+    { path: '', component: MasmPageTitleComponent },
+    { path: 'masm-page-content1', component: MasmPageContent1Component },
+    { path: 'masm-page-content2', component: MasmPageContent2Component }
 ];
 
 @NgModule({
