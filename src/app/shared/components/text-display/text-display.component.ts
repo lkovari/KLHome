@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-text-display',
@@ -16,19 +16,9 @@ export class TextDisplayComponent implements OnInit {
   set fileContent(v: string) {
     this._fileContent = v;
   }
-  @Output() textDisplayClosed = new EventEmitter<any>();
-
   constructor() { }
 
   ngOnInit() {
-    console.log(this.fileContent);
-  }
-
-  onClose() {
-    this.textDisplayClosed.emit(null);
-  }
-
-  onDone() {
-    this.textDisplayClosed.emit(null);
+    // console.log(this.fileContent);
   }
 }
