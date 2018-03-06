@@ -9,6 +9,7 @@ import { IosPageContent2Component } from './ios-page-content2/ios-page-content2.
 import { IosPageRoutingModule } from './ios-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { PageHeaderModule } from '../../shared';
+import { AccordionModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { PageHeaderModule } from '../../shared';
     NgbModule.forRoot(),
     SharedModule,
     IosPageRoutingModule,
-    PageHeaderModule
+    PageHeaderModule,
+    AccordionModule
   ],
   declarations: [IosPageTitleComponent, IosPageContent1Component, IosPageContent2Component],
   exports: [IosPageTitleComponent, IosPageContent1Component, IosPageContent2Component]
