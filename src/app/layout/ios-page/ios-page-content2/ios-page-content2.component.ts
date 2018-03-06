@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileLoaderService } from 'app/shared';
 
 @Component({
   selector: 'app-ios-page-content2',
@@ -7,11 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IosPageContent2Component implements OnInit {
   public imagePathArray = ['assets/images/dev-objc-calc_ui_1.jpg', 'assets/images/dev-objc-calc_ui_2.jpg'];
+  public calcSourceFiles = [];
+  isDisplayText = false;
+  fileName: string;
+  fileContent: string;
 
-  constructor() { }
+  constructor(private fileLoaderService: FileLoaderService) { }
 
-  ngOnInit() {
+  loadFileContent(fileName: string) {
+    this.fileLoaderService.loadtTextFile('objc', fileName).subscribe(fileContent => {
+      this.fileName = fileName;
+      this.fileContent = fileContent;
+      this.isDisplayText = true;
+      // console.log('File ' + this.numconvFileContent);
+    });
   }
 
+  ngOnInit() {
+    this.calcSourceFiles = [
+      'main.m', 'CalcAppDelegate.h', 'CalcAppDelegate.m', 'ExpressionTreeNode.h', 'BinaryExpressionTreeNode.h',
+      'BinaryExpressionTreeNode.m', 'CalcStack.h', 'CalcStack.m', 'CalculatorEngine.h', 'CalculatorEngine.m',
+      'CalculatorUtils.h', 'CalculatorUtils.m', 'CalcViewController.h', 'CalcViewController.m', 'ColorUtils.h', 'ColorUtils.m',
+      'ExpressionTreeBuilder.h', 'ExpressionTreeBuilder.m', 'ExpressionTreeNodeValue.h', 'ExpressionTreeNodeValue.m',
+      'UnaryExpressionTreeNode.h', 'UnaryExpressionTreeNode.m', 'OperationsEvaluator.h', 'OperationsEvaluator.m'
+    ]
+  }
+
+  onTabOpen(event) {
+    const ix = event.index;
+    this.loadFileContent(this.calcSourceFiles[ix]);
+  }
 
 }

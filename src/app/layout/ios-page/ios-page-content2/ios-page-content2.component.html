@@ -1,14 +1,30 @@
-<div>
-  <p>RPN. Calculator</p>
-  <p>
-    My first project was a simple calculator which was written in Objective-C language.<br>
-    The calculator is an RPM. based (Reverse Polish Notation) calculator, which dissolve brackets in the arithmetic expression and the calculator engine, also contains an expression tree builder, which based on significant weighting of the arithmetic operations.
-    <br><br>
-    See below the Calculatror's UI. screenshots<br><br>
-    <span class="images">
-      <img class="img-fluid" *ngFor="let imagePath of imagePathArray"
-       [src]=imagePath>
-    </span>
-  </p>
-
+<div class="layout-ios-page2">
+    RPN. Calculator
+    <div class="form">
+        <div class="ios-calc-description form-group">
+            <div class="col-xs-12">
+                My first project was a simple calculator which was written in Objective-C language. The calculator is an RPM. based (Reverse
+                Polish Notation) calculator, which dissolve brackets in the arithmetic expression and the calculator engine,
+                also contains an expression tree builder, which based on significant weighting of the arithmetic operations.
+            </div>
+        </div>
+    </div>
+    <div class="ios-calc-title">
+        Can see below the Calculatror's UI. I didn't use screen mask image, for the UI. I draw and shaded each buttons. On the left side can see the shaded, on the righ side the flat version of UI.
+    </div>
+    <div>
+        <span class="images">
+            <img class="img-fluid" *ngFor="let imagePath of imagePathArray" [src]=imagePath>
+        </span>
+    </div>
+    <div class="ios-calc-title">See below the Calc source files without prj file.</div>
+    <p-accordion (onOpen)="onTabOpen($event)">
+        <div *ngFor="let srcFile of calcSourceFiles">
+            <p-accordionTab header="{{srcFile}}" [selected]="false">
+                <app-text-display id="textDisplay1" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
+                    name="textDisplay">
+                </app-text-display>
+            </p-accordionTab>
+        </div>
+    </p-accordion>
 </div>
