@@ -43,10 +43,13 @@ export class PageHeaderComponent implements OnInit {
           monthsAdd = ((12 - month1) + month2);
         }
       } else {
-        months = ((fullYear2 - fullYear1) - 1) * 12;
+        months = ((fullYear2 - fullYear1)) * 12;
         if (month1 < month2) {
           monthsAdd = (month2 - month1);
         } else if (month1 > month2) {
+          if (month1 === 12) {
+            months = months - month1;
+          }
           monthsAdd = ((12 - month1) + month2);
         }
       }
