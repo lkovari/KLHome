@@ -13,7 +13,7 @@ export class AngularPageContent1Component implements OnInit {
   fullImagePathA5: string;
   fullImagePathA5Rx: string;
   fullImagePrimeNg: string;
-  fullImagePathAcc: string;
+  fullImageAngularCompCommunication: string;
   fullImageAngularBestPractices: string;
   angularVersion: any;
 
@@ -25,7 +25,7 @@ export class AngularPageContent1Component implements OnInit {
     this.fullImagePathA5Rx = 'assets/images/a5RxJsReactiveProg.png';
     this.fullImagePrimeNg = 'assets/images/cert-primeng.png';
     this.fullImageAngularBestPractices = 'assets/images/angularbestpractices.png';
-    this.fullImagePathAcc = '';
+    this.fullImageAngularCompCommunication = 'assets/images/angular-component-comm.png';
   }
 
   ngOnInit() {
