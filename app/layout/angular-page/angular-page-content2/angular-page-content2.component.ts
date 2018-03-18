@@ -14,7 +14,7 @@ export class AngularPageContent2Component implements OnInit {
   customDate: Date;
   selectedDate: Date;
   customText: string;
-  minLength = 7;
+  public minLength = 7;
   submitted = false;
   githubLogoPath: string;
 

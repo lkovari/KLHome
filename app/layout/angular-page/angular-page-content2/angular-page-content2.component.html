@@ -106,8 +106,8 @@
             </app-text-input>
             <span class="text-danger" *ngIf="customtextinput && (customtextinput.invalid && !customtextinput.pristine)">
               <p *ngIf="customtextinput.errors.required">Custom text is Required</p>
-              <p *ngIf="customtextinput.errors.capital">Must start with capital letter!</p>
-              <p *ngIf="customtextinput.errors.minlength">Minimum length is {{minlength}} !</p>
+              <p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p>
+              <p *ngIf="customtextinput.errors.minlength">Minimum length is {{minLength}} !</p>
             </span>
           </div>
           <button class="btn btn-primary" type="button" (click)="setValues(formData)">Set Data</button>
@@ -118,7 +118,7 @@
       <div class="sub-topic" *ngIf="submitted">
         <div class="cols-xs-12">
           <b>Form Data</b>
-          <p>Custom Date: {{ form_data.customcalendar }} </p>
+          <p>Custom Date: {{ form_data.customcalendar | date:'fullDate'}} </p>
           <p>Custom Text: {{ form_data.customtextinput }} </p>
         </div>
       </div>

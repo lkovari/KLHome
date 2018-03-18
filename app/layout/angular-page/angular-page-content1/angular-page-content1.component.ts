@@ -15,6 +15,9 @@ export class AngularPageContent1Component implements OnInit {
   fullImagePrimeNg: string;
   fullImageAngularCompCommunication: string;
   fullImageAngularBestPractices: string;
+  fullImageAngularRouter: string;
+  fullImageAngularRouting: string;
+  fullImageRxJs: string;
   angularVersion: any;
 
   constructor() {
@@ -26,7 +29,10 @@ export class AngularPageContent1Component implements OnInit {
     this.fullImagePrimeNg = 'assets/images/cert-primeng.png';
     this.fullImageAngularBestPractices = 'assets/images/angularbestpractices.png';
     this.fullImageAngularCompCommunication = 'assets/images/angular-component-comm.png';
-  }
+    this.fullImageAngularRouter = 'assets/images/angularRouterUpAndRunning.png';
+    this.fullImageAngularRouting = '';
+    this.fullImageRxJs = '';
+    }
 
   ngOnInit() {
     this.angularVersion = angular.VERSION.full;
