@@ -9,7 +9,7 @@ import { J2sePageContent2Component } from './j2se-page-content2/j2se-page-conten
 import { J2sePageContent3Component } from './j2se-page-content3/j2se-page-content3.component';
 import { J2sePageRoutingModule } from './j2se-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 @NgModule({
   imports: [

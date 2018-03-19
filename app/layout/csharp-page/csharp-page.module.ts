@@ -8,7 +8,7 @@ import { CsharpPageContent1Component } from './csharp-page-content1/csharp-page-
 import { CsharpPageContent2Component } from './csharp-page-content2/csharp-page-content2.component';
 import { CsharpPageRoutingModule } from './csharp-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 @NgModule({
   imports: [

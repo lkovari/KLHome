@@ -11,7 +11,7 @@ import { AndroidPageContent4Component } from './android-page-content4/android-pa
 import { AndroidPageContent5Component } from './android-page-content5/android-page-content5.component';
 import { AndroidPageRoutingModule } from './android-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 @NgModule({
   imports: [

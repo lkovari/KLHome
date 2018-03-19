@@ -10,7 +10,7 @@ import { DelphiPageContent3Component } from './delphi-page-content3/delphi-page-
 import { DelphiPageContent4Component } from './delphi-page-content4/delphi-page-content4.component';
 import { DelphiPageRoutingModule } from './delphi-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 import { AccordionModule } from 'primeng/primeng';
 
 @NgModule({

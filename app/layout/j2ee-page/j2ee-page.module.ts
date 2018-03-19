@@ -8,7 +8,7 @@ import { J2eePageContent1Component } from './j2ee-page-content1/j2ee-page-conten
 import { J2eePageContent2Component } from './j2ee-page-content2/j2ee-page-content2.component';
 import { J2eePageRoutingModule } from './j2ee-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 @NgModule({
   imports: [

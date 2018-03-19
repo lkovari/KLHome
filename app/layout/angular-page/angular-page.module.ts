@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 import { AngularPageTitleComponent } from './angular-page-title.component';
 import { AngularPageContent1Component } from './angular-page-content1/angular-page-content1.component';
 import { AngularPageRoutingModule } from './angular-page-routing.module';

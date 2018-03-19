@@ -9,7 +9,7 @@ import { JavascriptPageContent1Component } from './javascript-page-content1/java
 import { JavascriptPageContent2Component } from './javascript-page-content2/javascript-page-content2.component';
 import { JavascriptPageRoutingModule } from './javascript-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 
 @NgModule({
   imports: [
