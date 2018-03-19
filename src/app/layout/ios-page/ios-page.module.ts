@@ -8,7 +8,7 @@ import { IosPageContent1Component } from './ios-page-content1/ios-page-content1.
 import { IosPageContent2Component } from './ios-page-content2/ios-page-content2.component';
 import { IosPageRoutingModule } from './ios-page-routing.module';
 import { SharedModule } from 'app/shared/shared.module';
-import { PageHeaderModule } from '../../shared';
+import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 import { AccordionModule } from 'primeng/primeng';
 
 @NgModule({
