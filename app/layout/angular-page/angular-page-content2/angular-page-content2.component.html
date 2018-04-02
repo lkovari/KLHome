@@ -91,7 +91,7 @@
             <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" [showButtonBar]="true" class="calendar-style"
               placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy" #customcalendar="ngModel" name="customcalendar" [showOnFocus]="false"
               [minDate]="minDate" [maxDate]="maxDate" [required]="true" (onTodayClicked)="onTodayClicked($event)" 
-              [monthNavigator]="true" [yearNavigator]="true" yearRange="1965:2038"
+              [monthNavigator]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="1700:2300"
               (onClearClicked)="onClearClicked($event)" (onDateSelected)="onDateSelected($event)" (onModelChanged)="onModelChanged($event)">
             </app-custom-calendar>
             <div *ngIf="customcalendar && (customcalendar.invalid && customcalendar.dirty)" class="text-danger">
