@@ -30,7 +30,7 @@ export class AngularPageContent1Component implements OnInit {
     this.fullImageAngularBestPractices = 'assets/images/angularbestpractices.png';
     this.fullImageAngularCompCommunication = 'assets/images/angular-component-comm.png';
     this.fullImageAngularRouter = 'assets/images/angularRouterUpAndRunning.png';
-    this.fullImageAngularRouting = '';
+    this.fullImageAngularRouting = 'assets/images/cert-angularrouting-bydeborahkPlural.png';
     this.fullImageRxJs = '';
     }
 
