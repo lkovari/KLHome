@@ -17,6 +17,8 @@ export class AngularPageContent2Component implements OnInit {
   public minLength = 7;
   submitted = false;
   githubLogoPath: string;
+  minDate = new Date('1965.02.02');
+  maxDate = new Date();
 
   form_data = {
     customcalendar: '',
