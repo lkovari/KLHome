@@ -17,7 +17,7 @@ export class AngularPageContent2Component implements OnInit {
   public minLength = 7;
   submitted = false;
   githubLogoPath: string;
-  minDate = new Date('1965.02.02');
+  minDate = new Date();
   maxDate = new Date();
 
   form_data = {
@@ -28,6 +28,9 @@ export class AngularPageContent2Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.minDate.setFullYear(1965);
+    this.minDate.setMonth(1);
+    this.minDate.setDate(2);
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
