@@ -17,6 +17,9 @@ export class AngularPageContent1Component implements OnInit {
   fullImageAngularBestPractices: string;
   fullImageAngularRouter: string;
   fullImageAngularRouting: string;
+  fullImageAngularAnimations: string;
+  fullImageTypescriptFundamentalss: string;
+  fullImagePathCSSPos: string;
   fullImageRxJs: string;
   angularVersion: any;
 
@@ -31,6 +34,9 @@ export class AngularPageContent1Component implements OnInit {
     this.fullImageAngularCompCommunication = 'assets/images/angular-component-comm.png';
     this.fullImageAngularRouter = 'assets/images/angularRouterUpAndRunning.png';
     this.fullImageAngularRouting = 'assets/images/cert-angularrouting-bydeborahkPlural.png';
+    this.fullImageAngularAnimations = 'assets/images/angularanimations-bygarysplural.png';
+    this.fullImageTypescriptFundamentalss = 'assets/images/typescriptfundamentals-byjpdw.png';
+    this.fullImagePathCSSPos = 'assets/images/csspositioningsusansplural.png';
     this.fullImageRxJs = '';
     }
 
