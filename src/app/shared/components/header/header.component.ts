@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,20 +7,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  pushRightClass = 'push-right';
   public years: number;
 
-  constructor() { }
+  constructor(public router: Router) {
+    this.router.events.subscribe(val => {
+      if (
+          val instanceof NavigationEnd &&
+          window.innerWidth <= 992 &&
+          this.isToggled()
+      ) {
+          this.toggleSidebar();
+      }
+    });
+   }
 
   ngOnInit() {
     const date = new Date();
     this.years = date.getFullYear() - 1983;
   }
 
-  toggleSidebar() {
-    const dom: any = document.querySelector('body');
-    dom.classList.toggle('push-right');
+  isToggled(): boolean {
+    const dom: Element = document.querySelector('body');
+    return dom.classList.contains(this.pushRightClass);
   }
 
+  toggleSidebar() {
+    const dom: any = document.querySelector('body');
+    dom.classList.toggle(this.pushRightClass);
+  }
 
   moveRltAndLtr() {
     const dom: any = document.querySelector('body');

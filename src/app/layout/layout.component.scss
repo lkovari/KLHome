@@ -8,9 +8,11 @@
   position: relative;
   overflow: hidden;
 }
-@media screen and (max-width: 992px) {
+
+
+@media screen and (max-width: 1092px) {
   .main-container {
     margin-left: 0px !important;
-    padding-top: 5.7rem;
+    padding-top: 2rem;
   }
 }

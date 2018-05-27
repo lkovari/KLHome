@@ -1,8 +1,10 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-  <label class="text-style">Last update {{lastUpdate | date:'MM/dd/yyyy HH:mm a'}}</label>
   <ul class="list-group">
+    <a class="text-style">
+      Last update {{lastUpdate | date:'MM/dd/yyyy HH:mm a'}}
+    </a>
     <a routerLink="/aboutme-page" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw">About me</i>
+      <i class="fa fa-user"> About me</i>
     </a>
     <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages1')">
@@ -175,7 +177,7 @@
     </div>
 
     <a [routerLink]="['/welcome-page']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      Home
+      <i class="fa fa-home"> Home</i>
     </a>
   </ul>
 </nav>
