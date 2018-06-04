@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/04/2018 3:46 AM');
+  lastUpdate = new Date('06/04/2018 08:52 PM');
   lastUpdateTooltip = 'Added reactive form example | Upgraded to Angular v6';
 
   eventCalled() {
