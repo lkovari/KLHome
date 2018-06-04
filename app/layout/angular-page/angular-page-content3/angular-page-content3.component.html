@@ -6,8 +6,15 @@
       in, for me.
     </div>
     <div class="sub-topic">
-      <b>Act #2.1</b> Model driven / reactive forms
-      <form class="form-border" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off" novalidate>
+      <b>Act #2.1</b> Model driven / reactive forms exmaple with reactive embedded component
+      <br>
+      <span class="text-primary">The validation rules are the following</span> the
+      <ul>
+        <li>- the first name and last name are mandatory</li>
+        <li>- the minimum length is {{ complexNameConfig.firstNameMinLength }}</li>
+        <li>- the masimum length is {{ complexNameConfig.firstNameMaxLength }}</li>
+      </ul>      
+      <form class="form-border spacer-vertical" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off" novalidate>
           <label class="text-primary">
               <a href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content3">
                 <img [src]="githubLogoPath" width="16" height="16">
@@ -26,7 +33,7 @@
           <p>FormControl Status {{ extractFormControl().status }}</p>
           <!--p>Status firstName {{ exampleForm.get('firstName').status }}</p>
           <p>Status lastName {{ exampleForm.get('lastName').status }}</p-->
-          <div class="text-danger" *ngIf="extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine)">  
+          <div class="text-danger" *ngIf="!complexNameConfig.isShowValidationMessagesInside && (extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine))">  
             <p *ngIf="extractFormControl().errors.firstNameRequired">First name required!</p>
             <p *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</p>
             <p *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
@@ -36,8 +43,8 @@
             <!--p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p-->
           </div>
         </div>
-        <button class="btn btn-primary spacer" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
-        <button class="btn btn-primary" type="submit" >Submit</button>
+        <button class="btn btn-primary spacer-horozontal" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
+        <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isConfigUpdateOnBlur()">Submit</button>
       </form>
     </div>
     <div class="sub-topic" *ngIf="submitted">

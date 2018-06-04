@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ExistingProvider, ViewC
 import { IComplexName } from './complex-name-interface';
 import {
   FormGroup, FormControl, FormBuilder, Validators, ValidatorFn, ControlValueAccessor,
-  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, NgControl
+  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, NgControl, FormGroupDirective
 } from '@angular/forms';
 import { IComplexNameConfig } from './complex-name-config.interface';
 import { ComplexNameConfig } from './complex-name-config.model';
@@ -49,8 +49,8 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     if (!this._config) {
       this._config = {
         'firstNameMinLength': 3, 'firstNameMaxLength': 50, 'isFirstNameMandatory': true, 'lastNameMinLength': 3,
-        'lastNameMaxLength': 50, 'isLastNameMandatory': true, 'isShowTitle': false, 'isUpdateOnBlur': false
-      };
+        'lastNameMaxLength': 50, 'isLastNameMandatory': true, 'isShowTitle': false, 'isUpdateOnBlur': false,
+        'isShowValidationMessagesInside': false };
     }
     return this._config;
   }
@@ -72,9 +72,12 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) {}
+  /*
+  constructor(parent: FormGroupDirective) {
+    this.complexNameForm = parent.form;
   }
-
+  */
   ngOnInit() {
     let updateOnObj = null;
     if (this._config) {
@@ -84,11 +87,21 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
         updateOnObj = { updateOn: 'submit' };
       }
     }
+
     this.complexNameForm = this.fb.group({
       firstName: [''],
       middleInitial: ['', [Validators.maxLength(3)]],
       lastName: ['']
     }, updateOnObj);
+
+    /*
+    this.complexNameForm.addControl('complexName', new FormGroup({
+        first: new FormControl(),
+        middleInitial: new FormControl(),
+        last: new FormControl()
+    }));
+    */
+
     // set the validators dinamically based on the config
     if (this.config) {
       if (this.config.isFirstNameMandatory) {
@@ -127,6 +140,16 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     this.onChange.emit(this.nameModel);
   }
 
+  extractFirstNameFormControl(): FormControl {
+    const fc = this.complexNameForm.get('firstName');
+    return <FormControl>fc;
+  }
+
+  extractLastNameFormControl(): FormControl {
+    const fc = this.complexNameForm.get('lastName');
+    return <FormControl>fc;
+  }
+
   onChangeMiddleInitial(value: string) {
     this.nameModel.middle = value;
     this.onModelChange(this.nameModel);
@@ -148,6 +171,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     this.onChange.emit(this.nameModel);
   }
 
+  isConfigUpdateOnBlur(): boolean {
+      return this._config && this._config.isUpdateOnBlur;
+  }
 
   onDone(form: FormGroup) {
     console.log(JSON.stringify(this._nameModel));

@@ -28,14 +28,18 @@ export class AngularPageContent3Component implements OnInit {
     */
   }
 
+  isConfigUpdateOnBlur(): boolean {
+    return this.complexNameConfig && this.complexNameConfig.isUpdateOnBlur;
+  }
   private setupModel() {
     this.complexNameModel = new ComplexName();
   }
 
   ngOnInit() {
     this.setupModel();
-    this.complexNameConfig = { 'firstNameMinLength' : 3, 'firstNameMaxLength': 25, 'isFirstNameMandatory': true, 'lastNameMinLength': 3,
-    'lastNameMaxLength': 20, 'isLastNameMandatory': true, 'isShowTitle': false, 'isUpdateOnBlur': true};
+    this.complexNameConfig = { 'firstNameMinLength': 3, 'firstNameMaxLength': 50, 'isFirstNameMandatory': true, 'lastNameMinLength': 3,
+      'lastNameMaxLength': 50, 'isLastNameMandatory': true, 'isShowTitle': false, 'isUpdateOnBlur': false,
+      'isShowValidationMessagesInside': false };
     this.exampleForm = this.fb.group({
       complexName: [this.complexNameModel]
     });

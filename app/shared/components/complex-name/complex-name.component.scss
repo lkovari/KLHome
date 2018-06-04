@@ -1,9 +1,18 @@
 .complex-name-layout {
     display: inline-block;
+    .form-group {
+        display: grid;
+    }
     .warning-text {
         small {
             white-space: nowrap;
         }
         color: red;
     }
+    .spacer-horozontal {
+        margin-left: 0.5rem !important;
+    }
+    input {
+        margin-left: 0.2rem !important;
+    }    
 }
