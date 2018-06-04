@@ -4,7 +4,15 @@
       <label class="text-primary">First
         <span class="warning-text" *ngIf="config && config.isFirstNameMandatory">*</span>
       </label>
-      <input pInputText type="text" formControlName="firstName" [disabled]="disabled" (input)="onChangeFirstName($event.target.value)" #firstName>
+      <input class="spacer-horizontal" type="text" formControlName="firstName" [disabled]="disabled" (input)="onChangeFirstName($event.target.value)"
+        #firstName>
+      <div *ngIf="config && config.isShowValidationMessagesInside">
+        <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().touched && extractFirstNameFormControl().invalid)">
+          <p *ngIf="extractFirstNameFormControl().errors.firstNameRequired">First name required!</p>
+          <p *ngIf="extractFirstNameFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
+          <p *ngIf="extractFirstNameFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</p>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label class="text-primary">Middle</label>
@@ -15,14 +23,22 @@
       <label class="text-primary">Last
         <span class="warning-text" *ngIf="config && config.isLastNameMandatory">*</span>
       </label>
-      <input type="text" formControlName="lastName" [disabled]="disabled" (input)="onChangeLastName($event.target.value)" #lastName>
-    </div>
+      <input class="spacer-horizontal" type="text" formControlName="lastName" [disabled]="disabled" (input)="onChangeLastName($event.target.value)"
+        #lastName>
+        <div *ngIf="config && config.isShowValidationMessagesInside">
+          <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().touched && extractLastNameFormControl().invalid)">
+            <p *ngIf="extractLastNameFormControl().errors.lastNameRequired">Last name required!</p>
+            <p *ngIf="extractLastNameFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
+            <p *ngIf="extractLastNameFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</p>
+          </div>
+        </div>
+      </div>
     <div class="form-group" *ngIf="config && config.isShowTitle">
       <label>Title</label>
-      <input pInputText type="text" formControlName="title" [disabled]="disabled" (input)="onChangeTitle($event.target.value)" #title>
+      <input class="spacer-horizontal" type="text" formControlName="title" [disabled]="disabled" (input)="onChangeTitle($event.target.value)"
+        #title>
     </div>
-    <button class="button-primary-small" *ngIf="!(config && config.isUpdateOnBlur)" [disabled]="complexNameForm.invalid" type="submit"
-      (click)="onDone(complexNameForm)">Done
+    <button class="button-primary-small" *ngIf="isConfigUpdateOnBlur()" [disabled]="complexNameForm.invalid" type="submit" (click)="onDone(complexNameForm)">Done
     </button>
   </div>
 </form>

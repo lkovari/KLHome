@@ -7,4 +7,5 @@ export interface IComplexNameConfig {
     isLastNameMandatory: boolean;
     isShowTitle: boolean;
     isUpdateOnBlur: boolean;
+    isShowValidationMessagesInside: boolean;
 }

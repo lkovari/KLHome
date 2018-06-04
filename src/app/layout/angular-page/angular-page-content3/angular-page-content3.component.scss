@@ -12,7 +12,10 @@
     input.ng-invalid.ng-touched {
         border: 1px solid red;
     }
-    .spacer {
+    .spacer-horozontal {
         margin-right: 0.5rem;
+    }
+    .spacer-vertical {
+        margin-top: 0.5rem;
     }
 }
