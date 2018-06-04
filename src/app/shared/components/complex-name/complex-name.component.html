@@ -1,0 +1,28 @@
+<form [formGroup]="complexNameForm" (ngSubmit)="onDone(complexNameForm)" autocomplete="off" novalidate>
+  <div class="complex-name-layout">
+    <div class="form-group">
+      <label class="text-primary">First
+        <span class="warning-text" *ngIf="config && config.isFirstNameMandatory">*</span>
+      </label>
+      <input pInputText type="text" formControlName="firstName" [disabled]="disabled" (input)="onChangeFirstName($event.target.value)" #firstName>
+    </div>
+    <div class="form-group">
+      <label class="text-primary">Middle</label>
+      <input pInputText type="text" formControlName="middleInitial" [disabled]="disabled" (input)="onChangeMiddleInitial($event.target.value)"
+        #middleInitial>
+    </div>
+    <div class="form-group">
+      <label class="text-primary">Last
+        <span class="warning-text" *ngIf="config && config.isLastNameMandatory">*</span>
+      </label>
+      <input type="text" formControlName="lastName" [disabled]="disabled" (input)="onChangeLastName($event.target.value)" #lastName>
+    </div>
+    <div class="form-group" *ngIf="config && config.isShowTitle">
+      <label>Title</label>
+      <input pInputText type="text" formControlName="title" [disabled]="disabled" (input)="onChangeTitle($event.target.value)" #title>
+    </div>
+    <button class="button-primary-small" *ngIf="!(config && config.isUpdateOnBlur)" [disabled]="complexNameForm.invalid" type="submit"
+      (click)="onDone(complexNameForm)">Done
+    </button>
+  </div>
+</form>
