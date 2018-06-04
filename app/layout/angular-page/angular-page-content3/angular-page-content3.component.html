@@ -1,0 +1,50 @@
+<div class="layout-angular-playground-page3">
+  <div class="angular-playground-description form-group">
+    <div class="col-xs-12">
+      This page is a
+      <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which interested
+      in, for me.
+    </div>
+    <div class="sub-topic">
+      <b>Act #2.1</b> Model driven / reactive forms
+      <form class="form-border" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off" novalidate>
+          <label class="text-primary">
+              <a href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content3">
+                <img [src]="githubLogoPath" width="16" height="16">
+              </a>Form Validation example
+            </label>
+            <br>
+        <div class="form-group">
+          <label for="complexNameFields" class="text-primary">Complex Name</label>
+          <app-complex-name id="complexNameFields" formControlName="complexName" [config]="complexNameConfig" 
+            [control]="exampleForm.get('complexName')" 
+            (onChange)="onChange($event)"
+            required>
+          </app-complex-name>
+          <p>Form Value {{ exampleForm.value | json }}</p>
+          <p>Form Status {{ exampleForm.status }}</p>
+          <p>FormControl Status {{ extractFormControl().status }}</p>
+          <!--p>Status firstName {{ exampleForm.get('firstName').status }}</p>
+          <p>Status lastName {{ exampleForm.get('lastName').status }}</p-->
+          <div class="text-danger" *ngIf="extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine)">  
+            <p *ngIf="extractFormControl().errors.firstNameRequired">First name required!</p>
+            <p *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</p>
+            <p *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
+            <p *ngIf="extractFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</p>
+            <p *ngIf="extractFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</p>
+            <p *ngIf="extractFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</p>
+            <!--p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p-->
+          </div>
+        </div>
+        <button class="btn btn-primary spacer" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
+        <button class="btn btn-primary" type="submit" >Submit</button>
+      </form>
+    </div>
+    <div class="sub-topic" *ngIf="submitted">
+        <div class="cols-xs-12">
+          <b>Form Data</b>
+          <p>Name: {{ form_data.complexName | json }} </p>
+        </div>
+      </div>
+  </div>
+</div>

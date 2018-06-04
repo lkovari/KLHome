@@ -1,0 +1,9 @@
+.complex-name-layout {
+    display: inline-block;
+    .warning-text {
+        small {
+            white-space: nowrap;
+        }
+        color: red;
+    }
+}
