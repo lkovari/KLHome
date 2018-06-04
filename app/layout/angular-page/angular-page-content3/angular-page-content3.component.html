@@ -6,34 +6,37 @@
       in, for me.
     </div>
     <div class="sub-topic">
-      <b>Act #2.1</b> Model driven / reactive forms exmaple with reactive embedded component
+      <b>Act #2.1</b> Model driven / reactive forms exmaple with reactive embedded component named 
+      <label class="text-primary">
+          <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
+            <img [src]="githubLogoPath" width="16" height="16">
+          </a>ComplexNameComponent selector is 'app-complex-name'
+        </label>
       <br>
       <span class="text-primary">The validation rules are the following</span> the
       <ul>
         <li>- the first name and last name are mandatory</li>
         <li>- the minimum length is {{ complexNameConfig.firstNameMinLength }}</li>
         <li>- the masimum length is {{ complexNameConfig.firstNameMaxLength }}</li>
-      </ul>      
-      <form class="form-border spacer-vertical" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off" novalidate>
-          <label class="text-primary">
-              <a href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content3">
-                <img [src]="githubLogoPath" width="16" height="16">
-              </a>Form Validation example
-            </label>
-            <br>
+      </ul>
+      <form class="form-border spacer-vertical" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off"
+        novalidate>
+        <label class="text-primary">
+          <a href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content3">
+            <img [src]="githubLogoPath" width="16" height="16">
+          </a>Form Validation example
+        </label>
+        <br>
         <div class="form-group">
           <label for="complexNameFields" class="text-primary">Complex Name</label>
-          <app-complex-name id="complexNameFields" formControlName="complexName" [config]="complexNameConfig" 
-            [control]="exampleForm.get('complexName')" 
-            (onChange)="onChange($event)"
-            required>
+          <app-complex-name id="complexNameFields" formControlName="complexName" [config]="complexNameConfig" (onChange)="onChange($event)">
           </app-complex-name>
           <p>Form Value {{ exampleForm.value | json }}</p>
           <p>Form Status {{ exampleForm.status }}</p>
           <p>FormControl Status {{ extractFormControl().status }}</p>
           <!--p>Status firstName {{ exampleForm.get('firstName').status }}</p>
           <p>Status lastName {{ exampleForm.get('lastName').status }}</p-->
-          <div class="text-danger" *ngIf="!complexNameConfig.isShowValidationMessagesInside && (extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine))">  
+          <div class="text-danger" *ngIf="!complexNameConfig.isShowValidationMessagesInside && (extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine))">
             <p *ngIf="extractFormControl().errors.firstNameRequired">First name required!</p>
             <p *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</p>
             <p *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
@@ -43,15 +46,16 @@
             <!--p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p-->
           </div>
         </div>
+        <button class="btn btn-primary spacer-horozontal" type="button" (click)="setValues(exampleForm)">Set Data</button>
         <button class="btn btn-primary spacer-horozontal" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
         <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isConfigUpdateOnBlur()">Submit</button>
       </form>
     </div>
     <div class="sub-topic" *ngIf="submitted">
-        <div class="cols-xs-12">
-          <b>Form Data</b>
-          <p>Name: {{ form_data.complexName | json }} </p>
-        </div>
+      <div class="cols-xs-12">
+        <b>Form Data</b>
+        <p>Name: {{ form_data.complexName | json }} </p>
       </div>
+    </div>
   </div>
 </div>

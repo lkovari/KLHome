@@ -7,10 +7,12 @@
       <input class="spacer-horizontal" type="text" formControlName="firstName" [disabled]="disabled" (input)="onChangeFirstName($event.target.value)"
         #firstName>
       <div *ngIf="config && config.isShowValidationMessagesInside">
-        <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().touched && extractFirstNameFormControl().invalid)">
-          <p *ngIf="extractFirstNameFormControl().errors.firstNameRequired">First name required!</p>
-          <p *ngIf="extractFirstNameFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
-          <p *ngIf="extractFirstNameFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</p>
+        <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().dirty && extractFirstNameFormControl().invalid)">
+          <p *ngIf="extractFirstNameFormControl().errors.required">First name required!</p>
+          <p *ngIf="extractFirstNameFormControl().errors.minlength">First name must be {{ extractFirstNameFormControl().errors.minlength.requiredLength }} 
+            characters long, the actual length is {{ extractFirstNameFormControl().errors.minlength.actualLength}} characters!</p>
+          <p *ngIf="extractFirstNameFormControl().errors.maxlength">First name must be {{ extractFirstNameFormControl().errors.maxlength.requiredLength }} 
+            characters long, the actual length is {{ extractFirstNameFormControl().errors.maxlength.actualLength}} characters!</p>
         </div>
       </div>
     </div>
@@ -26,10 +28,12 @@
       <input class="spacer-horizontal" type="text" formControlName="lastName" [disabled]="disabled" (input)="onChangeLastName($event.target.value)"
         #lastName>
         <div *ngIf="config && config.isShowValidationMessagesInside">
-          <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().touched && extractLastNameFormControl().invalid)">
-            <p *ngIf="extractLastNameFormControl().errors.lastNameRequired">Last name required!</p>
-            <p *ngIf="extractLastNameFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
-            <p *ngIf="extractLastNameFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</p>
+          <div class="text-danger" *ngIf="extractLastNameFormControl() && (extractLastNameFormControl().dirty && extractLastNameFormControl().invalid)">
+            <p *ngIf="extractLastNameFormControl().errors.required">Last name required!</p>
+            <p *ngIf="extractLastNameFormControl().errors.minlength">Last name must be {{ extractLastNameFormControl().errors.minlength.requiredLength }} 
+                characters long, the actual length is {{ extractLastNameFormControl().errors.minlength.actualLength}} characters!</p>
+              <p *ngIf="extractLastNameFormControl().errors.maxlength">Last name must be {{ extractLastNameFormControl().errors.maxlength.requiredLength }} 
+                characters long, the actual length is {{ extractLastNameFormControl().errors.maxlength.actualLength}} characters!</p>
           </div>
         </div>
       </div>

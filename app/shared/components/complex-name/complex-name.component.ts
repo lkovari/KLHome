@@ -58,7 +58,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     this._config = v;
   }
   @Input() disabled = false;
-  @Input() control: FormControl;
+  // @Input() control: FormControl;
   @Output() onChange = new EventEmitter<IComplexName>();
   @ViewChild('firstName') firstName: ElementRef;
   @ViewChild('middleInitial') middleInitial: ElementRef;
@@ -102,8 +102,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     }));
     */
 
-    // set the validators dinamically based on the config
+    // set the validators dinamically based on the config class
     if (this.config) {
+      this.firstNameValidators = [];
       if (this.config.isFirstNameMandatory) {
         this.firstNameValidators.push(Validators.required);
       }
@@ -116,6 +117,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       const firstNameFormControl = this.complexNameForm.get('firstName');
       firstNameFormControl.setValidators(this.firstNameValidators);
       firstNameFormControl.updateValueAndValidity();
+      this.lastNameValidators = [];
       if (this.config.isLastNameMandatory) {
         this.lastNameValidators.push(Validators.required);
       }
@@ -126,7 +128,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
         this.lastNameValidators.push(Validators.maxLength(this.config.lastNameMaxLength));
       }
       const lastNameFormControl = this.complexNameForm.get('lastName');
-      lastNameFormControl.setValidators([Validators.required]);
+      lastNameFormControl.setValidators(this.lastNameValidators);
       lastNameFormControl.updateValueAndValidity();
     } else {
       throw new Error('Configuration not defined!');

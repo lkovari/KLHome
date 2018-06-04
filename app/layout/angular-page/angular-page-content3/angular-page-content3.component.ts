@@ -53,12 +53,41 @@ export class AngularPageContent3Component implements OnInit {
   clearValues(form) {
     this.exampleForm.setValue(
       {
-        complexName: new ComplexName()
+        complexName: this.getEmptySampleModel()
       }
     );
     Object.keys(this.exampleForm.controls).forEach(key => {
       this.exampleForm.controls[key].markAsPristine();
       this.exampleForm.controls[key].markAsUntouched();
+    });
+  }
+
+  private getSampleModel(): IComplexName {
+    const complexNameModel = new ComplexName();
+    complexNameModel.first = 'Jane';
+    complexNameModel.middle = 'M';
+    complexNameModel.last = 'Doe';
+    complexNameModel.title = ''
+    return complexNameModel;
+  }
+
+  private getEmptySampleModel(): IComplexName {
+    const complexNameModel = new ComplexName();
+    complexNameModel.first = '';
+    complexNameModel.middle = '';
+    complexNameModel.last = '';
+    complexNameModel.title = ''
+    return complexNameModel;
+  }
+
+  setValues(exampleForm) {
+    this.exampleForm.setValue(
+      {
+        complexName: this.getSampleModel()
+      });
+    Object.keys(this.exampleForm.controls).forEach(key => {
+      this.exampleForm.controls[key].markAsDirty();
+      this.exampleForm.controls[key].markAsTouched();
     });
   }
 
