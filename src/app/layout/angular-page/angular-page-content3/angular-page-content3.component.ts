@@ -4,6 +4,7 @@ import { IComplexNameConfig } from '../../../shared/components/complex-name/comp
 import { FormBuilder, FormGroup, NgControl, Validators, FormControl } from '@angular/forms';
 import { ComplexName } from '../../../shared/components/complex-name/complex-name.model';
 import { Jsonp } from '@angular/http';
+import { ComplexNameConfig } from '../../../shared/components/complex-name/complex-name-config.model';
 
 @Component({
   selector: 'app-angular-page-content3',
@@ -28,21 +29,41 @@ export class AngularPageContent3Component implements OnInit {
     */
   }
 
+  private setupConfig() {
+    this.complexNameConfig = new ComplexNameConfig();
+    this.complexNameConfig.firstNameMaxLength = 50;
+    this.complexNameConfig.firstNameMinLength = 3;
+    this.complexNameConfig.isFirstNameMandatory = true;
+    this.complexNameConfig.lastNameMaxLength = 50;
+    this.complexNameConfig.lastNameMinLength = 3;
+    this.complexNameConfig.isLastNameMandatory = true;
+    this.complexNameConfig.isShowTitle = false;
+    this.complexNameConfig.isShowValidationMessagesInside = true;
+  }
+
   isConfigUpdateOnBlur(): boolean {
     return this.complexNameConfig && this.complexNameConfig.isUpdateOnBlur;
   }
+
   private setupModel() {
     this.complexNameModel = new ComplexName();
   }
 
   ngOnInit() {
     this.setupModel();
-    this.complexNameConfig = { 'firstNameMinLength': 3, 'firstNameMaxLength': 50, 'isFirstNameMandatory': true, 'lastNameMinLength': 3,
-      'lastNameMaxLength': 50, 'isLastNameMandatory': true, 'isShowTitle': false, 'isUpdateOnBlur': false,
-      'isShowValidationMessagesInside': false };
+    this.setupConfig();
     this.exampleForm = this.fb.group({
-      complexName: [this.complexNameModel]
+      complexName: [this.complexNameModel],
+      /*
+      complexName: this.fb.group({
+        firstName: '',
+        middle: '',
+        lastName: ''
+      }),
+      */
+      rbInsideOutside: [this.complexNameConfig.isShowValidationMessagesInside]
     });
+    this.exampleForm.get('rbInsideOutside').setValue(!this.complexNameConfig.isShowValidationMessagesInside);
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
@@ -53,7 +74,8 @@ export class AngularPageContent3Component implements OnInit {
   clearValues(form) {
     this.exampleForm.setValue(
       {
-        complexName: this.getEmptySampleModel()
+        complexName: this.getEmptySampleModel(),
+        rbInsideOutside: this.complexNameConfig.isShowValidationMessagesInside
       }
     );
     Object.keys(this.exampleForm.controls).forEach(key => {
@@ -83,7 +105,8 @@ export class AngularPageContent3Component implements OnInit {
   setValues(exampleForm) {
     this.exampleForm.setValue(
       {
-        complexName: this.getSampleModel()
+        complexName: this.getSampleModel(),
+        rbInsideOutside: this.complexNameConfig.isShowValidationMessagesInside
       });
     Object.keys(this.exampleForm.controls).forEach(key => {
       this.exampleForm.controls[key].markAsDirty();

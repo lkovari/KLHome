@@ -4,7 +4,7 @@
       <label class="text-primary">First
         <span class="warning-text" *ngIf="config && config.isFirstNameMandatory">*</span>
       </label>
-      <input class="spacer-horizontal" type="text" formControlName="firstName" [disabled]="disabled" (input)="onChangeFirstName($event.target.value)"
+      <input class="spacer-horizontal" type="text" formControlName="firstName" (input)="onChangeFirstName($event.target.value)"
         #firstName>
       <div *ngIf="config && config.isShowValidationMessagesInside">
         <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().dirty && extractFirstNameFormControl().invalid)">
@@ -18,14 +18,14 @@
     </div>
     <div class="form-group">
       <label class="text-primary">Middle</label>
-      <input pInputText type="text" formControlName="middleInitial" [disabled]="disabled" (input)="onChangeMiddleInitial($event.target.value)"
+      <input pInputText type="text" formControlName="middleInitial" (input)="onChangeMiddleInitial($event.target.value)"
         #middleInitial>
     </div>
     <div class="form-group">
       <label class="text-primary">Last
         <span class="warning-text" *ngIf="config && config.isLastNameMandatory">*</span>
       </label>
-      <input class="spacer-horizontal" type="text" formControlName="lastName" [disabled]="disabled" (input)="onChangeLastName($event.target.value)"
+      <input class="spacer-horizontal" type="text" formControlName="lastName" (input)="onChangeLastName($event.target.value)"
         #lastName>
         <div *ngIf="config && config.isShowValidationMessagesInside">
           <div class="text-danger" *ngIf="extractLastNameFormControl() && (extractLastNameFormControl().dirty && extractLastNameFormControl().invalid)">

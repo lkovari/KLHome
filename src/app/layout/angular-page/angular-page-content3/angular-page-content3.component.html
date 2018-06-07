@@ -46,9 +46,23 @@
             <!--p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p-->
           </div>
         </div>
-        <button class="btn btn-primary spacer-horozontal" type="button" (click)="setValues(exampleForm)">Set Data</button>
-        <button class="btn btn-primary spacer-horozontal" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="setValues(exampleForm)">Set Data</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
         <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isConfigUpdateOnBlur()">Submit</button>
+        <div class="spacer-vertical">
+        <label class="spacer-horozontal-right">Validation messages</label>
+        <label class="form-check-inline spacer-horozontal-right">Outside
+            <input class="form-check-input  spacer-horozontal-left spacer-horozontal-right" type="radio" formControlName="rbInsideOutside" [value]="false" 
+              [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
+        </label>
+        <label class="form-check-inline spacer-horozontal-right">Inside
+            <input class="form-check-input spacer-horozontal-left" type="radio" formControlName="rbInsideOutside" [value]="true" 
+              [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
+        </label>
+        <label>of the component <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
+              <img [src]="githubLogoPath" width="16" height="16">
+            </a>ComplexName</label>
+        </div>
       </form>
     </div>
     <div class="sub-topic" *ngIf="submitted">

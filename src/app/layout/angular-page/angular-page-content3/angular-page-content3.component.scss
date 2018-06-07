@@ -12,8 +12,11 @@
     input.ng-invalid.ng-touched {
         border: 1px solid red;
     }
-    .spacer-horozontal {
+    .spacer-horozontal-right {
         margin-right: 0.5rem;
+    }
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
     }
     .spacer-vertical {
         margin-top: 0.5rem;
