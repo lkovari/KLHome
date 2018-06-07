@@ -47,10 +47,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   @Input()
   get config(): IComplexNameConfig {
     if (!this._config) {
-      this._config = {
-        'firstNameMinLength': 3, 'firstNameMaxLength': 50, 'isFirstNameMandatory': true, 'lastNameMinLength': 3,
-        'lastNameMaxLength': 50, 'isLastNameMandatory': true, 'isShowTitle': false, 'isUpdateOnBlur': false,
-        'isShowValidationMessagesInside': false };
+      this.setupConfig();
     }
     return this._config;
   }
@@ -72,12 +69,31 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
   /*
   constructor(parent: FormGroupDirective) {
     this.complexNameForm = parent.form;
   }
   */
+  private setupConfig() {
+    this._config = new ComplexNameConfig();
+    this._config.firstNameMaxLength = 50;
+    this._config.firstNameMinLength = 3;
+    this._config.isFirstNameMandatory = true;
+    this._config.lastNameMaxLength = 50;
+    this._config.lastNameMinLength = 3;
+    this._config.isLastNameMandatory = true;
+    this._config.isShowTitle = false;
+    this._config.isShowValidationMessagesInside = true;
+  }
+
+  get configuration(): IComplexNameConfig {
+    if (!this._config) {
+      // this.setupConfig();
+    }
+    return this._config;
+  }
+
   ngOnInit() {
     let updateOnObj = null;
     if (this._config) {
@@ -89,9 +105,10 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     }
 
     this.complexNameForm = this.fb.group({
-      firstName: [''],
-      middleInitial: ['', [Validators.maxLength(3)]],
-      lastName: ['']
+      firstName: [{value: '', disabled: this.isDisabled }],
+      middleInitial: [{value: '', disabled: this.isDisabled }, [Validators.maxLength(3)]],
+      lastName: [{value: '', disabled: this.isDisabled }]
+      // title not created
     }, updateOnObj);
 
     /*
@@ -174,7 +191,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   }
 
   isConfigUpdateOnBlur(): boolean {
-      return this._config && this._config.isUpdateOnBlur;
+    return this._config && this._config.isUpdateOnBlur;
   }
 
   onDone(form: FormGroup) {
