@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, NgControl, Validators, FormControl } from '@ang
 import { ComplexName } from '../../../shared/components/complex-name/complex-name.model';
 import { Jsonp } from '@angular/http';
 import { ComplexNameConfig } from '../../../shared/components/complex-name/complex-name-config.model';
+import { ValidationPlaceKind } from '../../../shared/components/complex-name/validation-place-kind';
 
 @Component({
   selector: 'app-angular-page-content3',
@@ -18,16 +19,14 @@ export class AngularPageContent3Component implements OnInit {
   complexNameConfig: IComplexNameConfig;
   submitted = false;
   form_data = {
-    complexName: new ComplexName()
+    complexName: new ComplexName(),
+    validationPlaceKind: ValidationPlaceKind.Inside
   };
 
-  constructor(private fb: FormBuilder /*, @Self() public controlDir: NgControl*/) {
-    /*
-    const control = this.controlDir.control;
-    control.setValidators(Validators.required);
-    control.updateValueAndValidity();
-    */
-  }
+  validationPlaceKindInside = ValidationPlaceKind.Inside;
+  validationPlaceKindOutside = ValidationPlaceKind.Outside;
+
+  constructor(private fb: FormBuilder) { }
 
   private setupConfig() {
     this.complexNameConfig = new ComplexNameConfig();
@@ -38,7 +37,7 @@ export class AngularPageContent3Component implements OnInit {
     this.complexNameConfig.lastNameMinLength = 3;
     this.complexNameConfig.isLastNameMandatory = true;
     this.complexNameConfig.isShowTitle = false;
-    this.complexNameConfig.isShowValidationMessagesInside = true;
+    this.complexNameConfig.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
   isConfigUpdateOnBlur(): boolean {
@@ -61,9 +60,14 @@ export class AngularPageContent3Component implements OnInit {
         lastName: ''
       }),
       */
-      rbInsideOutside: [this.complexNameConfig.isShowValidationMessagesInside, Validators.required]
+      validationPlaceKind: [this.complexNameConfig.validationPlaceKind, Validators.required]
     });
-    this.exampleForm.get('rbInsideOutside').setValue(!this.complexNameConfig.isShowValidationMessagesInside);
+    // changed value into config
+    this.exampleForm.get('validationPlaceKind').valueChanges.subscribe((value: ValidationPlaceKind) => {
+      console.log('ValidationPlaceKind before calue changes ' + this.complexNameConfig.validationPlaceKind);
+      this.complexNameConfig.validationPlaceKind = value;
+      console.log('ValidationPlaceKind after value changes ' + this.complexNameConfig.validationPlaceKind);
+    });
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
@@ -71,17 +75,20 @@ export class AngularPageContent3Component implements OnInit {
     console.log(JSON.stringify(model));
   }
 
-  clearValues(form) {
-    this.exampleForm.setValue(
-      {
-        complexName: this.getEmptySampleModel(),
-        rbInsideOutside: this.complexNameConfig.isShowValidationMessagesInside
-      }
-    );
-    Object.keys(this.exampleForm.controls).forEach(key => {
-      this.exampleForm.controls[key].markAsPristine();
-      this.exampleForm.controls[key].markAsUntouched();
-    });
+  isValidationPlaceInsideComponent(): boolean {
+    let isInside = true;
+    if (this.complexNameConfig) {
+      isInside = this.complexNameConfig.validationPlaceKind === ValidationPlaceKind.Inside;
+    }
+    return isInside;
+  }
+
+  isValidationPlaceOutsideComponent(): boolean {
+    let isOutside = false;
+    if (this.complexNameConfig) {
+      isOutside = this.complexNameConfig.validationPlaceKind === ValidationPlaceKind.Outside;
+    }
+    return isOutside;
   }
 
   private getSampleModel(): IComplexName {
@@ -102,11 +109,24 @@ export class AngularPageContent3Component implements OnInit {
     return complexNameModel;
   }
 
+  clearValues(form) {
+    this.exampleForm.setValue(
+      {
+        complexName: this.getEmptySampleModel(),
+        validationPlaceKind: ValidationPlaceKind.Inside
+      }
+    );
+    Object.keys(this.exampleForm.controls).forEach(key => {
+      this.exampleForm.controls[key].markAsPristine();
+      this.exampleForm.controls[key].markAsUntouched();
+    });
+  }
+
   setValues(exampleForm) {
     this.exampleForm.setValue(
       {
         complexName: this.getSampleModel(),
-        rbInsideOutside: this.complexNameConfig.isShowValidationMessagesInside
+        validationPlaceKind: this.complexNameConfig.validationPlaceKind
       });
     Object.keys(this.exampleForm.controls).forEach(key => {
       this.exampleForm.controls[key].markAsDirty();
@@ -121,9 +141,7 @@ export class AngularPageContent3Component implements OnInit {
 
   onSubmit(form: FormGroup) {
     this.submitted = true;
-    this.form_data.complexName = this.exampleForm.value;
-    // reset the form same as when reloaded
-    console.log(this.exampleForm);
-    // this.exampleForm.reset();
+    this.form_data = form.value;
+    console.log(form);
   }
 }

@@ -1,4 +1,5 @@
 import { IComplexNameConfig } from './complex-name-config.interface';
+import { ValidationPlaceKind } from './validation-place-kind';
 
 export class ComplexNameConfig implements IComplexNameConfig {
     firstNameMinLength?: number;
@@ -9,5 +10,5 @@ export class ComplexNameConfig implements IComplexNameConfig {
     isLastNameMandatory: boolean;
     isShowTitle: boolean;
     isUpdateOnBlur: boolean;
-    isShowValidationMessagesInside: boolean;
+    validationPlaceKind: ValidationPlaceKind;
 }

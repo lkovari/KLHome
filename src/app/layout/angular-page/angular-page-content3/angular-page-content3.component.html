@@ -43,7 +43,7 @@
           <p>FormControl Status {{ extractFormControl().status }}</p>
           <!--p>Status firstName {{ exampleForm.get('firstName').status }}</p>
           <p>Status lastName {{ exampleForm.get('lastName').status }}</p-->
-          <div class="text-danger" *ngIf="!complexNameConfig.isShowValidationMessagesInside && (extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine))">
+          <div class="text-danger" *ngIf="isValidationPlaceOutsideComponent() && (extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine))">
             <div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div>
             <div *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</div>
             <div *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</div>
@@ -58,13 +58,13 @@
         <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isConfigUpdateOnBlur()">Submit</button>
         <div class="spacer-vertical">
         <label class="spacer-horozontal-right">Validation messages</label>
-        <label class="form-check-inline spacer-horozontal-right">Outside
-            <input class="form-check-input  spacer-horozontal-left spacer-horozontal-right" type="radio" formControlName="rbInsideOutside" 
-            [value]="false" [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
+        <label class="form-check-inline spacer-horozontal-right">
+            <input class="form-check-input  spacer-horozontal-left spacer-horozontal-right" type="radio" formControlName="validationPlaceKind" 
+            [checked]="false" [value]="validationPlaceKindOutside">Outside
         </label>
-        <label class="form-check-inline spacer-horozontal-right">Inside
-            <input class="form-check-input spacer-horozontal-left" type="radio" formControlName="rbInsideOutside"
-            [value]="true" [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
+        <label class="form-check-inline spacer-horozontal-right">
+            <input class="form-check-input spacer-horozontal-left" type="radio" formControlName="validationPlaceKind"
+            [checked]="true" [value]="validationPlaceKindInside">Inside
         </label>
         <label>of the component <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
               <img [src]="githubLogoPath" width="16" height="16">

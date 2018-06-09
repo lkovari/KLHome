@@ -6,7 +6,7 @@
       </label>
       <input class="spacer-horizontal" type="text" formControlName="firstName" (input)="onChangeFirstName($event.target.value)"
         #firstName>
-      <div *ngIf="config && config.isShowValidationMessagesInside">
+      <div *ngIf="isValidationPlaceInsideComponent()">
         <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().dirty && extractFirstNameFormControl().invalid)">
           <p *ngIf="extractFirstNameFormControl().errors.required">First name required!</p>
           <p *ngIf="extractFirstNameFormControl().errors.minlength">First name must be {{ extractFirstNameFormControl().errors.minlength.requiredLength }} 
@@ -27,7 +27,7 @@
       </label>
       <input class="spacer-horizontal" type="text" formControlName="lastName" (input)="onChangeLastName($event.target.value)"
         #lastName>
-        <div *ngIf="config && config.isShowValidationMessagesInside">
+        <div *ngIf="isValidationPlaceInsideComponent()">
           <div class="text-danger" *ngIf="extractLastNameFormControl() && (extractLastNameFormControl().dirty && extractLastNameFormControl().invalid)">
             <p *ngIf="extractLastNameFormControl().errors.required">Last name required!</p>
             <p *ngIf="extractLastNameFormControl().errors.minlength">Last name must be {{ extractLastNameFormControl().errors.minlength.requiredLength }} 

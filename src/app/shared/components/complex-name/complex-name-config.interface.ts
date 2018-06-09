@@ -1,3 +1,5 @@
+import { ValidationPlaceKind } from './validation-place-kind';
+
 export interface IComplexNameConfig {
     firstNameMinLength?: number;
     firstNameMaxLength?: number;
@@ -7,5 +9,5 @@ export interface IComplexNameConfig {
     isLastNameMandatory: boolean;
     isShowTitle: boolean;
     isUpdateOnBlur: boolean;
-    isShowValidationMessagesInside: boolean;
+    validationPlaceKind: ValidationPlaceKind;
 }

@@ -8,6 +8,7 @@ import { IComplexNameConfig } from './complex-name-config.interface';
 import { ComplexNameConfig } from './complex-name-config.model';
 import { throwError } from 'rxjs';
 import { ComplexName } from './complex-name.model';
+import { ValidationPlaceKind } from './validation-place-kind';
 
 const COMPLEX_NAME_CONTROL_VALUE_ACCESSOR: ExistingProvider = {
   provide: NG_VALUE_ACCESSOR,
@@ -47,7 +48,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   @Input()
   get config(): IComplexNameConfig {
     if (!this._config) {
-      this.setupConfig();
+      // this.setupConfig();
     }
     return this._config;
   }
@@ -70,11 +71,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   onModelTouched: Function = () => { };
 
   constructor(private fb: FormBuilder) { }
-  /*
-  constructor(parent: FormGroupDirective) {
-    this.complexNameForm = parent.form;
-  }
-  */
+
   private setupConfig() {
     this._config = new ComplexNameConfig();
     this._config.firstNameMaxLength = 50;
@@ -84,14 +81,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     this._config.lastNameMinLength = 3;
     this._config.isLastNameMandatory = true;
     this._config.isShowTitle = false;
-    this._config.isShowValidationMessagesInside = true;
-  }
-
-  get configuration(): IComplexNameConfig {
-    if (!this._config) {
-      // this.setupConfig();
-    }
-    return this._config;
+    this._config.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
   ngOnInit() {
@@ -103,22 +93,13 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
         updateOnObj = { updateOn: 'submit' };
       }
     }
-
+    // create reactive form with FormBuilder
     this.complexNameForm = this.fb.group({
       firstName: [{value: '', disabled: this.isDisabled }],
       middleInitial: [{value: '', disabled: this.isDisabled }, [Validators.maxLength(3)]],
       lastName: [{value: '', disabled: this.isDisabled }]
       // title not created
     }, updateOnObj);
-
-    /*
-    this.complexNameForm.addControl('complexName', new FormGroup({
-        first: new FormControl(),
-        middleInitial: new FormControl(),
-        last: new FormControl()
-    }));
-    */
-
     // set the validators dinamically based on the config class
     if (this.config) {
       this.firstNameValidators = [];
@@ -157,6 +138,14 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     this.onModelChange(this.nameModel);
     this.onModelTouched();
     this.onChange.emit(this.nameModel);
+  }
+
+  isValidationPlaceInsideComponent(): boolean {
+    let isInside = true;
+    if (this._config) {
+      isInside = this._config.validationPlaceKind === ValidationPlaceKind.Inside;
+    }
+    return isInside;
   }
 
   extractFirstNameFormControl(): FormControl {
