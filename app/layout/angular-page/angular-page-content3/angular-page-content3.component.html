@@ -6,11 +6,11 @@
       in, for me.
     </div>
     <div class="sub-topic">
-      <b>Act #2.1</b> Model driven / reactive forms exmaple with reactive embedded component named 
+      <b>Act #2.1</b> Model driven / reactive forms exmaple with embedded reactive component, named 
       <label class="text-primary">
           <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
             <img [src]="githubLogoPath" width="16" height="16">
-          </a>ComplexNameComponent selector is 'app-complex-name'
+          </a><em>ComplexNameComponent</em>
         </label>
       <br>
       <span class="text-primary">The validation rules are the following</span> the
@@ -19,6 +19,13 @@
         <li>- the minimum length is {{ complexNameConfig.firstNameMinLength }}</li>
         <li>- the masimum length is {{ complexNameConfig.firstNameMaxLength }}</li>
       </ul>
+      <div>
+        <label>The configuration of ComplexNameComponent is based on the 
+          <a href="https://github.com/lkovari/KLHome/blob/master/src/app/shared/components/complex-name/complex-name-config.interface.ts">
+          <img [src]="githubLogoPath" width="16" height="16">
+          </a>IComplexNameConfig
+        </label>
+      </div>
       <form class="form-border spacer-vertical" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off"
         novalidate>
         <label class="text-primary">
@@ -28,7 +35,7 @@
         </label>
         <br>
         <div class="form-group">
-          <label for="complexNameFields" class="text-primary">Complex Name</label>
+          <label for="complexNameFields" class="text-primary"><em>ComplexNameComponent</em> selector is <em>'app-complex-name'</em></label>
           <app-complex-name id="complexNameFields" formControlName="complexName" [config]="complexNameConfig" (onChange)="onChange($event)">
           </app-complex-name>
           <p>Form Value {{ exampleForm.value | json }}</p>
@@ -37,12 +44,12 @@
           <!--p>Status firstName {{ exampleForm.get('firstName').status }}</p>
           <p>Status lastName {{ exampleForm.get('lastName').status }}</p-->
           <div class="text-danger" *ngIf="!complexNameConfig.isShowValidationMessagesInside && (extractFormControl() && (extractFormControl().invalid && !extractFormControl().pristine))">
-            <p *ngIf="extractFormControl().errors.firstNameRequired">First name required!</p>
-            <p *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</p>
-            <p *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</p>
-            <p *ngIf="extractFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</p>
-            <p *ngIf="extractFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</p>
-            <p *ngIf="extractFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</p>
+            <div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div>
+            <div *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</div>
+            <div *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</div>
+            <div *ngIf="extractFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</div>
+            <div *ngIf="extractFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</div>
+            <div *ngIf="extractFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</div>
             <!--p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p-->
           </div>
         </div>
@@ -52,12 +59,12 @@
         <div class="spacer-vertical">
         <label class="spacer-horozontal-right">Validation messages</label>
         <label class="form-check-inline spacer-horozontal-right">Outside
-            <input class="form-check-input  spacer-horozontal-left spacer-horozontal-right" type="radio" formControlName="rbInsideOutside" [value]="false" 
-              [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
+            <input class="form-check-input  spacer-horozontal-left spacer-horozontal-right" type="radio" formControlName="rbInsideOutside" 
+            [value]="false" [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
         </label>
         <label class="form-check-inline spacer-horozontal-right">Inside
-            <input class="form-check-input spacer-horozontal-left" type="radio" formControlName="rbInsideOutside" [value]="true" 
-              [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
+            <input class="form-check-input spacer-horozontal-left" type="radio" formControlName="rbInsideOutside"
+            [value]="true" [(ngModel)]="complexNameConfig.isShowValidationMessagesInside">
         </label>
         <label>of the component <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
               <img [src]="githubLogoPath" width="16" height="16">
