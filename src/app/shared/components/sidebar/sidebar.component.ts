@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/07/2018 11:01 PM');
-  lastUpdateTooltip = 'Added radio buttons for inside or outside validation messages';
+  lastUpdate = new Date('06/09/2018 9:01 AM');
+  lastUpdateTooltip = 'Playground #2 fixes';
 
   eventCalled() {
     this.isActive = !this.isActive;

@@ -31,10 +31,10 @@ export class AngularPageContent3Component implements OnInit {
 
   private setupConfig() {
     this.complexNameConfig = new ComplexNameConfig();
-    this.complexNameConfig.firstNameMaxLength = 50;
+    this.complexNameConfig.firstNameMaxLength = 25;
     this.complexNameConfig.firstNameMinLength = 3;
     this.complexNameConfig.isFirstNameMandatory = true;
-    this.complexNameConfig.lastNameMaxLength = 50;
+    this.complexNameConfig.lastNameMaxLength = 25;
     this.complexNameConfig.lastNameMinLength = 3;
     this.complexNameConfig.isLastNameMandatory = true;
     this.complexNameConfig.isShowTitle = false;
@@ -61,7 +61,7 @@ export class AngularPageContent3Component implements OnInit {
         lastName: ''
       }),
       */
-      rbInsideOutside: [this.complexNameConfig.isShowValidationMessagesInside]
+      rbInsideOutside: [this.complexNameConfig.isShowValidationMessagesInside, Validators.required]
     });
     this.exampleForm.get('rbInsideOutside').setValue(!this.complexNameConfig.isShowValidationMessagesInside);
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';

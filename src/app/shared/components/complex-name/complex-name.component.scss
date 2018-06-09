@@ -1,5 +1,8 @@
 .complex-name-layout {
-    display: inline-block;
+    display: grid;
+    width: 20rem;
+    border: solid rgb(126, 235, 202) 1px;
+    padding: 0.5rem;
     .form-group {
         display: grid;
     }
