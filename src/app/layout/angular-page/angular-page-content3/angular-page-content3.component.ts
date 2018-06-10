@@ -36,7 +36,6 @@ export class AngularPageContent3Component implements OnInit {
     this.complexNameConfig.lastNameMaxLength = 25;
     this.complexNameConfig.lastNameMinLength = 3;
     this.complexNameConfig.isLastNameMandatory = true;
-    this.complexNameConfig.isShowTitle = false;
     this.complexNameConfig.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
@@ -64,9 +63,7 @@ export class AngularPageContent3Component implements OnInit {
     });
     // changed value into config
     this.exampleForm.get('validationPlaceKind').valueChanges.subscribe((value: ValidationPlaceKind) => {
-      console.log('ValidationPlaceKind before calue changes ' + this.complexNameConfig.validationPlaceKind);
       this.complexNameConfig.validationPlaceKind = value;
-      console.log('ValidationPlaceKind after value changes ' + this.complexNameConfig.validationPlaceKind);
     });
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
@@ -96,7 +93,6 @@ export class AngularPageContent3Component implements OnInit {
     complexNameModel.first = 'Jane';
     complexNameModel.middle = 'M';
     complexNameModel.last = 'Doe';
-    complexNameModel.title = ''
     return complexNameModel;
   }
 
@@ -105,7 +101,6 @@ export class AngularPageContent3Component implements OnInit {
     complexNameModel.first = '';
     complexNameModel.middle = '';
     complexNameModel.last = '';
-    complexNameModel.title = ''
     return complexNameModel;
   }
 
@@ -119,7 +114,10 @@ export class AngularPageContent3Component implements OnInit {
     Object.keys(this.exampleForm.controls).forEach(key => {
       this.exampleForm.controls[key].markAsPristine();
       this.exampleForm.controls[key].markAsUntouched();
+      this.exampleForm.controls[key].setErrors(null);
     });
+    this.exampleForm.get('complexName').setErrors({firstNameRquired: {invalid: true}, lastNameRequired: {invalid: true}});
+    this.exampleForm.setErrors({invalid: true});
   }
 
   setValues(exampleForm) {

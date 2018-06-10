@@ -7,12 +7,14 @@
       <input class="spacer-horizontal" type="text" formControlName="firstName" (input)="onChangeFirstName($event.target.value)"
         #firstName>
       <div *ngIf="isValidationPlaceInsideComponent()">
-        <div class="text-danger" *ngIf="extractFirstNameFormControl() && (extractFirstNameFormControl().dirty && extractFirstNameFormControl().invalid)">
-          <p *ngIf="extractFirstNameFormControl().errors.required">First name required!</p>
-          <p *ngIf="extractFirstNameFormControl().errors.minlength">First name must be {{ extractFirstNameFormControl().errors.minlength.requiredLength }} 
-            characters long, the actual length is {{ extractFirstNameFormControl().errors.minlength.actualLength}} characters!</p>
-          <p *ngIf="extractFirstNameFormControl().errors.maxlength">First name must be {{ extractFirstNameFormControl().errors.maxlength.requiredLength }} 
-            characters long, the actual length is {{ extractFirstNameFormControl().errors.maxlength.actualLength}} characters!</p>
+        <div class="text-danger" 
+          *ngIf="(extractFormControl('firstName').touched && extractFormControl('firstName').invalid) || 
+          (extractFormControl('firstName').dirty && extractFormControl('firstName').invalid)">
+          <p *ngIf="extractFormControl('firstName').errors.required">First name required!</p>
+          <p *ngIf="extractFormControl('firstName').errors.minlength">First name must be {{ extractFormControl('firstName').errors.minlength.requiredLength }} 
+            characters long, the actual length is {{ extractFormControl('firstName').errors.minlength.actualLength}} characters!</p>
+          <p *ngIf="extractFormControl('firstName').errors.maxlength">First name must be {{ extractFormControl('firstName').errors.maxlength.requiredLength }} 
+            characters long, the actual length is {{ extractFormControl('firstName').errors.maxlength.actualLength}} characters!</p>
         </div>
       </div>
     </div>
@@ -28,20 +30,17 @@
       <input class="spacer-horizontal" type="text" formControlName="lastName" (input)="onChangeLastName($event.target.value)"
         #lastName>
         <div *ngIf="isValidationPlaceInsideComponent()">
-          <div class="text-danger" *ngIf="extractLastNameFormControl() && (extractLastNameFormControl().dirty && extractLastNameFormControl().invalid)">
-            <p *ngIf="extractLastNameFormControl().errors.required">Last name required!</p>
-            <p *ngIf="extractLastNameFormControl().errors.minlength">Last name must be {{ extractLastNameFormControl().errors.minlength.requiredLength }} 
-                characters long, the actual length is {{ extractLastNameFormControl().errors.minlength.actualLength}} characters!</p>
-              <p *ngIf="extractLastNameFormControl().errors.maxlength">Last name must be {{ extractLastNameFormControl().errors.maxlength.requiredLength }} 
-                characters long, the actual length is {{ extractLastNameFormControl().errors.maxlength.actualLength}} characters!</p>
+          <div class="text-danger" 
+          *ngIf="(extractFormControl('lastName').touched && extractFormControl('lastName').invalid) || 
+          (extractFormControl('lastName').dirty && extractFormControl('lastName').invalid)">
+            <p *ngIf="extractFormControl('lastName').errors.required">Last name required!</p>
+            <p *ngIf="extractFormControl('lastName').errors.minlength">Last name must be {{ extractFormControl('lastName').errors.minlength.requiredLength }} 
+                characters long, the actual length is {{ extractFormControl('lastName').errors.minlength.actualLength}} characters!</p>
+              <p *ngIf="extractFormControl('lastName').errors.maxlength">Last name must be {{ extractFormControl('lastName').errors.maxlength.requiredLength }} 
+                characters long, the actual length is {{ extractFormControl('lastName').errors.maxlength.actualLength}} characters!</p>
           </div>
         </div>
       </div>
-    <div class="form-group" *ngIf="config && config.isShowTitle">
-      <label>Title</label>
-      <input class="spacer-horizontal" type="text" formControlName="title" [disabled]="disabled" (input)="onChangeTitle($event.target.value)"
-        #title>
-    </div>
     <button class="button-primary-small" *ngIf="isConfigUpdateOnBlur()" [disabled]="complexNameForm.invalid" type="submit" (click)="onDone(complexNameForm)">Done
     </button>
   </div>
