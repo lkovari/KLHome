@@ -80,7 +80,6 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     this._config.lastNameMaxLength = 50;
     this._config.lastNameMinLength = 3;
     this._config.isLastNameMandatory = true;
-    this._config.isShowTitle = false;
     this._config.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
@@ -148,15 +147,11 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     return isInside;
   }
 
-  extractFirstNameFormControl(): FormControl {
-    const fc = this.complexNameForm.get('firstName');
+  extractFormControl(controlName: string): FormControl {
+    const fc = this.complexNameForm.get(controlName);
     return <FormControl>fc;
   }
 
-  extractLastNameFormControl(): FormControl {
-    const fc = this.complexNameForm.get('lastName');
-    return <FormControl>fc;
-  }
 
   onChangeMiddleInitial(value: string) {
     this.nameModel.middle = value;
@@ -173,7 +168,6 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   }
 
   onChangeTitle(value: string) {
-    this.nameModel.title = value;
     this.onModelChange(this.nameModel);
     this.onModelTouched();
     this.onChange.emit(this.nameModel);
@@ -202,19 +196,12 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
         this.middleInitial.nativeElement.value = middleInitialValue;
         const lastNameValue = (<ComplexName>obj).last;
         this.lastName.nativeElement.value = lastNameValue;
-        const titleValue = (<ComplexName>obj).title;
-        if (this._config.isShowTitle) {
-          this.title.nativeElement.value = titleValue;
-        }
       }
     } else {
       this._nameModel = new ComplexName();
       this.firstName.nativeElement.value = this._nameModel.first;
       this.middleInitial.nativeElement.value = this._nameModel.middle;
       this.lastName.nativeElement.value = this._nameModel.last;
-      if (this._config.isShowTitle) {
-        this.title.nativeElement.value = this._nameModel.title;
-      }
     }
   }
 

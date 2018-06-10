@@ -7,7 +7,6 @@ export interface IComplexNameConfig {
     lastNameMinLength?: number;
     lastNameMaxLength?: number;
     isLastNameMandatory: boolean;
-    isShowTitle: boolean;
     isUpdateOnBlur: boolean;
     validationPlaceKind: ValidationPlaceKind;
 }
