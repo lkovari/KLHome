@@ -133,7 +133,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   }
 
   onChangeFirstName(value: string) {
-    this.nameModel.first = value;
+    this.nameModel.firstName = value;
     this.onModelChange(this.nameModel);
     this.onModelTouched();
     this.onChange.emit(this.nameModel);
@@ -154,14 +154,14 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
 
 
   onChangeMiddleInitial(value: string) {
-    this.nameModel.middle = value;
+    this.nameModel.middleInitial = value;
     this.onModelChange(this.nameModel);
     this.onModelTouched();
     this.onChange.emit(this.nameModel);
   }
 
   onChangeLastName(value: string) {
-    this.nameModel.last = value;
+    this.nameModel.lastName = value;
     this.onModelChange(this.nameModel);
     this.onModelTouched();
     this.onChange.emit(this.nameModel);
@@ -190,18 +190,18 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   writeValue(obj: any): void {
     if (obj) {
       if (obj instanceof ComplexName) {
-        const firstNameValue = (<ComplexName>obj).first;
+        const firstNameValue = (<ComplexName>obj).firstName;
         this.firstName.nativeElement.value = firstNameValue;
-        const middleInitialValue = (<ComplexName>obj).middle;
+        const middleInitialValue = (<ComplexName>obj).middleInitial;
         this.middleInitial.nativeElement.value = middleInitialValue;
-        const lastNameValue = (<ComplexName>obj).last;
+        const lastNameValue = (<ComplexName>obj).lastName;
         this.lastName.nativeElement.value = lastNameValue;
       }
     } else {
       this._nameModel = new ComplexName();
-      this.firstName.nativeElement.value = this._nameModel.first;
-      this.middleInitial.nativeElement.value = this._nameModel.middle;
-      this.lastName.nativeElement.value = this._nameModel.last;
+      this.firstName.nativeElement.value = this._nameModel.firstName;
+      this.middleInitial.nativeElement.value = this._nameModel.middleInitial;
+      this.lastName.nativeElement.value = this._nameModel.lastName;
     }
   }
 
@@ -242,8 +242,8 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       if (c.value instanceof ComplexName) {
         const complexNameValue = <ComplexName>c.value;
         if (this._config.firstNameMinLength) {
-          if (complexNameValue.first) {
-            if (complexNameValue.first.length < this._config.firstNameMinLength) {
+          if (complexNameValue.firstName) {
+            if (complexNameValue.firstName.length < this._config.firstNameMinLength) {
               if (validationResult !== null) {
                 validationResult.firstNameMinLength = {
                   invalid: true
@@ -260,8 +260,8 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
           }
         }
         if (this._config.firstNameMaxLength) {
-          if (complexNameValue.first) {
-            if (complexNameValue.first.length > this._config.firstNameMaxLength) {
+          if (complexNameValue.firstName) {
+            if (complexNameValue.firstName.length > this._config.firstNameMaxLength) {
               if (validationResult !== null) {
                 validationResult.firstNameMaxLength = {
                   invalid: true
@@ -278,7 +278,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
           }
         }
         if (this._config.isFirstNameMandatory) {
-          if (!complexNameValue.first) {
+          if (!complexNameValue.firstName) {
             if (validationResult !== null) {
               validationResult.firstNameRequired = {
                 invalid: true
@@ -294,8 +294,8 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
           }
         }
         if (this._config.lastNameMinLength) {
-          if (complexNameValue.last) {
-            if (complexNameValue.last.length < this._config.lastNameMinLength) {
+          if (complexNameValue.lastName) {
+            if (complexNameValue.lastName.length < this._config.lastNameMinLength) {
               if (validationResult !== null) {
                 validationResult.lastNameMinLength = {
                   invalid: true
@@ -312,8 +312,8 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
           }
         }
         if (this._config.lastNameMaxLength) {
-          if (complexNameValue.last) {
-            if (complexNameValue.last.length > this._config.lastNameMaxLength) {
+          if (complexNameValue.lastName) {
+            if (complexNameValue.lastName.length > this._config.lastNameMaxLength) {
               if (validationResult !== null) {
                 validationResult.lastNameMaxLength = {
                   invalid: true
@@ -330,7 +330,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
           }
         }
         if (this._config.isLastNameMandatory) {
-          if (!complexNameValue.last) {
+          if (!complexNameValue.lastName) {
             if (validationResult !== null) {
               validationResult.lastNameRequired = {
                 invalid: true
