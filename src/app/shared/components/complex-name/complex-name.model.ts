@@ -1,7 +1,12 @@
 import { IComplexName } from './complex-name-interface';
 
 export class ComplexName implements IComplexName {
-    first: string;
-    middle?: string;
-    last: string;
+    firstName: string;
+    middleInitial?: string;
+    lastName: string;
+    constructor(firstName?: string, middleInitial?: string, lastName?: string) {
+        this.firstName = firstName;
+        this.middleInitial = middleInitial;
+        this.lastName = lastName;
+    }
 }

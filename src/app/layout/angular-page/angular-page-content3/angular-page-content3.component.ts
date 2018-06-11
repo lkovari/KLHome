@@ -90,17 +90,17 @@ export class AngularPageContent3Component implements OnInit {
 
   private getSampleModel(): IComplexName {
     const complexNameModel = new ComplexName();
-    complexNameModel.first = 'Jane';
-    complexNameModel.middle = 'M';
-    complexNameModel.last = 'Doe';
+    complexNameModel.firstName = 'Jane';
+    complexNameModel.middleInitial = 'M';
+    complexNameModel.lastName = 'Doe';
     return complexNameModel;
   }
 
   private getEmptySampleModel(): IComplexName {
     const complexNameModel = new ComplexName();
-    complexNameModel.first = '';
-    complexNameModel.middle = '';
-    complexNameModel.last = '';
+    complexNameModel.firstName = '';
+    complexNameModel.middleInitial = '';
+    complexNameModel.lastName = '';
     return complexNameModel;
   }
 
