@@ -40,30 +40,41 @@
             <em>ComplexNameComponent</em> selector is
             <em>'app-complex-name'</em>
           </label>
-          <app-complex-name id="complexNameFields" formControlName="complexName" [config]="complexNameConfig" (onChange)="onChange($event)">
+          <app-complex-name
+            formControlName="complexName"
+            [config]="complexNameConfig"
+            (onNameChange)="onNameChange($event)"
+            (onFirstNameChange)="onFirstNameChange($event)"
+            (onMiddleInitialChange)="onMiddleInitialChange($event)"
+            (onLastNameChange)="onLastNameChange($event)">
           </app-complex-name>
           <p>ComplexName FormControl Status {{ extractFormControl().status }}</p>
+          <p>ComplexName FormControl Touched {{ extractFormControl().touched }}</p>
+          <p>ComplexName FormControl Dirty {{ extractFormControl().dirty }}</p>
           <p>ComplexName FormControl value {{ extractFormControl().value | json }}</p>
           <p>Form Status {{ exampleForm.status }}</p>
+          <p>Form Touched {{ exampleForm.touched }}</p>
+          <p>Form Dirty {{ exampleForm.dirty }}</p>
           <p>Form Value {{ exampleForm.value | json }}</p>
           <!--p>Status firstName {{ exampleForm.get('firstName').status }}</p>
           <p>Status lastName {{ exampleForm.get('lastName').status }}</p-->
           <div *ngIf="isValidationPlaceOutsideComponent()">
             <div class="text-danger" 
               *ngIf="(extractFormControl().invalid && extractFormControl().touched) || (extractFormControl().invalid && extractFormControl().dirty)">
-              <div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div>
+              <!--div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div-->
+              <div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div>
               <div *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</div>
               <div *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</div>
               <div *ngIf="extractFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</div>
               <div *ngIf="extractFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</div>
               <div *ngIf="extractFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</div>
-              <!--p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p-->
+              <!--div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div-->
             </div>
           </div>
         </div>
-        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="setValues(exampleForm)">Set Data</button>
-        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="clearValues(exampleForm)">Clear Data</button>
-        <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isConfigUpdateOnBlur()">Submit</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel(exampleForm)">Set Model</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel(exampleForm)">Clear Model</button>
+        <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isShowDoneInside()">Submit</button>
         <div class="spacer-vertical">
           <label class="spacer-horozontal-right">Validation messages</label>
           <label class="form-check-inline spacer-horozontal-right">
@@ -78,13 +89,13 @@
             <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
               <img [src]="githubLogoPath" width="16" height="16">
             </a>ComplexName</label>
-        </div>
+          </div>
       </form>
     </div>
     <div class="sub-topic" *ngIf="submitted">
       <div class="cols-xs-12">
-        <b>Form Data</b>
-        <p>Name: {{ form_data.complexName | json }} </p>
+        <b>Form Model</b>
+        <p>Complex Name: {{ form_data.complexName | json }} </p>
       </div>
     </div>
   </div>

@@ -15,7 +15,7 @@ import { ValidationPlaceKind } from '../../../shared/components/complex-name/val
 export class AngularPageContent3Component implements OnInit {
   githubLogoPath: string;
   exampleForm: FormGroup;
-  complexNameModel: IComplexName;
+  complexName: IComplexName;
   complexNameConfig: IComplexNameConfig;
   submitted = false;
   form_data = {
@@ -36,6 +36,8 @@ export class AngularPageContent3Component implements OnInit {
     this.complexNameConfig.lastNameMaxLength = 25;
     this.complexNameConfig.lastNameMinLength = 3;
     this.complexNameConfig.isLastNameMandatory = true;
+    this.complexNameConfig.isShowDoneInside = false;
+    this.complexNameConfig.isUpdateOnBlur = false;
     this.complexNameConfig.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
@@ -43,15 +45,19 @@ export class AngularPageContent3Component implements OnInit {
     return this.complexNameConfig && this.complexNameConfig.isUpdateOnBlur;
   }
 
+  isShowDoneInside() {
+    return this.complexNameConfig && this.complexNameConfig.isShowDoneInside;
+  }
+
   private setupModel() {
-    this.complexNameModel = new ComplexName();
+    this.complexName = new ComplexName();
   }
 
   ngOnInit() {
     this.setupModel();
     this.setupConfig();
     this.exampleForm = this.fb.group({
-      complexName: [this.complexNameModel],
+      complexName: [this.complexName, Validators.required],
       /*
       complexName: this.fb.group({
         firstName: '',
@@ -65,11 +71,10 @@ export class AngularPageContent3Component implements OnInit {
     this.exampleForm.get('validationPlaceKind').valueChanges.subscribe((value: ValidationPlaceKind) => {
       this.complexNameConfig.validationPlaceKind = value;
     });
+    this.exampleForm.get('complexName').valueChanges.subscribe((value: IComplexName) => {
+      console.log('ComplexName model changed ' + JSON.stringify(value));
+    });
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
-  }
-
-  onChange(model: IComplexName) {
-    console.log(JSON.stringify(model));
   }
 
   isValidationPlaceInsideComponent(): boolean {
@@ -104,37 +109,54 @@ export class AngularPageContent3Component implements OnInit {
     return complexNameModel;
   }
 
-  clearValues(form) {
-    this.exampleForm.setValue(
+  onNameChange(model: IComplexName) {
+    console.log('Model Changed ' + JSON.stringify(model));
+  }
+
+  onFirstNameChange(firstName: string) {
+    console.log('First name Changed ' + firstName);
+  }
+
+  onMiddleInitialChange(middleInitial: string) {
+    console.log('Middle Initial Changed ' + middleInitial);
+  }
+
+  onLastNameChange(lastName: string) {
+    console.log('Last name Changed ' + lastName);
+  }
+
+  onClearModel(form) {
+    this.exampleForm.patchValue(
       {
         complexName: this.getEmptySampleModel(),
-        validationPlaceKind: ValidationPlaceKind.Inside
       }
     );
-    Object.keys(this.exampleForm.controls).forEach(key => {
-      this.exampleForm.controls[key].markAsPristine();
-      this.exampleForm.controls[key].markAsUntouched();
-      this.exampleForm.controls[key].setErrors(null);
-    });
+    // initially invalid the form
     this.exampleForm.get('complexName').setErrors({firstNameRquired: {invalid: true}, lastNameRequired: {invalid: true}});
+    this.exampleForm.get('complexName').markAsPristine();
+    this.exampleForm.get('complexName').markAsUntouched();
+    this.exampleForm.markAsPristine();
+    this.exampleForm.markAsUntouched();
     this.exampleForm.setErrors({invalid: true});
   }
 
-  setValues(exampleForm) {
+  onSetModel(exampleForm) {
     this.exampleForm.setValue(
-      {
-        complexName: this.getSampleModel(),
-        validationPlaceKind: this.complexNameConfig.validationPlaceKind
-      });
-    Object.keys(this.exampleForm.controls).forEach(key => {
-      this.exampleForm.controls[key].markAsDirty();
-      this.exampleForm.controls[key].markAsTouched();
+    {
+      complexName: this.getSampleModel(),
+      validationPlaceKind: this.complexNameConfig.validationPlaceKind
     });
+    // with proper values the form valid
+    this.exampleForm.get('complexName').markAsDirty();
+    this.exampleForm.get('complexName').markAsTouched();
+    this.exampleForm.get('complexName').setErrors(null);
+    this.exampleForm.markAsDirty();
+    this.exampleForm.markAsTouched();
+    this.exampleForm.setErrors(null);
   }
 
   extractFormControl(): FormControl {
-    const fc = this.exampleForm.get('complexName');
-    return <FormControl>fc;
+    return <FormControl>this.exampleForm.get('complexName');
   }
 
   onSubmit(form: FormGroup) {
