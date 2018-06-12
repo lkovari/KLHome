@@ -10,5 +10,6 @@ export class ComplexNameConfig implements IComplexNameConfig {
     isLastNameMandatory: boolean;
     isShowTitle: boolean;
     isUpdateOnBlur: boolean;
+    isShowDoneInside: boolean;
     validationPlaceKind: ValidationPlaceKind;
 }

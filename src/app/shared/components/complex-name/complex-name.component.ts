@@ -2,13 +2,14 @@ import { Component, OnInit, Input, Output, EventEmitter, ExistingProvider, ViewC
 import { IComplexName } from './complex-name-interface';
 import {
   FormGroup, FormControl, FormBuilder, Validators, ValidatorFn, ControlValueAccessor,
-  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, NgControl, FormGroupDirective
+  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors
 } from '@angular/forms';
 import { IComplexNameConfig } from './complex-name-config.interface';
 import { ComplexNameConfig } from './complex-name-config.model';
 import { throwError } from 'rxjs';
 import { ComplexName } from './complex-name.model';
 import { ValidationPlaceKind } from './validation-place-kind';
+import { ComplexNameFieldKind } from './complex-name-fielf-kind';
 
 const COMPLEX_NAME_CONTROL_VALUE_ACCESSOR: ExistingProvider = {
   provide: NG_VALUE_ACCESSOR,
@@ -30,38 +31,12 @@ export const COMPLEX_NAME_CONTROL_VALIDATOR = {
 })
 export class ComplexNameComponent implements OnInit, ControlValueAccessor, Validator {
   complexNameForm: FormGroup;
-  private _nameModel: IComplexName;
-  @Input()
-  get nameModel(): IComplexName {
-    if (!this._nameModel) {
-      this._nameModel = new ComplexName();
-    }
-    return this._nameModel;
-  }
-  set nameModel(v: IComplexName) {
-    if (!v) {
-      v = new ComplexName();
-    }
-    this._nameModel = v;
-  }
-  private _config: IComplexNameConfig;
-  @Input()
-  get config(): IComplexNameConfig {
-    if (!this._config) {
-      // this.setupConfig();
-    }
-    return this._config;
-  }
-  set config(v: IComplexNameConfig) {
-    this._config = v;
-  }
+  @Input() config: IComplexNameConfig;
   @Input() disabled = false;
-  // @Input() control: FormControl;
-  @Output() onChange = new EventEmitter<IComplexName>();
-  @ViewChild('firstName') firstName: ElementRef;
-  @ViewChild('middleInitial') middleInitial: ElementRef;
-  @ViewChild('lastName') lastName: ElementRef;
-  @ViewChild('title') title: ElementRef;
+  @Output() onNameChange = new EventEmitter<IComplexName>();
+  @Output() onFirstNameChange = new EventEmitter<string>();
+  @Output() onMiddleInitialChange = new EventEmitter<string>();
+  @Output() onLastNameChange = new EventEmitter<string>();
   isDisabled = false;
 
   private firstNameValidators = [];
@@ -73,20 +48,20 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   constructor(private fb: FormBuilder) { }
 
   private setupConfig() {
-    this._config = new ComplexNameConfig();
-    this._config.firstNameMaxLength = 50;
-    this._config.firstNameMinLength = 3;
-    this._config.isFirstNameMandatory = true;
-    this._config.lastNameMaxLength = 50;
-    this._config.lastNameMinLength = 3;
-    this._config.isLastNameMandatory = true;
-    this._config.validationPlaceKind = ValidationPlaceKind.Inside;
+    this.config = new ComplexNameConfig();
+    this.config.firstNameMaxLength = 50;
+    this.config.firstNameMinLength = 3;
+    this.config.isFirstNameMandatory = true;
+    this.config.lastNameMaxLength = 50;
+    this.config.lastNameMinLength = 3;
+    this.config.isLastNameMandatory = true;
+    this.config.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
   ngOnInit() {
     let updateOnObj = null;
-    if (this._config) {
-      if (this._config.isUpdateOnBlur) {
+    if (this.config) {
+      if (this.config.isUpdateOnBlur) {
         updateOnObj = { updateOn: 'blur' };
       } else {
         updateOnObj = { updateOn: 'submit' };
@@ -127,24 +102,50 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       const lastNameFormControl = this.complexNameForm.get('lastName');
       lastNameFormControl.setValidators(this.lastNameValidators);
       lastNameFormControl.updateValueAndValidity();
+      // observing status changes
+      this.complexNameForm.get('firstName').statusChanges.subscribe((obj: any) => {
+        console.log('First name status changed ' + JSON.stringify(obj));
+      });
+      this.complexNameForm.get('middleInitial').statusChanges.subscribe((obj: any) => {
+        console.log('MiddleInitial name status changed ' + JSON.stringify(obj));
+      });
+      this.complexNameForm.get('lastName').statusChanges.subscribe((obj: any) => {
+        console.log('Last name status changed ' + JSON.stringify(obj));
+      });
+      // observing model changes
+      this.complexNameForm.get('firstName').valueChanges.subscribe((value: string) => {
+        this.onFirstNameChange.emit(value);
+      });
+      this.complexNameForm.get('middleInitial').valueChanges.subscribe((value: string) => {
+        this.onMiddleInitialChange.emit(value);
+      });
+      this.complexNameForm.get('lastName').valueChanges.subscribe((value: string) => {
+        this.onLastNameChange.emit(value);
+      });
+      this.complexNameForm.valueChanges.subscribe((value: any) => {
+        this.handleValueChanges(value);
+      });
     } else {
       throw new Error('Configuration not defined!');
     }
   }
 
-  onChangeFirstName(value: string) {
-    this.nameModel.firstName = value;
-    this.onModelChange(this.nameModel);
+  private handleValueChanges(value: any) {
+    this.onModelChange(value);
     this.onModelTouched();
-    this.onChange.emit(this.nameModel);
+    this.onNameChange.emit(value);
   }
 
   isValidationPlaceInsideComponent(): boolean {
     let isInside = true;
-    if (this._config) {
-      isInside = this._config.validationPlaceKind === ValidationPlaceKind.Inside;
+    if (this.config) {
+      isInside = this.config.validationPlaceKind === ValidationPlaceKind.Inside;
     }
     return isInside;
+  }
+
+  isShowDoneInside() {
+    return this.config && this.config.isShowDoneInside;
   }
 
   extractFormControl(controlName: string): FormControl {
@@ -152,33 +153,8 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     return <FormControl>fc;
   }
 
-
-  onChangeMiddleInitial(value: string) {
-    this.nameModel.middleInitial = value;
-    this.onModelChange(this.nameModel);
-    this.onModelTouched();
-    this.onChange.emit(this.nameModel);
-  }
-
-  onChangeLastName(value: string) {
-    this.nameModel.lastName = value;
-    this.onModelChange(this.nameModel);
-    this.onModelTouched();
-    this.onChange.emit(this.nameModel);
-  }
-
-  onChangeTitle(value: string) {
-    this.onModelChange(this.nameModel);
-    this.onModelTouched();
-    this.onChange.emit(this.nameModel);
-  }
-
-  isConfigUpdateOnBlur(): boolean {
-    return this._config && this._config.isUpdateOnBlur;
-  }
-
   onDone(form: FormGroup) {
-    console.log(JSON.stringify(this._nameModel));
+    console.log('onDone ' + JSON.stringify(this.complexNameForm.value));
   }
 
   /*
@@ -189,19 +165,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
    */
   writeValue(obj: any): void {
     if (obj) {
-      if (obj instanceof ComplexName) {
-        const firstNameValue = (<ComplexName>obj).firstName;
-        this.firstName.nativeElement.value = firstNameValue;
-        const middleInitialValue = (<ComplexName>obj).middleInitial;
-        this.middleInitial.nativeElement.value = middleInitialValue;
-        const lastNameValue = (<ComplexName>obj).lastName;
-        this.lastName.nativeElement.value = lastNameValue;
-      }
+      this.complexNameForm.patchValue(obj);
     } else {
-      this._nameModel = new ComplexName();
-      this.firstName.nativeElement.value = this._nameModel.firstName;
-      this.middleInitial.nativeElement.value = this._nameModel.middleInitial;
-      this.lastName.nativeElement.value = this._nameModel.lastName;
+      this.complexNameForm.setValue(new ComplexName());
     }
   }
 
@@ -239,11 +205,10 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   validate(c: FormControl): ValidationErrors | null {
     let validationResult = null;
     if (c.value) {
-      if (c.value instanceof ComplexName) {
-        const complexNameValue = <ComplexName>c.value;
-        if (this._config.firstNameMinLength) {
+        const complexNameValue = c.value;
+        if (this.config.firstNameMinLength) {
           if (complexNameValue.firstName) {
-            if (complexNameValue.firstName.length < this._config.firstNameMinLength) {
+            if (complexNameValue.firstName.length < this.config.firstNameMinLength) {
               if (validationResult !== null) {
                 validationResult.firstNameMinLength = {
                   invalid: true
@@ -255,13 +220,12 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
                   }
                 }
               }
-              // this.nameModel.first = null;
             }
           }
         }
-        if (this._config.firstNameMaxLength) {
+        if (this.config.firstNameMaxLength) {
           if (complexNameValue.firstName) {
-            if (complexNameValue.firstName.length > this._config.firstNameMaxLength) {
+            if (complexNameValue.firstName.length > this.config.firstNameMaxLength) {
               if (validationResult !== null) {
                 validationResult.firstNameMaxLength = {
                   invalid: true
@@ -273,11 +237,10 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
                   }
                 }
               }
-              // this.nameModel.first = null;
             }
           }
         }
-        if (this._config.isFirstNameMandatory) {
+        if (this.config.isFirstNameMandatory) {
           if (!complexNameValue.firstName) {
             if (validationResult !== null) {
               validationResult.firstNameRequired = {
@@ -290,12 +253,11 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
                 }
               }
             }
-            // this.nameModel.first = null;
           }
         }
-        if (this._config.lastNameMinLength) {
+        if (this.config.lastNameMinLength) {
           if (complexNameValue.lastName) {
-            if (complexNameValue.lastName.length < this._config.lastNameMinLength) {
+            if (complexNameValue.lastName.length < this.config.lastNameMinLength) {
               if (validationResult !== null) {
                 validationResult.lastNameMinLength = {
                   invalid: true
@@ -311,9 +273,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
             }
           }
         }
-        if (this._config.lastNameMaxLength) {
+        if (this.config.lastNameMaxLength) {
           if (complexNameValue.lastName) {
-            if (complexNameValue.lastName.length > this._config.lastNameMaxLength) {
+            if (complexNameValue.lastName.length > this.config.lastNameMaxLength) {
               if (validationResult !== null) {
                 validationResult.lastNameMaxLength = {
                   invalid: true
@@ -329,7 +291,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
             }
           }
         }
-        if (this._config.isLastNameMandatory) {
+        if (this.config.isLastNameMandatory) {
           if (!complexNameValue.lastName) {
             if (validationResult !== null) {
               validationResult.lastNameRequired = {
@@ -342,15 +304,12 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
                 }
               }
             }
-            // this.nameModel.last = null;
           }
         }
-      } else {
-        console.error('Model is not a ComplexName model!');
-      }
     } else {
-      console.error('Model is not initialized!');
+      console.warn('Model is not initialized!');
     }
+    console.warn('ValidationResult ' + JSON.stringify(validationResult));
     return validationResult;
   }
 }
