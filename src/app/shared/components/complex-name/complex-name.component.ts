@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ExistingProvider, ViewC
 import { IComplexName } from './complex-name-interface';
 import {
   FormGroup, FormControl, FormBuilder, Validators, ValidatorFn, ControlValueAccessor,
-  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors
+  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, ControlContainer
 } from '@angular/forms';
 import { IComplexNameConfig } from './complex-name-config.interface';
 import { ComplexNameConfig } from './complex-name-config.model';
@@ -11,23 +11,12 @@ import { ComplexName } from './complex-name.model';
 import { ValidationPlaceKind } from './validation-place-kind';
 import { ComplexNameFieldKind } from './complex-name-fielf-kind';
 
-const COMPLEX_NAME_CONTROL_VALUE_ACCESSOR: ExistingProvider = {
-  provide: NG_VALUE_ACCESSOR,
-  multi: true,
-  useExisting: forwardRef(() => ComplexNameComponent)
-};
-
-export const COMPLEX_NAME_CONTROL_VALIDATOR = {
-  provide: NG_VALIDATORS,
-  useExisting: forwardRef(() => ComplexNameComponent),
-  multi: true
-};
-
 @Component({
   selector: 'app-complex-name',
   templateUrl: './complex-name.component.html',
   styleUrls: ['./complex-name.component.scss'],
-  providers: [COMPLEX_NAME_CONTROL_VALUE_ACCESSOR, COMPLEX_NAME_CONTROL_VALIDATOR]
+  providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: ComplexNameComponent, multi: true},
+               { provide: NG_VALIDATORS, useExisting: ComplexNameComponent, multi: true} ]
 })
 export class ComplexNameComponent implements OnInit, ControlValueAccessor, Validator {
   complexNameForm: FormGroup;
@@ -49,13 +38,49 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
 
   private setupConfig() {
     this.config = new ComplexNameConfig();
-    this.config.firstNameMaxLength = 50;
+    this.config.firstNameMaxLength = 25;
     this.config.firstNameMinLength = 3;
     this.config.isFirstNameMandatory = true;
-    this.config.lastNameMaxLength = 50;
+    this.config.lastNameMaxLength = 25;
     this.config.lastNameMinLength = 3;
     this.config.isLastNameMandatory = true;
+    this.config.isShowDoneInside = false;
+    this.config.isUpdateOnBlur = false;
     this.config.validationPlaceKind = ValidationPlaceKind.Inside;
+  }
+
+  private setupValidatorsByConfig(config: IComplexNameConfig) {
+    if (config) {
+      this.firstNameValidators = [];
+      if (config.isFirstNameMandatory) {
+        this.firstNameValidators.push(Validators.required);
+      }
+      if (config.firstNameMinLength) {
+        this.firstNameValidators.push(Validators.minLength(config.firstNameMinLength));
+      }
+      if (config.firstNameMaxLength) {
+        this.firstNameValidators.push(Validators.maxLength(config.firstNameMaxLength));
+      }
+      const firstNameFormControl = this.complexNameForm.get('firstName');
+      firstNameFormControl.setValidators(this.firstNameValidators);
+      firstNameFormControl.updateValueAndValidity();
+      this.lastNameValidators = [];
+      if (config.isLastNameMandatory) {
+        this.lastNameValidators.push(Validators.required);
+      }
+      if (config.lastNameMinLength) {
+        this.lastNameValidators.push(Validators.minLength(config.lastNameMinLength));
+      }
+      if (config.lastNameMaxLength) {
+        this.lastNameValidators.push(Validators.maxLength(config.lastNameMaxLength));
+      }
+      const lastNameFormControl = this.complexNameForm.get('lastName');
+      lastNameFormControl.setValidators(this.lastNameValidators);
+      lastNameFormControl.updateValueAndValidity();
+    } else {
+      throw new Error('Configuration not defined!');
+    }
+
   }
 
   ngOnInit() {
@@ -69,65 +94,36 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
     }
     // create reactive form with FormBuilder
     this.complexNameForm = this.fb.group({
-      firstName: [{value: '', disabled: this.isDisabled }],
-      middleInitial: [{value: '', disabled: this.isDisabled }, [Validators.maxLength(3)]],
-      lastName: [{value: '', disabled: this.isDisabled }]
+      firstName: [{ value: null, disabled: this.isDisabled }],
+      middleInitial: [{ value: null, disabled: this.isDisabled }, [Validators.maxLength(3)]],
+      lastName: [{ value: null, disabled: this.isDisabled }]
       // title not created
     }, updateOnObj);
     // set the validators dinamically based on the config class
-    if (this.config) {
-      this.firstNameValidators = [];
-      if (this.config.isFirstNameMandatory) {
-        this.firstNameValidators.push(Validators.required);
-      }
-      if (this.config.firstNameMinLength) {
-        this.firstNameValidators.push(Validators.minLength(this.config.firstNameMinLength));
-      }
-      if (this.config.firstNameMaxLength) {
-        this.firstNameValidators.push(Validators.maxLength(this.config.firstNameMaxLength));
-      }
-      const firstNameFormControl = this.complexNameForm.get('firstName');
-      firstNameFormControl.setValidators(this.firstNameValidators);
-      firstNameFormControl.updateValueAndValidity();
-      this.lastNameValidators = [];
-      if (this.config.isLastNameMandatory) {
-        this.lastNameValidators.push(Validators.required);
-      }
-      if (this.config.lastNameMinLength) {
-        this.lastNameValidators.push(Validators.minLength(this.config.lastNameMinLength));
-      }
-      if (this.config.lastNameMaxLength) {
-        this.lastNameValidators.push(Validators.maxLength(this.config.lastNameMaxLength));
-      }
-      const lastNameFormControl = this.complexNameForm.get('lastName');
-      lastNameFormControl.setValidators(this.lastNameValidators);
-      lastNameFormControl.updateValueAndValidity();
-      // observing status changes
-      this.complexNameForm.get('firstName').statusChanges.subscribe((obj: any) => {
-        console.log('First name status changed ' + JSON.stringify(obj));
-      });
-      this.complexNameForm.get('middleInitial').statusChanges.subscribe((obj: any) => {
-        console.log('MiddleInitial name status changed ' + JSON.stringify(obj));
-      });
-      this.complexNameForm.get('lastName').statusChanges.subscribe((obj: any) => {
-        console.log('Last name status changed ' + JSON.stringify(obj));
-      });
-      // observing model changes
-      this.complexNameForm.get('firstName').valueChanges.subscribe((value: string) => {
-        this.onFirstNameChange.emit(value);
-      });
-      this.complexNameForm.get('middleInitial').valueChanges.subscribe((value: string) => {
-        this.onMiddleInitialChange.emit(value);
-      });
-      this.complexNameForm.get('lastName').valueChanges.subscribe((value: string) => {
-        this.onLastNameChange.emit(value);
-      });
-      this.complexNameForm.valueChanges.subscribe((value: any) => {
-        this.handleValueChanges(value);
-      });
-    } else {
-      throw new Error('Configuration not defined!');
-    }
+    this.setupValidatorsByConfig(this.config);
+    // observing status changes
+    this.complexNameForm.get('firstName').statusChanges.subscribe((obj: any) => {
+      console.log('First name status changed ' + JSON.stringify(obj));
+    });
+    this.complexNameForm.get('middleInitial').statusChanges.subscribe((obj: any) => {
+      console.log('MiddleInitial name status changed ' + JSON.stringify(obj));
+    });
+    this.complexNameForm.get('lastName').statusChanges.subscribe((obj: any) => {
+      console.log('Last name status changed ' + JSON.stringify(obj));
+    });
+    // observing model changes
+    this.complexNameForm.get('firstName').valueChanges.subscribe((value: string) => {
+      this.onFirstNameChange.emit(value);
+    });
+    this.complexNameForm.get('middleInitial').valueChanges.subscribe((value: string) => {
+      this.onMiddleInitialChange.emit(value);
+    });
+    this.complexNameForm.get('lastName').valueChanges.subscribe((value: string) => {
+      this.onLastNameChange.emit(value);
+    });
+    this.complexNameForm.valueChanges.subscribe((value: any) => {
+      this.handleValueChanges(value);
+    });
   }
 
   private handleValueChanges(value: any) {
@@ -205,107 +201,107 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   validate(c: FormControl): ValidationErrors | null {
     let validationResult = null;
     if (c.value) {
-        const complexNameValue = c.value;
-        if (this.config.firstNameMinLength) {
-          if (complexNameValue.firstName) {
-            if (complexNameValue.firstName.length < this.config.firstNameMinLength) {
-              if (validationResult !== null) {
-                validationResult.firstNameMinLength = {
-                  invalid: true
-                }
-              } else {
-                validationResult = {
-                  firstNameMinLength: {
-                    invalid: true
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (this.config.firstNameMaxLength) {
-          if (complexNameValue.firstName) {
-            if (complexNameValue.firstName.length > this.config.firstNameMaxLength) {
-              if (validationResult !== null) {
-                validationResult.firstNameMaxLength = {
-                  invalid: true
-                }
-              } else {
-                validationResult = {
-                  firstNameMaxLength: {
-                    invalid: true
-                  }
-                }
-              }
-            }
-          }
-        }
-        if (this.config.isFirstNameMandatory) {
-          if (!complexNameValue.firstName) {
+      const complexNameValue = c.value;
+      if (this.config.firstNameMinLength) {
+        if (complexNameValue.firstName) {
+          if (complexNameValue.firstName.length < this.config.firstNameMinLength) {
             if (validationResult !== null) {
-              validationResult.firstNameRequired = {
+              validationResult.firstNameMinLength = {
                 invalid: true
               }
             } else {
               validationResult = {
-                firstNameRequired: {
+                firstNameMinLength: {
                   invalid: true
                 }
               }
             }
           }
         }
-        if (this.config.lastNameMinLength) {
-          if (complexNameValue.lastName) {
-            if (complexNameValue.lastName.length < this.config.lastNameMinLength) {
-              if (validationResult !== null) {
-                validationResult.lastNameMinLength = {
-                  invalid: true
-                }
-              } else {
-                validationResult = {
-                  lastNameMinLength: {
-                    invalid: true
-                  }
-                }
-              }
-              // this.nameModel.last = null;
-            }
-          }
-        }
-        if (this.config.lastNameMaxLength) {
-          if (complexNameValue.lastName) {
-            if (complexNameValue.lastName.length > this.config.lastNameMaxLength) {
-              if (validationResult !== null) {
-                validationResult.lastNameMaxLength = {
-                  invalid: true
-                }
-              } else {
-                validationResult = {
-                  lastNameMaxLength: {
-                    invalid: true
-                  }
-                }
-              }
-              // this.nameModel.last = null;
-            }
-          }
-        }
-        if (this.config.isLastNameMandatory) {
-          if (!complexNameValue.lastName) {
+      }
+      if (this.config.firstNameMaxLength) {
+        if (complexNameValue.firstName) {
+          if (complexNameValue.firstName.length > this.config.firstNameMaxLength) {
             if (validationResult !== null) {
-              validationResult.lastNameRequired = {
+              validationResult.firstNameMaxLength = {
                 invalid: true
               }
             } else {
               validationResult = {
-                lastNameRequired: {
+                firstNameMaxLength: {
                   invalid: true
                 }
               }
             }
           }
         }
+      }
+      if (this.config.isFirstNameMandatory) {
+        if (!complexNameValue.firstName) {
+          if (validationResult !== null) {
+            validationResult.firstNameRequired = {
+              invalid: true
+            }
+          } else {
+            validationResult = {
+              firstNameRequired: {
+                invalid: true
+              }
+            }
+          }
+        }
+      }
+      if (this.config.lastNameMinLength) {
+        if (complexNameValue.lastName) {
+          if (complexNameValue.lastName.length < this.config.lastNameMinLength) {
+            if (validationResult !== null) {
+              validationResult.lastNameMinLength = {
+                invalid: true
+              }
+            } else {
+              validationResult = {
+                lastNameMinLength: {
+                  invalid: true
+                }
+              }
+            }
+            // this.nameModel.last = null;
+          }
+        }
+      }
+      if (this.config.lastNameMaxLength) {
+        if (complexNameValue.lastName) {
+          if (complexNameValue.lastName.length > this.config.lastNameMaxLength) {
+            if (validationResult !== null) {
+              validationResult.lastNameMaxLength = {
+                invalid: true
+              }
+            } else {
+              validationResult = {
+                lastNameMaxLength: {
+                  invalid: true
+                }
+              }
+            }
+            // this.nameModel.last = null;
+          }
+        }
+      }
+      if (this.config.isLastNameMandatory) {
+        if (!complexNameValue.lastName) {
+          if (validationResult !== null) {
+            validationResult.lastNameRequired = {
+              invalid: true
+            }
+          } else {
+            validationResult = {
+              lastNameRequired: {
+                invalid: true
+              }
+            }
+          }
+        }
+      }
     } else {
       console.warn('Model is not initialized!');
     }

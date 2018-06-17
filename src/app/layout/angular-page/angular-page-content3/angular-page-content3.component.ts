@@ -25,8 +25,9 @@ export class AngularPageContent3Component implements OnInit {
 
   validationPlaceKindInside = ValidationPlaceKind.Inside;
   validationPlaceKindOutside = ValidationPlaceKind.Outside;
+  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value'];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   private setupConfig() {
     this.complexNameConfig = new ComplexNameConfig();
@@ -57,14 +58,7 @@ export class AngularPageContent3Component implements OnInit {
     this.setupModel();
     this.setupConfig();
     this.exampleForm = this.fb.group({
-      complexName: [this.complexName, Validators.required],
-      /*
-      complexName: this.fb.group({
-        firstName: '',
-        middle: '',
-        lastName: ''
-      }),
-      */
+      complexName: [this.complexName],
       validationPlaceKind: [this.complexNameConfig.validationPlaceKind, Validators.required]
     });
     // changed value into config
@@ -103,9 +97,9 @@ export class AngularPageContent3Component implements OnInit {
 
   private getEmptySampleModel(): IComplexName {
     const complexNameModel = new ComplexName();
-    complexNameModel.firstName = '';
-    complexNameModel.middleInitial = '';
-    complexNameModel.lastName = '';
+    complexNameModel.firstName = null;
+    complexNameModel.middleInitial = null;
+    complexNameModel.lastName = null;
     return complexNameModel;
   }
 
@@ -128,16 +122,15 @@ export class AngularPageContent3Component implements OnInit {
   onClearModel(form) {
     this.exampleForm.patchValue(
       {
-        complexName: this.getEmptySampleModel(),
+        complexName: new ComplexName(),
       }
     );
     // initially invalid the form
-    this.exampleForm.get('complexName').setErrors({firstNameRquired: {invalid: true}, lastNameRequired: {invalid: true}});
+    // this.exampleForm.get('complexName').setErrors({firstNameRquired: { invalid: true }, lastNameRequired: { invalid: true }});
     this.exampleForm.get('complexName').markAsPristine();
     this.exampleForm.get('complexName').markAsUntouched();
     this.exampleForm.markAsPristine();
     this.exampleForm.markAsUntouched();
-    this.exampleForm.setErrors({invalid: true});
   }
 
   onSetModel(exampleForm) {
@@ -157,6 +150,18 @@ export class AngularPageContent3Component implements OnInit {
 
   extractFormControl(): FormControl {
     return <FormControl>this.exampleForm.get('complexName');
+  }
+
+  extractFormControlValueByKey(key: string): FormControl {
+    return <FormControl>this.exampleForm.get('complexName')[key];
+  }
+
+  extractFormGroupValueByKey(key: string): FormControl {
+    return <FormControl>this.exampleForm[key];
+  }
+
+  iskeyValue(key: string) {
+    return key === 'value';
   }
 
   onSubmit(form: FormGroup) {
