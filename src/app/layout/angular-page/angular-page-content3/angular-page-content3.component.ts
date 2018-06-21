@@ -1,9 +1,8 @@
-import { Component, OnInit, Self } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IComplexName } from '../../../shared/components/complex-name/complex-name-interface';
 import { IComplexNameConfig } from '../../../shared/components/complex-name/complex-name-config.interface';
-import { FormBuilder, FormGroup, NgControl, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ComplexName } from '../../../shared/components/complex-name/complex-name.model';
-import { Jsonp } from '@angular/http';
 import { ComplexNameConfig } from '../../../shared/components/complex-name/complex-name-config.model';
 import { ValidationPlaceKind } from '../../../shared/components/complex-name/validation-place-kind';
 
@@ -25,7 +24,8 @@ export class AngularPageContent3Component implements OnInit {
 
   validationPlaceKindInside = ValidationPlaceKind.Inside;
   validationPlaceKindOutside = ValidationPlaceKind.Outside;
-  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value'];
+  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
+  cleanup = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -125,8 +125,12 @@ export class AngularPageContent3Component implements OnInit {
         complexName: new ComplexName(),
       }
     );
-    // initially invalid the form
-    // this.exampleForm.get('complexName').setErrors({firstNameRquired: { invalid: true }, lastNameRequired: { invalid: true }});
+    // initiallize the component fields
+    this.cleanup = true;
+    setTimeout(() => {
+      this.cleanup = false;
+    }, 100)
+    // initiallize the form (ComplexNameComponent)
     this.exampleForm.get('complexName').markAsPristine();
     this.exampleForm.get('complexName').markAsUntouched();
     this.exampleForm.markAsPristine();
@@ -162,6 +166,10 @@ export class AngularPageContent3Component implements OnInit {
 
   iskeyValue(key: string) {
     return key === 'value';
+  }
+
+  iskeyErrors(key: string) {
+    return key === 'errors';
   }
 
   onSubmit(form: FormGroup) {
