@@ -12,6 +12,8 @@
           <img [src]="githubLogoPath" width="16" height="16">
         </a>
         <em>ComplexNameComponent</em>
+         <span class="text-danger"> This component is relativelly closed, the controls of component is not visible.</span>
+         <p class="text-secondary">In the next example I create a reactive nested component with FormGroupDirective and formGroupname usage.</p>
       </label>
       <br>
       <span class="text-primary">The validation rules are the following</span> the
@@ -42,6 +44,7 @@
           </label>
           <app-complex-name
             formControlName="complexName"
+            [cleanup]="cleanup"
             [config]="complexNameConfig"
             (onNameChange)="onNameChange($event)"
             (onFirstNameChange)="onFirstNameChange($event)"
@@ -51,23 +54,34 @@
           <label>ComplexName FormControl</label>
           <div class="row message-style" >
             <li *ngFor="let key of formControlStatusKeys">{{ key }}:
-              <div *ngIf="iskeyValue(key); else notvalue">
+              <div *ngIf="iskeyValue(key); else notcvalue">
                 <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) | json }}</label>
               </div>
-              <ng-template #notvalue>
-                <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) }}</label>
-              </ng-template>
+              <ng-template #notcvalue>
+                <div *ngIf="iskeyErrors(key); else notcerrors">
+                  <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) | json }}</label>
+                </div>
+                <ng-template #notcerrors>
+                  <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) }}</label>
+                </ng-template>
+               </ng-template>
             </li>
           </div>
           <label>Form Form Group</label>
           <div class="row message-style" >
             <li *ngFor="let key of formControlStatusKeys">{{ key }}:
-              <div *ngIf="iskeyValue(key); else notvalue">
-                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
-              </div>
-              <ng-template #notvalue>
-                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) }}</label>
-              </ng-template>
+                <div *ngIf="iskeyValue(key); else notfvalue">
+                    <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
+                  </div>
+                  <ng-template #notfvalue>
+                      <div *ngIf="iskeyErrors(key); else notferrors">
+                        <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
+                      </div>
+                      <ng-template #notferrors>
+                        <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) }}</label>
+                      </ng-template>
+                  </ng-template>
+    
             </li>
           </div>
           <div *ngIf="isValidationPlaceOutsideComponent()">
@@ -75,11 +89,11 @@
               *ngIf="(extractFormControl().invalid && extractFormControl().touched) || (extractFormControl().invalid && extractFormControl().dirty)">
               <!--div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div-->
               <div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div>
-              <div *ngIf="extractFormControl().errors.lastNameRequired">Last name required!</div>
-              <div *ngIf="extractFormControl().errors.firstNameMinLength">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</div>
-              <div *ngIf="extractFormControl().errors.firstNameMaxLength">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</div>
-              <div *ngIf="extractFormControl().errors.lastNameMinLength">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</div>
-              <div *ngIf="extractFormControl().errors.lastNameMaxLength">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</div>
+              <div *ngIf="extractFormControl().hasError('lastNameRequired')">Last name required!</div>
+              <div *ngIf="extractFormControl().hasError('firstNameMinLength')">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</div>
+              <div *ngIf="extractFormControl().hasError('firstNameMaxLength')">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</div>
+              <div *ngIf="extractFormControl().hasError('lastNameMinLength')">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</div>
+              <div *ngIf="extractFormControl().hasError('lastNameMaxLength')">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</div>
               <!--div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div-->
             </div>
           </div>

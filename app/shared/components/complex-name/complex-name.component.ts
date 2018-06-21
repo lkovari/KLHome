@@ -1,15 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, ExistingProvider, ViewChild, ElementRef, forwardRef, Self } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { IComplexName } from './complex-name-interface';
 import {
-  FormGroup, FormControl, FormBuilder, Validators, ValidatorFn, ControlValueAccessor,
-  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, ControlContainer
+  FormGroup, FormControl, FormBuilder, Validators, ControlValueAccessor,
+  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, AbstractControl
 } from '@angular/forms';
 import { IComplexNameConfig } from './complex-name-config.interface';
 import { ComplexNameConfig } from './complex-name-config.model';
-import { throwError } from 'rxjs';
 import { ComplexName } from './complex-name.model';
 import { ValidationPlaceKind } from './validation-place-kind';
-import { ComplexNameFieldKind } from './complex-name-fielf-kind';
 
 @Component({
   selector: 'app-complex-name',
@@ -20,6 +18,22 @@ import { ComplexNameFieldKind } from './complex-name-fielf-kind';
 })
 export class ComplexNameComponent implements OnInit, ControlValueAccessor, Validator {
   complexNameForm: FormGroup;
+  private _cleanup = false;
+  @Input()
+  get cleanup(): boolean {
+    return this._cleanup;
+  }
+  set cleanup(v: boolean) {
+    this._cleanup = v;
+    if (this._cleanup) {
+      try {
+        this.cleanupFields();
+      }
+      finally {
+        this._cleanup = false;
+      }
+    }
+  }
   @Input() config: IComplexNameConfig;
   @Input() disabled = false;
   @Output() onNameChange = new EventEmitter<IComplexName>();
@@ -35,6 +49,16 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   onModelTouched: Function = () => { };
 
   constructor(private fb: FormBuilder) { }
+
+  private cleanupFields() {
+    if (this.complexNameForm) {
+      Object.keys(this.complexNameForm.controls).forEach(key => {
+        this.complexNameForm.controls[key].markAsPristine();
+        this.complexNameForm.controls[key].markAsUntouched();
+        this.complexNameForm.controls[key].setErrors({firstNameRquired: {invalid: true}, lastNameRequired: {invalid: true}});
+      });
+    }
+  }
 
   private setupConfig() {
     this.config = new ComplexNameConfig();
