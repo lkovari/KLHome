@@ -49,6 +49,7 @@ import { MasmPageContent1Component } from './masm-page/masm-page-content1/masm-p
 import { MasmPageContent2Component } from './masm-page/masm-page-content2/masm-page-content2.component';
 import { WelcomePageComponent } from 'app/layout/welcome-page/welcome-page.component';
 import { AboutmeContentComponent } from 'app/layout/aboutme-page/aboutme-content.component';
+import { AngularPageContent4Component } from './angular-page/angular-page-content4/angular-page-content4.component';
 
 
 const routes: Routes = [
@@ -64,7 +65,8 @@ const routes: Routes = [
         children: [
           {path: 'angular-page-content1', component: AngularPageContent1Component},
           {path: 'angular-page-content2', component: AngularPageContent2Component},
-          {path: 'angular-page-content3', component: AngularPageContent3Component}
+          {path: 'angular-page-content3', component: AngularPageContent3Component},
+          {path: 'angular-page-content4', component: AngularPageContent4Component}
         ]
       },
       {path: 'javascript-page', component: JavascriptPageTitleComponent,
