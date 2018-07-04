@@ -10,6 +10,7 @@ import { AngularPageContent1Component } from './angular-page-content1/angular-pa
 import { AngularPageRoutingModule } from './angular-page-routing.module';
 import { AngularPageContent2Component } from './angular-page-content2/angular-page-content2.component';
 import { AngularPageContent3Component } from './angular-page-content3/angular-page-content3.component';
+import { AngularPageContent4Component } from './angular-page-content4/angular-page-content4.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,15 @@ import { AngularPageContent3Component } from './angular-page-content3/angular-pa
     AngularPageRoutingModule,
     PageHeaderModule
   ],
-  declarations: [AngularPageTitleComponent, AngularPageContent1Component, AngularPageContent2Component, AngularPageContent3Component],
-  exports: [AngularPageTitleComponent, AngularPageContent1Component, AngularPageContent2Component, AngularPageContent3Component]
+  declarations: [ AngularPageTitleComponent,
+                  AngularPageContent1Component,
+                  AngularPageContent2Component,
+                  AngularPageContent3Component,
+                  AngularPageContent4Component],
+  exports: [ AngularPageTitleComponent,
+             AngularPageContent1Component,
+             AngularPageContent2Component,
+             AngularPageContent3Component,
+             AngularPageContent4Component]
 })
 export class AngularPageModule { }

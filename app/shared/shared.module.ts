@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileLoaderService } from './services/fileloader/file-loader.service';
 import { TextDisplayComponent } from './components/text-display/text-display.component';
 import { ComplexNameComponent } from './components/complex-name/complex-name.component';
+import { AddressComponent } from './components/address/address.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { ComplexNameComponent } from './components/complex-name/complex-name.com
     HttpClientModule
   ],
   providers: [FileLoaderService],
-  declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent],
-  exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent]
+  declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent],
+  exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent]
 })
 export class SharedModule { }

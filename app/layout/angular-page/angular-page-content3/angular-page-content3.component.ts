@@ -135,6 +135,7 @@ export class AngularPageContent3Component implements OnInit {
     this.exampleForm.get('complexName').markAsUntouched();
     this.exampleForm.markAsPristine();
     this.exampleForm.markAsUntouched();
+    this.submitted = false;
   }
 
   onSetModel(exampleForm) {

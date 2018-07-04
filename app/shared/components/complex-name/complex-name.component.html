@@ -10,7 +10,7 @@
           *ngIf="(extractFormControl('firstName').touched && extractFormControl('firstName').invalid) || 
           (extractFormControl('firstName').dirty && extractFormControl('firstName').invalid)">
           <p *ngIf="extractFormControl('firstName').errors.required">First name required!</p>
-          <p *ngIf="extractFormControl('firstName').errors.minlength">First name must be greater thanmin {{ extractFormControl('firstName').errors.minlength.requiredLength }} 
+          <p *ngIf="extractFormControl('firstName').errors.minlength">First name must be greater than min {{ extractFormControl('firstName').errors.minlength.requiredLength }} 
             characters long, the actual length is {{ extractFormControl('firstName').errors.minlength.actualLength}} characters!</p>
           <p *ngIf="extractFormControl('firstName').errors.maxlength">First name must be less than {{ extractFormControl('firstName').errors.maxlength.requiredLength }} 
             characters long, the actual length is {{ extractFormControl('firstName').errors.maxlength.actualLength}} characters!</p>

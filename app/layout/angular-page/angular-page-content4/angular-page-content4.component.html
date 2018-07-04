@@ -1,0 +1,74 @@
+<div class="layout-angular-playground-page4">
+  <div class="angular-playground-description form-group">
+    <div class="col-xs-12">
+      This page is a
+      <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which interested
+      in, for me.
+    </div>
+    <div class="sub-topic">
+      <b>Act #2.2</b> Model driven / reactive forms exmaple with embedded reactive component, named
+      <label class="text-primary">
+        <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/address">
+          <img [src]="githubLogoPath" width="16" height="16">
+        </a>
+        <em>AddressComponent</em>
+        <span class="text-danger"> This component is use FormGroupNameDirective.</span>
+        <p class="text-secondary">In thhis example I demonstrate the usage of it</p>
+      </label>
+      <br>
+      <form class="form-border spacer-vertical" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" autocomplete="off"
+        novalidate>
+        <div class="form-group">
+          <label for="complexNameFields" class="text-primary">
+            <em>AddressComponent</em> selector is
+            <em>'app-address'</em>
+          </label>
+          <app-address>
+
+          </app-address>
+          <label>Address FormControl</label>
+          <div class="row message-style">
+            <li *ngFor="let key of formControlStatusKeys">{{ key }}:
+              <div *ngIf="iskeyValue(key); else notcvalue">
+                <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) | json }}</label>
+              </div>
+              <ng-template #notcvalue>
+                <div *ngIf="iskeyErrors(key); else notcerrors">
+                  <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) | json }}</label>
+                </div>
+                <ng-template #notcerrors>
+                  <label class="spacer-horozontal-left">{{ extractFormControlValueByKey(key) }}</label>
+                </ng-template>
+              </ng-template>
+            </li>
+          </div>
+          <label>Form Form Group</label>
+          <div class="row message-style">
+            <li *ngFor="let key of formControlStatusKeys">{{ key }}:
+              <div *ngIf="iskeyValue(key); else notfvalue">
+                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
+              </div>
+              <ng-template #notfvalue>
+                <div *ngIf="iskeyErrors(key); else notferrors">
+                  <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
+                </div>
+                <ng-template #notferrors>
+                  <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) }}</label>
+                </ng-template>
+              </ng-template>
+            </li>
+          </div>
+        </div>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel(exampleForm)">Set Model</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel(exampleForm)">Clear Model</button>
+        <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid">Submit</button>
+      </form>
+    </div>
+    <div class="sub-topic" *ngIf="isSubmitted">
+        <div class="cols-xs-12">
+          <b>Form Model</b>
+          <p>Address: {{ form_data.address | json }} </p>
+        </div>
+      </div>
+  </div>
+</div>
