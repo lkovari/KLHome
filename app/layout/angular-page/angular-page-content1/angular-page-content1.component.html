@@ -13,158 +13,43 @@
         <div class="angular-courses">
             <div class="form-group">
                 <label class="courses-subtitle">Completed</label>
-                <div>
-                    <div class="course">
-                        <label class="course-title">1. Reactive Forms by Deborah Kurata on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
+                <div *ngFor="let course of angularCourseCompletedList; let ix = index">
+                    <div class="course-style">
+                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                        <label class="course-title">{{ course.title + " " + course.author }}
+                            <a href="{{ course.website }}">{{ course.website }}</a>
                         </label>
-                        <a href="assets/bigfiles/cert-angularreactiveforms.pdf">
-                            <img class="img-responsive-right" [src]="fullImagePathRF">
+                        <a href="{{ course.certificateImageSmall }}">
+                            <img class="img-responsive-right" [src]=extractCertURL(course)>
                         </a>
                     </div>
-                    <div class="course">
-                        <label class="course-title">2. Bootstrap 4 Quickstart by Brad Hussey on
-                            <a href="https://www.udemy.com/">https://www.udemy.com</a>
-                        </label>
-                        <a href="assets/bigfiles/UC-XRLSVCSR.pdf">
-                            <img class="img-responsive-right" [src]="fullImagePathSCSS">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">3. The Complete Sass and SCSS Course: From Beginner to Advanced by Joe Parys on
-                            <a href="https://www.udemy.com/">https://www.udemy.com</a>
-                        </label>
-                        <a href="assets/bigfiles/UC-NLUM4IQ0.pdf">
-                            <img class="img-responsive-right" [src]="fullImagePathSASS">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">4. Angular 6 (formerly Angular 2) - The Complete Guide by Maximilian Schwarzmüller on
-                            <a href="https://www.udemy.com/">https://www.udemy.com</a>
-                        </label>
-                        <a href="assets/bigfiles/UC-9GVOGJGJ.pdf">
-                            <img class="img-responsive-right" [src]="fullImagePathA5">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">5. Building Beautiful Angular Apps with PrimeNG by Glen Smith on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <a href="assets/bigfiles/cert-primeng.pdf">
-                            <img class="img-responsive-right" [src]="fullImagePrimeNg">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">6. Angular Best Practices by Jim Cooper on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <a href="assets/bigfiles/cert-angularbestpractices.pdf">
-                            <img class="img-responsive-right" [src]="fullImageAngularBestPractices">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">7. Angular Component Communication by Deborah Kurata on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <a href="assets/bigfiles/cert-angularcomponentcommunic.pdf">
-                            <img class="img-responsive-right" [src]="fullImageAngularCompCommunication">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">8. Angular 2 Routing: Up And Running by Dr. Luke Angel on
-                            <a href="https://www.udemy.com/">https://www.udemy.com</a>
-                        </label>
-                        <a href="assets/bigfiles/UC-VI4V02BQ.pdf">
-                            <img class="img-responsive-right" [src]="fullImageAngularRouter">
-                        </a>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">9. Angular Routing by Deborah Kurrata on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <a href="assets/bigfiles/cert-angularrouting-bydeborahkPlural.pdf">
-                            <img class="img-responsive-right" [src]="fullImageAngularRouting">
-                        </a>
-                    </div>      
-                    <div class="course">
-                        <label class="course-title">10. Working with Angular Animations by Gary Simon on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <a href="assets/bigfiles/cert-angularanimations-bygarysPlural.pdf">
-                            <img class="img-responsive-right" [src]="fullImageAngularAnimations">
-                        </a>
-                    </div>                                      
-                    <div class="course">
-                        <label class="course-title">11. TypeScript fundamentals by John Papa and Dan Wahlin on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <a href="assets/bigfiles/cert-typescriptfundamentals-byjpdw.pdf">
-                            <img class="img-responsive-right" [src]="fullImageTypescriptFundamentalss">
-                        </a>
-                    </div>                                      
                 </div>
             </div>
-            <div class="form-group ">
+            <div class="form-group">
                 <label class="courses-subtitle">Still in progress</label>
-                <div>
-                    <div class="course">
-                        <label class="course-title">Angular 5 RxJs Reactive Programming & FREE Ebook by Vasco Ferreira on
-                            <a href="https://www.udemy.com/">https://www.udemy.com</a>
+                <div *ngFor="let course of angularCourseInProgressList; let ix = index">
+                    <div class="course-style">
+                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
+                        <label class="course-title">{{ course.title + " " + course.author }}
+                            <a href="{{ course.website }}">{{ course.website }}</a>
                         </label>
-                        <img class="img-responsive-right" [src]="fullImagePathA5Rx">
+                        <a href="{{ course.certificateImageSmall }}">
+                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right" [src]=extractCertURL(course)>
+                        </a>
                     </div>
-                    <div class="course">
-                        <label class="course-title">CSS Positioning by Susan Simkins on
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                        <img class="img-responsive-right" [src]="fullImagePathCSSPos">
-                    </div>                    
                 </div>
             </div>
-            <div class="form-group ">
+            <div class="form-group">
                 <label class="courses-subtitle">Planned</label>
-                <div>
-                    <div class="course">
-                        <label class="course-title">Advanced TypeScript by Brice Wilson
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
+                <div *ngFor="let course of angularCoursePlannedList; let ix = index">
+                    <div class="course-style">
+                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
+                        <label class="course-title">{{ course.title + " " + course.author }}
+                            <a href="{{ course.website }}">{{ course.website }}</a>
                         </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Angular Material by Ajden Towfeek
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Play By Play: Angular Internationalization by John Papa and Brian Clark
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Building a Web App with ASP.NET Core, MVC, Entity Framework Core, Bootstrap, and Angular by Shawn
-                            Wildermuth
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Play by Play: Deploying an Angular 2 App to Azure with Git with John Papa and Shayne Boyer by Shayne
-                            Boyer and John Papa Wildermuth
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Play by Play: Angular Design Solutions by Ward Bell and John Papa Boyer and John Papa Wildermuth
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Constructing a User Interface with Angular by David Mann
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
-                    </div>
-                    <div class="course">
-                        <label class="course-title">Angular CLI by John Papa
-                            <a href="https://www.pluralsight.com/">https://www.pluralsight.com/</a>
-                        </label>
+                        <a href="{{ course.certificateImageSmall }}">
+                            <img  *ngIf="extractCertURL(course) !== ''" class="img-responsive-right" [src]=extractCertURL(course)>
+                        </a>
                     </div>
                 </div>
             </div>
