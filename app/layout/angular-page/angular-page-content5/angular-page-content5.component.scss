@@ -1,0 +1,39 @@
+.layout-angular-playground-page5 {
+    .angular-playground-description {
+        padding: 0.5Rem;
+    }
+    .sub-topic {
+        padding: 1Rem;
+    }
+    .form-border {
+        border: solid blue 1px;
+        padding: 1rem;
+    }
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+    .spacer-horozontal-right {
+        margin-right: 0.5rem;
+    }
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
+    }
+    .spacer-vertical {
+        margin-top: 0.5rem;
+    }
+    .message-style {
+        display: table-cell;
+    }
+    .tab-panel {
+        height: 20rem;
+        .tab1-panel {
+            height: 20rem;
+        }
+        .tab2-panel {
+            height: 20rem;
+        }
+        .tab3-panel {
+            height: 20rem;
+        }
+    }
+}

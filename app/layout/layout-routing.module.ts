@@ -50,6 +50,7 @@ import { MasmPageContent2Component } from './masm-page/masm-page-content2/masm-p
 import { WelcomePageComponent } from 'app/layout/welcome-page/welcome-page.component';
 import { AboutmeContentComponent } from 'app/layout/aboutme-page/aboutme-content.component';
 import { AngularPageContent4Component } from './angular-page/angular-page-content4/angular-page-content4.component';
+import { AngularPageContent5Component } from './angular-page/angular-page-content5/angular-page-content5.component';
 
 
 const routes: Routes = [
@@ -66,7 +67,8 @@ const routes: Routes = [
           {path: 'angular-page-content1', component: AngularPageContent1Component},
           {path: 'angular-page-content2', component: AngularPageContent2Component},
           {path: 'angular-page-content3', component: AngularPageContent3Component},
-          {path: 'angular-page-content4', component: AngularPageContent4Component}
+          {path: 'angular-page-content4', component: AngularPageContent4Component},
+          {path: 'angular-page-content5', component: AngularPageContent5Component}
         ]
       },
       {path: 'javascript-page', component: JavascriptPageTitleComponent,

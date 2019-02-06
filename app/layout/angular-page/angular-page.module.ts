@@ -11,6 +11,8 @@ import { AngularPageRoutingModule } from './angular-page-routing.module';
 import { AngularPageContent2Component } from './angular-page-content2/angular-page-content2.component';
 import { AngularPageContent3Component } from './angular-page-content3/angular-page-content3.component';
 import { AngularPageContent4Component } from './angular-page-content4/angular-page-content4.component';
+import { AngularPageContent5Component } from './angular-page-content5/angular-page-content5.component';
+import { TabMenuModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -20,17 +22,20 @@ import { AngularPageContent4Component } from './angular-page-content4/angular-pa
     NgbModule.forRoot(),
     SharedModule,
     AngularPageRoutingModule,
-    PageHeaderModule
+    PageHeaderModule,
+    TabMenuModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent1Component,
                   AngularPageContent2Component,
                   AngularPageContent3Component,
-                  AngularPageContent4Component],
+                  AngularPageContent4Component,
+                  AngularPageContent5Component],
   exports: [ AngularPageTitleComponent,
              AngularPageContent1Component,
              AngularPageContent2Component,
              AngularPageContent3Component,
-             AngularPageContent4Component]
+             AngularPageContent4Component,
+             AngularPageContent5Component]
 })
 export class AngularPageModule { }
