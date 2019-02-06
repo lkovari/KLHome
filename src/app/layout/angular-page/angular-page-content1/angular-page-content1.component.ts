@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as angular from '@angular/forms';
 import { AngularCourseModel } from './angular-course.model';
+import { core } from '@angular/compiler';
 
 @Component({
   selector: 'app-angular-page-content1',
@@ -39,8 +40,28 @@ export class AngularPageContent1Component implements OnInit {
   initializeAngularCourses() {
     const baseImageURL = 'assets/images/';
     this.angularCourseCompletedList = [
+      { title: 'C# Fundamentals with Visual Studio 2015',  author: 'by Scott Alen', website: 'https://www.pluralsight.com/',
+      dateOfCompleted: new Date('01/24/2019'), certificateImageSmall: baseImageURL + 'cert-csharpfundvs2015-4127.png',
+      certificateImageLarge: baseImageURL + 'cert-csharpfundvs2015-4127.png' },
+
+      { title: 'C# Generics',  author: 'by Scott Alen', website: 'https://www.pluralsight.com/',
+      dateOfCompleted: new Date('01/20/2019'), certificateImageSmall: baseImageURL + 'cert-csharpgen-4127.png',
+      certificateImageLarge: baseImageURL + 'cert-csharpgen-4127.png' },
+
+      { title: 'C# Best Practices: Improving on the Basics',  author: 'by Deborah Kurata', website: 'https://www.pluralsight.com/',
+      dateOfCompleted: new Date('01/07/2019'), certificateImageSmall: baseImageURL + 'cert-csharpbp-impr-4127.png',
+      certificateImageLarge: baseImageURL + 'cert-csharpbp-impr-4127.png' },
+
+      { title: 'C# Best Practices: Collections and Generics',  author: 'by Deborah Kurata', website: 'https://www.pluralsight.com/',
+      dateOfCompleted: new Date('01/03/2019'), certificateImageSmall: baseImageURL + 'cert-csharpbp-collgen-4127.png',
+      certificateImageLarge: baseImageURL + 'cert-csharpbp-collgen-4127.png' },
+
+      { title: 'C#6 from scratch ',  author: 'by Jesse Liberty', website: 'https://www.pluralsight.com/',
+      dateOfCompleted: new Date('07/15/2018'), certificateImageSmall: baseImageURL + 'cert-csharp6scratch-4127.png',
+      certificateImageLarge: baseImageURL + 'cert-csharp6scratch-4127.png' },
+
       { title: 'Angular Security Using JSON Web Tokens',  author: 'by Paul D. Sheriff', website: 'https://www.pluralsight.com/',
-      dateOfCompleted: new Date('07/15/2018'), certificateImageSmall: baseImageURL + 'cert-asujwt-07152018.png',
+      dateOfCompleted: new Date('12/04/2018'), certificateImageSmall: baseImageURL + 'cert-asujwt-07152018.png',
       certificateImageLarge: baseImageURL + 'cert-asujwt-07152018.png' },
 
       { title: 'Date and Time Fundamentals',  author: 'by Matt Johnson', website: 'https://www.pluralsight.com/',
@@ -98,6 +119,10 @@ export class AngularPageContent1Component implements OnInit {
     ];
 
     this.angularCourseInProgressList =  [
+      { title: 'ASP.NET Core Fundamentals',  author: 'by Scott Allen', website: 'https://www.udemy.com',
+      dateOfCompleted: null, certificateImageSmall: '',
+      certificateImageLarge: null },
+
       { title: 'Angular RxJs Reactive Programming & FREE Ebook',  author: 'by Vasco Ferreira', website: 'https://www.udemy.com',
       dateOfCompleted: null, certificateImageSmall: '',
       certificateImageLarge: null },
@@ -116,6 +141,23 @@ export class AngularPageContent1Component implements OnInit {
     ];
 
     this.angularCoursePlannedList =  [
+      { title: 'Building a RESTful API with ASP.NET core',  author: 'by Kevin Dockx', website: 'https://www.pluralsight.com',
+      dateOfCompleted: null, certificateImageSmall: '',
+      certificateImageLarge: null },
+
+      { title: 'LINQ Fundamentals with C# 6.0',  author: 'by Scott Allen', website: 'https://www.pluralsight.com',
+      dateOfCompleted: null, certificateImageSmall: '',
+      certificateImageLarge: null },
+
+      { title: 'Entity Framework Core: Getting Started',  author: 'by Julie Lerman', website: 'https://www.pluralsight.com',
+      dateOfCompleted: null, certificateImageSmall: '',
+      certificateImageLarge: null },
+
+      { title: 'ASP.NET Core: Using Entity Framework and Working with User Data',  author: 'by Eric Fisher',
+      website: 'https://www.pluralsight.com',
+      dateOfCompleted: null, certificateImageSmall: '',
+      certificateImageLarge: null },
+
       { title: 'Redux Fundamentals',  author: 'by Jamis Charles', website: 'https://www.pluralsight.com',
       dateOfCompleted: null, certificateImageSmall: '',
       certificateImageLarge: null },
