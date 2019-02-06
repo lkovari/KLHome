@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/primeng';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-angular-page-content5',
@@ -34,6 +35,18 @@ export class AngularPageContent5Component implements OnInit {
   private tabItemChanged(ix: number) {
     this.activeItem = this.tabItems[ix];
     this.tabIndex = ix;
+  }
+
+  onSetModel(formData: NgForm) {
+    console.log('onSetModel');
+  }
+
+  onClearModel(formData: NgForm) {
+    console.log('onClearModel');
+  }
+
+  onSubmit(formData: NgForm) {
+    console.log('onSubmit');
   }
 
 }
