@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/primeng';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { CustomFormModel } from './custom-form-.model';
 
 @Component({
   selector: 'app-angular-page-content5',
@@ -8,45 +7,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./angular-page-content5.component.scss']
 })
 export class AngularPageContent5Component implements OnInit {
-  isSubmitted = false;
-  githubLogoPath: string;
-  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
-  tabItems: MenuItem[];
-  activeItem: MenuItem;
-  tabIndex: number;
+
+  customFormModel: CustomFormModel;
 
   constructor() { }
 
   ngOnInit() {
-    this.tabItems = [
-      { label: 'Tab #1', icon: 'fa fa-fw fa-bar-chart', command: (event) => {
-        this.tabItemChanged(0);
-      }},
-      {label: 'Tab #2', icon: 'fa fa-fw fa-calendar', command: (event) => {
-        this.tabItemChanged(1);
-      }},
-      {label: 'Tab #3', icon: 'fa fa-fw fa-book', command: (event) => {
-        this.tabItemChanged(2);
-      }}
-    ];
-    this.activeItem = this.tabItems[1];
+    this.customFormModel = new CustomFormModel();
   }
-
-  private tabItemChanged(ix: number) {
-    this.activeItem = this.tabItems[ix];
-    this.tabIndex = ix;
-  }
-
-  onSetModel(formData: NgForm) {
-    console.log('onSetModel');
-  }
-
-  onClearModel(formData: NgForm) {
-    console.log('onClearModel');
-  }
-
-  onSubmit(formData: NgForm) {
-    console.log('onSubmit');
-  }
-
 }

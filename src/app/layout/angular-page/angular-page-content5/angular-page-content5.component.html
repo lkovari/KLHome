@@ -2,38 +2,23 @@
   <div class="angular-playground-description form-group">
     <div class="col-xs-12">
       This page is a
-      <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which interested
+      <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which
+      interested
       in, for me.
     </div>
     <div class="sub-topic">
       <b>Act #2.3</b> Multiple part validation of nested components
       <br>
-      <form class="form-border spacer-vertical"  (ngSubmit)="onSubmit(formData)" #formData="ngForm" autocomplete="off"
-        novalidate>
-        <div>
-            <p-tabMenu [model]="tabItems" [activeItem]="activeItem"></p-tabMenu>
-        </div>
-        <div class="tab-panel">
-          <div class="tab1-panel" *ngIf="tabIndex === 0">
-            11111
-          </div>
-          <div class="tab2-panel" *ngIf="tabIndex === 1">
-            22222
-          </div>
-          <div class="tab3-panel" *ngIf="tabIndex === 2">
-            33333  
-          </div>
-        </div>
-        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel(formData)">Set Model</button>
-        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel(formData)">Clear Model</button>
-        <button class="btn btn-primary" type="submit" [disabled]="formData.invalid">Submit</button>
-      </form>
-    </div>
-    <div class="sub-topic" *ngIf="isSubmitted">
-        <div class="cols-xs-12">
-          <b>Form Model</b>
-          <p>Address: {{ form_data.address | json }} </p>
-        </div>
+      We have a main form, which contains a Form. The Form contains a Tab component with three Tab Sheets, each Tap Sheet contains one component.
+      On each component on the Tab Sheets contains various data fields. Some data field is mandatory. You must complete all mandatory fields on the Main form and on each Tab for submit!
+      <label>See the structure below</label>
+      <div class="struct-main">
+        <label>DataMainInputComponent - app-data-main-input</label>
+        <label class="struct-sub">DataInput1Component - app-data-input1</label>
+        <label class="struct-sub">DataInput2Component - app-data-input2</label>
+        <label class="struct-sub">DataInput3Component - app-data-input3</label>
       </div>
+      <app-data-main-input [customFormModel]="customFormModel"></app-data-main-input>
+    </div>
   </div>
 </div>
