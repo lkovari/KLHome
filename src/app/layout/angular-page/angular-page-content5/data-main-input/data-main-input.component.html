@@ -1,4 +1,10 @@
 <div class="main-data-input">
+  <label class="text-primary">
+    <a class="label-gap" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content5/data-main-input">
+      <img [src]="githubLogoPath" width="16" height="16">
+    </a>Multiple component data field validation example, collect the validation result for the parent Form.
+  </label>
+  <br>
   <form class="form-height form-border spacer-vertical" (ngSubmit)="onSubmit(formData)" #formData="ngForm" autocomplete="off"
     novalidate>
     <div>
@@ -39,8 +45,9 @@
     <button class="btn btn-primary" type="submit" [disabled]="formData.invalid">Submit</button>
   </form>
   <div class="sub-topic" *ngIf="isSubmitted">
-    <div class="cols-xs-12">
+    <div class="form-model-content cols-xs-12">
       <b>Form Model</b>
+      {{ customFormModel | json }}
     </div>
   </div>
 </div>

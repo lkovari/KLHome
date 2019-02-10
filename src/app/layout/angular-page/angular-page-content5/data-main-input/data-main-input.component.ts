@@ -26,14 +26,20 @@ export class DataMainInputComponent implements OnInit {
   }
 
   form_data = {
-    customcText: null,
-    customNumber: null,
-    customcText1: null,
-    customNumber1: null,
-    customcText2: null,
-    customNumber2: null,
-    customcText3: null,
-    customNumber3: null
+      customText: null,
+      customNumber: null,
+      tabInput1: {
+        customText: null,
+        customNumber: null
+      },
+      tabInput2: {
+        customText: null,
+        customNumber: null
+      },
+      tabInput3: {
+        customText: null,
+        customNumber : null
+      }
   };
 
   constructor() { }
@@ -54,6 +60,7 @@ export class DataMainInputComponent implements OnInit {
     if (!this._customFormModel) {
       this._customFormModel = new CustomFormModel();
     }
+    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
   private tabItemChanged(ix: number) {
@@ -71,34 +78,25 @@ export class DataMainInputComponent implements OnInit {
 
   onSubmit(formData: NgForm) {
     this.isSubmitted = true;
-    this.form_data.customcText = formData.value.customText;
-    this.form_data.customNumber = formData.value.customNumber;
-    this.form_data.customcText1 = formData.value.tabInput1.customText1;
-    this.form_data.customNumber1 = formData.value.tabInput1.customNumber1;
-    this.form_data.customcText2 = formData.value.tabInput2.customText2;
-    this.form_data.customNumber2 = formData.value.tabInput2.customNumber2;
-    this.form_data.customcText3 = formData.value.tabInput3.customText3;
-    this.form_data.customNumber3 = formData.value.tabInput3.customNumber3;
-    // reset the form same as when reloaded
-    formData.reset();
+    Object.assign(this.form_data, formData.value);
     console.log(this.form_data);
   }
 
   setModel() {
     this.formData.form.setValue(
       {
-        customText: 'LKövári',
+        customText: 'LKövári T#0',
         customNumber: 1965,
         tabInput1: {
-          customText: 'LKövári',
+          customText: 'LKövári T#1',
           customNumber: 1965
         },
         tabInput2: {
-          customText: 'LKövári',
+          customText: 'LKövári T#2',
           customNumber: 1965
         },
         tabInput3: {
-          customText: 'LKövári',
+          customText: 'LKövári T#3',
           customNumber : 1965
         }
       }
