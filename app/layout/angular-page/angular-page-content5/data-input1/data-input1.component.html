@@ -1,0 +1,24 @@
+<div class="data-input-layout1">
+  Data Input Component #1
+  <fieldset class="vertical-gap" ngModelGroup="tabInput1">
+    <div class="form-group">
+      <label for="customtextinput">Custom Text
+        <span class="text-danger">*</span>
+      </label>
+      <app-text-input id="customtextinput" name="customText" [(ngModel)]="customFormModel.customText1" #customText="ngModel"
+        [minlength]="7" [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)" required>
+      </app-text-input>
+      <span class="text-danger" *ngIf="customText && (customText.invalid && !customText.pristine)">
+        <p *ngIf="customText.errors.required">Custom text is Required</p>
+        <p *ngIf="customText.hasError('capital')">Must start with capital letter!</p>
+        <p *ngIf="customText.errors.minlength">Minimum length is {{minLength}} !</p>
+      </span>
+    </div>
+    <div class="form-group">
+      <label class="label-gap" for="customnumberinput">Custom number
+      </label>
+      <input id="customnumberinput" type="number" name="customNumber" [(ngModel)]="customFormModel.customNumber3"
+        #customNumberInput="ngModel">
+    </div>
+  </fieldset>
+</div>

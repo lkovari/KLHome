@@ -13,6 +13,10 @@ import { AngularPageContent3Component } from './angular-page-content3/angular-pa
 import { AngularPageContent4Component } from './angular-page-content4/angular-page-content4.component';
 import { AngularPageContent5Component } from './angular-page-content5/angular-page-content5.component';
 import { TabMenuModule } from 'primeng/primeng';
+import { DataInput1Component } from './angular-page-content5/data-input1/data-input1.component';
+import { DataInput2Component } from './angular-page-content5/data-input2/data-input2.component';
+import { DataInput3Component } from './angular-page-content5/data-input3/data-input3.component';
+import { DataMainInputComponent } from './angular-page-content5/data-main-input/data-main-input.component';
 
 @NgModule({
   imports: [
@@ -30,7 +34,11 @@ import { TabMenuModule } from 'primeng/primeng';
                   AngularPageContent2Component,
                   AngularPageContent3Component,
                   AngularPageContent4Component,
-                  AngularPageContent5Component],
+                  AngularPageContent5Component,
+                  DataInput1Component,
+                  DataInput2Component,
+                  DataInput3Component,
+                  DataMainInputComponent],
   exports: [ AngularPageTitleComponent,
              AngularPageContent1Component,
              AngularPageContent2Component,

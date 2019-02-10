@@ -1,0 +1,46 @@
+<div class="main-data-input">
+  <form class="form-height form-border spacer-vertical" (ngSubmit)="onSubmit(formData)" #formData="ngForm" autocomplete="off"
+    novalidate>
+    <div>
+      <p-tabMenu [model]="tabItems" [activeItem]="activeItem"></p-tabMenu>
+    </div>
+    <div class="tab-panel">
+      <div class="form-group">
+        <label for="customtextinput">Custom Text
+          <span class="text-danger">*</span>
+        </label>
+        <app-text-input id="customtextinput" name="customText" [(ngModel)]="customFormModel.customText"
+          #customText="ngModel" [minlength]="7" [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)"
+          required>
+        </app-text-input>
+        <span class="text-danger" *ngIf="customText && (customText.invalid && !customText.pristine)">
+          <p *ngIf="customText.errors.required">Custom text is Required</p>
+          <p *ngIf="customText.hasError('capital')">Must start with capital letter!</p>
+          <p *ngIf="customText.errors.minlength">Minimum length is {{minLength}} !</p>
+        </span>
+      </div>
+      <div  class="form-group">
+        <label class="label-gap" for="customnumberinput">Custom number
+        </label>
+        <input id="customnumberinput" type="number" name="customNumber" [(ngModel)]="customFormModel.customNumber" #customNumberInput="ngModel">
+      </div>
+      <div class="tab1-panel" [hidden]="tabIndex !== 0">
+        <app-data-input1 [customFormModel]="customFormModel"></app-data-input1>
+      </div>
+      <div class="tab2-panel" [hidden]="tabIndex !== 1">
+        <app-data-input2 [customFormModel]="customFormModel"></app-data-input2>
+      </div>
+      <div class="tab3-panel" [hidden]="tabIndex !== 2">
+        <app-data-input3 [customFormModel]="customFormModel"></app-data-input3>
+      </div>
+    </div>
+    <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel($event)">Set Model</button>
+    <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear Model</button>
+    <button class="btn btn-primary" type="submit" [disabled]="formData.invalid">Submit</button>
+  </form>
+  <div class="sub-topic" *ngIf="isSubmitted">
+    <div class="cols-xs-12">
+      <b>Form Model</b>
+    </div>
+  </div>
+</div>

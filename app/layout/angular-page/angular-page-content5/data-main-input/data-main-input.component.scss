@@ -1,17 +1,17 @@
-.layout-angular-playground-page5 {
-    .angular-playground-description {
-        padding: 0.5Rem;
-    }
-    .sub-topic {
-        padding: 1Rem;
-    }
+.main-data-input {
     .form-border {
         border: solid blue 1px;
         padding: 1rem;
     }
+    .form-height {
+        height: 35rem;
+    }
+    .label-gap {
+        padding-right: 0.5rem;
+    }
     input.ng-invalid.ng-touched {
         border: 1px solid red;
-    }
+    }    
     .spacer-horozontal-right {
         margin-right: 0.5rem;
     }
@@ -23,14 +23,18 @@
     }
     .message-style {
         display: table-cell;
-    }
-    .struct-main {
-        display: list-item;
+    }    
+    .tab-panel {
         padding-top: 1rem;
-        padding-bottom: 1rem;
-        .struct-sub {
-            display: list-item;
-            padding-left: 1rem;
+        height: 28rem;
+        .tab1-panel {
+            height: 26rem;
+        }
+        .tab2-panel {
+            height: 26rem;
+        }
+        .tab3-panel {
+            height: 26rem;
         }
     }
 }
