@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('02/10/2019 03:17 PM');
+  lastUpdate = new Date('02/10/2019 07:55 PM');
   lastUpdateTooltip = 'Example on Angular PlayGround #4';
 
   eventCalled() {
