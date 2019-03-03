@@ -17,6 +17,11 @@ import { DataInput1Component } from './angular-page-content5/data-input1/data-in
 import { DataInput2Component } from './angular-page-content5/data-input2/data-input2.component';
 import { DataInput3Component } from './angular-page-content5/data-input3/data-input3.component';
 import { DataMainInputComponent } from './angular-page-content5/data-main-input/data-main-input.component';
+import { AngularPageContent6Component } from './angular-page-content6/angular-page-content6.component';
+import { MainFormComponent } from './angular-page-content6/components/main-form/main-form.component';
+import { SubForm1Component } from './angular-page-content6/components/sub-form1/sub-form1.component';
+import { SubForm2Component } from './angular-page-content6/components/sub-form2/sub-form2.component';
+import { SubForm3Component } from './angular-page-content6/components/sub-form3/sub-form3.component';
 
 @NgModule({
   imports: [
@@ -35,15 +40,22 @@ import { DataMainInputComponent } from './angular-page-content5/data-main-input/
                   AngularPageContent3Component,
                   AngularPageContent4Component,
                   AngularPageContent5Component,
+                  AngularPageContent6Component,
                   DataInput1Component,
                   DataInput2Component,
                   DataInput3Component,
-                  DataMainInputComponent],
+                  DataMainInputComponent,
+                  AngularPageContent6Component,
+                  MainFormComponent,
+                  SubForm1Component,
+                  SubForm2Component,
+                  SubForm3Component],
   exports: [ AngularPageTitleComponent,
              AngularPageContent1Component,
              AngularPageContent2Component,
              AngularPageContent3Component,
              AngularPageContent4Component,
-             AngularPageContent5Component]
+             AngularPageContent5Component,
+             AngularPageContent6Component]
 })
 export class AngularPageModule { }

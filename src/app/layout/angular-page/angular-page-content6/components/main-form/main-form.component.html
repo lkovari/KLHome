@@ -1,0 +1,81 @@
+<div class="main-custom-form">
+  <div class="form-border">
+    <form (ngSubmit)="onSubmit(customForm)" [formGroup]="customForm" novalidate autocomplete="off">
+      <div>
+        <p-tabMenu [model]="tabItems" [activeItem]="activeItem"></p-tabMenu>
+      </div>
+      <div class="tab-panel">
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="firstNameId">Text
+            <span class="text-danger">*</span>
+          </label>
+          <div class="col-md-8">
+            <input class="form-control" id="customText" type="text" placeholder="custom text" formControlName="customText"
+              [ngClass]="{'is-invalid': (customForm.get('customText').touched ||
+                customForm.get('customText').dirty) &&
+                !customForm.get('customText').valid }" />
+            <span class="invalid-feedback">
+              <span *ngIf="customForm.get('customText').errors?.required">
+                Please enter a text!
+              </span>
+              <span *ngIf="customForm.get('customText').errors?.minlength">
+                The text must be longer than {{ minLength }} characters!
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="firstNameId">Number
+            <span class="text-danger">*</span>
+          </label>
+          <div class="col-md-8">
+            <input class="form-control" id="customNumber" type="text" placeholder="custom number" formControlName="customNumber"
+              [ngClass]="{'is-invalid': (customForm.get('customNumber').touched ||
+                  customForm.get('customNumber').dirty) &&
+                  !customForm.get('customNumber').valid }" />
+            <span class="invalid-feedback">
+              <span *ngIf="customForm.get('customNumber').errors?.required">
+                Please enter a number.
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label" for="firstNameId">Email Address
+            <span class="text-danger">*</span>
+          </label>
+          <div class="col-md-8">
+            <input class="form-control" id="customEmail" type="text" placeholder="custom email address" formControlName="emailAddress"
+              [ngClass]="{'is-invalid': (customForm.get('emailAddress').touched ||
+                    customForm.get('emailAddress').dirty) &&
+                    !customForm.get('emailAddress').valid }" />
+            <span class="invalid-feedback">
+              <span *ngIf="customForm.get('emailAddress').errors?.required">
+                Please enter an Email address!
+              </span>
+              <span *ngIf="customForm.get('emailAddress').errors?.email">
+                Please enter a valid Email address!
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="tab1-panel" *ngIf="tabIndex === 0">
+          <app-sub-form1 [formPartTab]="selectedFormModel"></app-sub-form1>
+        </div>
+        <div class="tab2-panel" *ngIf="tabIndex === 1">
+          <app-sub-form2 [formPartTab]="selectedFormModel"></app-sub-form2>
+        </div>
+        <div class="tab3-panel" *ngIf="tabIndex === 2">
+          <app-sub-form3 [formPartTab]="selectedFormModel"></app-sub-form3>
+        </div>
+      </div>
+      <div class="buttons-area">
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel($event)">Set Model</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
+          Model</button>
+        <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!activeItem" (click)="onUnselectTab($event)">Unselect Tab</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!customForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

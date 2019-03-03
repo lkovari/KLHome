@@ -126,6 +126,13 @@ export class DataMainInputComponent implements OnInit {
         }
       }
     );
+    this.formData.form.markAsPristine();
+    this.formData.form.markAsUntouched();
+  }
+
+  onUnselectTab(event) {
+    this.activeItem = null;
+    this.tabIndex = -1;
   }
 
   onClearModel(event) {

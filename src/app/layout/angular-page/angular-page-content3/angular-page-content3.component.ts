@@ -95,6 +95,7 @@ export class AngularPageContent3Component implements OnInit {
     return complexNameModel;
   }
 
+  /*
   private getEmptySampleModel(): IComplexName {
     const complexNameModel = new ComplexName();
     complexNameModel.firstName = null;
@@ -102,6 +103,7 @@ export class AngularPageContent3Component implements OnInit {
     complexNameModel.lastName = null;
     return complexNameModel;
   }
+  */
 
   onNameChange(model: IComplexName) {
     console.log('Model Changed ' + JSON.stringify(model));
