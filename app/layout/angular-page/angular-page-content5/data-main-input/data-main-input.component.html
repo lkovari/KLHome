@@ -42,6 +42,7 @@
     </div>
     <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel($event)">Set Model</button>
     <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear Model</button>
+    <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!activeItem" (click)="onUnselectTab($event)">Unselect Tab</button>
     <button class="btn btn-primary" type="submit" [disabled]="formData.invalid">Submit</button>
   </form>
   <div class="sub-topic" *ngIf="isSubmitted">
