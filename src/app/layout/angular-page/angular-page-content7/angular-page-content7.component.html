@@ -1,0 +1,181 @@
+<div class="layout-angular-playground-page7">
+  <div class="angular-playground-description form-group">
+    <div class="col-xs-12">
+      This page is a
+      <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which
+      interested
+      in, for me.
+    </div>
+    <div class="sub-topic">
+      <b>Act #6</b>
+      <label class="horizontal-gap-left horizontal-gap-right text-warning">!This page is under construction!</label>
+      <label class="text-primary">
+        <a class="horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content6/app-angular-page-content7">
+          <img [src]="githubLogoPath" width="16" height="16">
+        </a>Dinamically created forms in a list, like as the table, each row is a table which participate in the main
+        form validation.
+      </label>
+      <br>
+      We have a main form, which contains a list of forms. The Form contains a column header and below it the rows.
+      I used reactive forms technology for show the form. Just three user role rows allowed to add.
+      <label>See the validation rules below</label>
+      <div class="struct-main">
+        <label class="struct-sub">User Name is mandatory, minimum length is {{ userNameMinLength }}</label>
+        <label class="struct-sub">The passwords requires one uppercase and lowercase letters, one digits, and one special characters. There must be a minimum of 8 characters total, and no white space characters are allowed.</label>
+        <label class="struct-sub">RoleType and ModuleType is mandatory on each row which added</label>
+        <label class="struct-sub">Those rows where the RoleType and ModuleType are same it is duplicated rows</label>
+        <label class="struct-sub">The description maximum length is {{ descriptionMaxLength }} characters.</label>
+      </div>
+      <div class="user-form form-border form-height">
+        <form (ngSubmit)="onSubmit(mainForm)" [formGroup]="mainForm" novalidate autocomplete="off">
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label" for="userName">User Name
+              <span class="text-danger">*</span>
+            </label>
+            <div class="col-md-8">
+              <input class="form-control" id="userName" type="text" placeholder="user name required" formControlName="userName"
+                [ngClass]="{'is-invalid': (mainForm.get('userName').touched ||
+                  mainForm.get('userName').dirty) &&
+                  !mainForm.get('userName').valid }" />
+              <span class="invalid-feedback">
+                <span *ngIf="mainForm.get('userName').errors?.required">
+                  Please enter a User name!
+                </span>
+                <span *ngIf="mainForm.get('userName').errors?.minlength">
+                  The User name must be longer than {{ userNameminLength }} characters!
+                </span>
+              </span>
+            </div>
+          </div>
+          <div formGroupName="passwordGroup">
+            <div class="form-group row mb-2">
+              <label class="col-md-2 col-form-label" for="password">Password
+                <span class="text-danger">*</span>
+              </label>
+              <div class="col-md-8">
+                <input class="form-control" id="password" type="password" placeholder="Password (required)"
+                  formControlName="password" [ngClass]="{'is-invalid': mainForm.get('passwordGroup').errors ||
+                                                      ((mainForm.get('passwordGroup.password').touched ||
+                                                      mainForm.get('passwordGroup.password').dirty) && 
+                                                      !mainForm.get('passwordGroup.password').valid) }" />
+                <span class="invalid-feedback">
+                  <span *ngIf="mainForm.get('passwordGroup.password').errors?.required">
+                    Please enter your Password.
+                  </span>
+                  <span *ngIf="mainForm.get('passwordGroup.password').errors?.pattern">
+                    Please enter a valid Password, Min 8 chars minimum one number and letter and special character.
+                  </span>
+                  <span *ngIf="mainForm.get('passwordGroup').errors?.notidentical">
+                    Both password does not identical.
+                  </span>
+                </span>
+              </div>
+            </div>
+
+            <div class="form-group row mb-2">
+              <label class="col-md-2 col-form-label" for="confirmPassword">Confirm Password
+                <span class="text-danger">*</span>
+              </label>
+              <div class="col-md-8">
+                <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm Password (required)"
+                  formControlName="confirmPassword" [ngClass]="{'is-invalid': mainForm.get('passwordGroup').errors ||
+                                                       ((mainForm.get('passwordGroup.confirmPassword').touched || 
+                                                       mainForm.get('passwordGroup.confirmPassword').dirty) && 
+                                                       !mainForm.get('passwordGroup.confirmPassword').valid) }" />
+                <span class="invalid-feedback">
+                  <span *ngIf="mainForm.get('passwordGroup.confirmPassword').errors?.required">
+                    Please confirm your Password.
+                  </span>
+                  <span *ngIf="mainForm.get('passwordGroup.confirmPassword').errors?.pattern">
+                    Please enter a valid Password, Min 8 chars minimum one number and letter and special character.
+                  </span>
+                  <span *ngIf="mainForm.get('passwordGroup').errors?.notidentical">
+                    Both password does not identical.
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="user-role-list">
+            <label class="spacer-vertical-above spacer-horozontal-left">Role List</label>
+            <div class="spacer-vertical-above col-md-12" formArrayName="userRoles">
+              <div class="row header-separator spacer-vertical-below">
+                <div class="col-md-3">User Role
+                  <span class="text-danger">*</span>
+                </div>
+                <div class="col-md-3">Modul
+                  <span class="text-danger">*</span>
+                </div>
+                <div class="col-md-3">Expire</div>
+                <div class="col-md-3">Description</div>
+              </div>
+              <div>
+                <div *ngFor="let userRole of getUserRoleControls(); let ix = index">
+                  <div class="row" [formGroupName]="ix">
+                    <div class="form-group col-md-3">
+                      <p-dropdown id="roleType" [options]="roleTypes" formControlName="roleType" editable="true"
+                        [showClear]="true" [editable]="false" placeholder="Select a RoleType" tabindex="calcTabIndex(ix, 0)"
+                        [required]="true" [ngClass]="{'invalid-marker': isUserFieldInvalid(userRole, 'moduleType') }">
+                      </p-dropdown>
+                      <span *ngIf="isUserFieldInvalid(userRole, 'roleType')">
+                        <span class="show-invalid-feedback">
+                          Please select User Role.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <p-dropdown id="moduleType" [options]="moduleTypes" formControlName="moduleType" editable="true"
+                        [showClear]="true" [editable]="false" placeholder="Select a ModuleType" tabindex="calcTabIndex(ix, 1)"
+                        [required]="true" [ngClass]="{'invalid-marker': isUserFieldInvalid(userRole, 'moduleType') }">
+                      </p-dropdown>
+                      <span *ngIf="isUserFieldInvalid(userRole, 'moduleType')">
+                        <span class="show-invalid-feedback">
+                          Please select Module Type.
+                        </span>
+                      </span>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <p-calendar id="expire" tabindex="calcTabIndex(ix, 2)" formControlName="expire" [readonlyInput]="false"
+                        [defaultDate]="todayDate" [showTime]="false" [dataType]="date" showOnFocus="false"
+                        [showOnFocus]="false">
+                      </p-calendar>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <input id="description" type="text" class="form-control" formControlName="description" tabindex="calcTabIndex(ix, 3)"
+                        [ngClass]="{'is-invalid': isUserFieldInvalid(userRole, 'description') }">
+                        <span *ngIf="isUserFieldInvalid(userRole, 'description')">
+                          <span class="show-invalid-feedback">
+                          The Description must be shorter than {{ descriptionMaxLength }} characters!
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span *ngIf="hasDuplicatedRows(mainForm)">
+            <span class="show-invalid-feedback">
+              Duplicated rows found, please correct those.
+            </span>
+          </span>
+          <div class="buttons-area">
+            <div class="user-role-add">
+              <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!isNeedMoreRow()"
+                (click)="onAddUserRole($event)">Add
+                Role</button>
+            </div>
+            <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel($event)">Set
+              Model</button>
+            <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
+              Model</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!mainForm.valid">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="form-data">
+        {{ mainFormData | json }}
+      </div>
+    </div>
+  </div>
+</div>

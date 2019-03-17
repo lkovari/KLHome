@@ -1,0 +1,91 @@
+.layout-angular-playground-page7 {
+    .angular-playground-description {
+        padding: 0.5Rem;
+    }
+    .form-height {
+        height: 36rem;
+    }
+    .spacer-horozontal-right {
+        margin-right: 0.5rem;
+    }    
+    .horizontal-gap-right {
+        padding-right: 0.5rem;
+    }
+    .horizontal-gap-left {
+        padding-left: 0.5rem;
+    }
+    .sub-topic {
+        padding: 1Rem;
+    }
+    .form-border {
+        border: solid blue 1px;
+        padding: 1rem;
+    }
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+    .invalid-marker {
+        border: 1px solid red;
+        background-color: red;
+    }
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
+    }
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
+    }
+    .spacer-vertical-above {
+        margin-top: 0.5rem;
+    }
+    .spacer-vertical-below {
+        margin-bottom: 0.5rem;
+    }
+    .invalid-rows {
+        border: 2px solid red;
+    }
+    .message-style {
+        display: table-cell;
+    }
+    .show-invalid-feedback {
+        display: inline;
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
+    .struct-main {
+        display: list-item;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        .struct-sub {
+            display: list-item;
+            padding-left: 1rem;
+        }
+    }
+    .user-role-list {
+        font-size: 1rem;
+        border: solid blue 1px;
+    }
+    .table-header {
+        font-weight: bold;
+        border-bottom: solid blue 1px;
+    }
+    .header-separator {
+        border-bottom: solid black 1px;
+    }
+    .expire-style {
+        width: 7rem;
+    }    
+    .user-role-add {
+        text-align: right;
+        margin-top: 0.5rem;
+    }
+    .form-data {
+        padding-top: 1rem;
+    }
+    .buttons-area {
+        position: relative;
+        bottom: 0em;
+        left: 0rem;
+    }
+}

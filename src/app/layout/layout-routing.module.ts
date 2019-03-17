@@ -52,6 +52,7 @@ import { AboutmeContentComponent } from 'app/layout/aboutme-page/aboutme-content
 import { AngularPageContent4Component } from './angular-page/angular-page-content4/angular-page-content4.component';
 import { AngularPageContent5Component } from './angular-page/angular-page-content5/angular-page-content5.component';
 import { AngularPageContent6Component } from './angular-page/angular-page-content6/angular-page-content6.component';
+import { AngularPageContent7Component } from './angular-page/angular-page-content7/angular-page-content7.component';
 
 
 const routes: Routes = [
@@ -70,7 +71,8 @@ const routes: Routes = [
           {path: 'angular-page-content3', component: AngularPageContent3Component},
           {path: 'angular-page-content4', component: AngularPageContent4Component},
           {path: 'angular-page-content5', component: AngularPageContent5Component},
-          {path: 'angular-page-content6', component: AngularPageContent6Component}
+          {path: 'angular-page-content6', component: AngularPageContent6Component},
+          {path: 'angular-page-content7', component: AngularPageContent7Component}
         ]
       },
       {path: 'javascript-page', component: JavascriptPageTitleComponent,

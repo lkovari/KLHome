@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from 'app/shared/shared.module';
@@ -12,7 +12,7 @@ import { AngularPageContent2Component } from './angular-page-content2/angular-pa
 import { AngularPageContent3Component } from './angular-page-content3/angular-page-content3.component';
 import { AngularPageContent4Component } from './angular-page-content4/angular-page-content4.component';
 import { AngularPageContent5Component } from './angular-page-content5/angular-page-content5.component';
-import { TabMenuModule } from 'primeng/primeng';
+import { TabMenuModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 import { DataInput1Component } from './angular-page-content5/data-input1/data-input1.component';
 import { DataInput2Component } from './angular-page-content5/data-input2/data-input2.component';
 import { DataInput3Component } from './angular-page-content5/data-input3/data-input3.component';
@@ -22,6 +22,7 @@ import { MainFormComponent } from './angular-page-content6/components/main-form/
 import { SubForm1Component } from './angular-page-content6/components/sub-form1/sub-form1.component';
 import { SubForm2Component } from './angular-page-content6/components/sub-form2/sub-form2.component';
 import { SubForm3Component } from './angular-page-content6/components/sub-form3/sub-form3.component';
+import { AngularPageContent7Component } from './angular-page-content7/angular-page-content7.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,9 @@ import { SubForm3Component } from './angular-page-content6/components/sub-form3/
     SharedModule,
     AngularPageRoutingModule,
     PageHeaderModule,
-    TabMenuModule
+    TabMenuModule,
+    DropdownModule,
+    CalendarModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent1Component,
@@ -41,21 +44,25 @@ import { SubForm3Component } from './angular-page-content6/components/sub-form3/
                   AngularPageContent4Component,
                   AngularPageContent5Component,
                   AngularPageContent6Component,
+                  AngularPageContent7Component,
                   DataInput1Component,
                   DataInput2Component,
                   DataInput3Component,
                   DataMainInputComponent,
-                  AngularPageContent6Component,
                   MainFormComponent,
                   SubForm1Component,
                   SubForm2Component,
-                  SubForm3Component],
+                  SubForm3Component,
+                  AngularPageContent7Component
+                ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent1Component,
              AngularPageContent2Component,
              AngularPageContent3Component,
              AngularPageContent4Component,
              AngularPageContent5Component,
-             AngularPageContent6Component]
+             AngularPageContent6Component,
+             AngularPageContent7Component,
+            ]
 })
 export class AngularPageModule { }
