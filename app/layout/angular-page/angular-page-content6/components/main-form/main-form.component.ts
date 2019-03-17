@@ -10,7 +10,7 @@ import { ControlStatusKind } from '../../data-model/control-status-kind.enum';
   styleUrls: ['./main-form.component.scss']
 })
 export class MainFormComponent implements OnInit {
-  minLength = 7;
+  textMinLength = 7;
   githubLogoPath: string;
   formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   tabItems: MenuItem[];

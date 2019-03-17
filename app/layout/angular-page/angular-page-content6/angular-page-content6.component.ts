@@ -13,6 +13,7 @@ export class AngularPageContent6Component implements OnInit {
   customDataModel: CustomFormModel;
   githubLogoPath: string;
   formData: any;
+  textMinLength = 7;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -20,7 +21,7 @@ export class AngularPageContent6Component implements OnInit {
     const updateOnObj = { updateOn: 'submit' };
 
     this.customForm = this.formBuilder.group( {
-      customText: [ { value: null }, [ Validators.required, Validators.minLength(7) ] ],
+      customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
       customNumber: [ { value: null }, [ Validators.required ] ],
       emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
 
@@ -53,7 +54,7 @@ export class AngularPageContent6Component implements OnInit {
     this.clearValues();
 
     this.customForm.valueChanges.subscribe(
-      value => this.setNotification(value)
+      value => this.onValueChanged(value)
     );
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
@@ -62,7 +63,7 @@ export class AngularPageContent6Component implements OnInit {
     this.customDataModel = new CustomFormModel();
   }
 
-  setNotification(value) {
+  onValueChanged(value) {
     this.formData = value;
     console.log(value);
   }
