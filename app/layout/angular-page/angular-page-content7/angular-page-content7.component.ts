@@ -17,9 +17,10 @@ import { CustomValidators } from './custom-validators';
 export class AngularPageContent7Component implements OnInit {
   mainForm: FormGroup;
   mainFormData: any;
+  mainFormSubmitData: any;
   mainFormModel: UserFormData;
   // one letter one number and min length is eight character
-  passwordPattern = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}';
+  passwordPattern = '^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$';
   // userNamePattern = '^[a-z0-9_-]{8,15}$';
   githubLogoPath: string;
   userNameMinLength = 7;
@@ -173,6 +174,8 @@ export class AngularPageContent7Component implements OnInit {
     this.setupValues(userFormData);
     this.mainForm.markAsUntouched();
     this.mainForm.markAsPristine();
+    this.mainFormData = undefined;
+    this.mainFormSubmitData = undefined;
   }
 
   isUserFieldInvalid(ur: FormControl, field: string): boolean {
@@ -185,6 +188,8 @@ export class AngularPageContent7Component implements OnInit {
   }
 
   onSubmit(form) {
-    console.log('Form is valid! ' + JSON.stringify(form.value));
-  }
+    this.mainFormSubmitData = form.value;
+    console.log('Form is submitted!');
+    console.log(JSON.stringify(form.value));
+   }
 }

@@ -2,8 +2,11 @@
     .angular-playground-description {
         padding: 0.5Rem;
     }
+    .sub-topic {
+        padding: 1Rem;
+    }
     .form-height {
-        height: 36rem;
+        height: 43rem;
     }
     .spacer-horozontal-right {
         margin-right: 0.5rem;
@@ -14,8 +17,11 @@
     .horizontal-gap-left {
         padding-left: 0.5rem;
     }
-    .sub-topic {
-        padding: 1Rem;
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
+    }
+    .spacer-horozontal-right {
+        margin-right: 0.5rem;
     }
     .form-border {
         border: solid blue 1px;
@@ -28,26 +34,14 @@
         border: 1px solid red;
         background-color: red;
     }
-    .spacer-horozontal-left {
-        margin-left: 0.5rem;
-    }
-    .spacer-horozontal-left {
-        margin-left: 0.5rem;
-    }
     .spacer-vertical-above {
         margin-top: 0.5rem;
     }
     .spacer-vertical-below {
         margin-bottom: 0.5rem;
     }
-    .invalid-rows {
-        border: 2px solid red;
-    }
-    .message-style {
-        display: table-cell;
-    }
     .show-invalid-feedback {
-        display: inline;
+        display: block;
         width: 100%;
         margin-top: 0.25rem;
         font-size: 80%;
@@ -70,22 +64,12 @@
         font-weight: bold;
         border-bottom: solid blue 1px;
     }
-    .header-separator {
-        border-bottom: solid black 1px;
-    }
-    .expire-style {
-        width: 7rem;
-    }    
-    .user-role-add {
-        text-align: right;
-        margin-top: 0.5rem;
-    }
     .form-data {
-        padding-top: 1rem;
+        padding-top: 0.5rem;
     }
     .buttons-area {
         position: relative;
-        bottom: 0em;
+        top: 1em;
         left: 0rem;
     }
 }
