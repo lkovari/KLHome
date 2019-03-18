@@ -21,9 +21,10 @@
       <label>See the validation rules below</label>
       <div class="struct-main">
         <label class="struct-sub">User Name is mandatory, minimum length is {{ userNameMinLength }}</label>
-        <label class="struct-sub">The passwords requires one uppercase and lowercase letters, one digits, and one special characters. There must be a minimum of 8 characters total, and no white space characters are allowed.</label>
+        <label class="struct-sub">The passwords requires one uppercase and lowercase letters, one digits, and one
+          special characters. There must be a minimum of 8 characters total, and no white space characters are allowed.</label>
         <label class="struct-sub">RoleType and ModuleType is mandatory on each row which added</label>
-        <label class="struct-sub">Those rows where the RoleType and ModuleType are same it is duplicated rows</label>
+        <label class="struct-sub">Doesn!t allow duplicated rows, where the RoleType and ModuleType are same it is duplicated rows, # of max rows is 3</label>
         <label class="struct-sub">The description maximum length is {{ descriptionMaxLength }} characters.</label>
       </div>
       <div class="user-form form-border form-height">
@@ -97,25 +98,31 @@
             </div>
           </div>
           <div class="user-role-list">
-            <label class="spacer-vertical-above spacer-horozontal-left">Role List</label>
-            <div class="spacer-vertical-above col-md-12" formArrayName="userRoles">
-              <div class="row header-separator spacer-vertical-below">
-                <div class="col-md-3">User Role
-                  <span class="text-danger">*</span>
-                </div>
-                <div class="col-md-3">Modul
-                  <span class="text-danger">*</span>
-                </div>
-                <div class="col-md-3">Expire</div>
-                <div class="col-md-3">Description</div>
-              </div>
-              <div>
-                <div *ngFor="let userRole of getUserRoleControls(); let ix = index">
-                  <div class="row" [formGroupName]="ix">
-                    <div class="form-group col-md-3">
-                      <p-dropdown id="roleType" [options]="roleTypes" formControlName="roleType" editable="true"
+            <label class="spacer-vertical-above spacer-horozontal-left">Role List #{{ getUserRoleControls().length }}</label>
+            <table class="table spacer-vertical-above" formArrayName="userRoles">
+              <thead>
+                <tr>
+                  <th>
+                    <div>User Role<span class="text-danger">*</span></div>
+                  </th>
+                  <th>
+                    <div>Modul<span class="text-danger">*</span></div>
+                  </th>
+                  <th>
+                    <div>Expire</div>
+                  </th>
+                  <th>
+                    <div>Description</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let userRole of getUserRoleControls(); let ix = index" [formGroupName]="ix">
+                  <td>
+                    <div>
+                      <p-dropdown id="roleType" class="form-group" [options]="roleTypes" formControlName="roleType" editable="true"
                         [showClear]="true" [editable]="false" placeholder="Select a RoleType" tabindex="calcTabIndex(ix, 0)"
-                        [required]="true" [ngClass]="{'invalid-marker': isUserFieldInvalid(userRole, 'moduleType') }">
+                        [required]="true">
                       </p-dropdown>
                       <span *ngIf="isUserFieldInvalid(userRole, 'roleType')">
                         <span class="show-invalid-feedback">
@@ -123,10 +130,12 @@
                         </span>
                       </span>
                     </div>
-                    <div class="form-group col-md-3">
-                      <p-dropdown id="moduleType" [options]="moduleTypes" formControlName="moduleType" editable="true"
+                  </td>
+                  <td>
+                    <div >
+                      <p-dropdown id="moduleType" class="form-group" [options]="moduleTypes" formControlName="moduleType" editable="true"
                         [showClear]="true" [editable]="false" placeholder="Select a ModuleType" tabindex="calcTabIndex(ix, 1)"
-                        [required]="true" [ngClass]="{'invalid-marker': isUserFieldInvalid(userRole, 'moduleType') }">
+                        [required]="true">
                       </p-dropdown>
                       <span *ngIf="isUserFieldInvalid(userRole, 'moduleType')">
                         <span class="show-invalid-feedback">
@@ -134,25 +143,29 @@
                         </span>
                       </span>
                     </div>
-                    <div class="form-group col-md-3">
-                      <p-calendar id="expire" tabindex="calcTabIndex(ix, 2)" formControlName="expire" [readonlyInput]="false"
+                  </td>
+                  <td>
+                    <div>
+                      <p-calendar id="expire" class="form-group" tabindex="calcTabIndex(ix, 2)" formControlName="expire" [readonlyInput]="false"
                         [defaultDate]="todayDate" [showTime]="false" [dataType]="date" showOnFocus="false"
                         [showOnFocus]="false">
                       </p-calendar>
                     </div>
-                    <div class="form-group col-md-3">
-                      <input id="description" type="text" class="form-control" formControlName="description" tabindex="calcTabIndex(ix, 3)"
+                  </td>
+                  <td>
+                    <div>
+                      <input pInputText id="description" class="form-control" type="text" formControlName="description" tabindex="calcTabIndex(ix, 3)"
                         [ngClass]="{'is-invalid': isUserFieldInvalid(userRole, 'description') }">
-                        <span *ngIf="isUserFieldInvalid(userRole, 'description')">
-                          <span class="show-invalid-feedback">
+                      <span *ngIf="isUserFieldInvalid(userRole, 'description')">
+                        <span class="show-invalid-feedback">
                           The Description must be shorter than {{ descriptionMaxLength }} characters!
                         </span>
                       </span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
           <span *ngIf="hasDuplicatedRows(mainForm)">
             <span class="show-invalid-feedback">
@@ -160,21 +173,24 @@
             </span>
           </span>
           <div class="buttons-area">
-            <div class="user-role-add">
-              <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddMoreRow()"
-                (click)="onAddUserRole($event)">Add
-                Role</button>
-            </div>
-            <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddThreeRows()" (click)="onSetModel($event)">Set
+            <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddThreeRows()"
+              (click)="onSetModel($event)">Set
               Model</button>
             <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
               Model</button>
-            <button class="btn btn-primary" type="submit" [disabled]="!mainForm.valid">Submit</button>
+            <button class="btn btn-primary spacer-horozontal-right" type="submit" [disabled]="!mainForm.valid">Submit</button>
+            <button class="btn btn-primary" type="button" [disabled]="!canAddMoreRow()"
+              (click)="onAddUserRole($event)">Add Role</button>
           </div>
         </form>
       </div>
+      <label class="text-primary">Form Data</label>
       <div class="form-data">
         {{ mainFormData | json }}
+      </div>
+      <label class="text-primary">Form Data when Submitted</label>
+      <div class="form-data">
+          {{ mainFormSubmitData | json }}
       </div>
     </div>
   </div>
