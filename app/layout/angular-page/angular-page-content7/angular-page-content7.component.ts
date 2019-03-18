@@ -73,8 +73,12 @@ export class AngularPageContent7Component implements OnInit {
     (<FormArray>this.mainForm.get('userRoles')).push(this.createUserRole(null));
   }
 
-  isNeedMoreRow(): boolean {
+  canAddMoreRow(): boolean {
     return (<FormArray>this.mainForm.get('userRoles')).controls.length < 3;
+  }
+
+  canAddThreeRows(): boolean {
+    return (<FormArray>this.mainForm.get('userRoles')).controls.length === 0;
   }
 
   createUserRole(userRole: UserRole): FormGroup {

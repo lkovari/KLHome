@@ -161,11 +161,11 @@
           </span>
           <div class="buttons-area">
             <div class="user-role-add">
-              <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!isNeedMoreRow()"
+              <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddMoreRow()"
                 (click)="onAddUserRole($event)">Add
                 Role</button>
             </div>
-            <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel($event)">Set
+            <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddThreeRows()" (click)="onSetModel($event)">Set
               Model</button>
             <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
               Model</button>
