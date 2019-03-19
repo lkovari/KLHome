@@ -59,6 +59,16 @@
     .user-role-list {
         font-size: 1rem;
         border: solid blue 1px;
+        p-dropdown::ng-deep {
+            .ui-dropdown {
+                width: 100% !important;
+            }
+        }
+        p-calendar::ng-deep {
+            .ui-inputtext {
+                width: 100% !important;
+            }
+        }
     }
     .table-header {
         font-weight: bold;
@@ -72,4 +82,5 @@
         top: 1em;
         left: 0rem;
     }
+
 }
