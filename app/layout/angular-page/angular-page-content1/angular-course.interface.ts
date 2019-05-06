@@ -5,4 +5,6 @@ export interface IAngularCourse {
     dateOfCompleted: Date;
     certificateImageSmall: string;
     certificateImageLarge: string;
+    hours: number;
+    minutes;
 }

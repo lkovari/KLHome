@@ -7,4 +7,6 @@ export class AngularCourseModel implements IAngularCourse {
     dateOfCompleted: Date;
     certificateImageSmall: string;
     certificateImageLarge: string;
+    hours: number;
+    minutes;
 }
