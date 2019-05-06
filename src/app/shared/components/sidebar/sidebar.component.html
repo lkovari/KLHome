@@ -1,7 +1,7 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
     <a class="text-style">
-      Last update {{lastUpdate | date:'MM/dd/yyyy HH:mm a'}}
+      Last update {{ lastUpdate | date:'MM/dd/yyyy HH:mm a'}}
     </a>
     <a routerLink="/aboutme-page" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-user"> About me</i>

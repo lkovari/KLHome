@@ -22,4 +22,13 @@
             font-weight: bold;
         }
     }
+    .total-label {
+        font-weight: bold;
+        padding-left: 0.5rem;
+    }
+    .total-value {
+        font-weight: bold;
+        font-style: italic;
+        color: blue;
+    }
 }
