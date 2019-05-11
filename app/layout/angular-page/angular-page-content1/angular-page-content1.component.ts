@@ -45,7 +45,7 @@ export class AngularPageContent1Component implements OnInit {
     this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
       if (txt) {
         console.log('LOADED ' + fileName + ' - ' + JSON.stringify(txt));
-        const textLines = txt.split(/\r/);
+        const textLines = txt.split(/\r|\n/);
         console.log('textLines ' + fileName + ' - ' + JSON.stringify(textLines));
         const csvHeader = textLines[0].split(',');
         console.log('csvHeader ' + fileName + ' - ' + JSON.stringify(csvHeader));
