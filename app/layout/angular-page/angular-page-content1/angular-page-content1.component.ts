@@ -83,7 +83,7 @@ export class AngularPageContent1Component implements OnInit {
     this.csvLoaderParser('assets/courses', 'inprogress-courses.csv', this.angularCourseInProgressList);
 
     this.angularCoursePlannedList =  []
-    this.csvLoaderParser('assets/ courses', 'planned-courses.csv', this.angularCoursePlannedList);
+    this.csvLoaderParser('assets/courses', 'planned-courses.csv', this.angularCoursePlannedList);
   }
 
   extractCertURL(course: AngularCourseModel): string {
