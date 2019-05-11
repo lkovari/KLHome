@@ -44,19 +44,14 @@ export class AngularPageContent1Component implements OnInit {
   private csvLoaderParser(path: string, fileName: string, courses: Array<AngularCourseModel>) {
     this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
       if (txt) {
-        console.log('LOADED ' + fileName + ' - ' + JSON.stringify(txt));
         const textLines = txt.split(/\r|\n/);
-        console.log('textLines ' + fileName + ' - ' + JSON.stringify(textLines));
         const csvHeader = textLines[0].split(',');
-        console.log('csvHeader ' + fileName + ' - ' + JSON.stringify(csvHeader));
         let isCompleted = false;
         for (let ix = 1; ix < textLines.length; ix++) {
           // split content based on comma
           const data = textLines[ix].split(',');
-          console.log('length ' + fileName + ' - ' + JSON.stringify(data[0]));
           if (data.length === 7 && data.length === csvHeader.length) {
             data[0] = data[0].replace('↵', '');
-            console.log('data ' + fileName + ' - ' + JSON.stringify(data[0]));
             const courseModel = new AngularCourseModel();
             courseModel.title = data[0];
             courseModel.author = data[1];
@@ -74,7 +69,7 @@ export class AngularPageContent1Component implements OnInit {
             console.log('Length not equals ' + fileName + ' d ' + data.length + ' h ' + csvHeader.length + ' : ' + data[0]);
           }
         }
-        console.log('PARSED ' + fileName + ' - ' + courses.length + ' : ' + JSON.stringify(courses));
+        console.log('Courses Parsed ' + fileName + ' # ' + courses.length);
         if (isCompleted) {
           this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
             return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
