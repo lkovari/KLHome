@@ -19,7 +19,7 @@ export class MasmPageContent1Component implements OnInit {
   }
 
   loadFileContent(fileName: string) {
-    this.fileLoaderService.loadtTextFile('masm', fileName).subscribe(fileContent => {
+    this.fileLoaderService.loadtTextFile('masm', fileName, true).subscribe(fileContent => {
       this.fileName = fileName;
       this.fileContent = fileContent;
       this.isDisplayText = true;

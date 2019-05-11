@@ -8,9 +8,10 @@ export class FileLoaderService {
   constructor(private http: HttpClient) { }
 
   // #docregion getTextFile
-  loadtTextFile(path: string, filename: string): Observable<string> {
+  loadtTextFile(path: string, filename: string, isUseAppFiles: boolean): Observable<string> {
     // https://angular.io/guide/http
-    return this.http.get('app/files/' + path + '/' + filename, {responseType: 'text'})
+    const filePath = isUseAppFiles ? 'app/files/' + path + '/' + filename : path + '/' + filename;
+    return this.http.get(filePath, {responseType: 'text'})
       .pipe(
         tap(
           data => {
