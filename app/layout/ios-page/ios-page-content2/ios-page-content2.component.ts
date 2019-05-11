@@ -16,7 +16,7 @@ export class IosPageContent2Component implements OnInit {
   constructor(private fileLoaderService: FileLoaderService) { }
 
   loadFileContent(fileName: string) {
-    this.fileLoaderService.loadtTextFile('objc', fileName).subscribe(fileContent => {
+    this.fileLoaderService.loadtTextFile('objc', fileName, true).subscribe(fileContent => {
       this.fileName = fileName;
       this.fileContent = fileContent;
       this.isDisplayText = true;

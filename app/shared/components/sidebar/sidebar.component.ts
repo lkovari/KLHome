@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('05/11/2019 02:37 PM');
+  lastUpdate = new Date('05/11/2019 06:14 PM');
   lastUpdateTooltip = 'Added courses content into CSV file';
 
   eventCalled() {

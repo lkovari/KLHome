@@ -42,7 +42,7 @@ export class AngularPageContent1Component implements OnInit {
   }
 
   private csvLoaderParser(path: string, fileName: string, courses: Array<AngularCourseModel>) {
-    this.fileLoaderService.loadtTextFile(path, fileName).subscribe((txt: string) => {
+    this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
       const textLines = txt.split(/\r/);
       const csvHeader = textLines[0].split(',');
       let isCompleted = false;
@@ -77,15 +77,13 @@ export class AngularPageContent1Component implements OnInit {
 
 
   initializeAngularCourses() {
-    const baseImageURL = 'assets/images/';
-    const coursesCompletedCSV = 'completed-courses.csv';
     this.angularCourseCompletedList = [];
-    this.csvLoaderParser('courses', 'completed-courses.csv', this.angularCourseCompletedList);
+    this.csvLoaderParser('assets', 'completed-courses.csv', this.angularCourseCompletedList);
     this.angularCourseInProgressList =  [];
-    this.csvLoaderParser('courses', 'inprogress-courses.csv', this.angularCourseInProgressList);
+    this.csvLoaderParser('assets', 'inprogress-courses.csv', this.angularCourseInProgressList);
 
     this.angularCoursePlannedList =  []
-    this.csvLoaderParser('courses', 'planned-courses.csv', this.angularCoursePlannedList);
+    this.csvLoaderParser('assets', 'planned-courses.csv', this.angularCoursePlannedList);
   }
 
   extractCertURL(course: AngularCourseModel): string {

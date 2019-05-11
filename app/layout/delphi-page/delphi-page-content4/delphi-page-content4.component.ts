@@ -14,7 +14,7 @@ export class DelphiPageContent4Component implements OnInit {
   constructor(private fileLoaderService: FileLoaderService) { }
 
   loadFileContent(fileName: string) {
-    this.fileLoaderService.loadtTextFile('pas', fileName).subscribe(fileContent => {
+    this.fileLoaderService.loadtTextFile('pas', fileName, true).subscribe(fileContent => {
       this.fileName = fileName;
       this.fileContent = fileContent;
       this.isDisplayText = true;
