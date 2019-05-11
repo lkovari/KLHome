@@ -54,9 +54,10 @@ export class AngularPageContent1Component implements OnInit {
           for (let ix = 1; ix < textLines.length; ix++) {
             // split content based on comma
             const data = textLines[ix].split(',');
+            console.log('length ' + fileName + ' - ' + JSON.stringify(data[0]));
             if (data.length === 7 && data.length === csvHeader.length) {
               data[0] = data[0].replace('↵', '');
-              console.log('datar ' + fileName + ' - ' + JSON.stringify(data[0]));
+              console.log('data ' + fileName + ' - ' + JSON.stringify(data[0]));
               const courseModel = new AngularCourseModel();
               courseModel.title = data[0];
               courseModel.author = data[1];
@@ -70,6 +71,8 @@ export class AngularPageContent1Component implements OnInit {
               courseModel.hours = (data[5] !== '0') ? +data[5] : 0;
               courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
               courses.push(courseModel);
+            } else {
+              console.log('Length not equals ' + fileName + ' d ' + data.length + ' h ' + csvHeader.length + ' : ' + data[0]);
             }
           }
           console.log('PARSED ' + fileName + ' - ' + courses.length  + ' : ' + JSON.stringify(courses));
