@@ -66,7 +66,8 @@ export class AngularPageContent1Component implements OnInit {
             courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
             courses.push(courseModel);
           } else {
-            console.log('Length not equals ' + fileName + ' d ' + data.length + ' h ' + csvHeader.length + ' : ' + data[0]);
+            console.log('Length not equals in ' + fileName + ' Data Lenght ' + data.length + ' header Length ' + csvHeader.length
+              + ' : ' + JSON.stringify(data));
           }
         }
         console.log('Courses Parsed ' + fileName + ' # ' + courses.length);
