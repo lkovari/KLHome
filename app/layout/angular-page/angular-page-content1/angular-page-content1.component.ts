@@ -43,34 +43,38 @@ export class AngularPageContent1Component implements OnInit {
 
   private csvLoaderParser(path: string, fileName: string, courses: Array<AngularCourseModel>) {
     this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
-      const textLines = txt.split(/\r/);
-      const csvHeader = textLines[0].split(',');
-      let isCompleted = false;
-      for (let ix = 1; ix < textLines.length; ix++) {
-        // split content based on comma
-        const data = textLines[ix].split(',');
-        if (data.length === 7 && data.length === csvHeader.length) {
-          data[0] = data[0].replace('↵', '');
-          const courseModel = new AngularCourseModel();
-          courseModel.title = data[0];
-          courseModel.author = data[1];
-          courseModel.website = data[2];
-          courseModel.dateOfCompleted = (data[3] !== 'null') ? new Date(data[3]) : null;
-          if (courseModel.dateOfCompleted) {
-            isCompleted = true;
+      if (txt) {
+        console.log('LOADED ' + JSON.stringify(txt));
+        const textLines = txt.split(/\r/);
+        const csvHeader = textLines[0].split(',');
+        let isCompleted = false;
+        for (let ix = 1; ix < textLines.length; ix++) {
+          // split content based on comma
+          const data = textLines[ix].split(',');
+          if (data.length === 7 && data.length === csvHeader.length) {
+            data[0] = data[0].replace('↵', '');
+            const courseModel = new AngularCourseModel();
+            courseModel.title = data[0];
+            courseModel.author = data[1];
+            courseModel.website = data[2];
+            courseModel.dateOfCompleted = (data[3] !== 'null') ? new Date(data[3]) : null;
+            if (courseModel.dateOfCompleted) {
+              isCompleted = true;
+            }
+            courseModel.certificateImageLarge = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
+            courseModel.certificateImageSmall = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
+            courseModel.hours = (data[5] !== '0') ? +data[5] : 0;
+            courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
+            courses.push(courseModel);
           }
-          courseModel.certificateImageLarge = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
-          courseModel.certificateImageSmall = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
-          courseModel.hours = (data[5] !== '0') ? +data[5] : 0;
-          courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
-          courses.push(courseModel);
         }
-      }
-      if (isCompleted) {
-        this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
-          return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
-        });
-        this.calculateTotalHours();
+        console.log('PARSED ' + JSON.stringify(courses));
+        if (isCompleted) {
+          this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
+            return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
+          });
+          this.calculateTotalHours();
+        }
       }
     });
   }
