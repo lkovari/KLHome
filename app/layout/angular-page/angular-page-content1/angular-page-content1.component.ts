@@ -44,7 +44,7 @@ export class AngularPageContent1Component implements OnInit {
   private csvLoaderParser(path: string, fileName: string, courses: Array<AngularCourseModel>) {
     this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
       if (txt) {
-        console.log('LOADED ' + JSON.stringify(txt));
+        console.log('LOADED ' + fileName + ' - ' + JSON.stringify(txt));
         const textLines = txt.split(/\r/);
         const csvHeader = textLines[0].split(',');
         let isCompleted = false;
@@ -68,7 +68,7 @@ export class AngularPageContent1Component implements OnInit {
             courses.push(courseModel);
           }
         }
-        console.log('PARSED ' + JSON.stringify(courses));
+        console.log('PARSED ' + fileName + ' - ' + courses.length  + ' : ' + JSON.stringify(courses));
         if (isCompleted) {
           this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
             return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
