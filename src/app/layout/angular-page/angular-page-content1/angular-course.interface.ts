@@ -6,5 +6,5 @@ export interface IAngularCourse {
     certificateImageSmall: string;
     certificateImageLarge: string;
     hours: number;
-    minutes;
+    minutes: number;
 }

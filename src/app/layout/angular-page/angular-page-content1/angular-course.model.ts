@@ -8,5 +8,5 @@ export class AngularCourseModel implements IAngularCourse {
     certificateImageSmall: string;
     certificateImageLarge: string;
     hours: number;
-    minutes;
+    minutes: number;
 }
