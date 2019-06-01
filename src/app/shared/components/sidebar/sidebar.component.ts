@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/01/2019 01:55 AM');
-  lastUpdateTooltip = 'Upgrade to Angular 8';
+  lastUpdate = new Date('06/02/2019 03:37 PM');
+  lastUpdateTooltip = 'Upgrade to Angular 8, Added courses';
 
   eventCalled() {
     this.isActive = !this.isActive;
