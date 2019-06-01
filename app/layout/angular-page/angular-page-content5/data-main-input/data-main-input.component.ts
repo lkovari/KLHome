@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./data-main-input.component.scss']
 })
 export class DataMainInputComponent implements OnInit {
-  @ViewChild('formData') formData: NgForm;
+  @ViewChild('formData', { static: true }) formData: NgForm;
   isSubmitted = false;
   githubLogoPath: string;
   formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];

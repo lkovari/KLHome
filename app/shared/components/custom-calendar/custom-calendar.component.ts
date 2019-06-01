@@ -101,7 +101,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     @Output() onDateSelected = new EventEmitter<Date>();
     @Output() onClearClicked = new EventEmitter<Date>();
     @Output() onModelChanged = new EventEmitter<Date>();
-    @ViewChild('Model') calendarModel: NgModel;
+    @ViewChild('Model', { static: true }) calendarModel: NgModel;
 
     onModelChange: Function = () => { };
     onModelTouched: Function = () => { };

@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./angular-page-content2.component.scss']
 })
 export class AngularPageContent2Component implements OnInit {
-  @ViewChild('formData') formData: NgForm;
+  @ViewChild('formData', { static: true }) formData: NgForm;
   customDate: Date;
   selectedDate: Date;
   customText: string;
