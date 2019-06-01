@@ -15,15 +15,15 @@
         form validation.
       </label>
       <br>
-      We have a main form, which contains a list of forms. The Form contains a column header and below it the rows.
-      I used reactive forms technology for show the form. Just three user role rows allowed to add.
-      <label>See the validation rules below</label>
+      We have a main form, which contains Role rows. Each row is a form. The Form contains a column header and below it the rows.
+      I used Reactive Forms technology (with other words Model Driven Form) for show the UI. Currently just three user role rows allowed to add.
+      <label>See the field validation rules below</label>
       <div class="struct-main">
         <label class="struct-sub">User Name is mandatory, minimum length is {{ userNameMinLength }}</label>
         <label class="struct-sub">The passwords requires one uppercase and lowercase letters, one digits, and one
           special characters. There must be a minimum of 8 characters total, and no white space characters are allowed.</label>
         <label class="struct-sub">RoleType and ModuleType is mandatory on each row which added</label>
-        <label class="struct-sub">Doesn!t allow duplicated rows, where the RoleType and ModuleType are same it is duplicated rows, # of max rows is 3</label>
+        <label class="struct-sub">Doesn't allow duplicated rows! Where the RoleType and ModuleType are same, it is duplicated rows, # of max rows is 3</label>
         <label class="struct-sub">The description maximum length is {{ descriptionMaxLength }} characters.</label>
       </div>
       <div class="user-form form-border form-height">

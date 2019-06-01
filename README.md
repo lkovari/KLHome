@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
-My first Angular 6 app (formerly Angular 2, 4, 5), I used a template for built it. At first I just simply put my previous site content which is absolutelly not the best practice. I will rewrite it, as soon as I have enough time for it. Similar as I did with the "Angular 6 ~ 2017" page. 
+My first Angular app (formerly Angular 2, 4, 5, 6, 7), I used a template for built it. At first I just simply put my previous site content which is absolutelly not the best practice. I will rewrite it, as soon as I have enough time for it. Similar as I did with the "Angular 6 ~ 2017" page. 
 
 ## Development server
 

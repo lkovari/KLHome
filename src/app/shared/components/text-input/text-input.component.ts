@@ -74,7 +74,7 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
   }
   @Output() onChanged = new EventEmitter<String>();
   @Output() onBlur = new EventEmitter<String>();
-  @ViewChild('in') input: ElementRef;
+  @ViewChild('in', { static: true }) input: ElementRef;
 
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
