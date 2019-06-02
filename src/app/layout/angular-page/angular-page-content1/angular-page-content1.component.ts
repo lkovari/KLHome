@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as angular from '@angular/forms';
 import { AngularCourseModel } from './angular-course.model';
-import { core } from '@angular/compiler';
 import { IHourTuple } from './hour-tuple.interface';
 import { HourTuple } from './hour-tuple.model';
 import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.service';

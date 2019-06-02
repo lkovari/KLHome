@@ -5,6 +5,7 @@
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
+    "module": "esnext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -15,6 +16,7 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+    "noUnusedLocals": true
   }
 }

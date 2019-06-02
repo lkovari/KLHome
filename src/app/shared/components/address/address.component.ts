@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroupDirective, FormBuilder, FormGroup, ControlContainer, Validator, Validators, FormControl } from '@angular/forms';
+import { FormGroupDirective, FormBuilder, FormGroup, ControlContainer, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-address',

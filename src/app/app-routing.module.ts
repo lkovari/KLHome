@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './layout/layout.module#LayoutModule' },
-  { path: 'not-found', loadChildren: './not-found/not-found.module#NotFoundModule' },
+  { path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) },
+  { path: 'not-found', loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule) },
   { path: '**', redirectTo: 'not-found' }
 ];
 

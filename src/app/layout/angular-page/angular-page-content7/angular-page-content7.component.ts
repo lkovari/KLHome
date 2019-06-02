@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, NgForm, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { RoleType } from './role-type.enum';
 import { ModuleType } from './module-type.enum';
 import { UserFormData } from './data-model/user-form-data.model';

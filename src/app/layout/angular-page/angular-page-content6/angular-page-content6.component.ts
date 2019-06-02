@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroupDirective, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomFormModel } from './data-model/custom-form.model';
 
 @Component({

@@ -2,10 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { IComplexName } from './complex-name-interface';
 import {
   FormGroup, FormControl, FormBuilder, Validators, ControlValueAccessor,
-  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors, AbstractControl
+  NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, ValidationErrors
 } from '@angular/forms';
 import { IComplexNameConfig } from './complex-name-config.interface';
-import { ComplexNameConfig } from './complex-name-config.model';
 import { ComplexName } from './complex-name.model';
 import { ValidationPlaceKind } from './validation-place-kind';
 
@@ -58,19 +57,6 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
         this.complexNameForm.controls[key].setErrors({firstNameRquired: {invalid: true}, lastNameRequired: {invalid: true}});
       });
     }
-  }
-
-  private setupConfig() {
-    this.config = new ComplexNameConfig();
-    this.config.firstNameMaxLength = 25;
-    this.config.firstNameMinLength = 3;
-    this.config.isFirstNameMandatory = true;
-    this.config.lastNameMaxLength = 25;
-    this.config.lastNameMinLength = 3;
-    this.config.isLastNameMandatory = true;
-    this.config.isShowDoneInside = false;
-    this.config.isUpdateOnBlur = false;
-    this.config.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
   private setupValidatorsByConfig(config: IComplexNameConfig) {
