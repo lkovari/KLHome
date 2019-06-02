@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.service';
-import { OverlayPanel } from 'primeng/primeng';
 
 @Component({
   selector: 'app-masm-page-content1',

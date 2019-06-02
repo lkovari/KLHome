@@ -1,9 +1,8 @@
 /**
  * Created by lkovari on 2018.02.08.
  */
-import { Component, EventEmitter, OnInit, Input, Output, ViewChild, NgModule, forwardRef, ExistingProvider } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, AbstractControl, FormControl, NgModel } from '@angular/forms';
-import { Calendar } from 'primeng/primeng';
+import { Component, EventEmitter, OnInit, Input, Output, ViewChild, forwardRef, ExistingProvider } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, FormControl, NgModel } from '@angular/forms';
 
 const CUSTOM_CALENDAR_CONTROL_VALUE_ACCESSOR: ExistingProvider = {
     provide: NG_VALUE_ACCESSOR,

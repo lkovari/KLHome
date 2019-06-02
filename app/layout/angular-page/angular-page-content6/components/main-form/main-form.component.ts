@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MenuItem } from 'primeng/primeng';
 import { CustomFormModel } from 'app/layout/angular-page/angular-page-content6/data-model/custom-form.model';
-import { ControlStatusKind } from '../../data-model/control-status-kind.enum';
 
 @Component({
   selector: 'app-main-form',

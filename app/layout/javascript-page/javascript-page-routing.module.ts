@@ -5,8 +5,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { JavascriptPageTitleComponent } from './javascript-page-title.component';
-import { JavascriptPageContent1Component } from './javascript-page-content1/javascript-page-content1.component';
-import { JavascriptPageContent2Component } from './javascript-page-content2/javascript-page-content2.component';
 
 const routes: Routes = [
   { path: '', component: JavascriptPageTitleComponent }

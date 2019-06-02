@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -17,7 +17,7 @@ export class SubForm3Component implements OnInit {
     return this._formPartTab;
   }
 
-  constructor(private ref: ChangeDetectorRef) { }
+  constructor() { }
 
   ngOnInit() {
     console.log('ngOnInit');

@@ -44,9 +44,6 @@ import { DelphiPageContent2Component } from './delphi-page/delphi-page-content2/
 import { DelphiPageContent3Component } from './delphi-page/delphi-page-content3/delphi-page-content3.component';
 import { DelphiPageContent4Component } from './delphi-page/delphi-page-content4/delphi-page-content4.component';
 
-import { MasmPageTitleComponent } from './masm-page/masm-page-title.component';
-import { MasmPageContent1Component } from './masm-page/masm-page-content1/masm-page-content1.component';
-import { MasmPageContent2Component } from './masm-page/masm-page-content2/masm-page-content2.component';
 import { WelcomePageComponent } from 'app/layout/welcome-page/welcome-page.component';
 import { AboutmeContentComponent } from 'app/layout/aboutme-page/aboutme-content.component';
 import { AngularPageContent4Component } from './angular-page/angular-page-content4/angular-page-content4.component';
@@ -137,7 +134,7 @@ const routes: Routes = [
         ]
       }
       */
-     { path: 'masm-page', loadChildren: './masm-page/masm-page.module#MasmPageModule' }
+     { path: 'masm-page', loadChildren: () => import('./masm-page/masm-page.module').then(m => m.MasmPageModule) }
     ]
   }
 ];
