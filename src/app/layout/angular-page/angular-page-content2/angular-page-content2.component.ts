@@ -1,7 +1,7 @@
 /**
  * Created by lkovari on 2018.02.08.
  */
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -9,8 +9,8 @@ import { NgForm } from '@angular/forms';
   templateUrl: './angular-page-content2.component.html',
   styleUrls: ['./angular-page-content2.component.scss']
 })
-export class AngularPageContent2Component implements OnInit {
-  @ViewChild('formData', { static: true }) formData: NgForm;
+export class AngularPageContent2Component implements OnInit, AfterViewInit {
+  @ViewChild('dataEntryForm', { static: true }) dataEntryForm: NgForm;
   customDate: Date;
   selectedDate: Date;
   customText: string;
@@ -19,6 +19,7 @@ export class AngularPageContent2Component implements OnInit {
   githubLogoPath: string;
   minDate = new Date();
   maxDate = new Date();
+  changedFormContent = '';
 
   form_data = {
     customcalendar: '',
@@ -31,9 +32,19 @@ export class AngularPageContent2Component implements OnInit {
     this.minDate.setFullYear(1965);
     this.minDate.setMonth(1);
     this.minDate.setDate(2);
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() + 1);
+    this.maxDate.setMonth(1);
+    this.maxDate.setDate(2);
     this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
+  ngAfterViewInit() {
+    this.dataEntryForm.valueChanges.subscribe(v => {
+      this.changedFormContent = v
+      console.log(this.changedFormContent);
+    });
+}
 
   onClearClicked(date: Date) {
     this.selectedDate = date;
@@ -69,41 +80,45 @@ export class AngularPageContent2Component implements OnInit {
   }
 
   setValues(form) {
-    this.formData.form.setValue(
-      // this.formData.form.patchValue(
+    this.dataEntryForm.form.setValue(
+      // this.dataEntryForm.form.patchValue(
       {
         customcalendar: new Date('02/02/1993'),
         customtextinput: 'abraka'
       }
     );
-    Object.keys( this.formData.controls).forEach(key => {
-      this.formData.controls[key].markAsDirty();
-      this.formData.controls[key].markAsTouched();
+    Object.keys( this.dataEntryForm.controls).forEach(key => {
+      this.dataEntryForm.controls[key].markAsDirty();
+      this.dataEntryForm.controls[key].markAsTouched();
     });
     /* we can use individually also
-    (this.formData.form.controls['pdropdown'] as FormControl).markAsDirty();
+    (this.dataEntryForm.form.controls['pdropdown'] as FormControl).markAsDirty();
     */
   }
 
   clearValues(form) {
-    this.formData.form.setValue(
+    this.dataEntryForm.form.setValue(
       {
         customcalendar: null,
         customtextinput: ''
       }
     );
-    Object.keys( this.formData.controls).forEach(key => {
-      this.formData.controls[key].markAsPristine();
-      this.formData.controls[key].markAsUntouched();
+    Object.keys( this.dataEntryForm.controls).forEach(key => {
+      this.dataEntryForm.controls[key].markAsPristine();
+      this.dataEntryForm.controls[key].markAsUntouched();
     });
+  }
+
+  extractData() {
+    return this.changedFormContent;
   }
 
   onSubmit(userForm: NgForm) {
     this.submitted = true;
-    this.form_data.customcalendar = this.formData.value.customcalendar;
-    this.form_data.customtextinput = this.formData.value.customtextinput;
+    this.form_data.customcalendar = this.dataEntryForm.value.customcalendar;
+    this.form_data.customtextinput = this.dataEntryForm.value.customtextinput;
     // reset the form same as when reloaded
-    this.formData.reset();
-    console.log(this.formData);
+    this.dataEntryForm.reset();
+    console.log(this.dataEntryForm);
   }
 }

@@ -29,7 +29,7 @@
             <span class="text-danger">*</span>
           </label>
           <div class="col-md-8">
-            <input class="form-control" id="customNumber" type="text" placeholder="custom number" formControlName="customNumber"
+            <input class="form-control" id="customNumber" type="number" placeholder="custom number" formControlName="customNumber"
               [ngClass]="{'is-invalid': (customForm.get('customNumber').touched ||
                   customForm.get('customNumber').dirty) &&
                   !customForm.get('customNumber').valid }" />

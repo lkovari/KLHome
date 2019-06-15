@@ -7,6 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./sub-form3.component.scss']
 })
 export class SubForm3Component implements OnInit {
+  minLength = 7;
   private _formPartTab: FormGroup;
   @Input()
   set formPartTab(v: FormGroup) {

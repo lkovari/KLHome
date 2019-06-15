@@ -9,6 +9,7 @@ import { CustomFormModel } from './data-model/custom-form.model';
 })
 export class AngularPageContent6Component implements OnInit {
   customForm: FormGroup;
+  // http://regexlib.com/Search.aspx?k=us+zip+code&c=-1&m=-1&ps=20
   zipPattern = '^[0-9]{5}(?:-[0-9]{4})?$';
   customDataModel: CustomFormModel;
   githubLogoPath: string;
