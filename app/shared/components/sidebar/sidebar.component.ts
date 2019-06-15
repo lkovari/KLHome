@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/15/2019 12:00 AM');
+  lastUpdate = new Date('06/15/2019 12:20 PM');
   lastUpdateTooltip = 'Mixed content was loaded over HTTPS, but requested an insecure styleshee';
 
   eventCalled() {
