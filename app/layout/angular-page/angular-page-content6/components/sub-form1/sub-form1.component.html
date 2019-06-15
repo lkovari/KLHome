@@ -1,4 +1,4 @@
-<div class="data-input-layout1">
+<div class="data-input-layout1 form-border">
   <label class="tab-title">Data Input Component on Tab Sheet #1</label>
   <div [formGroup]="formPartTab" >
     <div class="form-group row mb-2">
@@ -25,7 +25,7 @@
         <span class="text-danger">*</span>
       </label>
       <div class="col-md-8">
-        <input class="form-control" id="customNumber" type="text" placeholder="custom number" formControlName="customNumber"
+        <input class="form-control" id="customNumber" type="number" placeholder="custom number" formControlName="customNumber"
           [ngClass]="{'is-invalid': (formPartTab.get('customNumber').touched ||
                   formPartTab.get('customNumber').dirty) &&
                   !formPartTab.get('customNumber').valid }" />

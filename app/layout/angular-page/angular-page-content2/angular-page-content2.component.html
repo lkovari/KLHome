@@ -83,7 +83,7 @@
           </a>Form Validation example
         </label>
         <br>
-        <form (ngSubmit)="onSubmit(formData)" #formData="ngForm" novalidate>
+        <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate>
           <div class="form-group">
             <label for="customcalendar">Date 
               <span class="text-danger">*</span>
@@ -113,9 +113,15 @@
               <p *ngIf="customtextinput.errors.minlength">Minimum length is {{minLength}} !</p>
             </span>
           </div>
-          <button class="btn btn-primary spacer" type="button" (click)="setValues(formData)">Set Data</button>
-          <button class="btn btn-primary spacer" type="button" (click)="clearValues(formData)">Clear Data</button>
-          <button class="btn btn-primary" type="submit" [disabled]="formData.invalid">Submit</button>
+          <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set Data</button>
+          <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear Data</button>
+          <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
+          <div class="sub-topic">
+            <div class="cols-xs-12">
+              <b>Current Form Data</b>
+              <p>{{ extractData() | json }} </p>
+            </div>
+          </div>
         </form>
       </div>
       <div class="sub-topic" *ngIf="submitted">

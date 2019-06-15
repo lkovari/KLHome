@@ -20,7 +20,7 @@
       <ul>
         <li>- the first name and last name are mandatory</li>
         <li>- the minimum length is {{ complexNameConfig.firstNameMinLength }}</li>
-        <li>- the masimum length is {{ complexNameConfig.firstNameMaxLength }}</li>
+        <li>- the maximum length is {{ complexNameConfig.firstNameMaxLength }}</li>
       </ul>
       <div>
         <label>The configuration of ComplexNameComponent is based on the
@@ -67,7 +67,7 @@
                </ng-template>
             </li>
           </div>
-          <label>Form Form Group</label>
+          <label>Form Group of Form</label>
           <div class="row message-style" >
             <li *ngFor="let key of formControlStatusKeys">{{ key }}:
                 <div *ngIf="iskeyValue(key); else notfvalue">

@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/15/2019 12:20 PM');
-  lastUpdateTooltip = 'Mixed content was loaded over HTTPS, but requested an insecure styleshee';
+  lastUpdate = new Date('06/15/2019 09:43 PM');
+  lastUpdateTooltip = 'Minor fixed around validation';
 
   eventCalled() {
     this.isActive = !this.isActive;
