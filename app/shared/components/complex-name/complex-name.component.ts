@@ -96,10 +96,14 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   ngOnInit() {
     let updateOnObj = null;
     if (this.config) {
-      if (this.config.isUpdateOnBlur) {
-        updateOnObj = { updateOn: 'blur' };
+      if (this.config.isUpdateOnBlur === undefined || this.config.isUpdateOnBlur === null) {
+        updateOnObj = { updateOn: 'change' };
       } else {
-        updateOnObj = { updateOn: 'submit' };
+        if (this.config.isUpdateOnBlur) {
+          updateOnObj = { updateOn: 'blur' };
+        } else {
+          updateOnObj = { updateOn: 'submit' };
+        }
       }
     }
     // create reactive form with FormBuilder

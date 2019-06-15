@@ -14,7 +14,7 @@ export class AddressComponent implements OnInit {
   constructor(private formGroupDirective: FormGroupDirective, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    const updateOnObj = { updateOn: 'submit' };
+    const updateOnObj = { updateOn: 'change' };
     this.addressFormGroup = this.formBuilder.group( {
       addressLine1 : [ { value: null, disabled: this.isDisabled }, [ Validators.required ] ],
       addressLine2 : [ { value: null, disabled: this.isDisabled } ],
