@@ -4,3 +4,4 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
 RewriteRule ^ - [L]
 
 RewriteRule ^ /index.html [L]
+Header always set Content-Security-Policy "upgrade-insecure-requests;"
