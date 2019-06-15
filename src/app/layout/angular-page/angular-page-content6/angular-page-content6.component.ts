@@ -18,7 +18,7 @@ export class AngularPageContent6Component implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    const updateOnObj = { updateOn: 'submit' };
+    const updateOnObj = { updateOn: 'change' };
 
     this.customForm = this.formBuilder.group( {
       customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],

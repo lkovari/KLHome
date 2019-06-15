@@ -38,7 +38,7 @@ export class AngularPageContent3Component implements OnInit {
     this.complexNameConfig.lastNameMinLength = 3;
     this.complexNameConfig.isLastNameMandatory = true;
     this.complexNameConfig.isShowDoneInside = false;
-    this.complexNameConfig.isUpdateOnBlur = false;
+    // this.complexNameConfig.isUpdateOnBlur = false;
     this.complexNameConfig.validationPlaceKind = ValidationPlaceKind.Inside;
   }
 
