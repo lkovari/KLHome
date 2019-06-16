@@ -5,11 +5,14 @@ export class CustomValidators {
     static passwordCrossValidator(c: FormControl): ValidationErrors | null {
         const passwordControl = c.get('password');
         const confirmPasswordControl = c.get('confirmPassword');
-        if (passwordControl.pristine || confirmPasswordControl.pristine) {
-            return null;
-        }
-        if (passwordControl.value === confirmPasswordControl.value) {
-            return null;
+        if (passwordControl && confirmPasswordControl) {
+            // should type the user something into both fields
+            if (passwordControl.pristine || confirmPasswordControl.pristine) {
+                return null;
+            }
+            if (passwordControl.value === confirmPasswordControl.value) {
+                return null;
+            }
         }
         return { notidentical: true };
     }
