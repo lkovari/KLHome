@@ -8,6 +8,18 @@ import { ModuleTypeModel } from './data-model/module-type.model';
 import { RoleTypeModel } from './data-model/role-type.model';
 import { CustomValidators } from './custom-validators';
 
+/*
+const passwordCrossFieldValidator: ValidatorFn = (fg: FormGroup) => {
+  const passwordControl = fg.get('password');
+  const confirmPasswordControl = fg.get('confirmPassword');
+  if (passwordControl && confirmPasswordControl) {
+    if (passwordControl.value === confirmPasswordControl.value) {
+      return null;
+    }
+  }
+  return { notidentical: true };
+};
+*/
 
 @Component({
   selector: 'app-angular-page-content7',
@@ -32,7 +44,7 @@ export class AngularPageContent7Component implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    const updateOnObj = { updateOn: 'change' };
+    // const updateOnObj = { updateOn: 'change' };
     this.mainForm = this.formBuilder.group({
       userName: [ null, [ Validators.required, Validators.minLength(this.userNameMinLength) ] ],
       passwordGroup: this.formBuilder.group({
@@ -40,7 +52,7 @@ export class AngularPageContent7Component implements OnInit {
         confirmPassword: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ]
       }, { validator: CustomValidators.passwordCrossValidator } ),
       userRoles: this.formBuilder.array( [this.createUserRole(null) ], CustomValidators.userRolesValidator )
-    }, updateOnObj);
+    });
 
     this.mainForm.valueChanges.subscribe(
       value => this.onValueChanged(value)
@@ -80,6 +92,14 @@ export class AngularPageContent7Component implements OnInit {
 
   canAddThreeRows(): boolean {
     return (<FormArray>this.mainForm.get('userRoles')).controls.length === 0;
+  }
+
+  createPasswordGroup(userRole: UserRole): FormGroup {
+    const passwordGroup = this.formBuilder.group({
+      password: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ],
+      confirmPassword: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ]
+    }, [ { validator: CustomValidators.passwordCrossValidator }, {updateOn: 'change'} ] );
+    return passwordGroup;
   }
 
   createUserRole(userRole: UserRole): FormGroup {

@@ -42,7 +42,7 @@
                   Please enter a User name!
                 </span>
                 <span *ngIf="mainForm.get('userName').errors?.minlength">
-                  The User name must be longer than {{ userNameminLength }} characters!
+                  The User name must be longer than {{ userNameMinLength }} characters!
                 </span>
               </span>
             </div>
@@ -120,7 +120,7 @@
               <tbody>
                 <tr *ngFor="let userRole of getUserRoleControls(); let ix = index" [formGroupName]="ix">
                   <td>
-                      <p-dropdown id="roleType" class="form-group" [options]="roleTypes" formControlName="roleType" editable="true"
+                      <p-dropdown id="{{'roleType' + ix}}" class="form-group" [options]="roleTypes" formControlName="roleType" editable="true"
                         [showClear]="true" [editable]="false" placeholder="Select a RoleType" tabindex="calcTabIndex(ix, 0)"
                         [required]="true">
                       </p-dropdown>
@@ -131,7 +131,7 @@
                       </span>
                   </td>
                   <td>
-                      <p-dropdown id="moduleType" class="form-group" [options]="moduleTypes" formControlName="moduleType" editable="true"
+                      <p-dropdown id="{{'moduleType' + ix}}" class="form-group" [options]="moduleTypes" formControlName="moduleType" editable="true"
                         [showClear]="true" [editable]="false" placeholder="Select a ModuleType" tabindex="calcTabIndex(ix, 1)"
                         [required]="true">
                       </p-dropdown>
@@ -142,13 +142,13 @@
                       </span>
                   </td>
                   <td>
-                      <p-calendar id="expire" class="form-group"  tabindex="calcTabIndex(ix, 2)" formControlName="expire" [readonlyInput]="false"
+                      <p-calendar id="{{'expire' + ix}}" class="form-group"  tabindex="calcTabIndex(ix, 2)" formControlName="expire" [readonlyInput]="false"
                         [defaultDate]="todayDate" [showTime]="false" [dataType]="date" showOnFocus="false"
                         [showOnFocus]="false">
                       </p-calendar>
                   </td>
                   <td>
-                      <input pInputText id="description" class="form-control" type="text" formControlName="description" tabindex="calcTabIndex(ix, 3)"
+                      <input pInputText id="{{'description' + ix}}" class="form-control" type="text" formControlName="description" tabindex="calcTabIndex(ix, 3)"
                         [ngClass]="{'is-invalid': isUserFieldInvalid(userRole, 'description') }">
                       <span *ngIf="isUserFieldInvalid(userRole, 'description')">
                         <span class="show-invalid-feedback">
