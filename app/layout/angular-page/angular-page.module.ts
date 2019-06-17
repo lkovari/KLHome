@@ -23,6 +23,7 @@ import { SubForm1Component } from './angular-page-content6/components/sub-form1/
 import { SubForm2Component } from './angular-page-content6/components/sub-form2/sub-form2.component';
 import { SubForm3Component } from './angular-page-content6/components/sub-form3/sub-form3.component';
 import { AngularPageContent7Component } from './angular-page-content7/angular-page-content7.component';
+import { AngularPageContent0Component } from './angular-page-content0/angular-page-content0.component';
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import { AngularPageContent7Component } from './angular-page-content7/angular-pa
     CalendarModule
   ],
   declarations: [ AngularPageTitleComponent,
+                  AngularPageContent0Component,
                   AngularPageContent1Component,
                   AngularPageContent2Component,
                   AngularPageContent3Component,
@@ -53,9 +55,11 @@ import { AngularPageContent7Component } from './angular-page-content7/angular-pa
                   SubForm1Component,
                   SubForm2Component,
                   SubForm3Component,
-                  AngularPageContent7Component
+                  AngularPageContent7Component,
+                  AngularPageContent0Component
                 ],
   exports: [ AngularPageTitleComponent,
+             AngularPageContent0Component,
              AngularPageContent1Component,
              AngularPageContent2Component,
              AngularPageContent3Component,

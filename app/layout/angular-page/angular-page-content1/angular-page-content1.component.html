@@ -1,62 +1,87 @@
-<div class="layout-angular-page">
-    <div class="form">
-        <div class="angular-description form-group">
-            <div class="col-xs-12">
-                At that time, in the Gemini 3 team, did not have enough developer at the company (where I'am working now) and I moved to
-                the Gemini 3 team by my superior's suggestion from the AO. core team. (It was a good challenge for me) After
-                a narrow training time I'm with my colleagues started in the Gemini 3 team to develop the SIS Charts web
-                based application. Therefore, I began to learn Angular. The current website is my first Angular application,
-                what I continuously upgraded it with the newer Angular version, currently I using Angular v{{ angularVersion
-                }}, TypeScript with Bootstrap 4 and SASS. (I used a template, but already still in progress to create my
-                own unique website)
-            </div>
+<div class="layout-angular-playground-page1">
+    <div class="angular-playground-description form-group">
+        <div class="col-xs-12">
+            This page is a
+            <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which
+            interested in, for me.
         </div>
-        <div class="angular-courses">
-            <div class="form-group">
-                <label class="courses-subtitle">Completed</label>
-                <div *ngFor="let course of angularCourseCompletedList; let ix = index">
-                    <div class="course-style">
-                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
-                        <label class="course-title">{{ course.title + " " + course.author }}
-                            <a href="{{ course.website }}">{{ course.website }}</a>
+        <div class="sub-topic">
+            <b>Act #0</b> Basic Template-Driven form with validation
+        </div>
+        <div class="sub-topic">
+            <div class="sub-topic">
+                This is a simple data entry form with three fields (Brand name, wheels, model year), which represent a
+                vehicle.
+            </div>
+            <div class="sub-topic">
+                <b>The validation rules</b> of fields are the following
+                <ul>
+                    <li><b>User name</b> is required, minimum length is {{ userNameMinLength }} maximum length is
+                        {{ userNameMaxLength }}</li>
+                    <li><b>Email</b> a valid email address required! Used build-in email validator.</li>
+                    <li><b>Phone number</b> a valid US. phone number is required! Used regular expression pattern.</li>
+                </ul>
+            </div>
+            <div class="data-entry-form">
+                <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate>
+                    <div class="form-group">
+                        <label class="spacer" for="userName">User name
+                            <span class="text-danger">*</span>
                         </label>
-                        <a href="{{ course.certificateImageSmall }}">
-                            <img class="img-responsive-right" [src]=extractCertURL(course)>
-                        </a>
+                        <input id="userName" name="userName" [(ngModel)]="user.userName" #userName="ngModel" autocomplete="false"
+                            required minlength="{{userNameMinLength}}" maxlength="{{userNameMaxLength}}">
+                        <div *ngIf="userName && (userName.invalid && userName.dirty)" class="text-danger">
+                            <p *ngIf="userName.errors.required">Value is required!</p>
+                            <p *ngIf="userName.hasError('minlength')">Min length is {{ userNameMinLength }}!
+                            </p>
+                            <p *ngIf="userName.errors.maxlength">Max length is {{ userNameMaxLength }}!</p>
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label class="spacer" for="email">Email
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input id="email" type="string" name="email" [(ngModel)]="user.email" #email="ngModel"
+                            required email>
+                        <div *ngIf="email && (email.invalid && email.dirty)" class="text-danger">
+                            <p *ngIf="email.errors.required">Email is required!</p>
+                            <p *ngIf="email.errors.email">Please type a valid email!</p>
+                        </div>                            
+                    </div>
+                    <div class="form-group">
+                        <label class="spacer" for="phone">Phone number
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input id="phone" name="phone" [(ngModel)]="user.phone"
+                            #phone="ngModel" required pattern="{{usPhoneNumberPattern}}">
+                        <div *ngIf="phone && (phone.invalid && phone.dirty)" class="text-danger">
+                            <p *ngIf="phone.errors?.required">Phone is required!</p>
+                            <p *ngIf="phone.errors?.pattern">Please type a valid US. phone number without ext!</p>
+                        </div>                              
+                    </div>
+                    <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set Data</button>
+                    <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear Data</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>                    
+                </form>
+                <label>Status of the Form</label>
+                <div class="row message-style">
+                    <li *ngFor="let key of formControlStatusKeys">{{ key }}:
+                        <div *ngIf="iskeyValue(key); else notValue">
+                            <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
+                        </div>
+                        <ng-template #notValue>
+                            <div *ngIf="iskeyErrors(key); else notErrors">
+                                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
+                            </div>
+                            <ng-template #notErrors>
+                                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) }}</label>
+                            </ng-template>
+                        </ng-template>
+                    </li>
                 </div>
                 <div>
-                    <label class="total-label">Total
-                        <span class="total-value">{{ totalComplettedHours }}</span>                        
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="courses-subtitle">Still in progress</label>
-                <div *ngFor="let course of angularCourseInProgressList; let ix = index">
-                    <div class="course-style">
-                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
-                        <label class="course-title">{{ course.title + " " + course.author }}
-                            <a href="{{ course.website }}">{{ course.website }}</a>
-                        </label>
-                        <a href="{{ course.certificateImageSmall }}">
-                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right" [src]=extractCertURL(course)>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="courses-subtitle">Planned</label>
-                <div *ngFor="let course of angularCoursePlannedList; let ix = index">
-                    <div class="course-style">
-                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
-                        <label class="course-title">{{ course.title + " " + course.author }}
-                            <a href="{{ course.website }}">{{ course.website }}</a>
-                        </label>
-                        <a href="{{ course.certificateImageSmall }}">
-                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right" [src]=extractCertURL(course)>
-                        </a>
-                    </div>
+                    <label>Submitted form data:</label>
+                    {{ submittedFormData | json }}
                 </div>
             </div>
         </div>

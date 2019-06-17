@@ -1,34 +1,30 @@
-.layout-angular-page {
-    .angular-description {
+.layout-angular-playground-page1 {
+    .angular-playground-description {
         padding: 0.5Rem;
     }
-    .angular-courses {
-        padding-left: 0.5rem;
-        .img-responsive-right {
-            width: 8rem;
-            height: 5rem;
-            margin-left: 3rem;
-            border-radius: 25%;
-        }
-        .course-style {
-            font-weight: normal;
-            padding-top: 0.5rem;
-            .course-title {
-                padding-left: 0.5rem !important;
-            }
-        }
-        .courses-subtitle {
-            padding-bottom: 1rem;
-            font-weight: bold;
-        }
+    .data-entry-form {
+        border: solid blue 1px;
+        padding: 1rem;
     }
-    .total-label {
-        font-weight: bold;
-        padding-left: 0.5rem;
+    .sub-topic {
+        padding: 0.5Rem;
     }
-    .total-value {
-        font-weight: bold;
-        font-style: italic;
-        color: blue;
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
     }
+    .spacer {
+        margin-right: 0.5rem;
+    }
+    .spacer-horozontal-right {
+        margin-right: 0.5rem;
+    }
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
+    }
+    .spacer-vertical {
+        margin-top: 0.5rem;
+    }
+    .message-style {
+        display: table-cell;
+    }    
 }

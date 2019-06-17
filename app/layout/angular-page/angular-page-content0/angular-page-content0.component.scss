@@ -1,0 +1,34 @@
+.layout-angular-page {
+    .angular-description {
+        padding: 0.5Rem;
+    }
+    .angular-courses {
+        padding-left: 0.5rem;
+        .img-responsive-right {
+            width: 8rem;
+            height: 5rem;
+            margin-left: 3rem;
+            border-radius: 25%;
+        }
+        .course-style {
+            font-weight: normal;
+            padding-top: 0.5rem;
+            .course-title {
+                padding-left: 0.5rem !important;
+            }
+        }
+        .courses-subtitle {
+            padding-bottom: 1rem;
+            font-weight: bold;
+        }
+    }
+    .total-label {
+        font-weight: bold;
+        padding-left: 0.5rem;
+    }
+    .total-value {
+        font-weight: bold;
+        font-style: italic;
+        color: blue;
+    }
+}
