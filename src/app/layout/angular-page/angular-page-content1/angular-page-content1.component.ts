@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import * as angular from '@angular/forms';
-import { AngularCourseModel } from './angular-course.model';
-import { IHourTuple } from './hour-tuple.interface';
-import { HourTuple } from './hour-tuple.model';
-import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm, FormControl } from '@angular/forms';
+import { IUser } from './user.interface';
+import { User } from './user.model';
 
 @Component({
   selector: 'app-angular-page-content1',
@@ -11,116 +9,69 @@ import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.se
   styleUrls: ['./angular-page-content1.component.scss']
 })
 export class AngularPageContent1Component implements OnInit {
-  angularCourseCompletedList: Array<AngularCourseModel>;
-  angularCourseInProgressList: Array<AngularCourseModel>;
-  angularCoursePlannedList: Array<AngularCourseModel>;
+  user: IUser;
+  userNameMinLength = 3;
+  userNameMaxLength = 30;
+  // originated from : https://www.sitepoint.com/community/t/phone-number-regular-expression-validation/2204
+  usPhoneNumberPattern = '^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$';
+  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
+  submittedFormData: any;
+  @ViewChild('dataEntryForm', {static: true} ) dataEntryForm: NgForm;
 
-  fullImagePathRF: string;
-  fullImagePathSCSS: string;
-  fullImagePathSASS: string;
-  fullImagePathA5: string;
-  fullImagePathA5Rx: string;
-  fullImagePrimeNg: string;
-  fullImageAngularCompCommunication: string;
-  fullImageAngularBestPractices: string;
-  fullImageAngularRouter: string;
-  fullImageAngularRouting: string;
-  fullImageAngularAnimations: string;
-  fullImageTypescriptFundamentalss: string;
-  fullImagePathCSSPos: string;
-  fullImageRxJs: string;
-  angularVersion: any;
-  courseTitles = ['Title', 'Author', 'Site', 'Completed', 'Certificate'];
-  totalComplettedHours: string;
-
-  constructor(private fileLoaderService: FileLoaderService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.angularVersion = angular.VERSION.full;
-    this.initializeAngularCourses();
+    this.user = new User();
   }
 
-  private csvLoaderParser(path: string, fileName: string, courses: Array<AngularCourseModel>) {
-    this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
-      if (txt) {
-        const textLines = txt.split(/\r|\n/);
-        const csvHeader = textLines[0].split(',');
-        let isCompleted = false;
-        for (let ix = 1; ix < textLines.length; ix++) {
-          // split content based on comma
-          const data = textLines[ix].split(',');
-          if (data[0].trim() !== '') {
-            if (data.length === 7 && data.length === csvHeader.length) {
-              data[0] = data[0].replace('↵', '');
-              const courseModel = new AngularCourseModel();
-              courseModel.title = data[0];
-              courseModel.author = data[1];
-              courseModel.website = data[2];
-              courseModel.dateOfCompleted = (data[3] !== 'null') ? new Date(data[3]) : null;
-              if (courseModel.dateOfCompleted) {
-                isCompleted = true;
-              }
-              courseModel.certificateImageLarge = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
-              courseModel.certificateImageSmall = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
-              courseModel.hours = (data[5] !== '0') ? +data[5] : 0;
-              courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
-              courses.push(courseModel);
-            } else {
-              console.log('Length not equals in ' + fileName + ' row: ' + ix
-                + ' Data Lenght ' + data.length + ' header Length ' + csvHeader.length
-                + ' : ' + JSON.stringify(data));
-            }
-          }
-        }
-        console.log('Courses Parsed ' + fileName + ' # ' + courses.length);
-        if (isCompleted) {
-          this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
-            return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
-          });
-          this.calculateTotalHours();
-        }
+  extractFormGroupValueByKey(key: string): FormControl {
+    return <FormControl>this.dataEntryForm[key];
+  }
+
+  iskeyValue(key: string) {
+    return key === 'value';
+  }
+
+  iskeyErrors(key: string) {
+    return key === 'errors';
+  }
+
+  setValues(form) {
+    this.dataEntryForm.form.setValue(
+      // this.dataEntryForm.form.patchValue(
+      {
+        userName: 'lkovari',
+        email: 'lkovari@sisfirst.com',
+        phone: '800 1234 5678'
       }
+    );
+    Object.keys( this.dataEntryForm.controls).forEach(key => {
+      this.dataEntryForm.controls[key].markAsDirty();
+      this.dataEntryForm.controls[key].markAsTouched();
+    });
+    /* we can use individually also
+    (this.dataEntryForm.form.controls['pdropdown'] as FormControl).markAsDirty();
+    */
+  }
+
+  clearValues(form) {
+    this.dataEntryForm.form.setValue(
+      {
+        userName: null,
+        email: null,
+        phone: null
+      }
+    );
+    Object.keys( this.dataEntryForm.controls).forEach(key => {
+      this.dataEntryForm.controls[key].markAsPristine();
+      this.dataEntryForm.controls[key].markAsUntouched();
     });
   }
 
-
-  initializeAngularCourses() {
-    this.angularCourseCompletedList = [];
-    this.csvLoaderParser('assets/courses', 'completed-courses.csv', this.angularCourseCompletedList);
-    this.angularCourseInProgressList = [];
-    this.csvLoaderParser('assets/courses', 'inprogress-courses.csv', this.angularCourseInProgressList);
-
-    this.angularCoursePlannedList = []
-    this.csvLoaderParser('assets/courses', 'planned-courses.csv', this.angularCoursePlannedList);
-  }
-
-  extractCertURL(course: AngularCourseModel): string {
-    return course.certificateImageSmall ? course.certificateImageSmall : '';
-  }
-
-  extractSitetURL(course: AngularCourseModel): string {
-    return course.website ? course.website : '';
-  }
-
-  /**
-   *
-   * @param courseList: Array<AngularCourseModel> -  list of courses
-   */
-  private collectingHours(courseList: Array<AngularCourseModel>): IHourTuple {
-    let totalMinutes = 0;
-    courseList.forEach((course: AngularCourseModel) => {
-      let mins = course.hours * 60;
-      mins = mins + course.minutes;
-      totalMinutes = totalMinutes + mins;
-    });
-    const totalTime = new HourTuple();
-    totalTime.hours = Math.trunc(totalMinutes / 60);
-    totalTime.minutes = totalMinutes - (totalTime.hours * 60);
-    return totalTime;
-  }
-
-  private calculateTotalHours() {
-    const totalCompleted = this.collectingHours(this.angularCourseCompletedList);
-    this.totalComplettedHours = totalCompleted.hours + 'h ' + totalCompleted.minutes + 'm';
+  onSubmit(userForm: NgForm) {
+    this.submittedFormData = userForm.value;
+    // reset the form same as when reloaded
+    this.dataEntryForm.reset();
+    console.log(this.dataEntryForm);
   }
 }

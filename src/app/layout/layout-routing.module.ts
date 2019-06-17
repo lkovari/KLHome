@@ -50,6 +50,7 @@ import { AngularPageContent4Component } from './angular-page/angular-page-conten
 import { AngularPageContent5Component } from './angular-page/angular-page-content5/angular-page-content5.component';
 import { AngularPageContent6Component } from './angular-page/angular-page-content6/angular-page-content6.component';
 import { AngularPageContent7Component } from './angular-page/angular-page-content7/angular-page-content7.component';
+import { AngularPageContent0Component } from './angular-page/angular-page-content0/angular-page-content0.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
 
       {path: 'angular-page', component: AngularPageTitleComponent,
         children: [
+          {path: 'angular-page-content0', component: AngularPageContent0Component},
           {path: 'angular-page-content1', component: AngularPageContent1Component},
           {path: 'angular-page-content2', component: AngularPageContent2Component},
           {path: 'angular-page-content3', component: AngularPageContent3Component},
