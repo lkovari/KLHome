@@ -63,25 +63,7 @@
                     <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear Data</button>
                     <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>                    
                 </form>
-                <label class="vertical-gap"><u>Status of the FormControls</u></label>
-                <div class="row message-style">
-                    <table>
-                    <tr>
-                        <th *ngFor="let ctrlName of extractFormControlKeys()">{{ ctrlName }}</th>
-                    </tr>
-                    <tr *ngFor="let statusKey of formControlStatusKeys">
-                        <td *ngFor="let ctrlKey of extractFormControlKeys()">
-                                {{ statusKey }} : {{ extractFormControlByKey(ctrlKey)[statusKey] }}
-                        </td>
-                    </tr>
-                    </table>                    
-                </div>
-                <label class="vertical-gap"><u>Status of the Form</u></label>
-                <div class="form-status-style">
-                    <div *ngFor="let key of formControlStatusKeys">{{ key }}:
-                        <label class="spacer-horozontal-left spacer-horozontal-right">{{ extractFormGroupValueByKey(key) | json }}</label>
-                    </div>
-                </div>
+                <app-display-form-state [dataEntryForm]="dataEntryForm"></app-display-form-state>
                 <div>
                     <label>Submitted form data:</label> {{ submittedFormData | json }}
                 </div>
