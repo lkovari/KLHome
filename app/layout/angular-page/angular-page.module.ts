@@ -24,6 +24,7 @@ import { SubForm2Component } from './angular-page-content6/components/sub-form2/
 import { SubForm3Component } from './angular-page-content6/components/sub-form3/sub-form3.component';
 import { AngularPageContent7Component } from './angular-page-content7/angular-page-content7.component';
 import { AngularPageContent0Component } from './angular-page-content0/angular-page-content0.component';
+import { DisplayFormStateComponent } from './angular-page-content1/display-form-state/display-form-state.component';
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import { AngularPageContent0Component } from './angular-page-content0/angular-pa
                   SubForm2Component,
                   SubForm3Component,
                   AngularPageContent7Component,
-                  AngularPageContent0Component
+                  AngularPageContent0Component,
+                  DisplayFormStateComponent
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -67,6 +69,7 @@ import { AngularPageContent0Component } from './angular-page-content0/angular-pa
              AngularPageContent5Component,
              AngularPageContent6Component,
              AngularPageContent7Component,
+             DisplayFormStateComponent
             ]
 })
 export class AngularPageModule { }

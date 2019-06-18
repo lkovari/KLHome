@@ -1,0 +1,30 @@
+<div class="display-status-content">
+    <label class="vertical-gap"><b>Status of the FormControls</b></label>
+    <div class="row message-style">
+        <table>
+        <tr>
+            <th *ngFor="let ctrlName of extractFormControlKeys()" class="text-primary">{{ ctrlName }}</th>
+        </tr>
+        <tr *ngFor="let statusKey of formControlStatusKeys">
+            <td *ngFor="let ctrlKey of extractFormControlKeys()">
+                <span class="text-primary">
+                    {{ statusKey }} :
+                </span>
+                <span [style.color]="getStyleColor(statusKey, extractFormControlByKey(ctrlKey)[statusKey])">
+                    <em>{{ extractFormControlByKey(ctrlKey)[statusKey] }}</em>
+                </span>
+            </td>
+        </tr>
+        </table>                    
+    </div>
+    <label class="vertical-gap"><b>Status of the Form</b></label>
+    <div class="form-status-style">
+        <div *ngFor="let key of formControlStatusKeys">{{ key }}:
+            <label class="spacer-horozontal-left spacer-horozontal-right">
+              <span [style.color]="getStyleColor(key, extractFormGroupValueByKey(key))">
+                  <em>{{ extractFormGroupValueByKey(key) | json }}</em>
+              </span>
+            </label>  
+        </div>
+    </div>  
+</div>
