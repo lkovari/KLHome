@@ -63,25 +63,27 @@
                     <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear Data</button>
                     <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>                    
                 </form>
-                <label>Status of the Form</label>
+                <label class="vertical-gap"><u>Status of the FormControls</u></label>
                 <div class="row message-style">
-                    <li *ngFor="let key of formControlStatusKeys">{{ key }}:
-                        <div *ngIf="iskeyValue(key); else notValue">
-                            <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
-                        </div>
-                        <ng-template #notValue>
-                            <div *ngIf="iskeyErrors(key); else notErrors">
-                                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) | json }}</label>
-                            </div>
-                            <ng-template #notErrors>
-                                <label class="spacer-horozontal-left">{{ extractFormGroupValueByKey(key) }}</label>
-                            </ng-template>
-                        </ng-template>
-                    </li>
+                    <table>
+                    <tr>
+                        <th *ngFor="let ctrlName of extractFormControlKeys()">{{ ctrlName }}</th>
+                    </tr>
+                    <tr *ngFor="let statusKey of formControlStatusKeys">
+                        <td *ngFor="let ctrlKey of extractFormControlKeys()">
+                                {{ statusKey }} : {{ extractFormControlByKey(ctrlKey)[statusKey] }}
+                        </td>
+                    </tr>
+                    </table>                    
+                </div>
+                <label class="vertical-gap"><u>Status of the Form</u></label>
+                <div class="form-status-style">
+                    <div *ngFor="let key of formControlStatusKeys">{{ key }}:
+                        <label class="spacer-horozontal-left spacer-horozontal-right">{{ extractFormGroupValueByKey(key) | json }}</label>
+                    </div>
                 </div>
                 <div>
-                    <label>Submitted form data:</label>
-                    {{ submittedFormData | json }}
+                    <label>Submitted form data:</label> {{ submittedFormData | json }}
                 </div>
             </div>
         </div>

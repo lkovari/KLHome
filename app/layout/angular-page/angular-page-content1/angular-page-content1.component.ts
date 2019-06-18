@@ -9,13 +9,15 @@ import { User } from './user.model';
   styleUrls: ['./angular-page-content1.component.scss']
 })
 export class AngularPageContent1Component implements OnInit {
+  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   user: IUser;
   userNameMinLength = 3;
   userNameMaxLength = 30;
   // originated from : https://www.sitepoint.com/community/t/phone-number-regular-expression-validation/2204
   usPhoneNumberPattern = '^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$';
-  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   submittedFormData: any;
+  controlList = new Array<FormControl>();
+
   @ViewChild('dataEntryForm', {static: true} ) dataEntryForm: NgForm;
 
   constructor() { }
@@ -26,6 +28,30 @@ export class AngularPageContent1Component implements OnInit {
 
   extractFormGroupValueByKey(key: string): FormControl {
     return <FormControl>this.dataEntryForm[key];
+  }
+
+  extractFormControls(): Array<FormControl> {
+    this.controlList = [];
+    Object.keys( this.dataEntryForm.controls).forEach(key => {
+      this.controlList.push(<FormControl>this.dataEntryForm.controls[key]);
+    });
+    return this.controlList;
+  }
+
+  extractFormControlKeys(): string[] {
+    let formControlKey = [];
+    if (this.dataEntryForm && this.dataEntryForm.controls) {
+      formControlKey = Object.keys(this.dataEntryForm.controls);
+    }
+    return formControlKey;
+  }
+
+  extractFormControlByKey(key: string): FormControl {
+    return <FormControl>this.dataEntryForm.controls[key];
+  }
+
+  extractFormControlValueByKey(ctrl: FormControl, key: string): any {
+    return ctrl[key];
   }
 
   iskeyValue(key: string) {
@@ -49,9 +75,7 @@ export class AngularPageContent1Component implements OnInit {
       this.dataEntryForm.controls[key].markAsDirty();
       this.dataEntryForm.controls[key].markAsTouched();
     });
-    /* we can use individually also
-    (this.dataEntryForm.form.controls['pdropdown'] as FormControl).markAsDirty();
-    */
+    this.submittedFormData = undefined;
   }
 
   clearValues(form) {
@@ -66,6 +90,7 @@ export class AngularPageContent1Component implements OnInit {
       this.dataEntryForm.controls[key].markAsPristine();
       this.dataEntryForm.controls[key].markAsUntouched();
     });
+    this.submittedFormData = undefined;
   }
 
   onSubmit(userForm: NgForm) {
