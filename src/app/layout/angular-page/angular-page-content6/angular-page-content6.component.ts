@@ -27,21 +27,21 @@ export class AngularPageContent6Component implements OnInit {
       emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
 
       customTab1 : this.formBuilder.group( {
-        customText: [ { value: null }, [ Validators.required, Validators.minLength(7) ] ],
+        customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
         freeText: [ { value: null } ]
       } ),
 
       customTab2 : this.formBuilder.group( {
-        customText: [ { value: null }, [ Validators.required, Validators.minLength(7) ] ],
+        customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
         zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ] ],
       } ),
 
       customTab3 : this.formBuilder.group( {
-        customText: [ { value: null }, [ Validators.required, Validators.minLength(7) ] ],
+        customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
         zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ] ],

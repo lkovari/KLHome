@@ -23,7 +23,7 @@
                 </ul>
             </div>
             <div class="data-entry-form">
-                <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate>
+                <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate autocomplete="off">
                     <div class="form-group">
                         <label class="spacer" for="userName">User name
                             <span class="text-danger">*</span>
