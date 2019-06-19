@@ -15,13 +15,14 @@ export class AngularPageContent1Component implements OnInit {
   // originated from : https://www.sitepoint.com/community/t/phone-number-regular-expression-validation/2204
   usPhoneNumberPattern = '^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$';
   submittedFormData: any;
-
+  githubLogoPath: string;
   @ViewChild('dataEntryForm', {static: true} ) dataEntryForm: NgForm;
 
   constructor() { }
 
   ngOnInit() {
     this.user = new User();
+    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
   }
 
   setValues(form) {
