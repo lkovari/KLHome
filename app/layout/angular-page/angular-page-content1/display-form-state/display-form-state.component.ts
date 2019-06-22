@@ -7,7 +7,7 @@ import { NgForm, FormControl } from '@angular/forms';
   styleUrls: ['./display-form-state.component.scss']
 })
 export class DisplayFormStateComponent implements OnInit {
-  formControlStatusKeys = ['status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value', 'errors'];
+  formControlStatusKeys = ['status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value'];
 
   private _dataEntryForm: NgForm;
   @Input()
@@ -62,6 +62,8 @@ export class DisplayFormStateComponent implements OnInit {
     if ((k === 'status' && v === 'VALID') || (k === 'valid' && v) || (k === 'invalid' && !v)) {
       color = 'green';
     } else if ((k === 'status' && v === 'INVALID') || (k === 'valid' && !v) || (k === 'invalid' && v)) {
+      color = 'red';
+    } else if (k === 'errors' && v !== null) {
       color = 'red';
     }
     return color;

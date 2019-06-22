@@ -25,6 +25,7 @@ import { SubForm3Component } from './angular-page-content6/components/sub-form3/
 import { AngularPageContent7Component } from './angular-page-content7/angular-page-content7.component';
 import { AngularPageContent0Component } from './angular-page-content0/angular-page-content0.component';
 import { DisplayFormStateComponent } from './angular-page-content1/display-form-state/display-form-state.component';
+import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-capital-char-custom.validator';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { DisplayFormStateComponent } from './angular-page-content1/display-form-
                   SubForm3Component,
                   AngularPageContent7Component,
                   AngularPageContent0Component,
-                  DisplayFormStateComponent
+                  DisplayFormStateComponent,
+                  FirstCapitalCharCustomValidator
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,

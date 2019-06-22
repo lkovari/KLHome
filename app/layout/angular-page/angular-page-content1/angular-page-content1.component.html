@@ -10,14 +10,14 @@
         </div>
         <div class="sub-topic">
             <div class="sub-topic">
-                This is a simple data entry form with three fields (Brand name, wheels, model year), which represent a
-                vehicle.
+                This is a simple data entry form with three fields (User name, Email, Phone number). The Submit button will enable if the form is valid which means, the field content is mathes with validation
+                rules.
             </div>
             <div class="sub-topic">
                 <b>The validation rules</b> of fields are the following
                 <ul>
-                    <li><b>User name</b> is required, minimum length is {{ userNameMinLength }} maximum length is
-                        {{ userNameMaxLength }}</li>
+                    <li><b>User name</b> is required, minimum length is {{ userNameMinLength }}, maximum length is
+                        {{ userNameMaxLength }} and the first character should capital letter</li>
                     <li><b>Email</b> a valid email address required! Used build-in email validator.</li>
                     <li><b>Phone number</b> a valid US. phone number is required! Used regular expression pattern.</li>
                 </ul>
@@ -33,10 +33,11 @@
                         <label class="spacer" for="userName">User name
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="userName" name="userName" [(ngModel)]="user.userName" #userName="ngModel" autocomplete="false"
-                            required minlength="{{userNameMinLength}}" maxlength="{{userNameMaxLength}}">
-                        <div *ngIf="userName && (userName.invalid && userName.dirty)" class="text-danger">
+                        <input id="userName" name="userName" [(ngModel)]="user.userName" #userName="ngModel" autocomplete="off"
+                            required minlength="{{userNameMinLength}}" maxlength="{{userNameMaxLength}}" app-firstCapital>
+                        <div *ngIf="(userName && (userName.invalid && userName.dirty)) " class="text-danger">
                             <p *ngIf="userName.errors.required">Value is required!</p>
+                            <p *ngIf="userName.errors.firstcapital">The first character should capital letter!</p>
                             <p *ngIf="userName.hasError('minlength')">Min length is {{ userNameMinLength }}!
                             </p>
                             <p *ngIf="userName.errors.maxlength">Max length is {{ userNameMaxLength }}!</p>
@@ -46,7 +47,7 @@
                         <label class="spacer" for="email">Email
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="email" type="string" name="email" [(ngModel)]="user.email" #email="ngModel"
+                        <input id="email" type="string" name="email" [(ngModel)]="user.email" #email="ngModel" autocomplete="off"
                             required email>
                         <div *ngIf="email && (email.invalid && email.dirty)" class="text-danger">
                             <p *ngIf="email.errors.required">Email is required!</p>
@@ -57,7 +58,7 @@
                         <label class="spacer" for="phone">Phone number
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="phone" name="phone" [(ngModel)]="user.phone"
+                        <input id="phone" name="phone" [(ngModel)]="user.phone" autocomplete="off"
                             #phone="ngModel" required pattern="{{usPhoneNumberPattern}}">
                         <div *ngIf="phone && (phone.invalid && phone.dirty)" class="text-danger">
                             <p *ngIf="phone.errors?.required">Phone is required!</p>
