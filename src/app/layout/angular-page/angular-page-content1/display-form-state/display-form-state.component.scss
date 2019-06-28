@@ -14,4 +14,13 @@
     .spacer-horozontal-left {
         margin-left: 0.5rem;
     }    
+    .table th, .table td {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        padding-bottom: 0.2rem;
+        padding-top: 0.2rem;
+    }    
+    .form-group {
+        margin-bottom: 0.5rem;
+    }
 }

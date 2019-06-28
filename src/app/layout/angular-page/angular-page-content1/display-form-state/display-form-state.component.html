@@ -1,30 +1,40 @@
 <div class="display-status-content">
     <label class="vertical-gap text-primary">Status of the NgModel Properties of FormControls</label>
     <div class="row message-style">
-        <table>
-        <tr>
-            <th *ngFor="let ctrlName of extractFormControlKeys()" class="text-dark">{{ ctrlName }}</th>
-        </tr>
-        <tr *ngFor="let statusKey of formControlStatusKeys">
-            <td *ngFor="let ctrlKey of extractFormControlKeys()">
-                <span class="text-primary">
-                    {{ statusKey }} :
-                </span>
-                <span [style.color]="getStyleColor(statusKey, extractFormControlByKey(ctrlKey)[statusKey])">
-                    <em>{{ extractFormControlByKey(ctrlKey)[statusKey] }}</em>
-                </span>
-            </td>
-        </tr>
-        </table>                    
+        <table class="table table-bordered">
+            <tr>
+                <th *ngFor="let ctrlName of extractFormControlKeys()" class="text-dark">{{ ctrlName }}</th>
+                <th class="text-dark">Form</th>
+            </tr>
+            <tr *ngFor="let statusKey of formControlStatusKeys">
+                <td *ngFor="let ctrlKey of extractFormControlKeys()">
+                    <span class="text-primary">
+                        {{ statusKey }} :
+                    </span>
+                    <span [style.color]="getStyleColor(statusKey, extractFormControlByKey(ctrlKey)[statusKey])">
+                        <em>{{ extractFormControlByKey(ctrlKey)[statusKey] }}</em>
+                    </span>
+                </td>
+                <td>
+                    <span class="text-primary">
+                        {{ statusKey }} :
+                    </span>
+                    <span [style.color]="getStyleColor(statusKey, extractFormGroupValueByKey(statusKey))">
+                        <em>{{ extractFormGroupValueByKey(statusKey) | json }}</em>
+                    </span>
+
+                </td>
+            </tr>
+        </table>
     </div>
-    <label class="vertical-gap text-primary">Status of the NgForm Properties of Form</label>
+    <!--label class="vertical-gap text-primary">Status of the NgForm Properties of Form</label>
     <div class="form-status-style">
         <div *ngFor="let key of formControlStatusKeys" class="text-primary">{{ key }}:
             <label class="spacer-horozontal-left spacer-horozontal-right">
-              <span [style.color]="getStyleColor(key, extractFormGroupValueByKey(key))">
-                  <em>{{ extractFormGroupValueByKey(key) | json }}</em>
-              </span>
-            </label>  
+                <span [style.color]="getStyleColor(key, extractFormGroupValueByKey(key))">
+                    <em>{{ extractFormGroupValueByKey(key) | json }}</em>
+                </span>
+            </label>
         </div>
-    </div>  
+    </div-->
 </div>

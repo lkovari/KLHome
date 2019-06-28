@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/22/2019 08:08 PM');
-  lastUpdateTooltip = 'Added app-firstCapital custom validator to source of page 1';
+  lastUpdate = new Date('06/28/2019 10:24 PM');
+  lastUpdateTooltip = 'Added Form status to the last column of DisplayFormStateComponent of page 1';
 
   eventCalled() {
     this.isActive = !this.isActive;

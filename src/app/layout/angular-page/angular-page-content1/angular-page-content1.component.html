@@ -33,7 +33,7 @@
                         <label class="spacer" for="userName">User name
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="userName" name="userName" [(ngModel)]="user.userName" #userName="ngModel" autocomplete="off"
+                        <input id="userName" class="form-control" name="userName" [(ngModel)]="user.userName" #userName="ngModel" autocomplete="off"
                             required minlength="{{userNameMinLength}}" maxlength="{{userNameMaxLength}}" app-firstCapital>
                         <div *ngIf="(userName && (userName.invalid && userName.dirty)) " class="text-danger">
                             <p *ngIf="userName.errors.required">Value is required!</p>
@@ -47,7 +47,7 @@
                         <label class="spacer" for="email">Email
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="email" type="string" name="email" [(ngModel)]="user.email" #email="ngModel" autocomplete="off"
+                        <input id="email" class="form-control" type="string" name="email" [(ngModel)]="user.email" #email="ngModel" autocomplete="off"
                             required email>
                         <div *ngIf="email && (email.invalid && email.dirty)" class="text-danger">
                             <p *ngIf="email.errors.required">Email is required!</p>
@@ -58,7 +58,7 @@
                         <label class="spacer" for="phone">Phone number
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="phone" name="phone" [(ngModel)]="user.phone" autocomplete="off"
+                        <input id="phone" class="form-control" name="phone" [(ngModel)]="user.phone" autocomplete="off"
                             #phone="ngModel" required pattern="{{usPhoneNumberPattern}}">
                         <div *ngIf="phone && (phone.invalid && phone.dirty)" class="text-danger">
                             <p *ngIf="phone.errors?.required">Phone is required!</p>
