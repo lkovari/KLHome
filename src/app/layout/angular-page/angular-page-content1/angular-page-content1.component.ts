@@ -10,7 +10,7 @@ import { User } from './user.model';
 })
 export class AngularPageContent1Component implements OnInit {
   user: IUser;
-  userNameMinLength = 3;
+  userNameMinLength = 5;
   userNameMaxLength = 20;
   // originated from : https://www.sitepoint.com/community/t/phone-number-regular-expression-validation/2204
   usPhoneNumberPattern = '^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$';
