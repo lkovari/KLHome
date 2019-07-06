@@ -27,7 +27,7 @@ export class AngularPageContent4Component implements OnInit {
 
   ngOnInit() {
     this.exampleForm = this.formBuilder.group([]);
-    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
   }
 
   private getSampleModel(): IAddress {

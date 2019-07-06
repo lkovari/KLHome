@@ -68,7 +68,7 @@ export class AngularPageContent3Component implements OnInit {
     this.exampleForm.get('complexName').valueChanges.subscribe((value: IComplexName) => {
       console.log('ComplexName model changed ' + JSON.stringify(value));
     });
-    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
   }
 
   isValidationPlaceInsideComponent(): boolean {

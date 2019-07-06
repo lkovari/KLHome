@@ -60,7 +60,7 @@ export class DataMainInputComponent implements OnInit {
     if (!this._customFormModel) {
       this._customFormModel = new CustomFormModel();
     }
-    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
   }
 
   private tabItemChanged(ix: number) {

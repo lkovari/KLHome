@@ -36,7 +36,7 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     this.maxDate.setFullYear(this.maxDate.getFullYear() + 1);
     this.maxDate.setMonth(1);
     this.maxDate.setDate(2);
-    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
   }
 
   ngAfterViewInit() {
