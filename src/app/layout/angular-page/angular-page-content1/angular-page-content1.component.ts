@@ -22,7 +22,7 @@ export class AngularPageContent1Component implements OnInit {
 
   ngOnInit() {
     this.user = new User();
-    this.githubLogoPath = 'assets/images/GitHub-Mark-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
   }
 
   setValues(form) {
@@ -62,8 +62,6 @@ export class AngularPageContent1Component implements OnInit {
 
   onSubmit(userForm: NgForm) {
     this.submittedFormData = userForm.value;
-    // reset the form same as when reloaded
-    this.dataEntryForm.reset();
     console.log(this.dataEntryForm);
   }
 }

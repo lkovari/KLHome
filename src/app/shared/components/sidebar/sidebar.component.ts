@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/28/2019 10:24 PM');
+  lastUpdate = new Date('07/06/2019 09:39 PM');
   lastUpdateTooltip = 'Added Form status to the last column of DisplayFormStateComponent of page 1';
 
   eventCalled() {
