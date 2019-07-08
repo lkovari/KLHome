@@ -2,20 +2,25 @@
   <div class="angular-playground-description form-group">
     <div class="col-xs-12">
       This page is a
-      <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which interested in, for me.
+      <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
+      interested in, for me.
     </div>
     <div class="sub-topic">
       <b>Act #1</b> Custom Input Component with Validation
     </div>
     <div class="sub-topic">
-      Formerly I faced the following problem, how can I include custom components into the NgForm validation mechanism. I wanted to see the custom component as a
-      <a href="https://angular.io/api/forms/FormControl">FormControl</a> in the collection of controls of form, and would like to see it is participating in the Form validation
-      mechanism.  I spent a lot of time to investigate how can I do that, I found in the <a href="https://angular.io/docs">Angular documentation</a> the
+      Formerly I faced the following problem, how can I include custom components into the NgForm validation mechanism.
+      I wanted to see the custom component as a
+      <a href="https://angular.io/api/forms/FormControl">FormControl</a> in the collection of controls of the form and
+      would like to see it is participating in the Form validation
+      mechanism. I spent a lot of time to investigate how can I do that, I found in the <a
+        href="https://angular.io/docs">Angular documentation</a> the
       <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a> interface.
       <p>
-        <mark>Interested in this technology very much me, therefore I spent really a lot of time in my spare time (usually at night) for exploring and practicing how can I implement it, in the best way. 
-        I would like to implement correctly the
-        <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>.</mark>
+        <mark>Interested in this technology very much me, therefore I spent really a lot of time in my spare time
+          (usually at night) for exploring and practicing how can I implement it, in the best way.
+          I would like to implement correctly the
+          <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>.</mark>
       </p>
       At first I created a simple input component the class name of it
       <i>
@@ -35,16 +40,20 @@
     <div class="sub-topic">
       The class name of this component is
       <i>
-        <a class="spacer" href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/custom-calendar">
+        <a class="spacer"
+          href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/custom-calendar">
           <img [src]="githubLogoPath" width="16" height="16">
         </a>CustomCalendarComponent
       </i> the selector of this component is
       <i>'app-custom-calendar'</i>. I took a look to the
       <a href="https://www.primefaces.org/primeng/#/">PrimeNG</a>
-      source code, and I noticed the original third party component is also implemented the
-      <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course I know to wrap a component without good reason, is a dangerous venture, because
-      the developer should consider what parameters move to the wrapper component and what not, because we can hide the wrapped component parameters.
-      <mark>I should also mention, although this is not an exhaustive implementation, but the aspect of implementation of the
+      source code, and I noticed the original third-party component is also implemented the
+      <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course, I know to wrap a
+      component without good reason, is a dangerous venture, because
+      the developer should consider what parameters move to the wrapper component and what not because we can hide the
+      wrapped component parameters.
+      <mark>I should also mention, although this is not an exhaustive implementation, the aspect of the implementation
+        of the
         <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>
         it will be more than enough.</mark>
     </div>
@@ -56,43 +65,48 @@
         </a>TextInputComponent
       </i> and
       <i>
-        <a class="spacer" href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/custom-calendar">
+        <a class="spacer"
+          href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/custom-calendar">
           <img [src]="githubLogoPath" width="16" height="16">
         </a>CustomCalendarComponent
       </i> which I mentioned above.
     </div>
     <div class="sub-topic">
-      I just created a simple form with two input fields, one of two is the text input component and the other is the date calendar
-      component. The Submit button will enable if the form is valid which means, the field content is mathes with validation
-      rules. Usage of the
-      <i>setValues(form)</i> and
-      <i>clearValues(form)</i> are the best example how can we load the data into the fields before the form open and how
-      can be clear about that.
+      I just created a simple form with two input fields, one of two is the text input component and the other is the
+      date calendar component. The Submit button will enable if the form is valid which means the content of the field
+      matches with validation rules. <i>setValues(form)</i> and
+      <i>clearValues(form)</i> are the best examples how can we load the data into the fields before the form open and
+      how can be clear about that.
       <div class="sub-topic">
         <span class="text-primary">The validation rules are the following</span> the
         <ul>
-          <li>Custom Date field is required, minDate is {{minDate | date:'MM/dd/yyyy' }}, and maxDate is {{maxDate | date:'MM/dd/yyyy' }} </li>
-          <li>Custom Text field is required, minimum length is {{minLength}} characters and the first character should be capital
+          <li>Custom Date field is required, minDate is {{minDate | date:'MM/dd/yyyy' }}, and maxDate is
+            {{maxDate | date:'MM/dd/yyyy' }} </li>
+          <li>Custom Text field is required, minimum length is {{minLength}} characters and the first character should
+            be capital
             letter</li>
         </ul>
       </div>
       <div class="form-border">
         <label class="text-primary">
-          <a class="spacer" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content2">
+          <a class="spacer"
+            href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content2">
             <img [src]="githubLogoPath" width="16" height="16">
           </a>Form Validation example
         </label>
         <br>
         <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate>
           <div class="form-group">
-            <label for="customcalendar">Date 
+            <label for="customcalendar">Date
               <span class="text-danger">*</span>
             </label>
-            <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" [showButtonBar]="true" class="calendar-style"
-              placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy" #customcalendar="ngModel" name="customcalendar" [showOnFocus]="false"
-              [minDate]="minDate" [maxDate]="maxDate" [required]="true" (onTodayClicked)="onTodayClicked($event)" 
-              [monthNavigator]="true" [monthNavigator]="true" [yearNavigator]="true" yearRange="1700:2300"
-              (onClearClicked)="onClearClicked($event)" (onDateSelected)="onDateSelected($event)" (onModelChanged)="onModelChanged($event)">
+            <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" [showButtonBar]="true"
+              class="calendar-style" placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy"
+              #customcalendar="ngModel" name="customcalendar" [showOnFocus]="false" [minDate]="minDate"
+              [maxDate]="maxDate" [required]="true" (onTodayClicked)="onTodayClicked($event)" [monthNavigator]="true"
+              [monthNavigator]="true" [yearNavigator]="true" yearRange="1700:2300"
+              (onClearClicked)="onClearClicked($event)" (onDateSelected)="onDateSelected($event)"
+              (onModelChanged)="onModelChanged($event)">
             </app-custom-calendar>
             <div *ngIf="customcalendar && (customcalendar.invalid && customcalendar.dirty)" class="text-danger">
               <p *ngIf="customcalendar.errors.required">Valid Date is required!</p>
@@ -104,8 +118,9 @@
             <label for="customtextinput">Custom Text
               <span class="text-danger">*</span>
             </label>
-            <app-text-input id="customtextinput" name="customtextinput" [(ngModel)]="customText" #customtextinput="ngModel" [minlength]="7"
-              [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)" required>
+            <app-text-input id="customtextinput" name="customtextinput" [(ngModel)]="customText"
+              #customtextinput="ngModel" [minlength]="7" [capital]="true" (onChanged)="onChanged($event)"
+              (onBlur)="onBlur($event)" required>
             </app-text-input>
             <span class="text-danger" *ngIf="customtextinput && (customtextinput.invalid && !customtextinput.pristine)">
               <p *ngIf="customtextinput.errors.required">Custom text is Required</p>

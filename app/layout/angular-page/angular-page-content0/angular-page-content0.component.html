@@ -1,64 +1,66 @@
 <div class="layout-angular-page">
-  <div class="form">
-      <div class="angular-description form-group">
-          <div class="col-xs-12">
-              At that time, in the Gemini 3 team, did not have enough developer at the company (where I'am working now) and I moved to
-              the Gemini 3 team by my superior's suggestion from the AO. core team. (It was a good challenge for me) After
-              a narrow training time I'm with my colleagues started in the Gemini 3 team to develop the SIS Charts web
-              based application. Therefore, I began to learn Angular. The current website is my first Angular application,
-              what I continuously upgraded it with the newer Angular version, currently I using Angular v{{ angularVersion
-              }}, TypeScript with Bootstrap 4 and SASS. (I used a template, but already still in progress to create my
-              own unique website)
-          </div>
-      </div>
-      <div class="angular-courses">
-          <div class="form-group">
-              <label class="courses-subtitle">Completed</label>
-              <div *ngFor="let course of angularCourseCompletedList; let ix = index">
-                  <div class="course-style">
-                      <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
-                      <label class="course-title">{{ course.title + " " + course.author }}
-                          <a href="{{ course.website }}">{{ course.website }}</a>
-                      </label>
-                      <a href="{{ course.certificateImageSmall }}">
-                          <img class="img-responsive-right" [src]=extractCertURL(course)>
-                      </a>
-                  </div>
-              </div>
-              <div>
-                  <label class="total-label">Total
-                      <span class="total-value">{{ totalComplettedHours }}</span>                        
-                  </label>
-              </div>
-          </div>
-          <div class="form-group">
-              <label class="courses-subtitle">Still in progress</label>
-              <div *ngFor="let course of angularCourseInProgressList; let ix = index">
-                  <div class="course-style">
-                      <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
-                      <label class="course-title">{{ course.title + " " + course.author }}
-                          <a href="{{ course.website }}">{{ course.website }}</a>
-                      </label>
-                      <a href="{{ course.certificateImageSmall }}">
-                          <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right" [src]=extractCertURL(course)>
-                      </a>
-                  </div>
-              </div>
-          </div>
-          <div class="form-group">
-              <label class="courses-subtitle">Planned</label>
-              <div *ngFor="let course of angularCoursePlannedList; let ix = index">
-                  <div class="course-style">
-                      <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
-                      <label class="course-title">{{ course.title + " " + course.author }}
-                          <a href="{{ course.website }}">{{ course.website }}</a>
-                      </label>
-                      <a href="{{ course.certificateImageSmall }}">
-                          <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right" [src]=extractCertURL(course)>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="form">
+        <div class="angular-description form-group">
+            <div class="col-xs-12">
+                At that time, in the Gemini 3 team, did not have enough developer at the company (where I'm working now)
+                and I moved to the Gemini 3 team by my superior's suggestion from the AO. core team. (It was a good
+                challenge for me) After a narrow training time, I'm with my colleagues started in the Gemini 3 team to
+                develop the SIS Charts web-based application. Therefore, I began to learn Angular. The current website
+                is my first Angular application, what I continuously upgraded it with the newer Angular version,
+                currently I using Angular v8.0.0, TypeScript with Bootstrap 4 and SASS. (I used a template, but already
+                still in progress to create my own unique website)
+            </div>
+        </div>
+        <div class="angular-courses">
+            <div class="form-group">
+                <label class="courses-subtitle">Completed</label>
+                <div *ngFor="let course of angularCourseCompletedList; let ix = index">
+                    <div class="course-style">
+                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                        <label class="course-title">{{ course.title + " " + course.author }}
+                            <a href="{{ course.website }}">{{ course.website }}</a>
+                        </label>
+                        <a href="{{ course.certificateImageSmall }}">
+                            <img class="img-responsive-right" [src]=extractCertURL(course)>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <label class="total-label">Total
+                        <span class="total-value">{{ totalComplettedHours }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="courses-subtitle">Still in progress</label>
+                <div *ngFor="let course of angularCourseInProgressList; let ix = index">
+                    <div class="course-style">
+                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
+                        <label class="course-title">{{ course.title + " " + course.author }}
+                            <a href="{{ course.website }}">{{ course.website }}</a>
+                        </label>
+                        <a href="{{ course.certificateImageSmall }}">
+                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right"
+                                [src]=extractCertURL(course)>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="courses-subtitle">Planned</label>
+                <div *ngFor="let course of angularCoursePlannedList; let ix = index">
+                    <div class="course-style">
+                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
+                        <label class="course-title">{{ course.title + " " + course.author }}
+                            <a href="{{ course.website }}">{{ course.website }}</a>
+                        </label>
+                        <a href="{{ course.certificateImageSmall }}">
+                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right"
+                                [src]=extractCertURL(course)>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
