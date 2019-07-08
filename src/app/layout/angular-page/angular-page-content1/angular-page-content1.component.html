@@ -2,21 +2,22 @@
     <div class="angular-playground-description form-group">
         <div class="col-xs-12">
             This page is a
-            <b>playground</b>, I show on this page Angular 2+ source code snippets, what I learned at last or just which
+            <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
             interested in, for me.
         </div>
         <div class="sub-topic">
-            <b>Act #0</b> Basic Template-Driven form with validation
+            <b>Act #0</b> Basic Template-Driven form and validation
         </div>
         <div class="sub-topic">
             <div class="sub-topic">
-                This is a simple data entry form with three fields (User name, Email, Phone number). The Submit button will enable if the form is valid which means, the field content is mathes with validation
-                rules.
+                This is a simple data entry form with three fields (User name, Email, Phone number). The Submit button
+                will enable if the form is valid which means, the field contents are matches with validation rules.
             </div>
             <div class="sub-topic">
                 <b>The validation rules</b> of fields are the following
                 <ul>
-                    <li><b>User name</b> is required, minimum length is {{ userNameMinLength }}, maximum length is
+                    <li><b>User name</b> is required, the minimum length is {{ userNameMinLength }}, the maximum
+                        length is
                         {{ userNameMaxLength }} and the first character should capital letter</li>
                     <li><b>Email</b> a valid email address required! Used build-in email validator.</li>
                     <li><b>Phone number</b> a valid US. phone number is required! Used regular expression pattern.</li>
@@ -24,17 +25,19 @@
             </div>
             <div class="data-entry-form">
                 <label class="text-primary">
-                    <a class="spacer" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content1">
+                    <a class="spacer"
+                        href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content1">
                         <img [src]="githubLogoPath" width="16" height="16">
                     </a>Simple Template-driven Form Validation example
-                </label>                
+                </label>
                 <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate autocomplete="off">
                     <div class="form-group">
                         <label class="spacer" for="userName">User name
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="userName" class="form-control" name="userName" [(ngModel)]="user.userName" #userName="ngModel" autocomplete="off"
-                            required minlength="{{userNameMinLength}}" maxlength="{{userNameMaxLength}}" app-firstCapital>
+                        <input id="userName" class="form-control" name="userName" [(ngModel)]="user.userName"
+                            #userName="ngModel" autocomplete="off" required minlength="{{userNameMinLength}}"
+                            maxlength="{{userNameMaxLength}}" app-firstCapital>
                         <div *ngIf="(userName && (userName.invalid && userName.dirty)) " class="text-danger">
                             <p *ngIf="userName.errors.required">Value is required!</p>
                             <p *ngIf="userName.errors.firstcapital">The first character should capital letter!</p>
@@ -47,12 +50,12 @@
                         <label class="spacer" for="email">Email
                             <span class="text-danger">*</span>
                         </label>
-                        <input id="email" class="form-control" type="string" name="email" [(ngModel)]="user.email" #email="ngModel" autocomplete="off"
-                            required email>
+                        <input id="email" class="form-control" type="string" name="email" [(ngModel)]="user.email"
+                            #email="ngModel" autocomplete="off" required email>
                         <div *ngIf="email && (email.invalid && email.dirty)" class="text-danger">
                             <p *ngIf="email.errors.required">Email is required!</p>
                             <p *ngIf="email.errors.email">Please type a valid email!</p>
-                        </div>                            
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="spacer" for="phone">Phone number
@@ -63,11 +66,13 @@
                         <div *ngIf="phone && (phone.invalid && phone.dirty)" class="text-danger">
                             <p *ngIf="phone.errors?.required">Phone is required!</p>
                             <p *ngIf="phone.errors?.pattern">Please type a valid US. phone number without ext!</p>
-                        </div>                              
+                        </div>
                     </div>
-                    <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set Data</button>
-                    <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear Data</button>
-                    <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>                    
+                    <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set
+                        Data</button>
+                    <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear
+                        Data</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
                 </form>
                 <app-display-form-state [dataEntryForm]="dataEntryForm"></app-display-form-state>
                 <div>
