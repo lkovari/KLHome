@@ -60,7 +60,7 @@ export class AngularPageContent7Component implements OnInit {
 
     this.initializeRoleTypes();
     this.initializeModuleTypes();
-    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.todayDate = new Date();
   }
 

@@ -22,7 +22,7 @@ export class AngularPageContent1Component implements OnInit {
 
   ngOnInit() {
     this.user = new User();
-    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
   setValues(form) {
