@@ -57,7 +57,7 @@ export class AngularPageContent6Component implements OnInit {
     this.customForm.valueChanges.subscribe(
       value => this.onValueChanged(value)
     );
-    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-Light-32px.png';
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
   initializeDataModel() {
