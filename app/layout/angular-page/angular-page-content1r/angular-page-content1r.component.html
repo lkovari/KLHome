@@ -1,0 +1,80 @@
+<div class="layout-angular-playground-page1r">
+    <div class="angular-playground-description form-group">
+        <div class="col-xs-12">
+            This page is a
+            <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
+            interested in, for me.
+        </div>
+        <div class="sub-topic">
+            <b>Act #0</b> Basic Reactive (formerly Model-Driven) form and validation
+        </div>
+        <div class="sub-topic">
+            <div class="sub-topic">
+                This is a simple data entry form with three fields (User name, Email, Phone number). The Submit button
+                will enable if the form is valid which means, the field contents are matches with validation rules.
+            </div>
+            <div class="sub-topic">
+                <b>The validation rules</b> of fields are the following
+                <ul>
+                    <li><b>User name</b> is required, the minimum length is {{ userNameMinLength }}, the maximum
+                        length is
+                        {{ userNameMaxLength }} and the first character should capital letter</li>
+                    <li><b>Email</b> a valid email address required! Used build-in email validator.</li>
+                    <li><b>Phone number</b> a valid US. phone number is required! Used regular expression pattern.</li>
+                </ul>
+            </div>
+            <div class="data-entry-form">
+                <label class="text-primary">
+                    <a class="spacer"
+                        href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content1r">
+                        <img [src]="githubLogoPath" width="16" height="16">
+                    </a>Simple Template-driven Form Validation example
+                </label>
+                <form [formGroup]="dataEntryForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+                    <div class="form-group">
+                        <label class="spacer" for="userName">User name
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input id="userName" class="form-control" formControlName="userName">
+                        <div *ngIf="(dataEntryForm.get('userName') && (dataEntryForm.get('userName').invalid && dataEntryForm.get('userName').dirty)) " class="text-danger">
+                            <p *ngIf="dataEntryForm.get('userName').errors.required">Value is required!</p>
+                            <p *ngIf="dataEntryForm.get('userName').errors.firstIsCapital">The first character should capital letter!</p>
+                            <p *ngIf="dataEntryForm.get('userName').hasError('minlength')">Min length is {{ userNameMinLength }}!
+                            </p>
+                            <p *ngIf="dataEntryForm.get('userName').errors.maxlength">Max length is {{ userNameMaxLength }}!</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="spacer" for="email">Email
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input id="email" class="form-control" type="string" formControlName="email">
+                        <div *ngIf="dataEntryForm.get('email') && (dataEntryForm.get('email').invalid && dataEntryForm.get('email').dirty)" class="text-danger">
+                            <p *ngIf="dataEntryForm.get('email').errors.required">Email is required!</p>
+                            <p *ngIf="dataEntryForm.get('email').errors.email">Please type a valid email!</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="spacer" for="phone">Phone number
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input id="phone" class="form-control" formControlName="phone">
+                        <div *ngIf="dataEntryForm.get('phone') && (dataEntryForm.get('phone').invalid && dataEntryForm.get('phone').dirty)" class="text-danger">
+                            <p *ngIf="dataEntryForm.get('phone').errors?.required">Phone is required!</p>
+                            <p *ngIf="dataEntryForm.get('phone').errors?.pattern">Please type a valid US. phone number without ext!</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set
+                        Data</button>
+                    <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear
+                        Data</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
+                </form>
+                <app-display-form-state [dataEntryForm]="dataEntryForm"></app-display-form-state>
+                <div>
+                    <label>Submitted form data:</label> {{ submittedFormData | json }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

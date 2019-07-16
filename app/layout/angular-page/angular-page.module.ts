@@ -26,6 +26,7 @@ import { AngularPageContent7Component } from './angular-page-content7/angular-pa
 import { AngularPageContent0Component } from './angular-page-content0/angular-page-content0.component';
 import { DisplayFormStateComponent } from './angular-page-content1/display-form-state/display-form-state.component';
 import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-capital-char-custom.validator';
+import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 
 @NgModule({
   imports: [
@@ -60,7 +61,8 @@ import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-c
                   AngularPageContent7Component,
                   AngularPageContent0Component,
                   DisplayFormStateComponent,
-                  FirstCapitalCharCustomValidator
+                  FirstCapitalCharCustomValidator,
+                  AngularPageContent1rComponent
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,

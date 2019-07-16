@@ -37,6 +37,7 @@ export class AngularPageContent0Component implements OnInit {
 
   ngOnInit() {
     this.angularVersion = angular.VERSION.full;
+    console.log('Angular v' + this.angularVersion);
     this.initializeAngularCourses();
   }
 
