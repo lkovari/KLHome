@@ -61,10 +61,12 @@
               </label>
               <div class="col-sm-6">
                 <input class="form-control" id="password" type="password" placeholder="Password (required)"
-                  formControlName="password" [ngClass]="{'is-invalid': mainForm.get('passwordGroup').errors ||
-                                                      ((mainForm.get('passwordGroup.password').touched ||
-                                                      mainForm.get('passwordGroup.password').dirty) && 
-                                                      !mainForm.get('passwordGroup.password').valid) }" />
+                  formControlName="password" autocomplete="off"
+                  [ngClass]="{'is-invalid': mainForm.get('passwordGroup').errors ||
+                    ((mainForm.get('passwordGroup.password').touched ||
+                    mainForm.get('passwordGroup.password').dirty) && 
+                    !mainForm.get('passwordGroup.password').valid) }" 
+                />
                 <span class="invalid-feedback">
                   <span *ngIf="mainForm.get('passwordGroup.password').errors?.required">
                     Please enter your Password.
@@ -84,11 +86,14 @@
                 <span class="text-danger">*</span>
               </label>
               <div class="col-sm-6">
+                <!-- ref for X : https://mdbootstrap.com/docs/jquery/forms/validation/ -->
                 <input class="form-control" id="confirmPassword" type="password"
-                  placeholder="Confirm Password (required)" formControlName="confirmPassword" [ngClass]="{'is-invalid': mainForm.get('passwordGroup').errors ||
-                                                       ((mainForm.get('passwordGroup.confirmPassword').touched || 
-                                                       mainForm.get('passwordGroup.confirmPassword').dirty) && 
-                                                       !mainForm.get('passwordGroup.confirmPassword').valid) }" />
+                  placeholder="Confirm Password (required)" formControlName="confirmPassword" autocomplete="off"
+                  [ngClass]="{'is-invalid': mainForm.get('passwordGroup').errors ||
+                    ((mainForm.get('passwordGroup.confirmPassword').touched ||
+                    mainForm.get('passwordGroup.confirmPassword').dirty) && 
+                    !mainForm.get('passwordGroup.confirmPassword').valid) }" 
+                />
                 <span class="invalid-feedback">
                   <span *ngIf="mainForm.get('passwordGroup.confirmPassword').errors?.required">
                     Please confirm your Password.
@@ -170,7 +175,7 @@
           </div>
           <span *ngIf="hasDuplicatedRows(mainForm)">
             <span class="show-invalid-feedback">
-              Duplicated rows found, please correct those.
+              Duplicated rows found, please correct those. {{ extractErrorValue() }}
             </span>
           </span>
           <div class="buttons-area">

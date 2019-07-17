@@ -6,10 +6,11 @@ export class CustomValidators {
         const passwordControl = c.get('password');
         const confirmPasswordControl = c.get('confirmPassword');
         if (passwordControl && confirmPasswordControl) {
-            // should type the user something into both fields
+            /* should type the user something into both fields
             if (passwordControl.pristine || confirmPasswordControl.pristine) {
                 return null;
             }
+            */
             if (passwordControl.value === confirmPasswordControl.value) {
                 return null;
             }
@@ -22,6 +23,7 @@ export class CustomValidators {
         if (c instanceof FormArray) {
             const userRoleForms = <FormArray>c;
             let ixRef = 0;
+            let rowIx = 0;
             for (ixRef; ixRef < userRoleForms.length; ixRef++) {
                 const formRef = userRoleForms.at(ixRef);
                 let ix = 0;
@@ -31,6 +33,7 @@ export class CustomValidators {
                     const isRoleTypeEquals = formRef.get('roleType').value === form.get('roleType').value;
                     const isModuleTypeEquals = formRef.get('moduleType').value === form.get('moduleType').value;
                     if ((isRoleTypeEquals && isModuleTypeEquals) && (ixRef !== ix)) {
+                        rowIx = ix;
                         isDuplicatesFound = true;
                         break;
                     }
@@ -42,7 +45,8 @@ export class CustomValidators {
             if (!isDuplicatesFound) {
                 return null;
             }
-            return { duplication: isDuplicatesFound };
+            // return { duplication: isDuplicatesFound };
+            return { 'duplication': { value : (ixRef + 1) + '. row vs. ' + (rowIx + 1) + '. row'} };
         }
     }
 }

@@ -207,6 +207,10 @@ export class AngularPageContent7Component implements OnInit {
     return userRolesFormArray.errors && userRolesFormArray.errors.duplication;
   }
 
+  extractErrorValue(): string {
+    return this.mainForm.get('userRoles').errors.duplication.value;
+  }
+
   onSubmit(form) {
     this.mainFormSubmitData = form.value;
     console.log('Form is submitted!');
