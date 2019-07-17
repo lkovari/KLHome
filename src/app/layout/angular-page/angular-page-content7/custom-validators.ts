@@ -46,7 +46,7 @@ export class CustomValidators {
                 return null;
             }
             // return { duplication: isDuplicatesFound };
-            return { 'duplication': { value : (ixRef + 1) + '. row vs. ' + (rowIx + 1) + '. row'} };
+            return { 'duplication': { value : '(' + (ixRef + 1) + '. row vs. ' + (rowIx + 1) + '. row)'} };
         }
     }
 }
