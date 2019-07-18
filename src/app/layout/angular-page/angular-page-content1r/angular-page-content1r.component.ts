@@ -20,11 +20,19 @@ export class AngularPageContent1rComponent implements OnInit {
   githubLogoPath: string;
   dataEntryForm: FormGroup;
 
-  constructor(fb: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.user = new User();
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    this.dataEntryForm = this.formBuilder.group({
+      'userName': [ null, [
+        Validators.required, Validators.minLength(this.userNameMinLength),
+        Validators.maxLength(this.userNameMaxLength), CustomValidators.FirstCharIsCapitalLetter
+      ] ],
+      'email': [null, [Validators.required, Validators.email] ],
+      'phone': [null, [Validators.required, Validators.pattern(this.usPhoneNumberPattern)] ]
+    });
     /* conventional
     this.dataEntryForm = new FormGroup({
       'userName': new FormControl(null, [
@@ -36,14 +44,6 @@ export class AngularPageContent1rComponent implements OnInit {
     });
     */
     // with FormBuilder
-    this.dataEntryForm = this.submittedFormData.group({
-      'userName': [ null, [
-        Validators.required, Validators.minLength(this.userNameMinLength),
-        Validators.maxLength(this.userNameMaxLength), CustomValidators.FirstCharIsCapitalLetter
-      ] ],
-      'email': [null, [Validators.required, Validators.email] ],
-      'phone': [null, [Validators.required, Validators.pattern(this.usPhoneNumberPattern)] ]
-    });
     this.dataEntryForm.valueChanges.subscribe(
       value => this.onValueChanged(value)
     );
