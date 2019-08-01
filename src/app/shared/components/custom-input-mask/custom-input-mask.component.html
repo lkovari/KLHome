@@ -1,0 +1,11 @@
+<div>
+  <p-inputMask id="{{id}}" mask="{{maskText}}" styleClass="{{styleClass}}" [unmask]="true"
+    placeholder="{{placeHolderText}}" [(ngModel)]="value" [tabindex]="tabindex" [disabled]="disabled" name="name"
+    (keydown)="onkeydown($event)" (onBlur)="onBlur($event)" required="{{isRequired}}" #customInputMask="ngModel" #inputMask>
+  </p-inputMask>
+  <!--div class="warning-text">
+    <span *ngIf="customInputMask && (customInputMask.dirty && customInputMask.invalid)">
+      {{ requiredMessage }}
+    </span>
+  </div-->        
+</div>

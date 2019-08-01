@@ -8,6 +8,8 @@ import { FormGroup } from '@angular/forms';
 })
 export class SubForm1Component implements OnInit {
   minLength = 7;
+  inputMask = '99999?-9999';
+  placeholder = '99999-9999';
   private _formPartTab: FormGroup;
   @Input()
   set formPartTab(v: FormGroup) {

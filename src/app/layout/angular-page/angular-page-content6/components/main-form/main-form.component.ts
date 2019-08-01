@@ -68,6 +68,7 @@ export class MainFormComponent implements OnInit {
     customDataModel.tabData1.customNumber = 1966;
     customDataModel.tabData1.emailAddress = 'ekovari@kovari.com';
     customDataModel.tabData1.freeText = 'khggkhkd';
+    customDataModel.tabData1.maskedText = '193956665';
     customDataModel.tabData2.customText = 'AKövári';
     customDataModel.tabData2.customNumber = 1993
     customDataModel.tabData2.emailAddress = 'akovari@kovari.com';
@@ -89,6 +90,7 @@ export class MainFormComponent implements OnInit {
     customDataModel.tabData1.customNumber = null;
     customDataModel.tabData1.emailAddress = null;
     customDataModel.tabData1.freeText = null;
+    customDataModel.tabData1.maskedText = null;
     customDataModel.tabData2.customText = null;
     customDataModel.tabData2.customNumber = null;
     customDataModel.tabData2.emailAddress = null;
@@ -112,7 +114,8 @@ export class MainFormComponent implements OnInit {
         'customText': model.tabData1.customText,
         'customNumber': model.tabData1.customNumber,
         'emailAddress': model.tabData1.emailAddress,
-        'freeText': model.tabData1.freeText
+        'freeText': model.tabData1.freeText,
+        'maskedText': model.tabData1.maskedText
       },
       'customTab2': {
         'customText': model.tabData2.customText,
