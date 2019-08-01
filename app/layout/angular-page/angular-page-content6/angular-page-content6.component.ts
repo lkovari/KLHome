@@ -30,7 +30,8 @@ export class AngularPageContent6Component implements OnInit {
         customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
-        freeText: [ { value: null } ]
+        freeText: [ { value: null } ],
+        maskedText: [ { value: null }, [ Validators.required ] ]
       } ),
 
       customTab2 : this.formBuilder.group( {
@@ -77,6 +78,7 @@ export class AngularPageContent6Component implements OnInit {
     this.customDataModel.tabData1.customNumber = 1966;
     this.customDataModel.tabData1.emailAddress = 'ekovari@kovari.com';
     this.customDataModel.tabData1.freeText = 'khggkhkd';
+    this.customDataModel.tabData1.maskedText = '193956665';
     this.customDataModel.tabData2.customText = 'AKövári';
     this.customDataModel.tabData2.customNumber = 1993
     this.customDataModel.tabData2.emailAddress = 'akovari@kovari.com';
@@ -97,6 +99,7 @@ export class AngularPageContent6Component implements OnInit {
     this.customDataModel.tabData1.customNumber = null;
     this.customDataModel.tabData1.emailAddress = null;
     this.customDataModel.tabData1.freeText = null;
+    this.customDataModel.tabData1.maskedText = null;
     this.customDataModel.tabData2.customText = null;
     this.customDataModel.tabData2.customNumber = null;
     this.customDataModel.tabData2.emailAddress = null;
@@ -120,7 +123,8 @@ export class AngularPageContent6Component implements OnInit {
         'customText': model.tabData1.customText,
         'customNumber': model.tabData1.customNumber,
         'emailAddress': model.tabData1.emailAddress,
-        'freeText': model.tabData1.freeText
+        'freeText': model.tabData1.freeText,
+        'maskedText': model.tabData1.maskedText
       },
       'customTab2' : {
         'customText': model.tabData2.customText,

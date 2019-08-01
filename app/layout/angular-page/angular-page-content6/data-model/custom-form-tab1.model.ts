@@ -5,10 +5,12 @@ export class TabData1 implements ITabData1 {
     customNumber: number;
     emailAddress: string;
     freeText: string;
+    maskedText: string;
     constructor() {
         this.customNumber = null;
         this.customText = null;
         this.emailAddress = null;
         this.freeText = null;
+        this.maskedText = null;
     }
 }

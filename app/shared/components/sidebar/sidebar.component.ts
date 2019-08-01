@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('07/17/2019 08:48 PM');
-  lastUpdateTooltip = 'Used form builder in simple reactive form example';
+  lastUpdate = new Date('08/02/2019 01:41 AM');
+  lastUpdateTooltip = 'Implemented CustomInputMaskComonent using on Reactive form.';
 
   eventCalled() {
     this.isActive = !this.isActive;
