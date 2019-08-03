@@ -1,0 +1,12 @@
+.custom-mask-input {
+    .input-style {
+        p-inputmask::ng-deep {
+            input {
+                width: 100% !important;
+                // border-bottom-color: #e13131
+                border: 1px solid rgba(0, 0, 0, 0.15);
+                border-radius: 0.25em;
+            }
+        }
+    }
+}
