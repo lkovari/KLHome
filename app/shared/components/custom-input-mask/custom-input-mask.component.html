@@ -1,5 +1,5 @@
 <div>
-  <p-inputMask id="{{id}}" mask="{{maskText}}" styleClass="{{styleClass}}" [unmask]="true"
+  <p-inputMask id="{{id}}"  mask="{{maskText}}" style="{{style}}" styleClass="{{styleClass}}" [unmask]="true"
     placeholder="{{placeHolderText}}" [(ngModel)]="value" [tabindex]="tabindex" [disabled]="disabled" name="name"
     (keydown)="onkeydown($event)" (onBlur)="onBlur($event)" required="{{isRequired}}" #customInputMask="ngModel" #inputMask>
   </p-inputMask>

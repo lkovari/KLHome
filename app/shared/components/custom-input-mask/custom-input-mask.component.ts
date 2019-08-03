@@ -39,6 +39,7 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
   @Input() disabled: boolean;
   @Input() name: string;
   @Input() id: string;
+  @Input() style: string;
   @Input() styleClass: string;
   @Input() isRequired = false;
   private _requiredMessage: string;
