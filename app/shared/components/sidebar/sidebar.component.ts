@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('08/03/2019 10:04 AM');
-  lastUpdateTooltip = 'Changed the style of CustomInputMaskComonent.';
+  lastUpdate = new Date('08/07/2019 10:44 AM');
+  lastUpdateTooltip = 'Added Analytics tracking code and recursive clearFormControl.';
 
   eventCalled() {
     this.isActive = !this.isActive;

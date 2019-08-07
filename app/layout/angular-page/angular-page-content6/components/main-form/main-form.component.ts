@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { MenuItem } from 'primeng/primeng';
 import { CustomFormModel } from 'app/layout/angular-page/angular-page-content6/data-model/custom-form.model';
 
@@ -101,7 +101,36 @@ export class MainFormComponent implements OnInit {
     customDataModel.tabData3.freeText = null;
     customDataModel.tabData3.zipCode = null;
     this.setupValues(customDataModel);
+    this.clearFormControl(this.customForm);
+  }
 
+  private clearFormControl(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(key => {
+      const control = this.customForm.controls[key];
+      if (control instanceof FormGroup) {
+        const fg = <FormGroup>control;
+        this.clearFormControl(fg);
+      } else if (control instanceof FormArray) {
+        const fa = <FormArray>control;
+        // go step by step on the FormArray
+        for (let ix = 0; ix < fa.length; ix++) {
+          const fg = fa.at(ix);
+          if (fg instanceof FormGroup) {
+            // call clearFormControl for each Form element of the FormArray
+            this.clearFormControl(fg);
+          }
+        }
+      } else if (control instanceof FormControl) {
+        // clear the Field
+        control.markAsPristine();
+        control.markAsUntouched();
+        control.reset();
+      }
+    });
+    // at last the clear the Form
+    formGroup.markAsPristine();
+    formGroup.markAsUntouched();
+    formGroup.reset();
   }
 
   setupValues(model: CustomFormModel) {
