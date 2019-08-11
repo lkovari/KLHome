@@ -122,15 +122,13 @@ export class MainFormComponent implements OnInit {
         }
       } else if (control instanceof FormControl) {
         // clear the Field
-        control.markAsPristine();
-        control.markAsUntouched();
         control.reset();
+        control.updateValueAndValidity();
       }
     });
     // at last the clear the Form
-    formGroup.markAsPristine();
-    formGroup.markAsUntouched();
     formGroup.reset();
+    formGroup.updateValueAndValidity();
   }
 
   setupValues(model: CustomFormModel) {
