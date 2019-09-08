@@ -17,6 +17,18 @@
       "es2016",
       "dom"
     ],
+    "noImplicitReturns": true,
     "noUnusedLocals": true
-  }
+    // ,"noUnusedParameters": true
+    // ,"noImplicitAny": true
+    // ,"strictNullChecks": true
+  },
+  "angularCompilerOptions": {
+    // When true (recommended), enables the binding expression validation phase of the template compiler, which uses TypeScript to validate binding expressions
+    "fullTemplateTypeCheck": true,
+    // When true (recommended), reports an error for a supplied parameter whose injection type cannot be determined
+    "strictInjectionParameters": true,
+    //  prints extra information while compiling templates
+    "trace": true
+  }    
 }
