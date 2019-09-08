@@ -9,6 +9,7 @@ import { CustomFormModel } from '../custom-form-.model';
   viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
 })
 export class DataInput3Component implements OnInit {
+  minLength = 7;
   @Input() customFormModel: CustomFormModel;
   @Output() dataChanged = new EventEmitter<any>();
 

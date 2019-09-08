@@ -19,8 +19,8 @@ export class CustomValidators {
     }
 
     static userRolesValidator(c: FormControl): ValidationErrors | null {
-        let isDuplicatesFound = false;
         if (c instanceof FormArray) {
+            let isDuplicatesFound = false;
             const userRoleForms = <FormArray>c;
             let ixRef = 0;
             let rowIx = 0;
@@ -48,5 +48,6 @@ export class CustomValidators {
             // return { duplication: isDuplicatesFound };
             return { 'duplication': { value : '(' + (ixRef + 1) + '. row vs. ' + (rowIx + 1) + '. row)'} };
         }
+        return null;
     }
 }

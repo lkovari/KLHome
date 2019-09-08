@@ -25,9 +25,14 @@ export class DisplayFormStateComponent implements OnInit {
   ngOnInit() {
   }
 
+  /*
   extractFormGroupValueByKey(key: string): FormControl {
     return <FormControl>this.dataEntryForm[key];
   }
+  */
+ extractFormGroupValueByKey(key: string): string {
+  return this.dataEntryForm[key];
+ }
 
   extractFormControls(): Array<FormControl> {
     this.controlList = [];

@@ -14,9 +14,11 @@ export class FileLoaderService {
     return this.http.get(filePath, {responseType: 'text'})
       .pipe(
         tap(
+          /*
           data => {
-            // console.log(JSON.stringify(data));
+            console.log(JSON.stringify(data));
           },
+          */
           error => console.log('Error: ' + error)
         )
       );

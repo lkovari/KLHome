@@ -13,8 +13,8 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
   @Input()
   set value(v: string) {
       this._value = v;
-      this.onModelTouched();
-      this.onModelChange(this._value);
+      // this.onModelTouched();
+      // this.onModelChange(this._value);
   }
   get value() {
       return this._value;
@@ -41,7 +41,15 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
   @Input() id: string;
   @Input() style: string;
   @Input() styleClass: string;
-  @Input() isRequired = false;
+  private _isRequired = false;
+  @Input()
+  set isRequired(v: boolean) {
+    // this._isRequired = v != null && `${v}` !== 'false';
+    this._isRequired = v;
+  }
+  get isRequired(): boolean {
+    return this._isRequired;
+  }
   private _requiredMessage: string;
   @Input()
   set requiredMessage(v: string) {
@@ -114,10 +122,13 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
       if (event.target.selectionStart > highestIndex) {
           event.target.setSelectionRange(caretPos, caretPos);
       }
+      this.onModelTouched();
   }
 
   onBlur(event) {
       this.onBlurEvent.emit(this._value);
+      this.onModelTouched();
+      this.onModelChange(this._value);
   }
 
 }

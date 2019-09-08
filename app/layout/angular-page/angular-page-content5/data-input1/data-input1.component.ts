@@ -9,6 +9,7 @@ import { ControlContainer, NgForm } from '@angular/forms';
   viewProviders: [ { provide: ControlContainer, useExisting: NgForm } ]
 })
 export class DataInput1Component implements OnInit {
+  minLength = 7;
   @Input() customFormModel: CustomFormModel;
 
   constructor() { }

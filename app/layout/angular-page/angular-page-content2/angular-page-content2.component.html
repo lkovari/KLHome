@@ -119,7 +119,7 @@
               <span class="text-danger">*</span>
             </label>
             <app-text-input id="customtextinput" name="customtextinput" [(ngModel)]="customText"
-              #customtextinput="ngModel" [minlength]="7" [capital]="true" (onChanged)="onChanged($event)"
+              #customtextinput="ngModel" [minlength]="minLength" [capital]="true" (onChanged)="onChanged($event)"
               (onBlur)="onBlur($event)" required>
             </app-text-input>
             <span class="text-danger" *ngIf="customtextinput && (customtextinput.invalid && !customtextinput.pristine)">

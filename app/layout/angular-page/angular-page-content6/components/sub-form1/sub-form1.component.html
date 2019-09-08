@@ -65,7 +65,7 @@
       </label>
       <div class="col-md-8">
         <app-custom-input-mask id="customInputMask" styleClass="form-control" formControlName="maskedText" maskText="{{inputMask}}"
-          placeHolderText='{{placeholder}}' isRequired="true" requiredMessage="Masked text value is required!">
+          placeHolderText='{{placeholder}}' [isRequired]="true" requiredMessage="Masked text value is required!">
         </app-custom-input-mask>
         <div *ngIf="formPartTab.get('maskedText') && (formPartTab.get('maskedText').dirty && formPartTab.get('maskedText').invalid)">
           <span class="text-danger" *ngIf="formPartTab.get('maskedText').errors?.required">

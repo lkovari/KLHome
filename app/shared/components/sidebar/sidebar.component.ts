@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('08/11/2019 10:24 AM');
-  lastUpdateTooltip = 'use control.reset() in clearFormControl';
+  lastUpdate = new Date('09/08/2019 11:30 AM');
+  lastUpdateTooltip = 'modify tsconfig';
 
   eventCalled() {
     this.isActive = !this.isActive;
