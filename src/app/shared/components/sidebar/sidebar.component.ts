@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('09/08/2019 11:30 AM');
-  lastUpdateTooltip = 'modify tsconfig';
+  lastUpdate = new Date('09/18/2019 10:37 PM');
+  lastUpdateTooltip = 'Upgraded PrimeNG to 8.0.3';
 
   eventCalled() {
     this.isActive = !this.isActive;
