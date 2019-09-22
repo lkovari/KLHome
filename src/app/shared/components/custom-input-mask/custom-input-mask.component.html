@@ -1,6 +1,6 @@
 <div>
-  <p-inputMask id="{{id}}"  mask="{{maskText}}" [attr.style]="style" styleClass="{{styleClass}}" [unmask]="true"
-    placeholder="{{placeHolderText}}" [(ngModel)]="value" [tabindex]="tabindex" [disabled]="disabled" name="name"
+  <p-inputMask id="{{id}}"  [mask]="maskText" [attr.style]="style" [styleClass]="styleClass" [unmask]="true"
+    [placeholder]="placeHolderText" [(ngModel)]="value" [tabindex]="tabindex" [disabled]="disabled" [name]="name" [autoClear]="false"
     (keydown)="onkeydown($event)" (onBlur)="onBlur($event)" [required]="isRequired" #customInputMask="ngModel" #inputMask>
   </p-inputMask>
 </div>

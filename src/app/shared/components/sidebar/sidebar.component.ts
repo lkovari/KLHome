@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('09/18/2019 10:37 PM');
-  lastUpdateTooltip = 'Upgraded PrimeNG to 8.0.3';
+  lastUpdate = new Date('09/22/2019 09:22 PM');
+  lastUpdateTooltip = 'Fixed validation problem custom mask compounent set required as template driven form.';
 
   eventCalled() {
     this.isActive = !this.isActive;
