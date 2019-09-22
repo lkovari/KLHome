@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, RendererFactory2, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { InputMask } from 'primeng/primeng';
 
@@ -8,13 +8,11 @@ import { InputMask } from 'primeng/primeng';
   styleUrls: ['./custom-input-mask.component.scss'],
   providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: CustomInputMaskComponent, multi: true } ]
 })
-export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlValueAccessor  {
+export class CustomInputMaskComponent implements OnInit, ControlValueAccessor  {
   private _value: string;
   @Input()
   set value(v: string) {
       this._value = v;
-      // this.onModelTouched();
-      // this.onModelChange(this._value);
   }
   get value() {
       return this._value;
@@ -58,13 +56,16 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
   get requiredMessage() {
     return this._requiredMessage;
   }
+  @Output() onChangeEvent = new EventEmitter<any>();
   @Output() onBlurEvent = new EventEmitter<any>();
   @ViewChild('inputMask', { static: true }) customInputMask: InputMask;
+  private _renderer: Renderer2;
 
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
-  constructor() {
+  constructor(rendererFactory: RendererFactory2) {
+    this._renderer = rendererFactory.createRenderer(null, null);
   }
 
   private updateUI() {
@@ -95,11 +96,17 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
       this.onModelTouched = fn;
   }
 
-  ngOnInit() {
-  }
+    /**
+     * Function that is called by the forms API when the control status changes to or from 'DISABLED'.
+     * Depending on the status, it enables or disables the appropriate DOM element.
+     * @param isDisabled
+     */
+    setDisabledState(isDisabled: boolean) {
+      // prevent exception
+      this._renderer.setProperty(this.customInputMask.inputViewChild.nativeElement, 'disabled', isDisabled);
+    }
 
-  ngAfterViewInit(): void {
-    // this.updateUI();
+  ngOnInit() {
   }
 
   private highestIndex(input) {
@@ -123,6 +130,12 @@ export class CustomInputMaskComponent implements OnInit, AfterViewInit, ControlV
           event.target.setSelectionRange(caretPos, caretPos);
       }
       this.onModelTouched();
+  }
+
+  onComplete(event) {
+    this.onModelTouched();
+    this.onModelChange(this._value);
+    this.onChangeEvent.emit(this._value);
   }
 
   onBlur(event) {
