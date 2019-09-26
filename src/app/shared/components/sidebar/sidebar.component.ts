@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('09/22/2019 09:22 PM');
-  lastUpdateTooltip = 'Fixed validation problem custom mask compounent set required as template driven form.';
+  lastUpdate = new Date('09/26/2019 01:50 AM');
+  lastUpdateTooltip = 'Added Awards & Certificates page.';
 
   eventCalled() {
     this.isActive = !this.isActive;

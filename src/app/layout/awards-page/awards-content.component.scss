@@ -1,0 +1,30 @@
+.awards-page-layout {
+    padding: 0.5rem;
+    height: 100%;
+    .separate-block {
+        display: flex;
+        border: solid blue 1px;
+        padding-top: 1rem;
+        padding-left: 1rem;
+    }
+    .page-title {
+        font-weight: bold;
+        padding-top: 1rem;
+    }
+    .label-title{
+        font-weight: bold;
+        font-style: italic;
+    }
+    .align-image {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        .img-responsive {
+            width: 100%;
+            height: 100%;
+            float: left;
+            margin-right: 2rem;
+            border-radius: 50%;
+            shape-outside: circle();
+        }
+    }
+}

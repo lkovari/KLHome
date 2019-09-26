@@ -52,6 +52,7 @@ import { AngularPageContent6Component } from './angular-page/angular-page-conten
 import { AngularPageContent7Component } from './angular-page/angular-page-content7/angular-page-content7.component';
 import { AngularPageContent0Component } from './angular-page/angular-page-content0/angular-page-content0.component';
 import { AngularPageContent1rComponent } from './angular-page/angular-page-content1r/angular-page-content1r.component';
+import { AwardsContentComponent } from './awards-page/awards-content.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,8 @@ const routes: Routes = [
       {path: 'welcome-page', component: WelcomePageComponent},
 
       {path: 'aboutme-page', component: AboutmeContentComponent},
+
+      {path: 'awards-page', component: AwardsContentComponent},
 
       {path: 'angular-page', component: AngularPageTitleComponent,
         children: [

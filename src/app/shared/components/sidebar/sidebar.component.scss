@@ -1,6 +1,7 @@
 $topnav-background-color: #392613;
 
 .sidebar {
+     
     border-radius: 0;
     position: fixed;
     padding-top: 5.5rem;
@@ -33,15 +34,7 @@ $topnav-background-color: #392613;
         margin-left: 1rem;
         border-radius: 2.5rem;
   }
-  .last-update-tooltip {
-    font-size: 0.7rem;
-    color: yellow;
-    background-color: $topnav-background-color;
-    border: 1px solid yellow;
-    padding: 0.3rem;
-    margin-left: 1rem;
-    border-radius: 2.5rem;
-  } 
+
   .list-group {
         a.list-group-item {
             background: $topnav-background-color;

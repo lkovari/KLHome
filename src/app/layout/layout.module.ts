@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -19,6 +19,7 @@ import { CsharpPageModule } from './csharp-page/csharp-page.module';
 import { DelphiPageModule } from './delphi-page/delphi-page.module';
 import { MasmPageModule } from './masm-page/masm-page.module';
 import { SharedModule } from 'app/shared/shared.module';
+import { AwardsPageModule } from './awards-page/awards-page.module';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { SharedModule } from 'app/shared/shared.module';
     LayoutRoutingModule,
     WelcomePageModule,
     AboutmePageModule,
+    AwardsPageModule,
     AngularPageModule,
     JavascriptPageModule,
     IosPageModule,
@@ -36,7 +38,8 @@ import { SharedModule } from 'app/shared/shared.module';
     J2sePageModule,
     CsharpPageModule,
     DelphiPageModule,
-    MasmPageModule
+    MasmPageModule,
+    NgbModule.forRoot()
   ],
   declarations: [
     LayoutComponent,
