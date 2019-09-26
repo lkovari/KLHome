@@ -1,10 +1,13 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
-    <a class="text-style">
-      Last update {{ lastUpdate | date:'MM/dd/yyyy HH:mm a'}}
-    </a>
+    <label  class="text-style" ngbTooltip="{{ lastUpdateTooltip }}">
+      Last update {{ lastUpdate | date:'MM/dd/yyyy HH:mm a'}} 
+    </label>    
     <a routerLink="/aboutme-page" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-user"> About me</i>
+    </a>
+    <a routerLink="/awards-page" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <i class="fa fa-trophy"> Awards & Certs.</i>
     </a>
     <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages1')">
