@@ -24,7 +24,6 @@ import { SubForm2Component } from './angular-page-content6/components/sub-form2/
 import { SubForm3Component } from './angular-page-content6/components/sub-form3/sub-form3.component';
 import { AngularPageContent7Component } from './angular-page-content7/angular-page-content7.component';
 import { AngularPageContent0Component } from './angular-page-content0/angular-page-content0.component';
-import { DisplayFormStateComponent } from './angular-page-content1/display-form-state/display-form-state.component';
 import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-capital-char-custom.validator';
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 
@@ -60,7 +59,6 @@ import { AngularPageContent1rComponent } from './angular-page-content1r/angular-
                   SubForm3Component,
                   AngularPageContent7Component,
                   AngularPageContent0Component,
-                  DisplayFormStateComponent,
                   FirstCapitalCharCustomValidator,
                   AngularPageContent1rComponent
                 ],
@@ -72,8 +70,7 @@ import { AngularPageContent1rComponent } from './angular-page-content1r/angular-
              AngularPageContent4Component,
              AngularPageContent5Component,
              AngularPageContent6Component,
-             AngularPageContent7Component,
-             DisplayFormStateComponent
+             AngularPageContent7Component
             ]
 })
 export class AngularPageModule { }
