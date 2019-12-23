@@ -1,4 +1,5 @@
 export interface IAngularCourse {
+    index: number;
     title: string;
     author: string;
     website: string;

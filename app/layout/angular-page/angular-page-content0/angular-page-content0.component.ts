@@ -30,7 +30,7 @@ export class AngularPageContent0Component implements OnInit {
   fullImagePathCSSPos: string;
   fullImageRxJs: string;
   angularVersion: any;
-  courseTitles = ['Title', 'Author', 'Site', 'Completed', 'Certificate'];
+  // courseTitles = ['Title', 'Author', 'Site', 'Completed', 'Certificate'];
   totalComplettedHours: string;
 
   constructor(private fileLoaderService: FileLoaderService) { }
@@ -77,6 +77,11 @@ export class AngularPageContent0Component implements OnInit {
         if (isCompleted) {
           this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
             return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
+          });
+          let ix = this.angularCourseCompletedList.length;
+          this.angularCourseCompletedList.forEach((course: AngularCourseModel) => {
+            course.index = ix;
+            ix = ix - 1;
           });
           this.calculateTotalHours();
         }
