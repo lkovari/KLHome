@@ -11,6 +11,7 @@ import { TextDisplayComponent } from './components/text-display/text-display.com
 import { ComplexNameComponent } from './components/complex-name/complex-name.component';
 import { AddressComponent } from './components/address/address.component';
 import { CustomInputMaskComponent } from './components/custom-input-mask/custom-input-mask.component';
+import { DisplayFormStateComponent } from './components/display-form-state/display-form-state.component';
 
 @NgModule({
   imports: [
@@ -26,8 +27,8 @@ import { CustomInputMaskComponent } from './components/custom-input-mask/custom-
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent],
+    CustomInputMaskComponent, DisplayFormStateComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent]
+    CustomInputMaskComponent, DisplayFormStateComponent]
 })
 export class SharedModule { }

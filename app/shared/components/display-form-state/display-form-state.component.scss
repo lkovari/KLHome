@@ -1,6 +1,6 @@
 .display-status-content {
     .message-style {
-        display: table-cell;
+        display: block;
     }    
     .form-status-style {
         display: flex;
@@ -14,6 +14,12 @@
     .spacer-horozontal-left {
         margin-left: 0.5rem;
     }    
+    .table {
+        width: calc(100% - 1rem);
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;        
+    }
     .table th, .table td {
         padding-left: 0.75rem;
         padding-right: 0.75rem;
