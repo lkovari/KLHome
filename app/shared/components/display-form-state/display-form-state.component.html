@@ -9,34 +9,20 @@
             </tr>
             <tr *ngFor="let statusKey of formControlStatusKeys">
                 <td class="property-name-uppercase"><b>{{ statusKey }}</b></td>
+                <!-- Display control values -->
                 <td *ngFor="let ctrlKey of extractFormControlKeys()">
-                    <!--span class="text-primary">
-                        {{ statusKey }} :
-                    </span-->
-                    <span [style.color]="getStyleColor(statusKey, extractFormControlByKey(ctrlKey)[statusKey])">
-                        <em>{{ extractFormControlByKey(ctrlKey)[statusKey] }}</em>
+                    <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
+                        <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
                     </span>
                 </td>
+                <!-- Display main form group status -->
                 <td>
-                    <!--span class="text-primary">
-                        {{ statusKey }} :
-                    </span-->
-                    <span [style.color]="getStyleColor(statusKey, extractFormGroupValueByKey(statusKey))">
-                        <em>{{ extractFormGroupValueByKey(statusKey) | json }}</em>
+                    <span [style.color]="getStyleColor(statusKey, extractFormGroupPropertyValueByKey(statusKey))">
+                        <em> {{ extractFormGroupPropertyValueByKey(statusKey) | json }}</em>
                     </span>
 
                 </td>
             </tr>
         </table>
     </div>
-    <!--label class="vertical-gap text-primary">Status of the NgForm Properties of Form</label>
-    <div class="form-status-style">
-        <div *ngFor="let key of formControlStatusKeys" class="text-primary">{{ key }}:
-            <label class="spacer-horozontal-left spacer-horozontal-right">
-                <span [style.color]="getStyleColor(key, extractFormGroupValueByKey(key))">
-                    <em>{{ extractFormGroupValueByKey(key) | json }}</em>
-                </span>
-            </label>
-        </div>
-    </div-->
 </div>
