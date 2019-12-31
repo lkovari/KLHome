@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgForm, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-display-form-state',
@@ -9,13 +9,13 @@ import { NgForm, FormControl } from '@angular/forms';
 export class DisplayFormStateComponent implements OnInit {
   formControlStatusKeys = ['status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value'];
 
-  private _dataEntryForm: NgForm;
+  private _mainFormGroup: FormGroup;
   @Input()
-  set dataEntryForm(v: NgForm) {
-    this._dataEntryForm = v;
+  set mainFormGroup(v: FormGroup) {
+    this._mainFormGroup = v;
   }
-  get dataEntryForm(): NgForm {
-    return this._dataEntryForm;
+  get mainFormGroup(): FormGroup {
+    return this._mainFormGroup;
   }
 
   controlList = new Array<FormControl>();
@@ -27,31 +27,49 @@ export class DisplayFormStateComponent implements OnInit {
 
   /*
   extractFormGroupValueByKey(key: string): FormControl {
-    return <FormControl>this.dataEntryForm[key];
+    return <FormControl>this.mainFormGroup[key];
   }
   */
- extractFormGroupValueByKey(key: string): string {
-  return this.dataEntryForm[key];
- }
+  extractFormGroupPropertyValueByKey(key: string): string {
+    console.log('FormGroup property value key ' + `${key}`);
+    return this.mainFormGroup[key];
+  }
+
+  isComplexControl(ctrl: AbstractControl): boolean {
+    return (ctrl instanceof FormGroup) || (ctrl instanceof FormArray);
+  }
 
   extractFormControls(): Array<FormControl> {
     this.controlList = [];
-    Object.keys( this.dataEntryForm.controls).forEach(key => {
-      this.controlList.push(<FormControl>this.dataEntryForm.controls[key]);
+    Object.keys( this.mainFormGroup.controls).forEach(key => {
+      this.controlList.push(<FormControl>this.mainFormGroup.controls[key]);
     });
     return this.controlList;
   }
 
   extractFormControlKeys(): string[] {
     let formControlKey = [];
-    if (this.dataEntryForm && this.dataEntryForm.controls) {
-      formControlKey = Object.keys(this.dataEntryForm.controls);
+    if (this.mainFormGroup && this.mainFormGroup.controls) {
+      formControlKey = Object.keys(this.mainFormGroup.controls);
     }
     return formControlKey;
   }
 
-  extractFormControlByKey(key: string): FormControl {
-    return <FormControl>this.dataEntryForm.controls[key];
+  composeObjectName(ctrlKey: string, v: any): string {
+    return ctrlKey + ' : ' + v;
+  }
+
+  extractFormElementByKey(ctrlKey: string): FormControl | FormGroup | FormArray {
+    let control = this.mainFormGroup.controls[ctrlKey];
+    console.log('key ' + `${ctrlKey}`);
+    if (control instanceof FormControl) {
+      control = <FormControl>control;
+    } else if (control instanceof FormGroup) {
+      control = <FormGroup>control;
+    } else  if (control instanceof FormArray) {
+      control = <FormArray>control;
+    }
+    return <FormControl | FormGroup | FormArray>control;
   }
 
   extractFormControlValueByKey(ctrl: FormControl, key: string): any {
@@ -62,7 +80,7 @@ export class DisplayFormStateComponent implements OnInit {
     return v === 'VALID';
   }
 
-  getStyleColor(k: string, v: string): string {
+  getStyleColor(k: string, v: any): string {
     let color = 'black';
     if ((k === 'status' && v === 'VALID') || (k === 'valid' && v) || (k === 'invalid' && !v)) {
       color = 'green';
@@ -70,7 +88,13 @@ export class DisplayFormStateComponent implements OnInit {
       color = 'red';
     } else if (k === 'errors' && v !== null) {
       color = 'red';
+    } else if (v instanceof Object) {
+      color = 'blue';
     }
     return color;
+  }
+
+  onComplexControlClicked(complexCtrl: FormGroup) {
+    this._mainFormGroup = complexCtrl;
   }
 }
