@@ -16,7 +16,7 @@
                 <label class="courses-subtitle">Completed courses</label>
                 <div *ngFor="let course of angularCourseCompletedList; let ix = index">
                     <div class="course-style">
-                        <label class="course-title"> {{ course.index }}</label>
+                        <label class="course-title">{{ course.index }}.</label>
                         <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
                         <label class="course-title">{{ course.title + " " + course.author }}
                             <a href="{{ course.website }}">{{ course.website }}</a>
