@@ -7,18 +7,16 @@ import { tap } from 'rxjs/operators';
 export class FileLoaderService {
   constructor(private http: HttpClient) { }
 
-  // #docregion getTextFile
   loadtTextFile(path: string, fileName: string, isUseAppFiles: boolean): Observable<string> {
     // https://angular.io/guide/http
     const filePath = isUseAppFiles ? 'app/files/' + path + '/' + fileName : path + '/' + fileName;
     return this.http.get(filePath, {responseType: 'text'})
       .pipe(
         tap(data => {
-            console.log('File: ' + filePath + ' loaded');
-          },
-          error => console.error('File: ' + filePath + ' Error: ' + error)
-        )
-      );
+            console.log(`Content of the CSV file ${filePath} loaded`);
+        },
+        error => console.error('File: ' + filePath + ' Error: ' + error)
+      )
+    );
   }
-  // #enddocregion getTextFile
 }

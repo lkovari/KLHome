@@ -26,6 +26,14 @@ import { AngularPageContent7Component } from './angular-page-content7/angular-pa
 import { AngularPageContent0Component } from './angular-page-content0/angular-page-content0.component';
 import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-capital-char-custom.validator';
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
+import { AngularPageContent8Component } from './angular-page-content8/angular-page-content8.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: false
+};
 
 @NgModule({
   imports: [
@@ -38,7 +46,14 @@ import { AngularPageContent1rComponent } from './angular-page-content1r/angular-
     PageHeaderModule,
     TabMenuModule,
     DropdownModule,
-    CalendarModule
+    CalendarModule,
+    PerfectScrollbarModule
+  ],
+  providers: [
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
@@ -49,6 +64,8 @@ import { AngularPageContent1rComponent } from './angular-page-content1r/angular-
                   AngularPageContent5Component,
                   AngularPageContent6Component,
                   AngularPageContent7Component,
+                  AngularPageContent1rComponent,
+                  AngularPageContent8Component,
                   DataInput1Component,
                   DataInput2Component,
                   DataInput3Component,
@@ -57,10 +74,8 @@ import { AngularPageContent1rComponent } from './angular-page-content1r/angular-
                   SubForm1Component,
                   SubForm2Component,
                   SubForm3Component,
-                  AngularPageContent7Component,
                   AngularPageContent0Component,
-                  FirstCapitalCharCustomValidator,
-                  AngularPageContent1rComponent
+                  FirstCapitalCharCustomValidator
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -70,7 +85,8 @@ import { AngularPageContent1rComponent } from './angular-page-content1r/angular-
              AngularPageContent4Component,
              AngularPageContent5Component,
              AngularPageContent6Component,
-             AngularPageContent7Component
+             AngularPageContent7Component,
+             AngularPageContent8Component
             ]
 })
 export class AngularPageModule { }
