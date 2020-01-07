@@ -53,6 +53,8 @@ import { AngularPageContent7Component } from './angular-page/angular-page-conten
 import { AngularPageContent0Component } from './angular-page/angular-page-content0/angular-page-content0.component';
 import { AngularPageContent1rComponent } from './angular-page/angular-page-content1r/angular-page-content1r.component';
 import { AwardsContentComponent } from './awards-page/awards-content.component';
+import { AngularPageContent8Component } from './angular-page/angular-page-content8/angular-page-content8.component';
+import { PersonDataResolver } from 'app/shared/services/persondataresolver/person-data-resolver.service';
 
 
 const routes: Routes = [
@@ -76,7 +78,8 @@ const routes: Routes = [
           {path: 'angular-page-content4', component: AngularPageContent4Component},
           {path: 'angular-page-content5', component: AngularPageContent5Component},
           {path: 'angular-page-content6', component: AngularPageContent6Component},
-          {path: 'angular-page-content7', component: AngularPageContent7Component}
+          {path: 'angular-page-content7', component: AngularPageContent7Component},
+          {path: 'angular-page-content8', component: AngularPageContent8Component, resolve: { resolvedPersonData: PersonDataResolver }}
         ]
       },
       {path: 'javascript-page', component: JavascriptPageTitleComponent,
@@ -133,14 +136,6 @@ const routes: Routes = [
           {path: 'delphi-page-content4', component: DelphiPageContent4Component}
         ]
       },
-      /*
-      {path: 'masm-page', component: MasmPageTitleComponent,
-        children: [
-          {path: 'masm-page-content1', component: MasmPageContent1Component},
-          {path: 'masm-page-content2', component: MasmPageContent2Component}
-        ]
-      }
-      */
      { path: 'masm-page', loadChildren: () => import('./masm-page/masm-page.module').then(m => m.MasmPageModule) }
     ]
   }

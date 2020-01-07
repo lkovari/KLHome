@@ -1,0 +1,60 @@
+<div class="layout-angular-playground-page8">
+  <div class="angular-playground-description form-group">
+    <div class="col-sm-12">
+      This page is a
+      <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
+      interested
+      in, for me.
+    </div>
+    <div class="sub-topic">
+      <b>Act #7</b>
+      <label class="text-primary">
+        <a class="horizontal-gap-left horizontal-gap-right"
+          href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content8">
+          <img [src]="githubLogoPath" width="16" height="16">
+        </a>Route Resolver example.
+      </label>
+      <label>Implemented a route resolver service named <a class="horizontal-gap-left horizontal-gap-right"
+        href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/services/persondataresolver">
+        <img [src]="githubLogoPath" width="16" height="16">
+      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route target component. In our case the route resolver call the ExamplePersonDataService.loadtExamplePersonData which call another service which load a .csv file. The .csv file contains TEN thousands Person row. Before the UI displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data, because the data loading still NOT finished.</label>
+      <br>
+      <div class="sub-topic">
+        <label class="text-danger"># of rows loaded {{ personList.length }}</label>
+        <div>
+          <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onScrolltoTopClicked($event)">Scroll to Top</button>
+          <button class="btn btn-primary spacer-horozontal-left" type="button" (click)="onScrolltoBottomClicked($event)">Scroll to Bottom</button>
+        </div>
+      </div>
+      <div class="user-form form-border form-height">
+        <div>
+          <table>
+            <perfect-scrollbar class="scroll-container" style="max-width: 100%; max-height: 41rem;" [config]="config" [scrollIndicators]="true" [autoPropagation]="true">
+              <tr class="scrollable-content">
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Date</th>
+              </tr>
+              <tr *ngFor="let person of personList">
+                <td>{{ person.id }}</td>
+                <td>{{ person.firstName }}</td>
+                <td>{{ person.lastName }}</td>
+                <td>{{ person.age }}</td>
+                <td>{{ person.street }}</td>
+                <td>{{ person.city }}</td>
+                <td>{{ person.state }}</td>
+                <td>{{ person.zip }}</td>
+                <td>{{ person.date | date: 'mediumDate' }}</td>
+            </tr>
+          </perfect-scrollbar>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>      
