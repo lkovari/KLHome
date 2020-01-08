@@ -17,13 +17,17 @@
       <label>Implemented a route resolver service named <a class="horizontal-gap-left horizontal-gap-right"
         href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/services/persondataresolver">
         <img [src]="githubLogoPath" width="16" height="16">
-      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route target component. In our case the route resolver call the ExamplePersonDataService.loadtExamplePersonData which call another service which load a .csv file. The .csv file contains TEN thousands Person row. Before the UI displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data, because the data loading still NOT finished.</label>
+      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route target component. In our case the route resolver call the ExamplePersonDataService.loadtExamplePersonData which call another service which load a .csv file. The .csv file contains TEN thousands Person row. Before the UI displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data, because the data loading still NOT finished. <b>Every 2nd. run the checkbox 'Use pre-fetch data by Route Resolver' will un-checked, (the table content loaded in the ngOnInit()) for demonstrating what errors can be ocurred if the data not loaded in time.</b></label>
       <br>
       <div class="sub-topic">
         <label class="text-danger"># of rows loaded {{ personList.length }}</label>
         <div>
           <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onScrolltoTopClicked($event)">Scroll to Top</button>
           <button class="btn btn-primary spacer-horozontal-left" type="button" (click)="onScrolltoBottomClicked($event)">Scroll to Bottom</button>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" [disabled]="true" id="defaultUnchecked" [ngModel]="useRouteResolver">
+            <label class="custom-control-label" for="defaultUnchecked">Use pre-fetch data by Route Resolver</label>
+          </div>
         </div>
       </div>
       <div class="user-form form-border form-height">

@@ -13,11 +13,13 @@ export class PersonDataResolver implements Resolve<Array<Person>> {
   constructor(private examplePersonDataService: ExamplePersonDataService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Array<Person>> {
+    console.clear();
+    console.log('RESOLVER: PersonDataResolver.resolve started.');
     return this.examplePersonDataService.loadtExamplePersonData()
     .pipe(
       tap(data => {
         if (data && data instanceof Array) {
-          console.log(`PersonDataResolver.tesolve : # of loaded Person rows ${data.length}`);
+          console.log(`RESOLVE: PersonDataResolver.tesolve : #${data.length} Person rows loaded.`);
         }
       }),
       catchError(this.handleError)
