@@ -6,7 +6,7 @@
         padding: 1Rem;
     }
     .form-height {
-        height: 43rem;
+        height: 37rem;
     }
     .spacer-horozontal-right {
         margin-right: 0.5rem;
@@ -30,63 +30,34 @@
     input.ng-invalid.ng-touched {
         border: 1px solid red;
     }
-    .invalid-marker {
-        border: 1px solid red;
-        background-color: red;
-    }
-    .spacer-vertical-above {
-        margin-top: 0.5rem;
-    }
-    .spacer-vertical-below {
-        margin-bottom: 0.5rem;
-    }
-    .show-invalid-feedback {
-        display: block;
-        width: 100%;
-        margin-top: 0.25rem;
-        font-size: 80%;
-        color: #dc3545;
-    }
-    .struct-main {
-        display: list-item;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        .struct-sub {
-            display: list-item;
-            padding-left: 1rem;
-        }
-    }
-    .user-role-list {
-        font-size: 1rem;
-        border: solid blue 1px;
-        p-dropdown::ng-deep {
-            .ui-dropdown {
-                width: 100% !important;
-            }
-        }
-        p-calendar::ng-deep {
-            .ui-inputtext {
-                width: 100% !important;
-            }
-        }
-    }
-    .table-header {
-        font-weight: bold;
-        border-bottom: solid blue 1px;
-    }
-    .form-data {
-        padding-top: 0.5rem;
-    }
     .buttons-area {
         position: relative;
         top: 1em;
         left: 0rem;
     }
-    .scroll-container {
-        position: relative;
+    // used vw instead of mixin to keep responsive
+    thead {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        font-size:	1.2vw;        
     }
-    .scrollable-content {
-        padding: 16px;
-        margin: 0;
+    tbody {
+        display: block;
+        height: 33rem;
+        font-size:	1.2vw;        
+    }
+    tbody tr {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        font-size:	1.2vw;        
+    }
+    th, td {
+        width: auto;
+        font-size:	1.2vw;        
+    }    
+    .info-area {
+        display: contents;
     }
 }

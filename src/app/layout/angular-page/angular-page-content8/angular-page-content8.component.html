@@ -17,9 +17,11 @@
       <label>Implemented a route resolver service named <a class="horizontal-gap-left horizontal-gap-right"
         href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/services/persondataresolver">
         <img [src]="githubLogoPath" width="16" height="16">
-      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route target component. In our case the route resolver call the ExamplePersonDataService.loadtExamplePersonData which call another service which load a .csv file. The .csv file contains TEN thousands Person row. Before the UI displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data, because the data loading still NOT finished. <b>Every 2nd. run the checkbox 'Use pre-fetch data by Route Resolver' will un-checked, (the table content loaded in the ngOnInit()) for demonstrating what errors can be ocurred if the data not loaded in time.</b></label>
+      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route-target component. In our case, the route resolver calls the ExamplePersonDataService.loadtExamplePersonData which calls another service that loads a .csv file. The .csv file contains <mark>TEN thousand Person rows</mark> displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data in that case when the data loading still NOT finished.</label><br>
+      <li class="text-secondary">First, run the checkbox 'Use pre-fetch data by Route Resolver' will checked, the table content loaded in the route resolver and the loaded data captured in the ngOnInit() of the target component, for demonstrating the purpose and working behavior of the route resolve which provide the data in-time.</li>
+      <li class="text-secondary">Every 2nd. run the checkbox named 'Use pre-fetch data by Route Resolver' will un-checked, the table content loaded in the ngOnInit() for demonstrating what errors can be occurred if the data not loaded in-time, so when the table appeared the loading of the data still not finished, therefore the table can be empty for some moments.</li>
       <br>
-      <div class="sub-topic">
+      <div class="sub-topic info-area">
         <label class="text-danger"># of rows loaded {{ personList.length }}</label>
         <div>
           <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onScrolltoTopClicked($event)">Scroll to Top</button>
@@ -33,7 +35,7 @@
       <div class="user-form form-border form-height">
         <div>
           <table>
-            <perfect-scrollbar class="scroll-container" style="max-width: 100%; max-height: 41rem;" [config]="config" [scrollIndicators]="true" [autoPropagation]="true">
+            <thead>
               <tr class="scrollable-content">
                 <th>ID</th>
                 <th>First Name</th>
@@ -45,19 +47,23 @@
                 <th>Zip</th>
                 <th>Date</th>
               </tr>
-              <tr *ngFor="let person of personList">
-                <td>{{ person.id }}</td>
-                <td>{{ person.firstName }}</td>
-                <td>{{ person.lastName }}</td>
-                <td>{{ person.age }}</td>
-                <td>{{ person.street }}</td>
-                <td>{{ person.city }}</td>
-                <td>{{ person.state }}</td>
-                <td>{{ person.zip }}</td>
-                <td>{{ person.date | date: 'mediumDate' }}</td>
-            </tr>
-          </perfect-scrollbar>
-        </table>
+            </thead>
+              <tbody>
+                <perfect-scrollbar class="scroll-container" style="max-width: 100%; max-height: 41rem;" [config]="config" [scrollIndicators]="true" [autoPropagation]="true">
+                  <tr *ngFor="let person of personList;trackBy: trackByFn">
+                  <td>{{ person.id }}</td>
+                  <td>{{ person.firstName }}</td>
+                  <td>{{ person.lastName }}</td>
+                  <td>{{ person.age }}</td>
+                  <td>{{ person.street }}</td>
+                  <td>{{ person.city }}</td>
+                  <td>{{ person.state }}</td>
+                  <td>{{ person.zip }}</td>
+                  <td>{{ person.date | date: 'mediumDate' }}</td>
+                </tr>
+              </perfect-scrollbar>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>

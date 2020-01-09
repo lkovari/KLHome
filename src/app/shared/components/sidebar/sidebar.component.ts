@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('01/08/2020 11:27 AM');
-  lastUpdateTooltip = 'Added complex Route resolve example with use resolver and without use resolver';
+  lastUpdate = new Date('01/09/2020 05:37 PM');
+  lastUpdateTooltip = 'Turned the Person Table responsive, use vw and trackBy';
 
   eventCalled() {
     this.isActive = !this.isActive;

@@ -57,4 +57,8 @@ export class AngularPageContent8Component implements OnInit {
       this.componentRef.directiveRef.scrollToBottom();
     }
   }
+
+  trackByFn(item: Person) {
+    return item.id;
+  }
 }
