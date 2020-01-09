@@ -49,8 +49,9 @@
               </tr>
             </thead>
               <tbody>
-                <perfect-scrollbar class="scroll-container" style="max-width: 100%; max-height: 41rem;" [config]="config" [scrollIndicators]="true" [autoPropagation]="true">
-                  <tr *ngFor="let person of personList;trackBy: trackByFn">
+                <perfect-scrollbar class="scroll-container" style="max-width: 100%; max-height: 41rem;" [config]="config"
+                fxFlex="auto" [scrollIndicators]="true" [autoPropagation]="true">
+                  <tr class="scrollable-content" *ngFor="let person of personList;trackBy: trackByFn">
                   <td>{{ person.id }}</td>
                   <td>{{ person.firstName }}</td>
                   <td>{{ person.lastName }}</td>

@@ -60,4 +60,11 @@
     .info-area {
         display: contents;
     }
+    .scroll-container {
+        position: relative;
+    }    
+    .scrollable-content {
+        padding: 16px;
+        margin: 0;
+    }    
 }
