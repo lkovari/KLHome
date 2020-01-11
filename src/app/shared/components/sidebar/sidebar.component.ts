@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('01/09/2020 06:41 PM');
-  lastUpdateTooltip = 'Turned the Person Table responsive, use vw and trackBy, parametrized perfect-scrollbar';
+  lastUpdate = new Date('01/11/2020 11:22 PM');
+  lastUpdateTooltip = 'Person table rows alignment';
 
   eventCalled() {
     this.isActive = !this.isActive;

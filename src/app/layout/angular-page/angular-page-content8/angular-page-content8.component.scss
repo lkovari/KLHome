@@ -6,7 +6,7 @@
         padding: 1Rem;
     }
     .form-height {
-        height: 37rem;
+        height: 38rem;
     }
     .spacer-horozontal-right {
         margin-right: 0.5rem;
@@ -44,7 +44,7 @@
     }
     tbody {
         display: block;
-        height: 33rem;
+        height: 32rem;
         font-size:	1.2vw;        
     }
     tbody tr {
@@ -56,6 +56,9 @@
     th, td {
         width: auto;
         font-size:	1.2vw;        
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }    
     .info-area {
         display: contents;
