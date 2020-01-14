@@ -40,7 +40,7 @@ export class AngularPageContent8Component implements OnInit {
       Id:${this.personList[9999].id},
       First name: ${this.personList[9999].firstName},
       Last Name: ${this.personList[9999].lastName}`);
-    } catch(e) {
+    } catch (e) {
       window.alert(`ERROR!\n ${e.stack}`);
       throw e;
     }
