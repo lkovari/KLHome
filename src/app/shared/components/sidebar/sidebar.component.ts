@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('01/11/2020 11:22 PM');
-  lastUpdateTooltip = 'Person table rows alignment';
+  lastUpdate = new Date('01/14/2020 11:26 PM');
+  lastUpdateTooltip = 'Added to enter sub form (FormGroup) on DisplayFormState component to show sub form status.';
 
   eventCalled() {
     this.isActive = !this.isActive;

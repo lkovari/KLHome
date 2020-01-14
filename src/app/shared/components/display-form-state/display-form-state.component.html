@@ -1,5 +1,10 @@
 <div class="display-status-content">
-    <label class="vertical-gap text-primary">Status of the NgModel Properties of FormControls on a form</label>
+    <div class="title-area">
+        <label class="vertical-gap text-primary">Status of the NgModel Properties of FormControls on a form</label>
+        <div class="spacer-horozontal-left vertical-gap" *ngIf="isEnableBackButton()">
+            <button type="button" class="text-danger" (click)="onBackClicked($event)">Back</button>
+        </div>
+    </div>
     <div class="row message-style">
         <table class="table table-bordered table-striped">
             <tr>
@@ -11,9 +16,22 @@
                 <td class="property-name-uppercase"><b>{{ statusKey }}</b></td>
                 <!-- Display control values -->
                 <td *ngFor="let ctrlKey of extractFormControlKeys()">
-                    <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
+                    <div *ngIf="isItComplexObject(extractFormElementByKey(ctrlKey)[statusKey]); else NotComplex">
+                        <button type="button" (click)="onComplexControlClicked(extractFormGroupElementByKey(ctrlKey))">
+                            <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
+                                <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
+                            </span>
+                        </button>
+                    </div>
+                    <ng-template #NotComplex>
+                        <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
+                            <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
+                        </span>
+                    </ng-template>
+                    
+                    <!--span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
                         <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
-                    </span>
+                    </span-->
                 </td>
                 <!-- Display main form group status -->
                 <td>

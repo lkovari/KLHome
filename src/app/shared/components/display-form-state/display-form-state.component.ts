@@ -17,8 +17,8 @@ export class DisplayFormStateComponent implements OnInit {
   get mainFormGroup(): FormGroup {
     return this._mainFormGroup;
   }
-
   controlList = new Array<FormControl>();
+  formGroupStack = [];
 
   constructor() { }
 
@@ -72,6 +72,11 @@ export class DisplayFormStateComponent implements OnInit {
     return <FormControl | FormGroup | FormArray>control;
   }
 
+  extractFormGroupElementByKey(ctrlKey): FormGroup {
+    let control = this.mainFormGroup.controls[ctrlKey];
+    return control = <FormGroup>control;
+  }
+
   extractFormControlValueByKey(ctrl: FormControl, key: string): any {
     return ctrl[key];
   }
@@ -94,7 +99,20 @@ export class DisplayFormStateComponent implements OnInit {
     return color;
   }
 
+  isItComplexObject(complexCtrl: FormGroup): boolean {
+    return complexCtrl instanceof Object;
+  }
+
   onComplexControlClicked(complexCtrl: FormGroup) {
+    this.formGroupStack.push(this._mainFormGroup);
     this._mainFormGroup = complexCtrl;
+  }
+
+  isEnableBackButton(): boolean {
+    return this.formGroupStack.length > 0;
+  }
+
+  onBackClicked(event) {
+    this._mainFormGroup = this.formGroupStack.pop();
   }
 }
