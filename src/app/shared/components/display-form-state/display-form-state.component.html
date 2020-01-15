@@ -7,40 +7,51 @@
     </div>
     <div class="row message-style">
         <table class="table table-bordered table-striped">
-            <tr>
-                <th>Property name</th>
-                <th *ngFor="let ctrlName of extractFormControlKeys()" class="text-dark">{{ ctrlName }}</th>
-                <th class="text-dark">Form</th>
-            </tr>
-            <tr *ngFor="let statusKey of formControlStatusKeys">
-                <td class="property-name-uppercase"><b>{{ statusKey }}</b></td>
-                <!-- Display control values -->
-                <td *ngFor="let ctrlKey of extractFormControlKeys()">
-                    <div *ngIf="isItComplexObject(extractFormElementByKey(ctrlKey)[statusKey]); else NotComplex">
-                        <button type="button" (click)="onComplexControlClicked(extractFormGroupElementByKey(ctrlKey))">
-                            <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
-                                <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
+            <thead>
+                <tr>
+                    <!-- Display ngModel properties -->
+                    <th>Form Control Name</th>
+                    <th *ngFor="let statusKey of formControlStatusKeys" class="text-dark property-name-uppercase">{{ statusKey }}</th>
+                </tr>
+                <!-- Main Form -->
+                <tr>
+                    <td><b>Root</b></td>
+                    <td *ngFor="let statusKey of formControlStatusKeys">
+                        <div *ngIf="statusKey === 'type'; else NoTypeRoot">
+                            <em>{{ extractType(mainFormGroup) }}</em>
+                        </div>
+                        <ng-template #NoTypeRoot>
+                            <span [style.color]="getStyleColor(statusKey, extractFormGroupPropertyValueByKey(statusKey))">
+                                <em> {{  mainFormGroup[statusKey] | json }}</em>
                             </span>
-                        </button>
-                    </div>
-                    <ng-template #NotComplex>
-                        <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
-                            <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
-                        </span>
-                    </ng-template>
-                    
-                    <!--span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
-                        <em>{{ extractFormElementByKey(ctrlKey)[statusKey] }}</em>
-                    </span-->
-                </td>
-                <!-- Display main form group status -->
-                <td>
-                    <span [style.color]="getStyleColor(statusKey, extractFormGroupPropertyValueByKey(statusKey))">
-                        <em> {{ extractFormGroupPropertyValueByKey(statusKey) | json }}</em>
-                    </span>
-
-                </td>
-            </tr>
+                        </ng-template>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Form Controls -->
+                <tr *ngFor="let ctrlKey of extractFormControlKeys()">
+                    <td><b>{{ ctrlKey }}</b></td>
+                    <!-- Display control values -->
+                    <td *ngFor="let statusKey of formControlStatusKeys">
+                        <div *ngIf="statusKey === 'type'; else NoType">
+                            <div *ngIf="isItComplexObject(extractFormElementByKey(ctrlKey)); else NotComplex">
+                                <button type="button" (click)="onComplexControlClicked(extractFormGroupElementByKey(ctrlKey))">
+                                    {{ extractType(extractFormElementByKey(ctrlKey)) }}
+                                </button>
+                            </div>
+                            <ng-template #NotComplex>
+                                <em>{{ extractType(extractFormElementByKey(ctrlKey)) }}</em>
+                            </ng-template>
+                        </div>
+                        <ng-template #NoType>
+                            <span [style.color]="getStyleColor(statusKey, extractFormElementByKey(ctrlKey)[statusKey])">
+                                <em>{{ extractFormElementByKey(ctrlKey)[statusKey] | json }}</em>
+                            </span>
+                        </ng-template>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
