@@ -7,7 +7,7 @@ import { FormControl, FormGroup, FormArray, AbstractControl } from '@angular/for
   styleUrls: ['./display-form-state.component.scss']
 })
 export class DisplayFormStateComponent implements OnInit {
-  formControlStatusKeys = ['status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value'];
+  formControlStatusKeys = ['type', 'status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value'];
 
   private _mainFormGroup: FormGroup;
   @Input()
@@ -85,6 +85,18 @@ export class DisplayFormStateComponent implements OnInit {
     return v === 'VALID';
   }
 
+  extractType(control: AbstractControl): string {
+    let typeName = null;
+    if (control instanceof FormControl) {
+      typeName = 'FormControl';
+    } else if (control instanceof FormGroup) {
+      typeName = 'FormGroup';
+    } else if (control instanceof FormArray) {
+      typeName = 'FormArray';
+    }
+    return typeName;
+  }
+
   getStyleColor(k: string, v: any): string {
     let color = 'black';
     if ((k === 'status' && v === 'VALID') || (k === 'valid' && v) || (k === 'invalid' && !v)) {
@@ -99,8 +111,26 @@ export class DisplayFormStateComponent implements OnInit {
     return color;
   }
 
-  isItComplexObject(complexCtrl: FormGroup): boolean {
-    return complexCtrl instanceof Object;
+  extractFormName(control: AbstractControl): string | null {
+    let group = null;
+    if (!(control instanceof FormGroup)) {
+      return null;
+    } else {
+      group = <FormGroup>control;
+    }
+    let name: string;
+    Object.keys(group.controls).forEach(key => {
+      const childControl = group.get(key);
+      if (childControl !== control) {
+        return;
+      }
+      name = key;
+    });
+    return name;
+  }
+
+  isItComplexObject(complexCtrl: AbstractControl): boolean {
+    return complexCtrl instanceof FormGroup || complexCtrl instanceof FormArray;
   }
 
   onComplexControlClicked(complexCtrl: FormGroup) {
