@@ -6,7 +6,7 @@
         padding: 1Rem;
     }
     .form-height {
-        height: 33rem;
+        height: 37rem;
     }
     .spacer-horozontal-right {
         margin-right: 0.5rem;
@@ -79,7 +79,13 @@
     }
     .buttons-area {
         position: relative;
-        top: 1rem;
+        top: 3rem;
+        left: 0rem;
+        padding-bottom: 1rem;
+    }
+    .form-data-area {
+        position: relative;
+        top: 6rem;
         left: 0rem;
         padding-bottom: 1rem;
     }

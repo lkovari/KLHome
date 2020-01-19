@@ -178,6 +178,7 @@ export class MainFormComponent implements OnInit {
 
   onSubmit(customForm) {
     console.log(JSON.stringify(customForm.value));
+    window.alert(JSON.stringify(customForm.value));
   }
 
   /*

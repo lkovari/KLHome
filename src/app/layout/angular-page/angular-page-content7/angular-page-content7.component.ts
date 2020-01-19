@@ -215,5 +215,6 @@ export class AngularPageContent7Component implements OnInit {
     this.mainFormSubmitData = form.value;
     console.log('Form is submitted!');
     console.log(JSON.stringify(form.value));
+    window.alert(JSON.stringify(form.value));
    }
 }
