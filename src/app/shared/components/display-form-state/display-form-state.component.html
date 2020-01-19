@@ -5,17 +5,17 @@
             <button type="button" class="text-danger" (click)="onBackClicked($event)">Back</button>
         </div>
     </div>
-    <div class="row message-style">
+    <div class="table-area-style">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <!-- Display ngModel properties -->
-                    <th>Form Control Name</th>
+                    <th>FORM CONTROL NAME</th>
                     <th *ngFor="let statusKey of formControlStatusKeys" class="text-dark property-name-uppercase">{{ statusKey }}</th>
                 </tr>
-                <!-- Main Form -->
                 <tr>
-                    <td><b>Root</b></td>
+                    <!-- Main Form -->
+                    <td><b>ROOT</b></td>
                     <td *ngFor="let statusKey of formControlStatusKeys">
                         <div *ngIf="statusKey === 'type'; else NoTypeRoot">
                             <em>{{ extractType(mainFormGroup) }}</em>

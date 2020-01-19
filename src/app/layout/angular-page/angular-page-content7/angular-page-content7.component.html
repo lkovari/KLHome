@@ -189,9 +189,9 @@
             <button class="btn btn-primary" type="button" [disabled]="!canAddMoreRow()"
               (click)="onAddUserRole($event)">Add Role</button>
           </div>
-          <app-display-form-state [mainFormGroup]="mainForm"></app-display-form-state>
         </form>
       </div>
+      <app-display-form-state [mainFormGroup]="mainForm"></app-display-form-state>
       <label class="text-primary">Form Data</label>
       <div class="form-data">
         {{ mainFormData | json }}

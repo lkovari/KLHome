@@ -12,6 +12,11 @@ import { ComplexNameComponent } from './components/complex-name/complex-name.com
 import { AddressComponent } from './components/address/address.component';
 import { CustomInputMaskComponent } from './components/custom-input-mask/custom-input-mask.component';
 import { DisplayFormStateComponent } from './components/display-form-state/display-form-state.component';
+import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: false
+};
 
 @NgModule({
   imports: [
@@ -23,9 +28,15 @@ import { DisplayFormStateComponent } from './components/display-form-state/displ
     DialogModule,
     EditorModule,
     HttpClientModule,
-    InputMaskModule
+    InputMaskModule,
+    PerfectScrollbarModule
   ],
-  providers: [FileLoaderService],
+  providers: [FileLoaderService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
     CustomInputMaskComponent, DisplayFormStateComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
