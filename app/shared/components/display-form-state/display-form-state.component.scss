@@ -1,7 +1,11 @@
 .display-status-content {
+    position: relative;
+    .distance-from {
+        top: 1rem;
+    }
     .table-area-style {
         display: block;
-        height: 19rem;
+        height: 21vh;
     }    
     .property-name-uppercase {
         text-transform: uppercase;
@@ -11,10 +15,6 @@
     }
     .form-status-style {
         display: flex;
-    }
-    .vertical-gap {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
     }
     .spacer-horozontal-right {
         margin-right: 0.5rem;
@@ -40,4 +40,5 @@
         padding-top: 0.2rem;
         font-size: 1vw;
     }    
+    padding-bottom: 5rem;
 }

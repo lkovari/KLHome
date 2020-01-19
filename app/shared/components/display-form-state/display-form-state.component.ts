@@ -17,6 +17,14 @@ export class DisplayFormStateComponent implements OnInit {
   get mainFormGroup(): FormGroup {
     return this._mainFormGroup;
   }
+  private _distanceFrom = '2';
+  @Input()
+  set distanceFrom(v: string) {
+    this._distanceFrom = v;
+  }
+  get distanceFrom(): string {
+    return this._distanceFrom;
+  }
   controlList = new Array<FormControl>();
   formGroupStack = [];
 

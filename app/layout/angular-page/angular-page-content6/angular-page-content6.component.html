@@ -29,11 +29,10 @@
         <label class="struct-sub">SubForm2Component - app-sub-form2 on Tab Sheet #2</label>
         <label class="struct-sub">SubForm3Component - app-sub-form3 on Tab Sheet #3</label>
       </div>
-      <app-main-form [customForm]="customForm"></app-main-form>
-      <app-display-form-state [mainFormGroup]="customForm"></app-display-form-state>
-      <div class="form-data">
-        {{ formData | json }}
+      <div>
+        <app-main-form [customForm]="customForm"></app-main-form>
       </div>
     </div>
+    <app-display-form-state [mainFormGroup]="customForm" [distanceFrom]="2"></app-display-form-state>
   </div>
 </div>

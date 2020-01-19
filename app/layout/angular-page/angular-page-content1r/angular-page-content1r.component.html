@@ -70,11 +70,11 @@
                         Data</button>
                     <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
                 </form>
-                <app-display-form-state [mainFormGroup]="dataEntryForm"></app-display-form-state>
                 <div>
                     <label>Submitted form data:</label> {{ submittedFormData | json }}
                 </div>
             </div>
         </div>
     </div>
+    <app-display-form-state [mainFormGroup]="dataEntryForm"></app-display-form-state>
 </div>
