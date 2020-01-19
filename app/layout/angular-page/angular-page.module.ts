@@ -28,12 +28,6 @@ import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-c
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 import { AngularPageContent8Component } from './angular-page-content8/angular-page-content8.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: false
-};
 
 @NgModule({
   imports: [
@@ -48,12 +42,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DropdownModule,
     CalendarModule,
     PerfectScrollbarModule
-  ],
-  providers: [
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
