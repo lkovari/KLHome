@@ -14,12 +14,12 @@
           <img [src]="githubLogoPath" width="16" height="16">
         </a>Route Resolver example.
       </label>
-      <label>Implemented a route resolver service named <a class="horizontal-gap-left horizontal-gap-right"
+      <label>I Implemented a route resolver service named <a class="horizontal-gap-left horizontal-gap-right"
         href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/services/persondataresolver">
         <img [src]="githubLogoPath" width="16" height="16">
       </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route-target component. In our case, the route resolver calls the ExamplePersonDataService.loadtExamplePersonData which calls another service that loads a .csv file. The .csv file contains <mark>TEN thousand Person rows</mark> displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data in that case when the data loading still NOT finished.</label><br>
-      <li class="text-secondary">First, run the checkbox 'Use pre-fetch data by Route Resolver' will checked, the table content loaded in the route resolver and the loaded data captured in the ngOnInit() of the target component, for demonstrating the purpose and working behavior of the route resolve which provide the data in-time.</li>
-      <li class="text-secondary">Every 2nd. run the checkbox named 'Use pre-fetch data by Route Resolver' will un-checked, the table content loaded in the ngOnInit() for demonstrating what errors can be occurred if the data not loaded in-time, so when the table appeared the loading of the data still not finished, therefore the table can be empty for some moments.</li>
+      <li class="text-secondary">At the first navigation to the page Angular Playground #8 , the checkbox 'Use prefetch data by Route Resolver' will be checked, the table content loaded in the route resolver and the loaded data captured in the ngOnInit() of the target component, for demonstrating the purpose and working behavior of the route resolve which provide the data in-time.</li>
+      <li class="text-secondary">When navigating again to the page (eg. navigate to other page of the site eg. About page , and after it navigates back to the page Angular Playground #8 ), the checkbox named 'Use pre-fetch data by Route Resolver' will un-checked, the table content loaded in the ngOnInit() for demonstrating what errors can occur if the data is not loaded in-time, so when the table is appeared then the loading of the data still not finished, therefore the table can be empty for some moments.</li>
       <br>
       <div class="sub-topic info-area">
         <label class="text-danger"># of rows loaded {{ personList.length }}</label>

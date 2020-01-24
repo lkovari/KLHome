@@ -39,7 +39,7 @@ export class DisplayFormStateComponent implements OnInit {
   }
   */
   extractFormGroupPropertyValueByKey(key: string): string {
-    console.log('FormGroup property value key ' + `${key}`);
+    // console.log('FormGroup property value key ' + `${key}`);
     return this.mainFormGroup[key];
   }
 
@@ -69,7 +69,7 @@ export class DisplayFormStateComponent implements OnInit {
 
   extractFormElementByKey(ctrlKey: string): FormControl | FormGroup | FormArray {
     let control = this.mainFormGroup.controls[ctrlKey];
-    console.log('key ' + `${ctrlKey}`);
+    // console.log('key ' + `${ctrlKey}`);
     if (control instanceof FormControl) {
       control = <FormControl>control;
     } else if (control instanceof FormGroup) {
