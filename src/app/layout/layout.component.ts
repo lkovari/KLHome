@@ -11,7 +11,7 @@ import { Router, RouterEvent, NavigationStart, GuardsCheckStart, GuardsCheckEnd,
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(public router: Router) { 
+  constructor(public router: Router) {
     this.router.events.subscribe((routerEvent: RouterEvent) => {
       this.handlingRouterEvent(routerEvent);
     });
