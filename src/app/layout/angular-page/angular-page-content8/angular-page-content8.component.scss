@@ -36,26 +36,34 @@
         left: 0rem;
     }
     // used vw instead of mixin to keep responsive
+    cdk-virtual-scroll-viewport {
+        height: 34rem;
+        overflow: overlay;
+    }
     thead {
         display: table;
         table-layout: fixed;
         width: 100%;
         font-size:	1.2vw;        
+        // font-size: calc(1.2vw + 1.2vh);
     }
     tbody {
         display: block;
         height: 32rem;
         font-size:	1.2vw;        
+        // font-size: calc(1.2vw + 1.2vh);
     }
     tbody tr {
         display: table;
         table-layout: fixed;
         width: 100%;
         font-size:	1.2vw;        
+        // font-size: calc(1.2vw + 1.2vh);
     }
     th, td {
         width: auto;
-        font-size:	1.2vw;        
+        font-size:	1.2vw;  
+        // font-size: calc(1.2vw + 1.2vh);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -63,11 +71,13 @@
     .info-area {
         display: contents;
     }
+    /*
     .scroll-container {
         position: relative;
     }    
     .scrollable-content {
         padding: 16px;
         margin: 0;
-    }    
+    } 
+    */   
 }

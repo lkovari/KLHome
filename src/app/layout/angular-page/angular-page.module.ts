@@ -28,6 +28,7 @@ import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-c
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 import { AngularPageContent8Component } from './angular-page-content8/angular-page-content8.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     TabMenuModule,
     DropdownModule,
     CalendarModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    ScrollingModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
