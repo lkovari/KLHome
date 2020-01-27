@@ -32,7 +32,7 @@ export class AngularPageContent8Component implements OnInit {
         if (personArray) {
           Object.assign(this.personList, personArray);
           const elapsed = performance.now() - t0;
-          console.log(`LOAD: AngularPageContent8Component : #${this.personList.length} Person 
+          console.log(`LOAD: AngularPageContent8Component : #${this.personList.length} Person
             rows captured from route data. Elapsed ${elapsed}`);
         }
         this.examplePersonDataService.useRouteResolver = true;
