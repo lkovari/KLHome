@@ -17,9 +17,12 @@
       <label>I Implemented a route resolver service named <a class="horizontal-gap-left horizontal-gap-right"
         href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/services/persondataresolver">
         <img [src]="githubLogoPath" width="16" height="16">
-      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route-target component. In our case, the route resolver calls the ExamplePersonDataService.loadtExamplePersonData which calls another service that loads a .csv file. The .csv file contains <mark>TEN thousand Person rows</mark> displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data in that case when the data loading still NOT finished.</label><br>
+      </a>PersonDataResolver, the purpose of route resolver to pre-fetch the data for the route-target component. In our case, the route resolver calls the ExamplePersonDataService.loadtExamplePersonData which calls another service that loads a .csv file. The .csv file contains <mark>a HUNDRED thousand Person rows</mark> displayed with the loaded content the resolver load all Person data rows and create a Person object for each row to prevent the UI is displayed without data in that case when the data loading still NOT finished.</label><br>
       <li class="text-secondary">At the first navigation to the page Angular Playground #8 , the checkbox 'Use prefetch data by Route Resolver' will be checked, the table content loaded in the route resolver and the loaded data captured in the ngOnInit() of the target component, for demonstrating the purpose and working behavior of the route resolve which provide the data in-time.</li>
       <li class="text-secondary">When navigating again to the page (eg. navigate to other page of the site eg. About page , and after it navigates back to the page Angular Playground #8 ), the checkbox named 'Use pre-fetch data by Route Resolver' will un-checked, the table content loaded in the ngOnInit() for demonstrating what errors can occur if the data is not loaded in-time, so when the table is appeared then the loading of the data still not finished, therefore the table can be empty for some moments.</li>
+      <br>
+      <li class="text-secondary">Now using <a href="https://material.angular.io/cdk/scrolling/overview">CDK Virtual Scroll</a> cdk-virtual-scroll-viewport to display the content because without it the display will take a really long time.</li>
+      <li class="text-secondary">Observed all Router events for demonstration purposes, you can see it on the console.</li>
       <br>
       <div class="sub-topic info-area">
         <label class="text-danger"># of rows loaded {{ personList.length }}</label>
@@ -36,33 +39,48 @@
         <div>
           <table>
             <thead>
-              <tr class="scrollable-content">
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Age</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-                <th>Date</th>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Street</th>
+                <th scope="col">City</th>
+                <th scope="col">State</th>
+                <th scope="col">Zip</th>
+                <th scope="col">Date</th>
               </tr>
             </thead>
               <tbody>
-                <perfect-scrollbar class="scroll-container" style="max-width: 100%; height:34rem; max-height: 41rem;" [config]="config"
-                fxFlex="auto" [scrollIndicators]="true" [autoPropagation]="true">
-                  <tr class="scrollable-content" *ngFor="let person of personList;trackBy: trackByFn">
-                  <td>{{ person.id }}</td>
-                  <td>{{ person.firstName }}</td>
-                  <td>{{ person.lastName }}</td>
-                  <td>{{ person.age }}</td>
-                  <td>{{ person.street }}</td>
-                  <td>{{ person.city }}</td>
-                  <td>{{ person.state }}</td>
-                  <td>{{ person.zip }}</td>
-                  <td>{{ person.date | date: 'mediumDate' }}</td>
-                </tr>
-              </perfect-scrollbar>
+                <!--perfect-scrollbar class="scroll-container" style="max-width: 100%; height:34rem; max-height: 41rem;" [config]="config"
+                fxFlex="auto" [scrollIndicators]="true" [autoPropagation]="true"-->
+                <cdk-virtual-scroll-viewport [itemSize]="1">
+                  <tr *cdkVirtualFor="let person of personList; templateCacheSize: 255; trackBy: trackByFn">
+                      <td>{{ person.id }}</td>
+                      <td>{{ person.firstName }}</td>
+                      <td>{{ person.lastName }}</td>
+                      <td>{{ person.age }}</td>
+                      <td>{{ person.street }}</td>
+                      <td>{{ person.city }}</td>
+                      <td>{{ person.state }}</td>
+                      <td>{{ person.zip }}</td>
+                      <td>{{ person.date | date: 'mediumDate' }}</td>
+                    </tr>
+                <!--ng-template ngFor let-person [ngForOf]="personList" let-ix="index" [ngForTrackBy]="trackByFn">
+                  <tr class="scrollable-content">
+                    <td>{{ person.id }}</td>
+                    <td>{{ person.firstName }}</td>
+                    <td>{{ person.lastName }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.street }}</td>
+                    <td>{{ person.city }}</td>
+                    <td>{{ person.state }}</td>
+                    <td>{{ person.zip }}</td>
+                    <td>{{ person.date | date: 'mediumDate' }}</td>
+                    </tr>
+                </ng-template-->         
+              <!--perfect-scrollbar-->
+              </cdk-virtual-scroll-viewport>
             </tbody>
           </table>
       </div>

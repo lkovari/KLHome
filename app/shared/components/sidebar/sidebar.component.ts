@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('01/24/2020 11:59 PM');
-  lastUpdateTooltip = 'Added Router events logging.';
+  lastUpdate = new Date('01/27/2020 11:27 PM');
+  lastUpdateTooltip = 'Added CDK Virtual Scroll.';
 
   eventCalled() {
     this.isActive = !this.isActive;
