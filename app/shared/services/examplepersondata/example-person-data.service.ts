@@ -39,15 +39,13 @@ export class ExamplePersonDataService {
       map(fileContent => {
         // return this.parseFileContent(fileContent);
         const personData = this.parseFileContent(fileContent);
-        const elapsed = performance.now() - t0;
-        console.log(`RESOLVE: ExamplePersonDataService.loadFileContent Elapsed ${elapsed}`);
+        console.log(`RESOLVE: ExamplePersonDataService.loadFileContent Elapsed ${(performance.now() - t0)}`);
         return personData;
       }
     ));
   }
 
-
   loadtExamplePersonData(): Observable<Array<Person>> {
-    return this.loadFileContent();
+     return this.loadFileContent();
   }
 }

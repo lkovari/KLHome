@@ -10,6 +10,7 @@ import { Router, RouterEvent, NavigationStart, GuardsCheckStart, GuardsCheckEnd,
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+  enableWait = false;
 
   constructor(public router: Router) {
     this.router.events.subscribe((routerEvent: RouterEvent) => {
@@ -31,10 +32,16 @@ export class LayoutComponent implements OnInit {
     } else if (routerEvent instanceof NavigationStart) {
       const navigationStart = <NavigationStart>routerEvent;
       this.logMessage(`NavigationStart`, navigationStart);
+      if (navigationStart.url === '/angular-page/angular-page-content8') {
+        this.enableWait = true;
+      }
       // start loading
     } else if (routerEvent instanceof NavigationEnd) {
       const navigationEnd = <NavigationEnd>routerEvent;
       this.logMessage(`NavigationEnd`, navigationEnd);
+      if (navigationEnd.url === '/angular-page/angular-page-content8') {
+          this.enableWait = false;
+      }
       // finish loading
     } else if (routerEvent instanceof RouteConfigLoadStart) {
       const routeConfigLoadStart = <RouteConfigLoadStart>routerEvent;
@@ -81,10 +88,12 @@ export class LayoutComponent implements OnInit {
       const navigationError = <NavigationError>routerEvent;
       this.logMessage(`NavigationError`, navigationError);
       // finish loading
+      this.enableWait = false;
     } else if (routerEvent instanceof NavigationCancel) {
       const navigationCancel = <NavigationCancel>routerEvent;
       this.logMessage(`NavigationCancel`, navigationCancel);
       // finish loading
+      this.enableWait = false;
     }
   }
 

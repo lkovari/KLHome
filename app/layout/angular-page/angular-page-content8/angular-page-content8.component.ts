@@ -39,10 +39,11 @@ export class AngularPageContent8Component implements OnInit {
       });
     }
     try {
+      const ix = this.personList.length - 1;
       console.log(`RESOLVED:
-      Id:${this.personList[9999].id},
-      First name: ${this.personList[99999].firstName},
-      Last Name: ${this.personList[99999].lastName}`);
+      Id:${this.personList[ix].id},
+      First name: ${this.personList[ix].firstName},
+      Last Name: ${this.personList[ix].lastName}`);
     } catch (e) {
       window.alert(`ERROR!\n ${e.stack}`);
       throw e;

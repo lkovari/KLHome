@@ -3,3 +3,11 @@
 <section class="main-container">
   <router-outlet></router-outlet>
 </section>
+<!-- Wait dialog -->
+<p-dialog [modal]="true" [showHeader]="false" class="modal-dialog" [closable]="false" [(visible)]="enableWait"
+  [maximizable]="false" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <div class="dialog-content-center">
+    <i class="fa fa-cog fa-spin dialog-content-center" style="font-size:72px"></i>
+    <label>Please be patient, loading...</label>
+  </div>
+</p-dialog>
