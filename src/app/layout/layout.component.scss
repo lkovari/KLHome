@@ -9,7 +9,21 @@
   overflow: hidden;
 }
 
+.dialog-content-center {
+  text-align: center;
+  vertical-align: middle;
+}
 
+.modal-dialog {
+  width: 15vw;
+  opacity: 0.75;
+}
+/*
+.cog-modal-dialog {
+  width: '5vw';
+  opacity: 0.5;
+}
+*/
 @media screen and (max-width: 1092px) {
   .main-container {
     margin-left: 0px !important;

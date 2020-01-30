@@ -20,6 +20,7 @@ import { DelphiPageModule } from './delphi-page/delphi-page.module';
 import { MasmPageModule } from './masm-page/masm-page.module';
 import { SharedModule } from 'app/shared/shared.module';
 import { AwardsPageModule } from './awards-page/awards-page.module';
+import { DialogModule } from 'primeng/primeng';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { AwardsPageModule } from './awards-page/awards-page.module';
     CsharpPageModule,
     DelphiPageModule,
     MasmPageModule,
+    DialogModule,
     NgbModule.forRoot()
   ],
   declarations: [

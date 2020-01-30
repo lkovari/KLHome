@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('01/27/2020 11:41 PM');
-  lastUpdateTooltip = 'Added CDK Virtual Scroll.';
+  lastUpdate = new Date('01/31/2020 0:43 AM');
+  lastUpdateTooltip = 'Added Wait Spinner modal dialog.';
 
   eventCalled() {
     this.isActive = !this.isActive;
