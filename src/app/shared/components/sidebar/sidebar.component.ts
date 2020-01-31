@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 export class SidebarComponent {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('01/31/2020 0:43 AM');
-  lastUpdateTooltip = 'Added Wait Spinner modal dialog.';
+  lastUpdate = new Date('01/31/2020 09:59 PM');
+  lastUpdateTooltip = 'Modified the page Playground #8 description.';
 
   eventCalled() {
     this.isActive = !this.isActive;
