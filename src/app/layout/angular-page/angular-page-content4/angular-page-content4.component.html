@@ -65,10 +65,11 @@
       </form>
     </div>
     <div class="sub-topic" *ngIf="isSubmitted">
-        <div class="cols-xs-12">
-          <b>Form Model</b>
-          <p>Address: {{ form_data.address | json }} </p>
-        </div>
+      <div class="cols-xs-12">
+        <b>Form Model</b>
+        <p>Address: {{ form_data.address | json }} </p>
       </div>
+    </div>
+    <app-display-form-state [mainFormGroup]="exampleForm" [distanceFrom]="2"></app-display-form-state>    
   </div>
 </div>
