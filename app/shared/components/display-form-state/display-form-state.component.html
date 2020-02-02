@@ -15,7 +15,12 @@
                 </tr>
                 <tr>
                     <!-- Main Form -->
-                    <td><b>ROOT</b></td>
+                    <div *ngIf="isEnableBackButton(); else MainForm">
+                        <td><b>FORMGROUP</b></td>
+                    </div>
+                    <ng-template #MainForm>
+                        <td><b>MAIN FORMGROUP</b></td>
+                    </ng-template>
                     <td *ngFor="let statusKey of formControlStatusKeys">
                         <div *ngIf="statusKey === 'type'; else NoTypeRoot">
                             <em>{{ extractType(mainFormGroup) }}</em>
