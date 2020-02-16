@@ -63,13 +63,14 @@ const routes: Routes = [
     children: [
       // {path: 'welcome-page', loadChildren: './welcome-page/welcome-page.module#WelcomePageModule'},
       {path: 'welcome-page', component: WelcomePageComponent},
-
+      // !!!!!!! Should be use loadChildren for lazy load
       {path: 'aboutme-page', component: AboutmeContentComponent},
 
       {path: 'awards-page', component: AwardsContentComponent},
 
       {path: 'angular-page', component: AngularPageTitleComponent,
         children: [
+          // !!!!!!! Should be use loadChildren for lazy load
           {path: 'angular-page-content0', component: AngularPageContent0Component},
           {path: 'angular-page-content1', component: AngularPageContent1Component},
           {path: 'angular-page-content1r', component: AngularPageContent1rComponent},

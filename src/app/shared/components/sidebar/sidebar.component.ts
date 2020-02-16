@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('02/02/2020 12:13 PM');
-  lastUpdateTooltip = 'Modified Layout of Playground #5 and DisplayFormState.';
+  lastUpdate = new Date('02/16/2020 12:13 PM');
+  lastUpdateTooltip = 'Turned on IVY next-generation compilation and rendering pipeline';
+
+  ngOnInit() {
+    this.lastUpdateTooltip = this.lastUpdateTooltip = 'Upgraded bootstrap and ng-bootstrap, Removed NgbModule.forRoot()';
+  }
 
   eventCalled() {
     this.isActive = !this.isActive;

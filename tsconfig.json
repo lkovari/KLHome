@@ -29,6 +29,8 @@
     // When true (recommended), reports an error for a supplied parameter whose injection type cannot be determined
     "strictInjectionParameters": true,
     //  prints extra information while compiling templates
-    "trace": true
+    "trace": true,
+    // enable IVY rendering
+    "enableIvy": true
   }    
 }
