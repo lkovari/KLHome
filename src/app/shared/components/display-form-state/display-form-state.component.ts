@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, FormArray, AbstractControl } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl, FormGroup, FormArray, AbstractControl } from '@angular/for
   templateUrl: './display-form-state.component.html',
   styleUrls: ['./display-form-state.component.scss']
 })
-export class DisplayFormStateComponent implements OnInit {
+export class DisplayFormStateComponent {
   formControlStatusKeys = ['type', 'status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value'];
 
   private _mainFormGroup: FormGroup;
@@ -29,9 +29,6 @@ export class DisplayFormStateComponent implements OnInit {
   formGroupStack = [];
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
   /*
   extractFormGroupValueByKey(key: string): FormControl {

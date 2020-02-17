@@ -42,8 +42,7 @@ import { DialogModule } from 'primeng/primeng';
     MasmPageModule,
     DialogModule,
     NgbModule.forRoot()
-
-  ],
+   ],
   declarations: [
     LayoutComponent,
     HeaderComponent,
