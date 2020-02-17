@@ -17,7 +17,7 @@ import { AccordionModule } from 'primeng/primeng';
   imports: [
     CommonModule,
     FormsModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot() ,
     SharedModule,
     DelphiPageRoutingModule,
     PageHeaderModule,

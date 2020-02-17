@@ -7,7 +7,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   imports: [
     CommonModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot() ,
     WelcomePageRoutingModule
   ],
   declarations: [WelcomePageComponent]
