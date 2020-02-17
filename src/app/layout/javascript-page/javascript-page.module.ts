@@ -16,7 +16,7 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
     CommonModule,
     FormsModule,
     RouterModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot() ,
     SharedModule,
     JavascriptPageRoutingModule,
     PageHeaderModule

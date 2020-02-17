@@ -10,7 +10,7 @@ import { AwardsContentComponent } from './awards-content.component';
 @NgModule({
 imports: [
     CommonModule,
-    NgbModule.forRoot(),
+    NgbModule.forRoot() ,
     FormsModule,
     SharedModule,
     AwardsPageRoutingModule,
