@@ -35,7 +35,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
+    NgbModule,
     SharedModule,
     AngularPageRoutingModule,
     PageHeaderModule,
