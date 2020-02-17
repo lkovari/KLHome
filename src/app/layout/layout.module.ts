@@ -25,7 +25,7 @@ import { DialogModule } from 'primeng/primeng';
 @NgModule({
   imports: [
     CommonModule,
-    NgbDropdownModule.forRoot() ,
+    NgbDropdownModule,
     SharedModule,
     LayoutRoutingModule,
     WelcomePageModule,
@@ -41,7 +41,7 @@ import { DialogModule } from 'primeng/primeng';
     DelphiPageModule,
     MasmPageModule,
     DialogModule,
-    NgbModule.forRoot()
+    NgbModule
    ],
   declarations: [
     LayoutComponent,
