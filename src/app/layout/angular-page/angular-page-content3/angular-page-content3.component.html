@@ -7,12 +7,12 @@
     </div>
     <div class="sub-topic">
       <b>Act #2</b> Reactive (formerly Model-driven) forms exmaple, with embedded reactive component, named
-      <label class="text-primary">
+      <label class="text-primary align-label">
         <a class="image-gap" href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/complex-name">
           <img [src]="githubLogoPath" width="16" height="16">
         </a>
         <em>ComplexNameComponent</em>
-         <span class="text-danger"> This component is relatively closed, the controls of component is not visible.</span>
+         <span class="text-danger"> This component is relatively closed, the custom form control of component is not visible.</span>
          <p class="text-secondary">In the next example, I create a reactive nested component with FormGroupDirective and formGroupname usage.</p>
       </label>
       <br>
@@ -123,6 +123,9 @@
         <b>Form Model</b>
         <p>Complex Name: {{ form_data.complexName | json }} </p>
       </div>
+    </div>
+    <div class="sub-topic">
+      The form control named <b>complexName</b> is a Custom FormControl Component the selector is <b>app-complex-name</b> which implements ControlValueAccessor
     </div>
     <app-display-form-state [mainFormGroup]="exampleForm" [distanceFrom]="2"></app-display-form-state>    
   </div>
