@@ -18,7 +18,8 @@
       "dom"
     ],
     "noImplicitReturns": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "importHelpers": true
     // ,"noUnusedParameters": true
     // ,"noImplicitAny": true
     // ,"strictNullChecks": true
@@ -30,6 +31,8 @@
     "strictInjectionParameters": true,
     //  prints extra information while compiling templates
     "trace": true,
+    // When true, generate all possible files even if they are empty. Default is false. Used by the Bazel build rules to simplify how Bazel rules track file dependencies. Do not use this option outside of the Bazel rules.
+    "allowEmptyCodegenFiles": false,
     // enable IVY next-generation compilation and rendering pipeline
     "enableIvy": false
   }    
