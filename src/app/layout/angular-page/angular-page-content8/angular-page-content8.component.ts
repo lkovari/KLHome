@@ -13,7 +13,7 @@ export class AngularPageContent8Component implements OnInit {
   githubLogoPath: string;
   personList: Array<Person>;
   useRouteResolver: boolean;
-  @ViewChild(CdkVirtualScrollViewport, { static: false }) virtualScroll: CdkVirtualScrollViewport;
+  @ViewChild(CdkVirtualScrollViewport, { static: true }) virtualScroll: CdkVirtualScrollViewport;
 
   constructor(private route: ActivatedRoute,
              private examplePersonDataService: ExamplePersonDataService) { }
