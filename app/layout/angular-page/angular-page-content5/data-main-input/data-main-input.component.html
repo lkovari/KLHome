@@ -15,7 +15,7 @@
         <label class="col-md-2 col-form-label" for="customtextinput">Custom Text
           <span class="text-danger">*</span>
         </label>
-        <app-text-input id="customtextinput"  name="customText" [(ngModel)]="customFormModel.customText"
+        <app-text-input id="customtextinputm"  name="customText" [(ngModel)]="customFormModel.customText"
           #customText="ngModel" [minlength]="minLength" [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)"
           required>
         </app-text-input>
@@ -28,7 +28,7 @@
       <div  class="form-group row">
         <label class="col-md-2 col-form-label" for="customnumberinput">Custom number
         </label>
-        <input id="customnumberinput" class="input-style" type="number" name="customNumber" [(ngModel)]="customFormModel.customNumber" #customNumberInput="ngModel">
+        <input id="customnumberinputm" class="input-style" type="number" name="customNumber" [(ngModel)]="customFormModel.customNumber" #customNumberInput="ngModel">
       </div>
       <div class="tab1-panel" [hidden]="tabIndex !== 0">
         <app-data-input1 [customFormModel]="customFormModel"></app-data-input1>
