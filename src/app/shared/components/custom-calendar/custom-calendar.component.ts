@@ -46,7 +46,6 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     @Input() showSeconds = false;
     @Input() keepInvalid = false;
     @Input() autoZIndex = true;
-    @Input() utc = false;
     @Input() inline = false;
     @Input() inputId: string;
     @Input() todayButtonStyleClass: string;
