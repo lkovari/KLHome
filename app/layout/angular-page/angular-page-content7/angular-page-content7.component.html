@@ -134,9 +134,9 @@
           <tbody>
             <tr *ngFor="let userRole of getUserRoleControls(); let ix = index" [formGroupName]="ix">
               <td>
-                <p-dropdown id="{{'roleType' + ix}}" class="form-group" [options]="roleTypes"
-                  formControlName="roleType" editable="true" [showClear]="true" [editable]="false"
-                  placeholder="Select a RoleType" tabindex="calcTabIndex(ix, 0)" [required]="true">
+                <p-dropdown id="{{'roleType' + ix}}" class="form-group" [options]="roleTypes" optionLabel="label"
+                  placeholder="Select a role type" formControlName="roleType" editable="true" [showClear]="true" [editable]="false"
+                  tabindex="calcTabIndex(ix, 0)" [required]="true">
                 </p-dropdown>
                 <span *ngIf="isUserFieldInvalid(userRole, 'roleType')">
                   <span class="show-invalid-feedback">
@@ -145,9 +145,9 @@
                 </span>
               </td>
               <td>
-                <p-dropdown id="{{'moduleType' + ix}}" class="form-group" [options]="moduleTypes"
-                  formControlName="moduleType" editable="true" [showClear]="true" [editable]="false"
-                  placeholder="Select a ModuleType" tabindex="calcTabIndex(ix, 1)" [required]="true">
+                <p-dropdown id="{{'moduleType' + ix}}" class="form-group" [options]="moduleTypes" optionLabel="label"
+                  placeholder="Select a module type" formControlName="moduleType" editable="true" [showClear]="true" [editable]="false"
+                  tabindex="calcTabIndex(ix, 1)" [required]="true">
                 </p-dropdown>
                 <span *ngIf="isUserFieldInvalid(userRole, 'moduleType')">
                   <span class="show-invalid-feedback">

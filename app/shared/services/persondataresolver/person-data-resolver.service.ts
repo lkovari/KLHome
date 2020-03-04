@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Person } from 'app/shared/models/person.model';
+import { Person } from '../../../shared/models/person.model';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';

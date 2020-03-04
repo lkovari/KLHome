@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.service';
+import { FileLoaderService } from '../../../shared/services/fileloader/file-loader.service';
 
 @Component({
   selector: 'app-masm-page-content1',

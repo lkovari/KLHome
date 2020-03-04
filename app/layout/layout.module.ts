@@ -18,9 +18,9 @@ import { J2sePageModule } from './j2se-page/j2se-page.module';
 import { CsharpPageModule } from './csharp-page/csharp-page.module';
 import { DelphiPageModule } from './delphi-page/delphi-page.module';
 import { MasmPageModule } from './masm-page/masm-page.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { AwardsPageModule } from './awards-page/awards-page.module';
-import { DialogModule } from 'primeng/primeng';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   imports: [

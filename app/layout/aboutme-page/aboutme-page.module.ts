@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutmeContentComponent } from './aboutme-content.component';
 import { AboutmePageRoutingModule } from './aboutme-page-routing.module';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   imports: [

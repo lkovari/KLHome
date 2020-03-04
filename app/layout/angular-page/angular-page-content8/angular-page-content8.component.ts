@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Person } from 'app/shared/models/person.model';
-import { ExamplePersonDataService } from 'app/shared/services/examplepersondata/example-person-data.service';
+import { Person } from '../../../shared/models/person.model';
+import { ExamplePersonDataService } from '../../../shared/services/examplepersondata/example-person-data.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({

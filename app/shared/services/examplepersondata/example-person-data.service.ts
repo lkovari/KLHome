@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Person } from 'app/shared/models/person.model';
 import { FileLoaderService } from '../fileloader/file-loader.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Person } from '../../models/person.model';
 
 @Injectable({
   providedIn: 'root'
