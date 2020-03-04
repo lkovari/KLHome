@@ -1,4 +1,4 @@
-import { SelectItem } from 'primeng/primeng';
+import { SelectItem } from 'primeng/api/selectitem';
 
 export interface IRoleType extends SelectItem {
     label?: string;

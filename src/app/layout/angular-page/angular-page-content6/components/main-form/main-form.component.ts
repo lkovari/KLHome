@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
-import { MenuItem } from 'primeng/primeng';
-import { CustomFormModel } from 'app/layout/angular-page/angular-page-content6/data-model/custom-form.model';
+import { CustomFormModel } from '../../../../../layout/angular-page/angular-page-content6/data-model/custom-form.model';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-main-form',
@@ -38,6 +38,7 @@ export class MainFormComponent implements OnInit {
         }
       }
     ];
+    this.activeItem = this.tabItems[0];
   }
 
   private tabItemChanged(ix: number) {

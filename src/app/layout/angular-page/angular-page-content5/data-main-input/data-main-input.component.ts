@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CustomFormModel } from '../custom-form-.model';
-import { MenuItem } from 'primeng/primeng';
 import { NgForm } from '@angular/forms';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-data-main-input',

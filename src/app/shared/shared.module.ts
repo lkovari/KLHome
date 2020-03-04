@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TextInputComponent } from './components/text-input/text-input.component';
-import { CalendarModule, DialogModule, EditorModule, InputMaskModule } from 'primeng/primeng';
 import { CustomCalendarComponent } from './components/custom-calendar/custom-calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FileLoaderService } from './services/fileloader/file-loader.service';
@@ -12,11 +11,10 @@ import { ComplexNameComponent } from './components/complex-name/complex-name.com
 import { AddressComponent } from './components/address/address.component';
 import { CustomInputMaskComponent } from './components/custom-input-mask/custom-input-mask.component';
 import { DisplayFormStateComponent } from './components/display-form-state/display-form-state.component';
-import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: false
-};
+import { CalendarModule } from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+import { EditorModule } from 'primeng/editor';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   imports: [
@@ -28,15 +26,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DialogModule,
     EditorModule,
     HttpClientModule,
-    InputMaskModule,
-    PerfectScrollbarModule
+    InputMaskModule
   ],
-  providers: [FileLoaderService,
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
-  ],
+  providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
     CustomInputMaskComponent, DisplayFormStateComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileLoaderService } from 'app/shared/services/fileloader/file-loader.service';
+import { FileLoaderService } from '../../../shared/services/fileloader/file-loader.service';
 
 @Component({
   selector: 'app-ios-page-content2',
@@ -34,7 +34,12 @@ export class IosPageContent2Component implements OnInit {
     ]
   }
 
+  onTabClose(event) {
+    console.log('onTabClose fired ' + event.index);
+  }
+
   onTabOpen(event) {
+    console.log('onTabOpen fired ' + event.index);
     const ix = event.index;
     this.loadFileContent(this.calcSourceFiles[ix]);
   }

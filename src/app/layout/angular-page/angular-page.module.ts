@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 import { AngularPageTitleComponent } from './angular-page-title.component';
 import { AngularPageContent1Component } from './angular-page-content1/angular-page-content1.component';
@@ -12,7 +12,6 @@ import { AngularPageContent2Component } from './angular-page-content2/angular-pa
 import { AngularPageContent3Component } from './angular-page-content3/angular-page-content3.component';
 import { AngularPageContent4Component } from './angular-page-content4/angular-page-content4.component';
 import { AngularPageContent5Component } from './angular-page-content5/angular-page-content5.component';
-import { TabMenuModule, DropdownModule, CalendarModule } from 'primeng/primeng';
 import { DataInput1Component } from './angular-page-content5/data-input1/data-input1.component';
 import { DataInput2Component } from './angular-page-content5/data-input2/data-input2.component';
 import { DataInput3Component } from './angular-page-content5/data-input3/data-input3.component';
@@ -27,8 +26,11 @@ import { AngularPageContent0Component } from './angular-page-content0/angular-pa
 import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-capital-char-custom.validator';
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 import { AngularPageContent8Component } from './angular-page-content8/angular-page-content8.component';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DropdownModule } from 'primeng/dropdown';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { CalendarModule } from 'primeng/calendar';
+
 
 @NgModule({
   imports: [
@@ -42,7 +44,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     TabMenuModule,
     DropdownModule,
     CalendarModule,
-    PerfectScrollbarModule,
     ScrollingModule
   ],
   declarations: [ AngularPageTitleComponent,

@@ -18,7 +18,7 @@ import { IosPageTitleComponent } from './ios-page/ios-page-title.component';
 import { IosPageContent1Component } from './ios-page/ios-page-content1/ios-page-content1.component';
 import { IosPageContent2Component } from './ios-page/ios-page-content2/ios-page-content2.component';
 
-import { AndroidPageTitleComponent } from 'app/layout/android-page/android-page-title.component';
+import { AndroidPageTitleComponent } from './android-page/android-page-title.component';
 import { AndroidPageContent1Component } from './android-page/android-page-content1/android-page-content1.component';
 import { AndroidPageContent2Component } from './android-page/android-page-content2/android-page-content2.component';
 import { AndroidPageContent3Component } from './android-page/android-page-content3/android-page-content3.component';
@@ -44,8 +44,8 @@ import { DelphiPageContent2Component } from './delphi-page/delphi-page-content2/
 import { DelphiPageContent3Component } from './delphi-page/delphi-page-content3/delphi-page-content3.component';
 import { DelphiPageContent4Component } from './delphi-page/delphi-page-content4/delphi-page-content4.component';
 
-import { WelcomePageComponent } from 'app/layout/welcome-page/welcome-page.component';
-import { AboutmeContentComponent } from 'app/layout/aboutme-page/aboutme-content.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
+import { AboutmeContentComponent } from './aboutme-page/aboutme-content.component';
 import { AngularPageContent4Component } from './angular-page/angular-page-content4/angular-page-content4.component';
 import { AngularPageContent5Component } from './angular-page/angular-page-content5/angular-page-content5.component';
 import { AngularPageContent6Component } from './angular-page/angular-page-content6/angular-page-content6.component';
@@ -54,7 +54,7 @@ import { AngularPageContent0Component } from './angular-page/angular-page-conten
 import { AngularPageContent1rComponent } from './angular-page/angular-page-content1r/angular-page-content1r.component';
 import { AwardsContentComponent } from './awards-page/awards-content.component';
 import { AngularPageContent8Component } from './angular-page/angular-page-content8/angular-page-content8.component';
-import { PersonDataResolver } from 'app/shared/services/persondataresolver/person-data-resolver.service';
+import { PersonDataResolver } from '../shared/services/persondataresolver/person-data-resolver.service';
 
 
 const routes: Routes = [

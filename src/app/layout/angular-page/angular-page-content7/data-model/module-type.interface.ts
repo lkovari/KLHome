@@ -1,4 +1,5 @@
-import { SelectItem } from 'primeng/primeng';
+import { SelectItem } from 'primeng/api/selectitem';
+
 
 export interface IModuleType extends SelectItem {
     label?: string;

@@ -19,10 +19,10 @@
         </span>
     </div>
     <div class="ios-calc-title">See below the Calc source files without prj file.</div>
-    <p-accordion (onOpen)="onTabOpen($event)">
-        <div *ngFor="let srcFile of calcSourceFiles">
-            <p-accordionTab header="{{srcFile}}" [selected]="false">
-                <app-text-display id="textDisplay1" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
+    <p-accordion (onClose)="onTabClose($event)" (onOpen)="onTabOpen($event)">
+        <div *ngFor="let srcFile of calcSourceFiles; let ix = index">
+            <p-accordionTab id="files{{ix}}" header="{{srcFile}}">
+                <app-text-display id="textDisplay{{ix}}" + ix *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
                     name="textDisplay">
                 </app-text-display>
             </p-accordionTab>

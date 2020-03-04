@@ -2,7 +2,6 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app",
-    "baseUrl": "",
     "types": []
   },
   "files": [
@@ -20,9 +19,9 @@
     //  prints extra information while compiling templates
     "trace": true
     // enable IVY next-generation compilation and rendering pipeline
-    ,"enableIvy": false
+    ,"enableIvy": true
     // When true, generate all possible files even if they are empty. Default is false. Used by the Bazel build rules to simplify how Bazel rules track file dependencies. Do not use this option outside of the Bazel rules.
-    ,"allowEmptyCodegenFiles": false
+    ,"allowEmptyCodegenFiles": true
     // https://github.com/nogorilla/angular-cc-library/issues/61
   }
 }

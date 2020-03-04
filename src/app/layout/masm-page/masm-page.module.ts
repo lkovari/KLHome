@@ -7,9 +7,9 @@ import { MasmPageTitleComponent } from './masm-page-title.component';
 import { MasmPageContent1Component } from './masm-page-content1/masm-page-content1.component';
 import { MasmPageContent2Component } from './masm-page-content2/masm-page-content2.component';
 import { MasmPageRoutingModule } from './masm-page-routing.module';
-import { SharedModule } from 'app/shared/shared.module';
+import { SharedModule } from '../../shared/shared.module';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
-import { AccordionModule } from 'primeng/primeng';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   imports: [
