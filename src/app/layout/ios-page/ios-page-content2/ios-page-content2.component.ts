@@ -21,7 +21,8 @@ export class IosPageContent2Component implements OnInit {
       this.fileContent = fileContent;
       this.isDisplayText = true;
       // console.log('File ' + this.numconvFileContent);
-    });
+    }
+    );
   }
 
   ngOnInit() {
@@ -34,13 +35,16 @@ export class IosPageContent2Component implements OnInit {
     ]
   }
 
+  textDisplayName(ix: number): string {
+    return 'textDisplayName' + ix;
+  }
+
   onTabClose(event) {
-    console.log('onTabClose fired ' + event.index);
+    console.log('Accordion fired onTabClose param event.index is ' + event.index);
   }
 
   onTabOpen(event) {
-    console.log('onTabOpen fired ' + event.index);
+    console.log('Accordion fired onTabOpen param event.index is ' + event.index);
     this.loadFileContent(this.calcSourceFiles[event.index]);
   }
-
 }

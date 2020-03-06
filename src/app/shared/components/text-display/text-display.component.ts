@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TextDisplayComponent implements OnInit {
   private _fileContent: string;
+  @Input() ix: number;
   @Input() visible: boolean;
   @Input() fileName: string;
   @Input()

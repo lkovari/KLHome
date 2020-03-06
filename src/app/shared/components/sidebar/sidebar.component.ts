@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('03/05/2020 12:42 AM');
-  lastUpdateTooltip = 'Upgraded to Angular v9.1.0-next.3, PrimeNG v9.0.0, switched on IVY';
+  lastUpdate = new Date('03/06/2020 10:43 PM');
+  lastUpdateTooltip = 'Workaround for the Accordion (onOpen)="onTabOpen($event)" event.index problem';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

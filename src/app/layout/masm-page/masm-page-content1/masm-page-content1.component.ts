@@ -10,11 +10,32 @@ export class MasmPageContent1Component implements OnInit {
   isDisplayText = false;
   fileName: string;
   fileContent: string;
+  masmSoureFileTitles = [];
+  masmSourceFiles = [];
 
 
   constructor(private fileLoaderService: FileLoaderService) { }
 
   ngOnInit() {
+    this.masmSoureFileTitles = [
+      'NumConv converts values between numerical systems',
+      'RealDtTm shows and sets the real time clock date and time',
+      'Anthem plays the Hungarian National Anthem in the background with PC speaker',
+      'CMRam reads and setup the CMOS RAM',
+      'VGACRT setups the VGA CRT M6811 chip which controls the monitor screen refresh etc.',
+      'Maker: simple demo, put the characters to random position and move the characters to the proper position to show a readable text',
+      'Prime prime number generator with file handling /reading and writing/',
+      'Fs file search with recursive back-tracking algorythm',
+      'Slow after the program runs stay resident under 1Ch interrupts, monitors the keyboard buffer and to Ctrl-left Shift slows down ' +
+       'the computer and Ctrl-right Shift increases the speed of the computer.',
+      'PCINFO display gives internal information about your PC for example, 1st game ports, printer ports, DOS. ' +
+       'version (made 1987) RS232 cards, etc.',
+      'MS memory Spy displays the physical memory size with test. This little program contains a converter between numerical systems'
+    ];
+    this.masmSourceFiles = [
+      'numconv.asm', 'realdttm.asm', 'anthem.asm', 'cmram.asm', 'vgacrt.asm',
+      'maker.asm', 'prime.asm', 'fs.asm', 'slow.asm', 'pcinfo.asm', 'ms.asm'
+    ];
   }
 
   loadFileContent(fileName: string) {
@@ -26,32 +47,13 @@ export class MasmPageContent1Component implements OnInit {
     });
   }
 
+  textDisplayName(ix: number): string {
+    return 'textDisplayName' + ix;
+  }
 
   onTabOpen(event) {
     const ix = event.index;
-    if (ix === 0) {
-      this.loadFileContent('numconv.asm');
-    } else if (ix === 1) {
-      this.loadFileContent('realdttm.asm');
-    } else if (ix === 2) {
-      this.loadFileContent('anthem.asm');
-    } else if (ix === 3) {
-      this.loadFileContent('cmram.asm');
-    } else if (ix === 4) {
-      this.loadFileContent('vgacrt.asm');
-    } else if (ix === 5) {
-      this.loadFileContent('maker.asm');
-    } else if (ix === 6) {
-      this.loadFileContent('prime.asm');
-    } else if (ix === 7) {
-      this.loadFileContent('fs.asm');
-    } else if (ix === 8) {
-      this.loadFileContent('slow.asm');
-    } else if (ix === 9) {
-      this.loadFileContent('pcinfo.asm');
-    } else if (ix === 10) {
-      this.loadFileContent('ms.asm');
-    }
+    this.loadFileContent(this.masmSourceFiles[ix]);
   }
 
 }
