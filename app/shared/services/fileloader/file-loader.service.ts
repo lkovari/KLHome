@@ -13,7 +13,7 @@ export class FileLoaderService {
     return this.http.get(filePath, {responseType: 'text'})
       .pipe(
         tap(data => {
-            console.log(`LOAD: Content of the CSV file ${filePath} loaded.`);
+            console.log(`LOAD: Content of the file ${filePath} loaded.`);
         },
         error => console.error('File: ' + filePath + ' Error: ' + error)
       )
