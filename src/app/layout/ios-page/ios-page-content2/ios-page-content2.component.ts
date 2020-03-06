@@ -40,8 +40,7 @@ export class IosPageContent2Component implements OnInit {
 
   onTabOpen(event) {
     console.log('onTabOpen fired ' + event.index);
-    const ix = event.index;
-    this.loadFileContent(this.calcSourceFiles[ix]);
+    this.loadFileContent(this.calcSourceFiles[event.index]);
   }
 
 }
