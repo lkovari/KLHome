@@ -128,8 +128,8 @@
               <p *ngIf="customtextinput.errors.minlength">Minimum length is {{minLength}} !</p>
             </span>
           </div>
-          <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set Data</button>
-          <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear Data</button>
+          <button class="btn btn-primary spacer" type="button" (click)="onSetValues(dataEntryForm)">Set Data</button>
+          <button class="btn btn-primary spacer" type="button" (click)="onClearValues(dataEntryForm)">Clear Data</button>
           <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
           <div class="sub-topic">
             <div class="cols-xs-12">

@@ -111,10 +111,16 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     }
 
 
-    onSelect(event) {
+    onSelect(value: any) {
         this.onModelTouched();
         this.onModelChange(event);
-        this.onDateSelected.emit(event);
+        if (value instanceof Date) {
+            this.onDateSelected.emit(<Date>value);
+        } else if (value instanceof String) {
+            const dateAsString = <string>value;
+            this.onDateSelected.emit(new Date(Date.parse(dateAsString)));
+        }
+        console.log('onSelect event fired ' + value);
     }
 
     onTodayClick(date: Date) {
@@ -122,10 +128,11 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
         this.onModelChange(date);
         this.onTodayClicked.emit(date);
     }
-    onClearClick($event) {
+    onClearClick(event: MouseEvent) {
         this.onModelTouched();
         this.onModelChange(null);
         this.onClearClicked.emit(null);
+        console.log('onClearClick click event fired ' + event);
     }
 
     onNgModelChange(date: Date) {

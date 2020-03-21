@@ -10,8 +10,8 @@ export class MasmPageContent1Component implements OnInit {
   isDisplayText = false;
   fileName: string;
   fileContent: string;
-  masmSoureFileTitles = [];
-  masmSourceFiles = [];
+  masmSoureFileTitles: string[] = [];
+  masmSourceFiles: string[] = [];
 
 
   constructor(private fileLoaderService: FileLoaderService) { }

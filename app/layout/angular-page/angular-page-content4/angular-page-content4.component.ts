@@ -39,7 +39,7 @@ export class AngularPageContent4Component implements OnInit {
     return addressModel;
   }
 
-  onSetModel(exampleForm) {
+  onSetModel(exampleForm: FormGroup) {
     this.exampleForm.setValue(
     {
       address: this.getSampleModel(),
@@ -51,9 +51,10 @@ export class AngularPageContent4Component implements OnInit {
     this.exampleForm.markAsDirty();
     this.exampleForm.markAsTouched();
     this.exampleForm.setErrors(null);
+    console.log('onSetModel click event fired ' + exampleForm.status);
   }
 
-  onClearModel(form) {
+  onClearModel(exampleForm: FormGroup) {
     this.exampleForm.patchValue(
       {
         address: {
@@ -69,6 +70,7 @@ export class AngularPageContent4Component implements OnInit {
     this.exampleForm.markAsPristine();
     this.exampleForm.markAsUntouched();
     this.isSubmitted = false;
+    console.log('onClearModel click event fired ' + exampleForm.status);
   }
 
   extractFormControl(): FormControl {

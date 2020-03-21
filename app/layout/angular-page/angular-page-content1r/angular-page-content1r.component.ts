@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { IUser } from '../angular-page-content1/user.interface';
 import { User } from '../angular-page-content1/user.model';
 import { CustomValidators } from './custom-validators';
@@ -54,7 +54,7 @@ export class AngularPageContent1rComponent implements OnInit {
     console.log(this.formValue);
   }
 
-  setValues(form) {
+  setValues(form: FormGroup) {
     this.dataEntryForm.setValue(
       // this.dataEntryForm.form.patchValue(
       {
@@ -68,9 +68,10 @@ export class AngularPageContent1rComponent implements OnInit {
       this.dataEntryForm.controls[key].markAsTouched();
     });
     this.submittedFormData = undefined;
+    console.log('setValues Click event fired ' + form.status);
   }
 
-  clearValues(form) {
+  clearValues(form: FormGroup) {
     this.dataEntryForm.setValue(
       {
         userName: null,
@@ -83,6 +84,7 @@ export class AngularPageContent1rComponent implements OnInit {
       this.dataEntryForm.controls[key].markAsUntouched();
     });
     this.submittedFormData = undefined;
+    console.log('clearValues Click event fired ' + form.status);
   }
 
   onSubmit() {

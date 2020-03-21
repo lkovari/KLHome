@@ -13,7 +13,7 @@ export class PersonDataResolver implements Resolve<Array<Person>> {
   constructor(private examplePersonDataService: ExamplePersonDataService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Array<Person>> {
-    console.log(`RESOLVE BEGIN`);
+    console.log(`RESOLVE BEGIN route: ${route} state: ${state}`);
     console.log('RESOLVER: PersonDataResolver.resolve started.');
     return this.examplePersonDataService.loadtExamplePersonData()
     .pipe(

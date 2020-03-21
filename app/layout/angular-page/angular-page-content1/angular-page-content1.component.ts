@@ -25,7 +25,7 @@ export class AngularPageContent1Component implements OnInit {
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
-  setValues(form) {
+  setValues(form: NgForm) {
     this.dataEntryForm.form.setValue(
       // this.dataEntryForm.form.patchValue(
       {
@@ -39,9 +39,10 @@ export class AngularPageContent1Component implements OnInit {
       this.dataEntryForm.controls[key].markAsTouched();
     });
     this.submittedFormData = undefined;
+    console.log('setValues Click event fired ' + form.status);
   }
 
-  clearValues(form) {
+  clearValues(form: NgForm) {
     this.dataEntryForm.form.setValue(
       {
         userName: null,
@@ -54,6 +55,7 @@ export class AngularPageContent1Component implements OnInit {
       this.dataEntryForm.controls[key].markAsUntouched();
     });
     this.submittedFormData = undefined;
+    console.log('clearValues click event fired ' + form.status);
   }
 
   getDataEntryForm(): NgForm {
