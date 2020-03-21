@@ -121,7 +121,7 @@ export class AngularPageContent3Component implements OnInit {
     console.log('Last name Changed ' + lastName);
   }
 
-  onClearModel(form) {
+  onClearModel(exampleForm: FormGroup) {
     this.exampleForm.patchValue(
       {
         complexName: new ComplexName(),
@@ -138,9 +138,10 @@ export class AngularPageContent3Component implements OnInit {
     this.exampleForm.markAsPristine();
     this.exampleForm.markAsUntouched();
     this.submitted = false;
+    console.log('onClearModel click event fired ' + exampleForm.status);
   }
 
-  onSetModel(exampleForm) {
+  onSetModel(exampleForm: FormGroup) {
     this.exampleForm.setValue(
     {
       complexName: this.getSampleModel(),
@@ -153,6 +154,7 @@ export class AngularPageContent3Component implements OnInit {
     this.exampleForm.markAsDirty();
     this.exampleForm.markAsTouched();
     this.exampleForm.setErrors(null);
+    console.log('onSetModel click event fired ' + exampleForm.status);
   }
 
   extractFormControl(): FormControl {

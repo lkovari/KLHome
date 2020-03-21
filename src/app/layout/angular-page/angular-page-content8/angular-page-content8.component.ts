@@ -50,12 +50,14 @@ export class AngularPageContent8Component implements OnInit {
     }
   }
 
-  onScrolltoTopClicked(event): void {
+  onScrolltoTopClicked(event: MouseEvent): void {
     this.virtualScroll.scrollToIndex(0);
+    console.log('onScrolltoTopClicked click event fired ' + event);
   }
 
-  onScrolltoBottomClicked(event): void {
+  onScrolltoBottomClicked(event: MouseEvent): void {
     this.virtualScroll.scrollToIndex(100000);
+    console.log('onScrolltoBottomClicked click event fired ' + event);
   }
 
   trackByFn(item: Person) {

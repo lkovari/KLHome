@@ -94,14 +94,6 @@ export class AngularPageContent7Component implements OnInit {
     return (<FormArray>this.mainForm.get('userRoles')).controls.length === 0;
   }
 
-  createPasswordGroup(userRole: UserRole): FormGroup {
-    const passwordGroup = this.formBuilder.group({
-      password: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ],
-      confirmPassword: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ]
-    }, [ { validator: CustomValidators.passwordCrossValidator }, {updateOn: 'change'} ] );
-    return passwordGroup;
-  }
-
   createUserRole(userRole: UserRole): FormGroup {
     const userRoleGroup = this.formBuilder.group({
       roleType: [ null, [ Validators.required ] ],
@@ -157,11 +149,12 @@ export class AngularPageContent7Component implements OnInit {
     return (ix * 10) + seq;
   }
 
-  onAddUserRole(event) {
+  onAddUserRole(event: MouseEvent) {
     (<FormArray>this.mainForm.get('userRoles')).push(this.createUserRole(null));
+    console.log('onAddUserRole click event fired ' + event);
   }
 
-  onSetModel(event) {
+  onSetModel(event: MouseEvent) {
     const userFormData = new UserFormData();
     userFormData.userName = 'lkovari';
     userFormData.password = 'Passw0rd@';
@@ -187,15 +180,17 @@ export class AngularPageContent7Component implements OnInit {
       },
     ];
     this.setupValues(userFormData);
+    console.log('onSetModel Click event Fired ' + event)
   }
 
-  onClearModel(event) {
+  onClearModel(event: MouseEvent) {
     const userFormData = new UserFormData();
     this.setupValues(userFormData);
     this.mainForm.markAsUntouched();
     this.mainForm.markAsPristine();
     this.mainFormData = undefined;
     this.mainFormSubmitData = undefined;
+    console.log('onClearModel click event fired ' + event);
   }
 
   isUserFieldInvalid(ur: FormControl, field: string): boolean {

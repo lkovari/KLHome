@@ -66,10 +66,6 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     console.log('onModelChanged event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }
 
-  onSetCustomDate(event) {
-    this.customDate = new Date('02/02/1965');
-  }
-
   onChanged(event) {
     console.log('onChanged event arg ' + JSON.stringify(event) + ' customText ' + JSON.stringify(this.customText));
   }
@@ -79,7 +75,7 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     console.log('onBlur event arg ' + JSON.stringify(event) + ' customText ' + JSON.stringify(this.customText));
   }
 
-  setValues(form) {
+  onSetValues(form: NgForm) {
     this.dataEntryForm.form.setValue(
       // this.dataEntryForm.form.patchValue(
       {
@@ -94,9 +90,10 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     /* we can use individually also
     (this.dataEntryForm.form.controls['pdropdown'] as FormControl).markAsDirty();
     */
+   console.log('setValues click event fired ' + form.status);
   }
 
-  clearValues(form) {
+  onClearValues(form: NgForm) {
     this.dataEntryForm.form.setValue(
       {
         customcalendar: null,
@@ -107,6 +104,7 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
       this.dataEntryForm.controls[key].markAsPristine();
       this.dataEntryForm.controls[key].markAsUntouched();
     });
+    console.log('clearValues click event fired ' + form.status);
   }
 
   extractData() {
@@ -119,6 +117,6 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     this.form_data.customtextinput = this.dataEntryForm.value.customtextinput;
     // reset the form same as when reloaded
     this.dataEntryForm.reset();
-    console.log(this.dataEntryForm);
+    console.log('onSubmit fired ' + userForm.status);
   }
 }

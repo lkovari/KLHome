@@ -14,6 +14,7 @@ export class FileLoaderService {
       .pipe(
         tap(data => {
             console.log(`LOAD: Content of the file ${filePath} loaded.`);
+            console.log('Content ' + data);
         },
         error => console.error('File: ' + filePath + ' Error: ' + error)
       )

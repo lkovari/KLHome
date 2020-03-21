@@ -18,11 +18,21 @@
       "es2018",
       "dom"
     ], 
+    /* https://www.typescriptlang.org/docs/handbook/compiler-options.html" */
+    //	Report an error when not all code paths in function return a value.
     "noImplicitReturns": true,
+    // Report errors on unused locals.
     "noUnusedLocals": true,
-    // ,"noUnusedParameters": true
-    // ,"noImplicitAny": true
-    // ,"strictNullChecks": true
+    // When the noImplicitAny flag is true and the TypeScript compiler cannot infer the type, it still generates the JavaScript files
+    // "noImplicitAny": true,
+    // aise error on this expressions with an implied any type
+    "noImplicitThis": true
+    // can reports errors for fall-through cases in switch statement where the case clause is non-empty.
+    // ,"noFallthroughCasesInSwitch": true
+    // the null and undefined values are not in the domain of every type and are only assignable to themselves and any
+    // ,"strictNullChecks": true    
+    // Report errors on unused parameters
+    ,"noUnusedParameters": true
   },
   "angularCompilerOptions": {
     // When true (recommended), enables the binding expression validation phase of the template compiler, which uses TypeScript to validate binding expressions

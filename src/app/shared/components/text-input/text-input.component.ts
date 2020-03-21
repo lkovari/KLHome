@@ -94,8 +94,9 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
     }
   }
 
-  onClick($event) {
+  onClick(event: MouseEvent) {
     this.onModelTouched();
+    console.log('onClick click event fired ' + event);
   }
 
   onKeyUp(event) {

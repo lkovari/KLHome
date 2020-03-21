@@ -48,12 +48,15 @@ export class DataMainInputComponent implements OnInit {
     this.tabItems = [
       { label: 'Tab #1', icon: 'fa fa-fw fa-bar-chart', command: (event) => {
         this.tabItemChanged(0);
+        console.log('tab1 selected ' + event);
       }},
       {label: 'Tab #2', icon: 'fa fa-fw fa-calendar', command: (event) => {
         this.tabItemChanged(1);
+        console.log('tab2 selected ' + event);
       }},
       {label: 'Tab #3', icon: 'fa fa-fw fa-book', command: (event) => {
         this.tabItemChanged(2);
+        console.log('tab3 selected ' + event);
       }}
     ];
     // this.activeItem = this.tabItems[1];
@@ -103,8 +106,9 @@ export class DataMainInputComponent implements OnInit {
     );
   }
 
-  onSetModel(event) {
+  onSetModel(event: MouseEvent) {
     this.setModel();
+    console.log('onSetModel click event fired ' + event);
   }
 
   clearValues() {
@@ -130,12 +134,14 @@ export class DataMainInputComponent implements OnInit {
     this.formData.form.markAsUntouched();
   }
 
-  onUnselectTab(event) {
+  onUnselectTab(event: MouseEvent) {
     this.activeItem = null;
     this.tabIndex = -1;
+    console.log('onUnselectTab click event fired ' + event);
   }
 
-  onClearModel(event) {
+  onClearModel(event: MouseEvent) {
     this.clearValues();
+    console.log('onClearModel click event fired ' + event);
   }
 }

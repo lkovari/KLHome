@@ -147,7 +147,8 @@ export class DisplayFormStateComponent {
     return this.formGroupStack.length > 0;
   }
 
-  onBackClicked(event) {
+  onBackClicked(event: MouseEvent) {
     this._mainFormGroup = this.formGroupStack.pop();
+    console.log('onBackClicked click event fired ' + event);
   }
 }

@@ -132,16 +132,18 @@ export class CustomInputMaskComponent implements OnInit, ControlValueAccessor  {
       this.onModelTouched();
   }
 
-  onComplete(event) {
+  onComplete(event: any) {
     this.onModelTouched();
     this.onModelChange(this._value);
     this.onChangeEvent.emit(this._value);
+    console.log('onComplete event fired ' + event);
   }
 
-  onBlur(event) {
+  onBlur(event: any) {
       this.onBlurEvent.emit(this._value);
       this.onModelTouched();
       this.onModelChange(this._value);
+      console.log('onBlur event fired ' + event);
   }
 
 }

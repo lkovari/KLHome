@@ -25,16 +25,19 @@ export class MainFormComponent implements OnInit {
       {
         id: 'tab1', label: 'Tab #1', icon: 'fa fa-fw fa-bar-chart', command: (event) => {
           this.tabItemChanged(0);
+          console.log('tab1 selected ' + event);
         }
       },
       {
         id: 'tab2', label: 'Tab #2', icon: 'fa fa-fw fa-calendar', command: (event) => {
           this.tabItemChanged(1);
+          console.log('tab2 selected ' + event);
         }
       },
       {
         id: 'tab3', label: 'Tab #3', icon: 'fa fa-fw fa-book', command: (event) => {
           this.tabItemChanged(2);
+          console.log('tab3 selected ' + event);
         }
       }
     ];
@@ -161,20 +164,23 @@ export class MainFormComponent implements OnInit {
     });
   }
 
-  onSetModel(event) {
+  onSetModel(event: MouseEvent) {
     this.setSampleValues();
+    console.log('onSetModel click event fired ' + event);
   }
 
-  onClearModel(event) {
+  onClearModel(event: MouseEvent) {
     this.clearValues();
     this.customForm.markAsUntouched();
     this.customForm.markAsPristine();
+    console.log('onClearModel click event fired ' + event);
   }
 
-  onUnselectTab(event) {
+  onUnselectTab(event: MouseEvent) {
     this.selectedFormModel = null;
     this.activeItem = null;
     this.tabIndex = -1;
+    console.log('onUnselectTab click event fired ' + event);
   }
 
   onSubmit(customForm) {

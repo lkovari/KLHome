@@ -164,7 +164,7 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
   }
 
   onDone(form: FormGroup) {
-    console.log('onDone ' + JSON.stringify(this.complexNameForm.value));
+    console.log('onDone ' + JSON.stringify(form.value));
   }
 
   /*
