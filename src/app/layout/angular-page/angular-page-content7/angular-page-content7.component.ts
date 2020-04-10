@@ -98,7 +98,7 @@ export class AngularPageContent7Component implements OnInit {
    * findRoleTypeByOrdinal
    * @param ord ~ ordinal of the enum
    */
-  private findRoleTypeByOrdinal(ord: number): RoleTypeModel | undefined{
+  private findRoleTypeByOrdinal(ord: number): RoleTypeModel | undefined {
     const roleTypeItem = this.roleTypes.find((rt: RoleTypeModel) => {
       return rt.value === ord;
     });
@@ -109,7 +109,7 @@ export class AngularPageContent7Component implements OnInit {
    * findModuleTypeByOrdinal
    * @param ord ~ ordinal of the enum
    */
-  private findModuleTypeByOrdinal(ord: number): ModuleTypeModel | undefined{
+  private findModuleTypeByOrdinal(ord: number): ModuleTypeModel | undefined {
     const roleTypeItem = this.moduleTypes.find((rt: ModuleTypeModel) => {
       return rt.value === ord;
     });
