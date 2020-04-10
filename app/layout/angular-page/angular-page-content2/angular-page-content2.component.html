@@ -109,9 +109,9 @@
               (onModelChanged)="onModelChanged($event)">
             </app-custom-calendar>
             <div *ngIf="customcalendar && (customcalendar.invalid && customcalendar.dirty)" class="text-danger">
-              <p *ngIf="customcalendar.errors.required">Valid Date is required!</p>
+              <p *ngIf="customcalendar?.errors.required">Valid Date is required!</p>
               <p *ngIf="customcalendar.hasError('mindate')">Min Date is {{ minDate | date:'MM/dd/yyyy' }}!</p>
-              <p *ngIf="customcalendar.errors.maxdate">Max Date is {{ maxDate | date:'MM/dd/yyyy' }}!</p>
+              <p *ngIf="customcalendar?.errors.maxdate">Max Date is {{ maxDate | date:'MM/dd/yyyy' }}!</p>
             </div>
           </div>
           <div class="form-group">
@@ -123,9 +123,9 @@
               (onBlur)="onBlur($event)" required>
             </app-text-input>
             <span class="text-danger" *ngIf="customtextinput && (customtextinput.invalid && !customtextinput.pristine)">
-              <p *ngIf="customtextinput.errors.required">Custom text is Required</p>
+              <p *ngIf="customtextinput?.errors.required">Custom text is Required</p>
               <p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p>
-              <p *ngIf="customtextinput.errors.minlength">Minimum length is {{minLength}} !</p>
+              <p *ngIf="customtextinput?.errors.minlength">Minimum length is {{ minLength }} !</p>
             </span>
           </div>
           <button class="btn btn-primary spacer" type="button" (click)="onSetValues(dataEntryForm)">Set Data</button>

@@ -54,7 +54,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     @Input() style: string;
     @Input() styleClass: string;
     @Input() hourFormat = '24';
-    private _yearRange = null;
+    private _yearRange;
     @Input()
     get yearRange(): string {
         return this._yearRange;
@@ -64,7 +64,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     }
     @Input() dateFormat = 'mm/dd/yy';
     @Input() appendTo = null;
-    private _minDate: Date = null;
+    private _minDate: Date;
     @Input()
     get minDate(): Date {
         return this._minDate;
@@ -72,7 +72,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     set minDate(v: Date) {
         this._minDate = v;
     }
-    private _maxDate: Date = null;
+    private _maxDate: Date;
     @Input()
     get maxDate(): Date {
         return this._maxDate;
@@ -81,11 +81,11 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
         this._maxDate = v;
     }
 
-    private _date: Date;
-    get date() {
+    private _date: Date | null;
+    get date(): Date | null {
         return this._date;
     }
-    set date(date: Date) {
+    set date(date: Date | null) {
         this._date = date;
     }
     private _name: string;
@@ -95,10 +95,10 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     set name(name: string) {
         this._name = name;
     }
-    @Output() onTodayClicked = new EventEmitter<Date>();
-    @Output() onDateSelected = new EventEmitter<Date>();
-    @Output() onClearClicked = new EventEmitter<Date>();
-    @Output() onModelChanged = new EventEmitter<Date>();
+    @Output() onTodayClicked = new EventEmitter<Date | null>();
+    @Output() onDateSelected = new EventEmitter<Date | null>();
+    @Output() onClearClicked = new EventEmitter<Date | null>();
+    @Output() onModelChanged = new EventEmitter<Date | null>();
     @ViewChild('Model', { static: true }) calendarModel: NgModel;
 
     onModelChange: Function = () => { };
@@ -142,35 +142,28 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     }
 
     validate(c: FormControl) {
-        let validationResult = null;
+        const validationResult = {
+            mindate: {
+                invalid: false
+            },
+            maxdate: {
+                invalid: false
+            }
+        }
         if (c.value) {
             const valueAsDate = <Date>c.value;
             if (this.minDate) {
                 if (valueAsDate < this.minDate) {
                     this._date = null;
                     this.onModelChange(this._date);
-                    validationResult = {
-                        mindate: {
-                            invalid: true
-                        }
-                    }
+                    validationResult.mindate.invalid = true;
                 }
             }
             if (this.maxDate) {
                 if (valueAsDate > this.maxDate) {
                     this._date = null;
                     this.onModelChange(this._date);
-                    if (validationResult !== null) {
-                        validationResult.maxdate = {
-                            invalid: true
-                        }
-                    } else {
-                        validationResult = {
-                            maxdate: {
-                                invalid: true
-                            }
-                        };
-                    }
+                    validationResult.maxdate.invalid = true;
                 }
             }
         }

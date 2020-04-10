@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('03/21/2020 07:17 PM');
-  lastUpdateTooltip = 'Added noUnusedParameters to tsconfig.json, use navbar-expand-xl to hide fa-bars icon if needed';
+  lastUpdate = new Date('04/10/2020 04:27 PM');
+  lastUpdateTooltip = 'Set strictNullChecks in the tsconfig.json';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

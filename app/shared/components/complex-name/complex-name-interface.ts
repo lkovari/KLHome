@@ -1,5 +1,5 @@
 export interface IComplexName {
-    firstName: string;
-    middleInitial?: string;
-    lastName: string;
+    firstName: string | null;
+    middleInitial: string | null;
+    lastName: string | null;
 }

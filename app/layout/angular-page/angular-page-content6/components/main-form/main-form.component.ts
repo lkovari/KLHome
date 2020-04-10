@@ -13,9 +13,9 @@ export class MainFormComponent implements OnInit {
   githubLogoPath: string;
   formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   tabItems: MenuItem[];
-  activeItem: MenuItem;
+  activeItem: MenuItem | null;
   tabIndex: number;
-  selectedFormModel: FormGroup;
+  selectedFormModel: FormGroup | null;
   @Input() customForm: FormGroup;
 
   constructor() { }

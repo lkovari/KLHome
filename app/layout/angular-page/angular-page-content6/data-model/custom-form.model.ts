@@ -4,9 +4,9 @@ import { TabData2 } from './custom-form-tab2.model';
 import { TabData3 } from './custom-form-tab3.model';
 
 export class CustomFormModel implements ICustomForm {
-    customText: string;
-    customNumber: number;
-    emailAddress: string;
+    customText: string | null;
+    customNumber: number | null;
+    emailAddress: string | null;
     tabData1: TabData1;
     tabData2: TabData2;
     tabData3: TabData3;

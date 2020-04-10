@@ -2,17 +2,17 @@ import { ICustomForm } from './custom-form.interface';
 
 export class CustomFormModel implements ICustomForm {
     // data fields on main form
-    customText: string;
-    customNumber: number;
+    customText: string | null;
+    customNumber: number | null;
     // data fields on Tab Sheet 1
-    customText1: string;
-    customNumber1: number;
+    customText1: string | null;
+    customNumber1: number | null;
     // data fields on Tab Sheet 1
-    customText2: string;
-    customNumber2: number;
+    customText2: string | null;
+    customNumber2: number | null;
     // data fields on Tab Sheet 3
-    customText3: string;
-    customNumber3: number;
+    customText3: string | null;
+    customNumber3: number | null;
 
     constructor() {
         this.customText = null;

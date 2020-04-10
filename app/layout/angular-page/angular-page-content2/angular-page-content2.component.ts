@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./angular-page-content2.component.scss']
 })
 export class AngularPageContent2Component implements OnInit, AfterViewInit {
-  @ViewChild('dataEntryForm', { static: true }) dataEntryForm: NgForm;
+  @ViewChild('dataEntryForm', { static: true }) dataEntryForm: NgForm | null;
   customDate: Date;
   selectedDate: Date;
   customText: string;
@@ -40,7 +40,7 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataEntryForm.valueChanges.subscribe(v => {
+    this.dataEntryForm?.valueChanges?.subscribe(v => {
       this.changedFormContent = v
       console.log(this.changedFormContent);
     });
@@ -76,16 +76,16 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
   }
 
   onSetValues(form: NgForm) {
-    this.dataEntryForm.form.setValue(
+    this.dataEntryForm?.form.setValue(
       // this.dataEntryForm.form.patchValue(
       {
         customcalendar: new Date('02/02/1993'),
         customtextinput: 'abraka'
       }
     );
-    Object.keys( this.dataEntryForm.controls).forEach(key => {
-      this.dataEntryForm.controls[key].markAsDirty();
-      this.dataEntryForm.controls[key].markAsTouched();
+    Object.keys(this.dataEntryForm!.controls).forEach(key => {
+      this.dataEntryForm?.controls[key].markAsDirty();
+      this.dataEntryForm?.controls[key].markAsTouched();
     });
     /* we can use individually also
     (this.dataEntryForm.form.controls['pdropdown'] as FormControl).markAsDirty();
@@ -94,15 +94,15 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
   }
 
   onClearValues(form: NgForm) {
-    this.dataEntryForm.form.setValue(
+    this.dataEntryForm?.form.setValue(
       {
         customcalendar: null,
         customtextinput: ''
       }
     );
-    Object.keys( this.dataEntryForm.controls).forEach(key => {
-      this.dataEntryForm.controls[key].markAsPristine();
-      this.dataEntryForm.controls[key].markAsUntouched();
+    Object.keys(this.dataEntryForm!.controls).forEach(key => {
+      this.dataEntryForm?.controls[key].markAsPristine();
+      this.dataEntryForm?.controls[key].markAsUntouched();
     });
     console.log('clearValues click event fired ' + form.status);
   }
@@ -113,10 +113,10 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
 
   onSubmit(userForm: NgForm) {
     this.submitted = true;
-    this.form_data.customcalendar = this.dataEntryForm.value.customcalendar;
-    this.form_data.customtextinput = this.dataEntryForm.value.customtextinput;
+    this.form_data.customcalendar = this.dataEntryForm?.value.customcalendar;
+    this.form_data.customtextinput = this.dataEntryForm?.value.customtextinput;
     // reset the form same as when reloaded
-    this.dataEntryForm.reset();
+    this.dataEntryForm?.reset();
     console.log('onSubmit fired ' + userForm.status);
   }
 }

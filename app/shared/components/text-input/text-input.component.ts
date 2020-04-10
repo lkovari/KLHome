@@ -2,7 +2,7 @@
  * Created by lkovari on 2018.02.08.
  */
 import { Component, OnInit, ElementRef, forwardRef, Input, Output, ViewChild, EventEmitter } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, Validator, FormControl, ValidationErrors } from '@angular/forms';
 
 export const TEXT_INPUT_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
@@ -136,34 +136,45 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
     this.disabled = disabled;
   }
 
-  validate(c: FormControl) {
-    let validationResult = null;
+  validate(c: FormControl): ValidationErrors | null {
+    let validationResult = {};
     if (c.value) {
       if (this._capital) {
         if (!(c.value.charCodeAt(0) >= 65 && c.value.charCodeAt(0) <= 90)) {
-          validationResult = {
-            capital: {
-              invalid: true
+          if (validationResult) {
+            validationResult = {
+              capital: {
+                invalid: true
+              }
             }
-          };
+          } else {
+            validationResult = {
+              capital: {
+                invalid: true
+              }
+            }
+          }
         }
       }
       if (this._minLength > 0) {
         if (c.value.length < this._minLength) {
-          if (validationResult !== null) {
-            validationResult.minlength = {
-              invalid: true
+          if (validationResult) {
+            validationResult = {
+              minlength: {
+                invalid: true
+              }
             }
           } else {
             validationResult = {
               minlength: {
                 invalid: true
               }
-            };
+            }
           }
         }
       }
     }
-    return validationResult;
+    const hasProblem = validationResult['capital'] || validationResult['minlength'];
+    return hasProblem ? validationResult : null;
   }
 }

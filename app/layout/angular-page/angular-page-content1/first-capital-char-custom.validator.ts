@@ -2,28 +2,21 @@ import { Directive} from '@angular/core';
 import { NG_VALIDATORS, Validator, FormControl, ValidatorFn, AbstractControl } from '@angular/forms';
 
 function validateFirstCharIsCapitalLetter(): ValidatorFn {
-    let validationResult = null;
+  // { [key: string]: boolean } | null
+    const validationResult = {
+      firstcapital: {
+        invalid: true
+      }
+  };
     return (c: AbstractControl) => {
         if (c !== undefined && c !== null && c.value && c.value.length > 0) {
           if (!(c.value.charCodeAt(0) >= 65 && c.value.charCodeAt(0) <= 90)) {
-              validationResult = {
-                  firstcapital: {
-                    invalid: true
-                  }
-              };
+              validationResult.firstcapital.invalid = true;
           } else {
-            validationResult = {
-              firstcapital: {
-                invalid: false
-              }
-            };
+            validationResult.firstcapital.invalid = false;
           }
         } else {
-          validationResult = {
-            firstcapital: {
-              invalid: false
-            }
-          };
+          validationResult.firstcapital.invalid = false;
         }
         if (validationResult) {
           if (!validationResult.firstcapital.invalid) {

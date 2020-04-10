@@ -11,7 +11,7 @@ import { AddressModel } from '../../../shared/components/address/address.model';
 export class AngularPageContent4Component implements OnInit {
   isSubmitted = false;
   githubLogoPath: string;
-  exampleForm: FormGroup;
+  exampleForm: FormGroup | null;
   address: IAddress;
   formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   form_data = {
@@ -39,23 +39,23 @@ export class AngularPageContent4Component implements OnInit {
     return addressModel;
   }
 
-  onSetModel(exampleForm: FormGroup) {
-    this.exampleForm.setValue(
+  onSetModel(exampleForm: FormGroup | null) {
+    this.exampleForm?.setValue(
     {
       address: this.getSampleModel(),
     });
     // with proper values the form valid
-    this.exampleForm.get('address').markAsDirty();
-    this.exampleForm.get('address').markAsTouched();
-    this.exampleForm.get('address').setErrors(null);
-    this.exampleForm.markAsDirty();
-    this.exampleForm.markAsTouched();
-    this.exampleForm.setErrors(null);
-    console.log('onSetModel click event fired ' + exampleForm.status);
+    this.exampleForm?.get('address')!.markAsDirty();
+    this.exampleForm?.get('address')!.markAsTouched();
+    this.exampleForm?.get('address')!.setErrors(null);
+    this.exampleForm?.markAsDirty();
+    this.exampleForm?.markAsTouched();
+    this.exampleForm?.setErrors(null);
+    console.log('onSetModel click event fired ' + exampleForm?.status);
   }
 
-  onClearModel(exampleForm: FormGroup) {
-    this.exampleForm.patchValue(
+  onClearModel(exampleForm: FormGroup | null) {
+    this.exampleForm?.patchValue(
       {
         address: {
           addressLine1: null,
@@ -65,24 +65,24 @@ export class AngularPageContent4Component implements OnInit {
         },
       }
     );
-    this.exampleForm.get('address').markAsPristine();
-    this.exampleForm.get('address').markAsUntouched();
-    this.exampleForm.markAsPristine();
-    this.exampleForm.markAsUntouched();
+    this.exampleForm?.get('address')!.markAsPristine();
+    this.exampleForm?.get('address')!.markAsUntouched();
+    this.exampleForm?.markAsPristine();
+    this.exampleForm?.markAsUntouched();
     this.isSubmitted = false;
-    console.log('onClearModel click event fired ' + exampleForm.status);
+    console.log('onClearModel click event fired ' + exampleForm?.status);
   }
 
   extractFormControl(): FormControl {
-    return <FormControl>this.exampleForm.get('address');
+    return <FormControl>this.exampleForm?.get('address');
   }
 
   extractFormControlValueByKey(key: string): FormControl {
-    return <FormControl>this.exampleForm.get('address')[key];
+    return <FormControl>this.exampleForm?.get('address')![key];
   }
 
   extractFormGroupValueByKey(key: string): FormControl {
-    return <FormControl>this.exampleForm[key];
+    return <FormControl>this.exampleForm![key];
   }
 
   iskeyValue(key: string) {
@@ -93,9 +93,9 @@ export class AngularPageContent4Component implements OnInit {
     return key === 'errors';
   }
 
-  onSubmit(form: FormGroup) {
+  onSubmit(form: FormGroup | null) {
     this.isSubmitted = true;
-    this.form_data = form.value;
+    this.form_data = form?.value;
     console.log(form);
   }
 }

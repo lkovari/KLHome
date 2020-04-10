@@ -1,11 +1,11 @@
 import { ITabData1 } from './custom-form-tab1.interface';
 
 export class TabData1 implements ITabData1 {
-    customText: string;
-    customNumber: number;
-    emailAddress: string;
-    freeText: string;
-    maskedText: string;
+    customText: string | null;
+    customNumber: number | null;
+    emailAddress: string | null;
+    freeText: string | null;
+    maskedText: string | null;
     constructor() {
         this.customNumber = null;
         this.customText = null;

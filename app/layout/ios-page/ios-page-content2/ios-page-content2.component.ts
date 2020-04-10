@@ -8,7 +8,7 @@ import { FileLoaderService } from '../../../shared/services/fileloader/file-load
 })
 export class IosPageContent2Component implements OnInit {
   public imagePathArray = ['assets/images/dev-objc-calc_ui_1.jpg', 'assets/images/dev-objc-calc_ui_2.jpg'];
-  public calcSourceFiles = [];
+  public calcSourceFiles = new Array<string>();
   isDisplayText = false;
   fileName: string;
   fileContent: string;
