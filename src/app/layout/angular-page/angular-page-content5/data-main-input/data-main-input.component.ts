@@ -12,9 +12,9 @@ export class DataMainInputComponent implements OnInit {
   @ViewChild('formData', { static: true }) formData: NgForm;
   isSubmitted = false;
   githubLogoPath: string;
-  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
+  // formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   tabItems: MenuItem[];
-  activeItem: MenuItem;
+  activeItem: MenuItem | null;
   tabIndex: number;
   minLength = 7;
   private _customFormModel: CustomFormModel;

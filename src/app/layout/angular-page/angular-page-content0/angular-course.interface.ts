@@ -3,9 +3,9 @@ export interface IAngularCourse {
     title: string;
     author: string;
     website: string;
-    dateOfCompleted: Date;
-    certificateImageSmall: string;
-    certificateImageLarge: string;
+    dateOfCompleted: Date | null;
+    certificateImageSmall: string | null;
+    certificateImageLarge: string | null;
     hours: number;
     minutes: number;
 }

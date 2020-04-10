@@ -26,7 +26,7 @@ export class DisplayFormStateComponent {
     return this._distanceFrom;
   }
   controlList = new Array<FormControl>();
-  formGroupStack = [];
+  formGroupStack = new Array<FormGroup>();
 
   constructor() { }
 
@@ -53,7 +53,7 @@ export class DisplayFormStateComponent {
   }
 
   extractFormControlKeys(): string[] {
-    let formControlKey = [];
+    let formControlKey = new Array<string>();
     if (this.mainFormGroup && this.mainFormGroup.controls) {
       formControlKey = Object.keys(this.mainFormGroup.controls);
     }
@@ -91,7 +91,7 @@ export class DisplayFormStateComponent {
   }
 
   extractType(control: AbstractControl): string {
-    let typeName = null;
+    let typeName = '';
     if (control instanceof FormControl) {
       typeName = 'FormControl';
     } else if (control instanceof FormGroup) {
@@ -117,13 +117,13 @@ export class DisplayFormStateComponent {
   }
 
   extractFormName(control: AbstractControl): string | null {
-    let group = null;
+    let group: FormGroup;
+    let name = '';
     if (!(control instanceof FormGroup)) {
       return null;
     } else {
       group = <FormGroup>control;
     }
-    let name: string;
     Object.keys(group.controls).forEach(key => {
       const childControl = group.get(key);
       if (childControl !== control) {
@@ -148,7 +148,7 @@ export class DisplayFormStateComponent {
   }
 
   onBackClicked(event: MouseEvent) {
-    this._mainFormGroup = this.formGroupStack.pop();
+    this._mainFormGroup = this.formGroupStack.pop()!;
     console.log('onBackClicked click event fired ' + event);
   }
 }

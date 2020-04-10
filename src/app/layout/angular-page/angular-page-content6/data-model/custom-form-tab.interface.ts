@@ -1,5 +1,5 @@
 export interface ITabData {
-    customText: string;
-    customNumber: number;
-    emailAddress: string;
+    customText: string | null;
+    customNumber: number | null;
+    emailAddress: string | null;
 }

@@ -28,8 +28,8 @@ export class HeaderComponent implements OnInit {
   }
 
   isToggled(): boolean {
-    const dom: Element = document.querySelector('body');
-    return dom.classList.contains(this.pushRightClass);
+    const dom: Element | null = document.querySelector('body');
+    return dom ? dom.classList.contains(this.pushRightClass)  : false;
   }
 
   toggleSidebar() {

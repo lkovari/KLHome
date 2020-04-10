@@ -11,14 +11,14 @@
           </label>
           <div class="col-md-8">
             <input class="form-control" id="customText" type="text" placeholder="custom text" formControlName="customText"
-              [ngClass]="{'is-invalid': (customForm.get('customText').touched ||
-                customForm.get('customText').dirty) &&
-                !customForm.get('customText').valid }" />
+              [ngClass]="{'is-invalid': (customForm?.get('customText').touched ||
+                customForm?.get('customText').dirty) &&
+                !customForm?.get('customText').valid }" />
             <span class="invalid-feedback">
-              <span *ngIf="customForm.get('customText').errors?.required">
+              <span *ngIf="customForm?.get('customText').errors?.required">
                 Please enter a text!
               </span>
-              <span *ngIf="customForm.get('customText').errors?.minlength">
+              <span *ngIf="customForm?.get('customText').errors?.minlength">
                 The text must be longer than {{ textMinLength }} characters!
               </span>
             </span>
@@ -30,11 +30,11 @@
           </label>
           <div class="col-md-8">
             <input class="form-control" id="customNumber" type="number" placeholder="custom number" formControlName="customNumber"
-              [ngClass]="{'is-invalid': (customForm.get('customNumber').touched ||
-                  customForm.get('customNumber').dirty) &&
-                  !customForm.get('customNumber').valid }" />
+              [ngClass]="{'is-invalid': (customForm?.get('customNumber').touched ||
+                  customForm?.get('customNumber').dirty) &&
+                  !customForm?.get('customNumber').valid }" />
             <span class="invalid-feedback">
-              <span *ngIf="customForm.get('customNumber').errors?.required">
+              <span *ngIf="customForm?.get('customNumber').errors?.required">
                 Please enter a number.
               </span>
             </span>
@@ -46,14 +46,14 @@
           </label>
           <div class="col-md-8">
             <input class="form-control" id="customEmail" type="text" placeholder="custom email address" formControlName="emailAddress"
-              [ngClass]="{'is-invalid': (customForm.get('emailAddress').touched ||
-                    customForm.get('emailAddress').dirty) &&
-                    !customForm.get('emailAddress').valid }" />
+              [ngClass]="{'is-invalid': (customForm?.get('emailAddress').touched ||
+                    customForm?.get('emailAddress').dirty) &&
+                    !customForm?.get('emailAddress').valid }" />
             <span class="invalid-feedback">
-              <span *ngIf="customForm.get('emailAddress').errors?.required">
+              <span *ngIf="customForm?.get('emailAddress').errors?.required">
                 Please enter an Email address!
               </span>
-              <span *ngIf="customForm.get('emailAddress').errors?.email">
+              <span *ngIf="customForm?.get('emailAddress').errors?.email">
                 Please enter a valid Email address!
               </span>
             </span>

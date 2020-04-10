@@ -30,7 +30,7 @@
     // can reports errors for fall-through cases in switch statement where the case clause is non-empty.
     // ,"noFallthroughCasesInSwitch": true
     // the null and undefined values are not in the domain of every type and are only assignable to themselves and any
-    // ,"strictNullChecks": true    
+    ,"strictNullChecks": true    
     // Report errors on unused parameters
     ,"noUnusedParameters": true
   },

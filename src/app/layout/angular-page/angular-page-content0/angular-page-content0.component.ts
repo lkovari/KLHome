@@ -76,7 +76,8 @@ export class AngularPageContent0Component implements OnInit {
         console.log('Courses Parsed ' + fileName + ' # ' + courses.length);
         if (isCompleted) {
           this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
-            return course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime();
+            return (course2.dateOfCompleted && course1.dateOfCompleted) ?
+             course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime() : 0;
           });
           let ix = this.angularCourseCompletedList.length;
           this.angularCourseCompletedList.forEach((course: AngularCourseModel) => {

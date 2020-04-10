@@ -27,7 +27,7 @@ const passwordCrossFieldValidator: ValidatorFn = (fg: FormGroup) => {
   styleUrls: ['./angular-page-content7.component.scss']
 })
 export class AngularPageContent7Component implements OnInit {
-  mainForm: FormGroup;
+  mainForm: FormGroup | null;
   mainFormData: any;
   mainFormSubmitData: any;
   mainFormModel: UserFormData;
@@ -83,18 +83,40 @@ export class AngularPageContent7Component implements OnInit {
   }
 
   addUserRole(): void {
-    (<FormArray>this.mainForm.get('userRoles')).push(this.createUserRole(null));
+    (<FormArray>this.mainForm?.get('userRoles')).push(this.createUserRole(null));
   }
 
   canAddMoreRow(): boolean {
-    return (<FormArray>this.mainForm.get('userRoles')).controls.length < 3;
+    return (<FormArray>this.mainForm?.get('userRoles')).controls.length < 3;
   }
 
   canAddThreeRows(): boolean {
-    return (<FormArray>this.mainForm.get('userRoles')).controls.length === 0;
+    return (<FormArray>this.mainForm?.get('userRoles')).controls.length === 0;
   }
 
-  createUserRole(userRole: UserRole): FormGroup {
+  /**
+   * findRoleTypeByOrdinal
+   * @param ord ~ ordinal of the enum
+   */
+  private findRoleTypeByOrdinal(ord: number): RoleTypeModel | undefined{
+    const roleTypeItem = this.roleTypes.find((rt: RoleTypeModel) => {
+      return rt.value === ord;
+    });
+    return roleTypeItem;
+  }
+
+  /**
+   * findModuleTypeByOrdinal
+   * @param ord ~ ordinal of the enum
+   */
+  private findModuleTypeByOrdinal(ord: number): ModuleTypeModel | undefined{
+    const roleTypeItem = this.moduleTypes.find((rt: ModuleTypeModel) => {
+      return rt.value === ord;
+    });
+    return roleTypeItem;
+  }
+
+  createUserRole(userRole: UserRole | null): FormGroup {
     const userRoleGroup = this.formBuilder.group({
       roleType: [ null, [ Validators.required ] ],
       moduleType: [ null, [ Validators.required ] ],
@@ -102,8 +124,8 @@ export class AngularPageContent7Component implements OnInit {
       expire: Date
     });
     userRoleGroup.setValue({
-      'roleType': userRole && userRole.roleType ? userRole.roleType : null,
-      'moduleType': userRole && userRole.moduleType ? userRole.moduleType : null,
+      'roleType': userRole && userRole.roleType ? this.findRoleTypeByOrdinal(userRole.roleType) : null,
+      'moduleType': userRole && userRole.moduleType ? this.findModuleTypeByOrdinal(userRole.moduleType) : null,
       'description': userRole && userRole.description ? userRole.description : null,
       'expire': userRole && userRole.expire ? userRole.expire : new Date()
     });
@@ -111,12 +133,12 @@ export class AngularPageContent7Component implements OnInit {
   }
 
   getUserRoleControls() {
-    return (<FormArray>this.mainForm.get('userRoles')).controls;
+    return (<FormArray>this.mainForm?.get('userRoles')).controls;
   }
 
   setupValues(model: UserFormData) {
     // all members
-    this.mainForm.patchValue({
+    this.mainForm?.patchValue({
       'userName': model.userName ? model.userName : null,
       'passwordGroup': {
         'password': model.password ? model.password : null,
@@ -126,18 +148,18 @@ export class AngularPageContent7Component implements OnInit {
     });
     if (model.userRoles && model.userRoles.length > 0) {
       model.userRoles.forEach((role: UserRole) => {
-        (<FormArray>this.mainForm.get('userRoles')).push(this.createUserRole(role));
+        (<FormArray>this.mainForm?.get('userRoles')).push(this.createUserRole(role));
       });
     } else {
-      const ln = (<FormArray>this.mainForm.get('userRoles')).length;
+      const ln = (<FormArray>this.mainForm?.get('userRoles')).length;
       for (let ix = ln; ix >= 0; ix--) {
-        (<FormArray>this.mainForm.get('userRoles')).removeAt(ix);
+        (<FormArray>this.mainForm?.get('userRoles')).removeAt(ix);
       }
     }
   }
 
   hasUserRoles(): boolean {
-    return (<FormArray>this.mainForm.get('userRoles')).length > 0;
+    return (<FormArray>this.mainForm?.get('userRoles')).length > 0;
   }
 
   onValueChanged(value) {
@@ -150,11 +172,12 @@ export class AngularPageContent7Component implements OnInit {
   }
 
   onAddUserRole(event: MouseEvent) {
-    (<FormArray>this.mainForm.get('userRoles')).push(this.createUserRole(null));
+    (<FormArray>this.mainForm?.get('userRoles')).push(this.createUserRole(null));
     console.log('onAddUserRole click event fired ' + event);
   }
 
   onSetModel(event: MouseEvent) {
+    this.clearModel();
     const userFormData = new UserFormData();
     userFormData.userName = 'lkovari';
     userFormData.password = 'Passw0rd@';
@@ -183,27 +206,35 @@ export class AngularPageContent7Component implements OnInit {
     console.log('onSetModel Click event Fired ' + event)
   }
 
-  onClearModel(event: MouseEvent) {
+  private clearModel() {
     const userFormData = new UserFormData();
     this.setupValues(userFormData);
-    this.mainForm.markAsUntouched();
-    this.mainForm.markAsPristine();
+    this.mainForm?.markAsUntouched();
+    this.mainForm?.markAsPristine();
     this.mainFormData = undefined;
     this.mainFormSubmitData = undefined;
+  }
+
+  onClearModel(event: MouseEvent) {
+    this.clearModel();
     console.log('onClearModel click event fired ' + event);
   }
 
-  isUserFieldInvalid(ur: FormControl, field: string): boolean {
-    return ((ur.get(field).touched || ur.get(field).dirty) && !ur.get(field).valid);
+  isUserFieldInvalid(ur: FormControl | null, field: string): boolean {
+    // Not-null assertion operator
+    // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
+    return ((ur?.get(field)!.touched || ur?.get(field)!.dirty) && !ur?.get(field)!.valid);
   }
 
-  hasDuplicatedRows(form: FormGroup) {
-    const userRolesFormArray = form.get('userRoles');
-    return userRolesFormArray.errors && userRolesFormArray.errors.duplication;
+  hasDuplicatedRows(form: FormGroup | null) {
+    const userRolesFormArray = form?.get('userRoles');
+    return userRolesFormArray?.errors && userRolesFormArray.errors.duplication;
   }
 
-  extractErrorValue(): string {
-    return this.mainForm.get('userRoles').errors.duplication.value;
+  extractErrorValue(): string | null {
+    //  ? this.mainForm?.get('userRoles').errors.duplication.value : null;
+    const userRoles = this.mainForm?.get('userRoles');
+    return userRoles?.errors?.duplication.value;
   }
 
   onSubmit(form) {

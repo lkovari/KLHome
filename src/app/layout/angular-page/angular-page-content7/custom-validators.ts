@@ -30,8 +30,8 @@ export class CustomValidators {
                 for (ix; ix < userRoleForms.length; ix++) {
                     const form = userRoleForms.at(ix);
                     // is the mandatory fiekds of forms are equals?
-                    const isRoleTypeEquals = formRef.get('roleType').value === form.get('roleType').value;
-                    const isModuleTypeEquals = formRef.get('moduleType').value === form.get('moduleType').value;
+                    const isRoleTypeEquals = formRef.get('roleType')?.value === form.get('roleType')?.value;
+                    const isModuleTypeEquals = formRef.get('moduleType')?.value === form.get('moduleType')?.value;
                     if ((isRoleTypeEquals && isModuleTypeEquals) && (ixRef !== ix)) {
                         rowIx = ix;
                         isDuplicatesFound = true;
