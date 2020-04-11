@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('04/11/2020 01:00 PM');
+  lastUpdate = new Date('04/11/2020 01:05 PM');
   lastUpdateTooltip = 'Set strictNullChecks in the tsconfig.json upgraded to Angular v9.1.1';
 
   ngOnInit() {
