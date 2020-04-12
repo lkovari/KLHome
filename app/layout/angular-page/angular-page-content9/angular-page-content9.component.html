@@ -1,0 +1,24 @@
+<div class="layout-angular-playground-page9">
+    <div>
+        This page is a
+        <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which interested in, for me.
+    </div>
+    <b>Act #8</b>
+    <label class="text-primary">
+        <a class="horizontal-gap-left horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content9">
+        <img [src]="githubLogoPath" width="16" height="16">
+    </a>
+    Basic flexbox usage.
+    </label><br>
+    <label>1. I created a chessboard with flexbox </label><br>
+    <div class="the-board">
+        <div class="board-container" *ngFor="let rowIx of boardRows">
+            <div class="board-box" *ngFor="let colIx of boardColumns"
+                [style.background-color]="determineBackgroundColor(rowIx, colIx)"
+                [style.color]="determineColor(rowIx, colIx)"
+                >{{ boxNotation(colIx, rowIx) }}
+            </div>
+        </div>
+    </div>
+</div>    
+    

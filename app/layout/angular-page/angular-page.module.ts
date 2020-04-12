@@ -26,6 +26,7 @@ import { AngularPageContent0Component } from './angular-page-content0/angular-pa
 import { FirstCapitalCharCustomValidator } from './angular-page-content1/first-capital-char-custom.validator';
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 import { AngularPageContent8Component } from './angular-page-content8/angular-page-content8.component';
+import { AngularPageContent9Component } from './angular-page-content9/angular-page-content9.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabMenuModule } from 'primeng/tabmenu';
@@ -66,7 +67,8 @@ import { CalendarModule } from 'primeng/calendar';
                   SubForm2Component,
                   SubForm3Component,
                   AngularPageContent0Component,
-                  FirstCapitalCharCustomValidator
+                  FirstCapitalCharCustomValidator,
+                  AngularPageContent9Component
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
