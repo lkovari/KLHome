@@ -1,0 +1,101 @@
+.layout-angular-playground-page9 {
+    .sub-topic {
+        padding: 1Rem;
+    }
+    .form-height {
+        height: 38rem;
+    }
+    .spacer-horozontal-right {
+        margin-right: 0.5rem;
+    }    
+    .horizontal-gap-right {
+        padding-right: 0.5rem;
+    }
+    .horizontal-gap-left {
+        padding-left: 0.5rem;
+    }
+    .spacer-horozontal-left {
+        margin-left: 0.5rem;
+    }
+    .spacer-horozontal-right {
+        margin-right: 0.5rem;
+    }
+    .form-border {
+        border: solid blue 1px;
+        padding: 1rem;
+    }
+    input.ng-invalid.ng-touched {
+        border: 1px solid red;
+    }
+    .buttons-area {
+        position: relative;
+        top: 1em;
+        left: 0rem;
+    }
+    .info-area {
+        display: contents;
+    }
+
+    .the-board {
+        .board-container {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+        }
+
+        @media screen and (orientation:landscape) {
+            .board-container{
+                line-height: calc(100vh / 8);
+                width: 100vh;
+                // line-height: calc(100vh / 4.86);
+                // width: 165vh;                
+            }
+            .main-container {
+                padding: 0;
+            }            
+        }
+        @media screen and (orientation:portrait) {
+            .board-container{
+                line-height: calc(100vw / 8);
+                width: 100vw;
+                // line-height: calc(100vh / 4.86);
+                // width: 165vh;                
+            }
+            .main-container {
+                padding: 0;
+            }
+        }        
+          
+        .board-box {
+            background: black;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+            flex-grow: 1;
+            flex-shrink: 0;
+            flex-basis: auto;            
+            height: auto;
+            border: 1px solid;
+        }
+
+        .board-box-top-border {
+            border-top: 1px solid;
+        }
+
+        .board-box-bottom-border {
+            border-bottom: 1px solid;
+        }
+
+        .board-box-left-border {
+            border-left: 1px solid;
+        }
+
+        .board-box-right-border {
+            border-right: 1px solid;
+        }
+    }
+}

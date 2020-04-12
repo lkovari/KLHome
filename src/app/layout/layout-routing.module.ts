@@ -55,6 +55,7 @@ import { AngularPageContent1rComponent } from './angular-page/angular-page-conte
 import { AwardsContentComponent } from './awards-page/awards-content.component';
 import { AngularPageContent8Component } from './angular-page/angular-page-content8/angular-page-content8.component';
 import { PersonDataResolver } from '../shared/services/persondataresolver/person-data-resolver.service';
+import { AngularPageContent9Component } from './angular-page/angular-page-content9/angular-page-content9.component';
 
 
 const routes: Routes = [
@@ -80,7 +81,8 @@ const routes: Routes = [
           {path: 'angular-page-content5', component: AngularPageContent5Component},
           {path: 'angular-page-content6', component: AngularPageContent6Component},
           {path: 'angular-page-content7', component: AngularPageContent7Component},
-          {path: 'angular-page-content8', component: AngularPageContent8Component, resolve: { resolvedPersonData: PersonDataResolver }}
+          {path: 'angular-page-content8', component: AngularPageContent8Component, resolve: { resolvedPersonData: PersonDataResolver }},
+          {path: 'angular-page-content9', component: AngularPageContent9Component}
         ]
       },
       {path: 'javascript-page', component: JavascriptPageTitleComponent,
