@@ -15,8 +15,8 @@
         <div class="board-container" *ngFor="let rowIx of boardRows">
             <div class="board-box" *ngFor="let colIx of boardColumns"
                 [style.background-color]="determineBackgroundColor(rowIx, colIx)"
-                [style.color]="determineColor(rowIx, colIx)"
-                >{{ boxNotation(colIx, rowIx) }}
+                [style.color]="determineColor(rowIx, colIx)">
+                <div>{{ boxNotation(colIx, rowIx) }}</div>
             </div>
         </div>
     </div>

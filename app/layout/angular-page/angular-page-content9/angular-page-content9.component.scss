@@ -44,7 +44,7 @@
             display: flex;
             flex-flow: row;
             justify-content: space-around;
-            line-height: 11.2vh;
+            height: 11.2vh;
             width: 90vh;
         }
 
@@ -53,12 +53,15 @@
             background: black;
             color: white;
             font-size: 0.7em;
-            text-align: center;
             flex-grow: 1;
             flex-shrink: 0;
             flex-basis: auto;            
             height: auto;
             border: 0.5px solid;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;            
         }
 
         .board-box-top-border {
