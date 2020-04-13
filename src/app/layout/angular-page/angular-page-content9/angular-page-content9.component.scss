@@ -44,30 +44,10 @@
             display: flex;
             flex-flow: row;
             justify-content: space-around;
+            line-height: 11.2vh;
+            width: 90vh;
         }
 
-        @media screen and (orientation:landscape) {
-            .board-container{
-                line-height: calc(100vh / 8);
-                width: 90vh;
-                // line-height: calc(100vh / 4.86);
-                // width: 165vh;                
-            }
-            .main-container {
-                padding: 0;
-            }            
-        }
-        @media screen and (orientation:portrait) {
-            .board-container{
-                line-height: calc(100vw / 8);
-                width: 90vw;
-                // line-height: calc(100vh / 4.86);
-                // width: 165vh;                
-            }
-            .main-container {
-                padding: 0;
-            }
-        }        
           
         .board-box {
             background: black;
