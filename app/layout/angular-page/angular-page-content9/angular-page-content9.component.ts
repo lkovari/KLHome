@@ -11,7 +11,7 @@ export class AngularPageContent9Component implements OnInit {
   boardRows: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7];
   boardColumns: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7];
   boxes: Array<number>;
-  fixHeightInRem = 25;
+  fixHeightInRem = 15;
   barItems: IBarChart[] = [ { label: 'MASM', value: 9, color: '#FF9CEE' },
   { label: 'Delphi', value: 8, color: '#C5A3FF' },
   { label: 'ASP.NET C#', value: 1, color: '#F3FFE3' },
