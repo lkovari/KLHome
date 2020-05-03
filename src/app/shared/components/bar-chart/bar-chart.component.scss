@@ -1,0 +1,29 @@
+.bar-chart-layout {
+    width: 100%;
+    height: 25rem;
+    .bar-chart-container {
+        display: flex;
+        width: 100%;
+        height: 25rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .bar-chart-items {
+        width: 20%;
+        background-color: yellow;
+        height: 100%;
+        font-size: 0.6rem;
+        font-weight: bold;
+        text-align: center;
+    }
+    .text {
+        font-size: 0.6rem;
+        font-weight: bold;
+    }
+    .vertical-text {
+        font-size: 0.8rem;
+        transform: rotate(90deg);
+        margin-top: 3rem;
+    }
+}

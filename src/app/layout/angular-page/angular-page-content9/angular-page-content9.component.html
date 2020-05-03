@@ -1,8 +1,8 @@
 <div class="layout-angular-playground-page9">
     <div>
-        This page is a
-        <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which interested in, for me.
+        This page is a <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which interested in, for me.
     </div>
+    <br>
     <b>Act #8</b>
     <label class="text-primary">
         <a class="horizontal-gap-left horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content9">
@@ -10,15 +10,28 @@
     </a>
     Basic flexbox usage.
     </label><br>
-    <label>1. I created a chessboard with flexbox </label><br>
+    <div class="sub-topic">
+        <label>1. Chessboard with flexbox </label>
+    </div>
     <div class="the-board">
-        <div class="board-container" *ngFor="let rowIx of boardRows">
-            <div class="board-box" *ngFor="let colIx of boardColumns"
+        <div [id]="rowIx" class="board-container" *ngFor="let rowIx of boardRows">
+            <div [id]="colIx" class="board-box" *ngFor="let colIx of boardColumns"
                 [style.background-color]="determineBackgroundColor(rowIx, colIx)"
                 [style.color]="determineColor(rowIx, colIx)">
-                <div>{{ boxNotation(colIx, rowIx) }}</div>
+                <div [id]="boxNotation(colIx, rowIx)">{{ boxNotation(colIx, rowIx) }}</div>
             </div>
         </div>
+    </div>
+    <div class="bar-chart">
+        <div class="sub-topic">
+            <label class="text-primary">2.
+                <a class="horizontal-gap-left horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/bar-chart">
+                <img [src]="githubLogoPath" width="16" height="16">
+            </a>
+            Simple BarChart component example with flexbox
+            </label>            
+        </div>
+        <app-bar-chart [fixHeightInRem]="fixHeightInRem" [barItems]="barItems" ></app-bar-chart>
     </div>
 </div>    
     
