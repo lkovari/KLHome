@@ -1,28 +1,62 @@
+@mixin for-phone-only {
+    @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
 .bar-chart-layout {
     width: 100%;
-    height: 25rem;
+    height: 28vh; // should be replace with input fixHeightInRem
     .bar-chart-container {
         display: flex;
         width: 100%;
-        height: 25rem;
+        height: 28vh; // should be replace with input fixHeightInRem
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
     }
+    .font-size-default {
+        font-size: 2vh;
+        @include for-phone-only { 
+            font-size: 0.8vh;
+        }    
+        @include for-tablet-portrait-up { 
+            font-size: 1vh;
+        }    
+        @include for-tablet-landscape-up { 
+            font-size: 1.3vh;
+        }    
+        @include for-desktop-up { 
+            font-size: 1.5vh;
+        }    
+        @include for-big-desktop-up { 
+            font-size: 1.7vh;
+        }    
+    }
     .bar-chart-items {
-        width: 20%;
+        @extend .font-size-default;
+        width: 100%;
         background-color: yellow;
         height: 100%;
-        font-size: 0.6rem;
         font-weight: bold;
         text-align: center;
+        border: 1px solid lightgray;
     }
     .text {
-        font-size: 0.6rem;
+        @extend .font-size-default;
         font-weight: bold;
-    }
+     }
     .vertical-text {
-        font-size: 0.8rem;
+        @extend .font-size-default;
         transform: rotate(90deg);
         margin-top: 3rem;
     }
