@@ -1,0 +1,9 @@
+<div class="bar-chart-layout">
+    <div class="bar-chart-container">
+        <div [id]="bar.value" class="bar-chart-items" *ngFor="let bar of barItems"
+            [style.height]="calculateHeight(bar.value)"
+            [ngStyle]="{'background-color': bar.color}">
+            <label [ngClass]="decideOrientation(bar) ? 'vertical-text' : 'text'">{{ bar.value + 'y ' + bar.label }}</label>
+        </div>
+    </div>
+</div>

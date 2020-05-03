@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IBarChart } from 'src/app/shared/models/bar-chart/bar-chart-item.interface';
 
 @Component({
   selector: 'app-angular-page-content9',
@@ -10,6 +11,17 @@ export class AngularPageContent9Component implements OnInit {
   boardRows: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7];
   boardColumns: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7];
   boxes: Array<number>;
+  fixHeightInRem = 25;
+  barItems: IBarChart[] = [ { label: 'MASM', value: 9, color: '#FF9CEE' },
+  { label: 'Delphi', value: 8, color: '#C5A3FF' },
+  { label: 'ASP.NET C#', value: 1, color: '#F3FFE3' },
+  { label: 'J2SE', value: 12, color: '#A79AFF' },
+  { label: 'J2EE', value: 1, color: '#C4FAF8' },
+  { label: 'Android', value: 10, color: '#DBFFD6' },
+  { label: 'Objective-C', value: 9, color: '#FFFFD1' },
+  { label: 'JavaScript', value: 2, color: '#FFABAB' },
+  { label: 'Angular', value: 3, color: '#AFCBFF' } ];
+
   constructor() { }
 
   ngOnInit(): void {

@@ -15,6 +15,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
 import { InputMaskModule } from 'primeng/inputmask';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 @NgModule({
   imports: [
@@ -30,8 +31,8 @@ import { InputMaskModule } from 'primeng/inputmask';
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, DisplayFormStateComponent],
+    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, DisplayFormStateComponent]
+    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent]
 })
 export class SharedModule { }
