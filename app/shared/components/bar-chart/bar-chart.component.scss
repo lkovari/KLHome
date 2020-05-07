@@ -15,49 +15,58 @@
 }
 .bar-chart-layout {
     width: 100%;
-    height: 28vh; // should be replace with input fixHeightInRem
+    height: 30vh;
     .bar-chart-container {
         display: flex;
         width: 100%;
-        height: 28vh; // should be replace with input fixHeightInRem
+        height: 100%;
         flex-direction: row;
         justify-content: space-between;
         align-items: flex-end;
     }
     .font-size-default {
-        font-size: 2vh;
+        font-size: 1rem;
         @include for-phone-only { 
-            font-size: 0.8vh;
+            font-size: 0.3rem;
         }    
         @include for-tablet-portrait-up { 
-            font-size: 1vh;
+            font-size: 0.5rem;
         }    
         @include for-tablet-landscape-up { 
-            font-size: 1.3vh;
+            font-size: 0.9rem;
         }    
         @include for-desktop-up { 
-            font-size: 1.5vh;
+            font-size: 0.9rem;
         }    
         @include for-big-desktop-up { 
-            font-size: 1.7vh;
+            font-size: 1.1rem;
         }    
     }
     .bar-chart-items {
         @extend .font-size-default;
         width: 100%;
-        background-color: yellow;
         height: 100%;
         font-weight: bold;
         text-align: center;
-        border: 1px solid lightgray;
+        display: flex;
+        justify-content: flex-end;     
+        background-color: white;
+        flex-direction: column;
+        align-items: center;        
     }
-    .text {
+    .bar-chart-item-bar {
+        border: 1px solid lightgray;
+        width: 100%;
+    }
+    .bar-chart-item-label {
         @extend .font-size-default;
         font-weight: bold;
      }
+     /*
     .vertical-text {
         @extend .font-size-default;
         transform: rotate(90deg);
         margin-top: 3rem;
     }
+    */
 }

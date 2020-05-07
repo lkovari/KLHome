@@ -8,7 +8,7 @@ import { BarChartOrientation } from '../../models/bar-chart/bar-chart-orientatio
   styleUrls: ['./bar-chart.component.scss']
 })
 export class BarChartComponent implements OnInit {
-  @Input() fixHeightInRem = 28;
+  @Input() fixHeightInRem = 30;
   @Input() barItems: IBarChart[];
   @Input() barChartOrientation = BarChartOrientation.BOTTOM_TO_TOP;
 
@@ -24,11 +24,13 @@ export class BarChartComponent implements OnInit {
   }
 
   calculateHeight(value: number): string {
+    // let res = '' + this.fixHeightInRem + 'rem';
     let res = '100%';
     const maxValue = this.findMaxValue(this.barItems);
-    let currentHeight = (this.fixHeightInRem / maxValue) * (value * 2);
+    let currentHeight = ((this.fixHeightInRem / maxValue) * value);
     currentHeight = Math.round(currentHeight * 10) / 10;
-    res = '' + currentHeight + 'vh';
+    // res = '' + currentHeight + 'rem';
+    res =  '' + ((100 / this.fixHeightInRem) * currentHeight) + '%';
     return res;
   }
 
