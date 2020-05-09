@@ -1,10 +1,10 @@
 <div [style.height]="fixHeightInRem" class="bar-chart-layout">
-    <div class="bar-chart-container">
-        <div [id]="bar.value" class="bar-chart-items" *ngFor="let bar of barItems">
-            <!--label [ngClass]="decideOrientation(bar) ? 'vertical-text' : 'text'">{{ bar.value + 'y ' + bar.label }}</label-->
+    <div [ngClass]="modifyOrientation()">
+        <div [id]="bar.id" class="bar-chart-items" *ngFor="let bar of barItems"
+            [style.height]="calculateBarHeight(bar.value)"
+            [style.width]="calculateBarWidth(bar.value)"
+            [ngStyle]="{'background-color': bar.color}">
             <label class="bar-chart-item-label">{{ bar.label + ' ' + bar.value + 'y'}}</label>
-            <div class="bar-chart-item-bar" [style.height]="calculateHeight(bar.value)" [ngStyle]="{'background-color': bar.color}">
-            </div>
         </div>
     </div>
 </div>

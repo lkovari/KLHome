@@ -24,14 +24,21 @@
     </div>
     <div class="bar-chart">
         <div class="sub-topic">
-            <label class="text-primary">2.
+            <label>2.
                 <a class="horizontal-gap-left horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/bar-chart">
                 <img [src]="githubLogoPath" width="16" height="16">
-            </a>
-            Simple BarChart component example with flexbox
+                </a>Simple BarChart component example with flexbox
             </label>            
         </div>
-        <app-bar-chart [fixHeightInRem]="fixHeightInRem" [barItems]="barItems" ></app-bar-chart>
+        <div class="sub-topic">
+            <label>Bar Char Orientation
+                <p-dropdown id="orientation" class="form-group" [options]="orientations" optionLabel="label"  dataKey="value"
+                  [showClear]="false" #orientation="ngModel" [(ngModel)]="selectedOrientation" [required]="true"
+                  (onChange)="onOrientationChange($event)" name="orientation">
+                </p-dropdown>                
+            </label>            
+        </div>
+        <app-bar-chart [fixHeightInRem]="fixHeightInRem" [barItems]="barItems" [orientation]="selectedEnumOrientation" ></app-bar-chart>
     </div>
 </div>    
     

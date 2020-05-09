@@ -16,7 +16,7 @@
 .bar-chart-layout {
     width: 100%;
     height: 30vh;
-    .bar-chart-container {
+    .bar-chart-container-default {
         display: flex;
         width: 100%;
         height: 100%;
@@ -24,6 +24,27 @@
         justify-content: space-between;
         align-items: flex-end;
     }
+    .bar-chart-container-bottom-to-top {
+        @extend .bar-chart-container-default;
+        flex-direction: row !important;
+        align-items: flex-end !important;
+    }
+    .bar-chart-container-top-to-bottom {
+        @extend .bar-chart-container-default;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+    }
+    .bar-chart-container-left-to-right {
+        @extend .bar-chart-container-default;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .bar-chart-container-right-to-left {
+        @extend .bar-chart-container-default;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+    }
+
     .font-size-default {
         font-size: 1rem;
         @include for-phone-only { 
@@ -33,7 +54,7 @@
             font-size: 0.5rem;
         }    
         @include for-tablet-landscape-up { 
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }    
         @include for-desktop-up { 
             font-size: 0.9rem;
@@ -47,9 +68,8 @@
         width: 100%;
         height: 100%;
         font-weight: bold;
-        text-align: center;
         display: flex;
-        justify-content: flex-end;     
+        justify-content: center;     
         background-color: white;
         flex-direction: column;
         align-items: center;        
@@ -62,11 +82,4 @@
         @extend .font-size-default;
         font-weight: bold;
      }
-     /*
-    .vertical-text {
-        @extend .font-size-default;
-        transform: rotate(90deg);
-        margin-top: 3rem;
-    }
-    */
 }
