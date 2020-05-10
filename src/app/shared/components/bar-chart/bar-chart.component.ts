@@ -137,4 +137,8 @@ export class BarChartComponent implements OnInit {
     // tslint:disable-next-line:no-bitwise
     return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
   }
+
+  composeBarContent(bar: IBarChart): string {
+    return bar.label + ' ' + bar.value + 'Y';
+  }
 }

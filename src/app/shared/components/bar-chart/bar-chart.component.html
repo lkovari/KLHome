@@ -1,11 +1,13 @@
 <div [style.height]="fixHeightInRem" class="bar-chart-layout">
     <div [ngClass]="modifyOrientation()">
         <div [id]="bar.id" class="bar-chart-items" *ngFor="let bar of barItems"
+            title="{{composeBarContent(bar)}}"
+            pTooltip="{{composeBarContent(bar)}}" tooltipPosition="top"
             [style.height]="calculateBarHeight(bar.value)"
             [style.width]="calculateBarWidth(bar.value)"
             [style.border-color]="calculateLightenOrDarkenColor(bar.color, -30)"
             [ngStyle]="{'background-color': bar.color}">
-            <label class="bar-chart-item-label">{{ bar.label + ' ' + bar.value + 'y'}}</label>
+            <label class="bar-chart-item-label">{{composeBarContent(bar)}}</label>
         </div>
     </div>
 </div>
