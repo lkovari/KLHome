@@ -31,6 +31,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CalendarModule } from 'primeng/calendar';
+import { SelectButtonModule } from 'primeng';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CalendarModule } from 'primeng/calendar';
     TabMenuModule,
     DropdownModule,
     CalendarModule,
-    ScrollingModule
+    ScrollingModule,
+    SelectButtonModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
