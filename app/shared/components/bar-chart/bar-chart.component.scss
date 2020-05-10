@@ -48,16 +48,16 @@
     .font-size-default {
         font-size: 1rem;
         @include for-phone-only { 
-            font-size: 0.2rem;
+            font-size: 0.5rem;
         }    
         @include for-tablet-portrait-up { 
-            font-size: 0.45rem;
-        }    
-        @include for-tablet-landscape-up { 
             font-size: 0.6rem;
         }    
-        @include for-desktop-up { 
+        @include for-tablet-landscape-up { 
             font-size: 0.7rem;
+        }    
+        @include for-desktop-up { 
+            font-size: 0.8rem;
         }    
         @include for-big-desktop-up { 
             font-size: 1.1rem;
@@ -76,9 +76,31 @@
         border: 2px solid lightgray;
         border-radius: 3px;
         line-height: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     .bar-chart-item-label {
         @extend .font-size-default;
         font-weight: bold;
      }
+    .toolTip {
+        position: relative;
+        display: inline-block;
+     }
+      
+      /* Tooltip text */
+    .toolTip .toolTipText {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+       
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }     
 }

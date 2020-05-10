@@ -16,6 +16,7 @@ import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
 import { InputMaskModule } from 'primeng/inputmask';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { TooltipModule } from 'primeng';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
     DialogModule,
     EditorModule,
     HttpClientModule,
-    InputMaskModule
+    InputMaskModule,
+    TooltipModule
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
