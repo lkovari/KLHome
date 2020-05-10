@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBarChart } from 'src/app/shared/models/bar-chart/bar-chart-item.interface';
 import { Orientation } from 'src/app/shared/models/bar-chart/orientation.model';
 import { BarChartOrientation } from 'src/app/shared/models/bar-chart/bar-chart-orientation.enum';
+import { SelectItem } from 'primeng';
 
 @Component({
   selector: 'app-angular-page-content9',
@@ -16,11 +17,11 @@ export class AngularPageContent9Component implements OnInit {
   fixHeightInRem = 40;
   barItems: IBarChart[] = [ { id: 0, label: 'MASM', value: 9, color: '#FF9CEE' },
   { id: 1, label: 'Delphi', value: 8, color: '#C5A3FF' },
-  { id: 2, label: 'ASP.NET C#', value: 1, color: '#F3FFE3' },
+  { id: 2, label: 'ASP.NET C#', value: 2.1, color: '#F3FFE3' },
   { id: 3, label: 'J2SE', value: 12, color: '#A79AFF' },
   { id: 4, label: 'J2EE', value: 1, color: '#C4FAF8' },
   { id: 5, label: 'Android', value: 6, color: '#DBFFD6' },
-  { id: 6, label: 'Objective-C', value: 9, color: '#FFFFD1' },
+  { id: 6, label: 'Objective-C', value: 1.5, color: '#FFFFD1' },
   { id: 7, label: 'JavaScript', value: 2, color: '#FFABAB' },
   { id: 8, label: 'Angular', value: 3, color: '#AFCBFF' } ];
   orientations: Orientation[] = [
@@ -29,6 +30,8 @@ export class AngularPageContent9Component implements OnInit {
     { value: BarChartOrientation.LEFT_TO_RIGHT, label: 'Left to Right', orientation: BarChartOrientation.LEFT_TO_RIGHT },
     { value: BarChartOrientation.RIGHT_TO_LEFT, label: 'Right to Left', orientation: BarChartOrientation.RIGHT_TO_LEFT }
   ];
+  sortOptions: SelectItem[] = [ { label: 'Original', value: 1 }, { label: 'Ascending', value: 2 }, { label: 'Descending', value: 3 } ];
+  selectedSortOption = 1;
   selectedOrientation: Orientation = this.orientations[0];
   selectedEnumOrientation: BarChartOrientation = BarChartOrientation.BOTTOM_TO_TOP;
 
@@ -98,5 +101,22 @@ export class AngularPageContent9Component implements OnInit {
   onOrientationChange(event: any) {
     this.selectedEnumOrientation = this.selectedOrientation.orientation;
     console.log('onOrientationChanged ' +  event + ' -> ' + BarChartOrientation[this.selectedEnumOrientation]);
+  }
+
+  private sortBarChartItems(orderMode: number) {
+    this.barItems = this.barItems.sort( function(item1: IBarChart, item2: IBarChart) {
+      if (orderMode === 1 ) {
+        return item1.id - item2.id;
+      } else if (orderMode === 2) {
+        return item1.value - item2.value;
+      } else if (orderMode === 3) {
+        return item2.value - item1.value;
+      }
+      return 0;
+    });
+  }
+  onOptionChange(event: any) {
+    console.log('onOptionClick ' +  event.option);
+    this.sortBarChartItems(this.selectedSortOption);
   }
 }

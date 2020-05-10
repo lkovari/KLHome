@@ -51,7 +51,7 @@
             font-size: 0.1rem;
         }    
         @include for-tablet-portrait-up { 
-            font-size: 0.4rem;
+            font-size: 0.45rem;
         }    
         @include for-tablet-landscape-up { 
             font-size: 0.6rem;
@@ -69,12 +69,13 @@
         height: 100%;
         font-weight: bold;
         display: flex;
-        justify-content: center;     
+        justify-content: end;
         background-color: white;
         flex-direction: column;
         align-items: center;        
         border: 2px solid lightgray;
         border-radius: 3px;
+        line-height: 1;
     }
     .bar-chart-item-label {
         @extend .font-size-default;

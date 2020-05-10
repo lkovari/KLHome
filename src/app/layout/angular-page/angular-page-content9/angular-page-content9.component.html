@@ -1,14 +1,16 @@
 <div class="layout-angular-playground-page9">
     <div>
-        This page is a <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which interested in, for me.
+        This page is a <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last
+        or just which interested in, for me.
     </div>
     <br>
     <b>Act #8</b>
     <label class="text-primary">
-        <a class="horizontal-gap-left horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content9">
-        <img [src]="githubLogoPath" width="16" height="16">
-    </a>
-    Basic flexbox usage.
+        <a class="horizontal-gap-left horizontal-gap-right"
+            href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content9">
+            <img [src]="githubLogoPath" width="16" height="16">
+        </a>
+        Basic flexbox usage.
     </label><br>
     <div class="sub-topic">
         <label>1. Chessboard with flexbox </label>
@@ -25,20 +27,34 @@
     <div class="bar-chart">
         <div class="sub-topic">
             <label>2.
-                <a class="horizontal-gap-left horizontal-gap-right" href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/bar-chart">
-                <img [src]="githubLogoPath" width="16" height="16">
+                <a class="horizontal-gap-left horizontal-gap-right"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/bar-chart">
+                    <img [src]="githubLogoPath" width="16" height="16">
                 </a>Simple BarChart component example with flexbox
-            </label>            
+            </label>
+            <div class="sub-topic">
+                (although I would remarq this is not an exhaustive Bar Chart component, it is a good base, just for the
+                example to show the opportunities of the FlexBox)
+            </div>
         </div>
         <div class="sub-topic">
-            <label>Bar Char Orientation
-                <p-dropdown id="orientation" class="form-group" [options]="orientations" optionLabel="label"  dataKey="value"
-                  [showClear]="false" #orientation="ngModel" [(ngModel)]="selectedOrientation" [required]="true"
-                  (onChange)="onOrientationChange($event)" name="orientation">
-                </p-dropdown>                
-            </label>            
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Bar Char Orientation
+                        <p-dropdown id="orientation" [options]="orientations" optionLabel="label" dataKey="value"
+                            [showClear]="false" #orientation="ngModel" [(ngModel)]="selectedOrientation" [required]="true"
+                            (onChange)="onOrientationChange($event)" name="orientation">
+                        </p-dropdown>
+                    </label>
+                </div>
+                <div class="form-group col-md-6">
+                    <p-selectButton id="sortOptionSelectButton" class="form-group" [options]="sortOptions"
+                        [(ngModel)]="selectedSortOption" (onChange)="onOptionChange($event)">
+                    </p-selectButton>
+                </div>
+            </div>
         </div>
-        <app-bar-chart [fixHeightInRem]="fixHeightInRem" [barItems]="barItems" [orientation]="selectedEnumOrientation" ></app-bar-chart>
+        <app-bar-chart [fixHeightInRem]="fixHeightInRem" [barItems]="barItems" [orientation]="selectedEnumOrientation">
+        </app-bar-chart>
     </div>
-</div>    
-    
+</div>
