@@ -85,7 +85,7 @@ export class BarChartComponent implements OnInit {
     if (this._orientation === BarChartOrientation.BOTTOM_TO_TOP || this._orientation === BarChartOrientation.TOP_TO_BOTTOM) {
       res = this.calculateBarLength(value);
     } else if (this._orientation === BarChartOrientation.LEFT_TO_RIGHT || this._orientation === BarChartOrientation.RIGHT_TO_LEFT) {
-      res = '100%';
+      res = '9%';
     }
     return res;
   }
@@ -93,10 +93,48 @@ export class BarChartComponent implements OnInit {
   calculateBarWidth(value: number): string {
     let res = '';
     if (this._orientation === BarChartOrientation.BOTTOM_TO_TOP || this._orientation === BarChartOrientation.TOP_TO_BOTTOM) {
-      res = '100%';
+      res = '9%';
     } else if (this._orientation === BarChartOrientation.LEFT_TO_RIGHT || this._orientation === BarChartOrientation.RIGHT_TO_LEFT) {
       res = this.calculateBarLength(value);
     }
     return res;
+  }
+
+  calculateLightenOrDarkenColor(color: string, modifier: number) {
+    let usePound = false;
+    if (color[0] === '#') {
+      color = color.slice(1);
+        usePound = true;
+    }
+    const num = parseInt(color, 16);
+    // tslint:disable-next-line:no-bitwise
+    let r = num >> 16;
+    r = r + modifier;
+
+    if (r > 255) {
+      r = 255;
+    } else if  (r < 0) {
+      r = 0;
+    }
+    // tslint:disable-next-line:no-bitwise
+    let b = ((num >> 8) & 0x00FF)
+    b = b + modifier;
+
+    if (b > 255) {
+      b = 255;
+    } else if  (b < 0) {
+      b = 0;
+    }
+    // tslint:disable-next-line:no-bitwise
+    let g = (num & 0x0000FF);
+    g = g  + modifier;
+
+    if (g > 255) {
+      g = 255;
+    } else if (g < 0) {
+      g = 0;
+    }
+    // tslint:disable-next-line:no-bitwise
+    return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
   }
 }
