@@ -48,7 +48,7 @@
     .font-size-default {
         font-size: 1rem;
         @include for-phone-only { 
-            font-size: 0.1rem;
+            font-size: 0.2rem;
         }    
         @include for-tablet-portrait-up { 
             font-size: 0.45rem;

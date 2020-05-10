@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('05/10/2020 04:52 PM');
+  lastUpdate = new Date('05/10/2020 06:34 PM');
   lastUpdateTooltip = 'Playground #9 Added sort options to order data for the BarChart component';
 
   ngOnInit() {
