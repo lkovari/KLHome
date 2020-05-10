@@ -48,16 +48,16 @@
     .font-size-default {
         font-size: 1rem;
         @include for-phone-only { 
-            font-size: 0.3rem;
+            font-size: 0.1rem;
         }    
         @include for-tablet-portrait-up { 
-            font-size: 0.5rem;
+            font-size: 0.4rem;
         }    
         @include for-tablet-landscape-up { 
-            font-size: 0.8rem;
+            font-size: 0.6rem;
         }    
         @include for-desktop-up { 
-            font-size: 0.9rem;
+            font-size: 0.7rem;
         }    
         @include for-big-desktop-up { 
             font-size: 1.1rem;
@@ -73,10 +73,8 @@
         background-color: white;
         flex-direction: column;
         align-items: center;        
-    }
-    .bar-chart-item-bar {
-        border: 1px solid lightgray;
-        width: 100%;
+        border: 2px solid lightgray;
+        border-radius: 3px;
     }
     .bar-chart-item-label {
         @extend .font-size-default;
