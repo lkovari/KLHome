@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('05/10/2020 09:12 PM');
-  lastUpdateTooltip = 'Playground #9 Added Tooltip to the BarChart component';
+  lastUpdate = new Date('05/11/2020 09:35 AM');
+  lastUpdateTooltip = 'BarChart component Adjust label alignment';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

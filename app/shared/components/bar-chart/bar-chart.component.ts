@@ -85,7 +85,7 @@ export class BarChartComponent implements OnInit {
     if (this._orientation === BarChartOrientation.BOTTOM_TO_TOP || this._orientation === BarChartOrientation.TOP_TO_BOTTOM) {
       res = this.calculateBarLength(value);
     } else if (this._orientation === BarChartOrientation.LEFT_TO_RIGHT || this._orientation === BarChartOrientation.RIGHT_TO_LEFT) {
-      res = '9%';
+      res = '10%';
     }
     return res;
   }
