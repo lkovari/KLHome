@@ -1,12 +1,12 @@
 .layout-j2se-datetimepicker-page {
-  padding-top: 1rem;
-  .j2se-datetimepicker-description {
-    padding: 0.5Rem;
-    .img-fluid {
-      padding-top: 0.5rem;
-      margin-right: 40px;
-      margin-bottom: 40px;
-    }
+  .sub-topic {
+    padding: 1Rem;
+  }
+  .img-responsive {
+    min-height: 1%;
+    min-width: 1%;
+    max-height: 100%;
+    max-width: 100%;
   }
 }
 
