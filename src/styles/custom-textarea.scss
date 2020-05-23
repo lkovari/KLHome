@@ -1,0 +1,26 @@
+$text-area-row-height: 25px;
+.customtextarea-resizable {
+    overflow: hidden;
+    resize: none;
+    line-height: $text-area-row-height;
+}
+
+.fluid .customtextarea {
+    width: 100%;
+}
+
+.float-label > textarea ~ label {
+    left: .25em;
+    top: .75em;
+}
+
+.float-label textarea:-webkit-autofill ~ label {
+    top:-.75em;
+    font-size:12px;
+}
+
+.float-label textarea:focus ~ label,
+.float-label textarea.state-filled ~ label {
+    top: -.75em;
+    font-size: 12px;
+}

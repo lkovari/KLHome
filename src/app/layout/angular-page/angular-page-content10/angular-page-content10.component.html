@@ -1,0 +1,53 @@
+<div class="layout-angular-playground-page10">
+    <div>
+        This page is a <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last
+        or just which interested in, for me.
+    </div>
+    <div class="sub-topic">
+        <b>Act #9</b>
+        <div class="top-gap">
+            <label class="text-primary">
+                <a class="horizontal-gap-left horizontal-gap-right"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content10">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>
+                Basic directive usage.
+            </label>
+        </div>
+    </div>
+    <div class="sub-topic">
+        <label><b>1. Custom textbox directive</b></label>
+        <p>You can see a textarea HTML element. It default height is 3 rows. You can decorate the textarea HTML element with the 'appCustomTextarea' directive. It has two parameters autoSize: boolean  and autoSizeLimit: number</p>
+        <div class="top-gap">
+            <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate autocomplete="off">
+                <div class="form-group">
+                    <label class="spacer" for="userName">Max height in rows
+                    </label>
+                    <p-spinner id="maxHeight" class="spinner-style" name="maxHeight" [(ngModel)]="maxHeightInRows"
+                    [min]="0" [max]="100" [step]="1" #maxHeight="ngModel" autocomplete="off" (onChange)="onChangeSpinner($event)" >
+                    </p-spinner>
+                </div>
+                <div class="form-group">
+                    <label class="spacer" for="userName">Custom text
+                        <span *ngIf="fieldRequired"class="text-danger">*</span>
+                    </label>
+                    <textarea id="customText" class="form-control custom-text-style" name="customText" [(ngModel)]="customTextValue"
+                        rows="{{defaultRows}}" [ngStyle]="{'height': defaultRowHeight+'px'}"
+                        appCustomTextarea autoSize="true" autoSizeLimit="{{maxHeightLimit}}"
+                        #customText="ngModel" autocomplete="off"
+                        [required]="fieldRequired" 
+                        minlength="{{customTextMinLength}}"
+                        maxlength="{{customTextMaxLength}}">
+                     </textarea>   
+                    <div *ngIf="(customText && (customText.invalid && customText.dirty)) " class="text-danger">
+                        <p *ngIf="fieldRequired && customText?.errors.required">Value is required!</p>
+                        <p *ngIf="customText?.errors.firstcapital">The first character should capital letter!</p>
+                        <p *ngIf="customText.hasError('minlength')">Min length is {{ customTextMinLength }}!
+                        </p>
+                        <p *ngIf="customText?.errors.maxlength">Max length is {{ customTextMaxLength }}!</p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>    
