@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class AngularPageContent10Component implements OnInit {
   customTextMinLength = 0;
   maxHeightInRows = 10;
   maxHeightLimit = (this.oneRowHeight * this.maxHeightInRows);
+  @ViewChild('dataEntryForm', {static: true} ) dataEntryForm: NgForm;
 
   constructor() { }
 
@@ -25,7 +26,7 @@ export class AngularPageContent10Component implements OnInit {
   }
 
   onSubmit(dataEntryForm: NgForm) {
-    console.log(JSON.stringify(dataEntryForm));
+    console.log('onSubmit fired ' + dataEntryForm);
   }
 
   onChangeSpinner(event: Event) {
