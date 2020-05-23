@@ -31,20 +31,27 @@
                     <label class="spacer" for="userName">Custom text
                         <span *ngIf="fieldRequired"class="text-danger">*</span>
                     </label>
-                    <textarea id="customText" class="form-control custom-text-style" name="customText" [(ngModel)]="customTextValue"
+                    <textarea id="customTextArea" class="form-control custom-text-style" name="customTextArea" [(ngModel)]="customTextValue"
                         rows="{{defaultRows}}" [ngStyle]="{'height': defaultRowHeight+'px'}"
-                        appCustomTextarea autoSize="true" autoSizeLimit="{{maxHeightLimit}}"
-                        #customText="ngModel" autocomplete="off"
+                        appCustomTextArea autoSize="true" autoSizeLimit="{{maxHeightLimit}}"
+                        #customTextArea="ngModel" autocomplete="off"
                         [required]="fieldRequired" 
                         minlength="{{customTextMinLength}}"
                         maxlength="{{customTextMaxLength}}">
                      </textarea>   
-                    <div *ngIf="(customText && (customText.invalid && customText.dirty)) " class="text-danger">
-                        <p *ngIf="fieldRequired && customText?.errors.required">Value is required!</p>
-                        <p *ngIf="customText?.errors.firstcapital">The first character should capital letter!</p>
-                        <p *ngIf="customText.hasError('minlength')">Min length is {{ customTextMinLength }}!
+                    <div *ngIf="(customTextArea && (customTextArea.invalid && customTextArea.dirty)) " class="text-danger">
+                        <p *ngIf="fieldRequired && customTextArea?.errors.required">Value is required!</p>
+                        <p *ngIf="customTextArea?.errors.firstcapital">The first character should capital letter!</p>
+                        <p *ngIf="customTextArea.hasError('minlength')">Min length is {{ customTextMinLength }}!
                         </p>
-                        <p *ngIf="customText?.errors.maxlength">Max length is {{ customTextMaxLength }}!</p>
+                        <p *ngIf="customTextArea?.errors.maxlength">Max length is {{ customTextMaxLength }}!</p>
+                    </div>
+                </div>
+                <div class="sub-topic">
+                    <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
+                    <div class="sub-topic">
+                        <label>NgForm data</label>
+                        <div class="top-gap" *ngIf="dataEntryForm">{{dataEntryForm.value | json}}</div>
                     </div>
                 </div>
             </form>

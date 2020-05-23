@@ -2,15 +2,15 @@ import { Directive, ElementRef, Optional, EventEmitter, Output, Input, DoCheck, 
 import { NgModel } from '@angular/forms';
 
 @Directive({
-  selector: '[appCustomTextarea]',
+  selector: '[appCustomTextArea]',
   host: {
     '[class.customtext]': 'true',
-    '[class.customtextarea-resizable]': 'autoResize',
+    '[class.customtextarea-resizable]': 'autoSize',
     '[class.state-default]': 'true',
     '[class.state-filled]': 'filled'
   }
 })
-export class CustomTextareaDirective implements DoCheck  {
+export class CustomTextAreaDirective implements DoCheck  {
   @Input() autoSize: boolean;
   @Input() autoSizeLimit = 10;
   @Output() onResize: EventEmitter<any> = new EventEmitter();
