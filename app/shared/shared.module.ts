@@ -17,6 +17,7 @@ import { EditorModule } from 'primeng/editor';
 import { InputMaskModule } from 'primeng/inputmask';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { TooltipModule } from 'primeng';
+import { CustomTextareaDirective } from './directives/custom-textarea.directive';
 
 @NgModule({
   imports: [
@@ -33,8 +34,8 @@ import { TooltipModule } from 'primeng';
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent],
+    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent, CustomTextareaDirective],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent]
+    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent, CustomTextareaDirective]
 })
 export class SharedModule { }

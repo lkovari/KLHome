@@ -31,7 +31,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CalendarModule } from 'primeng/calendar';
-import { SelectButtonModule } from 'primeng';
+import { SelectButtonModule, SpinnerModule } from 'primeng';
+import { AngularPageContent10Component } from './angular-page-content10/angular-page-content10.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { SelectButtonModule } from 'primeng';
     DropdownModule,
     CalendarModule,
     ScrollingModule,
-    SelectButtonModule
+    SelectButtonModule,
+    SpinnerModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
@@ -70,7 +72,8 @@ import { SelectButtonModule } from 'primeng';
                   SubForm3Component,
                   AngularPageContent0Component,
                   FirstCapitalCharCustomValidator,
-                  AngularPageContent9Component
+                  AngularPageContent9Component,
+                  AngularPageContent10Component
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
