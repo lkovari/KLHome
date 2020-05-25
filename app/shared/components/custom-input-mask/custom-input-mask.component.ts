@@ -10,36 +10,17 @@ import { InputMask } from 'primeng';
 })
 export class CustomInputMaskComponent implements OnInit, ControlValueAccessor  {
   private _value: string;
-  @Input()
-  set value(v: string) {
-      this._value = v;
-  }
-  get value() {
-      return this._value;
-  }
   private _maskText: string;
-  @Input()
-  set maskText(v: string) {
-    this._maskText = v;
-  }
-  get maskText(): string {
-    return this._maskText;
-  }
   private _placeHolderText: string;
-  @Input()
-  set placeHolderText(v: string) {
-    this._placeHolderText = v;
-  }
-  get placeHolderText(): string {
-    return this._placeHolderText;
-  }
+  private _requiredMessage: string;
+  private _isRequired = false;
+  private _renderer: Renderer2;
   @Input() tabindex: number;
   @Input() disabled: boolean;
   @Input() name: string;
   @Input() id: string;
   @Input() style: string;
   @Input() styleClass: string;
-  private _isRequired = false;
   @Input()
   set isRequired(v: boolean) {
     // this._isRequired = v != null && `${v}` !== 'false';
@@ -48,7 +29,6 @@ export class CustomInputMaskComponent implements OnInit, ControlValueAccessor  {
   get isRequired(): boolean {
     return this._isRequired;
   }
-  private _requiredMessage: string;
   @Input()
   set requiredMessage(v: string) {
     this._requiredMessage = v;
@@ -56,10 +36,33 @@ export class CustomInputMaskComponent implements OnInit, ControlValueAccessor  {
   get requiredMessage() {
     return this._requiredMessage;
   }
+  @Input()
+  set value(v: string) {
+      this._value = v;
+  }
+  get value() {
+      return this._value;
+  }
+  @Input()
+  set maskText(v: string) {
+    this._maskText = v;
+  }
+  get maskText(): string {
+    return this._maskText;
+  }
+  @Input()
+  set placeHolderText(v: string) {
+    this._placeHolderText = v;
+  }
+  get placeHolderText(): string {
+    return this._placeHolderText;
+  }
+  // tslint:disable-next-line:member-ordering
   @Output() onChangeEvent = new EventEmitter<any>();
+  // tslint:disable-next-line:member-ordering
   @Output() onBlurEvent = new EventEmitter<any>();
+  // tslint:disable-next-line:member-ordering
   @ViewChild('inputMask', { static: true }) customInputMask: InputMask;
-  private _renderer: Renderer2;
 
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };

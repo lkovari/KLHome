@@ -7,16 +7,13 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./angular-page-content10.component.scss']
 })
 export class AngularPageContent10Component implements OnInit {
-  oneRowHeight = 28;
   githubLogoPath: string;
   defaultRows = 3;
-  defaultRowHeight = this.defaultRows * this.oneRowHeight;
   customTextValue: string;
   fieldRequired: boolean;
   customTextMaxLength = 250;
   customTextMinLength = 0;
-  maxHeightInRows = 10;
-  maxHeightLimit = (this.oneRowHeight * this.maxHeightInRows);
+  maxRowstLimit = 10;
   @ViewChild('dataEntryForm', {static: true} ) dataEntryForm: NgForm;
 
   constructor() { }
@@ -30,7 +27,6 @@ export class AngularPageContent10Component implements OnInit {
   }
 
   onChangeSpinner(event: Event) {
-    this.maxHeightLimit = (this.oneRowHeight * this.maxHeightInRows);
     console.log('onChangeSpinner fired ' + event);
   }
 }
