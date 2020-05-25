@@ -21,9 +21,9 @@
         <div class="top-gap">
             <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate autocomplete="off">
                 <div class="form-group">
-                    <label class="spacer" for="userName">Max height in rows (autoSizeLimit)
+                    <label class="spacer" for="userName">Max Rows Limit (autoSizeLimit)
                     </label>
-                    <p-spinner id="maxHeight" class="spinner-style" name="maxHeight" [(ngModel)]="maxHeightInRows"
+                    <p-spinner id="maxHeight" class="spinner-style" name="maxHeight" [(ngModel)]="maxRowstLimit"
                     [min]="0" [max]="100" [step]="1" #maxHeight="ngModel" autocomplete="off" (onChange)="onChangeSpinner($event)" >
                     </p-spinner>
                 </div>
@@ -32,8 +32,8 @@
                         <span *ngIf="fieldRequired"class="text-danger">*</span>
                     </label>
                     <textarea id="customTextArea" class="form-control custom-text-style" name="customTextArea" [(ngModel)]="customTextValue"
-                        rows="{{defaultRows}}" [ngStyle]="{'height': defaultRowHeight+'px'}"
-                        appCustomTextArea autoSize="true" autoSizeLimit="{{maxHeightLimit}}"
+                        rows="{{defaultRows}}" 
+                        appCustomTextArea autoSize="true" defaultRows="{{defaultRows}}" autoSizeLimit="{{maxRowstLimit}}"
                         #customTextArea="ngModel" autocomplete="off"
                         [required]="fieldRequired" 
                         minlength="{{customTextMinLength}}"
