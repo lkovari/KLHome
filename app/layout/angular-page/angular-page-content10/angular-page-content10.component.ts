@@ -19,6 +19,7 @@ export class AngularPageContent10Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.customTextValue = '';
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
