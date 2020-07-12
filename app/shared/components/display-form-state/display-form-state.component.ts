@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, AbstractControl, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-display-form-state',
@@ -7,17 +7,34 @@ import { FormControl, FormGroup, FormArray, AbstractControl } from '@angular/for
   styleUrls: ['./display-form-state.component.scss']
 })
 export class DisplayFormStateComponent {
-  formControlStatusKeys = ['type', 'status', 'valid', 'invalid', 'pending', 'pristine', 'dirty', 'touched', 'untouched', 'value'];
+  private readonly PROPERY_TYPE = 'type';
+  private readonly PROPERY_STATUS = 'status';
+  private readonly PROPERY_VALID = 'valid';
+  private readonly PROPERY_INVALID = 'invalid';
+  private readonly PROPERY_PENDING = 'pending';
+  private readonly PROPERY_PRISTINE = 'pristine';
+  private readonly PROPERY_DIRTY = 'dirty';
+  private readonly PROPERY_TOUCHED = 'touched';
+  private readonly PROPERY_UNTOUCHED = 'untouched';
+  private readonly PROPERY_VALUE = 'value';
+  formControlStatusKeys = [this.PROPERY_TYPE, this.PROPERY_STATUS, this.PROPERY_VALID, this.PROPERY_INVALID, this.PROPERY_PENDING,
+                          this.PROPERY_PRISTINE, this.PROPERY_DIRTY, this.PROPERY_TOUCHED, this.PROPERY_UNTOUCHED, this.PROPERY_VALUE];
 
   private _mainFormGroup: FormGroup;
+  private _distanceFrom = '2';
+  controlList = new Array<FormControl>();
+  formGroupStack = new Array<FormGroup>();
   @Input()
-  set mainFormGroup(v: FormGroup) {
-    this._mainFormGroup = v;
+  set mainFormGroup(v: any) {
+    if (v instanceof NgForm) {
+      this._mainFormGroup = <FormGroup>v.form;
+    } else {
+      this._mainFormGroup = <FormGroup>v;
+    }
   }
-  get mainFormGroup(): FormGroup {
+  get mainFormGroup(): any {
     return this._mainFormGroup;
   }
-  private _distanceFrom = '2';
   @Input()
   set distanceFrom(v: string) {
     this._distanceFrom = v;
@@ -25,18 +42,10 @@ export class DisplayFormStateComponent {
   get distanceFrom(): string {
     return this._distanceFrom;
   }
-  controlList = new Array<FormControl>();
-  formGroupStack = new Array<FormGroup>();
 
   constructor() { }
 
-  /*
-  extractFormGroupValueByKey(key: string): FormControl {
-    return <FormControl>this.mainFormGroup[key];
-  }
-  */
   extractFormGroupPropertyValueByKey(key: string): string {
-    // console.log('FormGroup property value key ' + `${key}`);
     return this.mainFormGroup[key];
   }
 
@@ -66,7 +75,6 @@ export class DisplayFormStateComponent {
 
   extractFormElementByKey(ctrlKey: string): FormControl | FormGroup | FormArray {
     let control = this.mainFormGroup.controls[ctrlKey];
-    // console.log('key ' + `${ctrlKey}`);
     if (control instanceof FormControl) {
       control = <FormControl>control;
     } else if (control instanceof FormGroup) {
@@ -86,10 +94,6 @@ export class DisplayFormStateComponent {
     return ctrl[key];
   }
 
-  isValueOk(v: string): boolean {
-    return v === 'VALID';
-  }
-
   extractType(control: AbstractControl): string {
     let typeName = '';
     if (control instanceof FormControl) {
@@ -104,9 +108,10 @@ export class DisplayFormStateComponent {
 
   getStyleColor(k: string, v: any): string {
     let color = 'black';
-    if ((k === 'status' && v === 'VALID') || (k === 'valid' && v) || (k === 'invalid' && !v)) {
+    if ((k === this.PROPERY_STATUS && v === this.PROPERY_VALID) || (k === this.PROPERY_VALID && v) || (k === this.PROPERY_INVALID && !v)) {
       color = 'green';
-    } else if ((k === 'status' && v === 'INVALID') || (k === 'valid' && !v) || (k === 'invalid' && v)) {
+    } else if ((k === this.PROPERY_STATUS && v === this.PROPERY_INVALID)
+            || (k === this.PROPERY_VALID && !v) || (k === this.PROPERY_INVALID && v)) {
       color = 'red';
     } else if (k === 'errors' && v !== null) {
       color = 'red';
@@ -134,16 +139,21 @@ export class DisplayFormStateComponent {
     return name;
   }
 
-  isItComplexObject(complexCtrl: AbstractControl): boolean {
-    return complexCtrl instanceof FormGroup || complexCtrl instanceof FormArray;
+  /**
+   *
+   * @param control: AbstractControl
+   * @return boolean - if true the passedControl is a complex control, else not
+   */
+  isItComplexControl(control: AbstractControl): boolean {
+    return control instanceof FormGroup || control instanceof FormArray;
   }
 
-  onComplexControlClicked(complexCtrl: FormGroup) {
+  onComplexControlClicked(control: FormGroup) {
     this.formGroupStack.push(this._mainFormGroup);
-    this._mainFormGroup = complexCtrl;
+    this._mainFormGroup = control;
   }
 
-  isEnableBackButton(): boolean {
+  enableBackButton(): boolean {
     return this.formGroupStack.length > 0;
   }
 

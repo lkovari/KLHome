@@ -42,8 +42,8 @@
                 <div class="form-group col-md-6">
                     <label>Bar Char Orientation
                         <p-dropdown id="orientation" [options]="orientations" optionLabel="label" dataKey="value"
-                            [showClear]="false" #orientation="ngModel" [(ngModel)]="selectedOrientation" [required]="true"
-                            (onChange)="onOrientationChange($event)" name="orientation">
+                            [showClear]="false" #orientation="ngModel" [(ngModel)]="selectedOrientation"
+                            [required]="true" (onChange)="onOrientationChange($event)" name="orientation">
                         </p-dropdown>
                     </label>
                 </div>
@@ -56,5 +56,71 @@
         </div>
         <app-bar-chart [fixHeightInRem]="fixHeightInRem" [barItems]="barItems" [orientation]="selectedEnumOrientation">
         </app-bar-chart>
+    </div>
+    <div class="sub-topic">
+        <label>3. Data input form example with FlexBox</label>
+    </div>
+    <div class="data-input-form">
+        <form>
+            <div class='fieldsets-group'>
+                <div class='fieldset fieldset-1of2'>
+                    <label>First Name</label>
+                    <input id="firstname" placeholder='first name' type='text' name="firstName" [(ngModel)]="personModel.firstName"
+                    minlength="3" #firstName="ngModel" autocomplete="off" required>
+                    <div *ngIf="(firstName && (firstName.invalid && firstName.dirty)) " class="text-danger">
+                        <p *ngIf="firstName.errors?.required">Value is required!</p>
+                        <p *ngIf="firstName.hasError('minlength')">Min length is 3!</p>
+                        <p *ngIf="firstName.errors?.maxlength">Max length is 3!</p>
+                    </div>                    
+                </div>
+                <div class='fieldset fieldset-1of2'>
+                    <label>Middle initial</label>
+                    <input placeholder='middle initial' type='text'  name="middleInitial" [(ngModel)]="personModel.middleInitial">
+                </div>
+                <div class='fieldset fieldset-1of2'>
+                    <label>Last Name</label>
+                    <input placeholder='last name' type='text' name="lastName" [(ngModel)]="personModel.lastName"
+                    minlength="3" #lastName="ngModel" autocomplete="off" required>
+                    <div *ngIf="(lastName && (lastName.invalid && lastName.dirty)) " class="text-danger">
+                        <p *ngIf="lastName.errors?.required">Value is required!</p>
+                        <p *ngIf="lastName.hasError('minlength')">Min length is 3!</p>
+                        <p *ngIf="lastName.errors?.maxlength">Max length is 3!</p>
+                    </div>                     
+                </div>
+            </div>
+            <div class='fieldset'>
+                <label>Email</label>
+                <input placeholder='email address' type='email' name="email" [(ngModel)]="personModel.email" #email="ngModel" autocomplete="off" required email>
+                <div *ngIf="email && (email.invalid && email.dirty)" class="text-danger">
+                    <p *ngIf="email.errors?.required">Email is required!</p>
+                    <p *ngIf="email.errors?.email">Please type a valid email!</p>
+                </div>                
+            </div>
+            <div class='fieldset'>
+                <label>Street</label>
+                <input placeholder='street name' type='text' name="street" [(ngModel)]="personModel.street">
+            </div>
+            <div class='fieldsets-group fieldsets-location'>
+                <div class='fieldset fieldset-city'>
+                    <label>City</label>
+                    <input placeholder='city name' type='text' name="city" [(ngModel)]="personModel.city">
+                </div>
+                <div class='fieldset fieldset-state'>
+                    <label>State</label>
+                    <select class='select-state'>
+                        <option *ngFor="let state of stateArray" value="state.acronym" name="state" [ngValue]="state">{{ state.name }}</option>
+                    </select>
+                </div>
+                <div class='fieldset fieldset-zip'>
+                    <label>Zip</label>
+                    <input placeholder='zip code' type='text' name="zip" pattern="^[0-9]{5}(?:-[0-9]{4})?$" [(ngModel)]="personModel.zip"
+                    #zipCode="ngModel" autocomplete="off" required>
+                    <div *ngIf="zipCode && (zipCode.invalid && zipCode.dirty)" class="text-danger">
+                        <p *ngIf="zipCode.errors?.required">Zip code is required!</p>
+                        <p *ngIf="zipCode.errors?.pattern">Please type a valid Zip code!</p>
+                    </div>                      
+                </div>
+            </div>
+        </form>
     </div>
 </div>

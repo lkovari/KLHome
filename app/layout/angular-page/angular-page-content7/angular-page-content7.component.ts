@@ -237,7 +237,7 @@ export class AngularPageContent7Component implements OnInit {
     return userRoles?.errors?.duplication.value;
   }
 
-  onSubmit(form) {
+  onSubmit(form: any) {
     this.mainFormSubmitData = form.value;
     console.log('Form is submitted!');
     console.log(JSON.stringify(form.value));

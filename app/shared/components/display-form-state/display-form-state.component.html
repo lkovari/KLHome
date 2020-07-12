@@ -1,7 +1,7 @@
 <div class="display-status-content" [ngStyle]="{'top':(distanceFrom) + 'rem'}">
     <div class="title-area">
         <label class="vertical-gap text-primary">Status of the NgModel Properties of FormControls on a form</label>
-        <div class="spacer-horozontal-left vertical-gap" *ngIf="isEnableBackButton()">
+        <div class="spacer-horozontal-left vertical-gap" *ngIf="enableBackButton()">
             <button type="button" class="text-danger" (click)="onBackClicked($event)">Back</button>
         </div>
     </div>
@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <!-- Main Form -->
-                    <div *ngIf="isEnableBackButton(); else MainForm">
+                    <div *ngIf="enableBackButton(); else MainForm">
                         <td><b>FORMGROUP</b></td>
                     </div>
                     <ng-template #MainForm>
@@ -40,7 +40,7 @@
                     <!-- Display control values -->
                     <td *ngFor="let statusKey of formControlStatusKeys">
                         <div *ngIf="statusKey === 'type'; else NoType">
-                            <div *ngIf="isItComplexObject(extractFormElementByKey(ctrlKey)); else NotComplex">
+                            <div *ngIf="isItComplexControl(extractFormElementByKey(ctrlKey)); else NotComplex">
                                 <button type="button" (click)="onComplexControlClicked(extractFormGroupElementByKey(ctrlKey))">
                                     {{ extractType(extractFormElementByKey(ctrlKey)) }}
                                 </button>
