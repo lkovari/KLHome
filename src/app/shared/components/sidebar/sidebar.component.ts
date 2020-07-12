@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('05/31/2020 12:37 AM');
-  lastUpdateTooltip = 'Modified the [appCustomTextArea] more exact calculation of rowsize';
+  lastUpdate = new Date('07/12/2020 03:06 PM');
+  lastUpdateTooltip = 'Added Data Input Form example with FlexBow, and minor modifications';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

@@ -17,6 +17,16 @@ import { ValidationPlaceKind } from './validation-place-kind';
 })
 export class ComplexNameComponent implements OnInit, ControlValueAccessor, Validator {
   complexNameForm: FormGroup | null;
+  @Input() config: IComplexNameConfig;
+  @Input() disabled = false;
+  @Output() onNameChange = new EventEmitter<IComplexName>();
+  @Output() onFirstNameChange = new EventEmitter<string>();
+  @Output() onMiddleInitialChange = new EventEmitter<string>();
+  @Output() onLastNameChange = new EventEmitter<string>();
+  isDisabled = false;
+
+  private firstNameValidators = new Array<ValidatorFn>();
+  private lastNameValidators = new Array<ValidatorFn>();
   private _cleanup = false;
   @Input()
   get cleanup(): boolean {
@@ -33,16 +43,6 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       }
     }
   }
-  @Input() config: IComplexNameConfig;
-  @Input() disabled = false;
-  @Output() onNameChange = new EventEmitter<IComplexName>();
-  @Output() onFirstNameChange = new EventEmitter<string>();
-  @Output() onMiddleInitialChange = new EventEmitter<string>();
-  @Output() onLastNameChange = new EventEmitter<string>();
-  isDisabled = false;
-
-  private firstNameValidators = new Array<ValidatorFn>();
-  private lastNameValidators = new Array<ValidatorFn>();
 
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };

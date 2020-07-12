@@ -17,6 +17,23 @@ export class DataMainInputComponent implements OnInit {
   activeItem: MenuItem | null;
   tabIndex: number;
   minLength = 7;
+  form_data = {
+    customText: null,
+    customNumber: null,
+    tabInput1: {
+      customText: null,
+      customNumber: null
+    },
+    tabInput2: {
+      customText: null,
+      customNumber: null
+    },
+    tabInput3: {
+      customText: null,
+      customNumber : null
+    }
+  };
+
   private _customFormModel: CustomFormModel;
   @Input() set customFormModel(v: CustomFormModel) {
     this._customFormModel = v;
@@ -24,23 +41,6 @@ export class DataMainInputComponent implements OnInit {
   get customFormModel(): CustomFormModel {
     return this._customFormModel;
   }
-
-  form_data = {
-      customText: null,
-      customNumber: null,
-      tabInput1: {
-        customText: null,
-        customNumber: null
-      },
-      tabInput2: {
-        customText: null,
-        customNumber: null
-      },
-      tabInput3: {
-        customText: null,
-        customNumber : null
-      }
-  };
 
   constructor() { }
 

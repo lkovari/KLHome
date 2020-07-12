@@ -3,6 +3,8 @@ import { IBarChart } from 'src/app/shared/models/bar-chart/bar-chart-item.interf
 import { Orientation } from 'src/app/shared/models/bar-chart/orientation.model';
 import { BarChartOrientation } from 'src/app/shared/models/bar-chart/bar-chart-orientation.enum';
 import { SelectItem } from 'primeng';
+import { USState } from 'src/app/shared/models/usstate/us-state';
+import { Person } from './person.model';
 
 @Component({
   selector: 'app-angular-page-content9',
@@ -34,16 +36,76 @@ export class AngularPageContent9Component implements OnInit {
   selectedSortOption = 1;
   selectedOrientation: Orientation = this.orientations[0];
   selectedEnumOrientation: BarChartOrientation = BarChartOrientation.BOTTOM_TO_TOP;
+  stateArray: Array<USState>;
+  personModel: Person;
 
   constructor() { }
 
   ngOnInit(): void {
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    this.personModel = new Person();
+    this.initializeStates();
     let ix = 0;
     this.boxes = [];
     for (ix = 0; ix <= 64; ix++) {
       this.boxes.push(ix);
     }
+  }
+
+  private initializeStates() {
+    this.stateArray = [
+      { id: 1, acronym: 'AL', name: 'Alabana'},
+      { id: 2, acronym: 'AK', name: 'Alaska' },
+      { id: 3, acronym: 'AZ', name: 'Arizona'},
+      { id: 4, acronym: 'AR', name: 'Arkansas'},
+      { id: 5, acronym: 'CA', name: 'California'},
+      { id: 6, acronym: 'CO', name: 'Colorado'},
+      { id: 7, acronym: 'CT', name: 'Conecticut'},
+      { id: 8, acronym: 'DE', name: 'Delaware'},
+      { id: 9, acronym: 'DC', name: 'District Of Columbia'},
+      { id: 10, acronym: 'FL', name: 'Florida'},
+      { id: 11, acronym: 'GA', name: 'Georgia'},
+      { id: 12, acronym: 'HI', name: 'Hawaii'},
+      { id: 13, acronym: 'ID', name: 'Idaho'},
+      { id: 14, acronym: 'IL', name: 'Illinois'},
+      { id: 15, acronym: 'IN', name: 'Indiana'},
+      { id: 16, acronym: 'IA', name: 'Iowa'},
+      { id: 17, acronym: 'KS', name: 'Kansas'},
+      { id: 18, acronym: 'KY', name: 'Kentucky'},
+      { id: 19, acronym: 'LA', name: 'Louisiana'},
+      { id: 20, acronym: 'ME', name: 'Maine'},
+      { id: 21, acronym: 'MD', name: 'Maryland'},
+      { id: 22, acronym: 'MA', name: 'Massachusetts'},
+      { id: 23, acronym: 'MI', name: 'Michigan'},
+      { id: 24, acronym: 'MN', name: 'Minnesota'},
+      { id: 25, acronym: 'MS', name: 'Mississippi'},
+      { id: 26, acronym: 'MO', name: 'Missouri'},
+      { id: 27, acronym: 'MT', name: 'Montana'},
+      { id: 28, acronym: 'NT', name: 'Nebraska'},
+      { id: 29, acronym: 'NV', name: 'Nevada'},
+      { id: 30, acronym: 'NH', name: 'New Hampshire'},
+      { id: 31, acronym: 'NJ', name: 'New Jersey'},
+      { id: 32, acronym: 'NM', name: 'New Mexico'},
+      { id: 33, acronym: 'NY', name: 'New York'},
+      { id: 34, acronym: 'NC', name: 'North Carolina'},
+      { id: 35, acronym: 'ND', name: 'North Dakota'},
+      { id: 36, acronym: 'OH', name: 'Ohio'},
+      { id: 37, acronym: 'OK', name: 'Oklahoma'},
+      { id: 38, acronym: 'OR', name: 'Oregon'},
+      { id: 39, acronym: 'PA', name: 'Pennsylvania'},
+      { id: 40, acronym: 'RI', name: 'Rhode Island'},
+      { id: 14, acronym: 'SC', name: 'South Carolina'},
+      { id: 42, acronym: 'SD', name: 'South Dakota'},
+      { id: 43, acronym: 'TN', name: 'Tennessee'},
+      { id: 44, acronym: 'TX', name: 'Texas'},
+      { id: 45, acronym: 'UT', name: 'Utah'},
+      { id: 46, acronym: 'VT', name: 'Vermont'},
+      { id: 47, acronym: 'VA', name: 'Virginia'},
+      { id: 48, acronym: 'WA', name: 'Washington'},
+      { id: 49, acronym: 'WV', name: 'West Virginia'},
+      { id: 50, acronym: 'Wi', name: 'Wisconsin'},
+      { id: 51, acronym: 'WY', name: 'Wyoming'}
+    ];
   }
 
   isEven(ix: number): boolean {
