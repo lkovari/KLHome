@@ -88,18 +88,18 @@ export class DataMainInputComponent implements OnInit {
   setModel() {
     this.formData.form.setValue(
       {
-        customText: 'LKövári T#0',
+        customText: 'LKöváry T#0',
         customNumber: 1965,
         tabInput1: {
-          customText: 'LKövári T#1',
+          customText: 'LKöváry T#1',
           customNumber: 1965
         },
         tabInput2: {
-          customText: 'LKövári T#2',
+          customText: 'LKöváry T#2',
           customNumber: 1965
         },
         tabInput3: {
-          customText: 'LKövári T#3',
+          customText: 'LKöváry T#3',
           customNumber : 1965
         }
       }

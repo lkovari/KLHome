@@ -65,21 +65,21 @@ export class MainFormComponent implements OnInit {
 
   setSampleValues() {
     const customDataModel = new CustomFormModel();
-    customDataModel.customText = 'LKövári';
+    customDataModel.customText = 'LKöváry';
     customDataModel.customNumber = 1965;
-    customDataModel.emailAddress = 'lkovari@kovari.com';
-    customDataModel.tabData1.customText = 'EKovari';
+    customDataModel.emailAddress = 'laszlo.kovay@gmail.com';
+    customDataModel.tabData1.customText = 'EKovary';
     customDataModel.tabData1.customNumber = 1966;
-    customDataModel.tabData1.emailAddress = 'ekovari@kovari.com';
+    customDataModel.tabData1.emailAddress = 'ekovary@kovary.com';
     customDataModel.tabData1.freeText = 'khggkhkd';
     customDataModel.tabData1.maskedText = '193956665';
-    customDataModel.tabData2.customText = 'AKövári';
+    customDataModel.tabData2.customText = 'AKöváry';
     customDataModel.tabData2.customNumber = 1993
-    customDataModel.tabData2.emailAddress = 'akovari@kovari.com';
+    customDataModel.tabData2.emailAddress = 'akovary@kovary.com';
     customDataModel.tabData2.zipCode = '30004';
-    customDataModel.tabData3.customText = 'BKövári';
+    customDataModel.tabData3.customText = 'BKöváry';
     customDataModel.tabData3.customNumber = 1995;
-    customDataModel.tabData3.emailAddress = 'bkovari@kovari.com';
+    customDataModel.tabData3.emailAddress = 'bkovary@kovary.com';
     customDataModel.tabData3.freeText = 'sdklghklgsdjhdjkhgdjkg';
     customDataModel.tabData3.zipCode = '30023';
     this.setupValues(customDataModel);
