@@ -29,8 +29,8 @@ export class AngularPageContent1Component implements OnInit {
     this.dataEntryForm.form.setValue(
       // this.dataEntryForm.form.patchValue(
       {
-        userName: 'lkovari',
-        email: 'lkovari@sisfirst.com',
+        userName: 'lkovary',
+        email: 'laszlo.kovary@gmail.com',
         phone: '800 1234 5678'
       }
     );

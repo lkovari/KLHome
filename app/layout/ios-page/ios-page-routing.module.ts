@@ -1,5 +1,5 @@
 /**
- * Created by lkovari on 2017.04.13..
+ * Created by Laszlo Kovary on 2017.04.13..
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

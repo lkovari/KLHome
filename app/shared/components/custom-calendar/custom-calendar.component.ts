@@ -1,5 +1,5 @@
 /**
- * Created by lkovari on 2018.02.08.
+ * Created by Laszlo Kovary on 2018.02.08.
  */
 import { Component, EventEmitter, OnInit, Input, Output, ViewChild, forwardRef, ExistingProvider } from '@angular/core';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, FormControl, NgModel } from '@angular/forms';

@@ -179,7 +179,7 @@ export class AngularPageContent7Component implements OnInit {
   onSetModel(event: MouseEvent) {
     this.clearModel();
     const userFormData = new UserFormData();
-    userFormData.userName = 'lkovari';
+    userFormData.userName = 'lkovary';
     userFormData.password = 'Passw0rd@';
     userFormData.confirmPassword = 'Passw0rd@';
     userFormData.userRoles = [

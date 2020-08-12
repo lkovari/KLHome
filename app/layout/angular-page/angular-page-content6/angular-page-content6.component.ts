@@ -71,21 +71,21 @@ export class AngularPageContent6Component implements OnInit {
   }
 
   setSampleValues() {
-    this.customDataModel.customText = 'LKövári';
+    this.customDataModel.customText = 'LKöváry';
     this.customDataModel.customNumber = 1965;
-    this.customDataModel.emailAddress = 'lkovari@kovari.com';
-    this.customDataModel.tabData1.customText = 'EKovari';
+    this.customDataModel.emailAddress = 'laszlo.kovay@gmail.com';
+    this.customDataModel.tabData1.customText = 'EKovary';
     this.customDataModel.tabData1.customNumber = 1966;
-    this.customDataModel.tabData1.emailAddress = 'ekovari@kovari.com';
+    this.customDataModel.tabData1.emailAddress = 'ekovary@kovary.com';
     this.customDataModel.tabData1.freeText = 'khggkhkd';
     this.customDataModel.tabData1.maskedText = '193956665';
-    this.customDataModel.tabData2.customText = 'AKövári';
+    this.customDataModel.tabData2.customText = 'AKöváry';
     this.customDataModel.tabData2.customNumber = 1993
-    this.customDataModel.tabData2.emailAddress = 'akovari@kovari.com';
+    this.customDataModel.tabData2.emailAddress = 'akovary@kovary.com';
     this.customDataModel.tabData2.zipCode = '30004';
-    this.customDataModel.tabData3.customText = 'BKövári';
+    this.customDataModel.tabData3.customText = 'BKöváry';
     this.customDataModel.tabData3.customNumber = 1995;
-    this.customDataModel.tabData3.emailAddress = 'bkovari@kovari.com';
+    this.customDataModel.tabData3.emailAddress = 'bkovary@kovary.com';
     this.customDataModel.tabData3.freeText = 'sdklghklgsdjhdjkhgdjkg';
     this.customDataModel.tabData3.zipCode = '30023';
     this.setupValues(this.customDataModel);

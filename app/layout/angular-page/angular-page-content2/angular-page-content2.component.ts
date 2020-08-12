@@ -1,5 +1,5 @@
 /**
- * Created by lkovari on 2018.02.08.
+ * Created by Laszlo kovary on 2018.02.08.
  */
 import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
