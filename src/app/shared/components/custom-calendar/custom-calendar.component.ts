@@ -1,26 +1,17 @@
 /**
  * Created by Laszlo Kovary on 2018.02.08.
  */
-import { Component, EventEmitter, OnInit, Input, Output, ViewChild, forwardRef, ExistingProvider } from '@angular/core';
-import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, FormControl, NgModel } from '@angular/forms';
-
-const CUSTOM_CALENDAR_CONTROL_VALUE_ACCESSOR: ExistingProvider = {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => CustomCalendarComponent),
-    multi: true
-};
-
-export const CUSTOM_CALENDAR_VALIDATOR = {
-    provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => CustomCalendarComponent),
-    multi: true
-};
+import { Component, EventEmitter, OnInit, Input, Output, ViewChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, FormControl, NgModel, ValidationErrors } from '@angular/forms';
 
 @Component({
     selector: 'app-custom-calendar',
     templateUrl: './custom-calendar.component.html',
     styleUrls: ['./custom-calendar.component.scss'],
-    providers: [CUSTOM_CALENDAR_CONTROL_VALUE_ACCESSOR, CUSTOM_CALENDAR_VALIDATOR]
+    providers: [
+        {    provide: NG_VALUE_ACCESSOR, useExisting: CustomCalendarComponent, multi: true },
+        {    provide: NG_VALIDATORS, useExisting: CustomCalendarComponent, multi: true }
+    ]
 })
 export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Validator {
     @Input() disabledDays = new Array<number>();
@@ -32,14 +23,6 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     @Input() required = false;
     @Input() selectOtherMonths = true;
     @Input() showButtonBar = true;
-    private _yearNavigator = false;
-    @Input()
-    get yearNavigator(): boolean {
-        return this._yearNavigator;
-    }
-    set yearNavigator(v: boolean) {
-        this._yearNavigator = v;
-    }
     @Input() monthNavigator = false;
     @Input() showTime = false;
     @Input() timeOnly = false;
@@ -54,7 +37,26 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     @Input() style: string;
     @Input() styleClass: string;
     @Input() hourFormat = '24';
+    @Input() dateFormat = 'mm/dd/yy';
+    @Input() appendTo = null;
+    @Output() onTodayClicked = new EventEmitter<Date | null>();
+    @Output() onDateSelected = new EventEmitter<Date | null>();
+    @Output() onClearClicked = new EventEmitter<Date | null>();
+    @Output() onModelChanged = new EventEmitter<Date | null>();
+    @ViewChild('Model', { static: true }) calendarModel: NgModel;
+    private _date: Date | null;
     private _yearRange;
+    private _yearNavigator = false;
+    private _minDate: Date;
+    private _maxDate: Date;
+    private _name: string;
+    @Input()
+    get yearNavigator(): boolean {
+        return this._yearNavigator;
+    }
+    set yearNavigator(v: boolean) {
+        this._yearNavigator = v;
+    }
     @Input()
     get yearRange(): string {
         return this._yearRange;
@@ -62,9 +64,6 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     set yearRange(v: string) {
         this._yearRange = v;
     }
-    @Input() dateFormat = 'mm/dd/yy';
-    @Input() appendTo = null;
-    private _minDate: Date;
     @Input()
     get minDate(): Date {
         return this._minDate;
@@ -72,7 +71,6 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
     set minDate(v: Date) {
         this._minDate = v;
     }
-    private _maxDate: Date;
     @Input()
     get maxDate(): Date {
         return this._maxDate;
@@ -81,25 +79,18 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
         this._maxDate = v;
     }
 
-    private _date: Date | null;
     get date(): Date | null {
         return this._date;
     }
     set date(date: Date | null) {
         this._date = date;
     }
-    private _name: string;
     get name() {
         return this._name;
     }
     set name(name: string) {
         this._name = name;
     }
-    @Output() onTodayClicked = new EventEmitter<Date | null>();
-    @Output() onDateSelected = new EventEmitter<Date | null>();
-    @Output() onClearClicked = new EventEmitter<Date | null>();
-    @Output() onModelChanged = new EventEmitter<Date | null>();
-    @ViewChild('Model', { static: true }) calendarModel: NgModel;
 
     onModelChange: Function = () => { };
     onModelTouched: Function = () => { };
@@ -113,7 +104,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
 
     onSelect(value: any) {
         this.onModelTouched();
-        this.onModelChange(event);
+        this.onModelChange(value);
         if (value instanceof Date) {
             this.onDateSelected.emit(<Date>value);
         } else if (value instanceof String) {
@@ -123,7 +114,7 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
         console.log('onSelect event fired ' + value);
     }
 
-    onTodayClick(date: Date) {
+    onTodayClick(date: any) {
         this.onModelTouched();
         this.onModelChange(date);
         this.onTodayClicked.emit(date);
@@ -135,28 +126,28 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
         console.log('onClearClick click event fired ' + event);
     }
 
-    onNgModelChange(date: Date) {
+    onNgModelChange(date: any) {
         this.onModelTouched();
         this.onModelChange(date);
         this.onModelChanged.emit(date);
     }
 
-    validate(c: FormControl) {
-        const validationResult = {
-            mindate: {
-                invalid: false
-            },
-            maxdate: {
-                invalid: false
-            }
-        }
+    validate(c: FormControl): ValidationErrors | null {
+        const validationResult: ValidationErrors = {};
         if (c.value) {
-            const valueAsDate = <Date>c.value;
+            let valueAsDate;
+            if (typeof(c.value) === 'string' ) {
+                valueAsDate = new Date(Date.parse(c.value));
+            } else {
+                valueAsDate = <Date>c.value;
+            }
             if (this.minDate) {
                 if (valueAsDate < this.minDate) {
                     this._date = null;
                     this.onModelChange(this._date);
-                    validationResult.mindate.invalid = true;
+                    validationResult.minDate = {
+                        invalid: true
+                    }
                 }
             }
             if (this.maxDate) {

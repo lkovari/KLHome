@@ -220,10 +220,24 @@ export class AngularPageContent7Component implements OnInit {
     console.log('onClearModel click event fired ' + event);
   }
 
-  isUserFieldInvalid(ur: FormControl | null, field: string): boolean {
+  isUserFieldInvalid(formControl: FormControl | null, field: string): boolean {
     // Not-null assertion operator
     // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
-    return ((ur?.get(field)!.touched || ur?.get(field)!.dirty) && !ur?.get(field)!.valid);
+    /* 
+     Original code before Angular 10 (ur?.get(field)!.touched || ur?.get(field)!.dirty) && !ur?.get(field)!.valid) : false);
+     */
+    let isInvalid = false;
+    if (formControl) {
+      const dataField = formControl.get(field);
+      if (dataField) {
+        isInvalid = dataField.invalid;
+      } else {
+        isInvalid = false;
+      }
+    } else {
+      isInvalid = false;
+    }
+    return isInvalid;
   }
 
   hasDuplicatedRows(form: FormGroup | null) {

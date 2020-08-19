@@ -15,7 +15,7 @@
         <label class="col-md-2 col-form-label" for="customtextinput">Custom Text
           <span class="text-danger">*</span>
         </label>
-        <app-text-input id="customtextinputm"  name="customText" [(ngModel)]="customFormModel.customText"
+        <app-text-input id="customtextinputm" name="customText" [(ngModel)]="customFormModel.customText"
           #customText="ngModel" [minlength]="minLength" [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)"
           required>
         </app-text-input>
