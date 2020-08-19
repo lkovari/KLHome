@@ -219,17 +219,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       if (this.config.firstNameMinLength) {
         if (complexNameValue.firstName) {
           if (complexNameValue.firstName.length < this.config.firstNameMinLength) {
-            if (validationResult !== null) {
-              validationResult = {
-                firstNameMinLength: {
-                  invalid: true
-                }
-              }
-            } else {
-              validationResult = {
-                firstNameMinLength: {
-                  invalid: true
-                }
+            validationResult = {
+              firstNameMinLength: {
+                invalid: true
               }
             }
           }
@@ -238,17 +230,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       if (this.config.firstNameMaxLength) {
         if (complexNameValue.firstName) {
           if (complexNameValue.firstName.length > this.config.firstNameMaxLength) {
-            if (validationResult !== null) {
-              validationResult = {
-                firstNameMaxLength: {
-                  invalid: true
-                }
-              }
-            } else {
-              validationResult = {
-                firstNameMaxLength: {
-                  invalid: true
-                }
+            validationResult = {
+              firstNameMaxLength: {
+                invalid: true
               }
             }
           }
@@ -256,17 +240,9 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       }
       if (this.config.isFirstNameMandatory) {
         if (!complexNameValue.firstName) {
-          if (validationResult !== null) {
-            validationResult = {
-              firstNameRequired: {
-                invalid: true
-              }
-            }
-          } else {
-            validationResult = {
-              firstNameRequired: {
-                invalid: true
-              }
+          validationResult = {
+            firstNameRequired: {
+              invalid: true
             }
           }
         }
@@ -274,56 +250,32 @@ export class ComplexNameComponent implements OnInit, ControlValueAccessor, Valid
       if (this.config.lastNameMinLength) {
         if (complexNameValue.lastName) {
           if (complexNameValue.lastName.length < this.config.lastNameMinLength) {
-            if (validationResult !== null) {
-              validationResult = {
-                lastNameMinLength: {
-                  invalid: true
-                }
-              }
-            } else {
-              validationResult = {
-                lastNameMinLength: {
-                  invalid: true
-                }
+            validationResult = {
+              lastNameMinLength: {
+                invalid: true
               }
             }
-            // this.nameModel.last = null;
+          // this.nameModel.last = null;
           }
         }
       }
       if (this.config.lastNameMaxLength) {
         if (complexNameValue.lastName) {
           if (complexNameValue.lastName.length > this.config.lastNameMaxLength) {
-            if (validationResult !== null) {
-              validationResult = {
-                lastNameMaxLength: {
-                  invalid: true
-                }
-              }
-            } else {
-              validationResult = {
-                lastNameMaxLength: {
-                  invalid: true
-                }
+            validationResult = {
+              lastNameMaxLength: {
+                invalid: true
               }
             }
-            // this.nameModel.last = null;
+          // this.nameModel.last = null;
           }
         }
       }
       if (this.config.isLastNameMandatory) {
         if (!complexNameValue.lastName) {
-          if (validationResult !== null) {
-            validationResult = {
-              lastNameRequired: {
-                invalid: true
-              }
-            }
-          } else {
-            validationResult = {
-              lastNameRequired: {
-                invalid: true
-              }
+          validationResult = {
+            lastNameRequired: {
+              invalid: true
             }
           }
         }

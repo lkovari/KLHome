@@ -17,6 +17,8 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
   public minLength = 7;
   submitted = false;
   githubLogoPath: string;
+  minAllowedDate = new Date();
+  maxAllowedDate = new Date();
   minDate = new Date();
   maxDate = new Date();
   changedFormContent = '';
@@ -37,6 +39,11 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     this.maxDate.setMonth(1);
     this.maxDate.setDate(2);
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    // TODO !!!!!!! Should be implement, between max allowed date range is selectable, but valid between minDate and maxDate
+    Object.assign(this.minAllowedDate, this.minDate);
+    this.minAllowedDate.setFullYear(this.minAllowedDate.getFullYear() - 2);
+    Object.assign(this.maxAllowedDate, this.maxDate);
+    this.maxAllowedDate.setFullYear(this.maxAllowedDate.getFullYear() + 2);
   }
 
   ngAfterViewInit() {
@@ -101,9 +108,14 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
       }
     );
     Object.keys(this.dataEntryForm!.controls).forEach(key => {
+      this.dataEntryForm?.controls[key].reset();
+      this.dataEntryForm?.controls[key].updateValueAndValidity();
       this.dataEntryForm?.controls[key].markAsPristine();
       this.dataEntryForm?.controls[key].markAsUntouched();
     });
+    this.dataEntryForm?.reset();
+    // TODO !!!!!!! when displayed the UI, set the values with the button, after it, set a date value and clear
+    // it, the red border remains to sign validation error but the field is empty
     console.log('clearValues click event fired ' + form.status);
   }
 
