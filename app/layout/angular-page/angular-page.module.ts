@@ -33,6 +33,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { CalendarModule } from 'primeng/calendar';
 import { SelectButtonModule, SpinnerModule } from 'primeng';
 import { AngularPageContent10Component } from './angular-page-content10/angular-page-content10.component';
+import { AngularPageContent11Component } from './angular-page-content11/angular-page-content11.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { AngularPageContent10Component } from './angular-page-content10/angular-
                   AngularPageContent0Component,
                   FirstCapitalCharCustomValidator,
                   AngularPageContent9Component,
-                  AngularPageContent10Component
+                  AngularPageContent10Component,
+                  AngularPageContent11Component
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -84,7 +86,10 @@ import { AngularPageContent10Component } from './angular-page-content10/angular-
              AngularPageContent5Component,
              AngularPageContent6Component,
              AngularPageContent7Component,
-             AngularPageContent8Component
+             AngularPageContent8Component,
+             AngularPageContent9Component,
+             AngularPageContent10Component,
+             AngularPageContent11Component
             ]
 })
 export class AngularPageModule { }
