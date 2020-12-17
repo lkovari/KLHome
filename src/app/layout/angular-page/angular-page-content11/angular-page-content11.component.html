@@ -1,0 +1,31 @@
+<div class="layout-angular-playground-page11">
+    <div>
+        This page is a <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last
+        or just which interested in, for me.
+    </div>
+    <div class="sub-topic">
+        <b>Act #11</b>
+        <div class="top-gap">
+            <label class="text-primary">
+                <a class="horizontal-gap-left horizontal-gap-right"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content11">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>
+                Demonstration of a Reactive CheckList Component.
+            </label>
+        </div>
+    </div>
+    <div class="sub-topic">
+        <label><b>The 
+            <a class="horizontal-gap-left horizontal-gap-right"
+            href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/checklist">
+            <img [src]="githubLogoPath" width="16" height="16">
+            </a> app-checklist Component is </b><span class="text-danger">UNDER CONSTRUCTION!</span></label>
+        <form class="sub-topic" (ngSubmit)="onSubmit(exampleForm)" [formGroup]="exampleForm" novalidate autocomplete="off">
+            <div class="form-group row mb-2">
+                <app-checklist [checklistItems]="checklistItems"></app-checklist>
+            </div>
+        </form>
+    </div>
+    <app-display-form-state [mainFormGroup]="exampleForm" [distanceFrom]="5"></app-display-form-state>  
+</div>

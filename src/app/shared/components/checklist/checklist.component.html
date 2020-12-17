@@ -1,0 +1,16 @@
+<div class="checklist-layout">
+    <table class="table spacer-vertical-above" formArrayName="checklist">
+        <tbody>
+            <tr *ngFor="let checklistFormGroupItem of getFormGroupsOfChecklistFormArray(); let ix = index" [formGroupName]="ix">
+                <td>
+                    <label>{{ getFormGControlOfFormGroup(checklistFormGroupItem, 'label').value }}</label>
+                </td>
+                <td>
+                    <input id="{{'selected' + ix}}" type="checkbox" 
+                        formControlName="selected" 
+                        [value]="getFormGControlOfFormGroup(checklistFormGroupItem, 'selected').value"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>        

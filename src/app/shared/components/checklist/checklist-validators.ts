@@ -1,28 +1,24 @@
-import * as forms from '@angular/forms';
-import { FormArray } from '@angular/forms';
+import { FormControl, FormArray, ValidationErrors } from '@angular/forms';
 
-export class CustomValidators {
+export class ChecklistValidators {
 
-    static passwordCrossValidator(c: forms.FormControl): forms.ValidationErrors | null {
-        const passwordControl = c.get('password');
-        const confirmPasswordControl = c.get('confirmPassword');
-        if (passwordControl && confirmPasswordControl) {
-            /* should type the user something into both fields
-            if (passwordControl.pristine || confirmPasswordControl.pristine) {
-                return null;
-            }
-            */
-            if (passwordControl.value === confirmPasswordControl.value) {
-                return null;
-            }
+    static mandatoryFieldValidator(c: FormControl): ValidationErrors | null {
+        const labelControl = c.get('label');
+        const idControl = c.get('id');
+        const selectedControl = c.get('selected');
+        const activeControl = c.get('selected');
+        const valid = (labelControl && idControl && selectedControl && activeControl) && 
+            (labelControl.value && idControl.value && selectedControl.value && selectedControl.value);
+        if ( valid ) {    
+            return null;
         }
-        return { notidentical: true };
+        return { invalid: true };
     }
 
-    static userRolesValidator(c: forms.FormControl): forms.ValidationErrors | null {
+    static mandatoryFieldsDuplicationValidator(c: FormControl): ValidationErrors | null {
         if (c instanceof FormArray) {
             let isDuplicatesFound = false;
-            const userRoleForms = <forms.FormArray>c;
+            const userRoleForms = <FormArray>c;
             let ixRef = 0;
             let rowIx = 0;
             for (ixRef; ixRef < userRoleForms.length; ixRef++) {
@@ -31,8 +27,8 @@ export class CustomValidators {
                 for (ix; ix < userRoleForms.length; ix++) {
                     const form = userRoleForms.at(ix);
                     // is the mandatory fiekds of forms are equals?
-                    const isRoleTypeEquals = formRef.get('roleType')?.value === form.get('roleType')?.value;
-                    const isModuleTypeEquals = formRef.get('moduleType')?.value === form.get('moduleType')?.value;
+                    const isRoleTypeEquals = formRef.get('id')?.value === form.get('id')?.value;
+                    const isModuleTypeEquals = formRef.get('label')?.value === form.get('label')?.value;
                     if ((isRoleTypeEquals && isModuleTypeEquals) && (ixRef !== ix)) {
                         rowIx = ix;
                         isDuplicatesFound = true;
@@ -51,4 +47,9 @@ export class CustomValidators {
         }
         return null;
     }
+    
 }
+
+
+
+    
