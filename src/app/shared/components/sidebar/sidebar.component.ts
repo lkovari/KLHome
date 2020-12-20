@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('12/18/2020 02:27 AM');
-  lastUpdateTooltip = 'Playground #11, continue to implement a Reactive CheckList Component';
+  lastUpdate = new Date('12/20/2020 07:24 PM');
+  lastUpdateTooltip = 'Playground #11, continue to implement a Reactive CheckList Component, added hoover';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

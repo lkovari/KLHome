@@ -10,6 +10,7 @@ import { ChecklistValidators } from './checklist-validators';
   viewProviders: [ { provide: ControlContainer, useExisting: FormGroupDirective } ]
 })
 export class ChecklistComponent implements OnInit {
+  hoverIndex: any;
   private _checklistItems: Array<IChecklistItem>;
   @Input() 
   set checklistItems(v: Array<IChecklistItem>) {
@@ -25,7 +26,6 @@ export class ChecklistComponent implements OnInit {
   @Input() listStyle: any;
   @Input() listStyleClass: string;
   @Input() disabled: boolean = false;
-  @Input() checkbox: boolean = false;
 
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   @Output() onClick: EventEmitter<any> = new EventEmitter();
