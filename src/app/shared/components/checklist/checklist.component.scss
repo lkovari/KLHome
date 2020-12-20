@@ -1,6 +1,26 @@
 .checklist-layout {
+    overflow-x: hidden;
+    overflow-y: auto;
     border: solid blue 1px;
-    .checklist_spacer {
-        padding-left: 1rem;
+    border-radius:8px;
+    position: relative;
+    cursor: pointer;
+    padding: 1rem;
+
+    .checklist-item-selected {
+        background-color: #d9edf7;
+    }
+    .checkmark-style {
+        color: green;
+        float: right;
+    }
+    .checklist-item-disabled {
+        opacity: 0.4;
+    }
+ 
+    .checklist-item-highlight {
+        background: transparent;
+        color: var(--primary-color);
+        border-bottom: 1px solid var(--primary-color);
     }
 }

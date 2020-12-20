@@ -15,13 +15,17 @@ export class AngularPageContent11Component implements OnInit {
     { id: 2, label: "Erika Gusbakothy as brain miner",  selected: false, value: null }, 
     { id: 3, label: "Laszlo Kovari as a software developer",  selected: false, value: null }, 
     { id: 4, label: "Bor New as a milk machine",  selected: true, value: null },
-    { id: 4, label: "Zodekap Edenwer as a dilettant",  selected: false, value: null }
+    { id: 5, label: "Zodekap Edenwer as a dilettant",  selected: false, value: null }
   ];
+  singleSelect = true;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.exampleForm = this.formBuilder.group([]);
+    this.exampleForm = this.formBuilder.group( {
+      singleSelect: [ { value: true } ],
+      multiSelect: [ { value: false } ],
+    });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 

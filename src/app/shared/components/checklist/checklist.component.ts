@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
 import { FormGroup, FormGroupDirective, FormBuilder, Validators, FormArray, ControlContainer, FormControl } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
@@ -19,7 +19,16 @@ export class ChecklistComponent implements OnInit {
   get checklistItems(): Array<IChecklistItem> {
     return this._checklistItems;
   }
+  @Input() multiple: boolean = false;
+  @Input() style: any;
+  @Input() styleClass: string;
+  @Input() listStyle: any;
+  @Input() listStyleClass: string;
+  @Input() disabled: boolean = false;
+  @Input() checkbox: boolean = false;
 
+  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   isDisabled = false;
   checklistFormArray: FormArray;
@@ -45,17 +54,19 @@ export class ChecklistComponent implements OnInit {
     this.checklistFormArray = this.formBuilder.array( [ this.createChecklistItem() ], ChecklistValidators.mandatoryFieldsDuplicationValidator );
   }
 
-  getFormGroupsOfChecklistFormArray() {
-    // (<FormArray>this.mainForm?.get('userRoles')).controls;
-    return (<FormArray>this.parentForm?.get('checklist')).controls;
-    /*
-    const checklistFA = this.parentForm.get('checklist');
-    return (<FormArray>checklistFA).controls;
-    */
+  getFormGroupsOfChecklistFormArray(): Array<FormGroup> {
+    //return (<FormArray>this.parentForm?.get('checklist')).controls;
+    const checklistFA = this.parentForm.get('checklist') as FormArray;
+    const checkListFormGroupArray = checklistFA.controls as Array<FormGroup>;
+    return checkListFormGroupArray;
   }
 
   getFormGControlOfFormGroup(formGroup: FormGroup, controlName: string): FormControl {
     return  (<FormControl>formGroup.get(controlName));
+  }
+
+  getLabelOfFormGControlOfFormGroup(formGroup: FormGroup): string {
+    return formGroup.value.label;
   }
 
   createChecklistItem(item?: IChecklistItem): FormGroup {
@@ -87,5 +98,61 @@ export class ChecklistComponent implements OnInit {
       (<FormArray>checklistFA).push(this.createChecklistItem(item));
     }
   }
-  
+
+  trackById(ix: number, checkListItemFormGroup: FormGroup) {
+    console.log('trackById ix ' + ix);
+    return checkListItemFormGroup.value.id;
+  }
+
+  onChecklistItemKeyDown(event: KeyboardEvent, formGroup: FormGroup) {
+    console.log('onChecklistItemKeyDown' + event + " " + JSON.stringify(formGroup.value));
+  }
+
+  onChecklistItemTouchEnd(event: KeyboardEvent, formGroup: FormGroup) {
+    console.log('onChecklistItemTouchEnd' + event + " " + JSON.stringify(formGroup.value));
+  }
+
+  onChecklistItemnDoubleClick(event: KeyboardEvent, formGroup: FormGroup) {
+    console.log('onChecklistItemnDoubleClick' + event + " " + JSON.stringify(formGroup.value));
+  }
+
+  onChecklistItemClick(event: KeyboardEvent, formGroup: FormGroup) {
+    const itemFound = this.checklistItems.find((item: IChecklistItem) => {
+      return formGroup.value.id === item.id;
+    });
+    if (this.multiple) {
+      if (itemFound) {
+        itemFound.selected = !itemFound.selected;
+      }  
+    } else {
+      if (itemFound) {
+        itemFound.selected = true;
+        this.checklistItems.forEach((item: IChecklistItem) => {
+          if (item.id !== itemFound.id) {
+            item.selected = false;
+          }
+        });
+      }
+    }
+    
+    console.log('onChecklistItemClick' + event + " " + JSON.stringify(formGroup.value));
+  }
+
+  isChecklistItemSelected(formGroup: FormGroup): boolean {
+    console.log('isChecklistItemSelected' + JSON.stringify(formGroup.value));
+    const itemFound = this.checklistItems.find((item: IChecklistItem) => {
+      return formGroup.value.id === item.id;
+    });
+    return itemFound ? itemFound.selected : false;;
+  }
+
+  isCheckListItemVisible(formGroup: FormGroup): boolean {
+    console.log('isChecklistItemVisible' + JSON.stringify(formGroup.value));
+    return true;
+  }
+
+  isChecklistItemDisabled(formGroup: FormGroup): boolean {
+    return formGroup.value.disabled;
+  }
+
 }
