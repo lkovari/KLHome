@@ -1,16 +1,24 @@
 <div class="checklist-layout">
-    <table class="table spacer-vertical-above" formArrayName="checklist">
-        <tbody>
-            <tr *ngFor="let checklistFormGroupItem of getFormGroupsOfChecklistFormArray(); let ix = index" [formGroupName]="ix">
-                <td>
-                    <label>{{ getFormGControlOfFormGroup(checklistFormGroupItem, 'label').value }}</label>
-                </td>
-                <td>
-                    <input id="{{'selected' + ix}}" type="checkbox" 
-                        formControlName="selected" 
-                        [value]="getFormGControlOfFormGroup(checklistFormGroupItem, 'selected').value"/>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>        
+    <ul formArrayName="checklist" style="list-style: none">
+        <li *ngFor="let checklistFormGroupItem of getFormGroupsOfChecklistFormArray(); let ix=index; trackBy: trackById"
+            [ngClass]="{'checklist-item-selected': isChecklistItemSelected(checklistFormGroupItem)}"
+            (click)="onChecklistItemClick($event, checklistFormGroupItem)"
+            (dblclick)="onChecklistItemnDoubleClick($event, checklistFormGroupItem)"
+            (touchend)="onChecklistItemTouchEnd($event, checklistFormGroupItem)"
+            (keydown)="onChecklistItemKeyDown($event, checklistFormGroupItem)"
+            tabIndex="{{ ix }}">
+            <div 
+                [ngClass]="{'checklist-item-disabled': disabled || isChecklistItemDisabled(checklistFormGroupItem)}"
+                [formGroupName]="ix">
+                {{ getLabelOfFormGControlOfFormGroup(checklistFormGroupItem) }}
+                <span class="checkmark-style" *ngIf="isChecklistItemSelected(checklistFormGroupItem)">
+                    <i class="fa fa-check fa-sm"></i>
+                </span>
+                <div *ngIf="checkbox">
+                    <input id="{{'selected' + ix}}" type="checkbox" formControlName="selected"
+                    [value]="getFormGControlOfFormGroup(checklistFormGroupItem, 'selected').value" />
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

@@ -4,5 +4,5 @@ export interface IChecklistItem {
     value: any;
     selected: boolean;
     normal?: boolean;
-    active?: boolean;
+    disabled?: boolean;
 }

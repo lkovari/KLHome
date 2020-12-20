@@ -6,5 +6,5 @@ export class ChecklistItem implements IChecklistItem {
     value: any;
     selected: boolean;
     normal?: boolean;
-    active?: boolean;
+    disabled?: boolean;
 }
