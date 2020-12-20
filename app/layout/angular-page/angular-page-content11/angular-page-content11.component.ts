@@ -15,7 +15,9 @@ export class AngularPageContent11Component implements OnInit {
     { id: 2, label: "Erika Gusbakothy as brain miner",  selected: false, value: null }, 
     { id: 3, label: "Laszlo Kovari as a software developer",  selected: false, value: null }, 
     { id: 4, label: "Bor New as a milk machine",  selected: true, value: null },
-    { id: 5, label: "Zodekap Edenwer as a dilettant",  selected: false, value: null }
+    { id: 5, label: "Zodekap Edenwer as a dilettant",  selected: false, value: null },
+    { id: 6, label: "Vanadit 10 faimous knife steel material",  selected: false, value: null, normal: true },
+    { id: 7, label: "M390 is the best knife steel material",  selected: false, value: null, normal: true }
   ];
   singleSelect = true;
 
