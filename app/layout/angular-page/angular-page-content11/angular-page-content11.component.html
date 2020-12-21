@@ -11,7 +11,7 @@
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content11">
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a>
-                Demonstration of a Reactive CheckList Component.
+                Example of a reactive CheckListComponent, where one list item is a form (FormGroup) and where the list is a FormArray.
             </label>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 </label>{{singleSelect}}
             </div>
             <div class="form-group row mb-2">
-                <app-checklist [checklistItems]="checklistItems" [multiple]="!singleSelect"></app-checklist>
+                <app-checklist [checklistItems]="checklistItems" [multiple]="!singleSelect" [style]="" ></app-checklist>
             </div>
         </form>
     </div>

@@ -20,7 +20,16 @@ export class ChecklistComponent implements OnInit {
   get checklistItems(): Array<IChecklistItem> {
     return this._checklistItems;
   }
-  @Input() multiple: boolean = false;
+  private _multiple: boolean;
+  @Input() 
+  set multiple(v: boolean) {
+    this._multiple = v;
+    this.clearSelection();
+  }
+  get multiple(): boolean {
+    return this._multiple;
+  }
+
   @Input() style: any;
   @Input() styleClass: string;
   @Input() listStyle: any;
@@ -67,6 +76,12 @@ export class ChecklistComponent implements OnInit {
 
   getLabelOfFormGControlOfFormGroup(formGroup: FormGroup): string {
     return formGroup.value.label;
+  }
+
+  clearSelection() {
+    this._checklistItems.forEach((item: IChecklistItem) => {
+      item.selected = false;
+    });
   }
 
   createChecklistItem(item?: IChecklistItem): FormGroup {

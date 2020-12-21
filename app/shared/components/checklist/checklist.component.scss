@@ -3,32 +3,37 @@
     // overflow-y: auto;
     border: solid blue 1px;
     border-radius:8px;
-    position: relative;
+    // position: relative;
     cursor: pointer;
     padding: 1rem;
-    
+
     * {
         margin: 0;
         padding: 0;
     }
 
-    .checklist-item-row {
+    .checklist-item-container {
         display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-content: stretch;
+        align-items: flex-start;
 
-        .checklist-item-label {
-            display: flex;
-            align-items: flex-start;
+        .checklist-label-item {
+            order: 0;
+            flex: 8 1 auto;
+            align-self: auto;    
         }
 
         .checkmark-style {
-            width: 2.4rem;
-            height: 2.4rem;
             color: green;
         }
     
-        .checklist-item-checkmark checkmark-style {
-            display: flex;
-            align-items: flex-end;
+        .checklist-checkmark-item checkmark-style {
+            order: 0;
+            flex: 2 1 auto;
+            align-self: auto;  
         }
             
     }
@@ -43,12 +48,13 @@
 
     .checklist-item-selected {
         background-color: #d9edf7;
-        display: flex;
+        // display: flex;
     }
 
 
     .checklist-item-disabled {
         opacity: 0.4;
     }
+
 
 }
