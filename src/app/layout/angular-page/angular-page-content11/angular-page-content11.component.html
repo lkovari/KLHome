@@ -11,7 +11,8 @@
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content11">
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a>
-                Example of a reactive CheckListComponent, where one list item is a form (FormGroup) and where the list is a FormArray.
+                Example of a reactive CheckListComponent, where one list item is a form (FormGroup) and where the list
+                is a FormArray.
             </label>
         </div>
     </div>
@@ -20,24 +21,28 @@
                 <a class="horizontal-gap-left horizontal-gap-right"
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/checklist">
                     <img [src]="githubLogoPath" width="16" height="16">
-                </a> app-checklist Component is </b><span class="text-danger">UNDER CONSTRUCTION!</span></label>
-        <form class="sub-topic" (ngSubmit)="onSubmit(exampleForm)" [formGroup]="exampleForm" novalidate
-            autocomplete="off">
-            <div>
-                <label>Selection mode</label>
-                <label class="form-check-inline">
-                    <input id="multiselect" class="form-check-input horizontal-gap" type="radio" formControlName="multiSelect"
-                        [(ngModel)]="singleSelect" [value]="false" [checked]="false">Multiple
-                </label>
-                <label class="form-check-inline">
-                    <input id="singleselect" class="form-check-input" type="radio" formControlName="singleSelect"
-                        [(ngModel)]="singleSelect" [value]="true" [checked]="true">Single
-                </label>{{singleSelect}}
-            </div>
+                </a> app-checklist Component is </b><span class="text-danger">UNDER CONSTRUCTION!</span>
+        </label>
+        <div>
+            <label>Selection mode</label>
+            <label class="form-check-inline">
+                <input id="multiselect" class="form-check-input horizontal-gap" type="radio" name="multiSelect"
+                [(ngModel)]="singleSelect" [value]="false" [checked]="false">Multiple
+            </label>
+            <label class="form-check-inline">
+                <input id="singleselect" class="form-check-input" type="radio" name="singleSelect"
+                    [(ngModel)]="singleSelect" [value]="true" [checked]="true">Single
+            </label>{{singleSelect}}
+        </div>
+        <form class="sub-topic" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" novalidate autocomplete="off">
             <div class="form-group row mb-2">
-                <app-checklist [checklistItems]="checklistItems" [multiple]="!singleSelect" [style]="" ></app-checklist>
+                <app-checklist [checklistItems]="checklistItems"
+                    [multiSelect]="!singleSelect"></app-checklist>
             </div>
         </form>
+        <div>
+            <label class="sub-topic">Form Validation Status {{ showFormStatus() }} </label>
+        </div>
     </div>
     <app-display-form-state [mainFormGroup]="exampleForm" [distanceFrom]="5"></app-display-form-state>
 </div>
