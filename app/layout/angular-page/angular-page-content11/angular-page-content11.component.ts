@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/models/checklist/checklist-item.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
-
 @Component({
   selector: 'app-angular-page-content11',
   templateUrl: './angular-page-content11.component.html',
@@ -24,15 +23,19 @@ export class AngularPageContent11Component implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.exampleForm = this.formBuilder.group( {
-      singleSelect: [ { value: true } ],
-      multiSelect: [ { value: false } ],
-    });
+    const updateOnObj = { updateOn: 'change' };
+    this.exampleForm = this.formBuilder.group({
+      checklist: this.formBuilder.array([])
+    }, updateOnObj);
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
   onSubmit(form: FormGroup | null) {
     console.log(form);
+  }
+
+  showFormStatus(): string {
+    return ' Pristine ' + this.exampleForm?.pristine + ' Touched ' + this.exampleForm?.touched + ' Dirty ' + this.exampleForm?.dirty;
   }
 
 }
