@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/models/checklist/checklist-item.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { ChecklistComponent } from 'src/app/shared/components/checklist/checklist.component';
 @Component({
   selector: 'app-angular-page-content11',
   templateUrl: './angular-page-content11.component.html',
@@ -20,6 +21,7 @@ export class AngularPageContent11Component implements OnInit {
   ];
   singleSelect = true;
 
+  @ViewChild('checklist', { static: true }) checklistComponent: ChecklistComponent;
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -32,6 +34,10 @@ export class AngularPageContent11Component implements OnInit {
 
   onSubmit(form: FormGroup | null) {
     console.log(form);
+  }
+
+  showCheckedItems() {
+    return this.checklistComponent.selectedItems;
   }
 
   showFormStatus(): string {
