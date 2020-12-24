@@ -12,6 +12,7 @@ import { ChecklistValidators } from './checklist-validators';
 })
 export class ChecklistComponent implements OnInit, ControlValueAccessor {
   hoverIndex: any;
+  selectedItems: Array<IChecklistItem>;
   private _checklistItems: Array<IChecklistItem>;
   @Input() 
   set checklistItems(v: Array<IChecklistItem>) {
@@ -55,9 +56,9 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     this.initializeFormGroup();
     // adding it into parent form form controls
     this.parentForm = this.formGroupDirective.form;
-    // this.parentForm.setControl('checklist', this.checklistFormArray);
-    this.parentForm.removeControl('checklist');
-    this.parentForm.addControl('checklist', this.checklistFormArray);       
+    this.parentForm.setControl('checklist', this.checklistFormArray);
+    //this.parentForm.removeControl('checklist');
+    // this.parentForm.addControl('checklist', this.checklistFormArray);       
     // add items
     this._checklistItems.forEach((item: IChecklistItem) => {
       this.addChecklistItem(item);
@@ -95,6 +96,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     this._checklistItems.forEach((item: IChecklistItem) => {
       item.selected = false;
     });
+    this.selectedItems = [];
     this.onModelTouched();
     this.onModelChange(this._checklistItems);    
   }
@@ -150,30 +152,28 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     const itemFound = this.checklistItems.find((item: IChecklistItem) => {
       return formGroup.value.id === item.id;
     });
-    if (this._multiSelect) {
-      if (itemFound) {
+    if (itemFound) {
+      if (this._multiSelect) {
         itemFound.selected = !itemFound.selected;
         formGroup.value.selected = !formGroup.value.selected;
         formGroup.markAsTouched();
         formGroup.markAsDirty();
-      }  
-    } else {
-      if (itemFound) {
+      } else {
+        this.selectedItems = [];
         // select the selected form model
-        formGroup.value.selected = true;
+        formGroup.value.selected = !itemFound.selected;
         // unselected all other items
         this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
           if (formGroupItem.value.id !== itemFound.id) {
             formGroupItem.value.selected = false;
-            formGroupItem.markAsPristine();
+            // formGroupItem.markAsPristine();
           }  
         });
         // status notification
         formGroup.markAsTouched();
         formGroup.markAsDirty();
-
         // update data model
-        itemFound.selected = true;
+        itemFound.selected = !itemFound.selected;
         // unselect all other items in data model
         this.checklistItems.forEach((item: IChecklistItem) => {
           if (item.id !== itemFound.id) {
@@ -181,7 +181,16 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
           }
         });
       }
-      this.onModelTouched();
+      if (!itemFound.selected) {
+        // remove the items from selected
+        const itemIndex = this.selectedItems.indexOf(itemFound, 0);
+        if (itemIndex > -1) {
+          this.selectedItems.splice(itemIndex, 1);
+        }  
+      } else {
+        this.selectedItems.push(itemFound);
+      } 
+    this.onModelTouched();
       this.onModelChange(this._checklistItems);         
     }
     
