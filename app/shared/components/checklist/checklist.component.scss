@@ -19,21 +19,22 @@
         justify-content: flex-start;
         align-content: stretch;
         align-items: flex-start;
+        font-size: 15px;
+        line-height: 1.8rem;
 
         .checklist-label-item {
             order: 0;
-            flex: 8 1 auto;
+            flex: 0.8 1 auto;
             align-self: auto;    
         }
-
-        .checkmark-style {
-            color: green;
-        }
     
-        .checklist-checkmark-item checkmark-style {
+        .checklist-checkmark-item {
             order: 0;
-            flex: 2 1 auto;
-            align-self: auto;  
+            flex: 0.2 1 auto;
+            align-self: center;
+            color: green;
+            display: flex;
+            flex-flow: row-reverse;
         }
             
     }
