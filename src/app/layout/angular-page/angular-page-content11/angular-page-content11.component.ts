@@ -10,14 +10,15 @@ import { ChecklistComponent } from 'src/app/shared/components/checklist/checklis
 export class AngularPageContent11Component implements OnInit {
   exampleForm: FormGroup | null;
   githubLogoPath;
-  checklistItems:  ChecklistItem[] = [ 
-    { id: 1, label: "Alistair McIntyre as bone breaker",  selected: false, value: null }, 
-    { id: 2, label: "Erika Gusbakothy as brain miner",  selected: false, value: null }, 
-    { id: 3, label: "Laszlo Kovari as a software developer",  selected: false, value: null }, 
-    { id: 4, label: "Bor New as a milk machine",  selected: true, value: null },
-    { id: 5, label: "Zodekap Edenwer as a dilettant",  selected: false, value: null },
-    { id: 6, label: "Vanadit 10 faimous knife steel material",  selected: false, value: null, normal: true },
-    { id: 7, label: "M390 is the best knife steel material",  selected: false, value: null, normal: true }
+  checklistItems: ChecklistItem[] = [
+    { id: 1, label: "Alistair McIntyre as bone breaker", selected: false, value: null },
+    { id: 2, label: "Erika Gusbakothy as brain miner", selected: false, value: null },
+    { id: 3, label: "Laszlo Kovari as a software developer", selected: false, value: null },
+    { id: 4, label: "Bor New as a milk machine", selected: true, value: null },
+    { id: 5, label: "Zodekap Edenwer as a dilettant", selected: false, value: null },
+    { id: 6, label: "Vanadit 10 faimous knife steel material", selected: false, value: null, normal: true },
+    { id: 7, label: "Vanadit 10 This is a list item, where the label's text is longer than what used in the most common cases. This is the demonstration of how the test fit into two rows, and how aligned the icon.", selected: false, value: null, normal: true },
+    { id: 8, label: "M390 is the best knife steel material", selected: false, value: null, normal: true }
   ];
   singleSelect = true;
 
