@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('12/25/2020 13:36 PM');
+  lastUpdate = new Date('12/25/2020 01:36 PM');
   lastUpdateTooltip = 'Continue to implement a reactive CheckListComponent, align checkmark icon';
 
   ngOnInit() {
