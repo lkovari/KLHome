@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBarChart } from 'src/app/shared/models/bar-chart/bar-chart-item.interface';
 import { Orientation } from 'src/app/shared/models/bar-chart/orientation.model';
 import { BarChartOrientation } from 'src/app/shared/models/bar-chart/bar-chart-orientation.enum';
-import { SelectItem } from 'primeng';
+import { SelectItem } from 'primeng/api';
 import { USState } from 'src/app/shared/models/usstate/us-state';
 import { Person } from './person.model';
 

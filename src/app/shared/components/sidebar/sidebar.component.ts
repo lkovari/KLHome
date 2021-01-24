@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('12/25/2020 01:36 PM');
-  lastUpdateTooltip = 'Continue to implement a reactive CheckListComponent, align checkmark icon';
+  lastUpdate = new Date('01/24/2021 05:33 PM');
+  lastUpdateTooltip = 'Update to Angular 11, PrimeNG 11 etc.';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

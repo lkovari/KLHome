@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { SubForm2Component } from './sub-form2.component';
 
@@ -6,7 +6,7 @@ describe('SubForm2Component', () => {
   let component: SubForm2Component;
   let fixture: ComponentFixture<SubForm2Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SubForm2Component ]
     })

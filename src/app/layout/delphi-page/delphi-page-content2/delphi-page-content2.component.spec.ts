@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DelphiPageContent2Component } from './delphi-page-content2.component';
 
@@ -6,7 +6,7 @@ describe('DelphiPageContent2Component', () => {
   let component: DelphiPageContent2Component;
   let fixture: ComponentFixture<DelphiPageContent2Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DelphiPageContent2Component ]
     })

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CsharpPageContent1Component } from './csharp-page-content1.component';
 
@@ -6,7 +6,7 @@ describe('CsharpPageContent1Component', () => {
   let component: CsharpPageContent1Component;
   let fixture: ComponentFixture<CsharpPageContent1Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CsharpPageContent1Component ]
     })

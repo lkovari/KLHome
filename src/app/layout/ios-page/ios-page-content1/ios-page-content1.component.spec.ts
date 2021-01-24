@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { IosPageContent1Component } from './ios-page-content1.component';
 
@@ -6,7 +6,7 @@ describe('IosPageContent1Component', () => {
   let component: IosPageContent1Component;
   let fixture: ComponentFixture<IosPageContent1Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ IosPageContent1Component ]
     })
