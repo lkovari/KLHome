@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, RendererFactory2, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { InputMask } from 'primeng';
+import { InputMask } from 'primeng/inputmask';
 
 @Component({
   selector: 'app-custom-input-mask',

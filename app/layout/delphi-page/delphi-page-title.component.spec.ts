@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { DelphiPageTitleComponent } from './delphi-page-title.component';
 
@@ -6,7 +6,7 @@ describe('DelphiPageTitleComponent', () => {
   let component: DelphiPageTitleComponent;
   let fixture: ComponentFixture<DelphiPageTitleComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ DelphiPageTitleComponent ]
     })

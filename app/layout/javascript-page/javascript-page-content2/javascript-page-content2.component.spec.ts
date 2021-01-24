@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { JavascriptPageContent2Component } from './javascript-page-content2.component';
 
@@ -6,7 +6,7 @@ describe('JavascriptPageContent2Component', () => {
   let component: JavascriptPageContent2Component;
   let fixture: ComponentFixture<JavascriptPageContent2Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ JavascriptPageContent2Component ]
     })

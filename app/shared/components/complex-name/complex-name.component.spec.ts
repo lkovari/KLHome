@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ComplexNameComponent } from './complex-name.component';
 
@@ -6,7 +6,7 @@ describe('ComplexNameComponent', () => {
   let component: ComplexNameComponent;
   let fixture: ComponentFixture<ComplexNameComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ComplexNameComponent ]
     })

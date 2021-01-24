@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { J2sePageTitleComponent } from './j2se-page-title.component';
 
@@ -6,7 +6,7 @@ describe('J2sePageTitleComponent', () => {
   let component: J2sePageTitleComponent;
   let fixture: ComponentFixture<J2sePageTitleComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ J2sePageTitleComponent ]
     })

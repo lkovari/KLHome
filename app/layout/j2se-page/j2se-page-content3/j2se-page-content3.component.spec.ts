@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { J2sePageContent3Component } from './j2se-page-content3.component';
 
@@ -6,7 +6,7 @@ describe('J2sePageContent3Component', () => {
   let component: J2sePageContent3Component;
   let fixture: ComponentFixture<J2sePageContent3Component>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ J2sePageContent3Component ]
     })

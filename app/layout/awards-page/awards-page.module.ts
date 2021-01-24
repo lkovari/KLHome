@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
 import { AwardsPageRoutingModule } from './awards-page-routing.module';
 import { AwardsContentComponent } from './awards-content.component';
-import { SharedModule } from 'primeng';
+import { SharedModule } from 'primeng/api';
 
 @NgModule({
 imports: [

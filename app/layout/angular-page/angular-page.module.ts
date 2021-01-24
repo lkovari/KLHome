@@ -31,10 +31,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DropdownModule } from 'primeng/dropdown';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CalendarModule } from 'primeng/calendar';
-import { SelectButtonModule, SpinnerModule } from 'primeng';
 import { AngularPageContent10Component } from './angular-page-content10/angular-page-content10.component';
 import { AngularPageContent11Component } from './angular-page-content11/angular-page-content11.component';
-
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { SpinnerModule } from 'primeng/spinner';
 
 @NgModule({
   imports: [

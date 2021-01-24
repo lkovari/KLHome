@@ -16,7 +16,7 @@ import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
 import { InputMaskModule } from 'primeng/inputmask';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
-import { TooltipModule } from 'primeng';
+import { TooltipModule } from 'primeng/tooltip';
 import { CustomTextAreaDirective } from './directives/custom-textarea.directive';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 
