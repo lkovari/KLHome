@@ -52,7 +52,6 @@ import { AngularPageContent6Component } from './angular-page/angular-page-conten
 import { AngularPageContent7Component } from './angular-page/angular-page-content7/angular-page-content7.component';
 import { AngularPageContent0Component } from './angular-page/angular-page-content0/angular-page-content0.component';
 import { AngularPageContent1rComponent } from './angular-page/angular-page-content1r/angular-page-content1r.component';
-import { AwardsContentComponent } from './awards-page/awards-content.component';
 import { AngularPageContent8Component } from './angular-page/angular-page-content8/angular-page-content8.component';
 import { PersonDataResolver } from '../shared/services/persondataresolver/person-data-resolver.service';
 import { AngularPageContent9Component } from './angular-page/angular-page-content9/angular-page-content9.component';
@@ -69,7 +68,8 @@ const routes: Routes = [
       // !!!!!!! Should be use loadChildren for lazy load
       {path: 'aboutme-page', component: AboutmeContentComponent},
 
-      {path: 'awards-page', component: AwardsContentComponent},
+      // {path: 'awards-page', component: AwardsContentComponent},
+      { path: 'awards-page', loadChildren: () => import('./awards-page/awards-page.module').then(m => m.AwardsPageModule) },
 
       {path: 'angular-page', component: AngularPageTitleComponent,
         children: [
