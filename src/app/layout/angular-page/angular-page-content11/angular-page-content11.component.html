@@ -12,11 +12,12 @@
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a>
                 Example of a reactive CheckListComponent, where one list item is a form (FormGroup) and where the list
-                is a FormArray. Currently manually handling the ChecklistComponent statues I mean programatically call
+                is a FormArray. Currently manually handling the ChecklistComponent statues I mean programmatically call
                 markAsDirty() and markAsTouched(). I will figure out how can I use SelectControlValueAccessor and
                 SelectMultipleControlValueAccessor
             </label>
             <label><span class="text-primary">We can observe</span> in the source code of the ChecklistComponent, instead of function isChecklisItemSelected() we have used a pure pipe with the same name isChecklisItemSelected. If we would have used a function, then it would have called many times. Instead of the function, the pure pipe just called when the value is changed.</label>
+            <label>The usage of the pure pipe <span class="font-italic">( checklistItems | isChecklisItemSelected : checklistFormGroupItem )</span></label>
         </div>
     </div>
     <div class="sub-topic">
