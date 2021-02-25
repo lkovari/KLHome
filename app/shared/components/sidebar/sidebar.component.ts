@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('02/24/2021 09:05 PM');
-  lastUpdateTooltip = 'Angular pages now lazy loaded';
+  lastUpdate = new Date('02/25/2021 10:08 PM');
+  lastUpdateTooltip = 'Added pure pipe IsChecklisItemSelectedPipe';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

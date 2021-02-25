@@ -1,15 +1,15 @@
 <div class="checklist-layout">
     <ul formArrayName="checklist" style="list-style-type: none; min-width: 17rem; max-width:50rem">
         <li *ngFor="let checklistFormGroupItem of getFormGroupsOfChecklistFormArray(); let ix=index; trackBy: trackById"
-            [ngClass]="{'checklist-item-selected': isChecklistItemSelected(checklistFormGroupItem)}"
+            [ngClass]="{'checklist-item-selected': ( checklistItems | isChecklisItemSelected : checklistFormGroupItem ) }"
             (click)="onChecklistItemClick($event, checklistFormGroupItem)" tabIndex="{{ ix }}" id="{{'lilabel' + ix}}">
             <div id="{{'label' + ix}}" class="checklist-item-container"
-                [ngClass]="{'checklist-item-disabled': disabled || isChecklistItemDisabled(checklistFormGroupItem)}"
+                [ngClass]="{'checklist-item-disabled': disabled ||  checklistFormGroupItem.value.disabled }"
                 (mouseenter)="hoverIndex = ix" (mouseleave)="hoverIndex = null"
                 [ngClass]="{'checklist-item-highlight': hoverIndex === ix}" [formGroupName]="ix">
-                <div class="checklist-label-item">{{ getLabelOfFormGControlOfFormGroup(checklistFormGroupItem) }}</div>
+                <div class="checklist-label-item">{{ checklistFormGroupItem.value.label }}</div>
                 <div class="checklist-checkmark-item">
-                    <i class="fa fa-check fa-sm" *ngIf="isChecklistItemSelected(checklistFormGroupItem)"></i>
+                    <i class="fa fa-check fa-sm" *ngIf="( checklistItems | isChecklisItemSelected : checklistFormGroupItem )"></i>
                 </div>
             </div>
         </li>

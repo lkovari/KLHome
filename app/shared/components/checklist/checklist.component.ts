@@ -88,10 +88,6 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     return  (<FormControl>formGroup.get(controlName));
   }
 
-  getLabelOfFormGControlOfFormGroup(formGroup: FormGroup): string {
-    return formGroup.value.label;
-  }
-
   clearSelection() {
     this._checklistItems.forEach((item: IChecklistItem) => {
       item.selected = false;
@@ -132,7 +128,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   }
 
   trackById(ix: number, checkListItemFormGroup: FormGroup) {
-    console.log('trackById ix ' + ix);
+    ix + 1;
+    // console.log('trackById ix ' + ix);
     return checkListItemFormGroup.value.id;
   }
 
@@ -196,7 +193,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     
     console.log('onChecklistItemClick' + event + " " + JSON.stringify(formGroup.value));
   }
-
+  /*
   isChecklistItemSelected(formGroup: FormGroup): boolean {
     console.log('isChecklistItemSelected' + JSON.stringify(formGroup.value));
     if (this._checklistItems && this._checklistItems.length > 0) {
@@ -207,15 +204,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     }
     return false;
   }
-
-  isCheckListItemVisible(formGroup: FormGroup): boolean {
-    console.log('isChecklistItemVisible' + JSON.stringify(formGroup.value));
-    return true;
-  }
-
-  isChecklistItemDisabled(formGroup: FormGroup): boolean {
-    return formGroup.value.disabled;
-  }
+  */
 
   /*
    * Writes a new value to the element.
