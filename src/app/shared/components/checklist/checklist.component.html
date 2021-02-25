@@ -9,7 +9,7 @@
                 [ngClass]="{'checklist-item-highlight': hoverIndex === ix}" [formGroupName]="ix">
                 <div class="checklist-label-item">{{ checklistFormGroupItem.value.label }}</div>
                 <div class="checklist-checkmark-item">
-                    <i class="fa fa-check fa-sm" *ngIf="( checklistItems | isChecklisItemSelected : checklistFormGroupItem )"></i>
+                    <i class="fa fa-check fa-sm" *ngIf="checklistFormGroupItem.value.selected"></i>
                 </div>
             </div>
         </li>
