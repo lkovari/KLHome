@@ -19,6 +19,7 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { CustomTextAreaDirective } from './directives/custom-textarea.directive';
 import { ChecklistComponent } from './components/checklist/checklist.component';
+import { SharedPipesModule } from './pipes/shared-pipes.module';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { ChecklistComponent } from './components/checklist/checklist.component';
     EditorModule,
     HttpClientModule,
     InputMaskModule,
-    TooltipModule
+    TooltipModule,
+    SharedPipesModule
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
