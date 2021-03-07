@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('02/25/2021 11:04 PM');
-  lastUpdateTooltip = 'Added pure pipe IsChecklisItemSelectedPipe';
+  lastUpdate = new Date('03/07/2021 01:51 PM');
+  lastUpdateTooltip = 'Installed lk-form-validation monitor npm, and using it.';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

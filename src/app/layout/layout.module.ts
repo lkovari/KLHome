@@ -46,7 +46,7 @@ import { DialogModule } from 'primeng/dialog';
   declarations: [
     LayoutComponent,
     HeaderComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   exports: []
 })

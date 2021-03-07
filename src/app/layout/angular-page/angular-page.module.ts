@@ -35,6 +35,7 @@ import { AngularPageContent10Component } from './angular-page-content10/angular-
 import { AngularPageContent11Component } from './angular-page-content11/angular-page-content11.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { SpinnerModule } from 'primeng/spinner';
+import { FormValidationMonitorModule } from '@lkovari/form-validation-monitor';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { SpinnerModule } from 'primeng/spinner';
     CalendarModule,
     ScrollingModule,
     SelectButtonModule,
-    SpinnerModule
+    SpinnerModule,
+    FormValidationMonitorModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
