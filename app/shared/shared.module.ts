@@ -10,7 +10,6 @@ import { TextDisplayComponent } from './components/text-display/text-display.com
 import { ComplexNameComponent } from './components/complex-name/complex-name.component';
 import { AddressComponent } from './components/address/address.component';
 import { CustomInputMaskComponent } from './components/custom-input-mask/custom-input-mask.component';
-import { DisplayFormStateComponent } from './components/display-form-state/display-form-state.component';
 import { CalendarModule } from 'primeng/calendar';
 import { DialogModule } from 'primeng/dialog';
 import { EditorModule } from 'primeng/editor';
@@ -20,7 +19,6 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CustomTextAreaDirective } from './directives/custom-textarea.directive';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { SharedPipesModule } from './pipes/shared-pipes.module';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -37,8 +35,8 @@ import { SharedPipesModule } from './pipes/shared-pipes.module';
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, ChecklistComponent],
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, ChecklistComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, DisplayFormStateComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent]
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent]
 })
 export class SharedModule { }
