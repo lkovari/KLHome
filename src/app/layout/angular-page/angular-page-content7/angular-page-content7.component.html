@@ -114,7 +114,7 @@
       <div class="table-responsive-sm user-role-list">
         <label class="spacer-vertical-above spacer-horozontal-left">Role List
           #{{ getUserRoleControls().length }}</label>
-        <table class="table spacer-vertical-above" formArrayName="userRoles">
+        <table class="table spacer-vertical-above" style="overflow-x:auto;" formArrayName="userRoles">
           <thead>
             <tr>
               <th>
@@ -193,11 +193,11 @@
       </div>
     </form>
   </div>
-  <div class="form-data-area">
+  <!--div class="form-data-area">
     <label class="text-primary">Form Data</label>
     <div class="form-data">
       {{ mainFormData | json }}
     </div>
-  </div>
-  <lk-form-validation-monitor [mainFormGroup]="mainForm" [distanceFrom]="5"></lk-form-validation-monitor>  
+  </div-->
+  <lk-form-validation-monitor [mainFormGroup]="mainForm" [topGap]="5"></lk-form-validation-monitor>
 </div>
