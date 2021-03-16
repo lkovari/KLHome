@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
     "@fullcalendar/core": "^4.4.2",
-    "@lkovari/form-validation-monitor": "^1.0.12",
+    "@lkovari/form-validation-monitor": "^1.0.13",
     "@ng-bootstrap/ng-bootstrap": "^9.0.1",
     "@ngx-translate/core": "12.1.2",
     "@ngx-translate/http-loader": "4.0.0",
