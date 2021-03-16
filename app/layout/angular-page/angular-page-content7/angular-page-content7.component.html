@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-  <div class="user-form form-border form-height">
+  <div class="user-form form-border">
     <form (ngSubmit)="onSubmit(mainForm)" [formGroup]="mainForm" novalidate autocomplete="off">
       <div class="form-group row mb-2">
         <label class="col-sm-2 col-form-label" for="userName">User Name
@@ -180,24 +180,18 @@
           Duplicated rows found, please correct those. {{ extractErrorValue() }}
         </span>
       </span>
-      <div class="buttons-area">
-        <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddThreeRows()"
-          (click)="onSetModel($event)">Set
-          Model</button>
-        <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
-          Model</button>
-        <button class="btn btn-primary spacer-horozontal-right" type="submit"
-          [disabled]="!mainForm?.valid">Submit</button>
-        <button class="btn btn-primary" type="button" [disabled]="!canAddMoreRow()"
-          (click)="onAddUserRole($event)">Add Role</button>
-      </div>
     </form>
-  </div>
-  <!--div class="form-data-area">
-    <label class="text-primary">Form Data</label>
-    <div class="form-data">
-      {{ mainFormData | json }}
+    <div class="buttons-area">
+      <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!canAddThreeRows()"
+        (click)="onSetModel($event)">Set
+        Model</button>
+      <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
+        Model</button>
+      <button class="btn btn-primary spacer-horozontal-right" type="submit"
+        [disabled]="!mainForm?.valid">Submit</button>
+      <button class="btn btn-primary" type="button" [disabled]="!canAddMoreRow()"
+        (click)="onAddUserRole($event)">Add Role</button>
     </div>
-  </div-->
-  <lk-form-validation-monitor [mainFormGroup]="mainForm" [topGap]="5"></lk-form-validation-monitor>
+  </div>
+  <lk-form-validation-monitor [mainFormGroup]="mainForm"></lk-form-validation-monitor>
 </div>
