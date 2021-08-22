@@ -36,6 +36,8 @@ import { AngularPageContent11Component } from './angular-page-content11/angular-
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { SpinnerModule } from 'primeng/spinner';
 import { FormValidationMonitorModule } from '@lkovari/form-validation-monitor';
+import { AngularPageContent12Component } from './angular-page-content12/angular-page-content12.component';
+import { ExtractFormControlsPipe } from './angular-page-content12/pipes/extract-form-controls.pipe';
 
 @NgModule({
   imports: [
@@ -77,7 +79,9 @@ import { FormValidationMonitorModule } from '@lkovari/form-validation-monitor';
                   FirstCapitalCharCustomValidator,
                   AngularPageContent9Component,
                   AngularPageContent10Component,
-                  AngularPageContent11Component
+                  AngularPageContent11Component,
+                  AngularPageContent12Component,
+                  ExtractFormControlsPipe
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -91,7 +95,8 @@ import { FormValidationMonitorModule } from '@lkovari/form-validation-monitor';
              AngularPageContent8Component,
              AngularPageContent9Component,
              AngularPageContent10Component,
-             AngularPageContent11Component
+             AngularPageContent11Component,
+             AngularPageContent12Component
             ]
 })
 export class AngularPageModule { }

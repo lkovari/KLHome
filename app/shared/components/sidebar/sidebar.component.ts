@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('03/16/2021 08:19 PM');
-  lastUpdateTooltip = 'Updated lk-form-validation monitor npm, and using it. Turn layouts to more responsive';
+  lastUpdate = new Date('08/20/2021 08:19 PM');
+  lastUpdateTooltip = 'Added Angular example auto-save reactive FormArray.';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

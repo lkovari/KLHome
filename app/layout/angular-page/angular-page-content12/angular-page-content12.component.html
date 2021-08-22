@@ -1,0 +1,139 @@
+<div class="layout-angular-playground-page12">
+    <div class="angular-playground-description form-group">
+        <div class="col-sm-12">
+            This page is a
+            <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just
+            which
+            interested
+            in, for me.
+        </div>
+        <div class="sub-topic">
+            <b>Act #12</b>
+            <label class="text-primary">
+                <a class="horizontal-gap-left horizontal-gap-right"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content12">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>FormArray auto-save example.
+            </label>
+            <br>
+            We have a main form, which contains rows. Each row is a form. The Form contains a column header and below it
+            the rows. I used Reactive Forms technology (formerly Model-Driven Form) to show the UI.
+            <div class="sub-topic">
+                <b>The validation rules</b> of fields are the following
+                <ul>
+                    <li class="struct-sub">HEX id is mandatory, minimum length is {{ hexIdMinLength }} digits.</li>
+                    <li class="struct-sub">HEX id is only contains Hex digits</li>
+                    <li class="struct-sub">HEX id is unique of the list of rows, so not allow duplication of it.</li>
+                    <li class="struct-sub">Category is mandatory on each row which added</li>
+                    <li class="struct-sub">Description is mandatory the max length is {{ descriptionMaxLength }} characters.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="sub-topic">
+            <a class="horizontal-gap-left horizontal-gap-right"
+            href="https://nils-mehlhorn.de/posts/angular-autosave-form-services-ngrx">
+            I found this great article which describe a right wy how can we implement auto-save for reactive form.
+        </a>
+        </div>    
+    </div>
+    <div class="user-form form-border">
+        <form [formGroup]="mainForm" novalidate autocomplete="off">
+            <div class="table-responsive-sm user-role-list">
+                <label class="spacer-vertical-above spacer-horozontal-left">FormArray rows #{{
+                    getRowCount().length }}</label>
+                <table class="table spacer-vertical-above" style="overflow-x:auto;" formArrayName="formArrayItems">
+                    <thead>
+                        <tr>
+                            <th>
+                                Hex Id<span class="text-danger">*</span>
+                            </th>
+                            <th>
+                                Category<span class="text-danger">*</span>
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                Comment
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="hasFormArrayItems()">
+                        <tr *ngFor="let rowFormGroup of mainForm | extractFormControls; let ix = index" [formGroupName]="ix">
+                            <td>
+                                <input pInputText id="{{'hexid' + ix}}" class="form-control" type="text"
+                                    formControlName="hexId" tabindex="calcTabIndex(ix, 1)" placeholder="Type hex Id"
+                                    [ngClass]="{'is-invalid': isFieldInvalid(rowFormGroup, 'hexId') }">
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('hexId')
+                                            && rowFormGroup.get('hexId').invalid">
+                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.required">
+                                        The hexId is mandatory!
+                                    </span>
+                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.pattern">
+                                        The hexId has incorrect hexadecimal value!
+                                    </span>
+                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.minlength">
+                                        The hexId not reach the min length {{ hexIdMinLength }}
+                                    </span>
+                                </span>
+                            </td>
+                            <td>
+                                <p-dropdown id="{{'category' + ix}}" class="form-group" [options]="categories"
+                                    formControlName="category" [showClear]="false" tabindex="calcTabIndex(ix, 2)"
+                                    placeholder="Select a Category" [required]="true">
+                                </p-dropdown>
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('category') && rowFormGroup.get('category').touched
+                                             && rowFormGroup.get('category').invalid && rowFormGroup.get('category').errors.required">
+                                    <span class="show-invalid-feedback">
+                                        The Category is mandatory!
+                                    </span>
+                                </span>
+                            </td>
+                            <td>
+                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 3)"
+                                    formControlName="currentDate" [readonlyInput]="false" [defaultDate]="todayDate"
+                                    [showTime]="false" dataType="date" showOnFocus="false" [showOnFocus]="false">
+                                </p-calendar>
+                            </td>
+                            <td>
+                                <input pInputText id="{{'description' + ix}}" class="form-control" type="text"
+                                    formControlName="description" tabindex="calcTabIndex(ix, 4)"
+                                    [ngClass]="{'is-invalid': isFieldInvalid(rowFormGroup, 'description') }">
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description').touched
+                                    && rowFormGroup.get('description').invalid && rowFormGroup.get('description').errors.required">
+                                    <span class="show-invalid-feedback">
+                                        The Description is mandatory!
+                                    </span>
+                                </span>  
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description').touched
+                                    && rowFormGroup.get('description').invalid && rowFormGroup.get('description').errors.maxLength">
+                                    <span class="show-invalid-feedback">
+                                        The Description length is over the max length {{ descriptionMaxLength }}
+                                    </span>
+                                </span>  
+                            </td>
+                            <td>
+                                <input pInputText id="{{'comment' + ix}}" class="form-control" type="text"
+                                    formControlName="comment" tabindex="calcTabIndex(ix, 5)">
+                            </td>                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <span *ngIf="hasDuplicatedRows(mainForm)">
+                <span class="show-invalid-feedback">
+                    Duplicated HexId found!  {{ extractErrorValue() }}
+                </span>
+            </span>
+        </form>
+        <div class="buttons-area">
+            <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!isFormValid() && !hasFormArrayItems()"
+              (click)="onAddRow($event)">Add</button>
+            <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear</button>
+          </div>        
+    </div>
+    <lk-form-validation-monitor [mainFormGroup]="mainForm"></lk-form-validation-monitor>
+</div>
