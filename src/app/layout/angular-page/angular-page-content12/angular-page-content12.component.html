@@ -16,8 +16,8 @@
                 </a>FormArray auto-save example.
             </label>
             <br>
-            We have a main form, which contains rows. Each row is a form. The Form contains a column header and below it
-            the rows. I used Reactive Forms technology (formerly Model-Driven Form) to show the UI.
+            We have a main form, which contains rows. Each row is a form. The Form contains a column header and below it,
+            are the rows. I used Reactive Forms technology (formerly Model-Driven Form) to show the UI.
             <div class="sub-topic">
                 <b>The validation rules</b> of fields are the following
                 <ul>
@@ -65,8 +65,7 @@
                         <tr *ngFor="let rowFormGroup of mainForm | extractFormControls; let ix = index" [formGroupName]="ix">
                             <td>
                                 <input pInputText id="{{'hexid' + ix}}" class="form-control" type="text"
-                                    formControlName="hexId" tabindex="calcTabIndex(ix, 1)" placeholder="Type hex Id"
-                                    [ngClass]="{'is-invalid': isFieldInvalid(rowFormGroup, 'hexId') }">
+                                    formControlName="hexId" tabindex="calcTabIndex(ix, 1)" placeholder="Type hex Id">
                                 <span *ngIf="rowFormGroup && rowFormGroup.get('hexId')
                                             && rowFormGroup.get('hexId').invalid">
                                     <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.required">
@@ -82,7 +81,7 @@
                             </td>
                             <td>
                                 <p-dropdown id="{{'category' + ix}}" class="form-group" [options]="categories"
-                                    formControlName="category" [showClear]="false" tabindex="calcTabIndex(ix, 2)"
+                                    formControlName="category" [showClear]="true" tabindex="calcTabIndex(ix, 2)"
                                     placeholder="Select a Category" [required]="true">
                                 </p-dropdown>
                                 <span *ngIf="rowFormGroup && rowFormGroup.get('category') && rowFormGroup.get('category').touched
@@ -100,8 +99,7 @@
                             </td>
                             <td>
                                 <input pInputText id="{{'description' + ix}}" class="form-control" type="text"
-                                    formControlName="description" tabindex="calcTabIndex(ix, 4)"
-                                    [ngClass]="{'is-invalid': isFieldInvalid(rowFormGroup, 'description') }">
+                                    formControlName="description" tabindex="calcTabIndex(ix, 4)">
                                 <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description').touched
                                     && rowFormGroup.get('description').invalid && rowFormGroup.get('description').errors.required">
                                     <span class="show-invalid-feedback">
@@ -136,4 +134,5 @@
           </div>        
     </div>
     <lk-form-validation-monitor [mainFormGroup]="mainForm"></lk-form-validation-monitor>
+    <p-toast></p-toast>
 </div>

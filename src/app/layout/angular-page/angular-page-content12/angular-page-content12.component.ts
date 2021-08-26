@@ -9,11 +9,13 @@ import { CategoryModel } from './data-models/category.model';
 import { FormDataModel } from './data-models/form-data.model';
 import { FormArrayCustomValidators } from './formarray-custom-validators';
 import { DummyFormdataService } from './services/dummy-formdata.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-angular-page-content12',
   templateUrl: './angular-page-content12.component.html',
-  styleUrls: ['./angular-page-content12.component.scss']
+  styleUrls: ['./angular-page-content12.component.scss'],
+  providers: [MessageService]
 })
 export class AngularPageContent12Component implements OnInit {
   unsubscribe = new Subject();
@@ -30,6 +32,7 @@ export class AngularPageContent12Component implements OnInit {
   emptyString: string;
 
   constructor(private formBuilder: FormBuilder,
+              private messageService: MessageService,
               private dummyFormDataService: DummyFormdataService
              ) { }
 
@@ -75,6 +78,7 @@ export class AngularPageContent12Component implements OnInit {
       if (value.hexId !== null && value.category !== null) {
         // save the form value
         console.log(`FormData save started : ${JSON.stringify(changedItem)}.`);
+        this.messageService.add({severity:'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.`});
         res = this.dummyFormDataService.saveData(value);
       }
     } else {
@@ -118,6 +122,8 @@ export class AngularPageContent12Component implements OnInit {
         // when the update return with succeess clear the walidation
         formGroup.markAsPristine();
         formGroup.clearValidators();
+        const hexIdFormControl = <FormControl>formGroup.get('hexId');
+        this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save successed! Hex Id: ${hexIdFormControl.value}.`});
     }
   }
 
@@ -151,7 +157,7 @@ export class AngularPageContent12Component implements OnInit {
     });
     const hexId = formData ? formData.hexId : null;
     formArrayItem.get('hexId')?.patchValue(hexId);
-    const category = formData ? formData.category : CategoryType.CAT_Alpha;
+    const category = formData ? formData.category : null;
     formArrayItem.get('category')?.patchValue(category);
     const currentDate = formData ? formData.currentDate : this.todayDate;
     formArrayItem.get('currentDate')?.patchValue(currentDate);
