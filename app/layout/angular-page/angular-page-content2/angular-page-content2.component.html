@@ -13,7 +13,7 @@
       I wanted to see the custom component as a
       <a href="https://angular.io/api/forms/FormControl">FormControl</a> in the collection of controls of the form and
       would like to see it is participating in the Form validation
-      mechanism. I spent a lot of time to investigate how can I do that, I found in the <a
+      mechanism. I spent a lot of time investigate how can I do that, I found in the <a
         href="https://angular.io/docs">Angular documentation</a> the
       <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a> interface.
       <p>
@@ -22,19 +22,19 @@
           I would like to implement correctly the
           <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>.</mark>
       </p>
-      At first I created a simple input component the class name of it
+      At first, I created a simple input component the class name of it
       <i>
         <a href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/text-input">
           <img [src]="githubLogoPath" width="16" height="16">
         </a>TextInputComponent
-      </i> whic is the plain usage of the
+      </i> which is the plain usage of the
       <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>
       the selector of the component is
       <i>'app-text-input'</i>.
     </div>
     <div class="sub-topic">
-      <b>Act #2.1</b> Custom Date Component I wrapped a third party
-      <a href="https://www.primefaces.org/primeng/#/calendar">Calendar</a> component which created by
+      <b>Act #2.1</b> Custom Date Component I wrapped a third-party
+      <a href="https://www.primefaces.org/primeng/#/calendar">Calendar</a> component created by
       <a href="https://www.primefaces.org/primeng/#/">PrimeNG</a>.
     </div>
     <div class="sub-topic">
@@ -45,17 +45,17 @@
           <img [src]="githubLogoPath" width="16" height="16">
         </a>CustomCalendarComponent
       </i> the selector of this component is
-      <i>'app-custom-calendar'</i>. I took a look to the
+      <i>'app-custom-calendar'</i>. I took a look at the
       <a href="https://www.primefaces.org/primeng/#/">PrimeNG</a>
       source code, and I noticed the original third-party component is also implemented the
-      <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course, I know to wrap a
+      <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>. Of course, I know wrapping a
       component without good reason, is a dangerous venture, because
       the developer should consider what parameters move to the wrapper component and what not because we can hide the
       wrapped component parameters.
       <mark>I should also mention, although this is not an exhaustive implementation, the aspect of the implementation
         of the
         <a href="https://angular.io/api/forms/ControlValueAccessor">ControlValueAccessor</a>
-        it will be more than enough.</mark>
+        will be more than enough.</mark>
     </div>
     <div class="sub-topic">
       <b>Act #2.2</b> A simple Form with the Components
@@ -75,7 +75,7 @@
       I just created a simple form with two input fields, one of two is the text input component and the other is the
       date calendar component. The Submit button will enable if the form is valid which means the content of the field
       matches with validation rules. <i>setValues(form)</i> and
-      <i>clearValues(form)</i> are the best examples how can we load the data into the fields before the form open and
+      <i>clearValues(form)</i> are the best examples of how can we load the data into the fields before the form opens and
       how can be clear about that.
       <div class="sub-topic">
         <span class="text-primary">The validation rules are the following</span> the

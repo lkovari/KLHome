@@ -38,7 +38,7 @@ import { SpinnerModule } from 'primeng/spinner';
 import { FormValidationMonitorModule } from '@lkovari/form-validation-monitor';
 import { AngularPageContent12Component } from './angular-page-content12/angular-page-content12.component';
 import { ExtractFormControlsPipe } from './angular-page-content12/pipes/extract-form-controls.pipe';
-
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   imports: [
     CommonModule,
@@ -54,7 +54,8 @@ import { ExtractFormControlsPipe } from './angular-page-content12/pipes/extract-
     ScrollingModule,
     SelectButtonModule,
     SpinnerModule,
-    FormValidationMonitorModule
+    FormValidationMonitorModule,
+    ToastModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,

@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { FormDataModel } from '../data-models/form-data.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DummyFormdataService {
+  private SIMULATED_SERVICE_CALL_EXECUTION_TIME = 3000;
 
   constructor() { }
 
-  private sleep(ms: number) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   saveData(data: FormDataModel): Observable<string> {
-    const res = of(data.hexId);
-    this.sleep(500);
-    return res;
+    return Observable.create(obs => {
+      setTimeout(() => {
+        obs.next(data.hexId);
+        obs.complete();
+      }, this.SIMULATED_SERVICE_CALL_EXECUTION_TIME);
+    });
   }
 }
