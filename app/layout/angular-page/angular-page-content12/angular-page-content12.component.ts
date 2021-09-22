@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { of } from 'rxjs';
@@ -17,8 +17,8 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./angular-page-content12.component.scss'],
   providers: [MessageService]
 })
-export class AngularPageContent12Component implements OnInit {
-  unsubscribe = new Subject();
+export class AngularPageContent12Component implements OnInit, OnDestroy {
+  private readonly unsubscribe$ = new Subject<void>()
   githubLogoPath: string;
   hexIdMinLength = 8;
   descriptionMaxLength = 24;
@@ -133,7 +133,8 @@ export class AngularPageContent12Component implements OnInit {
       debounceTime(this.AUTOSAVE_DEBOUNCE_TIME),
       // during save happened a new value skip the previous save and processing the new
       concatMap(value => this.rowSave(value)),
-      takeUntil(this.unsubscribe)      
+      // Emit values until provided observable emits.
+      takeUntil(this.unsubscribe$)      
     ) 
     .subscribe((result: any) => {
       if (result) {
@@ -226,4 +227,9 @@ export class AngularPageContent12Component implements OnInit {
   hasFormArrayItems(): boolean {
     return this.getRowCount().length > 0;
   }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }  
 }

@@ -19,13 +19,13 @@ export class AngularPageContent9Component implements OnInit {
   fixHeightInRem = 40;
   barItems: IBarChart[] = [ { id: 0, label: 'MASM', value: 9, color: '#FF9CEE' },
   { id: 1, label: 'Delphi', value: 8, color: '#C5A3FF' },
-  { id: 2, label: 'ASP.NET C#', value: 2.1, color: '#F3FFE3' },
+  { id: 2, label: 'ASP.NET C#', value: 3, color: '#F3FFE3' },
   { id: 3, label: 'J2SE', value: 12, color: '#A79AFF' },
   { id: 4, label: 'J2EE', value: 1, color: '#C4FAF8' },
   { id: 5, label: 'Android', value: 6, color: '#DBFFD6' },
   { id: 6, label: 'Objective-C', value: 1.5, color: '#FFFFD1' },
   { id: 7, label: 'JavaScript', value: 2, color: '#FFABAB' },
-  { id: 8, label: 'Angular', value: 3, color: '#AFCBFF' } ];
+  { id: 8, label: 'Angular', value: 5, color: '#AFCBFF' } ];
   orientations: Orientation[] = [
     { value: BarChartOrientation.BOTTOM_TO_TOP, label: 'Bottom to Top', orientation: BarChartOrientation.BOTTOM_TO_TOP },
     { value: BarChartOrientation.TOP_TO_BOTTOM, label: 'Top to Bottom', orientation: BarChartOrientation.TOP_TO_BOTTOM },
