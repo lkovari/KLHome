@@ -8,8 +8,11 @@ import { CategoryType } from './category.enum';
 import { CategoryModel } from './data-models/category.model';
 import { FormDataModel } from './data-models/form-data.model';
 import { FormArrayCustomValidators } from './formarray-custom-validators';
-import { DummyFormdataService } from './services/dummy-formdata.service';
+// import { DummyFormdataService } from './services/dummy-formdata.service';
 import { MessageService } from 'primeng/api';
+import { AngularFireList } from '@angular/fire/database/angular-fire-database';
+import { FirebaseService } from './services/firebase.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-angular-page-content12',
@@ -28,12 +31,13 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   AUTOSAVE_DEBOUNCE_TIME = 1500;
   saveInProgress = false;
   allowWaitIndicator = false;
-  todayDate: Date;
   emptyString: string;
+  table_pg12$: AngularFireList<any>;
 
   constructor(private formBuilder: FormBuilder,
               private messageService: MessageService,
-              private dummyFormDataService: DummyFormdataService
+              // private dummyFormDataService: DummyFormdataService,
+              private firebaseService: FirebaseService
              ) { }
 
   ngOnInit(): void {
@@ -41,9 +45,9 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     this.mainForm = this.formBuilder.group({
       formArrayItems: this.formBuilder.array( [] , FormArrayCustomValidators.formArrayValidator )
     }, updateOnObj);
-    this.todayDate = new Date();
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.initializeModuleCategory();
+    this.loadRows();
   }
 
 
@@ -79,7 +83,12 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         // save the form value
         console.log(`FormData save started : ${JSON.stringify(changedItem)}.`);
         this.messageService.add({severity:'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.`});
-        res = this.dummyFormDataService.saveData(value);
+        // res = this.dummyFormDataService.saveData(value);
+        if (!changedItem.key) {
+          this.firebaseService.createFormArrayItem(value);
+        } else {
+          this.firebaseService.update(changedItem.key, changedItem);
+        }
       }
     } else {
       console.log(`rowSave Form invalid : ${JSON.stringify(value)}.`);      
@@ -87,6 +96,26 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     return res;
   }
 
+  private loadRows() {
+    // get FormArray
+    const formArrayFormGroups = <FormArray>this.mainForm.get('formArrayItems');
+    this.firebaseService.getAllFormArrayItems().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          // set the key from the returned data
+          ({ key: c.payload.key, ...c.payload.val() })
+        )
+      )
+    ).subscribe(items => {
+      // clear datamodel, more exactly the items in the -> <FormArray>this.mainForm.get('formArrayItems')
+      this.clearModel();
+      items.forEach(( item: any) => {
+        const formItem = this.createFormArrayItem(item);
+        formArrayFormGroups.push(formItem);
+      });
+    });
+  }
+  
   /**
    * 
    * @param hexId: string 
@@ -149,6 +178,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
 
   private createFormArrayItem(formData?: FormDataModel): FormGroup {
     const formArrayItem = this.formBuilder.group({
+      key: [ null ],
       hexId: [ {value: null, disabled: false }, [ Validators.required, Validators.minLength(this.hexIdMinLength),
         Validators.pattern(this.hexPattern) ] ],
       category: [{ value: null, disabled: false }, Validators.required ],
@@ -160,29 +190,16 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     formArrayItem.get('hexId')?.patchValue(hexId);
     const category = formData ? formData.category : null;
     formArrayItem.get('category')?.patchValue(category);
-    const currentDate = formData ? formData.currentDate : this.todayDate;
+    const currentDate = formData && formData.currentDate ? new Date(formData.currentDate) : new Date();
     formArrayItem.get('currentDate')?.patchValue(currentDate);
     const description = formData ? formData.description : null;
     formArrayItem.get('description')?.patchValue(description);
     const comment = formData ? formData.comment : null;
     formArrayItem.get('comment')?.patchValue(comment);
+    const key = formData ? formData.key : null;
+    formArrayItem.get('key')?.patchValue(key);
     this.setupValueChanges(formArrayItem);
     return formArrayItem;
-  }
-
-  isFieldInvalid(formControl: FormControl | null, field: string): boolean {
-    let isInvalid = false;
-    if (formControl) {
-      const dataField = formControl.get(field);
-      if (dataField) {
-        isInvalid = dataField.invalid;
-      } else {
-        isInvalid = false;
-      }
-    } else {
-      isInvalid = false;
-    }
-    return isInvalid;
   }
 
   calcTabIndex(ix: number, seq: number): number {
@@ -216,6 +233,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   onClearModel(event: Event) {
     if (this.mainForm) {
       this.clearModel();
+      this.firebaseService.deleteAll();
       console.log(`onClearModel  : ${JSON.stringify(this.mainForm.value)} at ${event.target}.`)
     }
   }
@@ -226,6 +244,11 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
 
   hasFormArrayItems(): boolean {
     return this.getRowCount().length > 0;
+  }
+
+  onClickDeleteItem(rowAsFormArrayItem: FormGroup) {
+    const key = rowAsFormArrayItem.get('key')?.value;
+    this.firebaseService.delete(key);
   }
 
   ngOnDestroy() {

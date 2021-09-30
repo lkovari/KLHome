@@ -32,7 +32,7 @@
         <div class="sub-topic">
             <a class="horizontal-gap-left horizontal-gap-right"
             href="https://nils-mehlhorn.de/posts/angular-autosave-form-services-ngrx">
-            I found this great article which describe a right wy how can we implement auto-save for reactive form.
+            I found this great article which describe a right way how can we implement auto-save for reactive form.
         </a>
         </div>    
     </div>
@@ -59,6 +59,8 @@
                             <th>
                                 Comment
                             </th>
+                            <th>
+                            </th>                            
                         </tr>
                     </thead>
                     <tbody *ngIf="hasFormArrayItems()">
@@ -92,9 +94,7 @@
                                 </span>
                             </td>
                             <td>
-                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 3)"
-                                    formControlName="currentDate" [readonlyInput]="false" [defaultDate]="todayDate"
-                                    [showTime]="false" dataType="date" showOnFocus="false" [showOnFocus]="false">
+                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 3)" formControlName="currentDate">
                                 </p-calendar>
                             </td>
                             <td>
@@ -117,6 +117,9 @@
                                 <input pInputText id="{{'comment' + ix}}" class="form-control" type="text"
                                     formControlName="comment" tabindex="calcTabIndex(ix, 5)">
                             </td>                            
+                            <td>
+                                <i class='fa fa-trash text-danger trash-icon-style' (click)="onClickDeleteItem(rowFormGroup)"></i>
+                            </td>      
                         </tr>
                     </tbody>
                 </table>
@@ -130,7 +133,7 @@
         <div class="buttons-area">
             <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!isFormValid() && !hasFormArrayItems()"
               (click)="onAddRow($event)">Add</button>
-            <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear</button>
+            <button class="btn btn-danger spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear All</button>
           </div>        
     </div>
     <lk-form-validation-monitor [mainFormGroup]="mainForm"></lk-form-validation-monitor>
