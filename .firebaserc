@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "lkxmplformarrayangularfire"
+  },
+  "targets": {
+    "lkxmplformarrayangularfire": {
+      "hosting": {
+        "klhome": [
+          "lkxmplformarrayangularfire"
+        ]
+      }
+    }
+  }
+}
