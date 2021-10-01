@@ -94,7 +94,8 @@
                                 </span>
                             </td>
                             <td>
-                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 3)" formControlName="currentDate">
+                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 3)" 
+                                dataType="string" formControlName="currentDate">
                                 </p-calendar>
                             </td>
                             <td>
@@ -118,7 +119,7 @@
                                     formControlName="comment" tabindex="calcTabIndex(ix, 5)">
                             </td>                            
                             <td>
-                                <i class='fa fa-trash text-danger trash-icon-style' (click)="onClickDeleteItem(rowFormGroup)"></i>
+                                <i class='fa fa-trash text-danger trash-icon-style' (click)="onClickDeleteItem(rowFormGroup, ix)"></i>
                             </td>      
                         </tr>
                     </tbody>
