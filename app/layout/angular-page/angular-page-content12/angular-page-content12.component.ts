@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { of } from 'rxjs';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { from, of, Subject } from 'rxjs';
 import { Observable } from 'rxjs';
-import { debounceTime, concatMap, takeUntil } from 'rxjs/operators';
+import { debounceTime, concatMap, takeUntil, distinctUntilChanged } from 'rxjs/operators';
 import { CategoryType } from './category.enum';
 import { CategoryModel } from './data-models/category.model';
 import { FormDataModel } from './data-models/form-data.model';
@@ -29,7 +28,6 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   hexPattern = '^[0-9a-fA-F]+$';
   categories: Array<CategoryModel>;
   AUTOSAVE_DEBOUNCE_TIME = 1500;
-  saveInProgress = false;
   allowWaitIndicator = false;
   emptyString: string;
   table_pg12$: AngularFireList<any>;
@@ -60,22 +58,25 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     });
   }
 
-  private clearModel() {
+  private clearModel(clear: boolean) {
     const formArray = <FormArray>this.mainForm.get('formArrayItems');
     if (formArray) {
-      formArray.clear();
-      formArray.reset();
+      formArray.markAsPristine();
+      formArray.markAsTouched();
+      if (clear) {
+        formArray.clear();
+        formArray.reset();
+        this.mainForm.reset();    
+      }
     }
-    this.mainForm.reset();    
   }
 
   /**
    * 
    * @param value: any) 
-   * @returns Observable<boolean>
+   * @returns Observable<void>
    */
-  private rowSave(value: any):Observable<string> {
-    let res = of(this.emptyString);
+  private rowSave(value: any): Observable<void> {
     if (this.isFormValid()) {
       const changedItem = <FormDataModel>value;
       // is the form is filled?
@@ -85,15 +86,15 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         this.messageService.add({severity:'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.`});
         // res = this.dummyFormDataService.saveData(value);
         if (!changedItem.key) {
-          this.firebaseService.createFormArrayItem(value);
+          return this.firebaseService.createFormArrayItem(value);
         } else {
-          this.firebaseService.update(changedItem.key, changedItem);
+          return from(this.firebaseService.update(changedItem.key, changedItem));
         }
       }
     } else {
       console.log(`rowSave Form invalid : ${JSON.stringify(value)}.`);      
     }
-    return res;
+    return of();
   }
 
   private loadRows() {
@@ -101,6 +102,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     const formArrayFormGroups = <FormArray>this.mainForm.get('formArrayItems');
     this.firebaseService.getAllFormArrayItems().snapshotChanges().pipe(
       map(changes =>
+        // set the key into key FormControl for the update
         changes.map(c =>
           // set the key from the returned data
           ({ key: c.payload.key, ...c.payload.val() })
@@ -108,7 +110,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
       )
     ).subscribe(items => {
       // clear datamodel, more exactly the items in the -> <FormArray>this.mainForm.get('formArrayItems')
-      this.clearModel();
+      this.clearModel(true);
       items.forEach(( item: any) => {
         const formItem = this.createFormArrayItem(item);
         formArrayFormGroups.push(formItem);
@@ -120,9 +122,8 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
    * 
    * @param hexId: string 
    * @returns FormGroup | null
-   */
-  private findTheChangedFormGroupByHexId(hexId: string): FormGroup | null {
-    let foundFormGroup;
+   *
+   private findTheChangedFormGroupByHexId(hexId: string): FormGroup | null {
     // get FormArray
     const formArrayFormGroups = <FormArray>this.mainForm.get('formArrayItems');
     // check each form (FormGroup) in the FormArray
@@ -135,25 +136,46 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         const hexIdValue = hexIdFormControl?.value;
         // is the sourceIdentifier matched?
         if (hexIdValue === hexId) {
-          foundFormGroup = formGroup!;
+          return formGroup!;
         }
       }
     }
-    return foundFormGroup;
+    return null;
   }
+  */
 
   /**
    * 
    * @param formGroup : FormGroup
-   */
+   *
   private clearModifiedFormGroup(formGroup?: FormGroup | null) {
     if (formGroup) {
         // when the update return with succeess clear the walidation
         formGroup.markAsPristine();
         formGroup.clearValidators();
         const hexIdFormControl = <FormControl>formGroup.get('hexId');
-        this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save successed! Hex Id: ${hexIdFormControl.value}.`});
+        this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save is successed! Hex Id: ${hexIdFormControl.value}.`});
     }
+  }
+  */
+
+  /*
+  When the back-end API call return the value or it's unique identifier we can 
+  private rowSave(value: any):Observable<string> {
+    let res = of(this.emptyString);
+    if (this.isFormValid()) {
+      const changedItem = <FormDataModel>value;
+      // is the form is filled?
+      if (value.hexId !== null && value.category !== null) {
+        // save the form value
+        console.log(`FormData save started : ${JSON.stringify(changedItem)}.`);
+        this.messageService.add({severity:'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.`});
+        res = this.dummyFormDataService.saveData(value);
+      }
+    } else {
+      console.log(`rowSave Form invalid : ${JSON.stringify(value)}.`);      
+    }
+    return res;
   }
 
   private setupValueChanges(formArrayItem: FormGroup) {
@@ -175,6 +197,24 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
       }
     });    
   }
+  */
+
+  private setupValueChanges(formArrayItem: FormGroup) {
+    formArrayItem.valueChanges.pipe(
+      // prevent unnecessary save
+      debounceTime(this.AUTOSAVE_DEBOUNCE_TIME),
+      distinctUntilChanged(),
+      // to execute the save calls one after another
+      concatMap(value => this.rowSave(value)),
+      // Emit values until provided observable emits.
+      takeUntil(this.unsubscribe$)      
+    ) 
+    .subscribe(() => {
+      formArrayItem.markAsPristine();
+      formArrayItem.markAsUntouched();
+      this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save is successed!`});
+    });    
+}
 
   private createFormArrayItem(formData?: FormDataModel): FormGroup {
     const formArrayItem = this.formBuilder.group({
@@ -232,9 +272,14 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
 
   onClearModel(event: Event) {
     if (this.mainForm) {
-      this.clearModel();
-      this.firebaseService.deleteAll();
-      console.log(`onClearModel  : ${JSON.stringify(this.mainForm.value)} at ${event.target}.`)
+      const mainFormContent = this.mainForm.value;
+      this.clearModel(true);
+      this.firebaseService.deleteAll().then(() => {
+        console.log(`Delete all FormArray items : ${JSON.stringify(mainFormContent)} at ${event.target}.`);
+        this.messageService.add({severity:'success', summary: 'Success', detail: `Deleted All FormArray items!`});
+      }, reason => {
+        console.error(`Error when try to delete all FormArray item! Error ${reason}`);
+      });
     }
   }
 
@@ -246,9 +291,17 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     return this.getRowCount().length > 0;
   }
 
-  onClickDeleteItem(rowAsFormArrayItem: FormGroup) {
+  onClickDeleteItem(rowAsFormArrayItem: FormGroup, ix: number) {
     const key = rowAsFormArrayItem.get('key')?.value;
-    this.firebaseService.delete(key);
+    const hexId = rowAsFormArrayItem.get('hexId')?.value;
+    const formArray = <FormArray>this.mainForm.get('formArrayItems');
+    formArray.removeAt(ix);
+    this.firebaseService.delete(key).then(() => {
+      console.log(`Delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId}.`)
+      this.messageService.add({severity:'success', summary: 'Success', detail: `FormData delete is successed! Hex Id: ${hexId}.`});
+    }, reason => {
+      console.error(`Error when try to delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId} Error ${reason}.`)
+    });
   }
 
   ngOnDestroy() {
