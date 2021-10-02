@@ -45,4 +45,12 @@ export class AngularPageContent11Component implements OnInit {
     return ' Pristine ' + this.exampleForm?.pristine + ' Touched ' + this.exampleForm?.touched + ' Dirty ' + this.exampleForm?.dirty;
   }
 
+  onSelectAll() {
+    this.checklistComponent.selectAllItems();
+  }
+
+  onUnselectAll() {
+    this.checklistComponent.unselectAllItems();
+  }
+
 }

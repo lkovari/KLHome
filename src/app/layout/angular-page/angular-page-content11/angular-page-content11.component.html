@@ -45,6 +45,10 @@
                 </app-checklist>
             </div>
         </form>
+        <div class="buttons-area">
+            <button class="btn btn-primary" type="button" (click)="onSelectAll()" [disabled]="singleSelect" >Select All</button>
+            <button class="btn btn-primary horizontal-gap" type="button" (click)="onUnselectAll()">Unselect All</button>
+          </div>   
         <div>
             <label class="sub-topic">Form Validation Status {{ showFormStatus() }} </label>
         </div>

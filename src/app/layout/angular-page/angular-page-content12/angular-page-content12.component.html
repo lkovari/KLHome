@@ -132,9 +132,9 @@
             </span>
         </form>
         <div class="buttons-area">
-            <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!isFormValid() && !hasFormArrayItems()"
+            <button class="btn btn-primary spacer-horozontal-right" type="button" [disabled]="!isFormValid() && !hasFormArrayItems() || rowAdd"
               (click)="onAddRow($event)">Add</button>
-            <button class="btn btn-danger spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear All</button>
+            <button class="btn btn-danger" type="button" (click)="onClearModel($event)">Remove All</button>
           </div>        
     </div>
     <lk-form-validation-monitor [mainFormGroup]="mainForm"></lk-form-validation-monitor>

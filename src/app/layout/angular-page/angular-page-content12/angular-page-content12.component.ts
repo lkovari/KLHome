@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { from, of, Subject } from 'rxjs';
+import { from, of, Subject, throwError } from 'rxjs';
 import { Observable } from 'rxjs';
-import { debounceTime, concatMap, takeUntil, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, concatMap, takeUntil, distinctUntilChanged, catchError } from 'rxjs/operators';
 import { CategoryType } from './category.enum';
 import { CategoryModel } from './data-models/category.model';
 import { FormDataModel } from './data-models/form-data.model';
@@ -31,6 +31,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   allowWaitIndicator = false;
   emptyString: string;
   table_pg12$: AngularFireList<any>;
+  rowAdd = false;
 
   constructor(private formBuilder: FormBuilder,
               private messageService: MessageService,
@@ -76,7 +77,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
    * @param value: any) 
    * @returns Observable<void>
    */
-  private rowSave(value: any): Observable<void> {
+  private saveRow(value: any): Observable<void> {
     if (this.isFormValid()) {
       const changedItem = <FormDataModel>value;
       // is the form is filled?
@@ -92,7 +93,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         }
       }
     } else {
-      console.log(`rowSave Form invalid : ${JSON.stringify(value)}.`);      
+      console.log(`saveRow Form invalid : ${JSON.stringify(value)}.`);      
     }
     return of();
   }
@@ -144,74 +145,25 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   }
   */
 
-  /**
-   * 
-   * @param formGroup : FormGroup
-   *
-  private clearModifiedFormGroup(formGroup?: FormGroup | null) {
-    if (formGroup) {
-        // when the update return with succeess clear the walidation
-        formGroup.markAsPristine();
-        formGroup.clearValidators();
-        const hexIdFormControl = <FormControl>formGroup.get('hexId');
-        this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save is successed! Hex Id: ${hexIdFormControl.value}.`});
-    }
-  }
-  */
-
-  /*
-  When the back-end API call return the value or it's unique identifier we can 
-  private rowSave(value: any):Observable<string> {
-    let res = of(this.emptyString);
-    if (this.isFormValid()) {
-      const changedItem = <FormDataModel>value;
-      // is the form is filled?
-      if (value.hexId !== null && value.category !== null) {
-        // save the form value
-        console.log(`FormData save started : ${JSON.stringify(changedItem)}.`);
-        this.messageService.add({severity:'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.`});
-        res = this.dummyFormDataService.saveData(value);
-      }
-    } else {
-      console.log(`rowSave Form invalid : ${JSON.stringify(value)}.`);      
-    }
-    return res;
-  }
-
-  private setupValueChanges(formArrayItem: FormGroup) {
-    formArrayItem.valueChanges.pipe(
-      // prevent unnecessary save
-      debounceTime(this.AUTOSAVE_DEBOUNCE_TIME),
-      // during save happened a new value skip the previous save and processing the new
-      concatMap(value => this.rowSave(value)),
-      // Emit values until provided observable emits.
-      takeUntil(this.unsubscribe$)      
-    ) 
-    .subscribe((result: any) => {
-      if (result) {
-        this.saveInProgress = false;
-        const newHexId = <string>result;
-        // find the form control
-        const formGroup = this.findTheChangedFormGroupByHexId(newHexId);
-        this.clearModifiedFormGroup(formGroup);
-      }
-    });    
-  }
-  */
-
   private setupValueChanges(formArrayItem: FormGroup) {
     formArrayItem.valueChanges.pipe(
       // prevent unnecessary save
       debounceTime(this.AUTOSAVE_DEBOUNCE_TIME),
       distinctUntilChanged(),
       // to execute the save calls one after another
-      concatMap(value => this.rowSave(value)),
+      concatMap(value => this.saveRow(value)),
       // Emit values until provided observable emits.
-      takeUntil(this.unsubscribe$)      
+      takeUntil(this.unsubscribe$),
+      catchError(err => {
+        this.rowAdd = false;
+        console.error(`Error during save : ${err}.`);
+        return throwError(err);
+    }),
     ) 
     .subscribe(() => {
       formArrayItem.markAsPristine();
       formArrayItem.markAsUntouched();
+      this.rowAdd = false;
       this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save is successed!`});
     });    
 }
@@ -265,6 +217,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
       const formArrayItem = this.createFormArrayItem();
       const formArray = <FormArray>this.mainForm.get('formArrayItems');
       formArray.push(formArrayItem);
+      this.rowAdd = true;
       console.log(`onAddRow  : ${JSON.stringify(formArrayItem.value)} at ${event.target}.`)
     }
   }
@@ -272,14 +225,16 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
 
   onClearModel(event: Event) {
     if (this.mainForm) {
-      const mainFormContent = this.mainForm.value;
-      this.clearModel(true);
-      this.firebaseService.deleteAll().then(() => {
-        console.log(`Delete all FormArray items : ${JSON.stringify(mainFormContent)} at ${event.target}.`);
-        this.messageService.add({severity:'success', summary: 'Success', detail: `Deleted All FormArray items!`});
-      }, reason => {
-        console.error(`Error when try to delete all FormArray item! Error ${reason}`);
-      });
+      if (confirm("Are you sure to remove all rows?")) {
+        const mainFormContent = this.mainForm.value;
+        this.clearModel(true);
+        this.firebaseService.deleteAll().then(() => {
+          console.log(`Delete all FormArray items : ${JSON.stringify(mainFormContent)} at ${event.target}.`);
+          this.messageService.add({severity:'success', summary: 'Success', detail: `Deleted All FormArray items!`});
+        }, reason => {
+          console.error(`Error when try to delete all FormArray item! Error ${reason}`);
+        });
+      }
     }
   }
 
@@ -296,12 +251,16 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     const hexId = rowAsFormArrayItem.get('hexId')?.value;
     const formArray = <FormArray>this.mainForm.get('formArrayItems');
     formArray.removeAt(ix);
-    this.firebaseService.delete(key).then(() => {
-      console.log(`Delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId}.`)
-      this.messageService.add({severity:'success', summary: 'Success', detail: `FormData delete is successed! Hex Id: ${hexId}.`});
-    }, reason => {
-      console.error(`Error when try to delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId} Error ${reason}.`)
-    });
+    if (key) {
+      this.firebaseService.delete(key).then(() => {
+        console.log(`Delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId}.`)
+        this.messageService.add({severity:'success', summary: 'Success', detail: `FormData delete is successed! Hex Id: ${hexId}.`});
+      }, reason => {
+        console.error(`Error when try to delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId} Error ${reason}.`)
+      });
+    } else {
+      this.rowAdd = false;
+    }
   }
 
   ngOnDestroy() {

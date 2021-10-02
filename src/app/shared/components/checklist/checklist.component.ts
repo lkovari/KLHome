@@ -145,32 +145,43 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     console.log('onChecklistItemnDoubleClick' + event + " " + JSON.stringify(formGroup.value));
   }
 
+  private unselectOtherItems(selectedFormGroup: FormGroup, selectedItemModel: IChecklistItem): void {
+    this.checklistItems.forEach((item: IChecklistItem) => {
+      if (item.id != selectedItemModel.id) {
+        item.selected = false;
+      }
+    });
+    // unselect other items in the FormArray
+    this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
+      if (formGroupItem.value.id !== selectedFormGroup.value.id) {
+        formGroupItem.get('selected')?.patchValue(false);
+        formGroupItem.markAsUntouched();
+        formGroupItem.markAsPristine();
+      }  
+    });
+  }
+
   onChecklistItemClick(event: KeyboardEvent, formGroup: FormGroup) {
     const itemFound = this.checklistItems.find((item: IChecklistItem) => {
       return formGroup.value.id === item.id;
     });
     if (itemFound) {
       if (this._multiSelect) {
+        formGroup.get('selected')?.patchValue(!itemFound.selected);
+        formGroup.get('selected')?.markAsTouched();
+        formGroup.get('selected')?.markAsDirty();
+        // update data model
         itemFound.selected = !itemFound.selected;
-        formGroup.value.selected = !formGroup.value.selected;
-        formGroup.markAsTouched();
-        formGroup.markAsDirty();
       } else {
         this.selectedItems = [];
         // select the selected form model
-        formGroup.value.selected = !itemFound.selected;
-        // unselected all other items
-        this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
-          if (formGroupItem.value.id !== itemFound.id) {
-            formGroupItem.value.selected = false;
-            // formGroupItem.markAsPristine();
-          }  
-        });
-        // status notification
-        formGroup.markAsTouched();
-        formGroup.markAsDirty();
+        formGroup.get('selected')?.patchValue(!itemFound.selected);
+        formGroup.get('selected')?.markAsTouched();
+        formGroup.get('selected')?.markAsDirty();
         // update data model
-        itemFound.selected = !itemFound.selected;
+        itemFound.selected = !itemFound.selected
+        // unselected all other items
+        this.unselectOtherItems(formGroup, itemFound);
         // unselect all other items in data model
         this.checklistItems.forEach((item: IChecklistItem) => {
           if (item.id !== itemFound.id) {
@@ -247,4 +258,32 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
       this.disabled = isDisabled;
   }  
+
+  private setAllItemsSelection(selected: boolean) {
+    this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
+      formGroupItem.get('selected')?.patchValue(selected);
+      formGroupItem.markAsUntouched();
+      formGroupItem.markAsPristine();
+    });
+  }
+
+  private setAllItemModelSelection(selected: boolean) {
+    this._checklistItems.forEach((item: IChecklistItem) => {
+      item.selected = selected;
+    });
+  }
+
+
+  unselectAllItems() {
+    this.setAllItemsSelection(false);
+    this.setAllItemModelSelection(false);
+    this.selectedItems = [];
+  }
+
+  selectAllItems() {
+    this.setAllItemsSelection(true);
+    this.setAllItemModelSelection(true);
+    Object.assign(this.selectedItems, this._checklistItems);
+  }
+
 }
