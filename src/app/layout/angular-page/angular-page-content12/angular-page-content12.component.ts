@@ -119,37 +119,12 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     });
   }
   
-  /**
-   * 
-   * @param hexId: string 
-   * @returns FormGroup | null
-   *
-   private findTheChangedFormGroupByHexId(hexId: string): FormGroup | null {
-    // get FormArray
-    const formArrayFormGroups = <FormArray>this.mainForm.get('formArrayItems');
-    // check each form (FormGroup) in the FormArray
-    for (let ix = 0; ix < formArrayFormGroups.length; ix++) {
-      // get a FormGroup
-      const formGroup = <FormGroup>formArrayFormGroups.at(ix);
-      // is the FormGroup changed and is valid?
-      if (formGroup && formGroup.dirty && formGroup.valid) {
-        const hexIdFormControl = formGroup.get('hexId');
-        const hexIdValue = hexIdFormControl?.value;
-        // is the sourceIdentifier matched?
-        if (hexIdValue === hexId) {
-          return formGroup!;
-        }
-      }
-    }
-    return null;
-  }
-  */
-
   private setupValueChanges(formArrayItem: FormGroup) {
     formArrayItem.valueChanges.pipe(
       // prevent unnecessary save
       debounceTime(this.AUTOSAVE_DEBOUNCE_TIME),
       distinctUntilChanged(),
+
       // to execute the save calls one after another
       concatMap(value => this.saveRow(value)),
       // Emit values until provided observable emits.
