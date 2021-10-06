@@ -40,10 +40,11 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
              ) { }
 
   ngOnInit(): void {
-    const updateOnObj = { updateOn: 'change' };
-    this.mainForm = this.formBuilder.group({
-      formArrayItems: this.formBuilder.array( [] , FormArrayCustomValidators.formArrayValidator )
-    }, updateOnObj);
+    this.mainForm = this.formBuilder.group(
+      {
+        formArrayItems: this.formBuilder.array( [] , FormArrayCustomValidators.formArrayValidator )
+      }
+    );
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.initializeModuleCategory();
     this.loadRows();

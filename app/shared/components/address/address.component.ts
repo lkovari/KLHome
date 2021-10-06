@@ -14,13 +14,12 @@ export class AddressComponent implements OnInit {
   constructor(private formGroupDirective: FormGroupDirective, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    const updateOnObj = { updateOn: 'change' };
     this.addressFormGroup = this.formBuilder.group( {
       addressLine1 : [ { value: null, disabled: this.isDisabled }, [ Validators.required ] ],
       addressLine2 : [ { value: null, disabled: this.isDisabled } ],
       city : [ { value: null, disabled: this.isDisabled }, [ Validators.required, Validators.minLength(3), Validators.maxLength(48) ] ],
       zip : [ { value: null, disabled: this.isDisabled }, [ Validators.minLength(5), Validators.maxLength(10) ] ]
-    }, updateOnObj );
+    });
     this.parentForm = this.formGroupDirective.form;
     this.parentForm.addControl('address', this.addressFormGroup);
   }

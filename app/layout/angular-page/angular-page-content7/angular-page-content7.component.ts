@@ -44,7 +44,6 @@ export class AngularPageContent7Component implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    // const updateOnObj = { updateOn: 'change' };
     this.mainForm = this.formBuilder.group({
       userName: [ null, [ Validators.required, Validators.minLength(this.userNameMinLength) ] ],
       passwordGroup: this.formBuilder.group({

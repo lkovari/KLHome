@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('10/06/2021 09:43 PM');
-  lastUpdateTooltip = 'Modified the lk-form-validation-monitor-v4 title, replaced the component name on a lot of page.';
+  lastUpdate = new Date('10/06/2021 11:21 PM');
+  lastUpdateTooltip = 'Removed updateOn option, default is change, this fixed the deprecated .group(.';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

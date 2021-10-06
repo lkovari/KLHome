@@ -98,8 +98,6 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   }
 
   createChecklistItem(item?: IChecklistItem): FormGroup {
-    // every change shoulkd triggering update
-    const updateOnObj = { updateOn: 'change' };
     // create one form item
     const checklistItem = this.formBuilder.group({
       id: [ null, [ Validators.required ] ],
@@ -107,7 +105,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
       value: [ null ],
       selected: [ false ],
       normal: [ null ]
-    }, updateOnObj);
+    });
     if (item) {
       checklistItem.patchValue({
         'id': item && item.id ? item.id : null,
