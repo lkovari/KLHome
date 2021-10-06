@@ -45,7 +45,6 @@ export class FormArrayCustomValidators {
         if (c instanceof FormArray) {
             const formArrayForms = <FormArray>c;
             validationErrors = FormArrayCustomValidators.hexIdDuplicationValidator(formArrayForms, validationErrors);
-            // we can implement more validator functions
         }
         return validationErrors;
     }

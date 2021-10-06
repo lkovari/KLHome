@@ -35,7 +35,7 @@ import { AngularPageContent10Component } from './angular-page-content10/angular-
 import { AngularPageContent11Component } from './angular-page-content11/angular-page-content11.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { SpinnerModule } from 'primeng/spinner';
-import { FormValidationMonitorModule } from '@lkovari/form-validation-monitor';
+import { FormValidationMonitorV4Module } from '@lkovari/form-validation-monitor-v4';
 import { AngularPageContent12Component } from './angular-page-content12/angular-page-content12.component';
 import { ExtractFormControlsPipe } from './angular-page-content12/pipes/extract-form-controls.pipe';
 import { ToastModule } from 'primeng/toast';
@@ -54,7 +54,7 @@ import { ToastModule } from 'primeng/toast';
     ScrollingModule,
     SelectButtonModule,
     SpinnerModule,
-    FormValidationMonitorModule,
+    FormValidationMonitorV4Module,
     ToastModule
   ],
   declarations: [ AngularPageTitleComponent,

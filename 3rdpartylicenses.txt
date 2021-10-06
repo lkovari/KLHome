@@ -299,7 +299,7 @@ Apache-2.0
 @firebase/webchannel-wrapper
 Apache-2.0
 
-@lkovari/form-validation-monitor
+@lkovari/form-validation-monitor-v4
 MIT
 
 @ng-bootstrap/ng-bootstrap
