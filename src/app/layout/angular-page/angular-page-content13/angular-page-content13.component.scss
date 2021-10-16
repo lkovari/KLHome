@@ -1,0 +1,34 @@
+.layout-angular-playground-page13 {
+    .angular-playground-description {
+        padding: 0.5Rem;
+    }
+    .sub-topic {
+        padding: 1Rem;
+    }
+    .form-border {
+        border: solid blue 1px;
+        padding: 1rem;
+    }
+    .horizontal-gap-right {
+        margin-right: 0.5rem;
+    }
+    .horizontal-gap-left {
+        margin-left: 0.5rem;
+    }    
+    .vertical-gap-up {
+        margin-top: 0.5rem;;
+    }
+    .ommit-border {
+        border: none;
+    }
+    input {
+        width: 20rem;
+    }
+    .show-invalid-feedback {
+        display: block;
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }    
+}

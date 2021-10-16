@@ -14,7 +14,7 @@ export class AboutmeContentComponent implements OnInit {
   constructor() {
     this.fullImagePath = 'assets/images/lk_img_s.jpg';
     this.fullInsightImagePath = 'assets/images/lk_insightprofilebricks.jpg';
-    this.fullInsightImagePathHref = 'assets/bigfiles/LaszloKovari-34CoordinatingObserver-Classic.pdf';
+    this.fullInsightImagePathHref = 'assets/bigfiles/LaszloKovari-InsightsDiscoveryPersonalProfile.pdf';
   }
   ngOnInit() {
     const date = new Date();

@@ -41,7 +41,8 @@ export class FormArrayCustomValidators {
     }
 
     static formArrayValidator(c: AbstractControl): ValidationErrors | null {
-        let validationErrors;
+        //  ! is the Non-Null Assertion Operator
+        let validationErrors!: forms.ValidationErrors | null;
         if (c instanceof FormArray) {
             const formArrayForms = <FormArray>c;
             validationErrors = FormArrayCustomValidators.hexIdDuplicationValidator(formArrayForms, validationErrors);

@@ -1,0 +1,138 @@
+<div class="layout-angular-playground-page13">
+    <div class="angular-playground-description form-group">
+        <div class="col-sm-12">
+            This page is a
+            <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just
+            which
+            interested
+            in, for me.
+        </div>
+        <div class="sub-topic">
+            <b>Act #13</b>
+            <label class="text-primary">
+                <a class="horizontal-gap-left horizontal-gap-right"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content13">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>WebAuthn example.
+            </label>
+            <br>
+            We have a simple login page where the user can sign up or sign in. We can demonstrate a password less
+            authentication with fingerprint, only for mobile phones which has built-in fingerprint sensor or other
+            devices where, with one of the <a href="https://www.yubico.com/products/yubikey-5-overview/">YubiKey</a>
+            products able to sign in with fingerprint.
+            <div class="sub-topic">
+                <a class="horizontal-gap-left horizontal-gap-right" href="https://w3c.github.io/webauthn/">
+                    This is the official API doc of the WebAuthn by W3C.
+                </a>
+                <a class="horizontal-gap-left horizontal-gap-right" href="https://webauthn.guide/">
+                    This is the WebAuth guide.
+                </a>
+            </div>
+            <div class="sub-topic">
+                We will use the following
+                <li>
+                    <a class="horizontal-gap-left horizontal-gap-right"
+                        href="https://w3c.github.io/webappsec-credential-management/#dom-credentialscontainer-create">
+                        API navigator.credentials.create()
+                    </a>
+                </li>
+                <li>
+                    <a class="horizontal-gap-left horizontal-gap-right"
+                        href="https://w3c.github.io/webauthn/#dictionary-makecredentialoptions">
+                        dictionary PublicKeyCredentialCreationOptions options for credential creation
+                    </a>
+                </li>
+            </div>
+        </div>
+    </div>
+    <div class="text-danger">
+        THIS PAGE IS UNDER CONSTRUCTION!
+    </div>
+    <div class="user-form form-border">
+        <form [formGroup]="mainForm" novalidate autocomplete="off">
+            <div class="horizontal-gap-left">
+                <label class="row">Sign Up</label>
+                <div class="form-group mb-2" formGroupName="signUp">
+                    <div class="form-control ommit-border">
+                        <label class="row" for="signUpPassword">Password<span class="text-danger">*</span></label>
+                        <input id="signUpPassword" class="form-control row" type="text" placeholder="Type a password"
+                            formControlName="password" [ngClass]="{'is-invalid': 
+                            (mainForm.get('signUp.password')?.touched ||
+                            mainForm.get('signUp.password')?.dirty) &&
+                            !mainForm.get('signUp.password')?.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="mainForm.get('signUp.password')?.errors?.required">
+                                Please enter your password.
+                            </span>
+                            <span *ngIf="mainForm.get('signUp.password')?.errors?.minlength">
+                                The password must be longer than {{ mainForm.get('signUp.password')?.errors?.minlength?.requiredLength }} characters, the actual length is {{ mainForm.get('signUp.password')?.errors?.minlength?.actualLength }} characters.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="form-control ommit-border">
+                        <label class="row" for="signUpConfirmPassword">Confirm Password<span
+                                class="text-danger">*</span></label>
+                        <input id="signUpConfirmPassword" class="form-control row" type="text" placeholder="Type a confirm password"
+                            formControlName="confirmPassword" [ngClass]="{'is-invalid':
+                            (mainForm.get('signUp.confirmPassword')?.touched ||
+                            mainForm.get('signUp.confirmPassword')?.dirty) &&
+                            !mainForm.get('signUp.confirmPassword')?.valid }">
+                            <span class="invalid-feedback">
+                                <span *ngIf="mainForm.get('signUp.confirmPassword')?.errors?.required">
+                                    Please enter your password.
+                                </span>
+                                <span *ngIf="mainForm.get('signUp.confirmPassword')?.errors?.minlength">
+                                    The password must be longer than {{ mainForm.get('signUp.confirmPassword')?.errors?.minlength?.requiredLength }} characters, the actual length is {{ mainForm.get('signUp.confirmPassword')?.errors?.minlength?.actualLength }} characters.
+                                </span>
+                        </span>
+                    </div>
+                    <span class="show-invalid-feedback" *ngIf="mainForm.get('signUp')?.errors?.passwordsmismatch">
+                        Passwords do not match!
+                    </span>                     
+                </div>
+            </div>
+            <div class="horizontal-gap-left">
+                <label class="row">Sign In</label>
+                <div class="form-group mb-2" formGroupName="signIn">
+                    <div class="form-control ommit-border">
+                        <label class="row" for="signInPassword">Password<span class="text-danger">*</span></label>
+                        <input id="signInPassword" class="form-control row" type="text" placeholder="Type a password"
+                            formControlName="password" [ngClass]="{'is-invalid': 
+                            (mainForm.get('signIn.password')?.touched ||
+                            mainForm.get('signIn.password')?.dirty) &&
+                            !mainForm.get('signIn.password')?.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="mainForm.get('signIn.password')?.errors?.required">
+                                Please enter your password.
+                            </span>
+                            <span *ngIf="mainForm.get('signIn.password')?.errors?.minlength">
+                                The password must be longer than {{ mainForm.get('signIn.password')?.errors?.minlength?.requiredLength }} characters, the actual length is {{ mainForm.get('signIn.password')?.errors?.minlength?.actualLength }} characters.
+                            </span>
+                        </span>
+                    </div>
+                    <div class="form-control ommit-border">
+                        <label class="row" for="signInConfirmPassword">Confirm Password<span
+                                class="text-danger">*</span></label>
+                        <input id="signInConfirmPassword" class="form-control row" type="text" placeholder="Type a confirm password"
+                            formControlName="confirmPassword" [ngClass]="{'is-invalid':
+                        (mainForm.get('signIn.confirmPassword')?.touched ||
+                        mainForm.get('signIn.confirmPassword')?.dirty) &&
+                        !mainForm.get('signIn.confirmPassword')?.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="mainForm.get('signIn.confirmPassword')?.errors?.required">
+                                Please enter your password.
+                            </span>
+                            <span *ngIf="mainForm.get('signIn.confirmPassword')?.errors?.minlength">
+                                The password must be longer than {{ mainForm.get('signIn.confirmPassword')?.errors?.minlength?.requiredLength }} characters, the actual length is {{ mainForm.get('signIn.confirmPassword')?.errors?.minlength?.actualLength }} characters.
+                            </span>
+                        </span>
+                    </div>
+                    <span class="show-invalid-feedback" *ngIf="mainForm.get('signIn')?.errors?.passwordsmismatch">
+                        Passwords do not match!
+                    </span>              
+                </div>
+            </div>
+            <lk-form-validation-monitor-v4 [mainFormGroup]="mainForm"></lk-form-validation-monitor-v4>       
+        </form>
+    </div>
+</div>

@@ -44,7 +44,6 @@ export class AngularPageContent7Component implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    // const updateOnObj = { updateOn: 'change' };
     this.mainForm = this.formBuilder.group({
       userName: [ null, [ Validators.required, Validators.minLength(this.userNameMinLength) ] ],
       passwordGroup: this.formBuilder.group({
@@ -132,9 +131,11 @@ export class AngularPageContent7Component implements OnInit {
     return userRoleGroup;
   }
 
+  /*
   getUserRoleControls() {
     return (<FormArray>this.mainForm?.get('userRoles')).controls;
   }
+  */
 
   setupValues(model: UserFormData) {
     // all members
@@ -249,6 +250,10 @@ export class AngularPageContent7Component implements OnInit {
     //  ? this.mainForm?.get('userRoles').errors.duplication.value : null;
     const userRoles = this.mainForm?.get('userRoles');
     return userRoles?.errors?.duplication.value;
+  }
+
+  trackByFn(item: UserRole): any {
+    return item.roleType + item.moduleType;
   }
 
   onSubmit(form: any) {

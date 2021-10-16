@@ -39,6 +39,8 @@ import { FormValidationMonitorV4Module } from '@lkovari/form-validation-monitor-
 import { AngularPageContent12Component } from './angular-page-content12/angular-page-content12.component';
 import { ExtractFormControlsPipe } from './angular-page-content12/pipes/extract-form-controls.pipe';
 import { ToastModule } from 'primeng/toast';
+import { AngularPageContent13Component } from './angular-page-content13/angular-page-content13.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { ToastModule } from 'primeng/toast';
     SelectButtonModule,
     SpinnerModule,
     FormValidationMonitorV4Module,
-    ToastModule
+    ToastModule,
+    HttpClientModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
@@ -82,7 +85,8 @@ import { ToastModule } from 'primeng/toast';
                   AngularPageContent10Component,
                   AngularPageContent11Component,
                   AngularPageContent12Component,
-                  ExtractFormControlsPipe
+                  ExtractFormControlsPipe,
+                  AngularPageContent13Component
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -97,7 +101,8 @@ import { ToastModule } from 'primeng/toast';
              AngularPageContent9Component,
              AngularPageContent10Component,
              AngularPageContent11Component,
-             AngularPageContent12Component
+             AngularPageContent12Component,
+             AngularPageContent13Component
             ]
 })
 export class AngularPageModule { }

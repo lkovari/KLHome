@@ -64,7 +64,7 @@
                         </tr>
                     </thead>
                     <tbody *ngIf="hasFormArrayItems()">
-                        <tr *ngFor="let rowFormGroup of mainForm | extractFormControls; let ix = index" [formGroupName]="ix">
+                        <tr *ngFor="let rowFormGroup of mainForm | extractFormControls; let ix = index trackBy: trackByFn" [formGroupName]="ix" >
                             <td>
                                 <input pInputText id="{{'hexid' + ix}}" class="form-control" type="text"
                                     formControlName="hexId" tabindex="calcTabIndex(ix, 1)" placeholder="Type hex Id">

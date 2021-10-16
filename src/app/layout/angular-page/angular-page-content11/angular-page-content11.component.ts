@@ -26,10 +26,9 @@ export class AngularPageContent11Component implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    const updateOnObj = { updateOn: 'change' };
     this.exampleForm = this.formBuilder.group({
       checklist: this.formBuilder.array([])
-    }, updateOnObj);
+    });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 

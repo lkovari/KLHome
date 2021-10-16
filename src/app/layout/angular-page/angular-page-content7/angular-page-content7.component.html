@@ -113,7 +113,7 @@
       </div>
       <div class="table-responsive-sm user-role-list">
         <label class="spacer-vertical-above spacer-horozontal-left">Role List
-          #{{ getUserRoleControls().length }}</label>
+          #{{ mainForm?.get('userRoles').controls.length }}</label>
         <table class="table spacer-vertical-above" style="overflow-x:auto;" formArrayName="userRoles">
           <thead>
             <tr>
@@ -132,7 +132,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let userRole of getUserRoleControls(); let ix = index" [formGroupName]="ix">
+            <tr *ngFor="let userRole of mainForm?.get('userRoles').controls; let ix = index trackBy: trackByFn" [formGroupName]="ix">
               <td>
                 <p-dropdown id="{{'roleType' + ix}}" class="form-group" [options]="roleTypes" optionLabel="label" dataKey="value"
                   placeholder="Select a role type" formControlName="roleType" [showClear]="true"

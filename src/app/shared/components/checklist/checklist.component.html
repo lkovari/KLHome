@@ -1,7 +1,7 @@
 <div class="checklist-layout">
     <ul formArrayName="checklist" style="list-style-type: none; min-width: 17rem; max-width:50rem">
         <!-- Usage of pure pipe named isChecklisItemSelected is a good example to prevent unnecessary function calls -->
-        <li *ngFor="let checklistFormGroupItem of getFormGroupsOfChecklistFormArray(); let ix=index; trackBy: trackById"
+        <li *ngFor="let checklistFormGroupItem of checklistFormArray?.controls; let ix=index; trackBy: trackById"
             [ngClass]="{'checklist-item-selected': ( checklistItems | isChecklisItemSelected : checklistFormGroupItem ) }"
             (click)="onChecklistItemClick($event, checklistFormGroupItem)" tabIndex="{{ ix }}" id="{{'lilabel' + ix}}">
             <div id="{{'label' + ix}}" class="checklist-item-container"

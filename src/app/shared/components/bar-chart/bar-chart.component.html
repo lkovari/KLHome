@@ -1,6 +1,6 @@
 <div [style.height]="fixHeightInRem" class="bar-chart-layout">
     <div [ngClass]="modifyOrientation()">
-        <div [id]="bar.id" class="bar-chart-items" *ngFor="let bar of barItems"
+        <div [id]="bar.id" class="bar-chart-items" *ngFor="let bar of barItems trackBy: trackByFn"
             title="{{composeBarContent(bar)}}"
             pTooltip="{{composeBarContent(bar)}}" tooltipPosition="top"
             [style.height]="calculateBarHeight(bar.value)"
