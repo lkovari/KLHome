@@ -78,12 +78,13 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     this.checklistFormArray = this.formBuilder.array( [], ChecklistValidators.mandatoryFieldsDuplicationValidator );
   }
 
+  /*
   getFormGroupsOfChecklistFormArray(): Array<FormGroup> {
     const checklistFA = this.parentForm.get('checklist') as FormArray;
     const checkListFormGroupArray = checklistFA.controls as Array<FormGroup>;
     return checkListFormGroupArray;
   }
-
+  */
   getFormGControlOfFormGroup(formGroup: FormGroup, controlName: string): FormControl {
     return  (<FormControl>formGroup.get(controlName));
   }

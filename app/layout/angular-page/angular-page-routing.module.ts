@@ -9,6 +9,7 @@ import { AngularPageContent1Component } from './angular-page-content1/angular-pa
 import { AngularPageContent10Component } from './angular-page-content10/angular-page-content10.component';
 import { AngularPageContent11Component } from './angular-page-content11/angular-page-content11.component';
 import { AngularPageContent12Component } from './angular-page-content12/angular-page-content12.component';
+import { AngularPageContent13Component } from './angular-page-content13/angular-page-content13.component';
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 import { AngularPageContent2Component } from './angular-page-content2/angular-page-content2.component';
 import { AngularPageContent3Component } from './angular-page-content3/angular-page-content3.component';
@@ -38,7 +39,8 @@ const routes: Routes = [
     {path: 'angular-page-content9', component: AngularPageContent9Component},
     {path: 'angular-page-content10', component: AngularPageContent10Component},
     {path: 'angular-page-content11', component: AngularPageContent11Component},
-    {path: 'angular-page-content12', component: AngularPageContent12Component}
+    {path: 'angular-page-content12', component: AngularPageContent12Component},
+    {path: 'angular-page-content13', component: AngularPageContent13Component}
   ]}
 
 ];

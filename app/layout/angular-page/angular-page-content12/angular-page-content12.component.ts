@@ -239,6 +239,10 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     }
   }
 
+  trackByFn(item: FormDataModel) {
+    return item.hexId;
+  }
+
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();

@@ -138,6 +138,10 @@ export class BarChartComponent implements OnInit {
     return (usePound ? '#' : '') + (g | (b << 8) | (r << 16)).toString(16);
   }
 
+  trackByFn(item: IBarChart) {
+    return item.id;
+  }
+
   composeBarContent(bar: IBarChart): string {
     return bar.label + ' ' + bar.value + 'Y';
   }
