@@ -175,8 +175,8 @@
         </table>
       </div>
       <span *ngIf="hasDuplicatedRows(mainForm)">
-        <span class="show-invalid-feedback">
-          Duplicated rows found, please correct those. {{ extractErrorValue() }}
+        <span class="show-invalid-feedback" *ngFor="let dup of extractErrorValue(); let ix = index">
+          User Role and Module duplication found at row {{ dup.atrow }}. and row {{ dup.androw }}.
         </span>
       </span>
     </form>

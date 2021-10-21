@@ -6,7 +6,7 @@ import { debounceTime, concatMap, takeUntil, distinctUntilChanged, catchError } 
 import { CategoryType } from './category.enum';
 import { CategoryModel } from './data-models/category.model';
 import { FormDataModel } from './data-models/form-data.model';
-import { FormArrayCustomValidators } from './formarray-custom-validators';
+import { CustomFormArrayValidators } from './custom-formarray-validators';
 // import { DummyFormdataService } from './services/dummy-formdata.service';
 import { MessageService } from 'primeng/api';
 import { AngularFireList } from '@angular/fire/database/angular-fire-database';
@@ -42,7 +42,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.mainForm = this.formBuilder.group(
       {
-        formArrayItems: this.formBuilder.array( [] , FormArrayCustomValidators.formArrayValidator )
+        formArrayItems: this.formBuilder.array( [] , CustomFormArrayValidators.formArrayValidator )
       }
     );
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';

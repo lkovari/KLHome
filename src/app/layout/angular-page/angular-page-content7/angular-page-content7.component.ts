@@ -6,7 +6,7 @@ import { UserFormData } from './data-model/user-form-data.model';
 import { UserRole } from './data-model/user-role.model';
 import { ModuleTypeModel } from './data-model/module-type.model';
 import { RoleTypeModel } from './data-model/role-type.model';
-import { CustomValidators } from './custom-validators';
+import { FormArrayCustomValidators } from './formarray-custom-validators';
 
 /*
 const passwordCrossFieldValidator: ValidatorFn = (fg: FormGroup) => {
@@ -49,8 +49,8 @@ export class AngularPageContent7Component implements OnInit {
       passwordGroup: this.formBuilder.group({
         password: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ],
         confirmPassword: [ null, [ Validators.required, Validators.pattern(this.passwordPattern) ] ]
-      }, { validator: CustomValidators.passwordCrossValidator } ),
-      userRoles: this.formBuilder.array( [this.createUserRole(null) ], CustomValidators.userRolesValidator )
+      }, { validator: FormArrayCustomValidators.passwordCrossValidator } ),
+      userRoles: this.formBuilder.array( [this.createUserRole(null) ], FormArrayCustomValidators.userRolesValidator )
     });
 
     this.mainForm.valueChanges.subscribe(
@@ -243,13 +243,12 @@ export class AngularPageContent7Component implements OnInit {
 
   hasDuplicatedRows(form: FormGroup | null) {
     const userRolesFormArray = form?.get('userRoles');
-    return userRolesFormArray?.errors && userRolesFormArray.errors.duplication;
+    // return userRolesFormArray?.errors && userRolesFormArray.errors.duplication;
+    return userRolesFormArray?.errors && userRolesFormArray.errors.duplications;
   }
 
   extractErrorValue(): string | null {
-    //  ? this.mainForm?.get('userRoles').errors.duplication.value : null;
-    const userRoles = this.mainForm?.get('userRoles');
-    return userRoles?.errors?.duplication.value;
+    return this.mainForm?.get('userRoles')?.errors?.duplications?.values;
   }
 
   trackByFn(item: UserRole): any {

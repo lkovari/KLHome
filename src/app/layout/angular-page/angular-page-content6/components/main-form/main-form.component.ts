@@ -11,7 +11,6 @@ import { MenuItem } from 'primeng/api';
 export class MainFormComponent implements OnInit {
   textMinLength = 7;
   githubLogoPath: string;
-  formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   tabItems: MenuItem[];
   activeItem: MenuItem | null;
   tabIndex: number;
@@ -187,33 +186,4 @@ export class MainFormComponent implements OnInit {
     console.log(JSON.stringify(customForm.value));
     window.alert(JSON.stringify(customForm.value));
   }
-
-  /*
-  private markFormGroup(formGroup: FormGroup, controlStatusKind: ControlStatusKind) {
-    (<any>Object).values(formGroup.controls).forEach(control => {
-      switch (controlStatusKind) {
-        case ControlStatusKind.PRISTINE: {
-          control.markAsPristine();
-          break;
-        }
-        case ControlStatusKind.DIRTY: {
-          control.markAsDirty();
-          break;
-        }
-        case ControlStatusKind.TOUCHED: {
-          control.markAsTouched();
-          break;
-        }
-        case ControlStatusKind.UNTOUCHED: {
-          control.markAsUntouched();
-          break;
-        }
-      }
-      control.updateValueAndValidity();
-      if (control.controls) {
-        this.markFormGroup(control, controlStatusKind);
-      }
-    });
-  }
-  */
 }
