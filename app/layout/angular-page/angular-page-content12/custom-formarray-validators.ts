@@ -1,7 +1,7 @@
 import * as forms from '@angular/forms';
 import { AbstractControl, FormArray, ValidationErrors } from '@angular/forms';
 
-export class FormArrayCustomValidators {
+export class CustomFormArrayValidators {
 
     static hexIdDuplicationValidator(c: forms.FormArray, validationErrors: ValidationErrors | null): forms.ValidationErrors | null {
         if (c instanceof FormArray) {
@@ -45,7 +45,7 @@ export class FormArrayCustomValidators {
         let validationErrors!: forms.ValidationErrors | null;
         if (c instanceof FormArray) {
             const formArrayForms = <FormArray>c;
-            validationErrors = FormArrayCustomValidators.hexIdDuplicationValidator(formArrayForms, validationErrors);
+            validationErrors = CustomFormArrayValidators.hexIdDuplicationValidator(formArrayForms, validationErrors);
         }
         return validationErrors;
     }
