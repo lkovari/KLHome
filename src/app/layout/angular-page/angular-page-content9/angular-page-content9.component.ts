@@ -19,7 +19,7 @@ export class AngularPageContent9Component implements OnInit {
   fixHeightInRem = 40;
   barItems: IBarChart[] = [ { id: 0, label: 'MASM', value: 9, color: '#FF9CEE' },
   { id: 1, label: 'Delphi', value: 8, color: '#C5A3FF' },
-  { id: 2, label: 'ASP.NET C#', value: 3, color: '#F3FFE3' },
+  { id: 2, label: 'ASP.NET C#', value: 5, color: '#F3FFE3' },
   { id: 3, label: 'J2SE', value: 12, color: '#A79AFF' },
   { id: 4, label: 'J2EE', value: 1, color: '#C4FAF8' },
   { id: 5, label: 'Android', value: 6, color: '#DBFFD6' },
