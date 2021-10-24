@@ -241,10 +241,10 @@ export class AngularPageContent7Component implements OnInit {
     return isInvalid;
   }
 
-  hasDuplicatedRows(form: FormGroup | null) {
+  hasDuplicatedRows(form: FormGroup | null): boolean | undefined | null {
     const userRolesFormArray = form?.get('userRoles');
     // return userRolesFormArray?.errors && userRolesFormArray.errors.duplication;
-    return userRolesFormArray?.errors && userRolesFormArray.errors.duplications;
+    return userRolesFormArray?.errors && userRolesFormArray.errors.duplications !== null;
   }
 
   extractErrorValue(): string | null {

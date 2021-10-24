@@ -34,15 +34,15 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   rowAdd = false;
 
   constructor(private formBuilder: FormBuilder,
-              private messageService: MessageService,
-              // private dummyFormDataService: DummyFormdataService,
-              private firebaseService: FirebaseService
-             ) { }
+    private messageService: MessageService,
+    // private dummyFormDataService: DummyFormdataService,
+    private firebaseService: FirebaseService
+  ) { }
 
   ngOnInit(): void {
     this.mainForm = this.formBuilder.group(
       {
-        formArrayItems: this.formBuilder.array( [] , CustomFormArrayValidators.formArrayValidator )
+        formArrayItems: this.formBuilder.array([], CustomFormArrayValidators.formArrayValidator )
       }
     );
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
@@ -68,7 +68,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
       if (clear) {
         formArray.clear();
         formArray.reset();
-        this.mainForm.reset();    
+        this.mainForm.reset();
       }
     }
   }
@@ -85,7 +85,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
       if (value.hexId !== null && value.category !== null) {
         // save the form value
         console.log(`FormData save started : ${JSON.stringify(changedItem)}.`);
-        this.messageService.add({severity:'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.`});
+        this.messageService.add({ severity: 'info', summary: 'Info', detail: `FormData save started, HexId : ${changedItem.hexId}.` });
         // res = this.dummyFormDataService.saveData(value);
         if (!changedItem.key) {
           return this.firebaseService.createFormArrayItem(value);
@@ -94,7 +94,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         }
       }
     } else {
-      console.log(`saveRow Form invalid : ${JSON.stringify(value)}.`);      
+      console.log(`saveRow Form invalid : ${JSON.stringify(value)}.`);
     }
     return of();
   }
@@ -113,13 +113,13 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     ).subscribe(items => {
       // clear datamodel, more exactly the items in the -> <FormArray>this.mainForm.get('formArrayItems')
       this.clearModel(true);
-      items.forEach(( item: any) => {
+      items.forEach((item: any) => {
         const formItem = this.createFormArrayItem(item);
         formArrayFormGroups.push(formItem);
       });
     });
   }
-  
+
   private setupValueChanges(formArrayItem: FormGroup) {
     formArrayItem.valueChanges.pipe(
       // prevent unnecessary save
@@ -134,25 +134,25 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         this.rowAdd = false;
         console.error(`Error during save : ${err}.`);
         return throwError(err);
-    }),
-    ) 
-    .subscribe(() => {
-      formArrayItem.markAsPristine();
-      formArrayItem.markAsUntouched();
-      this.rowAdd = false;
-      this.messageService.add({severity:'success', summary: 'Success', detail: `FormData save is successed!`});
-    });    
-}
+      }),
+    )
+      .subscribe(() => {
+        formArrayItem.markAsPristine();
+        formArrayItem.markAsUntouched();
+        this.rowAdd = false;
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: `FormData save is successed!` });
+      });
+  }
 
   private createFormArrayItem(formData?: FormDataModel): FormGroup {
     const formArrayItem = this.formBuilder.group({
-      key: [ null ],
-      hexId: [ {value: null, disabled: false }, [ Validators.required, Validators.minLength(this.hexIdMinLength),
-        Validators.pattern(this.hexPattern) ] ],
-      category: [{ value: null, disabled: false }, Validators.required ],
-      currentDate: [ null ],
-      description: [ null, [ Validators.required, Validators.maxLength(this.descriptionMaxLength) ] ],
-      comment: [ null ],
+      key: [null],
+      hexId: [{ value: null, disabled: false }, [Validators.required, Validators.minLength(this.hexIdMinLength),
+      Validators.pattern(this.hexPattern)]],
+      category: [{ value: null, disabled: false }, Validators.required],
+      currentDate: [null],
+      description: [null, [Validators.required, Validators.maxLength(this.descriptionMaxLength)]],
+      comment: [null],
     });
     const hexId = formData ? formData.hexId : null;
     formArrayItem.get('hexId')?.patchValue(hexId);
@@ -175,7 +175,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   }
 
   hasDuplicatedRows(form: FormGroup | null): any {
-    const formArrayItems = form ?  form?.get('formArrayItems') : null;
+    const formArrayItems = form ? form?.get('formArrayItems') : null;
     return formArrayItems ? formArrayItems?.errors && formArrayItems.errors.hexIdDuplication : null;
   }
 
@@ -186,7 +186,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
 
   getRowCount(): AbstractControl[] {
     return (<FormArray>this.mainForm?.get('formArrayItems')).controls;
-  }  
+  }
 
   onAddRow(event: Event) {
     if (this.mainForm) {
@@ -198,7 +198,6 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     }
   }
 
-
   onClearModel(event: Event) {
     if (this.mainForm) {
       if (confirm("Are you sure to remove all rows?")) {
@@ -206,7 +205,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
         this.clearModel(true);
         this.firebaseService.deleteAll().then(() => {
           console.log(`Delete all FormArray items : ${JSON.stringify(mainFormContent)} at ${event.target}.`);
-          this.messageService.add({severity:'success', summary: 'Success', detail: `Deleted All FormArray items!`});
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: `Deleted All FormArray items!` });
         }, reason => {
           console.error(`Error when try to delete all FormArray item! Error ${reason}`);
         });
@@ -230,7 +229,7 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
     if (key) {
       this.firebaseService.delete(key).then(() => {
         console.log(`Delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId}.`)
-        this.messageService.add({severity:'success', summary: 'Success', detail: `FormData delete is successed! Hex Id: ${hexId}.`});
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: `FormData delete is successed! Hex Id: ${hexId}.` });
       }, reason => {
         console.error(`Error when try to delete FormArray item : ${JSON.stringify(rowAsFormArrayItem.value)} at Hex Id: ${hexId} Error ${reason}.`)
       });
@@ -242,5 +241,5 @@ export class AngularPageContent12Component implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
-  }  
+  }
 }
