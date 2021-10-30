@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/internal/Observable';
+import { debounceTime, map } from 'rxjs/operators';
 import { CustomFormModel } from './data-model/custom-form.model';
+import { ZipCodeService } from './services/zip-code.service';
 
 @Component({
   selector: 'app-angular-page-content6',
@@ -16,7 +19,7 @@ export class AngularPageContent6Component implements OnInit {
   formData: any;
   textMinLength = 7;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private zipCodeService: ZipCodeService) { }
 
   ngOnInit() {
     this.customForm = this.formBuilder.group( {
@@ -36,7 +39,9 @@ export class AngularPageContent6Component implements OnInit {
         customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
-        zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ] ],
+        zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ], this.zipCodeValidator(this.zipCodeService) ],
+        // zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ], [ ZipCodeValidator.bind(this) ] ],
+        // zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ], [ ZipCodeValidator ] ],
       } ),
 
       customTab3 : this.formBuilder.group( {
@@ -48,7 +53,7 @@ export class AngularPageContent6Component implements OnInit {
       } ),
 
     });
-
+        
     this.initializeDataModel();
 
     this.clearValues();
@@ -58,7 +63,20 @@ export class AngularPageContent6Component implements OnInit {
     );
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
-
+  
+  zipCodeValidator(zipCodeService: ZipCodeService): AsyncValidatorFn {
+    return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
+      return zipCodeService.zipCodeExists(parseInt(ctrl.value)).pipe(
+        debounceTime(1500),
+        map((exists: boolean) => {
+          const res = (exists) ? null : { invalidZipCodeAsync: true };
+          // console.log(`zipCodeValidator zip ${ctrl.value} errors '${this.customForm.get('customTab2')?.get('zipCode')?.errors} zip exists ${exists}.`);
+          return res;
+        }
+      ));
+    };
+  }  
+  
   initializeDataModel() {
     this.customDataModel = new CustomFormModel();
   }
@@ -108,7 +126,7 @@ export class AngularPageContent6Component implements OnInit {
     this.customDataModel.tabData3.freeText = null;
     this.customDataModel.tabData3.zipCode = null;
     this.setupValues(this.customDataModel);
-
+    this.customForm.updateValueAndValidity();
   }
 
   setupValues(model: CustomFormModel) {
@@ -138,7 +156,7 @@ export class AngularPageContent6Component implements OnInit {
         'zipCode': model.tabData3.zipCode
       }
     });
+    this.customForm.updateValueAndValidity( { onlySelf: false, emitEvent: true } );
   }
-
 
 }
