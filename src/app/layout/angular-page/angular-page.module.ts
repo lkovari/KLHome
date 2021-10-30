@@ -41,6 +41,7 @@ import { ExtractFormControlsPipe } from './angular-page-content12/pipes/extract-
 import { ToastModule } from 'primeng/toast';
 import { AngularPageContent13Component } from './angular-page-content13/angular-page-content13.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     SpinnerModule,
     FormValidationMonitorV4Module,
     ToastModule,
-    HttpClientModule
+    HttpClientModule,
+    DialogModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
