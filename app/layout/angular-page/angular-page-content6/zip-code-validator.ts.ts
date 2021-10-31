@@ -1,16 +1,24 @@
-import { Injector } from "@angular/core";
-import { AbstractControl, FormControl, ValidationErrors } from "@angular/forms";
+import { AbstractControl, AsyncValidatorFn, ValidationErrors } from "@angular/forms";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { debounceTime, map } from "rxjs/operators";
 import { ZipCodeService } from "./services/zip-code.service";
 
-export function ZipCodeValidator(c: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
-        let injector = Injector.create({providers: [{provide: ZipCodeService, deps: []}]});
-        let zipCodeService = injector.get(ZipCodeService);
-        
-        return zipCodeService.zipCodeExists((<FormControl>c).value).pipe(
-            map(exists => exists ? null : { invalidZipCodeAsync: true})
-        );        
+/**
+ * 
+ * @param zipCodeService: ZipCodeService
+ * @returns AsyncValidatorFn
+ */
+export function ZipCodeValidator(zipCodeService: ZipCodeService): AsyncValidatorFn {
+    return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
+        return zipCodeService.zipCodeExists(parseInt(ctrl.value), false).pipe(
+            debounceTime(1500),
+            map((exists: boolean) => {
+                const res = (exists) ? null : { invalidZipCodeAsync: true };
+                // console.log(`zipCodeValidator zip ${ctrl.value} errors '${this.customForm.get('customTab2')?.get('zipCode')?.errors} zip exists ${exists}.`);
+                return res;
+            }
+        ));
+    };
 }
 
 /*

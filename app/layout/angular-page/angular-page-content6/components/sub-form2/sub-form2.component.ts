@@ -23,9 +23,10 @@ export class SubForm2Component implements OnInit {
   ngOnInit() {
     console.log('ngOnInit');
   }
-
+  /*
   logZipCodeStatus(): boolean {
     console.log(`Status ${this.formPartTab?.get('zipCode')?.status}`);
     return true;
   }
+  */
 }
