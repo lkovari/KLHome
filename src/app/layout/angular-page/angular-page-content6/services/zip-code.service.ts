@@ -53,7 +53,7 @@ export class ZipCodeService {
     return found !== null && found !== undefined;
   }
 
-  zipCodeExists(zipCode: number): Observable<boolean> {
+  zipCodeExists(zipCode: number, cached: boolean): Observable<boolean> {
     if (!this.zipCodes || (this.zipCodes && this.zipCodes.length < 1)) {
       this.zipCodes = [];
       this.extracZipCodeArray().subscribe(items => {
@@ -63,7 +63,10 @@ export class ZipCodeService {
         return of(this.findZipCode(zipCode));
       });
     } else {
-      return of(this.findZipCode(zipCode));
+      return of(this.findZipCode(zipCode));0
+    }
+    if (!cached) {
+      this.zipCodes = [];
     }
     return of(false);
   }

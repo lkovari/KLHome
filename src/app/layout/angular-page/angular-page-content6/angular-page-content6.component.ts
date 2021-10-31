@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { debounceTime, map } from 'rxjs/operators';
 import { CustomFormModel } from './data-model/custom-form.model';
 import { ZipCodeService } from './services/zip-code.service';
+import { ZipCodeValidator } from './zip-code-validator.ts';
 
 @Component({
   selector: 'app-angular-page-content6',
@@ -31,7 +32,7 @@ export class AngularPageContent6Component implements OnInit {
         customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
-        freeText: [ { value: null } ],
+        freeText: [ { value: null }, [ Validators.nullValidator] ],
         maskedText: [ { value: null }, [ Validators.required ] ]
       } ),
 
@@ -39,9 +40,8 @@ export class AngularPageContent6Component implements OnInit {
         customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
-        zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ], this.zipCodeValidator(this.zipCodeService) ],
-        // zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ], [ ZipCodeValidator.bind(this) ] ],
-        // zipCode: [ { value: null }, [ Validators.required, Validators.pattern(this.zipPattern) ], [ ZipCodeValidator ] ],
+        // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidator(this.zipCodeService) ],
+        zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), Validators.composeAsync( [ZipCodeValidator(this.zipCodeService) ])  ],
       } ),
 
       customTab3 : this.formBuilder.group( {
@@ -64,9 +64,14 @@ export class AngularPageContent6Component implements OnInit {
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
   
+  /**
+   * 
+   * @param zipCodeService: ZipCodeService 
+   * @returns AsyncValidatorFn
+   */
   zipCodeValidator(zipCodeService: ZipCodeService): AsyncValidatorFn {
     return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
-      return zipCodeService.zipCodeExists(parseInt(ctrl.value)).pipe(
+      return zipCodeService.zipCodeExists(parseInt(ctrl.value), false).pipe(
         debounceTime(1500),
         map((exists: boolean) => {
           const res = (exists) ? null : { invalidZipCodeAsync: true };
