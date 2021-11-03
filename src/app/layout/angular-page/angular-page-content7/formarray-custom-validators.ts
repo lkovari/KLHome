@@ -8,17 +8,19 @@ interface IDupEntry {
 }
 export class FormArrayCustomValidators {
 
-    static passwordCrossValidator(c: forms.FormControl): forms.ValidationErrors | null {
-        const passwordControl = c.get('password');
-        const confirmPasswordControl = c.get('confirmPassword');
-        if (passwordControl && confirmPasswordControl) {
-            /* should type the user something into both fields
-            if (passwordControl.pristine || confirmPasswordControl.pristine) {
-                return null;
-            }
-            */
-            if (passwordControl.value === confirmPasswordControl.value) {
-                return null;
+    static passwordCrossValidator(c: forms.AbstractControl): forms.ValidationErrors | null {
+        if (c instanceof forms.FormGroup) {
+            const passwordControl = c.get('password');
+            const confirmPasswordControl = c.get('confirmPassword');
+            if (passwordControl && confirmPasswordControl) {
+                /* should type the user something into both fields
+                if (passwordControl.pristine || confirmPasswordControl.pristine) {
+                    return null;
+                }
+                */
+                if (passwordControl.value === confirmPasswordControl.value) {
+                    return null;
+                }
             }
         }
         return { notidentical: true };
@@ -37,7 +39,7 @@ export class FormArrayCustomValidators {
         return !(found !== null && found !== undefined) && (revFound !== null && revFound !== undefined);
     }
 
-    static userRolesValidator(c: forms.FormControl): forms.ValidationErrors | null {
+    static userRolesValidator(c: forms.AbstractControl): forms.ValidationErrors | null {
         if (c instanceof FormArray) {
             // let isDuplicatesFound = false;
             const userRoleForms = <forms.FormArray>c;

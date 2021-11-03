@@ -56,7 +56,9 @@
         </div>
       </div>
       <div class="form-group row md-2">
-          <label class="col-md-2 col-form-label" for="zipCode">Zip Code 2</label>
+          <label class="col-md-2 col-form-label" for="zipCode">Zip Code 2
+            <span class="text-danger">*</span>
+          </label>
           <div class="col-md-8">
               <input class="form-control" id="zipCode" type="text" placeholder="zip code" formControlName="zipCode"
               [ngClass]="{'is-invalid': (formPartTab?.get('zipCode').touched ||
