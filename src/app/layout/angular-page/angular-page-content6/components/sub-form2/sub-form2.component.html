@@ -66,12 +66,12 @@
                       !formPartTab?.get('zipCode').valid }" />
             <span class="invalid-feedback">
               <span *ngIf="formPartTab?.get('zipCode').errors?.required">
-                Please enter a Zip code.
+                Zip code is required!
               </span>
               <span *ngIf="formPartTab?.get('zipCode').errors?.pattern">
-                Please enter a valid Zip code.
+                Zip code invalid.
               </span>
-              <span class="form-group row col-form-label" *ngIf="formPartTab?.get('zipCode').hasError('invalidZipCodeAsync')">
+              <span class="form-group row col-form-label" *ngIf="formPartTab?.get('zipCode').hasError('zipCodeNotFoundAsync')">
                 Zip code not found! {{ formPartTab?.get('zipCode').errors | json }}
               </span>
             </span>

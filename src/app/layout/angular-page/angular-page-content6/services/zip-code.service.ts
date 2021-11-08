@@ -50,6 +50,12 @@ export class ZipCodeService {
     const found =  this.zipCodes.find((item: ZipCode) => {
       return item.zipCode === zipCode;
     });
+    // for logging...
+    if (found) {
+      console.log(`ZIP found : ${JSON.stringify(found)}.`);
+    } else {
+      console.log(`ZIP not found! : ${zipCode}.`);
+    }
     return found !== null && found !== undefined;
   }
 

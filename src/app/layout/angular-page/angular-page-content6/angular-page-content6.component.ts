@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { debounceTime, map } from 'rxjs/operators';
 import { CustomFormModel } from './data-model/custom-form.model';
 import { ZipCodeService } from './services/zip-code.service';
-import { ZipCodeValidator } from './zip-code-validator.ts';
 
 @Component({
   selector: 'app-angular-page-content6',
@@ -20,7 +19,9 @@ export class AngularPageContent6Component implements OnInit {
   formData: any;
   textMinLength = 7;
 
-  constructor(private formBuilder: FormBuilder, private zipCodeService: ZipCodeService) { }
+  constructor(private formBuilder: FormBuilder, 
+    private injector: Injector
+    ) { }
 
   ngOnInit() {
     this.customForm = this.formBuilder.group( {
@@ -40,8 +41,12 @@ export class AngularPageContent6Component implements OnInit {
         customText: [ { value: null }, [ Validators.required, Validators.minLength(this.textMinLength) ] ],
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
-        // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidator(this.zipCodeService) ],
-        zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), Validators.composeAsync( [ZipCodeValidator(this.zipCodeService) ])  ],
+        // v1 
+        // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidator.validate.bind(this.zipCodeValidator)  ],
+        // v2
+        // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), Validators.composeAsync( [ZipCodeValidator(this.zipCodeService) ])  ],
+        // v3
+        zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidatorFn() ],
       } ),
 
       customTab3 : this.formBuilder.group( {
@@ -69,19 +74,21 @@ export class AngularPageContent6Component implements OnInit {
    * @param zipCodeService: ZipCodeService 
    * @returns AsyncValidatorFn
    */
-  zipCodeValidator(zipCodeService: ZipCodeService): AsyncValidatorFn {
+  zipCodeValidatorFn(): AsyncValidatorFn {
+    var zipCodeService = this.injector.get(ZipCodeService);
     return (ctrl: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
       return zipCodeService.zipCodeExists(parseInt(ctrl.value), false).pipe(
-        debounceTime(1500),
-        map((exists: boolean) => {
-          const res = (exists) ? null : { invalidZipCodeAsync: true };
-          // console.log(`zipCodeValidator zip ${ctrl.value} errors '${this.customForm.get('customTab2')?.get('zipCode')?.errors} zip exists ${exists}.`);
-          return res;
-        }
+          debounceTime(1500),
+          map((exists: boolean) => {
+              const res = (exists) ? null : { zipCodeNotFoundAsync: true };
+              // console.log(`zipCodeValidator zip ${ctrl.value} errors '${this.customForm.get('customTab2')?.get('zipCode')?.errors} zip exists ${exists}.`);
+              return res;
+          }
       ));
     };
   }  
   
+ 
   initializeDataModel() {
     this.customDataModel = new CustomFormModel();
   }
