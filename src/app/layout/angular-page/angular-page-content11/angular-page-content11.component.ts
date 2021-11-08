@@ -27,7 +27,7 @@ export class AngularPageContent11Component implements OnInit {
 
   ngOnInit() {
     this.exampleForm = this.formBuilder.group({
-      checklist: this.formBuilder.array([])
+      // checklist: this.formBuilder.array([])
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
