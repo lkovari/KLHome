@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { debounceTime, map } from 'rxjs/operators';
 import { CustomFormModel } from './data-model/custom-form.model';
 import { ZipCodeService } from './services/zip-code.service';
+import { ZipCodeValidator } from './zip-code-validator.ts';
 
 @Component({
   selector: 'app-angular-page-content6',
@@ -20,7 +21,8 @@ export class AngularPageContent6Component implements OnInit {
   textMinLength = 7;
 
   constructor(private formBuilder: FormBuilder, 
-    private injector: Injector
+    private injector: Injector,
+    private zipCodeValidator: ZipCodeValidator
     ) { }
 
   ngOnInit() {
@@ -42,11 +44,11 @@ export class AngularPageContent6Component implements OnInit {
         customNumber: [ { value: null }, [ Validators.required ] ],
         emailAddress: [ { value: null }, [ Validators.required, Validators.email ] ],
         // v1 
-        // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidator.validate.bind(this.zipCodeValidator)  ],
+        zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidator.validate.bind(this.zipCodeValidator)  ],
         // v2
         // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), Validators.composeAsync( [ZipCodeValidator(this.zipCodeService) ])  ],
         // v3
-        zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidatorFn() ],
+        // zipCode: [ { value: null }, Validators.compose( [ Validators.required, Validators.pattern(this.zipPattern) ]), this.zipCodeValidatorFn() ],
       } ),
 
       customTab3 : this.formBuilder.group( {
