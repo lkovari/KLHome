@@ -161,6 +161,10 @@ export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Va
         return validationResult;
     }
 
+    onFocus(event: Event) {
+        this.onModelTouched();
+        console.log(event);
+    }
 
     /*
      * Writes a new value to the element.
