@@ -100,7 +100,6 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
   }
 
   onKeyUp(event) {
-    this.onModelChange(event.currentTarget.value);
     this.onModelTouched();
     this.onChanged.emit(event);
   }
@@ -112,7 +111,6 @@ export class TextInputComponent implements OnInit, ControlValueAccessor, Validat
   }
 
   focusLost(event) {
-    this.onModelChange(event.currentTarget.value);
     this.onModelTouched();
     this.onBlur.emit(event);
   }
