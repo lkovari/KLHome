@@ -1,6 +1,6 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
-    <label  class="text-style" ngbTooltip="{{ lastUpdateTooltip }}">
+    <label  class="text-style" placement="top" ngbTooltip="{{ lastUpdateTooltip }}">
       Last update {{ lastUpdate | date:'MM/dd/yyyy HH:mm' }} 
     </label>    
     <a routerLink="/aboutme-page" [routerLinkActive]="['router-link-active']" class="list-group-item">

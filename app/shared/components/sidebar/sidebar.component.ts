@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('11/10/2021 03:51 PM');
-  lastUpdateTooltip = 'call the onModelChanged callback of ControlValueAccessor on proper case, implement onFocus og CustomCalendar component';
+  lastUpdate = new Date('11/10/2021 04:47 PM');
+  lastUpdateTooltip = 'changed tooltip orientation to Top';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
