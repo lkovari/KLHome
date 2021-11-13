@@ -61,8 +61,8 @@ export class AngularPageContent0Component implements OnInit {
               if (courseModel.dateOfCompleted) {
                 isCompleted = true;
               }
-              courseModel.certificateImageLarge = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
-              courseModel.certificateImageSmall = (data[4] !== 'null') ? 'assets/images/' + data[4] : null;
+              courseModel.certificateImageLarge = (data[4] !== '') ? 'assets/images/' + data[4] : null;
+              courseModel.certificateImageSmall = (data[4] !== '') ? 'assets/images/' + data[4] : null;
               courseModel.hours = (data[5] !== '0') ? +data[5] : 0;
               courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
               courses.push(courseModel);
@@ -99,10 +99,6 @@ export class AngularPageContent0Component implements OnInit {
 
     this.angularCoursePlannedList = []
     this.csvLoaderParser('assets/courses', 'planned-courses.csv', this.angularCoursePlannedList);
-  }
-
-  extractCertURL(course: AngularCourseModel): string {
-    return course.certificateImageSmall ? course.certificateImageSmall : '';
   }
 
   extractSitetURL(course: AngularCourseModel): string {
