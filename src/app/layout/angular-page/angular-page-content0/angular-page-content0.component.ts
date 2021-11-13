@@ -51,7 +51,7 @@ export class AngularPageContent0Component implements OnInit {
           // split content based on comma
           const data = textLines[ix].split(',');
           if (data[0].trim() !== '') {
-            if (data.length === 7 && data.length === csvHeader.length) {
+            if (data.length === 6 && data.length === csvHeader.length) {
               data[0] = data[0].replace('↵', '');
               const courseModel = new AngularCourseModel();
               courseModel.title = data[0];
@@ -61,10 +61,8 @@ export class AngularPageContent0Component implements OnInit {
               if (courseModel.dateOfCompleted) {
                 isCompleted = true;
               }
-              courseModel.certificateImageLarge = (data[4] !== '') ? 'assets/images/' + data[4] : null;
-              courseModel.certificateImageSmall = (data[4] !== '') ? 'assets/images/' + data[4] : null;
-              courseModel.hours = (data[5] !== '0') ? +data[5] : 0;
-              courseModel.minutes = (data[6] !== '0') ? +data[6] : 0;
+              courseModel.hours = (data[4] !== '0') ? +data[4] : 0;
+              courseModel.minutes = (data[5] !== '0') ? +data[5] : 0;
               courses.push(courseModel);
             } else {
               console.log('Length not equals in ' + fileName + ' row: ' + ix
