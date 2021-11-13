@@ -1,13 +1,13 @@
-Course Title,Author,Origin,Completed,Certificate,Hours,Minutes
-Building a RESTful API with ASP.NET core,Kevin Dockx,https://www.pluralsight.com,null,null,8,10
-Entity Framework Core: Getting Started,Julie Lerman,https://www.pluralsight.com,null,null,5,52
-ASP.NET Core: Using Entity Framework and Working with User Data,Eric Fisher,https://www.pluralsight.com,null,null,1,50
-Redux Fundamentals,Jamis Charles,https://www.pluralsight.com,null,null,3,26
-Using Redux to Manage State in Angular,Hendrik Swanepoel,https://www.pluralsight.com,null,null,1,21
-Advanced Redux,Daniel Stern,https://www.pluralsight.com,null,null,2,55
-TypeScript In-depth,Brice Wilson,https://www.pluralsight.com,null,null,4,40
-Building a Web App with ASP.NET Core MVC Entity Framework Core Bootstrap and Angular,Shawn Wildermuth,https://www.pluralsight.com,null,null,9,58
-Integrating Angular with ASP.NET Core RESTful Services,Dan Wahlin,https://www.pluralsight.com,null,null,5,49
-Angular 2+ with Typescript - Essential Training,Patrick Schroeder,https://www.udemy.com,null,null,3,0
-React and Redux Masterclass,Mateusz Grzesiukiewicz,https://www.udemy.com,null,null,16,0
-Redux Fundamentals,Jamis Charles,https://www.pluralsight.com,null,null,3,26
+Course Title,Author,Origin,Completed,Hours,Minutes
+Building a RESTful API with ASP.NET core,Kevin Dockx,https://www.pluralsight.com,null,8,10
+Entity Framework Core: Getting Started,Julie Lerman,https://www.pluralsight.com,null,5,52
+ASP.NET Core: Using Entity Framework and Working with User Data,Eric Fisher,https://www.pluralsight.com,null,1,50
+Redux Fundamentals,Jamis Charles,https://www.pluralsight.com,null,3,26
+Using Redux to Manage State in Angular,Hendrik Swanepoel,https://www.pluralsight.com,null,1,21
+Advanced Redux,Daniel Stern,https://www.pluralsight.com,null,2,55
+TypeScript In-depth,Brice Wilson,https://www.pluralsight.com,null,4,40
+Building a Web App with ASP.NET Core MVC Entity Framework Core Bootstrap and Angular,Shawn Wildermuth,https://www.pluralsight.com,null,9,58
+Integrating Angular with ASP.NET Core RESTful Services,Dan Wahlin,https://www.pluralsight.com,null,5,49
+Angular 2+ with Typescript - Essential Training,Patrick Schroeder,https://www.udemy.com,null,3,0
+React and Redux Masterclass,Mateusz Grzesiukiewicz,https://www.udemy.com,null,16,0
+Redux Fundamentals,Jamis Charles,https://www.pluralsight.com,null,3,26
