@@ -21,9 +21,6 @@
                         <label class="course-title">{{ course.title + " " + course.author }}
                             <a href="{{ course.website }}">{{ course.website }}</a>
                         </label>
-                        <a href="{{ course.certificateImageSmall }}">
-                            <img class="img-responsive-right" [src]=extractCertURL(course)>
-                        </a>
                     </div>
                 </div>
                 <div>
@@ -40,10 +37,6 @@
                         <label class="course-title">{{ course.title + " " + course.author }}
                             <a href="{{ course.website }}">{{ course.website }}</a>
                         </label>
-                        <a href="{{ course.certificateImageSmall }}">
-                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right"
-                                [src]=extractCertURL(course)>
-                        </a>
                     </div>
                 </div>
             </div>
@@ -55,10 +48,6 @@
                         <label class="course-title">{{ course.title + " " + course.author }}
                             <a href="{{ course.website }}">{{ course.website }}</a>
                         </label>
-                        <a href="{{ course.certificateImageSmall }}">
-                            <img *ngIf="extractCertURL(course) !== ''" class="img-responsive-right"
-                                [src]=extractCertURL(course)>
-                        </a>
                     </div>
                 </div>
             </div>
