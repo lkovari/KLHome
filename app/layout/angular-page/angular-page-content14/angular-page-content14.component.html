@@ -1,0 +1,50 @@
+<div class="layout-angular-playground-page14">
+    <div class="angular-playground-description form-group">
+        <div class="col-xs-12">
+            This page is a
+            <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
+            interested in, for me.
+        </div>
+        <div class="sub-topic">
+            <b>Act #14</b> Sign-Up/Sign-In component
+        </div>
+        <div class="sub-topic">
+            <div class="sub-topic">
+                A simple component which made with Reactive form technology and dynamically build the form model depends on, what we would like to see, Sign-Up or Sign-In form. The component selector is app-signup-signin
+            </div>
+            <div class="sub-topic">
+                <b>The password validation rules</b>
+                <ul>
+                    <li>the field is required</li>
+                    <li>minimum length is 8 characters</li>
+                    <li>minimum one letter,</li>
+                    <li>minimum one number,</li>
+                </ul>
+            </div>
+        </div>
+        <div class="data-entry-form">
+            <label class="text-primary">
+                <a class="spacer"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content14">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>Sign-Up/Sign-In component parent page (this page)
+            </label>
+            <form novalidate autocomplete="off">
+                <button class="btn btn-primary spacer" type="button" (click)="onClickSignUp()">Sign-Up</button>
+                <button class="btn btn-primary spacer left-gap" type="button" (click)="onClickSignIn()">Sign-In</button>
+            </form>
+        </div>        
+    </div>
+</div>
+<p-dialog [(visible)]="displaySignUp" [style]="{width: '40vw'}" [modal]="true">
+    <ng-template pTemplate="header">
+        SIGN-UP
+    </ng-template>    
+    <app-signup-signin [operationKind]="operationKind"></app-signup-signin>
+</p-dialog>
+<p-dialog [(visible)]="displaySignIn" [style]="{width: '40vw'}" [modal]="true">
+    <ng-template pTemplate="header">
+        SIGN-IN
+    </ng-template>    
+    <app-signup-signin [operationKind]="operationKind"></app-signup-signin>
+</p-dialog>

@@ -42,6 +42,7 @@ import { ToastModule } from 'primeng/toast';
 import { AngularPageContent13Component } from './angular-page-content13/angular-page-content13.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
+import { AngularPageContent14Component } from './angular-page-content14/angular-page-content14.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -88,7 +89,8 @@ import { DialogModule } from 'primeng/dialog';
                   AngularPageContent11Component,
                   AngularPageContent12Component,
                   ExtractFormControlsPipe,
-                  AngularPageContent13Component
+                  AngularPageContent13Component,
+                  AngularPageContent14Component
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -104,7 +106,8 @@ import { DialogModule } from 'primeng/dialog';
              AngularPageContent10Component,
              AngularPageContent11Component,
              AngularPageContent12Component,
-             AngularPageContent13Component
+             AngularPageContent13Component,
+             AngularPageContent14Component
             ]
 })
 export class AngularPageModule { }
