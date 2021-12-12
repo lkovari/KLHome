@@ -19,6 +19,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CustomTextAreaDirective } from './directives/custom-textarea.directive';
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { SharedPipesModule } from './pipes/shared-pipes.module';
+import { SignupSigninComponent } from './components/signup-signin/signup-signin.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -35,8 +36,8 @@ import { SharedPipesModule } from './pipes/shared-pipes.module';
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, ChecklistComponent],
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, ChecklistComponent, SignupSigninComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent]
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent]
 })
 export class SharedModule { }
