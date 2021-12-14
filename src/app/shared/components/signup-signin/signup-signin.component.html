@@ -1,19 +1,19 @@
 <div class="signup-signin-layout">
-    <form (ngSubmit)="onSubmit(mainForm)" [formGroup]="mainForm" novalidate autocomplete="off">
+    <form (ngSubmit)="onSubmit(mainForm)" [formGroup]="mainForm" novalidate autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false">
         <div>
           <label class="text-primary">
-            <a class="spacer"
+            <a class="icon-spacer"
                 href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/signup-signin">
                 <img [src]="githubLogoPath" width="16" height="16">
             </a>Sign-Up/Sign-In component parent page (this page)
         </label>          
         </div>
-        <div class="form-group row mb-2">
-            <label class="col-sm-2 col-form-label" for="userName">User Name
+        <div class="form-group row md-2">
+            <label class="col-sm-4 col-form-label" for="userName">User Name
               <span class="text-danger">*</span>
             </label>
             <div class="col-sm-6">
-              <input class="form-control" id="userName" type="text" placeholder="User Name"
+              <input class="form-control" id="userName" type="text" placeholder="User Name" autocomplete="off"
                 formControlName="userName" [ngClass]="{'is-invalid': (mainForm?.get('userName').touched ||
                   mainForm?.get('userName').dirty) &&
                   !mainForm?.get('userName').valid }" />
@@ -29,12 +29,12 @@
                 </span>
               </span>
             </div>
-            <div class="col-sm-4"></div>
+            <div class="col-sm-2"></div>
           </div>
           <ng-container [ngSwitch]="operationKind">
             <div *ngSwitchCase="signupOrSignin.SIGNUP" formGroupName="passwordGroup">
-                <div class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label" for="password">Password
+                <div class="form-group row md-2">
+                  <label class="col-sm-4 col-form-label" for="password">Password
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-sm-6">
@@ -57,10 +57,10 @@
                       </span>
                     </span>
                   </div>
-                  <div class="col-sm-4"></div>
+                  <div class="col-sm-2"></div>
                 </div>
-                <div class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label" for="confirmPassword">Confirm Password
+                <div class="form-group row md-2">
+                  <label class="col-sm-4 col-form-label" for="confirmPassword">Confirm Password
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-sm-6">
@@ -84,21 +84,19 @@
                       </span>
                     </span>
                   </div>
-                  <div class="col-sm-4"></div>
+                  <div class="col-sm-2"></div>
                 </div>
             </div>
             <div *ngSwitchCase="signupOrSignin.SIGNIN">
-                <div class="form-group row mb-2">
-                  <label class="col-sm-2 col-form-label" for="password">Password
+                <div class="form-group row md-6">
+                  <label class="col-sm-4 col-form-label" for="password">Password
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-sm-6">
                     <input class="form-control" id="password" type="password" placeholder="Password (required)"
                       formControlName="password" autocomplete="off"
-                      [ngClass]="{'is-invalid': mainForm?.get('password').errors ||
-                        ((mainForm?.get('password').touched ||
-                        mainForm?.get('password').dirty) && 
-                        !mainForm?.get('password').valid) }" 
+                      [ngClass]="{'is-invalid': (mainForm?.get('password').dirty && 
+                        mainForm?.get('password').invalid) }" 
                     />
                     <span class="invalid-feedback">
                       <span *ngIf="mainForm?.get('password').errors?.required">
@@ -109,11 +107,11 @@
                       </span>
                     </span>
                   </div>
-                  <div class="col-sm-4"></div>
+                  <div class="col-sm-3"></div>
                 </div>
             </div>            
           </ng-container>
-          <button class="btn btn-primary" type="button" (click)="onClear(mainForm)">Clear</button>
-          <button class="btn btn-primary left-gap" type="submit" [disabled]="mainForm.invalid">Submit</button>
+          <button class="btn btn-primary button-gap" [style]="{width: '5rem'}" type="button" (click)="onClear(mainForm)">Clear</button>
+          <button class="btn btn-primary" type="submit" [style]="{width: '5rem'}" [disabled]="mainForm.invalid">Submit</button>
     </form>
 </div>

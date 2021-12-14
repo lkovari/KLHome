@@ -36,13 +36,13 @@
         </div>        
     </div>
 </div>
-<p-dialog [(visible)]="displaySignUp" [style]="{width: '40vw'}" [modal]="true">
+<p-dialog [(visible)]="displaySignUp" breakpoints="{'960px': '75vw', '640px': '100vw'}" [modal]="true">
     <ng-template pTemplate="header">
         SIGN-UP
     </ng-template>    
     <app-signup-signin [operationKind]="operationKind"></app-signup-signin>
 </p-dialog>
-<p-dialog [(visible)]="displaySignIn" [style]="{width: '40vw'}" [modal]="true">
+<p-dialog [(visible)]="displaySignIn" breakpoints="{'960px': '75vw', '640px': '100vw'}" [modal]="true">
     <ng-template pTemplate="header">
         SIGN-IN
     </ng-template>    
