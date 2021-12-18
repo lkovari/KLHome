@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./j2se-page-content1.component.scss']
 })
 export class J2sePageContent1Component implements OnInit {
+  githubLogoPath;
   public imagePathArray = ['assets/images/dev-j2se-dtpicket.jpg',
         'assets/images/dev-j2se-dpicker.jpg',
         'assets/images/dev-j2se-tpicker.jpg'
@@ -14,6 +15,7 @@ export class J2sePageContent1Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
 }
