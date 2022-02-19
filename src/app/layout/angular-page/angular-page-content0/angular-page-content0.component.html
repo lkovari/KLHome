@@ -11,10 +11,19 @@
                 still in progress to create my <a href="https://lkovari.github.io/kovariLAB/#/home">own unique website</a>)
             </div>
         </div>
+        <div>
+            <label class="text-primary">
+                <a class="angular-description"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content0">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>Using async | in ngFor in the template (angular-page-content0.component.html)
+            </label>            
+        </div>
         <div class="angular-courses">
             <div class="form-group">
                 <label class="courses-subtitle">Completed courses</label>
-                <div *ngFor="let course of angularCourseCompletedList; let ix = index">
+                <!--ng-template ngFor [ngForOf]="completedCourses$ | async" let-completedCourses let-i="index"></ng-template-->
+                <div *ngFor="let course of completedCourses$ | async">
                     <div class="course-style">
                         <label class="course-title">{{ course.index }}.</label>
                         <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
@@ -31,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label class="courses-subtitle">Courses still in progress</label>
-                <div *ngFor="let course of angularCourseInProgressList; let ix = index">
+                <div *ngFor="let course of inProgressCourses$ | async; let ix = index">
                     <div class="course-style">
                         <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
                         <label class="course-title">{{ course.title + " " + course.author }}
@@ -42,7 +51,7 @@
             </div>
             <div class="form-group">
                 <label class="courses-subtitle">Planned courses</label>
-                <div *ngFor="let course of angularCoursePlannedList; let ix = index">
+                <div *ngFor="let course of plannedCurses$ | async; let ix = index">
                     <div class="course-style">
                         <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
                         <label class="course-title">{{ course.title + " " + course.author }}
