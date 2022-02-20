@@ -1,4 +1,5 @@
 Course Title,Author,Origin,Completed,Hours,Minutes
+Angular (formerly Angular 2) - The Complete Guide,by Maximilian Schwarzmuller,https://www.udemy.com,04/27/2017,34,0
 Constructing a User Interface with Angular,David Mann,https://www.pluralsight.com,05/04/2019,4,35
 Styling Angular Applications,Brian Treese,https://www.pluralsight.com,05/05/2019,1,54
 JavaScript: Getting Started,Mark Zamoyta,https://www.pluralsight.com,03/30/2019,2,46
@@ -27,8 +28,8 @@ TypeScript Fundamentals,John Papa and Dan Wahlin,https://www.pluralsight.com,03/
 Working with Angular Animations,Gary Simon,https://www.pluralsight.com,04/09/2018,1,27
 Building Beautiful Angular Apps with PrimeNG,Glen Smith,https://www.pluralsight.com,01/31/2018,3,8
 Angular Reactive Forms,Deborah Kurata,https://www.pluralsight.com,04/29/2017,3,52
-Angular 6 (formerly Angular 2) - The Complete Guide,Maximilian Introduction to Inverted Triangle CSSrzmuller,https://www.udemy.com,01/08/2018,27,0 
-Angular 2 Routing: Up And Running,BTree Press,https://www.udemy.com,03/17/2018,,0,42
+Introduction to Inverted Triangle CSS,by Jason Sauer,https://www.pluralsight.com,01/08/2018,1,33 
+Angular 2 Routing: Up And Running,BTree Press,https://www.udemy.com,03/17/2018,0,42
 The Complete Sass & SCSS Course: From Beginner to Advance,Joe Parys,https://www.udemy.com,12/30/2017,4,0
 Bootstrap 4 Quick Start: Code Modern Responsive Website,Brad Hussey,https://www.udemy.com,04/06/2017,4,0
 AngularJS Fundamentals,by Joe Eames and Jim Cooper,https://www.pluralsight.com,05/26/2019,6,51
@@ -62,7 +63,7 @@ Creating Layouts with CSS Grid,by Matt Henry,https://www.pluralsight.com,2/23/20
 HTML Fundamentals,by Matt Milner,https://www.pluralsight.com,2/25/2021,2,20
 Structuring Angular Applications with Angular Libraries,by Fabian Gosebrink,https://www.pluralsight.com,4/016/2021,2,3
 HTML5 Fundamentals,by Craig Shoemaker,https://www.pluralsight.com,4/08/2021,3,47
-Introduction to OAuth2, OpenID Connect and JSON Web Tokens (JWT),by Dominick Baier,https://www.pluralsight.com,4/27/2021,2,23
+Introduction to OAuth2 OpenID Connect and JSON Web Tokens (JWT),by Dominick Baier,https://www.pluralsight.com,4/27/2021,2,23
 SOLID Principles for C# Developers,by Steve Smith,https://www.pluralsight.com,6/13/2021,2,8
 Getting Started with Git,by Aaron Stewart,https://www.pluralsight.com,6/18/2021,2,2
 Working with Git Branches,by Craig Golightly,https://www.pluralsight.com,6/18/2021,1,18
@@ -78,4 +79,10 @@ Angular Fundamentals,by Jim Cooper and Joe Eames,https://www.pluralsight.com,9/2
 Serilog Enrichers: Getting Common Information into Log Entries,by Erik Dahl,https://www.pluralsight.com,10/18/2021,0,33
 Angular Patterns & Best Practices,by John Papa,https://www.pluralsight.com,11/06/2021,1,5
 Angular Performance,by ng-conf,https://www.pluralsight.com,11/09/2021,0,19
-JavaScript Objects Prototypes and Classes,by Jim Cooper,https://www.pluralsight.com,11/13/2021,1,48
+Fundamentals of Object Oriented Programming in Java,by Maurice Naftalin,https://www.pluralsight.com,12/01/2021,2,5
+Angular: Getting Started,by Deborah Kurata,https://www.pluralsight.com,11/30/2021,5,52
+RxJS in Angular: Reactive Development,by Deborah Kurata,https://www.pluralsight.com,11/26/2021,3,48
+JavaScript Objects Prototypes and Classes,by Jim Cooper,https://www.pluralsight.com,11/14/2021,1,48
+Angular Performance in the Enterprise,by ng-conf,https://www.pluralsight.com,11/08/2021,0,19
+Serilog Enrichers: Getting Common Information into Log Entries,by Erik Dahl,https://www.pluralsight.com,10/18/2021,0,33
+The Best 20 Minute Angular & Firebase Video You'll Ever See,by ng-conf,https://www.pluralsight.com,09/26/2021,0,21

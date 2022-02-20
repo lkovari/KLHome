@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import * as angular from '@angular/forms';
 import { AngularCourseModel } from './angular-course.model';
+// import { IHourTuple } from './hour-tuple.interface';
+// import { HourTuple } from './hour-tuple.model';
+import { FileLoaderService } from '../../../shared/services/fileloader/file-loader.service';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { IHourTuple } from './hour-tuple.interface';
 import { HourTuple } from './hour-tuple.model';
-import { FileLoaderService } from '../../../shared/services/fileloader/file-loader.service';
 
 @Component({
   selector: 'app-angular-page-content0',
@@ -11,10 +15,7 @@ import { FileLoaderService } from '../../../shared/services/fileloader/file-load
   styleUrls: ['./angular-page-content0.component.scss']
 })
 export class AngularPageContent0Component implements OnInit {
-  angularCourseCompletedList: Array<AngularCourseModel>;
-  angularCourseInProgressList: Array<AngularCourseModel>;
-  angularCoursePlannedList: Array<AngularCourseModel>;
-
+  githubLogoPath: string;
   fullImagePathRF: string;
   fullImagePathSCSS: string;
   fullImagePathSASS: string;
@@ -32,71 +33,87 @@ export class AngularPageContent0Component implements OnInit {
   angularVersion: any;
   // courseTitles = ['Title', 'Author', 'Site', 'Completed', 'Certificate'];
   totalComplettedHours: string;
+  private COL_COUNT_COMPLETED = 6;
+  completedCourses$: Observable<AngularCourseModel[]>;
+  inProgressCourses$: Observable<AngularCourseModel[]>;
+  plannedCurses$: Observable<AngularCourseModel[]>;
 
   constructor(private fileLoaderService: FileLoaderService) { }
 
   ngOnInit() {
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.angularVersion = angular.VERSION.full;
     console.log('Angular v' + this.angularVersion);
     this.initializeAngularCourses();
   }
 
-  private csvLoaderParser(path: string, fileName: string, courses: Array<AngularCourseModel>) {
-    this.fileLoaderService.loadtTextFile(path, fileName, false).subscribe((txt: string) => {
-      if (txt) {
-        const textLines = txt.split(/\r|\n/);
-        const csvHeader = textLines[0].split(',');
-        let isCompleted = false;
-        for (let ix = 1; ix < textLines.length; ix++) {
-          // split content based on comma
-          const data = textLines[ix].split(',');
-          if (data[0].trim() !== '') {
-            if (data.length === 6 && data.length === csvHeader.length) {
-              data[0] = data[0].replace('↵', '');
-              const courseModel = new AngularCourseModel();
-              courseModel.title = data[0];
-              courseModel.author = data[1];
-              courseModel.website = data[2];
-              courseModel.dateOfCompleted = (data[3] !== 'null') ? new Date(data[3]) : null;
-              if (courseModel.dateOfCompleted) {
-                isCompleted = true;
-              }
-              courseModel.hours = (data[4] !== '0') ? +data[4] : 0;
-              courseModel.minutes = (data[5] !== '0') ? +data[5] : 0;
-              courses.push(courseModel);
-            } else {
-              console.log('Length not equals in ' + fileName + ' row: ' + ix
-                + ' Data Lenght ' + data.length + ' header Length ' + csvHeader.length
-                + ' : ' + JSON.stringify(data));
-            }
-          }
-        }
-        console.log('Courses Parsed ' + fileName + ' # ' + courses.length);
-        if (isCompleted) {
-          this.angularCourseCompletedList.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
-            return (course2.dateOfCompleted && course1.dateOfCompleted) ?
-             course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime() : 0;
-          });
-          let ix = this.angularCourseCompletedList.length;
-          this.angularCourseCompletedList.forEach((course: AngularCourseModel) => {
-            course.index = ix;
-            ix = ix - 1;
-          });
-          this.calculateTotalHours();
-        }
-      }
-    });
+  parseCompletedCourses(): Observable<AngularCourseModel[]>  {
+    return this.csvFileLoaderParser('assets/courses', 'completed-courses.csv', true);
   }
 
+  parseCoursesInProgress(): Observable<AngularCourseModel[]>  {
+    return this.csvFileLoaderParser('assets/courses', 'inprogress-courses.csv', false);
+  }
 
+  parseCoursesPlanned(): Observable<AngularCourseModel[]> {
+    return this.csvFileLoaderParser('assets/courses', 'planned-courses.csv', false);
+  }
+
+  private csvFileLoaderParser(path: string, fileName: string, isCollectTotal: boolean): Observable<AngularCourseModel[]> {
+    return this.fileLoaderService.loadtTextFile(path, fileName, false).pipe(
+      map(txt => {
+        let courses = new Array<AngularCourseModel>();
+        if (txt) {
+          let textLines = txt.split(/\r|\n/);
+          textLines = textLines.filter(x => x.trim() !== '');
+          const csvHeader = textLines[0].split(',');
+          for (let ix = 1; ix < textLines.length; ix++) {
+            // split content based on comma
+            const data = textLines[ix].split(',');
+            if (data[0].trim() !== '') {
+              if (data.length === this.COL_COUNT_COMPLETED && data.length === csvHeader.length) {
+                data[0] = data[0].replace('↵', '');
+                const courseModel = new AngularCourseModel();
+                courseModel.title = data[0];
+                courseModel.author = data[1];
+                courseModel.website = data[2];
+                courseModel.dateOfCompleted = (data[3] !== 'null') ? new Date(data[3]) : null;
+                courseModel.hours = (data[4] !== '0') ? +data[4] : 0;
+                courseModel.minutes = (data[5] !== '0') ? +data[5] : 0;
+                courses.push(courseModel);
+              } else {
+                return courses;
+              }
+            } else {
+              console.log('No CSV Header!');
+            }
+          }
+          if (isCollectTotal) {
+            courses.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
+              return (course2.dateOfCompleted && course1.dateOfCompleted) ?
+               course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime() : 0;
+            });
+            let ix = courses.length;
+            courses.forEach((course: AngularCourseModel) => {
+              course.index = ix;
+              ix = ix - 1;
+            });
+            const totalCompleted = this.collectingHours(courses);
+            this.totalComplettedHours = totalCompleted.hours + 'h ' + totalCompleted.minutes + 'm';          
+          }
+          return courses;
+        } else {
+          return courses;
+        }
+      },
+      (error: any) => console.error(`Cannot parse ${path} ${fileName} ${error}!`)
+    ));
+  }
+  
   initializeAngularCourses() {
-    this.angularCourseCompletedList = [];
-    this.csvLoaderParser('assets/courses', 'completed-courses.csv', this.angularCourseCompletedList);
-    this.angularCourseInProgressList = [];
-    this.csvLoaderParser('assets/courses', 'inprogress-courses.csv', this.angularCourseInProgressList);
-
-    this.angularCoursePlannedList = []
-    this.csvLoaderParser('assets/courses', 'planned-courses.csv', this.angularCoursePlannedList);
+    this.completedCourses$ = this.parseCompletedCourses();
+    this.inProgressCourses$ = this.parseCoursesInProgress();
+    this.plannedCurses$ = this.parseCoursesPlanned();
   }
 
   extractSitetURL(course: AngularCourseModel): string {
@@ -120,8 +137,4 @@ export class AngularPageContent0Component implements OnInit {
     return totalTime;
   }
 
-  private calculateTotalHours() {
-    const totalCompleted = this.collectingHours(this.angularCourseCompletedList);
-    this.totalComplettedHours = totalCompleted.hours + 'h ' + totalCompleted.minutes + 'm';
-  }
 }
