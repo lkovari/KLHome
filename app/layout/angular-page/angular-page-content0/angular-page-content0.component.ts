@@ -48,8 +48,7 @@ export class AngularPageContent0Component implements OnInit {
   }
 
   parseCompletedCourses(): Observable<AngularCourseModel[]>  {
-    const courses = this.csvFileLoaderParser('assets/courses', 'completed-courses.csv', true);
-    return courses;
+    return this.csvFileLoaderParser('assets/courses', 'completed-courses.csv', true);
   }
 
   parseCoursesInProgress(): Observable<AngularCourseModel[]>  {
@@ -65,7 +64,8 @@ export class AngularPageContent0Component implements OnInit {
       map(txt => {
         let courses = new Array<AngularCourseModel>();
         if (txt) {
-          const textLines = txt.split(/\r|\n/);
+          let textLines = txt.split(/\r|\n/);
+          textLines = textLines.filter(x => x.trim() !== '');
           const csvHeader = textLines[0].split(',');
           for (let ix = 1; ix < textLines.length; ix++) {
             // split content based on comma
@@ -85,7 +85,7 @@ export class AngularPageContent0Component implements OnInit {
                 return courses;
               }
             } else {
-              // nothing to do
+              console.log('No CSV Header!');
             }
           }
           if (isCollectTotal) {
