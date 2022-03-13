@@ -1,0 +1,14 @@
+
+<!-- prevent div in DOM tree with ng-contained -->
+<ng-container class="course-style">
+    <!-- content projection .course-index slot -->
+    <ng-content select=".course-index"></ng-content>
+    <!-- content projection .course-completed slot -->
+    <ng-content select=".course-completed"></ng-content>
+    <!-- content projection .course-author slot -->
+    <ng-content select=".course-author"></ng-content>
+    <!-- content projection .course-duration slot
+    <ng-content select=".course-duration"></ng-content -->
+    <!-- content projection "single" slot-->
+    <ng-content></ng-content>
+</ng-container>
