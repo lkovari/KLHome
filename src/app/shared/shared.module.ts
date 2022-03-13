@@ -20,6 +20,7 @@ import { CustomTextAreaDirective } from './directives/custom-textarea.directive'
 import { ChecklistComponent } from './components/checklist/checklist.component';
 import { SharedPipesModule } from './pipes/shared-pipes.module';
 import { SignupSigninComponent } from './components/signup-signin/signup-signin.component';
+import { CourseComponent } from './components/course/course.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -36,8 +37,8 @@ import { SignupSigninComponent } from './components/signup-signin/signup-signin.
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, ChecklistComponent, SignupSigninComponent],
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, ChecklistComponent, SignupSigninComponent, CourseComponent],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent]
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent]
 })
 export class SharedModule { }

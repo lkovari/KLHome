@@ -16,7 +16,11 @@
                 <a class="angular-description"
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content0">
                     <img [src]="githubLogoPath" width="16" height="16">
-                </a>Using async | in ngFor in the template (angular-page-content0.component.html)
+                </a>Using async | in ngFor in the template (angular-page-content0.component.html)<br>
+                <a class="angular-description"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/course/course.component">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>Using ng-contained to minimize the DOM elements and using multiple slots Angular content projection like as the ng-content in the template (CourseComponent.html)
             </label>            
         </div>
         <div class="angular-courses">
@@ -24,14 +28,18 @@
                 <label class="courses-subtitle">Completed courses</label>
                 <!--ng-template ngFor [ngForOf]="completedCourses$ | async" let-completedCourses let-i="index"></ng-template-->
                 <div *ngFor="let course of completedCourses$ | async">
-                    <div class="course-style">
-                        <label class="course-title">{{ course.index }}.</label>
-                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
-                        <label class="course-title">{{ course.title + " " + course.author }}
-                            <a href="{{ course.website }}">{{ course.website }}</a>
-                        </label>
+                    <app-course>
+                        <!-- content projection course-index slot content-->
+                        <label class="course-index course-title">{{ course.index }}.</label>
+                        <!-- content projection course-completed slot content-->
+                        <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                        <!-- content projection course-author slot content-->
+                        <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                        <!-- last multi slot can be -->
+                        <!--label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m.</label-->
+                        <!-- Single slot without selector class -->
                         <label class="course-title">{{ course.hours }}h.{{ course.minutes }}m.</label>
-                    </div>
+                    </app-course>
                 </div>
                 <div>
                     <label class="total-label">Total
