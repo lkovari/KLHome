@@ -9,7 +9,7 @@ export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
   lastUpdate = new Date('03/13/2022 08:02 PM');
-  lastUpdateTooltip = 'Added Angular ng-container usage and multiple slots Content projection ng-content';
+  lastUpdateTooltip = 'ng-container and multiple slots ng-content usage in the template CourseComponent.html';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
