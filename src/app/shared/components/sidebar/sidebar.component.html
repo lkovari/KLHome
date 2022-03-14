@@ -1,9 +1,9 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
-    <label class="text-style" placement="top" tooltipClass="tip-text-style" [openDelay]="1000" [closeDelay]="2000"
-      [ngbTooltip]="lastUpdateTooltip">
-      Last update {{ lastUpdate | date:'MM/dd/yyyy HH:mm' }} 
+    <label class="last-update-text">Last update {{ lastUpdate | date:'MM/dd/yyyy HH:mm' }}
+      <span class="tooltiptext">{{ lastUpdateTooltip }}</span>
     </label>    
+  
     <a routerLink="/aboutme-page" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-user"> About me</i>
     </a>
