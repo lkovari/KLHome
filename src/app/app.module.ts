@@ -7,13 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
+import { AlertComponent } from './shared/components/alert/alert.component';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-
-
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        AlertComponent
     ],
     imports: [
         BrowserAnimationsModule,
@@ -22,12 +22,13 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
         AppRoutingModule,
         SharedModule,
         AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule,        
+        AngularFireDatabaseModule
     ],
   // prevent 404 Forbidden error when refresh the page
   // https://stackoverflow.com/questions/35284988/angular-2-404-error-occur-when-i-refresh-through-the-browser
   // providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   providers: [],
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AlertComponent]
 })
 export class AppModule { }
