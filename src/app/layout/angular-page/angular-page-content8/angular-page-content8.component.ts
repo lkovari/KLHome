@@ -1,24 +1,32 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Person } from '../../../shared/models/person.model';
 import { ExamplePersonDataService } from '../../../shared/services/examplepersondata/example-person-data.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { Subscription } from 'rxjs';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 
 @Component({
   selector: 'app-angular-page-content8',
   templateUrl: './angular-page-content8.component.html',
   styleUrls: ['./angular-page-content8.component.scss']
 })
-export class AngularPageContent8Component implements OnInit {
+export class AngularPageContent8Component implements OnInit, AfterViewInit, OnDestroy {
   githubLogoPath: string;
+  private closeSub: Subscription;
   personList: Array<Person>;
   useRouteResolver: boolean;
   @ViewChild(CdkVirtualScrollViewport, { static: true }) virtualScroll: CdkVirtualScrollViewport;
+  @ViewChild("alertContainer", { read: ViewContainerRef }) alertContainer: ViewContainerRef;
 
   constructor(private route: ActivatedRoute,
-             private examplePersonDataService: ExamplePersonDataService) { }
+             private examplePersonDataService: ExamplePersonDataService,
+             private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit(): void {
     this.useRouteResolver = this.examplePersonDataService.useRouteResolver;
     this.personList = [];
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
@@ -45,7 +53,7 @@ export class AngularPageContent8Component implements OnInit {
       First name: ${this.personList[ix].firstName},
       Last Name: ${this.personList[ix].lastName}`);
     } catch (e) {
-      window.alert(`ERROR!\n ${e.stack}`);
+      this.showErrorAlertBox(`ERROR!\n ${e.stack}`);
       throw e;
     }
   }
@@ -63,4 +71,26 @@ export class AngularPageContent8Component implements OnInit {
   trackByFn(item: Person) {
     return item.id;
   }
+
+  private showErrorAlertBox(message: string) {
+    const alertComponentFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
+    this.alertContainer.clear();
+    const alertComponentRef = this.alertContainer.createComponent(alertComponentFactory);
+    // pass parameter to the AlertComponent
+    alertComponentRef.instance.message = message;
+    this.closeSub = alertComponentRef.instance.close.subscribe(() => {
+      this.closeSub.unsubscribe();
+      this.alertContainer.clear();
+    });
+    // A13: const componentRef = this.alertLoader.viewContainerRef.createComponent(AlertComponent);
+  }
+
+  
+  ngOnDestroy() {
+    if (this.closeSub) {
+      this.closeSub.unsubscribe();
+    }
+  }
+
+
 }
