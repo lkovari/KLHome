@@ -8,4 +8,5 @@ export class AngularCourseModel implements IAngularCourse {
     dateOfCompleted: Date | null;
     hours: number;
     minutes: number;
+    completed: number;
 }

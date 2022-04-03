@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as angular from '@angular/forms';
-import { AngularCourseModel } from './angular-course.model';
+import { AngularCourseModel } from '../../../shared/models/courses/angular-course.model';
 // import { IHourTuple } from './hour-tuple.interface';
 // import { HourTuple } from './hour-tuple.model';
 import { FileLoaderService } from '../../../shared/services/fileloader/file-loader.service';
@@ -33,10 +33,12 @@ export class AngularPageContent0Component implements OnInit {
   angularVersion: any;
   // courseTitles = ['Title', 'Author', 'Site', 'Completed', 'Certificate'];
   totalComplettedHours: string;
-  private COL_COUNT_COMPLETED = 6;
+  totalInProgressHours: string;
+  private COL_COUNT_COMPLETED = 7;
   completedCourses$: Observable<AngularCourseModel[]>;
   inProgressCourses$: Observable<AngularCourseModel[]>;
   plannedCurses$: Observable<AngularCourseModel[]>;
+  courses$: Observable<AngularCourseModel[]>;
 
   constructor(private fileLoaderService: FileLoaderService) { }
 
@@ -47,19 +49,11 @@ export class AngularPageContent0Component implements OnInit {
     this.initializeAngularCourses();
   }
 
-  parseCompletedCourses(): Observable<AngularCourseModel[]>  {
-    return this.csvFileLoaderParser('assets/courses', 'completed-courses.csv', true);
+  parseCourses(): Observable<AngularCourseModel[]>  {
+    return this.csvFileLoaderParser('assets/courses', 'courses.csv');
   }
 
-  parseCoursesInProgress(): Observable<AngularCourseModel[]>  {
-    return this.csvFileLoaderParser('assets/courses', 'inprogress-courses.csv', false);
-  }
-
-  parseCoursesPlanned(): Observable<AngularCourseModel[]> {
-    return this.csvFileLoaderParser('assets/courses', 'planned-courses.csv', false);
-  }
-
-  private csvFileLoaderParser(path: string, fileName: string, isCollectTotal: boolean): Observable<AngularCourseModel[]> {
+  private csvFileLoaderParser(path: string, fileName: string): Observable<AngularCourseModel[]> {
     return this.fileLoaderService.loadtTextFile(path, fileName, false).pipe(
       map(txt => {
         let courses = new Array<AngularCourseModel>();
@@ -80,6 +74,7 @@ export class AngularPageContent0Component implements OnInit {
                 courseModel.dateOfCompleted = (data[3] !== 'null') ? new Date(data[3]) : null;
                 courseModel.hours = (data[4] !== '0') ? +data[4] : 0;
                 courseModel.minutes = (data[5] !== '0') ? +data[5] : 0;
+                courseModel.completed = (data[6] !== '0') ? +data[6] : 0;
                 courses.push(courseModel);
               } else {
                 return courses;
@@ -88,19 +83,19 @@ export class AngularPageContent0Component implements OnInit {
               console.log('No CSV Header!');
             }
           }
-          if (isCollectTotal) {
-            courses.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
-              return (course2.dateOfCompleted && course1.dateOfCompleted) ?
-               course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime() : 0;
-            });
-            let ix = courses.length;
-            courses.forEach((course: AngularCourseModel) => {
-              course.index = ix;
-              ix = ix - 1;
-            });
-            const totalCompleted = this.collectingHours(courses);
-            this.totalComplettedHours = totalCompleted.hours + 'h ' + totalCompleted.minutes + 'm';          
-          }
+          courses.sort((course1: AngularCourseModel, course2: AngularCourseModel) => {
+            return (course2.dateOfCompleted && course1.dateOfCompleted) ?
+             course2.dateOfCompleted.getTime() - course1.dateOfCompleted.getTime() : 0;
+          });
+          let ix = courses.length;
+          courses.forEach((course: AngularCourseModel) => {
+            course.index = ix;
+            ix = ix - 1;
+          });
+          let totalCompleted = this.collectingHours(courses, true);
+          this.totalComplettedHours = totalCompleted.hours + 'h ' + Math.round(totalCompleted.minutes) + 'm';          
+          totalCompleted = this.collectingHours(courses, false);
+          this.totalInProgressHours = totalCompleted.hours + 'h ' + Math.round(totalCompleted.minutes) + 'm';          
           return courses;
         } else {
           return courses;
@@ -111,9 +106,11 @@ export class AngularPageContent0Component implements OnInit {
   }
   
   initializeAngularCourses() {
-    this.completedCourses$ = this.parseCompletedCourses();
-    this.inProgressCourses$ = this.parseCoursesInProgress();
-    this.plannedCurses$ = this.parseCoursesPlanned();
+    this.courses$ = this.parseCourses();
+    // filtering by completed of the course
+    this.completedCourses$ = this.courses$.pipe(map(courses => courses.filter(course => course.completed === 100)));
+    this.inProgressCourses$ = this.courses$.pipe(map(courses => courses.filter(course => course.completed > 0 && course.completed < 100)));
+    this.plannedCurses$ = this.courses$.pipe(map(courses => courses.filter(course => course.completed === 0)));
   }
 
   extractSitetURL(course: AngularCourseModel): string {
@@ -124,12 +121,19 @@ export class AngularPageContent0Component implements OnInit {
    *
    * @param courseList: Array<AngularCourseModel> -  list of courses
    */
-  private collectingHours(courseList: Array<AngularCourseModel>): IHourTuple {
+  private collectingHours(courseList: AngularCourseModel[], onlyCompleted: boolean): IHourTuple {
     let totalMinutes = 0;
     courseList.forEach((course: AngularCourseModel) => {
-      let mins = course.hours * 60;
-      mins = mins + course.minutes;
-      totalMinutes = totalMinutes + mins;
+      if (onlyCompleted && course.completed === 100) {
+        let mins = course.hours * 60;
+        mins = mins + course.minutes;
+        totalMinutes = totalMinutes + mins;
+      } else if (!onlyCompleted && (course.completed > 0 && course.completed < 100)) {
+        let mins = course.hours * 60;
+        mins = mins + course.minutes;
+        mins = (mins / 100) * course.completed;
+        totalMinutes = totalMinutes + mins;
+      }
     });
     const totalTime = new HourTuple();
     totalTime.hours = Math.trunc(totalMinutes / 60);

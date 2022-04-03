@@ -6,4 +6,5 @@ export interface IAngularCourse {
     dateOfCompleted: Date | null;
     hours: number;
     minutes: number;
+    completed: number;
 }
