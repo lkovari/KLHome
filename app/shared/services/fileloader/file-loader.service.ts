@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { shareReplay, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -12,6 +12,7 @@ export class FileLoaderService {
     const filePath = isUseAppFiles ? 'app/files/' + path + '/' + fileName : path + '/' + fileName;
     return this.http.get(filePath, {responseType: 'text'})
       .pipe(
+        shareReplay(),
         tap(data => {
             console.log(`LOAD: Content of the file ${filePath} loaded.`);
             console.log('Content ' + data);
