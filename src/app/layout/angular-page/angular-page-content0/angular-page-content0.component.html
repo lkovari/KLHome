@@ -27,45 +27,71 @@
             <div class="form-group">
                 <label class="courses-subtitle">Completed courses</label>
                 <!--ng-template ngFor [ngForOf]="completedCourses$ | async" let-completedCourses let-i="index"></ng-template-->
-                <div *ngFor="let course of completedCourses$ | async">
-                    <app-course>
-                        <!-- content projection course-index slot content-->
-                        <label class="course-index course-title">{{ course.index }}.</label>
-                        <!-- content projection course-completed slot content-->
-                        <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
-                        <!-- content projection course-author slot content-->
-                        <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
-                        <!-- last multi slot can be -->
-                        <!--label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m.</label-->
-                        <!-- Single slot without selector class -->
-                        <label class="course-title">{{ course.hours }}h.{{ course.minutes }}m.</label>
-                    </app-course>
+                <div *ngIf="(completedCourses$| async)?.length > 0; else loadingCompleted">
+                    <div *ngFor="let course of completedCourses$ | async">
+                        <app-course>
+                            <!-- content projection course-index slot content-->
+                            <label class="course-index course-title">{{ course.index }}.</label>
+                            <!-- content projection course-completed slot content-->
+                            <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                            <!-- content projection course-author slot content-->
+                            <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                            <!-- content projection course-duration slot content-->
+                            <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
+                            <!-- Single slot without selector class -->
+                            <label class="course-title" >{{ course.completed }}%.</label>
+                        </app-course>
+                    </div>
+                    <div>
+                        <label class="total-label">Total
+                            <span class="total-value">{{ totalComplettedHours }}</span>
+                        </label>
+                    </div>
                 </div>
-                <div>
-                    <label class="total-label">Total
-                        <span class="total-value">{{ totalComplettedHours }}</span>
-                    </label>
-                </div>
+                <ng-template #loadingCompleted>
+                    <p>Loadning Completed Courses</p>
+                </ng-template>
             </div>
             <div class="form-group">
                 <label class="courses-subtitle">Courses still in progress</label>
                 <div *ngFor="let course of inProgressCourses$ | async; let ix = index">
                     <div class="course-style">
-                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
-                        <label class="course-title">{{ course.title + " " + course.author }}
-                            <a href="{{ course.website }}">{{ course.website }}</a>
-                        </label>
+                        <app-course>
+                            <!-- content projection course-index slot content-->
+                            <label class="course-index course-title">{{ ix + 1 }}.</label>
+                            <!-- content projection course-completed slot content-->
+                            <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                            <!-- content projection course-author slot content-->
+                            <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                            <!-- content projection course-duration slot content-->
+                            <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
+                            <!-- Single slot without selector class -->
+                            <label class="course-title" >{{ course.completed }}%.</label>
+                        </app-course>                        
                     </div>
                 </div>
+                <div>
+                    <label class="total-label">Total
+                        <span class="total-value">{{ totalInProgressHours }}</span>
+                    </label>
+                </div>                      
             </div>
             <div class="form-group">
                 <label class="courses-subtitle">Planned courses</label>
                 <div *ngFor="let course of plannedCurses$ | async; let ix = index">
                     <div class="course-style">
-                        <label class="course-title">{{ course.dateOfCompleted | date: 'mediumDate' }}</label>
-                        <label class="course-title">{{ course.title + " " + course.author }}
-                            <a href="{{ course.website }}">{{ course.website }}</a>
-                        </label>
+                        <app-course>
+                            <!-- content projection course-index slot content-->
+                            <label class="course-index course-title">{{ ix }}.</label>
+                            <!-- content projection course-completed slot content-->
+                            <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                            <!-- content projection course-author slot content-->
+                            <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                            <!-- content projection course-duration slot content-->
+                            <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
+                            <!-- Single slot without selector class -->
+                            <label class="course-title" >{{ course.completed }}%.</label>
+                        </app-course>                           
                     </div>
                 </div>
             </div>
