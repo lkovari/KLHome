@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('04/03/2022 10:26 PM');
-  lastUpdateTooltip = 'used shareReplay() RxJS operator to prevent duplicated requests by on the AngularPage #0';
+  lastUpdate = new Date('04/18/2022 08:17 PM');
+  lastUpdateTooltip = 'updated the completed courses on the page "At the beginning"';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
