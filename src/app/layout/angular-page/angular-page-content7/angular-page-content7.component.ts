@@ -27,6 +27,8 @@ const passwordCrossFieldValidator: ValidatorFn = (fg: FormGroup) => {
   styleUrls: ['./angular-page-content7.component.scss']
 })
 export class AngularPageContent7Component implements OnInit {
+  AMOUNT_MAX = 9999999.99;
+  AMOUNT_MIN = 0.00;
   mainForm: FormGroup | null;
   mainFormData: any;
   mainFormSubmitData: any;
@@ -120,13 +122,15 @@ export class AngularPageContent7Component implements OnInit {
       roleType: [ null, [ Validators.required ] ],
       moduleType: [ null, [ Validators.required ] ],
       description: [ null, [ Validators.maxLength(this.descriptionMaxLength) ] ],
-      expire: Date
+      expire: Date,
+      amount: [ null, [ Validators.required, Validators.min(this.AMOUNT_MIN), Validators.max(this.AMOUNT_MAX) ] ]
     });
     userRoleGroup.setValue({
       'roleType': userRole && userRole.roleType ? this.findRoleTypeByOrdinal(userRole.roleType) : null,
       'moduleType': userRole && userRole.moduleType ? this.findModuleTypeByOrdinal(userRole.moduleType) : null,
       'description': userRole && userRole.description ? userRole.description : null,
-      'expire': userRole && userRole.expire ? userRole.expire : new Date()
+      'expire': userRole && userRole.expire ? userRole.expire : new Date(),
+      'amount': userRole && userRole.amount ? userRole.amount : null
     });
     return userRoleGroup;
   }
@@ -188,19 +192,22 @@ export class AngularPageContent7Component implements OnInit {
         roleType: RoleType.USER,
         moduleType: ModuleType.INVENTORY,
         expire : new Date('02/02/2027'),
-        description: 'Inventory role'
+        description: 'Inventory role',
+        amount: 1234.56
       },
       {
         roleType: RoleType.POWERUSER,
         moduleType: ModuleType.LEDGER,
         expire : new Date('02/02/2027'),
-        description: 'Ledger role'
+        description: 'Ledger role',
+        amount: 111111.11
       },
       {
         roleType: RoleType.USER,
         moduleType: ModuleType.REPORT,
         expire : new Date('02/02/2027'),
-        description: 'registration role'
+        description: 'registration role',
+        amount: 0
       },
     ];
     this.setupValues(userFormData);
@@ -216,6 +223,62 @@ export class AngularPageContent7Component implements OnInit {
     this.mainFormSubmitData = undefined;
   }
 
+  /*
+  private hasFractionPart(v: number): boolean {
+    const intPart = Math.trunc(v);
+    let frac = v - intPart;
+    return frac > 0;
+  }
+
+  private fracGreaterThan(v: number, fracNum: number): boolean {
+    let res = false;
+    const vs = '' + v;
+    if (vs.indexOf('.') > -1) {
+      const v_split = vs.split('.');
+      const frac_s = v_split[1];
+      res = frac_s.length > fracNum; 
+    }
+    return res;
+  }
+
+  onKeyUp(formGroup: FormGroup) {
+    if (formGroup) {
+      let vv = 0;
+      const amountFormControl = <FormControl>formGroup.get('amount');
+      if (!amountFormControl.valid) {
+        amountFormControl.patchValue(null);
+      }
+      let v = formGroup.get('amount')?.value;
+      console.log(v);
+      if (v) {
+        if (v > 999999.99) {
+          if (this.hasFractionPart(v)) {
+            const intPart = Math.trunc(v);
+            let frac = v - intPart;
+            frac = +(Math.trunc(frac * 100) / 100).toFixed(2);
+            vv = intPart + frac;
+          } else {
+            vv = Math.trunc(+(v / 10).toFixed(1))
+          }
+        } else {
+          if (this.fracGreaterThan(v, 2)) {
+          vv = Math.trunc(v);
+          } else {
+          const intPart = Math.trunc(v);
+          let frac = v - intPart;
+
+          frac = +((frac * 100) / 100).toFixed(2)
+          vv = intPart + frac;
+          }
+        }
+        if (v !== vv) {
+          v = vv;
+          formGroup.get('amount')?.patchValue(v);
+        }
+      }
+    }
+  }
+  */
   onClearModel(event: MouseEvent) {
     this.clearModel();
     console.log('onClearModel click event fired ' + event);

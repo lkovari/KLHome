@@ -30,6 +30,7 @@
           <li class="struct-sub">Doesn't allow duplicated rows! Where the RoleType and ModuleType are the same, it is
             duplicated rows, # of max rows is 3</li>
           <li class="struct-sub">The description maximum length is {{ descriptionMaxLength }} characters.</li>
+          <li class="struct-sub">The amount field min value is {{ AMOUNT_MIN }} max value is {{ AMOUNT_MAX }} used a custom made directive appNumericInputValidation [intDigits] [fractionDigits] to limiting the integer and the decimal fraction parts.</li>
         </ul>
       </div>
     </div>
@@ -129,6 +130,9 @@
               <th>
                 Description
               </th>
+              <th>
+                Amount
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -167,6 +171,18 @@
                 <span *ngIf="isUserFieldInvalid(userRole, 'description')">
                   <span class="show-invalid-feedback">
                     The Description must be shorter than {{ descriptionMaxLength }} characters!
+                  </span>
+                </span>
+              </td>
+              <td>
+                <input id="{{'amount' + ix}}" class="form-control" type="number"
+                  formControlName="amount" tabindex="calcTabIndex(ix, 4)"
+                  [ngClass]="{'is-invalid': isUserFieldInvalid(userRole, 'amount') }"
+                  appNumericInputValidation [intDigits]="7" [fractionDigits]="3"
+                  >
+                <span *ngIf="isUserFieldInvalid(userRole, 'amount')">
+                  <span class="show-invalid-feedback">
+                    The Amount field is invalid!
                   </span>
                 </span>
               </td>

@@ -21,6 +21,8 @@ import { ChecklistComponent } from './components/checklist/checklist.component';
 import { SharedPipesModule } from './pipes/shared-pipes.module';
 import { SignupSigninComponent } from './components/signup-signin/signup-signin.component';
 import { CourseComponent } from './components/course/course.component';
+import { NumericInputValidationDirective } from './directives/numeric-input-validation.directive';
+
 
 @NgModule({
   imports: [
@@ -38,8 +40,10 @@ import { CourseComponent } from './components/course/course.component';
   ],
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent],
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent, 
+    NumericInputValidationDirective],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
-    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent]
+    CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent,
+    NumericInputValidationDirective]
 })
 export class SharedModule { }
