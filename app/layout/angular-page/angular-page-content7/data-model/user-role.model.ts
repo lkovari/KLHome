@@ -7,4 +7,5 @@ export class UserRole implements IUserRole {
     moduleType: ModuleType;
     description: string;
     expire: Date;
+    amount: number;
 }

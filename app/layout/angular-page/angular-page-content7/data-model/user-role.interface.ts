@@ -6,4 +6,5 @@ export interface IUserRole {
     moduleType: ModuleType;
     description: string;
     expire: Date;
+    amount: number;
 }
