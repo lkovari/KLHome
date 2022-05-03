@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('04/26/2022 01:13 AM');
-  lastUpdateTooltip = 'added appNumericInputValidation [intDigits] [fractionDigits] used at Amount field of the Angular on page 7 ';
+  lastUpdate = new Date('05/03/2022 09:36 PM');
+  lastUpdateTooltip = 'fixed an issue of the added appNumericInputValidation [intDigits] [fractionDigits] on the Angular page 7 ';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
