@@ -1,4 +1,4 @@
-import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
+import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, NgControl } from '@angular/forms';
 import { Subscription } from 'rxjs/internal/Subscription';
 
@@ -11,15 +11,20 @@ export class NumericInputValidationDirective implements OnInit, OnDestroy {
   private digitFrac = 2;
   private subscription: Subscription;
   previousFraction: number;
+  previousValue: string | null;
+  private elementRef : ElementRef;
 
   @Input() intDigits = this.digitInt;
   @Input() fractionDigits = this.digitFrac;
 
-  constructor(private numeFormControl: NgControl) { }
+  constructor(private numeFormControl: NgControl, er : ElementRef) {
+    this.elementRef = er;
+  }
 
   ngOnInit(): void {
     this.numberValidation();
     this.previousFraction = Number.MIN_VALUE;
+    this.previousValue = null;
   }
 
   /**
@@ -77,11 +82,129 @@ export class NumericInputValidationDirective implements OnInit, OnDestroy {
     return +res;
   }
 
+  /**
+   * 
+   * @param v string - number representation in a string
+   * @returns boolean - if true contains only zero characters
+   */
+  private containsZeroOnly(v: string): boolean {
+    let res = false;
+    if (v) {
+      let ix = 0;
+      let zeroCnt = 0;
+      // v1 count zeros
+      for (ix = 0; ix < v.length; ix++) {
+        zeroCnt += v.charAt(ix) === '0' ? 1 : 0;
+      }
+      res = zeroCnt === v.length;
+      // v2 parse to number 
+      if (!Number.isNaN(+v)) {
+        // contains decimal point?
+        let numValue = -1;
+        if (v.split('.').length === 2) {
+          numValue = Number.parseFloat(v);
+        } else {
+          numValue = Number.parseInt(v);
+        }
+        res = numValue === 0;
+      }
+    }
+    return res;
+  }
+
+  /*
+  private nativeElementContainZerosOnly(v: string): boolean {
+    let res = false;
+    if (v) {
+      const parts = v.split('.');
+      if (parts.length === 1) {
+        res = this.containsZeroOnly(parts[0]);
+      } else {
+        res = (this.containsZeroOnly(parts[0]) && this.containsZeroOnly(parts[1]));
+      }
+    }
+    return res;
+  }
+  */
+
+  private nativeElementIntegerContainsZeroOnly(v: string): boolean {
+    let res = false;
+    if (v) {
+      const parts = v.split('.');
+      if (parts.length === 1) {
+        res = this.containsZeroOnly(parts[0]);
+      }      
+    }
+    return res;
+  }
+
+  private nativeElementFractionContainsZeroOnly(v: string): boolean {
+    let res = false;
+    if (v) {
+      const parts = v.split('.');
+      if (parts.length === 2) {
+        res = this.containsZeroOnly(parts[1]);
+      }      
+    }
+    return res;
+  }
+
+  private nativeElementIntegerIsOutOfTheLimit(v: string): boolean {
+    let res = false;
+    if (v) {
+      const parts = v.split('.');
+      if (parts.length === 1) {
+        res = parts[0].length > this.intDigits;      
+      }
+    }
+    return res;
+  }
+
+  private nativeElementFractionIsOutOfTheLimit(v: string): boolean {
+    let res = false;
+    if (v) {
+      const parts = v.split('.');
+      if (parts.length === 2) {
+        res = parts[1].length > this.fractionDigits;      
+      }
+    }
+    return res;
+  }
+
+  /*
+  private nativeElementOutOfLimits(v: string): boolean {
+    let res = false;
+    if (v) {
+      const parts = v.split('.');
+      if (parts.length === 1) {
+        res = parts[0].length > this.intDigits;
+      }
+      else {
+        res = parts[0].length > this.intDigits || parts[1].length > this.fractionDigits;
+      }
+    }
+    return res;
+  }
+  */
+
   private numberValidation() {
       const numericFormControl = <FormControl>this.numeFormControl.control;
       const maxNumber = this.constructMmaxLimit(this.intDigits, this.fractionDigits);
       const mulAndDiv = Math.pow(10, this.fractionDigits);
       this.subscription = numericFormControl.valueChanges.subscribe(data => {
+        const value = this.elementRef.nativeElement.value;
+        // int contains zeros only and out of the limit
+        if (this.nativeElementIntegerContainsZeroOnly(value) && this.nativeElementIntegerIsOutOfTheLimit(value)) {
+          numericFormControl.patchValue(this.previousValue);
+        } else {
+          this.previousValue = value;
+        } 
+        if (this.nativeElementFractionContainsZeroOnly(value) && this.nativeElementFractionIsOutOfTheLimit(value)) {
+          numericFormControl.patchValue(null);
+        } else {
+          this.previousValue = value;
+        }
+
         let vv = 0;
         let v = data;
         console.log('v ' + v);
