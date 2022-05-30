@@ -11,6 +11,7 @@ import { AngularPageContent11Component } from './angular-page-content11/angular-
 import { AngularPageContent12Component } from './angular-page-content12/angular-page-content12.component';
 import { AngularPageContent13Component } from './angular-page-content13/angular-page-content13.component';
 import { AngularPageContent14Component } from './angular-page-content14/angular-page-content14.component';
+import { AngularPageContent15Component } from './angular-page-content15/angular-page-content15.component';
 import { AngularPageContent1rComponent } from './angular-page-content1r/angular-page-content1r.component';
 import { AngularPageContent2Component } from './angular-page-content2/angular-page-content2.component';
 import { AngularPageContent3Component } from './angular-page-content3/angular-page-content3.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
     {path: 'angular-page-content11', component: AngularPageContent11Component},
     {path: 'angular-page-content12', component: AngularPageContent12Component},
     {path: 'angular-page-content13', component: AngularPageContent13Component},
-    {path: 'angular-page-content14', component: AngularPageContent14Component}
+    {path: 'angular-page-content14', component: AngularPageContent14Component},
+    {path: 'angular-page-content15', component: AngularPageContent15Component}
   ]}
 
 ];

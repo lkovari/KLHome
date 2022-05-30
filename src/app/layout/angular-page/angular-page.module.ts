@@ -43,6 +43,7 @@ import { AngularPageContent13Component } from './angular-page-content13/angular-
 import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { AngularPageContent14Component } from './angular-page-content14/angular-page-content14.component';
+import { AngularPageContent15Component } from './angular-page-content15/angular-page-content15.component';
 
 @NgModule({
   imports: [
@@ -91,7 +92,8 @@ import { AngularPageContent14Component } from './angular-page-content14/angular-
                   AngularPageContent12Component,
                   ExtractFormControlsPipe,
                   AngularPageContent13Component,
-                  AngularPageContent14Component
+                  AngularPageContent14Component,
+                  AngularPageContent15Component
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -108,7 +110,8 @@ import { AngularPageContent14Component } from './angular-page-content14/angular-
              AngularPageContent11Component,
              AngularPageContent12Component,
              AngularPageContent13Component,
-             AngularPageContent14Component
+             AngularPageContent14Component,
+             AngularPageContent15Component
             ]
 })
 export class AngularPageModule { }
