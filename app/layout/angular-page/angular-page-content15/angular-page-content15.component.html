@@ -1,0 +1,70 @@
+<div class="layout-angular-playground-page15">
+    <div class="col-xs-12">
+        This page is a
+        <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
+        interested in, for me.
+    </div>
+    <div class="sub-topic">
+        <b>Act #15</b> To skip unnecessary button clicks, use only the last click with RxJS operators.
+    </div>
+    <div class="sub-topic">
+        <div class="sub-topic">
+            <label class="text-primary">
+                <a class="spacer"
+                    href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content15">
+                    <img [src]="githubLogoPath" width="16" height="16">
+                </a>Real-life use case example, preventing multiple (eg. API.) calls when fast clicked one after another on the chevron buttons.
+            </label>            
+        </div>
+        <div class="sub-topic">
+            <form  #dataEntryForm="ngForm" novalidate autocomplete="off">
+                <label >Use RxJS operator with debounceTime</label>
+                <input id="ebounceRadioi" class="horizontal-gap" type="radio" name="useDebounceTimeRadio" [checked]="true" [value]="true" [(ngModel)]="useDebounceTime">
+                <label class="horizontal-gap">Use RxJS operators without debounceTime</label>
+                <input id="notDebounceRadioi" class="horizontal-gap" type="radio" name="notUseDebounceTimeRadio" [checked]="false" [value]="false" [(ngModel)]="useDebounceTime">
+                <div class="">
+                    <div class="">
+                        <label class="spacer" for="debounce">Debounce time value in milisecs
+                        </label>
+                        <p-spinner id="debounceSpin" class="spinner-style" name="maxHeight" [(ngModel)]="debounceTimeValue"
+                        [min]="200" [max]="2000" [step]="10" #maxHeight="ngModel" autocomplete="off" >
+                        </p-spinner>
+                    </div>
+                    <div class="">
+                        <label class="spacer" for="withDebounceChb">With debounce time
+                        </label>
+                        <input id="withDebounceChb" type="checkbox" name="debounceTimeCheckbox" [(ngModel)]="withDebounceTime">
+                    </div>
+        
+                    <div class="buttons-area">
+                        <div class="">
+                            <button id="leftBtn" class="btn btn-primary fa fa-chevron-left" type="button" (click)="onClickLeft()"></button>
+                        </div>
+                        <div class="date-style">
+                            <input id="withDebounceChb" class="horizontal-gap" type="date" name="displayDateInput" [(ngModel)]="displayDate" [ngModel]="displayDate | date: 'yyyy-MM-dd'">
+                        </div>
+                        <div class="">
+                            <button id="rightBtn" class="btn btn-primary horizontal-gap fa fa-chevron-right" type="button" (click)="onClickRight()"></button>
+                        </div>
+                    </div>
+                    <div class="sub-topic">
+                        <label class="horizontal-gap text-danger">(The option "Use RxJS operators without debounceTime" is not implemented yet)</label>
+                    </div>
+                    <div class="">
+                        <label>Logs:</label>
+                        <textarea id="customTextArea" class="form-control custom-text-style" name="customTextArea" [(ngModel)]="logValue"
+                            rows="{{defaultRows}}" 
+                            [disabled]="true"
+                            appCustomTextArea autoSize="true" defaultRows="{{defaultRows}}" autoSizeLimit="{{maxRowstLimit}}"
+                            #customTextArea="ngModel" autocomplete="off"
+                            [required]="fieldRequired" 
+                            minlength="{{customTextMinLength}}"
+                            maxlength="{{customTextMaxLength}}">
+                        </textarea>        
+                        <button id="clearLogsBtn" class="btn btn-primary clearbutton-style" type="button" (click)="onClickClearLogs()">Clear logs</button>           
+                    </div>            
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>

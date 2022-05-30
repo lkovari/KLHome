@@ -1,0 +1,39 @@
+.layout-angular-playground-page15 {
+    .angular-playground-description {
+        padding: 0.5Rem;
+    }
+    .data-entry-form {
+        border: solid blue 1px;
+        padding: 1rem;
+    }
+    .sub-topic {
+        padding: 0.5Rem;
+    }
+    .left-gap {
+        margin-left: 2rem;
+    }
+    .spacer {
+        margin-right: 0.5rem;
+    }
+    .spinner-style {
+        padding-left: 0.2rem;
+
+    }
+    .horizontal-gap {
+        margin-left: 0.5rem;
+    }
+    .buttons-area {
+        display: flex;
+    }
+    .date-style {
+        margin-top: 0.3rem; // inproper solution 
+    }
+    .clearbutton-style {
+        margin-top: 1rem;
+    }
+    p-spinner::ng-deep {
+        .ui-spinner-input {
+            width: 5rem;
+        }
+    }
+}
