@@ -18,22 +18,22 @@
         </div>
         <div class="sub-topic">
             <form  #dataEntryForm="ngForm" novalidate autocomplete="off">
-                <label >Use RxJS operator with debounceTime</label>
-                <input id="ebounceRadioi" class="horizontal-gap" type="radio" name="useDebounceTimeRadio" [checked]="true" [value]="true" [(ngModel)]="useDebounceTime">
-                <label class="horizontal-gap">Use RxJS operators without debounceTime</label>
-                <input id="notDebounceRadioi" class="horizontal-gap" type="radio" name="notUseDebounceTimeRadio" [checked]="false" [value]="false" [(ngModel)]="useDebounceTime">
+                <label >RxJS operator debounceTime</label>
+                <input id="ebounceRadioi" class="horizontal-gap" type="radio" name="useDebounceTimeRadio" [checked]="true" [value]="true" [(ngModel)]="operationModeKindIsDebounce">
+                <label class="horizontal-gap">RxJS operators switchMap</label>
+                <input id="notDebounceRadioi" class="horizontal-gap" type="radio" name="useSwitchmapRadio" [checked]="false" [value]="false" [(ngModel)]="operationModeKindIsDebounce">
                 <div class="">
                     <div class="">
-                        <label class="spacer" for="debounce">Debounce time value in milisecs
+                        <label class="spacer" for="debounce">Debounce Time value
                         </label>
-                        <p-spinner id="debounceSpin" class="spinner-style" name="maxHeight" [(ngModel)]="debounceTimeValue"
+                        <p-spinner id="debounceSpin" class="spinner-style" name="debounceTimeSpinner" [(ngModel)]="debounceTimeValue"
                         [min]="200" [max]="2000" [step]="10" #maxHeight="ngModel" autocomplete="off" >
                         </p-spinner>
                     </div>
                     <div class="">
-                        <label class="spacer" for="withDebounceChb">With debounce time
+                        <label class="spacer" for="withDebounceChb">Use selected RxJS Operator
                         </label>
-                        <input id="withDebounceChb" type="checkbox" name="debounceTimeCheckbox" [(ngModel)]="withDebounceTime">
+                        <input id="withDebounceChb" type="checkbox" name="rxjsOperatorCheckbox" [(ngModel)]="useSelectedOperator">
                     </div>
         
                     <div class="buttons-area">
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                     <div class="sub-topic">
-                        <label class="horizontal-gap text-danger">(The option "Use RxJS operators without debounceTime" is not implemented yet)</label>
+                        <label class="horizontal-gap text-warning">(Working but not the best solution, I think I will find a better solution.)</label>
                     </div>
                     <div class="">
                         <label>Logs:</label>
@@ -65,6 +65,7 @@
                     </div>            
                 </div>
             </form>
+            <!--lk-form-validation-monitor-v4 [mainFormGroup]="dataEntryForm"></lk-form-validation-monitor-v4-->     
         </div>
     </div>    
 </div>
