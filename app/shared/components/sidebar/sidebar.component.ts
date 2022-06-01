@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('05/31/2022 00:36 AM');
-  lastUpdateTooltip = 'Skip unnecessary button clicks, use the last click with RxJS. on the Angular page #15 ';
+  lastUpdate = new Date('06/01/2022 10:16 PM');
+  lastUpdateTooltip = 'Skip unnecessary button clicks, use the last click with RxJS. on the Angular page #15(debounceTime, switchMap)';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
