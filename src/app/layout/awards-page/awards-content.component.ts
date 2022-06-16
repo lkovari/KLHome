@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-awards-content',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AwardsContentComponent implements OnInit {
   public years: number;
-  constructor() { }
+  constructor(/*private metaService: Meta*/) { }
 
   ngOnInit() {
+    // this.metaService.addTag( { name: "viewport", content: "width=device-width, initial-scale=1" } );
     const date = new Date();
     this.years = date.getFullYear();
   }

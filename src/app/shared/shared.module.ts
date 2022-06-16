@@ -22,6 +22,7 @@ import { SharedPipesModule } from './pipes/shared-pipes.module';
 import { SignupSigninComponent } from './components/signup-signin/signup-signin.component';
 import { CourseComponent } from './components/course/course.component';
 import { NumericInputValidationDirective } from './directives/numeric-input-validation.directive';
+import { LazyImageDirective } from './directives/lazy-image.directive';
 
 
 @NgModule({
@@ -41,9 +42,9 @@ import { NumericInputValidationDirective } from './directives/numeric-input-vali
   providers: [FileLoaderService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
     CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent, 
-    NumericInputValidationDirective],
+    NumericInputValidationDirective, LazyImageDirective],
   exports: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
     CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent,
-    NumericInputValidationDirective]
+    NumericInputValidationDirective, LazyImageDirective]
 })
 export class SharedModule { }

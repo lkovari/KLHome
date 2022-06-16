@@ -1,6 +1,6 @@
 .awards-page-layout {
     padding: 0.5rem;
-    height: 100%;
+    //height: calc(100vh - 56px);
     .separate-block {
         padding-top: 1rem;
         padding-left: 1rem;
@@ -22,5 +22,9 @@
             float: left;
             margin-right: 2rem;
         }
+    }
+    img {
+        display: block;
+        margin: 1em 0;
     }
 }
