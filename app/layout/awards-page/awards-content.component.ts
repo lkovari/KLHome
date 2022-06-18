@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./awards-content.component.scss']
 })
 export class AwardsContentComponent implements OnInit {
+  githubLogoPath: string;
   public years: number;
   imagePath1: string;
 
@@ -17,6 +18,7 @@ export class AwardsContentComponent implements OnInit {
     // this.metaService.addTag( { name: "viewport", content: "width=device-width, initial-scale=1" } );
     const date = new Date();
     this.years = date.getFullYear();
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }
 
 }
