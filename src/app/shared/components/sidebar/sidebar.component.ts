@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/01/2022 10:16 PM');
-  lastUpdateTooltip = 'Skip unnecessary button clicks, use the last click with RxJS. on the Angular page #15(debounceTime, switchMap)';
+  lastUpdate = new Date('06/18/2022 06:45 AM');
+  lastUpdateTooltip = 'Implemented a direvtive which put loading="Lazy" attribute to all img elements';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

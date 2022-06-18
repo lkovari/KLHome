@@ -48,36 +48,36 @@ const routes: Routes = [
     path: '', component: LayoutComponent,
     children: [
       // {path: 'welcome-page', loadChildren: './welcome-page/welcome-page.module#WelcomePageModule'},
-      {path: 'welcome-page', component: WelcomePageComponent},
+      { path: 'welcome-page', component: WelcomePageComponent},
       // !!!!!!! Should be use loadChildren for lazy load
-      {path: 'aboutme-page', component: AboutmeContentComponent},
+      { path: 'aboutme-page', component: AboutmeContentComponent},
 
       // {path: 'awards-page', component: AwardsContentComponent},
       { path: 'awards-page', loadChildren: () => import('./awards-page/awards-page.module').then(m => m.AwardsPageModule) },
 
-      {path: 'angular-page', loadChildren: () => import('./angular-page/angular-page.module').then(m => m.AngularPageModule) },
+      { path: 'angular-page', loadChildren: () => import('./angular-page/angular-page.module').then(m => m.AngularPageModule) },
       
-      {path: 'javascript-page', component: JavascriptPageTitleComponent,
+       {path: 'javascript-page', component: JavascriptPageTitleComponent,
         children: [
-          {path: 'javascript-page-content1', component: JavascriptPageContent1Component},
-          {path: 'javascript-page-content2', component: JavascriptPageContent2Component}
+          { path: 'javascript-page-content1', component: JavascriptPageContent1Component},
+          { path: 'javascript-page-content2', component: JavascriptPageContent2Component}
         ]
       },
 
-      {path: 'ios-page', component: IosPageTitleComponent,
+      { path: 'ios-page', component: IosPageTitleComponent,
         children: [
-          {path: 'ios-page-content1', component: IosPageContent1Component},
-          {path: 'ios-page-content2', component: IosPageContent2Component}
+          { path: 'ios-page-content1', component: IosPageContent1Component},
+          { path: 'ios-page-content2', component: IosPageContent2Component}
         ]
       },
 
-      {path: 'android-page', component: AndroidPageTitleComponent,
+      { path: 'android-page', component: AndroidPageTitleComponent,
         children: [
-          {path: 'android-page-content1', component: AndroidPageContent1Component},
-          {path: 'android-page-content2', component: AndroidPageContent2Component},
-          {path: 'android-page-content3', component: AndroidPageContent3Component},
-          {path: 'android-page-content4', component: AndroidPageContent4Component},
-          {path: 'android-page-content5', component: AndroidPageContent5Component}
+          { path: 'android-page-content1', component: AndroidPageContent1Component},
+          { path: 'android-page-content2', component: AndroidPageContent2Component},
+          { path: 'android-page-content3', component: AndroidPageContent3Component},
+          { path: 'android-page-content4', component: AndroidPageContent4Component},
+          { path: 'android-page-content5', component: AndroidPageContent5Component}
         ]
       },
 
