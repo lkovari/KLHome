@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/18/2022 09:51 PM');
-  lastUpdateTooltip = 'logging when set loading="lazy" attribute';
+  lastUpdate = new Date('06/19/2022 02:07 AM');
+  lastUpdateTooltip = 'fixed the SharedModule import & logging when set loading="lazy" attribute';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
