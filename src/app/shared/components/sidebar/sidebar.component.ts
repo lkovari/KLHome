@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/19/2022 00:10 PM');
-  lastUpdateTooltip = 'wrapped the images on the Award page with li elements';
+  lastUpdate = new Date('06/19/2022 01:05 PM');
+  lastUpdateTooltip = 'added :not(noLazy) excludes thowe img where noLazy exist (ImageLazyLoadingDirective)';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';

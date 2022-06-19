@@ -1,11 +1,13 @@
 import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
 @Directive(
-  { selector: 'img' } // the selection target is the img HTML element
+  // the selection target is the img HTML element excludes those where noLazy attribute is exists
+  { selector: 'img:not([noLazy])' } 
 )
 export class ImageLazyLoadingDirective extends Directive implements AfterViewInit {
 
-  constructor(private elementRef: ElementRef<HTMLImageElement>) {
+  constructor(
+    private elementRef: ElementRef<HTMLImageElement>) {
     super();
   }
 
