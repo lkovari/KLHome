@@ -29,7 +29,7 @@
     "@angular/router": "~12.2.16",
     "@fullcalendar/core": "^4.4.2",
     "@lkovari/form-validation-monitor-v4": "0.0.13",
-    "@ng-bootstrap/ng-bootstrap": "^9.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "@ngx-translate/core": "12.1.2",
     "@ngx-translate/http-loader": "4.0.0",
     "chart.js": "^2.9.4",
