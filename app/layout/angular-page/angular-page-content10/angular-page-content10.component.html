@@ -33,18 +33,18 @@
                     </label>
                     <textarea id="customTextArea" class="form-control custom-text-style" name="customTextArea" [(ngModel)]="customTextValue"
                         rows="{{defaultRows}}" 
-                        appCustomTextArea autoSize="true" defaultRows="{{defaultRows}}" autoSizeLimit="{{maxRowstLimit}}"
+                        appCustomTextArea [autoSize]="true" [defaultRows]="defaultRows" [autoSizeLimit]="maxRowstLimit"
                         #customTextArea="ngModel" autocomplete="off"
                         [required]="fieldRequired" 
                         minlength="{{customTextMinLength}}"
                         maxlength="{{customTextMaxLength}}">
                      </textarea>   
                     <div *ngIf="(customTextArea && (customTextArea.invalid && customTextArea.dirty)) " class="text-danger">
-                        <p *ngIf="fieldRequired && customTextArea?.errors.required">Value is required!</p>
-                        <p *ngIf="customTextArea?.errors.firstcapital">The first character should capital letter!</p>
+                        <p *ngIf="fieldRequired && customTextArea?.errors?.required">Value is required!</p>
+                        <p *ngIf="customTextArea?.errors?.firstcapital">The first character should capital letter!</p>
                         <p *ngIf="customTextArea.hasError('minlength')">Min length is {{ customTextMinLength }}!
                         </p>
-                        <p *ngIf="customTextArea?.errors.maxlength">Max length is {{ customTextMaxLength }}!</p>
+                        <p *ngIf="customTextArea?.errors?.maxlength">Max length is {{ customTextMaxLength }}!</p>
                     </div>
                 </div>
                 <div class="sub-topic">

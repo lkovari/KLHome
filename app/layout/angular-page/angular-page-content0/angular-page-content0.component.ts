@@ -35,9 +35,9 @@ export class AngularPageContent0Component implements OnInit {
   totalComplettedHours: string;
   totalInProgressHours: string;
   private COL_COUNT_COMPLETED = 7;
-  completedCourses$: Observable<AngularCourseModel[]>;
-  inProgressCourses$: Observable<AngularCourseModel[]>;
-  plannedCurses$: Observable<AngularCourseModel[]>;
+  completedCourses$?: Observable<AngularCourseModel[]>;
+  inProgressCourses$?: Observable<AngularCourseModel[]>;
+  plannedCurses$?: Observable<AngularCourseModel[]>;
   courses$: Observable<AngularCourseModel[]>;
 
   constructor(private fileLoaderService: FileLoaderService) { }

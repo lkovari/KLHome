@@ -16,7 +16,6 @@ import { NG_VALUE_ACCESSOR, NG_VALIDATORS, ControlValueAccessor, Validator, Form
 export class CustomCalendarComponent implements OnInit, ControlValueAccessor, Validator {
     @Input() disabledDays = new Array<number>();
     @Input() disabledDates = new Array<Date>();
-    @Input() defaultDate = null;
     @Input() disabled = false;
     @Input() showOnFocus = true;
     @Input() showIcon: boolean;

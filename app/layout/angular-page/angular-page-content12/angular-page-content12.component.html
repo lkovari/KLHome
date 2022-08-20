@@ -69,46 +69,46 @@
                                 <input pInputText id="{{'hexid' + ix}}" class="form-control" type="text"
                                     formControlName="hexId" tabindex="calcTabIndex(ix, 1)" placeholder="Type hex Id">
                                 <span *ngIf="rowFormGroup && rowFormGroup.get('hexId')
-                                            && rowFormGroup.get('hexId').invalid">
-                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.required">
+                                            && rowFormGroup.get('hexId')?.invalid">
+                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId')?.errors?.required">
                                         The hexId is mandatory!
                                     </span>
-                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.pattern">
+                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId')?.errors?.pattern">
                                         The hexId has incorrect hexadecimal value!
                                     </span>
-                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId').errors.minlength">
+                                    <span class="show-invalid-feedback" *ngIf="rowFormGroup.get('hexId')?.errors?.minlength">
                                         The hexId not reach the min length {{ hexIdMinLength }}
                                     </span>
                                 </span>
                             </td>
                             <td>
                                 <p-dropdown id="{{'category' + ix}}" class="form-group" [options]="categories"
-                                    formControlName="category" [showClear]="true" tabindex="calcTabIndex(ix, 2)"
+                                    formControlName="category" [showClear]="true" [tabindex]="calcTabIndex(ix, 2)"
                                     placeholder="Select a Category" [required]="true">
                                 </p-dropdown>
-                                <span *ngIf="rowFormGroup && rowFormGroup.get('category') && rowFormGroup.get('category').touched
-                                             && rowFormGroup.get('category').invalid && rowFormGroup.get('category').errors.required">
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('category') && rowFormGroup.get('category')?.touched
+                                             && rowFormGroup.get('category')?.invalid && rowFormGroup.get('category')?.errors?.required">
                                     <span class="show-invalid-feedback">
                                         The Category is mandatory!
                                     </span>
                                 </span>
                             </td>
                             <td>
-                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 3)" 
+                                <p-calendar id="{{'currentdate' + ix}}" class="form-group" [tabindex]="calcTabIndex(ix, 3)" 
                                 dataType="string" formControlName="currentDate">
                                 </p-calendar>
                             </td>
                             <td>
                                 <input pInputText id="{{'description' + ix}}" class="form-control" type="text"
                                     formControlName="description" tabindex="calcTabIndex(ix, 4)">
-                                <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description').touched
-                                    && rowFormGroup.get('description').invalid && rowFormGroup.get('description').errors.required">
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description')?.touched
+                                    && rowFormGroup.get('description')?.invalid && rowFormGroup.get('description')?.errors?.required">
                                     <span class="show-invalid-feedback">
                                         The Description is mandatory!
                                     </span>
                                 </span>  
-                                <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description').touched
-                                    && rowFormGroup.get('description').invalid && rowFormGroup.get('description').errors.maxLength">
+                                <span *ngIf="rowFormGroup && rowFormGroup.get('description') && rowFormGroup.get('description')?.touched
+                                    && rowFormGroup.get('description')?.invalid && rowFormGroup.get('description')?.errors?.maxLength">
                                     <span class="show-invalid-feedback">
                                         The Description length is over the max length {{ descriptionMaxLength }}
                                     </span>

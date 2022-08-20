@@ -101,7 +101,7 @@
               <span class="text-danger">*</span>
             </label>
             <app-custom-calendar id="customcalendar" [(ngModel)]="customDate" [showIcon]="true" [showButtonBar]="true"
-              class="calendar-style" placeholder="mm/dd/yyyy" selectOtherMonths="true" dateFormat="mm/dd/yy"
+              class="calendar-style" placeholder="mm/dd/yyyy" [selectOtherMonths]="true" dateFormat="mm/dd/yy"
               #customcalendar="ngModel" name="customcalendar" [showOnFocus]="false" [minDate]="minDate"
               [maxDate]="maxDate" [required]="true" (onTodayClicked)="onTodayClicked($event)" [monthNavigator]="true"
               [monthNavigator]="true" [yearNavigator]="true" yearRange="1700:2300"
@@ -109,9 +109,9 @@
               (onModelChanged)="onModelChanged($event)">
             </app-custom-calendar>
             <div *ngIf="customcalendar && (customcalendar.invalid && customcalendar.dirty)" class="text-danger">
-              <p *ngIf="customcalendar?.errors.required">Valid Date is required!</p>
+              <p *ngIf="customcalendar?.errors?.required">Valid Date is required!</p>
               <p *ngIf="customcalendar.hasError('mindate')">Min Date is {{ minDate | date:'MM/dd/yyyy' }}!</p>
-              <p *ngIf="customcalendar?.errors.maxdate">Max Date is {{ maxDate | date:'MM/dd/yyyy' }}!</p>
+              <p *ngIf="customcalendar?.errors?.maxdate">Max Date is {{ maxDate | date:'MM/dd/yyyy' }}!</p>
             </div>
           </div>
           <div class="form-group">
@@ -120,12 +120,12 @@
             </label>
             <app-text-input id="customtextinput" name="customtextinput" [(ngModel)]="customText"
               #customtextinput="ngModel" [minlength]="minLength" [capital]="true" (onChanged)="onChanged($event)"
-              (onBlur)="onBlur($event)" required>
+              (onBlur)="onBlur($event)" [required]="true">
             </app-text-input>
             <span class="text-danger" *ngIf="customtextinput && (customtextinput.invalid && !customtextinput.pristine)">
-              <p *ngIf="customtextinput?.errors.required">Custom text is Required</p>
+              <p *ngIf="customtextinput?.errors?.required">Custom text is Required</p>
               <p *ngIf="customtextinput.hasError('capital')">Must start with capital letter!</p>
-              <p *ngIf="customtextinput?.errors.minlength">Minimum length is {{ minLength }} !</p>
+              <p *ngIf="customtextinput?.errors?.minlength">Minimum length is {{ minLength }} !</p>
             </span>
           </div>
           <button class="btn btn-primary spacer" type="button" (click)="onSetValues(dataEntryForm)">Set Data</button>

@@ -21,7 +21,7 @@
     <div class="ios-calc-title">See below the Calc source files without prj file.</div>
     <p-accordion [multiple]="false" (onClose)="onTabClose($event)" (onOpen)="onTabOpen($event)">
         <p-accordionTab *ngFor="let srcFile of calcSourceFiles; let ix = index" id="files{{ix}}" header="{{srcFile}}" tabindex="{{ix}}">
-            <app-text-display id="textDisplay{{ix}}" ix="ix" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
+            <app-text-display id="textDisplay{{ix}}" [ix]="ix" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
                 name="textDisplayName(ix)">
             </app-text-display>
         </p-accordionTab>

@@ -11,7 +11,7 @@ import { AddressModel } from '../../../shared/components/address/address.model';
 export class AngularPageContent4Component implements OnInit {
   isSubmitted = false;
   githubLogoPath: string;
-  exampleForm: FormGroup | null;
+  exampleForm: FormGroup;
   address: IAddress;
   formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   form_data = {

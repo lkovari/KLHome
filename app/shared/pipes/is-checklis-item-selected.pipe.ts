@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
 import { IChecklistItem } from '../models/checklist/checklist-item.interface';
 
 @Pipe({
@@ -8,7 +8,8 @@ import { IChecklistItem } from '../models/checklist/checklist-item.interface';
 })
 export class IsChecklisItemSelectedPipe implements PipeTransform {
 
-  transform(listItemsValue: Array<IChecklistItem>, formArrayItemArg: FormGroup): boolean {
+  transform(listItemsValue: Array<IChecklistItem>, abstractControl: AbstractControl): boolean {
+    const formArrayItemArg = <FormGroup>abstractControl;
     console.log('isChecklistItemSelected' + JSON.stringify(formArrayItemArg.value));
     if (listItemsValue && listItemsValue.length > 0) {
       const itemFound = listItemsValue.find((item: IChecklistItem) => {

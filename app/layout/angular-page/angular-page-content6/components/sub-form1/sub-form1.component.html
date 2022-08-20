@@ -7,14 +7,14 @@
       </label>
       <div class="col-md-8">
         <input class="form-control" id="customText" type="text" placeholder="custom text" formControlName="customText"
-          [ngClass]="{'is-invalid': (formPartTab?.get('customText').touched ||
-                formPartTab?.get('customText').dirty) &&
-                  !formPartTab?.get('customText').valid }" />
+          [ngClass]="{'is-invalid': (formPartTab?.get('customText')?.touched ||
+                formPartTab?.get('customText')?.dirty) &&
+                  !formPartTab?.get('customText')?.valid }" />
         <span class="invalid-feedback">
-          <span *ngIf="formPartTab?.get('customText').errors?.required">
+          <span *ngIf="formPartTab?.get('customText')?.errors?.required">
             Please enter a text!
           </span>
-          <span *ngIf="formPartTab?.get('customText').errors?.minlength">
+          <span *ngIf="formPartTab?.get('customText')?.errors?.minlength">
             The text must be longer than {{ minLength }} characters!
           </span>
         </span>
@@ -26,11 +26,11 @@
       </label>
       <div class="col-md-8">
         <input class="form-control" id="customNumber" type="number" placeholder="custom number"
-          formControlName="customNumber" [ngClass]="{'is-invalid': (formPartTab?.get('customNumber').touched ||
-                  formPartTab?.get('customNumber').dirty) &&
-                  !formPartTab?.get('customNumber').valid }" />
+          formControlName="customNumber" [ngClass]="{'is-invalid': (formPartTab?.get('customNumber')?.touched ||
+                  formPartTab?.get('customNumber')?.dirty) &&
+                  !formPartTab?.get('customNumber')?.valid }" />
         <span class="invalid-feedback">
-          <span *ngIf="formPartTab?.get('customNumber').errors?.required">
+          <span *ngIf="formPartTab?.get('customNumber')?.errors?.required">
             Please enter a number!
           </span>
         </span>
@@ -40,14 +40,14 @@
       <label class="col-md-2 col-form-label" for="customEmail">Email Address 1</label>
       <div class="col-md-8">
         <input class="form-control" id="customEmail" type="text" placeholder="custom email address"
-          formControlName="emailAddress" [ngClass]="{'is-invalid': (formPartTab?.get('emailAddress').touched ||
-                  formPartTab?.get('emailAddress').dirty) &&
-                  !formPartTab?.get('emailAddress').valid }" />
+          formControlName="emailAddress" [ngClass]="{'is-invalid': (formPartTab?.get('emailAddress')?.touched ||
+                  formPartTab?.get('emailAddress')?.dirty) &&
+                  !formPartTab?.get('emailAddress')?.valid }" />
         <span class="invalid-feedback">
-          <span *ngIf="formPartTab?.get('emailAddress').errors?.required">
+          <span *ngIf="formPartTab?.get('emailAddress')?.errors?.required">
             Please enter your custom number.
           </span>
-          <span *ngIf="formPartTab?.get('emailAddress').errors?.email">
+          <span *ngIf="formPartTab?.get('emailAddress')?.errors?.email">
             Please enter a valid email address.
           </span>
         </span>
@@ -67,8 +67,8 @@
         <app-custom-input-mask id="customInputMask" styleClass="form-control" formControlName="maskedText" [maskText]="inputMask"
           [placeHolderText]='placeholder' [requiredMessage]="'Masked text value is required!'">
         </app-custom-input-mask>
-        <div *ngIf="formPartTab.get('maskedText') && (formPartTab?.get('maskedText').dirty && formPartTab?.get('maskedText').invalid)">
-          <span class="text-danger" *ngIf="formPartTab?.get('maskedText').errors?.required">
+        <div *ngIf="formPartTab.get('maskedText') && (formPartTab?.get('maskedText')?.dirty && formPartTab?.get('maskedText')?.invalid)">
+          <span class="text-danger" *ngIf="formPartTab?.get('maskedText')?.errors?.required">
             Please enter a masked text value!
           </span>
         </div>

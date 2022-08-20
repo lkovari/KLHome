@@ -17,12 +17,12 @@
         </label>
         <app-text-input id="customtextinputm" name="customText" [(ngModel)]="customFormModel.customText"
           #customText="ngModel" [minlength]="minLength" [capital]="true" (onChanged)="onChanged($event)" (onBlur)="onBlur($event)"
-          required>
+          [required]="true">
         </app-text-input>
         <span class="text-danger col-md-2" *ngIf="customText && (customText.invalid && !customText.pristine)">
-          <p *ngIf="customText?.errors.required">Custom text is Required</p>
+          <p *ngIf="customText?.errors?.required">Custom text is Required</p>
           <p *ngIf="customText.hasError('capital')">Must start with capital letter!</p>
-          <p *ngIf="customText?.errors.minlength">Minimum length is {{minLength}} !</p>
+          <p *ngIf="customText?.errors?.minlength">Minimum length is {{minLength}} !</p>
         </span>
       </div>
       <div  class="form-group row">
@@ -51,5 +51,5 @@
       {{ customFormModel | json }}
     </div>
   </div>
-  <lk-form-validation-monitor-v4 [mainFormGroup]="formData" [topGap]="2"></lk-form-validation-monitor-v4>
+  <lk-form-validation-monitor-v4 [mainFormGroup]="formData" topGap="2"></lk-form-validation-monitor-v4>
 </div>

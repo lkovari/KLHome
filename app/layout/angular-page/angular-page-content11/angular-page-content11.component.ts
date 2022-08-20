@@ -8,7 +8,7 @@ import { ChecklistComponent } from 'src/app/shared/components/checklist/checklis
   styleUrls: ['./angular-page-content11.component.scss']
 })
 export class AngularPageContent11Component implements OnInit {
-  exampleForm: FormGroup | null;
+  exampleForm: FormGroup;
   githubLogoPath;
   checklistItems: ChecklistItem[] = [
     { id: 1, label: "Alistair McIntyre as bone breaker", selected: false, value: null },

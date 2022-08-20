@@ -86,7 +86,7 @@
           </div>
           <div *ngIf="isValidationPlaceOutsideComponent()">
             <div class="text-danger" 
-              *ngIf="(extractFormControl().invalid && extractFormControl().touched) || (extractFormControl().invalid && extractFormControl().dirty)">
+              *ngIf="(extractFormControl().invalid && extractFormControl().touched) || (extractFormControl().invalid && extractFormControl()?.dirty)">
               <!--div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div-->
               <div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div>
               <div *ngIf="extractFormControl().hasError('lastNameRequired')">Last name required!</div>

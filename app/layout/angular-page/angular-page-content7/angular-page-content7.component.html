@@ -43,14 +43,14 @@
         </label>
         <div class="col-sm-6">
           <input class="form-control" id="userName" type="text" placeholder="user name required"
-            formControlName="userName" [ngClass]="{'is-invalid': (mainForm?.get('userName').touched ||
-              mainForm?.get('userName').dirty) &&
-              !mainForm?.get('userName').valid }" />
+            formControlName="userName" [ngClass]="{'is-invalid': (mainForm?.get('userName')?.touched ||
+              mainForm?.get('userName')?.dirty) &&
+              !mainForm?.get('userName')?.valid }" />
           <span class="invalid-feedback">
-            <span *ngIf="mainForm?.get('userName').errors?.required">
+            <span *ngIf="mainForm?.get('userName')?.errors?.required">
               Please enter a User name!
             </span>
-            <span *ngIf="mainForm?.get('userName').errors?.minlength">
+            <span *ngIf="mainForm?.get('userName')?.errors?.minlength">
               The User name must be longer than {{ userNameMinLength }} characters!
             </span>
           </span>
@@ -65,19 +65,19 @@
           <div class="col-sm-6">
             <input class="form-control" id="password" type="password" placeholder="Password (required)"
               formControlName="password" autocomplete="off"
-              [ngClass]="{'is-invalid': mainForm?.get('passwordGroup').errors ||
-                ((mainForm?.get('passwordGroup.password').touched ||
-                mainForm?.get('passwordGroup.password').dirty) && 
-                !mainForm?.get('passwordGroup.password').valid) }" 
+              [ngClass]="{'is-invalid': mainForm?.get('passwordGroup')?.errors ||
+                ((mainForm?.get('passwordGroup.password')?.touched ||
+                mainForm?.get('passwordGroup.password')?.dirty) && 
+                !mainForm?.get('passwordGroup.password')?.valid) }" 
             />
             <span class="invalid-feedback">
-              <span *ngIf="mainForm?.get('passwordGroup.password').errors?.required">
+              <span *ngIf="mainForm?.get('passwordGroup.password')?.errors?.required">
                 Please enter your Password.
               </span>
-              <span *ngIf="mainForm?.get('passwordGroup.password').errors?.pattern">
+              <span *ngIf="mainForm?.get('passwordGroup.password')?.errors?.pattern">
                 Please enter a valid Password, Min 8 chars minimum one number and letter and special character.
               </span>
-              <span *ngIf="mainForm?.get('passwordGroup').errors?.notidentical">
+              <span *ngIf="mainForm?.get('passwordGroup')?.errors?.notidentical">
                 Both password does not identical.
               </span>
             </span>
@@ -92,19 +92,19 @@
             <!-- ref for X : https://mdbootstrap.com/docs/jquery/forms/validation/ -->
             <input class="form-control" id="confirmPassword" type="password"
               placeholder="Confirm Password (required)" formControlName="confirmPassword" autocomplete="off"
-              [ngClass]="{'is-invalid': mainForm?.get('passwordGroup').errors ||
-                ((mainForm?.get('passwordGroup.confirmPassword').touched ||
-                mainForm?.get('passwordGroup.confirmPassword').dirty) && 
-                !mainForm?.get('passwordGroup.confirmPassword').valid) }" 
+              [ngClass]="{'is-invalid': mainForm?.get('passwordGroup')?.errors ||
+                ((mainForm?.get('passwordGroup.confirmPassword')?.touched ||
+                mainForm?.get('passwordGroup.confirmPassword')?.dirty) && 
+                !mainForm?.get('passwordGroup.confirmPassword')?.valid) }" 
             />
             <span class="invalid-feedback">
-              <span *ngIf="mainForm?.get('passwordGroup.confirmPassword').errors?.required">
+              <span *ngIf="mainForm?.get('passwordGroup.confirmPassword')?.errors?.required">
                 Please confirm your Password.
               </span>
-              <span *ngIf="mainForm?.get('passwordGroup.confirmPassword').errors?.pattern">
+              <span *ngIf="mainForm?.get('passwordGroup.confirmPassword')?.errors?.pattern">
                 Please enter a valid Password, Min 8 chars minimum one number and letter and special character.
               </span>
-              <span *ngIf="mainForm?.get('passwordGroup').errors?.notidentical">
+              <span *ngIf="mainForm?.get('passwordGroup')?.errors?.notidentical">
                 Both password does not identical.
               </span>
             </span>
@@ -114,7 +114,7 @@
       </div>
       <div class="table-responsive-sm user-role-list">
         <label class="spacer-vertical-above spacer-horozontal-left">Role List
-          #{{ mainForm?.get('userRoles').controls.length }}</label>
+          #{{ evaluateUserRoles().controls.length }}</label>
         <table class="table spacer-vertical-above" style="overflow-x:auto;" formArrayName="userRoles">
           <thead>
             <tr>
@@ -136,11 +136,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let userRole of mainForm?.get('userRoles').controls; let ix = index trackBy: trackByFn" [formGroupName]="ix">
+            <tr *ngFor="let userRole of evaluateUserRoles().controls; let ix = index trackBy: trackByFn" [formGroupName]="ix">
               <td>
                 <p-dropdown id="{{'roleType' + ix}}" class="form-group" [options]="roleTypes" optionLabel="label" dataKey="value"
                   placeholder="Select a role type" formControlName="roleType" [showClear]="true"
-                  tabindex="calcTabIndex(ix, 0)" [required]="true">
+                  [tabindex]="calcTabIndex(ix, 0)" [required]="true">
                 </p-dropdown>
                 <span *ngIf="isUserFieldInvalid(userRole, 'roleType')">
                   <span class="show-invalid-feedback">
@@ -151,7 +151,7 @@
               <td>
                 <p-dropdown id="{{'moduleType' + ix}}" class="form-group" [options]="moduleTypes" optionLabel="label"  dataKey="value"
                   placeholder="Select a module type" formControlName="moduleType" [showClear]="true"
-                  tabindex="calcTabIndex(ix, 1)" [required]="true">
+                  [tabindex]="calcTabIndex(ix, 1)" [required]="true">
                 </p-dropdown>
                 <span *ngIf="isUserFieldInvalid(userRole, 'moduleType')">
                   <span class="show-invalid-feedback">
@@ -160,7 +160,7 @@
                 </span>
               </td>
               <td>
-                <p-calendar id="{{'expire' + ix}}" class="form-group" tabindex="calcTabIndex(ix, 2)" formControlName="expire"
+                <p-calendar id="{{'expire' + ix}}" class="form-group" [tabindex]="calcTabIndex(ix, 2)" formControlName="expire"
                   [defaultDate]="todayDate" [showOnFocus]="true">
                 </p-calendar>
               </td>
@@ -192,7 +192,7 @@
       </div>
       <span *ngIf="hasDuplicatedRows(mainForm)">
         <span class="show-invalid-feedback" *ngFor="let dup of extractErrorValue(); let ix = index">
-          User Role and Module duplication found at row {{ dup.atrow }}. and row {{ dup.androw }}.
+          User Role and Module duplication found at row {{ dup.atrowAsTx }}. and row {{ dup.androwAsTx }}.
         </span>
       </span>
     </form>

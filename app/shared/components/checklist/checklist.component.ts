@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl, NG_VALUE_ACCESSOR, FormGroupDirective, ControlContainer, ControlValueAccessor } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl, NG_VALUE_ACCESSOR, FormGroupDirective, ControlContainer, ControlValueAccessor, AbstractControl } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
 
 @Component({
@@ -126,9 +126,9 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  trackById(ix: number, checkListItemFormGroup: FormGroup) {
+  trackById(ix: number, abstractControl: AbstractControl): number {
+    const checkListItemFormGroup = <FormGroup>abstractControl;
     ix + 1;
-    // console.log('trackById ix ' + ix);
     return checkListItemFormGroup.value.id;
   }
 
@@ -160,7 +160,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     });
   }
 
-  onChecklistItemClick(event: KeyboardEvent, formGroup: FormGroup) {
+  onChecklistItemClick(event: MouseEvent, abstractControl: AbstractControl) {
+    const formGroup = <FormGroup>abstractControl;
     const itemFound = this.checklistItems.find((item: IChecklistItem) => {
       return formGroup.value.id === item.id;
     });

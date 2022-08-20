@@ -13,9 +13,9 @@ import { ValidationPlaceKind } from '../../../shared/components/complex-name/val
 })
 export class AngularPageContent3Component implements OnInit {
   githubLogoPath: string;
-  exampleForm: FormGroup | null;
+  exampleForm: FormGroup;
   complexName: IComplexName;
-  complexNameConfig: IComplexNameConfig | null;
+  complexNameConfig: IComplexNameConfig;
   submitted = false;
   form_data = {
     complexName: new ComplexName(),

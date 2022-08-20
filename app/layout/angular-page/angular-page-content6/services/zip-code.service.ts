@@ -69,7 +69,7 @@ export class ZipCodeService {
         return of(this.findZipCode(zipCode));
       });
     } else {
-      return of(this.findZipCode(zipCode));0
+      return of(this.findZipCode(zipCode));
     }
     if (!cached) {
       this.zipCodes = [];
