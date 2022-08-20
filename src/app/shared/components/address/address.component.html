@@ -7,12 +7,12 @@
             <input pInputText type="text" formControlName="addressLine1">
             <div class="text-danger" *ngIf="(extractFormControl('addressLine1').touched && extractFormControl('addressLine1').invalid) || 
                 (extractFormControl('addressLine1').dirty && extractFormControl('addressLine1').invalid)">
-                <p *ngIf="extractFormControl('addressLine1')?.errors.required">Address line 1 is required!</p>
-                <p *ngIf="extractFormControl('addressLine1')?.errors.minlength">Address line 1 must be greater thanmin {{ extractFormControl('addressLine1')?.errors.minlength.requiredLength
-                    }} characters long, the actual length is {{ extractFormControl('addressLine1')?.errors.minlength.actualLength}}
+                <p *ngIf="extractFormControl('addressLine1')?.errors?.required">Address line 1 is required!</p>
+                <p *ngIf="extractFormControl('addressLine1')?.errors?.minlength">Address line 1 must be greater thanmin {{ extractFormControl('addressLine1')?.errors?.minlength.requiredLength
+                    }} characters long, the actual length is {{ extractFormControl('addressLine1')?.errors?.minlength.actualLength}}
                     characters!</p>
-                <p *ngIf="extractFormControl('addressLine1')?.errors.maxlength">Address line 1 must be less than {{ extractFormControl('addressLine1')?.errors.maxlength.requiredLength }}
-                    characters long, the actual length is {{ extractFormControl('addressLine1')?.errors.maxlength.actualLength}}
+                <p *ngIf="extractFormControl('addressLine1')?.errors?.maxlength">Address line 1 must be less than {{ extractFormControl('addressLine1')?.errors?.maxlength.requiredLength }}
+                    characters long, the actual length is {{ extractFormControl('addressLine1')?.errors?.maxlength.actualLength}}
                     characters!</p>
             </div>
         </div>
@@ -27,12 +27,12 @@
             <input pInputText type="text" formControlName="city">
             <div class="text-danger" *ngIf="(extractFormControl('city').touched && extractFormControl('city').invalid) || 
                 (extractFormControl('city').dirty && extractFormControl('city').invalid)">
-                <p *ngIf="extractFormControl('city')?.errors.required">City is required!</p>
-                <p *ngIf="extractFormControl('city')?.errors.minlength">City must be greater than min {{ extractFormControl('city')?.errors.minlength.requiredLength
-                    }} characters long, the actual length is {{ extractFormControl('city')?.errors.minlength.actualLength}}
+                <p *ngIf="extractFormControl('city')?.errors?.required">City is required!</p>
+                <p *ngIf="extractFormControl('city')?.errors?.minlength">City must be greater than min {{ extractFormControl('city')?.errors?.minlength.requiredLength
+                    }} characters long, the actual length is {{ extractFormControl('city')?.errors?.minlength.actualLength}}
                     characters!</p>
-                <p *ngIf="extractFormControl('city')?.errors.maxlength">City must be less than {{ extractFormControl('city')?.errors.maxlength.requiredLength }}
-                    characters long, the actual length is {{ extractFormControl('city')?.errors.maxlength.actualLength}}
+                <p *ngIf="extractFormControl('city')?.errors?.maxlength">City must be less than {{ extractFormControl('city')?.errors?.maxlength.requiredLength }}
+                    characters long, the actual length is {{ extractFormControl('city')?.errors?.maxlength.actualLength}}
                     characters!</p>
             </div>
         </div>
@@ -43,12 +43,12 @@
             <input pInputText type="text" formControlName="zip" required>
             <div class="text-danger" *ngIf="(extractFormControl('zip').touched && extractFormControl('zip').invalid) || 
                 (extractFormControl('zip').dirty && extractFormControl('zip').invalid)">
-                <p *ngIf="extractFormControl('zip')?.errors.required">Zip is required!</p>
-                <p *ngIf="extractFormControl('zip')?.errors.minlength">Zip must be greater tha nmin {{ extractFormControl('zip')?.errors.minlength.requiredLength
-                    }} characters long, the actual length is {{ extractFormControl('zip')?.errors.minlength.actualLength}}
+                <p *ngIf="extractFormControl('zip')?.errors?.required">Zip is required!</p>
+                <p *ngIf="extractFormControl('zip')?.errors?.minlength">Zip must be greater tha nmin {{ extractFormControl('zip')?.errors?.minlength.requiredLength
+                    }} characters long, the actual length is {{ extractFormControl('zip')?.errors?.minlength.actualLength}}
                     characters!</p>
-                <p *ngIf="extractFormControl('zip')?.errors.maxlength">Zip must be less than {{ extractFormControl('zip')?.errors.maxlength.requiredLength }}
-                    characters long, the actual length is {{ extractFormControl('zip')?.errors.maxlength.actualLength}}
+                <p *ngIf="extractFormControl('zip')?.errors?.maxlength">Zip must be less than {{ extractFormControl('zip')?.errors?.maxlength.requiredLength }}
+                    characters long, the actual length is {{ extractFormControl('zip')?.errors?.maxlength.actualLength}}
                     characters!</p>
             </div>
         </div>

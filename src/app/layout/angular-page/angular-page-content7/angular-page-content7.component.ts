@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { RoleType } from './role-type.enum';
 import { ModuleType } from './module-type.enum';
 import { UserFormData } from './data-model/user-form-data.model';
 import { UserRole } from './data-model/user-role.model';
 import { ModuleTypeModel } from './data-model/module-type.model';
 import { RoleTypeModel } from './data-model/role-type.model';
-import { FormArrayCustomValidators } from './formarray-custom-validators';
+import { FormArrayCustomValidators, IDupEntry } from './formarray-custom-validators';
 
 /*
 const passwordCrossFieldValidator: ValidatorFn = (fg: FormGroup) => {
@@ -29,7 +29,7 @@ const passwordCrossFieldValidator: ValidatorFn = (fg: FormGroup) => {
 export class AngularPageContent7Component implements OnInit {
   AMOUNT_MAX = 9999999.99;
   AMOUNT_MIN = 0.00;
-  mainForm: FormGroup | null;
+  mainForm: FormGroup;
   mainFormData: any;
   mainFormSubmitData: any;
   mainFormModel: UserFormData;
@@ -104,6 +104,10 @@ export class AngularPageContent7Component implements OnInit {
       return rt.value === ord;
     });
     return roleTypeItem;
+  }
+
+  evaluateUserRoles(): FormArray {
+    return <FormArray>this.mainForm.get('userRoles');
   }
 
   /**
@@ -284,7 +288,7 @@ export class AngularPageContent7Component implements OnInit {
     console.log('onClearModel click event fired ' + event);
   }
 
-  isUserFieldInvalid(formControl: FormControl | null, field: string): boolean {
+  isUserFieldInvalid(formControl: AbstractControl | null, field: string): boolean {
     // Not-null assertion operator
     // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
     /* 
@@ -310,11 +314,12 @@ export class AngularPageContent7Component implements OnInit {
     return userRolesFormArray?.errors && userRolesFormArray.errors.duplications !== null;
   }
 
-  extractErrorValue(): string | null {
+  extractErrorValue(): IDupEntry[] | null {
     return this.mainForm?.get('userRoles')?.errors?.duplications?.values;
   }
 
-  trackByFn(item: UserRole): any {
+  trackByFn(itemAny: any): any {
+    const item = <UserRole>itemAny;
     return item.roleType + item.moduleType;
   }
 

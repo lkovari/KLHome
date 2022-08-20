@@ -14,7 +14,7 @@ export class DataMainInputComponent implements OnInit {
   githubLogoPath: string;
   // formControlStatusKeys = ['status', 'dirty', 'pristine', 'touched', 'untouched', 'valid', 'invalid', 'value', 'errors'];
   tabItems: MenuItem[];
-  activeItem: MenuItem | null;
+  activeItem: MenuItem;
   tabIndex: number;
   minLength = 7;
   form_data = {
@@ -135,7 +135,6 @@ export class DataMainInputComponent implements OnInit {
   }
 
   onUnselectTab(event: MouseEvent) {
-    this.activeItem = null;
     this.tabIndex = -1;
     console.log('onUnselectTab click event fired ' + event);
   }

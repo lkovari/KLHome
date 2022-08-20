@@ -1,10 +1,12 @@
 import * as forms from '@angular/forms';
 import { FormArray } from '@angular/forms';
 
-interface IDupEntry { 
+export interface IDupEntry { 
     id: number;
     atrow: number;
     androw: number;
+    atrowAsTx: string;
+    androwAsTx: string;
 }
 export class FormArrayCustomValidators {
 
@@ -45,7 +47,7 @@ export class FormArrayCustomValidators {
             const userRoleForms = <forms.FormArray>c;
             let ixRef = 0;
             let rowIx = 0;
-            let duplications: { id: number, atrow: number, androw: number }[] = [];
+            let duplications: { id: number, atrow: number, androw: number, atrowAsTx: string, androwAsTx: string }[] = [];
             let dupCnt = 0;
             for (ixRef; ixRef < userRoleForms.length; ixRef++) {
                 const formRef = userRoleForms.at(ixRef);
@@ -58,7 +60,7 @@ export class FormArrayCustomValidators {
                     if ((isRoleTypeEquals && isModuleTypeEquals) && (ixRef !== ix)) {
                         rowIx = ix;
                         // isDuplicatesFound = true;
-                        const item = { "id": dupCnt, "atrow": (ixRef + 1), "androw": (rowIx + 1)};
+                        const item = { "id": dupCnt, "atrow": (ixRef + 1), "androw": (rowIx + 1), "atrowAsTx": ('' + ixRef + 1), "androwAsTx": ('' + rowIx + 1) };
                         if (!FormArrayCustomValidators.duplicationFound(duplications, item)) {
                             duplications.push(item);
                             dupCnt = dupCnt + 1;

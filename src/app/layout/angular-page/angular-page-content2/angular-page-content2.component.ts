@@ -53,22 +53,26 @@ export class AngularPageContent2Component implements OnInit, AfterViewInit {
     });
 }
 
-  onClearClicked(date: Date) {
+  onClearClicked(event) {
+    const date = <Date>event;
     this.selectedDate = date;
     console.log('onClearClicked event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }
 
-  onTodayClicked(date: Date) {
+  onTodayClicked(event) {
+    const date = <Date>event;
     this.selectedDate = date;
     console.log('onTodayClicked event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }
 
-  onDateSelected(date: Date) {
+  onDateSelected(event) {
+    const date = <Date>event;
     this.selectedDate = date;
     console.log('onDateSelected event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }
 
-  onModelChanged(date: Date) {
+  onModelChanged(event) {
+    const date = <Date>event;
     this.selectedDate = date;
     console.log('onModelChanged event arg ' + JSON.stringify(date) + ' customDate ' + JSON.stringify(this.customDate));
   }

@@ -53,8 +53,8 @@
     // When true, generate all possible files even if they are empty. Default is false. Used by the Bazel build rules to simplify how Bazel rules track file dependencies. Do not use this option outside of the Bazel rules.
     ,"allowEmptyCodegenFiles": true
     // Show diagnostic information.
-    , "diagnostics": true,
+    , "diagnostics": true
     // When true, enables strict template type checking in Angular version 9. Strict mode is only available when using Ivy.
-    "strictTemplates": true,
+    ,"strictTemplates": true
   }    
 }

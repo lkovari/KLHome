@@ -15,7 +15,7 @@
             <p-accordion [multiple]="false" (onOpen)="onTabOpen($event)">
                 <p-accordionTab *ngFor="let srcFile of masmSourceFiles; let ix = index" id="files{{ix}}" header="{{srcFile}}" tabindex="{{ix}}">
                     {{masmSoureFileTitles[ix]}}
-                    <app-text-display id="textDisplay{{ix}}" ix="ix" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
+                    <app-text-display id="textDisplay{{ix}}" [ix]="ix" *ngIf="isDisplayText" [visible]="isDisplayText" [fileName]="srcFile" [fileContent]="fileContent"
                         name="textDisplayName(ix)">
                     </app-text-display>
                 </p-accordionTab>

@@ -31,20 +31,22 @@
             <div class="form-group">
                 <label class="courses-subtitle">Completed Courses</label>
                 <!--ng-template ngFor [ngForOf]="completedCourses$ | async" let-completedCourses let-i="index"></ng-template-->
-                <div *ngIf="(completedCourses$| async)?.length > 0; else loadingCompleted">
-                    <div *ngFor="let course of completedCourses$ | async; let ix = index">
-                        <app-course>
-                            <!-- content projection course-index slot content-->
-                            <label class="course-index course-title">{{ (completedCourses$| async)?.length - ix }}.</label>
-                            <!-- content projection course-completed slot content-->
-                            <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
-                            <!-- content projection course-author slot content-->
-                            <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
-                            <!-- content projection course-duration slot content-->
-                            <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
-                            <!-- Single slot without selector class -->
-                            <label class="course-title text-success">{{ course.completed }}%.</label>
-                        </app-course>
+                <div *ngIf="completedCourses$ | async as completedCoursesData; else loadingCompleted">
+                    <div *ngIf="completedCoursesData.length > 0; else loadingCompleted">
+                        <div *ngFor="let course of completedCourses$ | async; let ix = index">
+                            <app-course>
+                                <!-- content projection course-index slot content-->
+                                <label class="course-index course-title">{{ completedCoursesData.length - ix }}.</label>
+                                <!-- content projection course-completed slot content-->
+                                <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                                <!-- content projection course-author slot content-->
+                                <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                                <!-- content projection course-duration slot content-->
+                                <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
+                                <!-- Single slot without selector class -->
+                                <label class="course-title text-success">{{ course.completed }}%.</label>
+                            </app-course>
+                        </div>
                     </div>
                     <div>
                         <label class="total-label">Total
@@ -58,21 +60,23 @@
             </div>
             <div class="form-group">
                 <label class="courses-subtitle">Courses are still in progress.</label>
-                <div *ngIf="(inProgressCourses$| async)?.length > 0; else loadingInprogress">
-                    <div *ngFor="let course of inProgressCourses$ | async; let ix = index">
-                        <div class="course-style">
-                            <app-course>
-                                <!-- content projection course-index slot content-->
-                                <label class="course-index course-title">{{ ix + 1 }}.</label>
-                                <!-- content projection course-completed slot content-->
-                                <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
-                                <!-- content projection course-author slot content-->
-                                <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
-                                <!-- content projection course-duration slot content-->
-                                <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
-                                <!-- Single slot without selector class -->
-                                <label class="course-title text-warning">{{ course.completed }}%.</label>
-                            </app-course>                        
+                <div *ngIf="inProgressCourses$ | async as inProgressCoursesData; else loadingInprogress">
+                    <div *ngIf="inProgressCoursesData.length > 0; else loadingInprogress">
+                        <div *ngFor="let course of inProgressCoursesData; let ix = index">
+                            <div class="course-style">
+                                <app-course>
+                                    <!-- content projection course-index slot content-->
+                                    <label class="course-index course-title">{{ ix + 1 }}.</label>
+                                    <!-- content projection course-completed slot content-->
+                                    <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} : </label>
+                                    <!-- content projection course-author slot content-->
+                                    <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                                    <!-- content projection course-duration slot content-->
+                                    <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
+                                    <!-- Single slot without selector class -->
+                                    <label class="course-title text-warning">{{ course.completed }}%.</label>
+                                </app-course>                        
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -87,21 +91,23 @@
             </div>
             <div class="form-group">
                 <label class="courses-subtitle">Planned (to watch) Courses</label>
-                <div *ngIf="(plannedCurses$| async)?.length > 0; else loadingPlanned">
-                    <div *ngFor="let course of plannedCurses$ | async; let ix = index">
-                        <div class="course-style">
-                            <app-course>
-                                <!-- content projection course-index slot content-->
-                                <label class="course-index course-title">{{ ix + 1 }}.</label>
-                                <!-- content projection course-completed slot content-->
-                                <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} </label>
-                                <!-- content projection course-author slot content-->
-                                <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
-                                <!-- content projection course-duration slot content-->
-                                <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
-                                <!-- Single slot without selector class -->
-                                <label class="course-title text-danger" >{{ course.completed }}%.</label>
-                            </app-course>                           
+                <div *ngIf="plannedCurses$ | async as plannedCourseDta; else loadingPlanned">
+                    <div *ngIf="plannedCourseDta.length > 0; else loadingPlanned">
+                        <div *ngFor="let course of plannedCourseDta; let ix = index">
+                            <div class="course-style">
+                                <app-course>
+                                    <!-- content projection course-index slot content-->
+                                    <label class="course-index course-title">{{ ix + 1 }}.</label>
+                                    <!-- content projection course-completed slot content-->
+                                    <label class="course-completed course-title">{{ course.dateOfCompleted | date: 'mediumDate' }} </label>
+                                    <!-- content projection course-author slot content-->
+                                    <label class="course-author course-title">{{ course.title + " " + course.author + " " }}<a href="{{ course.website }}">{{ course.website }}</a></label>
+                                    <!-- content projection course-duration slot content-->
+                                    <label class="course-duration course-title">{{ course.hours }}h.{{ course.minutes }}m</label>
+                                    <!-- Single slot without selector class -->
+                                    <label class="course-title text-danger" >{{ course.completed }}%.</label>
+                                </app-course>                           
+                            </div>
                         </div>
                     </div>
                 </div>

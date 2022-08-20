@@ -9,11 +9,11 @@
         <div class="text-danger" 
           *ngIf="(extractFormControl('firstName').touched && extractFormControl('firstName').invalid) || 
           (extractFormControl('firstName').dirty && extractFormControl('firstName').invalid)">
-          <p *ngIf="extractFormControl('firstName')?.errors.required">First name required!</p>
-          <p *ngIf="extractFormControl('firstName')?.errors.minlength">First name must be greater than min {{ extractFormControl('firstName')?.errors.minlength.requiredLength }} 
-            characters long, the actual length is {{ extractFormControl('firstName')?.errors.minlength.actualLength}} characters!</p>
-          <p *ngIf="extractFormControl('firstName')?.errors.maxlength">First name must be less than {{ extractFormControl('firstName')?.errors.maxlength.requiredLength }} 
-            characters long, the actual length is {{ extractFormControl('firstName')?.errors.maxlength.actualLength}} characters!</p>
+          <p *ngIf="extractFormControl('firstName')?.errors?.required">First name required!</p>
+          <p *ngIf="extractFormControl('firstName')?.errors?.minlength">First name must be greater than min {{ extractFormControl('firstName')?.errors?.minlength.requiredLength }} 
+            characters long, the actual length is {{ extractFormControl('firstName')?.errors?.minlength.actualLength}} characters!</p>
+          <p *ngIf="extractFormControl('firstName')?.errors?.maxlength">First name must be less than {{ extractFormControl('firstName')?.errors?.maxlength.requiredLength }} 
+            characters long, the actual length is {{ extractFormControl('firstName')?.errors?.maxlength.actualLength}} characters!</p>
         </div>
       </div>
     </div>
@@ -30,11 +30,11 @@
           <div class="text-danger" 
           *ngIf="(extractFormControl('lastName').touched && extractFormControl('lastName').invalid) || 
           (extractFormControl('lastName').dirty && extractFormControl('lastName').invalid)">
-            <p *ngIf="extractFormControl('lastName')?.errors.required">Last name required!</p>
-            <p *ngIf="extractFormControl('lastName')?.errors.minlength">Last name must be greater than {{ extractFormControl('lastName')?.errors.minlength.requiredLength }} 
-                characters long, the actual length is {{ extractFormControl('lastName')?.errors.minlength.actualLength}} characters!</p>
-              <p *ngIf="extractFormControl('lastName')?.errors.maxlength">Last name must be less than {{ extractFormControl('lastName')?.errors.maxlength.requiredLength }} 
-                characters long, the actual length is {{ extractFormControl('lastName')?.errors.maxlength.actualLength}} characters!</p>
+            <p *ngIf="extractFormControl('lastName')?.errors?.required">Last name required!</p>
+            <p *ngIf="extractFormControl('lastName')?.errors?.minlength">Last name must be greater than {{ extractFormControl('lastName')?.errors?.minlength.requiredLength }} 
+                characters long, the actual length is {{ extractFormControl('lastName')?.errors?.minlength.actualLength}} characters!</p>
+              <p *ngIf="extractFormControl('lastName')?.errors?.maxlength">Last name must be less than {{ extractFormControl('lastName')?.errors?.maxlength.requiredLength }} 
+                characters long, the actual length is {{ extractFormControl('lastName')?.errors?.maxlength.actualLength}} characters!</p>
           </div>
         </div>
       </div>

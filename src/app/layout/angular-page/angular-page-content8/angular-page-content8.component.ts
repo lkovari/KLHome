@@ -24,12 +24,18 @@ export class AngularPageContent8Component implements OnInit, AfterViewInit, OnDe
              private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
+    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    this.personList = [];
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.loadData();
+    });
+  }
+
+  loadData() {
     this.useRouteResolver = this.examplePersonDataService.useRouteResolver;
-    this.personList = [];
-    this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     if (this.useRouteResolver) {
       this.personList = this.route.snapshot.data['resolvedPersonData'];
       console.log(`RESOLVE: AngularPageContent8Component : #${this.personList.length} Person rows captured from route data.`);
@@ -68,7 +74,8 @@ export class AngularPageContent8Component implements OnInit, AfterViewInit, OnDe
     console.log('onScrolltoBottomClicked click event fired ' + event);
   }
 
-  trackByFn(item: Person) {
+  trackByFn(itemAny: any): number {
+    const item = <Person>itemAny;
     return item.id;
   }
 

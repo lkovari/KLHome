@@ -12,9 +12,9 @@ export class MainFormComponent implements OnInit {
   textMinLength = 7;
   githubLogoPath: string;
   tabItems: MenuItem[];
-  activeItem: MenuItem | null;
+  activeItem: MenuItem;
   tabIndex: number;
-  selectedFormModel: FormGroup | null;
+  selectedFormModel: FormGroup;
   @Input() customForm: FormGroup;
 
   constructor() { }
@@ -176,8 +176,6 @@ export class MainFormComponent implements OnInit {
   }
 
   onUnselectTab(event: MouseEvent) {
-    this.selectedFormModel = null;
-    this.activeItem = null;
     this.tabIndex = -1;
     console.log('onUnselectTab click event fired ' + event);
   }

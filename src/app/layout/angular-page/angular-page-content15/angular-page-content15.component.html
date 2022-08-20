@@ -55,7 +55,7 @@
                         <textarea id="customTextArea" class="form-control custom-text-style" name="customTextArea" [(ngModel)]="logValue"
                             rows="{{defaultRows}}" 
                             [disabled]="true"
-                            appCustomTextArea autoSize="true" defaultRows="{{defaultRows}}" autoSizeLimit="{{maxRowstLimit}}"
+                            appCustomTextArea [autoSize]="true" [defaultRows]="defaultRows" [autoSizeLimit]="maxRowstLimit"
                             #customTextArea="ngModel" autocomplete="off"
                             [required]="fieldRequired" 
                             minlength="{{customTextMinLength}}"

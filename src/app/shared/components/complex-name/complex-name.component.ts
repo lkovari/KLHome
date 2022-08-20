@@ -16,7 +16,7 @@ import { ValidationPlaceKind } from './validation-place-kind';
                { provide: NG_VALIDATORS, useExisting: ComplexNameComponent, multi: true} ]
 })
 export class ComplexNameComponent implements OnInit, ControlValueAccessor, Validator {
-  complexNameForm: FormGroup | null;
+  complexNameForm: FormGroup;
   @Input() config: IComplexNameConfig;
   @Input() disabled = false;
   @Output() onNameChange = new EventEmitter<IComplexName>();
