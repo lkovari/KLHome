@@ -28,3 +28,7 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Known Problem
+
+DEPRECATED: The 'defaultProject' workspace option has been deprecated. The project to use will be determined from the current working directory.
