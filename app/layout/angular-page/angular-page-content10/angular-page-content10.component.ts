@@ -12,13 +12,15 @@ export class AngularPageContent10Component implements OnInit {
   customTextValue: string;
   fieldRequired: boolean;
   customTextMaxLength = 250;
-  customTextMinLength = 0;
+  customTextMinLength = 7;
   maxRowstLimit = 10;
+  firstLetterCapitalPattern = '^[A-Z][a-z0-9_-]{3,19}$';
   @ViewChild('dataEntryForm', {static: true} ) dataEntryForm: NgForm;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.fieldRequired = true;
     this.customTextValue = '';
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
   }

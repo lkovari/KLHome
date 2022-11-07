@@ -18,6 +18,12 @@
     <div class="sub-topic">
         <label><b>1. Custom textbox directive</b></label>
         <p>You can see a textarea HTML element. The textarea default height is 3 rows. In this example, the textarea is decorated with the 'appCustomTextArea' directive. It has two parameters autoSize: boolean, defaultRows:number and autoSizeLimit: number. The spinner can change the value of the autoSizeLimit. When the user typing more rows, and the rows number matched with the value of the autoSizeLimit then stop growing the textarea height.</p>
+        <label><b>2. Validation Rules</b></label>
+        <div class="sub-topic">
+            <p>- min length is {{customTextMinLength}} characters</p>
+            <p>- max length is {{customTextMaxLength}} characters</p>
+            <p>- first character should be capital letter</p>
+        </div>
         <div class="top-gap">
             <form (ngSubmit)="onSubmit(dataEntryForm)" #dataEntryForm="ngForm" novalidate autocomplete="off">
                 <div class="form-group">
@@ -36,12 +42,13 @@
                         appCustomTextArea [autoSize]="true" [defaultRows]="defaultRows" [autoSizeLimit]="maxRowstLimit"
                         #customTextArea="ngModel" autocomplete="off"
                         [required]="fieldRequired" 
+                        pattern="{{firstLetterCapitalPattern}}"
                         minlength="{{customTextMinLength}}"
                         maxlength="{{customTextMaxLength}}">
                      </textarea>   
                     <div *ngIf="(customTextArea && (customTextArea.invalid && customTextArea.dirty)) " class="text-danger">
                         <p *ngIf="fieldRequired && customTextArea?.errors?.required">Value is required!</p>
-                        <p *ngIf="customTextArea?.errors?.firstcapital">The first character should capital letter!</p>
+                        <p *ngIf="customTextArea?.errors?.pattern">The first character should capital letter!</p>
                         <p *ngIf="customTextArea.hasError('minlength')">Min length is {{ customTextMinLength }}!
                         </p>
                         <p *ngIf="customTextArea?.errors?.maxlength">Max length is {{ customTextMaxLength }}!</p>
