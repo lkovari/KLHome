@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('11/07/2022 02:14 PM');
+  lastUpdate = new Date('11/07/2022 02:20 PM');
   lastUpdateTooltip = 'Added validation rules to page #10.';
 
   ngOnInit() {
