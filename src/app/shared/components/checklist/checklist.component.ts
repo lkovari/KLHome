@@ -277,21 +277,23 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
   }
 
   private setAllNormalItemsSelection(selected: boolean) {
-    this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
-      if (selected) {
-        const normal = formGroupItem.get('normal')?.value;
-        if (normal) {
-          formGroupItem.get('selected')?.patchValue(normal);
+    if (this.checklistFormArray) {
+      this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
+        if (selected) {
+          const normal = formGroupItem.get('normal')?.value;
+          if (normal) {
+            formGroupItem.get('selected')?.patchValue(normal);
+          }
+        } else {
+          // only those items unselect which normal marked to true
+          if (formGroupItem.get('normal')?.value) {
+            formGroupItem.get('selected')?.patchValue(false);
+          }
         }
-      } else {
-        // only those items unselect which normal marked to true
-        if (formGroupItem.get('normal')?.value) {
-          formGroupItem.get('selected')?.patchValue(false);
-        }
-      }
-      formGroupItem.markAsTouched();
-      formGroupItem.markAsDirty();
-    });
+        formGroupItem.markAsTouched();
+        formGroupItem.markAsDirty();
+      });
+    }
   }
 
   private setAllItemModelSelection(selected: boolean) {
