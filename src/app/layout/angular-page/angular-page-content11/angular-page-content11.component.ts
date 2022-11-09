@@ -21,6 +21,7 @@ export class AngularPageContent11Component implements OnInit {
     { id: 8, label: "M390 is the best knife steel material", selected: false, value: null, normal: true }
   ];
   singleSelect = true;
+  selectNormal = false;
 
   @ViewChild('checklist', { static: true }) checklistComponent: ChecklistComponent;
   constructor(private formBuilder: FormBuilder) { }
@@ -50,6 +51,8 @@ export class AngularPageContent11Component implements OnInit {
 
   onUnselectAll() {
     this.checklistComponent.unselectAllItems();
+    this.selectNormal = false;
+    this.singleSelect = true;
   }
 
 }
