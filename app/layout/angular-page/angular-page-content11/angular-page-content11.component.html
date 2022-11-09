@@ -12,7 +12,7 @@
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a>
                 Example of a reactive CheckListComponent, where one list item is a form (FormGroup) and where the list
-                is a FormArray. Currently manually handling the ChecklistComponent statues I mean programmatically call
+                is a FormArray. Currently manually handling the ChecklistComponent statuses I mean programmatically call
                 markAsDirty() and markAsTouched(). I will figure out how can I use SelectControlValueAccessor and
                 SelectMultipleControlValueAccessor
             </label>
@@ -39,12 +39,17 @@
             <label class="form-check-inline">
                 <input id="singleselect" class="form-check-input" type="radio" name="singleSelect"
                     [(ngModel)]="singleSelect" [value]="true" [checked]="true">Single
-            </label>{{singleSelect}}
+            </label>(Single: {{singleSelect}})
         </div>
-        <form class="sub-topic" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" novalidate
-            autocomplete="off">
+        <div class="">
+            <label for="withDebounceChb">Select items which marked Normal = true</label>
+            <input class="horizontal-gap" id="selectNormal" type="checkbox" [disabled]="singleSelect" 
+                name="selectNormalCheckbox" [(ngModel)]="selectNormal">
+            <label class="horizontal-gap">(last three items)</label>
+        </div>
+        <form class="sub-topic" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" novalidate autocomplete="off">
             <div class="form-group row mb-2">
-                <app-checklist [checklistItems]="checklistItems" #checklist [multiSelect]="!singleSelect">
+                <app-checklist [checklistItems]="checklistItems" #checklist [multiSelect]="!singleSelect" [selectNormal]="selectNormal" >
                 </app-checklist>
             </div>
         </form>

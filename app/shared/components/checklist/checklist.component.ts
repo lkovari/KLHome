@@ -37,6 +37,18 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   @Input() listStyle: any;
   @Input() listStyleClass: string;
   @Input() disabled: boolean = false;
+  
+  private _selectNormal: boolean = false;
+  @Input() 
+  set selectNormal(v: boolean) {
+    this._selectNormal = v;
+    this.setAllNormalItemModelSelection(v);
+    this.setAllNormalItemsSelection(v);
+  }
+  get selectNormal(): boolean {
+    return this._selectNormal;
+  }
+  @Input() required: boolean = false;
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
@@ -160,50 +172,12 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     });
   }
 
+
   onChecklistItemClick(event: MouseEvent, abstractControl: AbstractControl) {
-    const formGroup = <FormGroup>abstractControl;
-    const itemFound = this.checklistItems.find((item: IChecklistItem) => {
-      return formGroup.value.id === item.id;
-    });
-    if (itemFound) {
-      if (this._multiSelect) {
-        formGroup.get('selected')?.patchValue(!itemFound.selected);
-        formGroup.get('selected')?.markAsTouched();
-        formGroup.get('selected')?.markAsDirty();
-        // update data model
-        itemFound.selected = !itemFound.selected;
-      } else {
-        this.selectedItems = [];
-        // select the selected form model
-        formGroup.get('selected')?.patchValue(!itemFound.selected);
-        formGroup.get('selected')?.markAsTouched();
-        formGroup.get('selected')?.markAsDirty();
-        // update data model
-        itemFound.selected = !itemFound.selected
-        // unselected all other items
-        this.unselectOtherItems(formGroup, itemFound);
-        // unselect all other items in data model
-        this.checklistItems.forEach((item: IChecklistItem) => {
-          if (item.id !== itemFound.id) {
-            item.selected = false;
-          }
-        });
-      }
-      if (!itemFound.selected) {
-        // remove the items from selected
-        const itemIndex = this.selectedItems.indexOf(itemFound, 0);
-        if (itemIndex > -1) {
-          this.selectedItems.splice(itemIndex, 1);
-        }  
-      } else {
-        this.selectedItems.push(itemFound);
-      } 
-    this.onModelTouched();
-      this.onModelChange(this._checklistItems);         
-    }
-    
-    console.log('onChecklistItemClick' + event + " " + JSON.stringify(formGroup.value));
+    this.selectListItem(abstractControl);
+    console.log('onChecklistItemClick' + event + " " + JSON.stringify(abstractControl.value));
   }
+
   /*
   isChecklistItemSelected(formGroup: FormGroup): boolean {
     console.log('isChecklistItemSelected' + JSON.stringify(formGroup.value));
@@ -262,8 +236,31 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   private setAllItemsSelection(selected: boolean) {
     this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
       formGroupItem.get('selected')?.patchValue(selected);
-      formGroupItem.markAsUntouched();
-      formGroupItem.markAsPristine();
+      if (selected) {
+        formGroupItem.markAsTouched();
+        formGroupItem.markAsDirty();
+      } else {
+        formGroupItem.markAsUntouched();
+        formGroupItem.markAsPristine();
+      }
+    });
+  }
+
+  private setAllNormalItemsSelection(selected: boolean) {
+    this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
+      if (selected) {
+        const normal = formGroupItem.get('normal')?.value;
+        if (normal) {
+          formGroupItem.get('selected')?.patchValue(normal);
+        }
+      } else {
+        // only those items unselect which normal marked to true
+        if (formGroupItem.get('normal')?.value) {
+          formGroupItem.get('selected')?.patchValue(false);
+        }
+      }
+      formGroupItem.markAsTouched();
+      formGroupItem.markAsDirty();
     });
   }
 
@@ -273,6 +270,76 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     });
   }
 
+  private setAllNormalItemModelSelection(selected: boolean) {
+    this.selectedItems = [];
+    this._checklistItems.forEach((item: IChecklistItem) => {
+      if (selected) {
+        item.selected = Boolean(item.normal);
+        if (item.selected) {
+          this.selectedItems.push(item);
+        }
+      } else {
+        // only the those items which normal marked to true
+        if (item.normal) {
+          item.selected = false;
+          const itemIndex = this.selectedItems.indexOf(item, 0);
+          if (itemIndex > -1) {
+            this.selectedItems.splice(itemIndex, 1);
+          }            
+        }
+      }
+    });
+  }
+
+  /**
+   * 
+   * @param abstractControl: AbstractControl 
+   */
+  private selectListItem(abstractControl: AbstractControl | undefined) {
+    if (!abstractControl) {
+      return;
+    }
+    const formGroup = <FormGroup>abstractControl;
+    const itemFound = this.checklistItems.find((item: IChecklistItem) => {
+      return formGroup.value.id === item.id;
+    });
+    if (itemFound) {
+      if (this._multiSelect) {
+        formGroup.get('selected')?.patchValue(!itemFound.selected);
+        formGroup.get('selected')?.markAsTouched();
+        formGroup.get('selected')?.markAsDirty();
+        // update data model
+        itemFound.selected = !itemFound.selected;
+      } else {
+        this.selectedItems = [];
+        // select the selected form model
+        formGroup.get('selected')?.patchValue(!itemFound.selected);
+        formGroup.get('selected')?.markAsTouched();
+        formGroup.get('selected')?.markAsDirty();
+        // update data model
+        itemFound.selected = !itemFound.selected
+        // unselected all other items
+        this.unselectOtherItems(formGroup, itemFound);
+        // unselect all other items in data model
+        this.checklistItems.forEach((item: IChecklistItem) => {
+          if (item.id !== itemFound.id) {
+            item.selected = false;
+          }
+        });
+      }
+      if (!itemFound.selected) {
+        // remove the items from selected
+        const itemIndex = this.selectedItems.indexOf(itemFound, 0);
+        if (itemIndex > -1) {
+          this.selectedItems.splice(itemIndex, 1);
+        }  
+      } else {
+        this.selectedItems.push(itemFound);
+      } 
+    this.onModelTouched();
+      this.onModelChange(this._checklistItems);         
+    }
+  }
 
   unselectAllItems() {
     this.setAllItemsSelection(false);
@@ -284,6 +351,16 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     this.setAllItemsSelection(true);
     this.setAllItemModelSelection(true);
     Object.assign(this.selectedItems, this._checklistItems);
+  }
+
+  selectAllNormal() {
+    this.setAllNormalItemModelSelection(true);
+    this.setAllNormalItemsSelection(true);
+  }
+
+  unselectAllNormal() {
+    this.setAllNormalItemModelSelection(false);
+    this.setAllNormalItemsSelection(false);
   }
 
 }
