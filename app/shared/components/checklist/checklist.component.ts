@@ -10,7 +10,7 @@ import { ChecklistValidators } from './checklist-validators';
   viewProviders: [ { provide: ControlContainer, useExisting: FormGroupDirective } ],
   providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: ChecklistComponent, multi: true } ]
 })
-export class ChecklistComponent implements OnInit, ControlValueAccessor {
+export class ChecklistComponent implements OnInit, ControlValueAccessor/*, AfterViewInit*/  {
   hoverIndex: any;
   selectedItems: Array<IChecklistItem>;
   private _checklistItems: Array<IChecklistItem>;
@@ -48,7 +48,17 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   get selectNormal(): boolean {
     return this._selectNormal;
   }
-  @Input() required: boolean = false;
+  private _required: boolean = false;
+  @Input() 
+  set required(v: boolean) {
+    this._required = v;
+    if (v) {
+
+    }
+  }
+  get required(): boolean {
+    return this._required;
+  }
 
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
@@ -62,7 +72,6 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
   constructor(
     private formGroupDirective: FormGroupDirective,
     private formBuilder: FormBuilder) { }
-
  
   ngOnInit(): void {
     this.initializeFormGroup();
@@ -85,9 +94,30 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor {
     });    
   }
 
+  /*
+  ngAfterViewInit(): void {
+    // if the validation is required
+    if (this.required) {
+      // has not added oneItemCheckRequiredValidator
+      if (!this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+        // add the oneItemCheckRequiredValidator
+        this.checklistFormArray.addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+      }
+    } else {
+      // has already added oneItemCheckRequiredValidator
+      if (this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+        // remove oneItemCheckRequiredValidator
+        this.checklistFormArray.removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+      }
+    }
+    this.checklistFormArray.updateValueAndValidity();
+  }
+  */
+
   initializeFormGroup() {
     // define the checklist
-    this.checklistFormArray = this.formBuilder.array( [], ChecklistValidators.mandatoryFieldsDuplicationValidator );
+    this.checklistFormArray = this.formBuilder.array( [], 
+      [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] );
   }
 
   /*

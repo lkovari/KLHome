@@ -49,7 +49,16 @@
         </div>
         <form class="sub-topic" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" novalidate autocomplete="off">
             <div class="form-group row mb-2">
-                <app-checklist [checklistItems]="checklistItems" #checklist [multiSelect]="!singleSelect" [selectNormal]="selectNormal" >
+                <app-checklist [checklistItems]="checklistItems" formControlName="checkList"
+                    #checklist
+                    [multiSelect]="!singleSelect"
+                    [selectNormal]="selectNormal"
+                    [required]="true"
+                    [ngClass]="{'is-invalid': 
+                            (exampleForm.get('checklist')?.touched ||
+                            exampleForm.get('checklist')?.dirty) &&
+                            !exampleForm.get('checklist')?.valid }"
+                    >
                 </app-checklist>
             </div>
         </form>
@@ -64,5 +73,5 @@
             <label class="sub-topic">Selected {{ showCheckedItems() | json }} </label>
         </div>
     </div>
-    <lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="5"></lk-form-validation-monitor-v4>
+    <!--lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="5"></lk-form-validation-monitor-v4-->
 </div>

@@ -17,24 +17,28 @@
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-start;
-        align-content: stretch;
-        align-items: flex-start;
+        align-items: center;
+        align-content: flex-start;        
         font-size: 15px;
         line-height: 1.8rem;
 
+
         .checklist-label-item {
             order: 0;
-            flex: 0.8 1 auto;
-            align-self: auto;    
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: center;
+            width: 95%;
         }
     
         .checklist-checkmark-item {
             order: 0;
-            flex: 0.2 1 auto;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
             align-self: center;
-            color: green;
-            display: flex;
-            flex-flow: row-reverse;
+            width: 5%;
         }
             
     }
@@ -58,5 +62,10 @@
         opacity: 0.4;
     }
 
-
+    .checkbox-item {
+        flex-grow: 0.8;
+        flex-shrink: 1;
+        flex-basis: content;
+        align-self: center;        
+    }
 }
