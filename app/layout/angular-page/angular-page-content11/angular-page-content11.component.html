@@ -26,52 +26,50 @@
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/checklist">
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a> app-checklist Component is </b><span class="text-primary">UNDER CONSTRUCTION!</span>
-                <div class="sub-topic">
+                <p>
                     (In the future I will implement to use this checklist component as the Yes-no questions sheet, the normal answers will pass and the component will validate the user answers based on the predefined normal values.)
-                </div>
+                </p>
+                <p>
+                    Current Validation rule(s): one item selection is required!
+                </p>
         </label>
-        <div>
-            <label>Selection mode</label>
-            <label class="form-check-inline">
-                <input id="multiselect" class="form-check-input horizontal-gap" type="radio" name="multiSelect"
-                    [(ngModel)]="singleSelect" [value]="false" [checked]="false">Multiple
-            </label>
-            <label class="form-check-inline">
-                <input id="singleselect" class="form-check-input" type="radio" name="singleSelect"
-                    [(ngModel)]="singleSelect" [value]="true" [checked]="true">Single
-            </label>(Single: {{singleSelect}})
-        </div>
-        <div class="">
-            <label for="withDebounceChb">Select items which marked Normal = true</label>
-            <input class="horizontal-gap" id="selectNormal" type="checkbox" [disabled]="singleSelect" 
-                name="selectNormalCheckbox" [(ngModel)]="selectNormal">
-            <label class="horizontal-gap">(last three items)</label>
-        </div>
         <form class="sub-topic" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" novalidate autocomplete="off">
+            <div>
+                <label>Selection mode</label>
+                <label class="form-check-inline" for="multiselect">
+                    <input id="multiselect" class="form-check-input horizontal-gap" type="radio" [value]="MULTISELECT" formControlName="selectionMode">Multiple
+                </label>
+                <label class="form-check-inline" for="singleselect">
+                    <input id="singleselect" class="form-check-input" type="radio" [value]="SINGLESELECT" formControlName="selectionMode">Single
+                </label>(Single: SelectionMode.SINGLE: {{SINGLESELECT}})
+            </div>
+            <div class="">
+                <label for="withDebounceChb">Select items which marked Normal = true</label>
+                <input class="horizontal-gap" id="selectNormal" type="checkbox" [disabled]="selectionMode === SINGLESELECT" 
+                    formControlName="selectNormal">
+                <label class="horizontal-gap">(last three items)</label>
+            </div>            
             <div class="form-group row mb-2">
-                <app-checklist [checklistItems]="checklistItems" formControlName="checkList"
-                    #checklist
-                    [multiSelect]="!singleSelect"
+                <app-checklist [checklistItems]="checklistItems" formArrayName="customCheckList"
+                    #customCheckList
+                    [selectionMode]="selectionMode"
                     [selectNormal]="selectNormal"
                     [required]="true"
                     [ngClass]="{'is-invalid': 
-                            (exampleForm.get('checklist')?.touched ||
-                            exampleForm.get('checklist')?.dirty) &&
-                            !exampleForm.get('checklist')?.valid }"
+                            (exampleForm.get('customCheckList')?.touched ||
+                            exampleForm.get('customCheckList')?.dirty) &&
+                            !exampleForm.get('customCheckList')?.valid }"
                     >
                 </app-checklist>
             </div>
         </form>
         <div class="buttons-area">
-            <button class="btn btn-primary" type="button" (click)="onSelectAll()" [disabled]="singleSelect" >Select All</button>
+            <button class="btn btn-primary" type="button" (click)="onSelectAll()" [disabled]="selectionMode === SINGLESELECT" >Select All</button>
             <button class="btn btn-primary horizontal-gap" type="button" (click)="onUnselectAll()">Unselect All</button>
           </div>   
-        <div>
-            <label class="sub-topic">Form Validation Status {{ showFormStatus() }} </label>
-        </div>
         <div>
             <label class="sub-topic">Selected {{ showCheckedItems() | json }} </label>
         </div>
     </div>
-    <!--lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="5"></lk-form-validation-monitor-v4-->
+    <lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="1"></lk-form-validation-monitor-v4>
 </div>

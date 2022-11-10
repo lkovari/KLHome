@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl, NG_VALUE_ACCESSOR, FormGroupDirective, ControlContainer, ControlValueAccessor, AbstractControl } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
+import { SelectionMode } from './selection-mode.enum';
 
 @Component({
   selector: 'app-checklist',
@@ -10,7 +11,7 @@ import { ChecklistValidators } from './checklist-validators';
   viewProviders: [ { provide: ControlContainer, useExisting: FormGroupDirective } ],
   providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: ChecklistComponent, multi: true } ]
 })
-export class ChecklistComponent implements OnInit, ControlValueAccessor/*, AfterViewInit*/  {
+export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterViewInit  {
   hoverIndex: any;
   selectedItems: Array<IChecklistItem>;
   private _checklistItems: Array<IChecklistItem>;
@@ -22,14 +23,14 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
   get checklistItems(): Array<IChecklistItem> {
     return this._checklistItems;
   }
-  private _multiSelect: boolean;
+  private _selectionMode: SelectionMode;
   @Input() 
-  set multiSelect(v: boolean) {
-    this._multiSelect = v;
+  set selectionMode(v: SelectionMode) {
+    this._selectionMode = v;
     this.clearSelection();
   }
-  get multiSelect(): boolean {
-    return this._multiSelect;
+  get selectionMode(): SelectionMode {
+    return this._selectionMode;
   }
 
   @Input() style: any;
@@ -74,12 +75,11 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
     private formBuilder: FormBuilder) { }
  
   ngOnInit(): void {
-    this.initializeFormGroup();
+    // define the checklist
+    this.checklistFormArray = this.formBuilder.array( [], [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] );    
     // adding it into parent form form controls
     this.parentForm = this.formGroupDirective.form;
-    this.parentForm.setControl('checklist', this.checklistFormArray);
-    //this.parentForm.removeControl('checklist');
-    // this.parentForm.addControl('checklist', this.checklistFormArray);       
+    this.parentForm.setControl('checklistFormArray', this.checklistFormArray);
     // add items
     this._checklistItems.forEach((item: IChecklistItem) => {
       this.addChecklistItem(item);
@@ -94,31 +94,12 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
     });    
   }
 
-  /*
   ngAfterViewInit(): void {
-    // if the validation is required
-    if (this.required) {
-      // has not added oneItemCheckRequiredValidator
-      if (!this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
-        // add the oneItemCheckRequiredValidator
-        this.checklistFormArray.addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
-      }
-    } else {
-      // has already added oneItemCheckRequiredValidator
-      if (this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
-        // remove oneItemCheckRequiredValidator
-        this.checklistFormArray.removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
-      }
-    }
-    this.checklistFormArray.updateValueAndValidity();
+    setTimeout(() => {
+      this.setupValidatorsDinamiclly();
+    });
   }
-  */
 
-  initializeFormGroup() {
-    // define the checklist
-    this.checklistFormArray = this.formBuilder.array( [], 
-      [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] );
-  }
 
   /*
   getFormGroupsOfChecklistFormArray(): Array<FormGroup> {
@@ -146,7 +127,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
       id: [ null, [ Validators.required ] ],
       label: [ null, [ Validators.required ] ],
       value: [ null ],
-      selected: [ false ],
+      selected: this.formBuilder.control( { value: false, disabled: this.disabled } ),
       normal: [ null ]
     });
     if (item) {
@@ -163,8 +144,13 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
  
   addChecklistItem(item: IChecklistItem): void {
     if (this.parentForm) {
-      const checklistFA = this.parentForm.get('checklist');
-      (<FormArray>checklistFA).push(this.createChecklistItem(item));
+      // const checklistFA = this.parentForm.get('customCheckList');
+      const checklistFA = this.parentForm.get('checklistFormArray');
+      if (checklistFA instanceof FormArray) {
+        (<FormArray>checklistFA).push(this.createChecklistItem(item));
+      } else {
+        console.error('The customCheckList is not a FormArray!' + checklistFA || JSON);
+      }
     }
   }
 
@@ -263,6 +249,24 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
       this.disabled = isDisabled;
   }  
 
+  private setupValidatorsDinamiclly() {
+    // if the validation is required
+    if (this.required) {
+      // has not added oneItemCheckRequiredValidator
+      if (!this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+        // add the oneItemCheckRequiredValidator
+        this.checklistFormArray.addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+      }
+    } else {
+      // has already added oneItemCheckRequiredValidator
+      if (this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+        // remove oneItemCheckRequiredValidator
+        this.checklistFormArray.removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+      }
+    }
+    this.checklistFormArray.updateValueAndValidity();
+  }
+
   private setAllItemsSelection(selected: boolean) {
     this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
       formGroupItem.get('selected')?.patchValue(selected);
@@ -336,7 +340,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor/*, After
       return formGroup.value.id === item.id;
     });
     if (itemFound) {
-      if (this._multiSelect) {
+      if (this._selectionMode === SelectionMode.MULTI) {
         formGroup.get('selected')?.patchValue(!itemFound.selected);
         formGroup.get('selected')?.markAsTouched();
         formGroup.get('selected')?.markAsDirty();

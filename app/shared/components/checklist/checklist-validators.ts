@@ -55,18 +55,23 @@ export class ChecklistValidators {
      */
     static oneItemCheckRequiredValidator(c: FormControl): ValidationErrors | null {
         if (c instanceof FormArray) {
-            let isOneItemRequiredError = false;
+            let hasOneItemSelected = false;
             const listItems = <FormArray>c;
             let ix = 0;
             for (ix; ix < listItems.length; ix++) {
                 const formRef = listItems.at(ix);
                 let selectedFormControl = formRef.get('selected');
-                if (!selectedFormControl?.dirty || (selectedFormControl?.dirty && !selectedFormControl.value)) {
-                    isOneItemRequiredError = true;
+                if (selectedFormControl?.dirty && selectedFormControl.value) {
+                    hasOneItemSelected = true;
                     break;
                 }
             }
-            return { 'oneItemRequired':  isOneItemRequiredError };
+            if (hasOneItemSelected) {
+                return null;
+            } else {
+                return { 'oneItemRequired':  true };
+            }
+            
         }
         return null;
     }
