@@ -53,10 +53,6 @@ export class AngularPageContent11Component implements OnInit {
     return this.checklistComponent ? this.checklistComponent.selectedItems : null;
   }
 
-  showFormStatus(): string {
-    return ' Pristine ' + this.exampleForm?.pristine + ' Touched ' + this.exampleForm?.touched + ' Dirty ' + this.exampleForm?.dirty;
-  }
-
   onSelectAll() {
     this.checklistComponent.selectAllItems();
   }

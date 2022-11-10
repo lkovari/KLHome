@@ -26,9 +26,9 @@
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/checklist">
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a> app-checklist Component is </b><span class="text-primary">UNDER CONSTRUCTION!</span>
-                <div class="sub-topic">
+                <p>
                     (In the future I will implement to use this checklist component as the Yes-no questions sheet, the normal answers will pass and the component will validate the user answers based on the predefined normal values.)
-                </div>
+                </p>
                 <p>
                     Current Validation rule(s): one item selection is required!
                 </p>
@@ -68,11 +68,8 @@
             <button class="btn btn-primary horizontal-gap" type="button" (click)="onUnselectAll()">Unselect All</button>
           </div>   
         <div>
-            <label class="sub-topic">Form Validation Status {{ showFormStatus() }} </label>
-        </div>
-        <div>
             <label class="sub-topic">Selected {{ showCheckedItems() | json }} </label>
         </div>
     </div>
-    <lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="5"></lk-form-validation-monitor-v4>
+    <lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="1"></lk-form-validation-monitor-v4>
 </div>
