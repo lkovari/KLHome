@@ -1,33 +1,34 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl, NG_VALUE_ACCESSOR, FormGroupDirective, ControlContainer, ControlValueAccessor, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, NG_VALUE_ACCESSOR, ControlValueAccessor, AbstractControl } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
 import { SelectionMode } from './selection-mode.enum';
+import { ChecklistItem } from '../../models/checklist/checklist-item.model';
 
 @Component({
   selector: 'app-checklist',
   templateUrl: './checklist.component.html',
   styleUrls: ['./checklist.component.scss'],
-  viewProviders: [ { provide: ControlContainer, useExisting: FormGroupDirective } ],
+  //viewProviders: [ { provide: ControlContainer, useExisting: FormControlDirective } ],
   providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: ChecklistComponent, multi: true } ]
 })
 export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterViewInit  {
   hoverIndex: any;
-  selectedItems: Array<IChecklistItem>;
-  private _checklistItems: Array<IChecklistItem>;
+  private _values: any;
   @Input() 
   set checklistItems(v: Array<IChecklistItem>) {
-    this._checklistItems = v;
+    this._values = v;
   }
-
-  get checklistItems(): Array<IChecklistItem> {
-    return this._checklistItems;
+  get checkListItems(): Array<IChecklistItem> {
+    return this._values;
   }
   private _selectionMode: SelectionMode;
   @Input() 
   set selectionMode(v: SelectionMode) {
     this._selectionMode = v;
-    this.clearSelection();
+    if (this.checkListForm) {
+      this.clearSelection();
+    }
   }
   get selectionMode(): SelectionMode {
     return this._selectionMode;
@@ -43,82 +44,55 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   @Input() 
   set selectNormal(v: boolean) {
     this._selectNormal = v;
-    this.setAllNormalItemModelSelection(v);
-    this.setAllNormalItemsSelection(v);
+    if (this.checkListForm) {
+      this.setAllNormalItemsSelection(v);
+    }
   }
   get selectNormal(): boolean {
     return this._selectNormal;
   }
-  private _required: boolean = false;
-  @Input() 
-  set required(v: boolean) {
-    this._required = v;
-    if (v) {
-
-    }
-  }
-  get required(): boolean {
-    return this._required;
-  }
-
+  @Input() required: boolean = false;
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   isDisabled = false;
-  checklistFormArray: FormArray;
-  private parentForm: FormGroup;
+  checkListForm: FormGroup;
   
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
   constructor(
-    private formGroupDirective: FormGroupDirective,
+    //private formGroupDirective: FormGroupDirective,
     private formBuilder: FormBuilder) { }
  
   ngOnInit(): void {
-    // define the checklist
-    this.checklistFormArray = this.formBuilder.array( [], [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] );    
-    // adding it into parent form form controls
-    this.parentForm = this.formGroupDirective.form;
-    this.parentForm.setControl('checklistFormArray', this.checklistFormArray);
-    // add items
-    this._checklistItems.forEach((item: IChecklistItem) => {
-      this.addChecklistItem(item);
-    });        
-
-    this.parentForm.valueChanges.subscribe((value) => {
-      console.log('ParentForm value changed ' + value);
+    // define a Form
+    this.checkListForm = this.formBuilder.group({
+      // define the checklist
+      customCheckList: this.formBuilder.array( [], [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] )
     });
-
-    this.parentForm.statusChanges.subscribe((status) => {
-      console.log('ParentForm status changed ' + status);
-    });    
+    
+    // add items
+    this._values.forEach((item: IChecklistItem) => {
+      this.addChecklistItem(item);
+    });
+    this.checkListForm.statusChanges.subscribe(status =>{
+      console.log('CheckListComponent Status ' + status);
+    });
   }
 
   ngAfterViewInit(): void {
+    // TODO !!!!!!! later I will fix with the right solution !!!!!!!
     setTimeout(() => {
       this.setupValidatorsDinamiclly();
     });
   }
 
-
-  /*
-  getFormGroupsOfChecklistFormArray(): Array<FormGroup> {
-    const checklistFA = this.parentForm.get('checklist') as FormArray;
-    const checkListFormGroupArray = checklistFA.controls as Array<FormGroup>;
-    return checkListFormGroupArray;
-  }
-  */
-  getFormGControlOfFormGroup(formGroup: FormGroup, controlName: string): FormControl {
-    return  (<FormControl>formGroup.get(controlName));
-  }
-
   clearSelection() {
-    this._checklistItems.forEach((item: IChecklistItem) => {
-      item.selected = false;
+    this.getFormArray().controls.forEach((fg: FormGroup) => {
+      fg.get('selected')?.patchValue(false);
+      this.onModelChange(this.getFormArray().value);
     });
-    this.selectedItems = [];
     this.onModelTouched();
-    this.onModelChange(this._checklistItems);    
   }
 
   createChecklistItem(item?: IChecklistItem): FormGroup {
@@ -143,14 +117,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   }
  
   addChecklistItem(item: IChecklistItem): void {
-    if (this.parentForm) {
-      // const checklistFA = this.parentForm.get('customCheckList');
-      const checklistFA = this.parentForm.get('checklistFormArray');
-      if (checklistFA instanceof FormArray) {
-        (<FormArray>checklistFA).push(this.createChecklistItem(item));
-      } else {
-        console.error('The customCheckList is not a FormArray!' + checklistFA || JSON);
-      }
+    if (this.checkListForm) {
+      this.getFormArray().push(this.createChecklistItem(item));
     }
   }
 
@@ -160,52 +128,14 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
     return checkListItemFormGroup.value.id;
   }
 
-  onChecklistItemKeyDown(event: KeyboardEvent, formGroup: FormGroup) {
-    console.log('onChecklistItemKeyDown' + event + " " + JSON.stringify(formGroup.value));
+  getFormArray(): FormArray {
+    return (<FormArray>this.checkListForm.get('customCheckList'));
   }
 
-  onChecklistItemTouchEnd(event: KeyboardEvent, formGroup: FormGroup) {
-    console.log('onChecklistItemTouchEnd' + event + " " + JSON.stringify(formGroup.value));
-  }
-
-  onChecklistItemnDoubleClick(event: KeyboardEvent, formGroup: FormGroup) {
-    console.log('onChecklistItemnDoubleClick' + event + " " + JSON.stringify(formGroup.value));
-  }
-
-  private unselectOtherItems(selectedFormGroup: FormGroup, selectedItemModel: IChecklistItem): void {
-    this.checklistItems.forEach((item: IChecklistItem) => {
-      if (item.id != selectedItemModel.id) {
-        item.selected = false;
-      }
-    });
-    // unselect other items in the FormArray
-    this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
-      if (formGroupItem.value.id !== selectedFormGroup.value.id) {
-        formGroupItem.get('selected')?.patchValue(false);
-        formGroupItem.markAsUntouched();
-        formGroupItem.markAsPristine();
-      }  
-    });
-  }
-
-
-  onChecklistItemClick(event: MouseEvent, abstractControl: AbstractControl) {
+  onChecklistItemClick(abstractControl: AbstractControl) {
     this.selectListItem(abstractControl);
-    console.log('onChecklistItemClick' + event + " " + JSON.stringify(abstractControl.value));
   }
 
-  /*
-  isChecklistItemSelected(formGroup: FormGroup): boolean {
-    console.log('isChecklistItemSelected' + JSON.stringify(formGroup.value));
-    if (this._checklistItems && this._checklistItems.length > 0) {
-      const itemFound = this._checklistItems.find((item: IChecklistItem) => {
-        return formGroup.value.id === item.id;
-      });
-      return itemFound ? itemFound.selected : false;
-    }
-    return false;
-  }
-  */
 
   /*
    * Writes a new value to the element.
@@ -214,8 +144,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
    * (model -> view) changes are requested.
    */
   writeValue(value: any): void {
-    this._checklistItems = value;
-    this.checklistFormArray?.patchValue(value);
+    this.getFormArray()?.patchValue(value);
+    this._values = value;
   }
 
   /*
@@ -249,26 +179,42 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
       this.disabled = isDisabled;
   }  
 
+  private unselectOtherItems(selectedFormGroup: FormGroup): void {
+    // unselect other items in the FormArray
+    this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
+      if (formGroupItem.value.id !== selectedFormGroup.value.id) {
+        // original value
+        const value = formGroupItem.get('selected')?.value;
+        if (value) {
+          formGroupItem.get('selected')?.patchValue(false);
+          formGroupItem.markAsUntouched();
+          formGroupItem.markAsPristine();
+          this.onModelChange(this.getFormArray().value);
+        }
+      }  
+    });
+  }
+  
   private setupValidatorsDinamiclly() {
     // if the validation is required
     if (this.required) {
       // has not added oneItemCheckRequiredValidator
-      if (!this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+      if (!this.getFormArray().hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
         // add the oneItemCheckRequiredValidator
-        this.checklistFormArray.addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+        this.getFormArray().addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
       }
     } else {
       // has already added oneItemCheckRequiredValidator
-      if (this.checklistFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+      if (this.getFormArray().hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
         // remove oneItemCheckRequiredValidator
-        this.checklistFormArray.removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+        this.getFormArray().removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
       }
     }
-    this.checklistFormArray.updateValueAndValidity();
+    this.getFormArray().updateValueAndValidity();
   }
 
   private setAllItemsSelection(selected: boolean) {
-    this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
+    this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
       formGroupItem.get('selected')?.patchValue(selected);
       if (selected) {
         formGroupItem.markAsTouched();
@@ -277,12 +223,13 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
         formGroupItem.markAsUntouched();
         formGroupItem.markAsPristine();
       }
+      this.onModelChange(this.getFormArray().value);
     });
   }
 
   private setAllNormalItemsSelection(selected: boolean) {
-    if (this.checklistFormArray) {
-      this.checklistFormArray.controls.forEach((formGroupItem: FormGroup) => {
+    if (this.getFormArray()) {
+      this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
         if (selected) {
           const normal = formGroupItem.get('normal')?.value;
           if (normal) {
@@ -296,35 +243,9 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
         }
         formGroupItem.markAsTouched();
         formGroupItem.markAsDirty();
+        this.onModelChange(this.getFormArray().value);
       });
     }
-  }
-
-  private setAllItemModelSelection(selected: boolean) {
-    this._checklistItems.forEach((item: IChecklistItem) => {
-      item.selected = selected;
-    });
-  }
-
-  private setAllNormalItemModelSelection(selected: boolean) {
-    this.selectedItems = [];
-    this._checklistItems.forEach((item: IChecklistItem) => {
-      if (selected) {
-        item.selected = Boolean(item.normal);
-        if (item.selected) {
-          this.selectedItems.push(item);
-        }
-      } else {
-        // only the those items which normal marked to true
-        if (item.normal) {
-          item.selected = false;
-          const itemIndex = this.selectedItems.indexOf(item, 0);
-          if (itemIndex > -1) {
-            this.selectedItems.splice(itemIndex, 1);
-          }            
-        }
-      }
-    });
   }
 
   /**
@@ -336,66 +257,46 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
       return;
     }
     const formGroup = <FormGroup>abstractControl;
-    const itemFound = this.checklistItems.find((item: IChecklistItem) => {
-      return formGroup.value.id === item.id;
-    });
-    if (itemFound) {
+    if (formGroup) {
+      const value = formGroup.get('selected')?.value;
       if (this._selectionMode === SelectionMode.MULTI) {
-        formGroup.get('selected')?.patchValue(!itemFound.selected);
-        formGroup.get('selected')?.markAsTouched();
-        formGroup.get('selected')?.markAsDirty();
-        // update data model
-        itemFound.selected = !itemFound.selected;
+        formGroup.get('selected')?.patchValue(!value);
       } else {
-        this.selectedItems = [];
         // select the selected form model
-        formGroup.get('selected')?.patchValue(!itemFound.selected);
-        formGroup.get('selected')?.markAsTouched();
-        formGroup.get('selected')?.markAsDirty();
-        // update data model
-        itemFound.selected = !itemFound.selected
+        formGroup.get('selected')?.patchValue(!value);
         // unselected all other items
-        this.unselectOtherItems(formGroup, itemFound);
-        // unselect all other items in data model
-        this.checklistItems.forEach((item: IChecklistItem) => {
-          if (item.id !== itemFound.id) {
-            item.selected = false;
-          }
-        });
+        this.unselectOtherItems(formGroup);
       }
-      if (!itemFound.selected) {
-        // remove the items from selected
-        const itemIndex = this.selectedItems.indexOf(itemFound, 0);
-        if (itemIndex > -1) {
-          this.selectedItems.splice(itemIndex, 1);
-        }  
-      } else {
-        this.selectedItems.push(itemFound);
-      } 
-    this.onModelTouched();
-      this.onModelChange(this._checklistItems);         
+      formGroup.get('selected')?.markAsTouched();
+      formGroup.get('selected')?.markAsDirty();
+      this.onModelTouched();
+      this.onModelChange(this.getFormArray().value);
     }
+  }
+
+  getSelectedItems(): IChecklistItem[] {
+    let selArray = new Array<ChecklistItem>();
+    this.getFormArray().controls.forEach((fg: FormGroup) => {
+      if (fg.get('selected')?.value) {
+        selArray.push(fg.value);
+      }
+    });
+    return selArray;
   }
 
   unselectAllItems() {
     this.setAllItemsSelection(false);
-    this.setAllItemModelSelection(false);
-    this.selectedItems = [];
   }
 
   selectAllItems() {
     this.setAllItemsSelection(true);
-    this.setAllItemModelSelection(true);
-    Object.assign(this.selectedItems, this._checklistItems);
   }
 
   selectAllNormal() {
-    this.setAllNormalItemModelSelection(true);
     this.setAllNormalItemsSelection(true);
   }
 
   unselectAllNormal() {
-    this.setAllNormalItemModelSelection(false);
     this.setAllNormalItemsSelection(false);
   }
 

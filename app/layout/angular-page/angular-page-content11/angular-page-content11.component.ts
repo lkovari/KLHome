@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/models/checklist/checklist-item.model';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ChecklistComponent } from 'src/app/shared/components/checklist/checklist.component';
 import { SelectionMode } from '../../../shared/components/checklist/selection-mode.enum';
 @Component({
@@ -15,7 +15,7 @@ export class AngularPageContent11Component implements OnInit {
     { id: 1, label: "Alistair McIntyre as bone breaker", selected: false, value: null },
     { id: 2, label: "Erika Gusbakothy as brain miner", selected: false, value: null },
     { id: 3, label: "Laszlo Kovari as a software developer", selected: false, value: null },
-    { id: 4, label: "Bor New as a milk machine", selected: true, value: null },
+    { id: 4, label: "Bor New as a milk machine", selected: false, value: null },
     { id: 5, label: "Zodekap Edenwer as a dilettant", selected: false, value: null },
     { id: 6, label: "Vanadit 10 faimous knife steel material", selected: false, value: null, normal: true },
     { id: 7, label: "Vanadit 10 This is a list item, where the label's text is longer than what used in the most common cases. This is the demonstration of how the test fit into two rows, and how aligned the icon.", selected: false, value: null, normal: true },
@@ -24,7 +24,7 @@ export class AngularPageContent11Component implements OnInit {
   selectNormal = false;
   selectionMode = SelectionMode.SINGLE;
  
-  @ViewChild('customCheckList', { static: true }) checklistComponent: ChecklistComponent;
+  @ViewChild('checkList', { static: true }) checklistComponent: ChecklistComponent;
   MULTISELECT = SelectionMode.MULTI;
   SINGLESELECT = SelectionMode.SINGLE;
 
@@ -33,16 +33,28 @@ export class AngularPageContent11Component implements OnInit {
   ngOnInit() {
     this.exampleForm = this.formBuilder.group({
       selectionMode: this.formBuilder.control( { value: SelectionMode.SINGLE, disabled: false} ),
-      selectNormal: this.formBuilder.control( { value: false, disabled: false} ),
-      // customCheckList: this.formBuilder.array( [ Validators.required ] ),
+      selectNormal: this.formBuilder.control( { value: false, disabled: this.selectionMode === this.SINGLESELECT } ),
+      checkList: this.formBuilder.control( null, [ Validators.required ] )
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.exampleForm.get('selectionMode')?.valueChanges.subscribe((value) => {
       this.selectionMode = value;
+      if (this.selectionMode === this.SINGLESELECT) {
+        this.exampleForm.get('selectNormal')?.disable();  
+      } else {
+        this.exampleForm.get('selectNormal')?.enable();
+      }
+      this.exampleForm.get('selectNormal')?.patchValue(false);
     });
     this.exampleForm.get('selectNormal')?.valueChanges.subscribe((value) => {
       this.selectNormal = value;
-    });    
+    });
+    this.exampleForm.statusChanges.subscribe(status =>{
+      console.log('Form Status ' + status);
+    });
+    this.exampleForm.get('checkList')?.statusChanges.subscribe(status =>{
+      console.log('CheckList Status ' + status);
+    });
   }
 
   onSubmit(form: FormGroup | null) {
@@ -50,7 +62,7 @@ export class AngularPageContent11Component implements OnInit {
   }
 
   showCheckedItems() {
-    return this.checklistComponent ? this.checklistComponent.selectedItems : null;
+    return this.checklistComponent.getSelectedItems();
   }
 
   onSelectAll() {

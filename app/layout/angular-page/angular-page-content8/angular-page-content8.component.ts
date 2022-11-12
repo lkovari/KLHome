@@ -29,6 +29,7 @@ export class AngularPageContent8Component implements OnInit, AfterViewInit, OnDe
   }
 
   ngAfterViewInit(): void {
+    // TODO !!!!!!! later I will fix with the right solution !!!!!!!
     setTimeout(() => {
       this.loadData();
     });

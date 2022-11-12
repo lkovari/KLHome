@@ -129,6 +129,7 @@ export class AngularPageContent3Component implements OnInit {
     );
     // initiallize the component fields
     this.cleanup = true;
+    // TODO !!!!!!! later I will fix with the right solution !!!!!!!
     setTimeout(() => {
       this.cleanup = false;
     }, 100)

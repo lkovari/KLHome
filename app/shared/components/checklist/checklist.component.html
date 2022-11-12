@@ -1,18 +1,20 @@
-<div class="checklist-layout">
-    <ul formArrayName="checklistFormArray" style="list-style-type: none; min-width: 17rem; max-width:50rem">
-        <!-- Usage of pure pipe named isChecklisItemSelected is a good example to prevent unnecessary function calls -->
-        <li *ngFor="let checklistFormGroupItem of checklistFormArray?.controls; let ix=index; trackBy: trackById"
-            [ngClass]="{'checklist-item-selected': ( checklistItems | isChecklisItemSelected : checklistFormGroupItem ) }"
-            (click)="onChecklistItemClick($event, checklistFormGroupItem)" tabIndex="{{ ix }}" id="{{'lilabel' + ix}}">
-            <div id="{{'label' + ix}}" class="checklist-item-container"
-                [ngClass]="{'checklist-item-disabled': disabled ||  checklistFormGroupItem.value.disabled }"
-                (mouseenter)="hoverIndex = ix" (mouseleave)="hoverIndex = null"
-                [ngClass]="{'checklist-item-highlight': hoverIndex === ix}" [formGroupName]="ix">
-                <div class="checklist-label-item">{{ checklistFormGroupItem.value.label }}</div>
-                <input id="{{'itemCheckBox' + ix}}" 
-                    type="checkbox" class="checklist-checkmark-item"
-                    formControlName="selected">
-            </div>
-        </li>
-    </ul>
-</div>
+<form [formGroup]="checkListForm">
+    <div class="checklist-layout">
+        <ul formArrayName="customCheckList" style="list-style-type: none; min-width: 17rem; max-width:50rem">
+            <!-- Usage of pure pipe named isChecklisItemSelected is a good example to prevent unnecessary function calls -->
+            <li *ngFor="let checklistFormGroupItem of getFormArray().controls; let ix=index; trackBy: trackById"
+                
+                (click)="onChecklistItemClick(checklistFormGroupItem)" tabIndex="{{ ix }}"
+                id="{{'lilabel' + ix}}">
+                <div id="{{'label' + ix}}" class="checklist-item-container"
+                    [ngClass]="{'checklist-item-disabled': disabled ||  checklistFormGroupItem.value.disabled }"
+                    (mouseenter)="hoverIndex = ix" (mouseleave)="hoverIndex = null"
+                    [ngClass]="{'checklist-item-highlight': hoverIndex === ix}" [formGroupName]="ix">
+                    <div class="checklist-label-item">{{ checklistFormGroupItem.value.label }}</div>
+                    <input id="{{'itemCheckBox' + ix}}" type="checkbox" class="checklist-checkmark-item"
+                        formControlName="selected">
+                </div>
+            </li>
+        </ul>
+    </div>
+</form>
