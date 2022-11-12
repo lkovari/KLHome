@@ -81,6 +81,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   }
 
   ngAfterViewInit(): void {
+    // TODO !!!!!!! later I will fix with the right solution !!!!!!!
     setTimeout(() => {
       this.setupValidatorsDinamiclly();
     });
