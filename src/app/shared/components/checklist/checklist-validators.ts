@@ -1,4 +1,4 @@
-import { FormControl, FormArray, ValidationErrors } from '@angular/forms';
+import { FormControl, FormArray, ValidationErrors, AbstractControl } from '@angular/forms';
 
 export class ChecklistValidators {
     /*
@@ -53,31 +53,17 @@ export class ChecklistValidators {
      * @param c: FormControl 
      * @returns ValidationErrors 
      */
-    static oneItemCheckRequiredValidator(c: FormControl): ValidationErrors | null {
-        if (c instanceof FormArray) {
-            let hasOneItemSelected = false;
-            const listItems = <FormArray>c;
-            let ix = 0;
-            for (ix; ix < listItems.length; ix++) {
-                const formRef = listItems.at(ix);
-                let selectedFormControl = formRef.get('selected');
-                if (selectedFormControl?.dirty && selectedFormControl.value) {
-                    hasOneItemSelected = true;
-                    break;
-                }
-            }
-            if (hasOneItemSelected) {
+    static oneItemCheckRequiredValidator(c: AbstractControl): ValidationErrors | null {
+        const listItems = <FormArray>c;
+        let ix = 0;
+        for (ix; ix < listItems.length; ix++) {
+            const formRef = listItems.at(ix);
+            let selectedFormControl = formRef.get('selected');
+            if (selectedFormControl && selectedFormControl?.dirty && selectedFormControl.value) {
                 return null;
-            } else {
-                return { 'oneItemRequired':  true };
             }
-            
         }
-        return null;
+        return { 'oneItemRequired':  true };
     }
-    
 }
-
-
-
-    
+  

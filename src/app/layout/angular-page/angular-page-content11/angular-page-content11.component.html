@@ -45,20 +45,20 @@
             </div>
             <div class="">
                 <label for="withDebounceChb">Select items which marked Normal = true</label>
-                <input class="horizontal-gap" id="selectNormal" type="checkbox" [disabled]="selectionMode === SINGLESELECT" 
+                <input class="horizontal-gap" id="selectNormal" type="checkbox"
                     formControlName="selectNormal">
                 <label class="horizontal-gap">(last three items)</label>
             </div>            
             <div class="form-group row mb-2">
-                <app-checklist [checklistItems]="checklistItems" formArrayName="customCheckList"
-                    #customCheckList
+                <app-checklist [checklistItems]="checklistItems" formControlName="checkList"
+                    #checkList
                     [selectionMode]="selectionMode"
                     [selectNormal]="selectNormal"
                     [required]="true"
                     [ngClass]="{'is-invalid': 
-                            (exampleForm.get('customCheckList')?.touched ||
-                            exampleForm.get('customCheckList')?.dirty) &&
-                            !exampleForm.get('customCheckList')?.valid }"
+                            (exampleForm.get('checkList')?.touched ||
+                            exampleForm.get('checkList')?.dirty) &&
+                            !exampleForm.get('checkList')?.valid }"
                     >
                 </app-checklist>
             </div>
