@@ -57,6 +57,13 @@
         // display: flex;
     }
 
+    .show-invalid-feedback {
+        display: block;
+        width: 100%;
+        margin-top: 0.25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
 
     .checklist-item-disabled {
         opacity: 0.4;

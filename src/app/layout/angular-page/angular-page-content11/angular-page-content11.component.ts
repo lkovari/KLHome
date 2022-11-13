@@ -34,7 +34,7 @@ export class AngularPageContent11Component implements OnInit {
     this.exampleForm = this.formBuilder.group({
       selectionMode: this.formBuilder.control( { value: SelectionMode.SINGLE, disabled: false} ),
       selectNormal: this.formBuilder.control( { value: false, disabled: this.selectionMode === this.SINGLESELECT } ),
-      checkList: this.formBuilder.control( null, [ Validators.required ] )
+      checkList: this.formBuilder.control([], [ Validators.required ] )
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.exampleForm.get('selectionMode')?.valueChanges.subscribe((value) => {
@@ -50,11 +50,19 @@ export class AngularPageContent11Component implements OnInit {
       this.selectNormal = value;
     });
     this.exampleForm.statusChanges.subscribe(status =>{
-      console.log('Form Status ' + status);
+      console.log('ExampleForm statusChanges ' + status);
     });
     this.exampleForm.get('checkList')?.statusChanges.subscribe(status =>{
-      console.log('CheckList Status ' + status);
+      console.log('CheckList statusChanges ' + status);
     });
+    /*
+    this.exampleForm.valueChanges.subscribe(value =>{
+      console.log('ExampleForm valueChanges ' + JSON.stringify(value));
+    });    
+    this.exampleForm.get('checkList')?.valueChanges.subscribe(value =>{
+      console.log('CheckList valueChanges ' + JSON.stringify(value));
+    });
+    */
   }
 
   onSubmit(form: FormGroup | null) {
