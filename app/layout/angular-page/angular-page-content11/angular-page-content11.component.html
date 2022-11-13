@@ -54,12 +54,10 @@
                     #checkList
                     [selectionMode]="selectionMode"
                     [selectNormal]="selectNormal"
-                    [required]="true"
-                    [ngClass]="{'is-invalid': 
-                            (exampleForm.get('checkList')?.touched ||
-                            exampleForm.get('checkList')?.dirty) &&
-                            !exampleForm.get('checkList')?.valid }"
-                    >
+                    [required]="true">
+                    <span *ngIf="exampleForm?.get('checkList')?.errors?.oneItemRequired" class="show-invalid-feedback">
+                        Minimum one row selection is required!
+                    </span>
                 </app-checklist>
             </div>
         </form>

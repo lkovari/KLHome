@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
-import { FormGroup, FormBuilder, Validators, FormArray, NG_VALUE_ACCESSOR, ControlValueAccessor, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR, ControlContainer } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
 import { SelectionMode } from './selection-mode.enum';
 import { ChecklistItem } from '../../models/checklist/checklist-item.model';
@@ -9,7 +9,7 @@ import { ChecklistItem } from '../../models/checklist/checklist-item.model';
   selector: 'app-checklist',
   templateUrl: './checklist.component.html',
   styleUrls: ['./checklist.component.scss'],
-  //viewProviders: [ { provide: ControlContainer, useExisting: FormControlDirective } ],
+  viewProviders: [ { provide: ControlContainer, useExisting: ChecklistComponent } ],
   providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: ChecklistComponent, multi: true } ]
 })
 export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterViewInit  {
@@ -52,17 +52,16 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
     return this._selectNormal;
   }
   @Input() required: boolean = false;
+
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   isDisabled = false;
   checkListForm: FormGroup;
-  
+
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
-  constructor(
-    //private formGroupDirective: FormGroupDirective,
-    private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}    
  
   ngOnInit(): void {
     // define a Form
@@ -143,9 +142,9 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
    * This method will be called by the forms API to write to the view when programmatic
    * (model -> view) changes are requested.
    */
-  writeValue(value: any): void {
-    this.getFormArray()?.patchValue(value);
-    this._values = value;
+  writeValue(values: any[]): void {
+    this.getFormArray()?.patchValue(values);
+    this._values = values;
   }
 
   /*
@@ -187,8 +186,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
         const value = formGroupItem.get('selected')?.value;
         if (value) {
           formGroupItem.get('selected')?.patchValue(false);
-          formGroupItem.markAsUntouched();
-          formGroupItem.markAsPristine();
+          formGroupItem.markAsTouched();
+          formGroupItem.markAsDirty();
           this.onModelChange(this.getFormArray().value);
         }
       }  
@@ -216,13 +215,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   private setAllItemsSelection(selected: boolean) {
     this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
       formGroupItem.get('selected')?.patchValue(selected);
-      if (selected) {
-        formGroupItem.markAsTouched();
-        formGroupItem.markAsDirty();
-      } else {
-        formGroupItem.markAsUntouched();
-        formGroupItem.markAsPristine();
-      }
+      formGroupItem.markAsTouched();
+      formGroupItem.markAsDirty();
       this.onModelChange(this.getFormArray().value);
     });
   }

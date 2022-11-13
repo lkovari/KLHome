@@ -15,6 +15,9 @@
                         formControlName="selected">
                 </div>
             </li>
+            <span *ngIf="checkListForm?.get('customCheckList')?.errors?.oneItemRequired" class="show-invalid-feedback">
+                Minimum one row selection is required!
+            </span>
         </ul>
     </div>
 </form>
