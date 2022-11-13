@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('11/13/2022 22:25 PM');
+  lastUpdate = new Date('11/13/2022 10:25 PM');
   lastUpdateTooltip = 'CheckListComponent add validation message on page #11.';
 
   ngOnInit() {
