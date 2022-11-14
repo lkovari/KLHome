@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/models/checklist/checklist-item.model';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ChecklistComponent } from 'src/app/shared/components/checklist/checklist.component';
 import { SelectionMode } from '../../../shared/components/checklist/selection-mode.enum';
 @Component({
@@ -14,17 +14,17 @@ export class AngularPageContent11Component implements OnInit {
   checklistItems: ChecklistItem[] = [
     { id: 1, label: "Alistair McIntyre as bone breaker", selected: false, value: null },
     { id: 2, label: "Erika Gusbakothy as brain miner", selected: false, value: null },
-    { id: 3, label: "Laszlo Kovari as a software developer", selected: false, value: null },
+    { id: 3, label: "Laszlo Kovari as a software developer", selected: false, value: null, normal: true },
     { id: 4, label: "Bor New as a milk machine", selected: false, value: null },
     { id: 5, label: "Zodekap Edenwer as a dilettant", selected: false, value: null },
     { id: 6, label: "Vanadit 10 faimous knife steel material", selected: false, value: null, normal: true },
-    { id: 7, label: "Vanadit 10 This is a list item, where the label's text is longer than what used in the most common cases. This is the demonstration of how the test fit into two rows, and how aligned the icon.", selected: false, value: null, normal: true },
+    { id: 7, label: "Vanadit 10 This is a list item, where the label's text is longer than what used in the most common cases. This is the demonstration of how the test fit into two rows, and how aligned the icon.", selected: false, value: null },
     { id: 8, label: "M390 is the best knife steel material", selected: false, value: null, normal: true }
   ];
   selectNormal = false;
   selectionMode = SelectionMode.SINGLE;
  
-  @ViewChild('checkList', { static: true }) checklistComponent: ChecklistComponent;
+  @ViewChild('checkListFormArray', { static: true }) checklistComponent: ChecklistComponent;
   MULTISELECT = SelectionMode.MULTI;
   SINGLESELECT = SelectionMode.SINGLE;
 
@@ -33,17 +33,18 @@ export class AngularPageContent11Component implements OnInit {
   ngOnInit() {
     this.exampleForm = this.formBuilder.group({
       selectionMode: this.formBuilder.control( { value: SelectionMode.SINGLE, disabled: false} ),
-      selectNormal: this.formBuilder.control( { value: false, disabled: this.selectionMode === this.SINGLESELECT } ),
-      checkList: this.formBuilder.control([], [ Validators.required ] )
+      selectNormal: this.formBuilder.control( { value: false, disabled: false } ),
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.exampleForm.get('selectionMode')?.valueChanges.subscribe((value) => {
       this.selectionMode = value;
+      /*
       if (this.selectionMode === this.SINGLESELECT) {
         this.exampleForm.get('selectNormal')?.disable();  
       } else {
         this.exampleForm.get('selectNormal')?.enable();
       }
+      */
       this.exampleForm.get('selectNormal')?.patchValue(false);
     });
     this.exampleForm.get('selectNormal')?.valueChanges.subscribe((value) => {
@@ -52,14 +53,14 @@ export class AngularPageContent11Component implements OnInit {
     this.exampleForm.statusChanges.subscribe(status =>{
       console.log('ExampleForm statusChanges ' + status);
     });
-    this.exampleForm.get('checkList')?.statusChanges.subscribe(status =>{
-      console.log('CheckList statusChanges ' + status);
+    this.exampleForm.get('checkListFormArray')?.statusChanges.subscribe(status =>{
+      console.log('checkListFormArray statusChanges ' + status);
     });
     /*
     this.exampleForm.valueChanges.subscribe(value =>{
       console.log('ExampleForm valueChanges ' + JSON.stringify(value));
     });    
-    this.exampleForm.get('checkList')?.valueChanges.subscribe(value =>{
+    this.exampleForm.get('checkListFormArray')?.valueChanges.subscribe(value =>{
       console.log('CheckList valueChanges ' + JSON.stringify(value));
     });
     */

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
-import { FormGroup, FormBuilder, Validators, FormArray, ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR, ControlContainer } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR, ControlContainer, FormGroupDirective } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
 import { SelectionMode } from './selection-mode.enum';
 import { ChecklistItem } from '../../models/checklist/checklist-item.model';
@@ -9,7 +9,7 @@ import { ChecklistItem } from '../../models/checklist/checklist-item.model';
   selector: 'app-checklist',
   templateUrl: './checklist.component.html',
   styleUrls: ['./checklist.component.scss'],
-  viewProviders: [ { provide: ControlContainer, useExisting: ChecklistComponent } ],
+  viewProviders: [ { provide: ControlContainer, useExisting: FormGroupDirective } ],
   providers: [ { provide: NG_VALUE_ACCESSOR, useExisting: ChecklistComponent, multi: true } ]
 })
 export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterViewInit  {
@@ -26,7 +26,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   @Input() 
   set selectionMode(v: SelectionMode) {
     this._selectionMode = v;
-    if (this.checkListForm) {
+    if (this.checkListFormArray) {
       this.clearSelection();
     }
   }
@@ -44,9 +44,11 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   @Input() 
   set selectNormal(v: boolean) {
     this._selectNormal = v;
-    if (this.checkListForm) {
+    /*
+    if (this.checkListFormArray) {
       this.setAllNormalItemsSelection(v);
     }
+    */
   }
   get selectNormal(): boolean {
     return this._selectNormal;
@@ -56,26 +58,28 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   @Output() onClick: EventEmitter<any> = new EventEmitter();
 
   isDisabled = false;
-  checkListForm: FormGroup;
+  private parentForm: FormGroup;
+  checkListFormArray: FormArray;
 
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
-  constructor(private formBuilder: FormBuilder) {}    
+  constructor(private formBuilder: FormBuilder, private formGroupDirective: FormGroupDirective) {}    
  
   ngOnInit(): void {
-    // define a Form
-    this.checkListForm = this.formBuilder.group({
-      // define the checklist
-      customCheckList: this.formBuilder.array( [], [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] )
-    });
-    
+    // define the checklist
+    this.checkListFormArray = this.formBuilder.array( [], [ ChecklistValidators.mandatoryFieldsDuplicationValidator ] )
+
+    // adding it into parent form form controls
+    this.parentForm = this.formGroupDirective.form;
+    this.parentForm.setControl('checkListFormArray', this.checkListFormArray);
+
     // add items
     this._values.forEach((item: IChecklistItem) => {
       this.addChecklistItem(item);
     });
-    this.checkListForm.statusChanges.subscribe(status =>{
-      console.log('CheckListComponent Status ' + status);
+    this.checkListFormArray.statusChanges.subscribe(status =>{
+      console.log('CheckListFormArray Status ' + status);
     });
   }
 
@@ -86,11 +90,33 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
     });
   }
 
+  hasNormalValue(ac: AbstractControl): boolean {
+    let res = false;
+    if (ac instanceof FormGroup) {
+      const formArrayItem = <FormGroup>ac;
+      res = Boolean(formArrayItem.get('normal'));
+    } 
+    return res;
+  }
+
+  getNormalValue(ac: AbstractControl): boolean {
+    let res = false;
+    if (ac instanceof FormGroup) {
+      const formArrayItem = <FormGroup>ac;
+      res = formArrayItem.get('normal') && formArrayItem.get('normal')?.value;
+    } 
+    return res;
+  }
+
+  needToShowNormalItems(selectNormal: boolean, ac: AbstractControl): boolean {
+    return ( selectNormal && this.hasNormalValue(ac) ? this.getNormalValue(ac) : false );
+  }
+
   clearSelection() {
-    this.getFormArray().controls.forEach((fg: FormGroup) => {
+    this.checkListFormArray.controls.forEach((fg: FormGroup) => {
       fg.get('selected')?.patchValue(false);
-      this.onModelChange(this.getFormArray().value);
     });
+    this.onModelChange(this.checkListFormArray.value);
     this.onModelTouched();
   }
 
@@ -116,8 +142,8 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   }
  
   addChecklistItem(item: IChecklistItem): void {
-    if (this.checkListForm) {
-      this.getFormArray().push(this.createChecklistItem(item));
+    if (this.checkListFormArray) {
+      this.checkListFormArray.push(this.createChecklistItem(item));
     }
   }
 
@@ -125,10 +151,6 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
     const checkListItemFormGroup = <FormGroup>abstractControl;
     ix + 1;
     return checkListItemFormGroup.value.id;
-  }
-
-  getFormArray(): FormArray {
-    return (<FormArray>this.checkListForm.get('customCheckList'));
   }
 
   onChecklistItemClick(abstractControl: AbstractControl) {
@@ -143,7 +165,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
    * (model -> view) changes are requested.
    */
   writeValue(values: any[]): void {
-    this.getFormArray()?.patchValue(values);
+    this.checkListFormArray?.patchValue(values);
     this._values = values;
   }
 
@@ -180,7 +202,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
 
   private unselectOtherItems(selectedFormGroup: FormGroup): void {
     // unselect other items in the FormArray
-    this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
+    this.checkListFormArray.controls.forEach((formGroupItem: FormGroup) => {
       if (formGroupItem.value.id !== selectedFormGroup.value.id) {
         // original value
         const value = formGroupItem.get('selected')?.value;
@@ -188,7 +210,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
           formGroupItem.get('selected')?.patchValue(false);
           formGroupItem.markAsTouched();
           formGroupItem.markAsDirty();
-          this.onModelChange(this.getFormArray().value);
+          this.onModelChange(this.checkListFormArray.value);
         }
       }  
     });
@@ -198,32 +220,32 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
     // if the validation is required
     if (this.required) {
       // has not added oneItemCheckRequiredValidator
-      if (!this.getFormArray().hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+      if (!this.checkListFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
         // add the oneItemCheckRequiredValidator
-        this.getFormArray().addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+        this.checkListFormArray.addValidators(ChecklistValidators.oneItemCheckRequiredValidator);
       }
     } else {
       // has already added oneItemCheckRequiredValidator
-      if (this.getFormArray().hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
+      if (this.checkListFormArray.hasValidator(ChecklistValidators.oneItemCheckRequiredValidator)) {
         // remove oneItemCheckRequiredValidator
-        this.getFormArray().removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
+        this.checkListFormArray.removeValidators(ChecklistValidators.oneItemCheckRequiredValidator);
       }
     }
-    this.getFormArray().updateValueAndValidity();
+    this.checkListFormArray.updateValueAndValidity();
   }
 
   private setAllItemsSelection(selected: boolean) {
-    this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
+    this.checkListFormArray.controls.forEach((formGroupItem: FormGroup) => {
       formGroupItem.get('selected')?.patchValue(selected);
       formGroupItem.markAsTouched();
       formGroupItem.markAsDirty();
-      this.onModelChange(this.getFormArray().value);
     });
+    this.onModelChange(this.checkListFormArray.value);
   }
 
   private setAllNormalItemsSelection(selected: boolean) {
-    if (this.getFormArray()) {
-      this.getFormArray().controls.forEach((formGroupItem: FormGroup) => {
+    if (this.checkListFormArray) {
+      this.checkListFormArray.controls.forEach((formGroupItem: FormGroup) => {
         if (selected) {
           const normal = formGroupItem.get('normal')?.value;
           if (normal) {
@@ -237,7 +259,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
         }
         formGroupItem.markAsTouched();
         formGroupItem.markAsDirty();
-        this.onModelChange(this.getFormArray().value);
+        this.onModelChange(this.checkListFormArray.value);
       });
     }
   }
@@ -264,13 +286,14 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
       formGroup.get('selected')?.markAsTouched();
       formGroup.get('selected')?.markAsDirty();
       this.onModelTouched();
-      this.onModelChange(this.getFormArray().value);
+      this.onModelChange(this.checkListFormArray.value);
+      formGroup.updateValueAndValidity();
     }
   }
 
   getSelectedItems(): IChecklistItem[] {
     let selArray = new Array<ChecklistItem>();
-    this.getFormArray().controls.forEach((fg: FormGroup) => {
+    this.checkListFormArray.controls.forEach((fg: FormGroup) => {
       if (fg.get('selected')?.value) {
         selArray.push(fg.value);
       }
