@@ -1,9 +1,8 @@
-<form [formGroup]="checkListForm">
     <div class="checklist-layout">
-        <ul formArrayName="customCheckList" style="list-style-type: none; min-width: 17rem; max-width:50rem">
+        <ul formArrayName="checkListFormArray" style="list-style-type: none; min-width: 17rem; max-width:50rem">
             <!-- Usage of pure pipe named isChecklisItemSelected is a good example to prevent unnecessary function calls -->
-            <li *ngFor="let checklistFormGroupItem of getFormArray().controls; let ix=index; trackBy: trackById"
-                
+            <li *ngFor="let checklistFormGroupItem of checkListFormArray.controls; let ix=index; trackBy: trackById"
+                [ngClass]="{'checklist-item-selected': needToShowNormalItems(selectNormal, checklistFormGroupItem) }"
                 (click)="onChecklistItemClick(checklistFormGroupItem)" tabIndex="{{ ix }}"
                 id="{{'lilabel' + ix}}">
                 <div id="{{'label' + ix}}" class="checklist-item-container"
@@ -15,9 +14,8 @@
                         formControlName="selected">
                 </div>
             </li>
-            <span *ngIf="checkListForm?.get('customCheckList')?.errors?.oneItemRequired" class="show-invalid-feedback">
+            <span *ngIf="checkListFormArray?.errors?.oneItemRequired" class="show-invalid-feedback">
                 Minimum one row selection is required!
             </span>
         </ul>
     </div>
-</form>
