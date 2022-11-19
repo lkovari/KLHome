@@ -44,6 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { AngularPageContent14Component } from './angular-page-content14/angular-page-content14.component';
 import { AngularPageContent15Component } from './angular-page-content15/angular-page-content15.component';
+import { PdfViewerComponent, PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { AngularPageContent15Component } from './angular-page-content15/angular-
     FormValidationMonitorV4Module,
     ToastModule,
     HttpClientModule,
-    DialogModule
+    DialogModule,
+    PdfViewerModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
@@ -111,7 +113,8 @@ import { AngularPageContent15Component } from './angular-page-content15/angular-
              AngularPageContent12Component,
              AngularPageContent13Component,
              AngularPageContent14Component,
-             AngularPageContent15Component
+             AngularPageContent15Component,
+             PdfViewerComponent
             ]
 })
 export class AngularPageModule { }
