@@ -32,3 +32,18 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Known Problem
 
 DEPRECATED: The 'defaultProject' workspace option has been deprecated. The project to use will be determined from the current working directory.
+
+## Former Problems
+
+1. 2022-11-19 when run the production build 
+    Warning: C:\src\Angular\pilot\KLHome\node_modules\ng2-pdf-viewer\fesm2015\ng2-pdf-viewer.mjs depends on 'pdfjs-dist/build/pdf'. CommonJS or AMD dependencies can cause optimization bailouts. For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+   Fix:
+   Added to angular.json the proper common js dependencies
+               "allowedCommonJsDependencies": 
+            [
+							"ng2-pdf-viewer",
+							"pdfjs-dist/build/pdf",
+							"pdfjs-dist/web/pdf_viewer"              
+            ]
+
+

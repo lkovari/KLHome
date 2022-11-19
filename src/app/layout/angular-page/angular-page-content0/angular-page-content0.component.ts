@@ -39,11 +39,13 @@ export class AngularPageContent0Component implements OnInit {
   inProgressCourses$?: Observable<AngularCourseModel[]>;
   plannedCurses$?: Observable<AngularCourseModel[]>;
   courses$: Observable<AngularCourseModel[]>;
+  collectedAngularInterviewQApdf: string;
 
   constructor(private fileLoaderService: FileLoaderService) { }
 
   ngOnInit() {
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    this.collectedAngularInterviewQApdf = "assets/bigfiles/AngularInterviewQuestionsByLK.pdf";
     this.angularVersion = angular.VERSION.full;
     console.log('Angular v' + this.angularVersion);
     this.initializeAngularCourses();

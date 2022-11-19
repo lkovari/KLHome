@@ -35,7 +35,13 @@
             "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "allowedCommonJsDependencies": 
+            [
+							"ng2-pdf-viewer",
+							"pdfjs-dist/build/pdf",
+							"pdfjs-dist/web/pdf_viewer"              
+            ]
           },
           "configurations": {
             "production": {
