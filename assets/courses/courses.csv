@@ -1,4 +1,18 @@
 Course Title,Author,Origin,Completed,Hours,Minutes,Completed
+Angular NgRx: Getting Started,by Deborah Kurata and Duncan Hunter,https://www.pluralsight.com,03/02/2021,4,15,2
+Git Fundamentals,by James Kovacs,https://www.pluralsight.com,04/08/2021,1,51,13
+Dynamic C# 7 Fundamentals,by Jason Roberts,https://www.pluralsight.com,05/13/2021,2,50,2
+Combining and Filtering Data with T-SQL 2019,by Tamara Pattinson,https://www.pluralsight.com,09/30/2021,3,27,35
+Building Apps with AngularFire 4,by Duncan Hunter,https://www.pluralsight.com,10/23/2022,3,44,32
+Unit Testing in Angular 12,by Joe Eames,https://www.pluralsight.com,12/19/2021,3,27,4
+Java 8 Fundamentals: The Core Platform,by Jim Wilson,https://www.pluralsight.com,01/16/2022,10,37,70
+Angular 11 Security Using .NET 5 and JSON Web Tokens,by Paul D. Sheriff,https://www.pluralsight.com,01/18/2022,2,10,85
+Enhancing Application Communication with gRPC,by Mike Van Sickle,https://www.pluralsight.com,05/12/2022,6,43,4
+Building an API with ASP.NET Core 5,by Shawn Wildermuth,https://www.pluralsight.com,08/22/2022,3,00,55
+ASP.NET Core Fundamentals,by Scott Allen,https://www.pluralsight.com,11/07/2022,5,45,5
+Webpack 5 Fundamentals,by Joe Eames,https://www.pluralsight.com,11/07/2022,2,43,31
+Angular 11 Fundamentals,by Jim Cooper and Joe Eames,https://www.pluralsight.com,10/03/2022,9,47,100
+A Better CSS: LESS and SASS,by Shawn Wildermuth,https://www.pluralsight.com,10/23/2022,1,56,100
 Angular (formerly Angular 2) - The Complete Guide,by Maximilian Schwarzmuller,https://www.udemy.com,04/27/2017,27,0,100
 Constructing a User Interface with Angular,David Mann,https://www.pluralsight.com,05/04/2019,4,35,100
 Styling Angular Applications,Brian Treese,https://www.pluralsight.com,05/05/2019,1,54,100
@@ -24,7 +38,7 @@ Angular Routing,Deborah Kurata,https://www.pluralsight.com,04/02/2018,4,48,100
 Angular Component Communication,Deborah Kurata,https://www.pluralsight.com,03/07/2018,3,39,100
 Angular Best Practices,Jim Cooper,https://www.pluralsight.com,02/18/2018,1,41,100
 CSS Positioning,Susan Simkins,https://www.pluralsight.com,04/24/2018,0,50,100
-TypeScript Fundamentals,John Papa and Dan Wahlin,https://www.pluralsight.com,03/29/2018,4,25,100
+TypeScript Fundamentals,John Papa and Dan Wahlin,https://www.pluralsight.com,10/10/2021,3,11,1
 Working with Angular Animations,Gary Simon,https://www.pluralsight.com,04/09/2018,1,27,100
 Building Beautiful Angular Apps with PrimeNG,Glen Smith,https://www.pluralsight.com,01/31/2018,3,8,100
 Angular Reactive Forms,Deborah Kurata,https://www.pluralsight.com,04/29/2017,3,52,100
@@ -90,10 +104,11 @@ Introduction to CSS,by Scott Allen,https://www.pluralsight.com,12/01/2021,2,26,1
 Angular Fundamentals,by Jim Cooper and Joe Eames,https://www.pluralsight.com,12/09/2021,2,26,100
 HTML5 From Scratch,by Jesse Liberty,https://www.pluralsight.com,04/11/2022,1,36,100
 CSS 3 From Scratch,by Jesse Liberty,https://www.pluralsight.com,04/12/2022,1,38,100
+Vue.js 3 Fundamentals, by Jim Cooper,https://www.pluralsight.com,11/19/2022,5,41,1
 CSS 3,by Michael Palermo,https://www.pluralsight.com,04/16/2022,2,46,100
 CSS3 In-Depth,by Estelle Weyl,https://www.pluralsight.com,04/18/2022,6,10,100
 Hands-on Responsive Web Design 1: Media Queries & CSS Preprocessing,by Paul Cheney,https://www.pluralsight.com,04/24/2022,1,47,100
-Hands-on Responsive Web Design 2: Responsive Images and Sliders,by Paul Cheney,https://www.pluralsight.com,04/25/2022,2,1,1
+Hands-on Responsive Web Design 2: Responsive Images and Sliders,by Paul Cheney,https://www.pluralsight.com,04/25/2022,2,1,10
 Building an API with ASP.NET Core,by Shawn Wildermuth,https://www.pluralsight.com,01/18/2022,2,34,55
 Building Your First API with ASP.NET Core,by Kevin Dockx,https://www.pluralsight.com,01/18/2022,4,7,4
 Angular Security Using .NET 5 and JSON Web Tokens,by Paul D. Sheriff,https://www.pluralsight.com,01/18/2022,2,10,85
@@ -105,7 +120,7 @@ Unit Testing in Angular,by Joe Eames,https://www.pluralsight.com,01/19/2022,3,27
 Creating Page Layouts with CSS,by Paul Cheney,https://www.pluralsight.com,12/05/2021,2,15,8
 ASP.NET Core Fundamentals,by Scott Allen,https://www.pluralsight.com,11/14/2021,5,45,4
 A Practical Start with React,by Roland Guijt,https://www.pluralsight.com,11/11/2021,1,49,4
-Styling Applications with Angular Material,by Ajden Towfeek,https://www.pluralsight.com,02/11/2021,3,14,4
+Styling Applications with Angular Material,by Ajden Towfeek,https://www.pluralsight.com,02/11/2021,3,14,37
 Using Redux to Manage State in Angular,by Hendrik Swanepoel,https://www.pluralsight.com,10/19/2020,1,2,43
 Practical Design Patterns in JavaScript,by Jonathan Mills,https://www.pluralsight.com,06/29/2019,3,10,3
 Java Fundamentals: The Java Language,by Jim Wilson,https://www.pluralsight.com,05/11/2020,7,42,1
@@ -113,11 +128,11 @@ C# Tips and Traps,by Jason Roberts,https://www.pluralsight.com,05/04/2019,3,57,4
 Building a Responsive SPA Framework with Angular,by Mark Zamoyta,https://www.pluralsight.com,02/08/2019,5,10,16
 Angular CLI,by John Papa,https://www.pluralsight.com,07/16/2018,3,08,9
 Angular Forms,by Mark Zamoyta,https://www.pluralsight.com,02/11/2019,2,39,4
-Hands-on Responsive Web Design 1: Media Queries & CSS Preprocessing,by Paul Cheney,https://www.pluralsight.com,02/17/2018,1,47,1
+Hands-on Responsive Web Design 1: Media Queries & CSS Preprocessing,by Paul Cheney,https://www.pluralsight.com,02/17/2018,1,47,100
 Using ES6 with TypeScript,by Steve Ognibene,https://www.pluralsight.com,05/06/2017,2,15,1
 TypeScript In-depth,by Brice Wilson,https://www.pluralsight.com,05/07/2017,4,40,11
 Advanced TypeScript,by Brice Wilson,https://www.pluralsight.com,05/06/2017,2,55,1 
-Redux Fundamentals,Jamis Charles,https://www.pluralsight.com,null,3,26,0
+Redux Fundamentals,Jamis Charles,https://www.pluralsight.com,null,3,26,66
 HTML5 Advanced Topics,by Craig Shoemaker,https://www.pluralsight.com,null,2,45,0
 Learn Basic HTML5 and CSS3 by Building Your First Web Page,by Mario Duilio Macari,https://www.pluralsight.com,null,2,45,0
 Building Websites with HTML,by Gill Cleeren,https://www.pluralsight.com,null,2,59,0
