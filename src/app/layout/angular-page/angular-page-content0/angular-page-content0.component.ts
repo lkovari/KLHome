@@ -44,6 +44,12 @@ export class AngularPageContent0Component implements OnInit {
   constructor(private fileLoaderService: FileLoaderService) { }
 
   ngOnInit() {
+    /*
+    const text = "dddbsjjakjelajdakpagdk";
+    const charMap = this.fingMaxCharOccurrence(text);
+    const mostOccurredChar = [...charMap][0];
+    console.log(mostOccurredChar);
+    */
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.collectedAngularInterviewQApdf = "assets/bigfiles/AngularInterviewQuestionsByLK.pdf";
     this.angularVersion = angular.VERSION.full;
@@ -143,4 +149,21 @@ export class AngularPageContent0Component implements OnInit {
     return totalTime;
   }
 
+  /* just for practicing
+  private fingMaxCharOccurrence(text: string): Map<string, number> {
+    let res = new Map<string, number>();
+    for(let ix = 0; ix < text.length; ix++) {
+      const chr = text.charAt(ix);
+      if (res.has(chr)) {
+        let value = res.get(chr) ? res.get(chr) : 0;
+        value!++;
+        res.set(chr, value!);
+      } else {
+        res.set(chr, 1);
+      }
+    }
+    res = new Map([...res.entries()].sort((a, b) => b[1] - a[1]));
+    return res;
+  }
+  */
 }
