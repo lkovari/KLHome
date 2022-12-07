@@ -1,0 +1,68 @@
+<div class="layout-angular-playground-page16">
+    <div class="col-xs-12">
+        This page is a
+        <b>playground</b>, I show on this page Angular v2+ source code snippets, what I learned at last or just which
+        interested in, for me.
+    </div>
+    <div class="sub-topic">
+        <b>Act #16</b> TypeScript Design Patterns.
+    </div>
+    <div>
+        <label class="text-primary">
+            <a class="spacer"
+                href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content16">
+                <img [src]="githubLogoPath" width="16" height="16">
+            </a>Important patterns which cn help us to improve our code quality. And a good example to see how
+            implemented the secondary routing like as named router-outlet
+        </label>
+    </div>
+    <div class="text-danger">
+        THIS PAGE IS UNDER CONSTRUCTION!
+    </div>    
+    <div>
+        <div>
+            <p-accordion>
+                <p-accordionTab header="Creational">
+                    <ul>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['factory'] } } ]">Factory</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['abstractfactory'] } } ]">Abstract Factory</a>
+                        </li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['builder'] } } ]">Builder</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['prototype'] } } ]">Prototype</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['singleton'] } } ]">Singleton</a></li>
+                    </ul>
+                </p-accordionTab>
+                <p-accordionTab header="Structural">
+                    <ul>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['decorator'] } } ]">Decorator</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['adapter'] } } ]">Adapter</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['facade'] } } ]">Facade</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['bridge'] } } ]">Bridge</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['composite'] } } ]">Composite</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['flyweight'] } } ]">Flyweight</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['proxy'] } } ]">Proxy</a></li>
+                    </ul>
+                </p-accordionTab>
+                <p-accordionTab header="Behavioral">
+                    <ul>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['command'] } } ]">Command</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['chainofresponsibility'] } } ]">Chain of
+                                Responsibility</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['observer'] } } ]">Observer</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['interpreter'] } } ]">Interpreter</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['mediator'] } } ]">Mediator</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['memento'] } } ]">Memento</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['state'] } } ]">State</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['strategy'] } } ]">strategy</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['templatemethod'] } } ]">Template Method</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['visitor'] } } ]">Visitor</a></li>
+                    </ul>
+                </p-accordionTab>
+            </p-accordion>
+        </div>
+        <b>Pattern</b>
+        <div>
+            <router-outlet name="patterns"></router-outlet>
+        </div>
+    </div>
+</div>

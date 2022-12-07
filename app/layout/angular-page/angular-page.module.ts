@@ -45,6 +45,30 @@ import { DialogModule } from 'primeng/dialog';
 import { AngularPageContent14Component } from './angular-page-content14/angular-page-content14.component';
 import { AngularPageContent15Component } from './angular-page-content15/angular-page-content15.component';
 import { PdfViewerComponent, PdfViewerModule } from 'ng2-pdf-viewer';
+import { AngularPageContent16Component } from './angular-page-content16/angular-page-content16.component';
+import { FactoryPatternComponent } from './angular-page-content16/factory-pattern/factory-pattern.component';
+import { AbstractFactoryPatternComponent } from './angular-page-content16/abstract-factory-pattern/abstract-factory-pattern.component';
+import { BuilderPatternComponent } from './angular-page-content16/builder-pattern/builder-pattern.component';
+import { PrototypePatternComponent } from './angular-page-content16/prototype-pattern/prototype-pattern.component';
+import { SingletonPatternComponent } from './angular-page-content16/singleton-pattern/singleton-pattern.component';
+import { DecoratorPatternComponent } from './angular-page-content16/decorator-pattern/decorator-pattern.component';
+import { AdapterPatternComponent } from './angular-page-content16/adapter-pattern/adapter-pattern.component';
+import { FacadePatternComponent } from './angular-page-content16/facade-pattern/facade-pattern.component';
+import { BridgePatternComponent } from './angular-page-content16/bridge-pattern/bridge-pattern.component';
+import { FlyweightPatternComponent } from './angular-page-content16/flyweight-pattern/flyweight-pattern.component';
+import { ProxyPatternComponent } from './angular-page-content16/proxy-pattern/proxy-pattern.component';
+import { CommandPatternComponent } from './angular-page-content16/command-pattern/command-pattern.component';
+import { ChainOfResponsibilityPatternComponent } from './angular-page-content16/chain-of-responsibility-pattern/chain-of-responsibility-pattern.component';
+import { ObserverPatternComponent } from './angular-page-content16/observer-pattern/observer-pattern.component';
+import { InterpreterPatternComponent } from './angular-page-content16/interpreter-pattern/interpreter-pattern.component';
+import { MediatorPatternComponent } from './angular-page-content16/mediator-pattern/mediator-pattern.component';
+import { MementoPatternComponent } from './angular-page-content16/memento-pattern/memento-pattern.component';
+import { StatePatternComponent } from './angular-page-content16/state-pattern/state-pattern.component';
+import { StrategyPatternComponent } from './angular-page-content16/strategy-pattern/strategy-pattern.component';
+import { TemplateMethodPatternComponent } from './angular-page-content16/template-method-pattern/template-method-pattern.component';
+import { VisitorPatternComponent } from './angular-page-content16/visitor-pattern/visitor-pattern.component';
+import { SlideMenuModule } from 'primeng/slidemenu';
+import { AccordionModule } from 'primeng/accordion';
 
 @NgModule({
   imports: [
@@ -65,7 +89,9 @@ import { PdfViewerComponent, PdfViewerModule } from 'ng2-pdf-viewer';
     ToastModule,
     HttpClientModule,
     DialogModule,
-    PdfViewerModule
+    PdfViewerModule,
+    SlideMenuModule,
+    AccordionModule
   ],
   declarations: [ AngularPageTitleComponent,
                   AngularPageContent0Component,
@@ -95,7 +121,29 @@ import { PdfViewerComponent, PdfViewerModule } from 'ng2-pdf-viewer';
                   ExtractFormControlsPipe,
                   AngularPageContent13Component,
                   AngularPageContent14Component,
-                  AngularPageContent15Component
+                  AngularPageContent15Component,
+                  AngularPageContent16Component,
+                  FactoryPatternComponent,
+                  AbstractFactoryPatternComponent,
+                  BuilderPatternComponent,
+                  PrototypePatternComponent,
+                  SingletonPatternComponent,
+                  DecoratorPatternComponent,
+                  AdapterPatternComponent,
+                  FacadePatternComponent,
+                  BridgePatternComponent,
+                  FlyweightPatternComponent,
+                  ProxyPatternComponent,
+                  CommandPatternComponent,
+                  ChainOfResponsibilityPatternComponent,
+                  ObserverPatternComponent,
+                  InterpreterPatternComponent,
+                  MediatorPatternComponent,
+                  MementoPatternComponent,
+                  StatePatternComponent,
+                  StrategyPatternComponent,
+                  TemplateMethodPatternComponent,
+                  VisitorPatternComponent
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,
@@ -114,6 +162,7 @@ import { PdfViewerComponent, PdfViewerModule } from 'ng2-pdf-viewer';
              AngularPageContent13Component,
              AngularPageContent14Component,
              AngularPageContent15Component,
+             AngularPageContent16Component,
              PdfViewerComponent
             ]
 })
