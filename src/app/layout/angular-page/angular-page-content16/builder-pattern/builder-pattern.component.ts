@@ -28,7 +28,7 @@ export class BuilderPatternComponent implements OnInit {
     
     class Builder implements IBuilder {
         // The Concrete Builder
-        product: Product
+        product: Product;
     
         constructor() {
           this.product = new Product();

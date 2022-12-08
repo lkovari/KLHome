@@ -15,7 +15,7 @@ export class FactoryPatternComponent implements OnInit {
   ngOnInit(): void {
     this.pattern = 
   `  interface IProduct {
-      name: string
+      name: string;
   }
   
   class ConcreteProduct implements IProduct {
@@ -24,33 +24,33 @@ export class FactoryPatternComponent implements OnInit {
   
   class ConcreteProductA extends ConcreteProduct {
       constructor() {
-          super()
-          this.name = 'ConcreteProductA'
+          super();
+          this.name = 'ConcreteProductA';
       }
   }
   
   class ConcreteProductB extends ConcreteProduct {
       constructor() {
-          super()
-          this.name = 'ConcreteProductB'
+          super();
+          this.name = 'ConcreteProductB';
       }
   }
   
   class ConcreteProductC extends ConcreteProduct {
       constructor() {
-          super()
-          this.name = 'ConcreteProductC'
+          super();
+          this.name = 'ConcreteProductC';
       }
   }
   
   class Creator {
       static createObject(someProperty: string): IProduct {
           if (someProperty === 'a') {
-              return new ConcreteProductA()
+              return new ConcreteProductA();
           } else if (someProperty === 'b') {
-              return new ConcreteProductB()
+              return new ConcreteProductB();
           } else {
-              return new ConcreteProductC()
+              return new ConcreteProductC();
           }
       }
   }`;
