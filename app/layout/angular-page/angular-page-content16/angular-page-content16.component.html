@@ -5,20 +5,22 @@
         interested in, for me.
     </div>
     <div class="sub-topic">
-        <b>Act #16</b> TypeScript Design Patterns, based on Typescript Design Patterns course by Sean Bradley 
+        <b>Act #16</b> TypeScript Design Patterns, based on <a class="hide-crsrshape"
+            href="https://sbcode.net/typescript/">Sean Bradley's publication</a> and SOLID. Principles
     </div>
     <div>
         <label class="text-primary">
             <a class="spacer"
                 href="https://github.com/lkovari/KLHome/tree/master/src/app/layout/angular-page/angular-page-content16">
                 <img [src]="githubLogoPath" width="16" height="16">
-            </a>Important patterns which cn help us to improve our code quality and maintainability. And this page is a good example to see, how
-            implemented the secondary routing (like as named <a class="spacer" href="https://angular.io/api/router/RouterOutlet">router-outlet)</a> in Angular.
+            </a>This page is a good example to see, how implemented the secondary routing (like as named <a
+                class="spacer" href="https://angular.io/api/router/RouterOutlet">router-outlet)</a> in Angular, with
+            passing parameter via route.
         </label>
     </div>
     <div class="text-danger">
         THIS PAGE IS UNDER CONSTRUCTION!
-    </div>    
+    </div>
     <div>
         <div>
             <p-accordion>
@@ -56,6 +58,24 @@
                         <li><a [routerLink]="[ { outlets: { patterns: ['strategy'] } } ]">strategy</a></li>
                         <li><a [routerLink]="[ { outlets: { patterns: ['templatemethod'] } } ]">Template Method</a></li>
                         <li><a [routerLink]="[ { outlets: { patterns: ['visitor'] } } ]">Visitor</a></li>
+                    </ul>
+                </p-accordionTab>
+                <p-accordionTab header="SOLID. Principles">
+                    <ul>
+                        <li><a
+                                [routerLink]="[ { outlets: { patterns: ['singleresponsibility', SINGLE_RESPONSIBILITY] } } ]">Single
+                                Responsibility Principle</a></li>
+                        <li><a [routerLink]="[ { outlets: { patterns: ['openclose', OPEN_CLOSE] } } ]">Open /
+                                Close Principle</a></li>
+                        <li><a
+                                [routerLink]="[ { outlets: { patterns: ['liskovsubstitution', LISKOV_SUBSTITUTION] } } ]">Liskov
+                                Substitutiuon Principle</a></li>
+                        <li><a
+                                [routerLink]="[ { outlets: { patterns: ['interfacesegregation', INTERFACE_SEGREGATION] } } ]">Interface
+                                Segregation Principle</a></li>
+                        <li><a
+                                [routerLink]="[ { outlets: { patterns: ['dependencyinversion', DEPENDENCY_INVERSION] } } ]">Dependency
+                                Inversion Principle</a></li>
                     </ul>
                 </p-accordionTab>
             </p-accordion>

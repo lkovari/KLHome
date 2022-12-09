@@ -69,6 +69,7 @@ import { TemplateMethodPatternComponent } from './angular-page-content16/templat
 import { VisitorPatternComponent } from './angular-page-content16/visitor-pattern/visitor-pattern.component';
 import { SlideMenuModule } from 'primeng/slidemenu';
 import { AccordionModule } from 'primeng/accordion';
+import { SolidPrinciplesComponent } from './angular-page-content16/solid-principles/solid-principles.component';
 
 @NgModule({
   imports: [
@@ -143,7 +144,8 @@ import { AccordionModule } from 'primeng/accordion';
                   StatePatternComponent,
                   StrategyPatternComponent,
                   TemplateMethodPatternComponent,
-                  VisitorPatternComponent
+                  VisitorPatternComponent,
+                  SolidPrinciplesComponent
                 ],
   exports: [ AngularPageTitleComponent,
              AngularPageContent0Component,

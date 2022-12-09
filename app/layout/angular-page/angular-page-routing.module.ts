@@ -30,6 +30,7 @@ import { ObserverPatternComponent } from './angular-page-content16/observer-patt
 import { PrototypePatternComponent } from './angular-page-content16/prototype-pattern/prototype-pattern.component';
 import { ProxyPatternComponent } from './angular-page-content16/proxy-pattern/proxy-pattern.component';
 import { SingletonPatternComponent } from './angular-page-content16/singleton-pattern/singleton-pattern.component';
+import { SolidPrinciplesComponent } from './angular-page-content16/solid-principles/solid-principles.component';
 import { StatePatternComponent } from './angular-page-content16/state-pattern/state-pattern.component';
 import { StrategyPatternComponent } from './angular-page-content16/strategy-pattern/strategy-pattern.component';
 import { TemplateMethodPatternComponent } from './angular-page-content16/template-method-pattern/template-method-pattern.component';
@@ -94,7 +95,13 @@ const routes: Routes = [
       { path: 'state', component: StatePatternComponent, outlet: 'patterns' },
       { path: 'strategy', component: StrategyPatternComponent, outlet: 'patterns' },
       { path: 'templatemethod', component: TemplateMethodPatternComponent, outlet: 'patterns' },
-      { path: 'visitor', component: VisitorPatternComponent, outlet: 'patterns' }         
+      { path: 'visitor', component: VisitorPatternComponent, outlet: 'patterns' },
+
+      { path: 'singleresponsibility/:solidPrincipleKind', component: SolidPrinciplesComponent, outlet: 'patterns' },
+      { path: 'openclose/:solidPrincipleKind', component: SolidPrinciplesComponent, outlet: 'patterns' },
+      { path: 'liskovsubstitution/:solidPrincipleKind', component: SolidPrinciplesComponent, outlet: 'patterns' },
+      { path: 'interfacesegregation/:solidPrincipleKind', component: SolidPrinciplesComponent, outlet: 'patterns' },
+      { path: 'dependencyinversion/:solidPrincipleKind', component: SolidPrinciplesComponent, outlet: 'patterns' }
     ]
   }
   ]}
