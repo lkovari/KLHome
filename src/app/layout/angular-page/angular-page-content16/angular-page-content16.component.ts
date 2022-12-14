@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { PreventRightClickService } from 'src/app/shared/services/preventrightclickservice/prevent-right-click.service';
 import { SolidPrincipleKind } from './solid-principle-kind.enum';
 
 @Component({
@@ -7,7 +8,7 @@ import { SolidPrincipleKind } from './solid-principle-kind.enum';
   templateUrl: './angular-page-content16.component.html',
   styleUrls: ['./angular-page-content16.component.scss']
 })
-export class AngularPageContent16Component implements OnInit {
+export class AngularPageContent16Component implements OnInit, OnDestroy {
   githubLogoPath: string;
   patternsMenu: MenuItem[];
   SINGLE_RESPONSIBILITY = SolidPrincipleKind.S;
@@ -16,10 +17,14 @@ export class AngularPageContent16Component implements OnInit {
   INTERFACE_SEGREGATION = SolidPrincipleKind.I;
   DEPENDENCY_INVERSION = SolidPrincipleKind.D;
 
-  constructor() { }
+  constructor(private preventRightClickService: PreventRightClickService) { }
 
   ngOnInit(): void {
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    this.preventRightClickService.preventRightClick();
   }
 
+  ngOnDestroy(): void {
+    this.preventRightClickService.allowRightClick();
+  }
 }

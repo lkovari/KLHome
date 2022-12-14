@@ -11,11 +11,11 @@
       <i class="fa fa-trophy"> Awards & Certs.</i>
     </a>
     <div class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages1')">
+      <a id="angular-page-group" class="angular-page-group list-group-item" (click)="addExpandClass('angular-page')">
         <span>
           <i class="fa fa-plus"></i>&nbsp;Angular 2 ~ 2017</span>
       </a>
-      <li class="nested" [class.expand]="showMenu === 'pages1'">
+      <li class="nested" [class.expand]="showMenu === 'angular-page'">
         <ul class="submenu">
           <li>
             <a routerLink="/angular-page/angular-page-content0">At the beginning</a>

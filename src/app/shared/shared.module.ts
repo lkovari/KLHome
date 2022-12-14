@@ -23,6 +23,7 @@ import { SignupSigninComponent } from './components/signup-signin/signup-signin.
 import { CourseComponent } from './components/course/course.component';
 import { NumericInputValidationDirective } from './directives/numeric-input-validation.directive';
 import { ImageLazyLoadingDirective } from './directives/imag-lazy-loading.directive';
+import { PreventRightClickService } from './services/preventrightclickservice/prevent-right-click.service';
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { ImageLazyLoadingDirective } from './directives/imag-lazy-loading.direct
     TooltipModule,
     SharedPipesModule
   ],
-  providers: [FileLoaderService],
+  providers: [FileLoaderService, PreventRightClickService],
   declarations: [TextInputComponent, CustomCalendarComponent, TextDisplayComponent, ComplexNameComponent, AddressComponent,
     CustomInputMaskComponent, BarChartComponent, CustomTextAreaDirective, ChecklistComponent, SignupSigninComponent, CourseComponent, 
     NumericInputValidationDirective, ImageLazyLoadingDirective],
