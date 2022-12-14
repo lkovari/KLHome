@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TextUtils } from 'dist/app/layout/angular-page/angular-page-content16/text-utils';
 import { PatternBase } from '../pattern-base';
+import { TextUtils } from '../text-utils';
 
 @Component({
   selector: 'app-adapter-pattern',
