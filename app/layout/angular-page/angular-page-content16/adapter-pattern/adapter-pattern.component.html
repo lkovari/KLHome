@@ -1,1 +1,13 @@
-<p>adapter-pattern works!</p>
+<div class="adapter-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Convert the interface of a class into another interface client expect. Adapter lets classes work togethet that couldn't othervise because of incompatible interfaces.</li>
+        <li *ngIf="!isEnglish">Az adott osztály felületét az ügyfelek által igényelt felületté alakítja. E módszerrel az egyébként összeférhetetlen felületű osztályok együttműködését biztosíthatjuk.</li>
+    </div>    
+    <b>Use Case</b>
+    <li>If something are incompatible with each other, we use an adapter that converts one to other.</li>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true" [ngModel]="pattern" resize="both" [rows]="numOfTextRows"></textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_adapter_uml.png" class="img-responsive" alt="Adapter UML">
+</div>

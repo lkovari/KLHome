@@ -10,7 +10,6 @@ export class AboutmeContentComponent implements OnInit {
   public fullImagePath: string;
   public fullInsightImagePath: string;
   public fullInsightImagePathHref: string;
-
   constructor() {
     this.fullImagePath = 'assets/images/lk_img_s.jpg';
     this.fullInsightImagePath = 'assets/images/lk_insightprofilebricks.jpg';

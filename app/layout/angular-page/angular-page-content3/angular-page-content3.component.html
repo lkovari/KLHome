@@ -19,8 +19,8 @@
       <span class="text-primary">The validation rules are the following</span> the
       <ul>
         <li>- the first name and last name are mandatory</li>
-        <li>- the minimum length is {{ complexNameConfig?.firstNameMinLength }}</li>
-        <li>- the maximum length is {{ complexNameConfig?.firstNameMaxLength }}</li>
+        <li>- the minimum length is {{ complexNameConfig.firstNameMinLength }}</li>
+        <li>- the maximum length is {{ complexNameConfig.firstNameMaxLength }}</li>
       </ul>
       <div>
         <label>The configuration of ComplexNameComponent is based on the
@@ -90,17 +90,17 @@
               <!--div *ngIf="extractFormControl().errors.firstNameRequired">First name required!</div-->
               <div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div>
               <div *ngIf="extractFormControl().hasError('lastNameRequired')">Last name required!</div>
-              <div *ngIf="extractFormControl().hasError('firstNameMinLength')">First name minimum lenght is {{ complexNameConfig?.firstNameMinLength }}</div>
-              <div *ngIf="extractFormControl().hasError('firstNameMaxLength')">First name maximum lenght is {{ complexNameConfig?.firstNameMaxLength }}</div>
-              <div *ngIf="extractFormControl().hasError('lastNameMinLength')">Last name minimum lenght is {{ complexNameConfig?.lastNameMinLength }}</div>
-              <div *ngIf="extractFormControl().hasError('lastNameMaxLength')">Last name maximum lenght is {{ complexNameConfig?.lastNameMaxLength }}</div>
+              <div *ngIf="extractFormControl().hasError('firstNameMinLength')">First name minimum lenght is {{ complexNameConfig.firstNameMinLength }}</div>
+              <div *ngIf="extractFormControl().hasError('firstNameMaxLength')">First name maximum lenght is {{ complexNameConfig.firstNameMaxLength }}</div>
+              <div *ngIf="extractFormControl().hasError('lastNameMinLength')">Last name minimum lenght is {{ complexNameConfig.lastNameMinLength }}</div>
+              <div *ngIf="extractFormControl().hasError('lastNameMaxLength')">Last name maximum lenght is {{ complexNameConfig.lastNameMaxLength }}</div>
               <!--div *ngIf="extractFormControl().hasError('firstNameRequired')">FirstName is required!</div-->
             </div>
           </div>
         </div>
         <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel(exampleForm)">Set Model</button>
         <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel(exampleForm)">Clear Model</button>
-        <button class="btn btn-primary" type="submit" [disabled]="exampleForm?.invalid" *ngIf="!isShowDoneInside()">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid" *ngIf="!isShowDoneInside()">Submit</button>
         <div class="spacer-vertical">
           <label class="spacer-horozontal-right">Validation messages</label>
           <label class="form-check-inline spacer-horozontal-right">

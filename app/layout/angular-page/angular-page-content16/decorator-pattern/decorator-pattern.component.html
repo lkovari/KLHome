@@ -1,6 +1,11 @@
 <div class="decorator-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Attach an additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</li>
+        <li *ngIf="!isEnglish">Az objektumhoz dinamikusan további felelőségi köröket rendel. A kiegészítő szolgáltatások biztosítása terén e módszer rugalmas alternativája az alosztályok létrehozásának.</li>
+    </div>    
     <b>Use Case</b>
-    <li>Use the Builder Pattern if you need to create a complex object instance, which is part of a lot of elements of the more complex object instance.</li>        
+    <li>Decorator pattern is used for extending a legacy functionality without changing the legacy class. So we use decorator pattern, wrap the existing class inside the decorators.</li>
     <b>Source Code</b>
     <textarea class="area-style" [disabled]="true" [ngModel]="pattern" resize="both" [rows]="numOfTextRows"></textarea>
     <b>UML</b>

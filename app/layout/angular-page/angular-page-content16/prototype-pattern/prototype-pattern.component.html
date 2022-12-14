@@ -1,4 +1,9 @@
 <div class="prototype-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype.</li>
+        <li *ngIf="!isEnglish">Prototípus példány használatával meghatározza, milyen típusú objektumokat kell létrehozni, az új objektumok létrehozását pedig ennek a prototípusnak a lemásolásával állítja elő.</li>
+    </div>     
     <b>Use Case</b>
     <li>When instantiation is a costly process for some reason, so it's much more worthwhile to create an instance and then just copy it. The prototype is something like the factory only, with an initial sample, we specify what we would like to produce and do not by choosing one of the derived classes of the factory method.</li>        
     <b>Source Code</b>

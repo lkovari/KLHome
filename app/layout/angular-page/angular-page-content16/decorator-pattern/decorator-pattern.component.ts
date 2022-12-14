@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PatternBase } from '../pattern-base';
 import { TextUtils } from '../text-utils';
 
 @Component({
@@ -6,11 +7,13 @@ import { TextUtils } from '../text-utils';
   templateUrl: './decorator-pattern.component.html',
   styleUrls: ['./decorator-pattern.component.scss']
 })
-export class DecoratorPatternComponent implements OnInit {
+export class DecoratorPatternComponent extends PatternBase implements OnInit {
   pattern: string;
   numOfTextRows: number | undefined;
   
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
     this.pattern = `

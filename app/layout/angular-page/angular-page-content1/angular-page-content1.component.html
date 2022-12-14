@@ -36,7 +36,7 @@
                     <label class="spacer" for="userName">User name
                         <span class="text-danger">*</span>
                     </label>
-                    <input id="userName" class="form-control" name="userName" [(ngModel)]="user.userName"
+                    <input id="userName" data-cy="page1-field-username" class="form-control" name="userName" [(ngModel)]="user.userName"
                         #userName="ngModel" autocomplete="off" required minlength="{{userNameMinLength}}"
                         maxlength="{{userNameMaxLength}}" app-firstCapital>
                     <div *ngIf="(userName && (userName.invalid && userName.dirty)) " class="text-danger">
@@ -51,7 +51,7 @@
                     <label class="spacer" for="email">Email
                         <span class="text-danger">*</span>
                     </label>
-                    <input id="email" class="form-control" type="string" name="email" [(ngModel)]="user.email"
+                    <input id="email" data-cy="page1-field-email" class="form-control" type="string" name="email" [(ngModel)]="user.email"
                         #email="ngModel" autocomplete="off" required email>
                     <div *ngIf="email && (email.invalid && email.dirty)" class="text-danger">
                         <p *ngIf="email?.errors?.required">Email is required!</p>
@@ -62,18 +62,18 @@
                     <label class="spacer" for="phone">Phone number
                         <span class="text-danger">*</span>
                     </label>
-                    <input id="phone" class="form-control" name="phone" [(ngModel)]="user.phone" autocomplete="off"
+                    <input id="phone" data-cy="page1-field-phone" class="form-control" name="phone" [(ngModel)]="user.phone" autocomplete="off"
                         #phone="ngModel" required pattern="{{usPhoneNumberPattern}}">
                     <div *ngIf="phone && (phone.invalid && phone.dirty)" class="text-danger">
                         <p *ngIf="phone.errors?.required">Phone is required!</p>
                         <p *ngIf="phone.errors?.pattern">Please type a valid US. phone number without ext!</p>
                     </div>
                 </div>
-                <button class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set
+                <button id="btn-setvalues" data-cy="page1-btn-set" class="btn btn-primary spacer" type="button" (click)="setValues(dataEntryForm)">Set
                     Data</button>
-                <button class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear
+                <button id="btn-clearvalues" data-cy="page1-btn-clear" class="btn btn-primary spacer" type="button" (click)="clearValues(dataEntryForm)">Clear
                     Data</button>
-                <button class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
+                <button id="btn-submit" data-cy="page1-btn-submit" class="btn btn-primary" type="submit" [disabled]="dataEntryForm.invalid">Submit</button>
             </form>
             <div>
                 <label>Submitted form data:</label> {{ submittedFormData | json }}

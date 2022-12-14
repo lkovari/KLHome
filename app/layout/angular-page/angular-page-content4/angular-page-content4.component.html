@@ -59,7 +59,7 @@
         </div>
         <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onSetModel(exampleForm)">Set Model</button>
         <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel(exampleForm)">Clear Model</button>
-        <button class="btn btn-primary" type="submit" [disabled]="exampleForm?.invalid">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="exampleForm.invalid">Submit</button>
       </form>
     </div>
     <div class="sub-topic" *ngIf="isSubmitted">

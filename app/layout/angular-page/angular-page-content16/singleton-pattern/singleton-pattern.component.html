@@ -1,4 +1,9 @@
 <div class="singleton-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Ensure a class only has one instance, and provide a global point of access to it.</li>
+        <li *ngIf="!isEnglish">Egy osztályból csak egy osztályt engedélyez, és ehhez globális hozzáférési pontot ad meg.</li>
+    </div>     
     <b>Use Case</b>
     <li>Sometimes you need an object in an application where there is only one instance in the system/project. We often prefer singletons to global variables because they don't create static variables in the global namespace (they only have a static instance within their own class), and they allow "lazy" initialization and don't come when the program starts create all as for global variables.</li>
     <b>Source Code</b>

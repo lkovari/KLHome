@@ -43,9 +43,9 @@
         </label>
         <div class="col-sm-6">
           <input class="form-control" id="userName" type="text" placeholder="user name required"
-            formControlName="userName" [ngClass]="{'is-invalid': (mainForm?.get('userName')?.touched ||
-              mainForm?.get('userName')?.dirty) &&
-              !mainForm?.get('userName')?.valid }" />
+            formControlName="userName" [ngClass]="{'is-invalid': (mainForm.get('userName')?.touched ||
+              mainForm.get('userName')?.dirty) &&
+              !mainForm.get('userName')?.valid }" />
           <span class="invalid-feedback">
             <span *ngIf="mainForm?.get('userName')?.errors?.required">
               Please enter a User name!
@@ -65,10 +65,10 @@
           <div class="col-sm-6">
             <input class="form-control" id="password" type="password" placeholder="Password (required)"
               formControlName="password" autocomplete="off"
-              [ngClass]="{'is-invalid': mainForm?.get('passwordGroup')?.errors ||
-                ((mainForm?.get('passwordGroup.password')?.touched ||
-                mainForm?.get('passwordGroup.password')?.dirty) && 
-                !mainForm?.get('passwordGroup.password')?.valid) }" 
+              [ngClass]="{'is-invalid': mainForm.get('passwordGroup')?.errors ||
+                ((mainForm.get('passwordGroup.password')?.touched ||
+                mainForm.get('passwordGroup.password')?.dirty) && 
+                !mainForm.get('passwordGroup.password')?.valid) }" 
             />
             <span class="invalid-feedback">
               <span *ngIf="mainForm?.get('passwordGroup.password')?.errors?.required">
@@ -92,10 +92,10 @@
             <!-- ref for X : https://mdbootstrap.com/docs/jquery/forms/validation/ -->
             <input class="form-control" id="confirmPassword" type="password"
               placeholder="Confirm Password (required)" formControlName="confirmPassword" autocomplete="off"
-              [ngClass]="{'is-invalid': mainForm?.get('passwordGroup')?.errors ||
-                ((mainForm?.get('passwordGroup.confirmPassword')?.touched ||
-                mainForm?.get('passwordGroup.confirmPassword')?.dirty) && 
-                !mainForm?.get('passwordGroup.confirmPassword')?.valid) }" 
+              [ngClass]="{'is-invalid': mainForm.get('passwordGroup')?.errors ||
+                ((mainForm.get('passwordGroup.confirmPassword')?.touched ||
+                mainForm.get('passwordGroup.confirmPassword')?.dirty) && 
+                !mainForm.get('passwordGroup.confirmPassword')?.valid) }" 
             />
             <span class="invalid-feedback">
               <span *ngIf="mainForm?.get('passwordGroup.confirmPassword')?.errors?.required">
@@ -203,7 +203,7 @@
       <button class="btn btn-primary spacer-horozontal-right" type="button" (click)="onClearModel($event)">Clear
         Model</button>
       <button class="btn btn-primary spacer-horozontal-right" type="submit"
-        [disabled]="!mainForm?.valid">Submit</button>
+        [disabled]="!mainForm.valid">Submit</button>
       <button class="btn btn-primary" type="button" [disabled]="!canAddMoreRow()"
         (click)="onAddUserRole($event)">Add Role</button>
     </div>
