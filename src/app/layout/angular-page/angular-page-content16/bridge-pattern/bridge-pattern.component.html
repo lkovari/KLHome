@@ -1,1 +1,13 @@
-<p>bridge-pattern works!</p>
+<div class="bridge-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Decouple an abstraction from its implementation so that the two can vary independently.</li>
+        <li *ngIf="!isEnglish">Az elvont ábrázolást leválasztja a megvalósításról, hogy a kettő egymástól módosítható legyen.</li>
+    </div>    
+    <b>Use Case</b>
+    <li>The Bridge pattern is an application of the old advice, “prefer composition over inheritance”. It becomes handy when you must subclass different times in ways that are orthogonal with one another.</li>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true" [ngModel]="pattern" resize="both" [rows]="numOfTextRows"></textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_bridge_uml.png" class="img-responsive" alt="Bridge UML">
+</div>

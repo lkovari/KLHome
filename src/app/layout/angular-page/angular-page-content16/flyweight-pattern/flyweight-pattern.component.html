@@ -1,1 +1,37 @@
-<p>flyweight-pattern works!</p>
+<div class="flyweight-pattern-layout">
+  <b>Description</b>
+  <div (click)="isEnglish = !isEnglish">
+    <li *ngIf="isEnglish">
+      Use sharing to support large numbers of fine-grained objects efficiently..
+    </li>
+    <li *ngIf="!isEnglish">
+      Megosztás révén támogatjaa nagy finomságú objektumok tömegeinek hatékony
+      felhasználását.
+    </li>
+  </div>
+  <b>Use Case</b>
+  <div>
+    <li>
+      Flyweight pattern is primarily used to reduce the number of objects
+      created and to decrease memory footprint and increase performance. This
+      type of design pattern comes under structural pattern as this pattern
+      provides ways to decrease object count thus improving the object structure
+      of application.
+    </li>
+  </div>
+  <b>Source Code</b>
+  <textarea
+    class="area-style"
+    [disabled]="true"
+    [ngModel]="pattern"
+    resize="both"
+    [rows]="numOfTextRows"
+  >
+  </textarea>
+  <b>UML</b>
+  <img
+    src="assets/images/dp_flyweight_uml.png"
+    class="img-responsive"
+    alt="Flyweight UML"
+  />
+</div>

@@ -1,1 +1,13 @@
-<p>facade-pattern works!</p>
+<div class="facade-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Provide a unified interface to a set of interfaces in subsystem. Facade defines a higher-level interface that makes the subsystem easier to use.</li>
+        <li *ngIf="!isEnglish">Egy alrendszerben felületek egy halmazához egységes felületet biztosít. A módszerrel magasabb szintű felületet határozunk meg, amelynek révén az adott alrendszerkönyebben használhatóvá válik.</li>
+    </div>    
+    <b>Use Case</b>
+    <li>Use when you want to provide a simple interface to a complex subsystem. You want to layer your subsystems into an abstraction that is easier to understand.</li>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true" [ngModel]="pattern" resize="both" [rows]="numOfTextRows"></textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_facade_uml.png" class="img-responsive" alt="Facade UML">
+</div>

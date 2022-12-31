@@ -1,1 +1,19 @@
-<p>proxy-pattern works!</p>
+<div class="proxy-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Provide a surrogate or placeholder for another object to control access to it. Controls and manage access to the object they are protecting.</li>
+        <li *ngIf="!isEnglish">Adott objektumot képviselőn vagy helyörzőn keresztül irányítunk hogy szorosabban felügyelhessük a működést. Szabályozza és kezeli az általa védett objektumhoz való hozzáférést.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>Dynamically change the class of an object. So, I am essentially using an object as a proxy to other classes.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_proxy_uml.png" class="img-responsive" alt="Proxy UML">
+</div>

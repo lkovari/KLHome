@@ -19,6 +19,7 @@ import { BridgePatternComponent } from './angular-page-content16/bridge-pattern/
 import { BuilderPatternComponent } from './angular-page-content16/builder-pattern/builder-pattern.component';
 import { ChainOfResponsibilityPatternComponent } from './angular-page-content16/chain-of-responsibility-pattern/chain-of-responsibility-pattern.component';
 import { CommandPatternComponent } from './angular-page-content16/command-pattern/command-pattern.component';
+import { CompositePatternComponent } from './angular-page-content16/composite-pattern/composite-pattern.component';
 import { DecoratorPatternComponent } from './angular-page-content16/decorator-pattern/decorator-pattern.component';
 import { FacadePatternComponent } from './angular-page-content16/facade-pattern/facade-pattern.component';
 import { FactoryPatternComponent } from './angular-page-content16/factory-pattern/factory-pattern.component';
@@ -82,7 +83,7 @@ const routes: Routes = [
       { path: 'adapter', component: AdapterPatternComponent, outlet: 'patterns' },
       { path: 'facade', component: FacadePatternComponent, outlet: 'patterns' },
       { path: 'bridge', component: BridgePatternComponent, outlet: 'patterns' },
-      { path: 'composite', component: AdapterPatternComponent, outlet: 'patterns' },
+      { path: 'composite', component: CompositePatternComponent, outlet: 'patterns' },
       { path: 'flyweight', component: FlyweightPatternComponent, outlet: 'patterns' },
       { path: 'proxy', component: ProxyPatternComponent, outlet: 'patterns' },
     
