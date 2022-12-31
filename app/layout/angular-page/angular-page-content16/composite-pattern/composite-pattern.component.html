@@ -1,0 +1,21 @@
+<div class="composite-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Compose objects into tree structures to represent part-whole hierarchies. Composite lets clients treat individual objects and compositions of objects uniformly.</li>
+        <li *ngIf="!isEnglish">Az objektumokat faszerkezetbe rendezi, hogy ábrázolhassuk a rész-egész viszonyokat. A módszer révén az önálló objektumokat és az objektumösszetételeket egységesen kezeljük.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>If the Factory method is implemented, then we don't use a new operator to instantiate the class, instead of we
+            use Factory methods. This pattern is useful when we would instantiate the class, but we don't want to decide
+            which class want to instantiate, because it depends on other parameters for example.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_composite_uml.png" class="img-responsive" alt="Composite UML">
+</div>
