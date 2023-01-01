@@ -1,15 +1,75 @@
 import { Component, OnInit } from '@angular/core';
+import { PatternBase } from '../pattern-base';
+import { TextUtils } from '../text-utils';
 
 @Component({
   selector: 'app-strategy-pattern',
   templateUrl: './strategy-pattern.component.html',
   styleUrls: ['./strategy-pattern.component.scss']
 })
-export class StrategyPatternComponent implements OnInit {
+export class StrategyPatternComponent extends PatternBase implements OnInit {
+  pattern: string;
+  numOfTextRows: number | undefined;
 
-  constructor() { }
+  constructor() {
+    super();
+  }
 
   ngOnInit(): void {
+    this.pattern = `
+    // The Strategy Pattern Concept
+
+    class ObjectContext {
+        // This is the object whose behavior will change
+    
+        request(strategy: IStrategyConstructor) {
+            // The request is handled by the class passed in
+            return new strategy()
+        }
+    }
+    
+    interface IStrategyConstructor {
+        // A Constructor for the IStrategy
+        new (): IStrategy
+    }
+    
+    interface IStrategy {
+        // A strategy Interface
+        method(): string
+    }
+    
+    class ConcreteStrategyA implements IStrategy {
+        // A Concrete Strategy Subclass
+    
+        method() {
+            return 'I am ConcreteStrategyA'
+        }
+    }
+    
+    class ConcreteStrategyB implements IStrategy {
+        // A Concrete Strategy Subclass
+    
+        method() {
+            return 'I am ConcreteStrategyB'
+        }
+    }
+    
+    class ConcreteStrategyC implements IStrategy {
+        // A Concrete Strategy Subclass
+    
+        method() {
+            return 'I am ConcreteStrategyC'
+        }
+    }
+    
+    // The Client
+    const OBJECT_CONTEXT = new ObjectContext()
+    
+    console.log(OBJECT_CONTEXT.request(ConcreteStrategyA).method())
+    console.log(OBJECT_CONTEXT.request(ConcreteStrategyB).method())
+    console.log(OBJECT_CONTEXT.request(ConcreteStrategyC).method())
+    `;
+    this.numOfTextRows = TextUtils.countTextRow(this.pattern);
   }
 
 }

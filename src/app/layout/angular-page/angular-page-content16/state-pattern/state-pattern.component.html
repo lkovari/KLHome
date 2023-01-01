@@ -1,1 +1,19 @@
-<p>state-pattern works!</p>
+<div class="state-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Allow an object to alter its behavior when its internal state changes.The object will appear to change its class.</li>
+        <li *ngIf="!isEnglish">Adott objektum számára engedélyezi, hogy belső állapotának megváltozásával megváltoztassa viselkedését is. Az objektom ekkor látszólag módosítja az osztályt.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>You have an object that needs to have different behavior depending on its current state. Use it when the number of states is enormous, and your code frequently changes depending on the state. When you have a class filled with many conditions that control or alter how the class behaves according to the current values of the class fields. How you refactor to the State pattern is that you extract conditional branches into separate state classes. By doing that, you can separate the state-specific code from the main class.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_state_uml.png" class="img-responsive" alt="State UML">
+</div>
