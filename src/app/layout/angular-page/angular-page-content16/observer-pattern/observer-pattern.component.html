@@ -1,1 +1,19 @@
-<p>observer-pattern works!</p>
+<div class="observer-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Define a one-to-many dependency between objects so that when oneobject changes state, all its dependents are notified and updatedautomatically.</li>
+        <li *ngIf="!isEnglish">Objektumok között egy-sok függőségi kapcsolatot hoz létre, így amikor az egyik objektum állapota változik, minden tőle függő objektum értesül erről és automatikusan frissül.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>The observer pattern can be used to manage the transfer of data across any layer and even internally to itself to add an abstraction. In the MVC structure, the View can be a subscriber to the Model, that in turn can also be a subscriber to the controller. It can also happen the other way around if the use case warrants.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_observer_uml.png" class="img-responsive" alt="Observer UML">
+</div>

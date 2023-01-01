@@ -1,1 +1,19 @@
-<p>command-pattern works!</p>
+<div class="command-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Encapsulate a request as an object, thereby letting you parameterizeclients with different requests, queue or log requests, and supportundoable operations.</li>
+        <li *ngIf="!isEnglish">A kérelmeket objektumba zárja aminek célja hogy az ügyfeleknek paraméterként különböző kérelmeket adjunk át, ezeket sorba állítsuk vagynaplózzuk, illetve támogassuk a műveletek visszavonását.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>Let us understand this pattern through an example. In this example, we will have a distributed system. And in this distributed system, we will have two main services. The first one is order service And the second one is inventory service.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_command_uml.png" class="img-responsive" alt="Command UML">
+</div>

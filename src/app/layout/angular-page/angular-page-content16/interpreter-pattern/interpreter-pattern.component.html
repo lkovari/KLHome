@@ -1,1 +1,19 @@
-<p>interpreter-pattern works!</p>
+<div class="interpreter-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Given a language, define a represention for its grammar along with aninterpreter that uses the representation to interpret sentences in thelanguage.</li>
+        <li *ngIf="!isEnglish">Egy adott nyelv nyelvtanát ábrázolja, illetve ehhez az ábrázoláshoz értelmezőt biztosít, amely annak alapján képes az adott nyelv mondatait megérteni.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>The Interpreter pattern is used to define a grammatical representation for a language and also provides an interpreter to deal with the grammar. The basic idea of the Interpreter pattern is to have a class for each symbol: Terminal - are the elementary symbols of the language defined by a formal grammar. NonTerminal -  also known as syntactic variables that are replaced by groups of terminal symbols according to the production rules. The NonTerminal uses a composite design pattern in general. A grammar is defined by production rules that specify which symbols may replace which other symbols. The production rules or simply called productions may be used to generate and parse strings.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_interpreter_uml.png" class="img-responsive" alt="Interpreter UML">
+</div>
