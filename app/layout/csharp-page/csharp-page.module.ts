@@ -9,6 +9,7 @@ import { CsharpPageContent2Component } from './csharp-page-content2/csharp-page-
 import { CsharpPageRoutingModule } from './csharp-page-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { PageHeaderModule } from '../../shared/modules/page-header/page-header.module';
+import { CsharpPageContent3Component } from './csharp-page-content3/csharp-page-content3.component';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { PageHeaderModule } from '../../shared/modules/page-header/page-header.m
     CsharpPageRoutingModule,
     PageHeaderModule
   ],
-  declarations: [CsharpPageTitleComponent, CsharpPageContent1Component, CsharpPageContent2Component],
+  declarations: [CsharpPageTitleComponent, CsharpPageContent1Component, CsharpPageContent2Component, CsharpPageContent3Component],
   exports: [CsharpPageTitleComponent, CsharpPageContent1Component, CsharpPageContent2Component]
 })
 export class CsharpPageModule { }

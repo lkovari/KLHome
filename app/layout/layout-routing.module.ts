@@ -41,6 +41,7 @@ import { DelphiPageContent4Component } from './delphi-page/delphi-page-content4/
 
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { AboutmeContentComponent } from './aboutme-page/aboutme-content.component';
+import { CsharpPageContent3Component } from './csharp-page/csharp-page-content3/csharp-page-content3.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,8 @@ const routes: Routes = [
 
       // {path: 'awards-page', component: AwardsContentComponent},
       { path: 'awards-page', loadChildren: () => import('./awards-page/awards-page.module').then(m => m.AwardsPageModule) },
+
+      { path: 'vuejs-page', loadChildren: () => import('./vuejs-page/vuejs-page.module').then(m => m.VuejsPageModule) },
 
       { path: 'angular-page', loadChildren: () => import('./angular-page/angular-page.module').then(m => m.AngularPageModule) },
       
@@ -99,7 +102,8 @@ const routes: Routes = [
       {path: 'csharp-page', component: CsharpPageTitleComponent,
         children: [
           {path: 'csharp-page-content1', component: CsharpPageContent1Component},
-          {path: 'csharp-page-content2', component: CsharpPageContent2Component}
+          {path: 'csharp-page-content2', component: CsharpPageContent2Component},
+          {path: 'csharp-page-content3', component: CsharpPageContent3Component}
         ]
       },
 
