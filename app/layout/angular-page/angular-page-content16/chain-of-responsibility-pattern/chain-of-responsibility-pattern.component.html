@@ -1,1 +1,19 @@
-<p>chain-of-responsibility-pattern works!</p>
+<div class="chainofresp-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Avoid coupling the sender of a request to its receiver by giving morethan one object a chance to handle the request. Chain the receivingobjects and pass the request along the chain until an objecthandles it.</li>
+        <li *ngIf="!isEnglish">Arra szolgál, hogy elkerüljük a kérelem küldőjének a fogadóhoz való kötését. Ezt úgy érhetjük el, hogy több objektumnak is jogot adunk a kérelem kezelésére. A fogadó objektumokat láncba állítjuk, amelyen a kérelem addig halad, amíg el nem ér egy objektumot, ami képes a kezelésére.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>Chain of responsibility pattern is used to achieve loose coupling in software design where a request from the client is passed to a chain of objects to process them. Later, the object in the chain will decide themselves who will be processing the request and whether the request is required to be sent to the next object in the chain or not.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_chainofresp_uml.png" class="img-responsive" alt="Chain of Responsibility UML">
+</div>
