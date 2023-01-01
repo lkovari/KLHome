@@ -11,6 +11,20 @@
       <i class="fa fa-trophy"> Awards & Certs.</i>
     </a>
     <div class="nested-menu">
+      <a routerLink="vuejs-page" class="list-group-item" (click)="addExpandClass('vuejs-page')">
+        <span>
+          <i class="fa fa-plus"></i>&nbsp;Vue.JS ~ 2022
+        </span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'vuejs-page'">
+        <ul class="submenu">
+          <li>
+            <a routerLink="/vuejs-page/vuejs-page-content0">Learning Vue.JS</a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <div class="nested-menu">
       <a id="angular-page-group" class="angular-page-group list-group-item" (click)="addExpandClass('angular-page')">
         <span>
           <i class="fa fa-plus"></i>&nbsp;Angular 2 ~ 2017</span>
@@ -179,10 +193,13 @@
       <li class="nested" [class.expand]="showMenu === 'pages7'">
         <ul class="submenu">
           <li>
-            <a routerLink="/csharp-page/csharp-page-content1">MS. Official Courses</a>
+            <a routerLink="/csharp-page/csharp-page-content3">Interview Task</a>
           </li>
           <li>
             <a routerLink="/csharp-page/csharp-page-content2">Mitsubishi cars</a>
+          </li>
+          <li>
+            <a routerLink="/csharp-page/csharp-page-content1">MS. Official Courses</a>
           </li>
         </ul>
       </li>

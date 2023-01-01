@@ -70,7 +70,7 @@ const routes: Routes = [
     {path: 'angular-page-content13', component: AngularPageContent13Component},
     {path: 'angular-page-content14', component: AngularPageContent14Component},
     {path: 'angular-page-content15', component: AngularPageContent15Component},
-    {path: 'angular-page-content16', component: AngularPageContent16Component},
+    // {path: 'angular-page-content16', component: AngularPageContent16Component},
     {path: 'angular-page-content16', component: AngularPageContent16Component,
     children: [
       { path: 'factory', component: FactoryPatternComponent, outlet: 'patterns' },

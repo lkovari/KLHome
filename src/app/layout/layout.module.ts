@@ -21,6 +21,7 @@ import { MasmPageModule } from './masm-page/masm-page.module';
 import { SharedModule } from '../shared/shared.module';
 import { AwardsPageModule } from './awards-page/awards-page.module';
 import { DialogModule } from 'primeng/dialog';
+import { VuejsPageModule } from './vuejs-page/vuejs-page.module';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { DialogModule } from 'primeng/dialog';
     DelphiPageModule,
     MasmPageModule,
     DialogModule,
-    NgbModule
+    NgbModule,
+    VuejsPageModule
    ],
   declarations: [
     LayoutComponent,
