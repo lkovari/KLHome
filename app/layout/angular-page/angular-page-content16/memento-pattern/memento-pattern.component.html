@@ -1,1 +1,19 @@
-<p>memento-pattern works!</p>
+<div class="memento-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Without violating encapsulation, capture and externalize an object'sinternal state so that the object can be restored to this state later.</li>
+        <li *ngIf="!isEnglish">Az egyégbe zárás (betokozás avagy enkapszuláció) megsértése nélkül kinyeri és rögzíti egy objektum belső állapotát, hogy az később ebbe az állapotba visszaállítható legyen.</li>
+    </div>    
+    <b>Use Case</b>
+    <div>
+        <li>The memento design pattern is clearly heavily used in any IDEs, as can be seen when you constantly use CTRL+ Z, to undo mistakes you have made either intentionally or unintentionally. You can imagine that the editor is the caretaker, while the code itself is the memento.</li>
+    </div>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true"
+        [ngModel]="pattern"
+        resize="both"
+        [rows]="numOfTextRows">
+    </textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_memento_uml.png" class="img-responsive" alt="Memento UML">
+</div>

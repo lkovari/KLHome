@@ -1,1 +1,13 @@
-<p>visitor-pattern works!</p>
+<div class="visitor-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Represent an operation to be performed on the elements of an objectstructure. Visitor lets you define a new operation without changing theclasses of the elements on which it operates.</li>
+        <li *ngIf="!isEnglish">Objektumszerkezet elemein végrehajtandó műveletet ábrázol: a Látogató minta segítségével anélkül határozhatunk meg egy új műveletet, hogy a benne részt vevő elemek osztályát meg kellene változtatnunk.</li>
+    </div>     
+    <b>Use Case</b>
+    <li>Similar operations have to be performed on objects of different types grouped in a structure (a collection or a more complex structure). There are many distinct and unrelated operations needed to be performed. Visitor pattern allows us to create a separate visitor concrete class for each type of operation and to separate this operation implementation from the objects structure. The object structure is not likely to be changed but is very probable to have new operations which have to be added. Since the pattern separates the visitor (representing operations, algorithms, behaviors) from the object structure it's very easy to add new visitors as long as the structure remains unchanged.</li>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true" [ngModel]="pattern" resize="both" [rows]="numOfTextRows"></textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_visitor_uml.png" class="img-responsive" alt="Visitor method UML">
+</div>

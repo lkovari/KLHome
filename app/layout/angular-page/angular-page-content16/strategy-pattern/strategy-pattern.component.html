@@ -1,1 +1,13 @@
-<p>strategy-pattern works!</p>
+<div class="strategy-pattern-layout">
+    <b>Description</b>
+    <div (click)="isEnglish = !isEnglish">
+        <li *ngIf="isEnglish">Define a family of algorithms, encapsulate each one, and make theminterchangeable. Strategy lets the algorithm vary independently fromclients that use it.</li>
+        <li *ngIf="!isEnglish">Algoritmus-családot határoz meg, amelyben az algoritmusokat egyenként egységbe zárjuk és egymással felcserélhetővé tesszük. E módszer révén az algoritmus a felhasználó ügyféltől függetlenül módosítható.</li>
+    </div>     
+    <b>Use Case</b>
+    <li>For instance, programs that offer different storage formats for files or various sort and search functions can use strategy design patterns. Likewise in data compression, programs are used that implement different compression algorithms based on the design pattern. This way, they can variably convert videos into a desired space-saving file format or restore compressed archive files (e.g. ZIP or RAR files) into their original state using special unpacking strategies. Another example is saving a document or an image in different file formats.</li>
+    <b>Source Code</b>
+    <textarea class="area-style" [disabled]="true" [ngModel]="pattern" resize="both" [rows]="numOfTextRows"></textarea>
+    <b>UML</b>
+    <img src="assets/images/dp_strategy_uml.png" class="img-responsive" alt="Strategy UML">
+</div>
