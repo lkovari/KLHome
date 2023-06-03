@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/models/checklist/checklist-item.model';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ChecklistComponent } from 'src/app/shared/components/checklist/checklist.component';
 import { SelectionMode } from '../../../shared/components/checklist/selection-mode.enum';
 @Component({
@@ -24,7 +24,7 @@ export class AngularPageContent11Component implements OnInit {
   selectNormal = false;
   selectionMode = SelectionMode.SINGLE;
  
-  @ViewChild('checkListFormArray', { static: true }) checklistComponent: ChecklistComponent;
+  @ViewChild('checkListFormArrayControl', { static: true }) checklistComponent: ChecklistComponent;
   MULTISELECT = SelectionMode.MULTI;
   SINGLESELECT = SelectionMode.SINGLE;
 
@@ -34,17 +34,11 @@ export class AngularPageContent11Component implements OnInit {
     this.exampleForm = this.formBuilder.group({
       selectionMode: this.formBuilder.control( { value: SelectionMode.SINGLE, disabled: false} ),
       selectNormal: this.formBuilder.control( { value: false, disabled: false } ),
+      checkList: this.formBuilder.control( null, [ Validators.required ] )
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.exampleForm.get('selectionMode')?.valueChanges.subscribe((value) => {
       this.selectionMode = value;
-      /*
-      if (this.selectionMode === this.SINGLESELECT) {
-        this.exampleForm.get('selectNormal')?.disable();  
-      } else {
-        this.exampleForm.get('selectNormal')?.enable();
-      }
-      */
       this.exampleForm.get('selectNormal')?.patchValue(false);
     });
     this.exampleForm.get('selectNormal')?.valueChanges.subscribe((value) => {
@@ -53,17 +47,10 @@ export class AngularPageContent11Component implements OnInit {
     this.exampleForm.statusChanges.subscribe(status =>{
       console.log('ExampleForm statusChanges ' + status);
     });
-    this.exampleForm.get('checkListFormArray')?.statusChanges.subscribe(status =>{
-      console.log('checkListFormArray statusChanges ' + status);
+    this.exampleForm.get('checkList')?.statusChanges.subscribe(status =>{
+      console.log('checkList component statusChanges ' + status);
+      console.log('checkList Errors ', this.exampleForm.get('checkList')?.errors);
     });
-    /*
-    this.exampleForm.valueChanges.subscribe(value =>{
-      console.log('ExampleForm valueChanges ' + JSON.stringify(value));
-    });    
-    this.exampleForm.get('checkListFormArray')?.valueChanges.subscribe(value =>{
-      console.log('CheckList valueChanges ' + JSON.stringify(value));
-    });
-    */
   }
 
   onSubmit(form: FormGroup | null) {

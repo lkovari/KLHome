@@ -12,12 +12,8 @@
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a>
                 Example of a reactive CheckListComponent, where one list item is a form (FormGroup) and where the list
-                is a FormArray. Currently manually handling the ChecklistComponent statuses I mean programmatically call
-                markAsDirty() and markAsTouched(). I will figure out how can I use SelectControlValueAccessor and
-                SelectMultipleControlValueAccessor
+                is a FormArray.
             </label>
-            <!--label><span class="text-primary">We can observe</span> in the source code of the ChecklistComponent, instead of function isChecklisItemSelected() we have used a pure pipe with the same name isChecklisItemSelected. If we would have used a function, then it would have been called many times. Instead of the function, the pure pipe is just called when the value is changed.</label>
-            <label>The usage of the pure pipe <span class="font-italic">( checklistItems | isChecklisItemSelected : checklistFormGroupItem )</span></label-->
         </div>
     </div>
     <div class="sub-topic">
@@ -26,13 +22,16 @@
                     href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/checklist">
                     <img [src]="githubLogoPath" width="16" height="16">
                 </a> app-checklist Component is </b><span class="text-warning">UNDER CONSTRUCTION!</span>
-                <p>
-                    (In the future I will implement to use this checklist component as the Yes-no questions sheet, the normal answers will pass and the component will validate the user answers based on the predefined normal values.)
-                </p>
-                <p>
-                    Current Validation rule(s): one item selection is required!
-                </p>
         </label>
+        <p>
+            (In the future I will implement to use this checklist component as the Yes-no questions sheet, the normal answers will pass and the component will validate the user answers based on the predefined normal values.)
+        </p>
+        <p>
+            Current Validation rule(s): <a class="horizontal-gap-left horizontal-gap-right"
+            href="https://github.com/lkovari/KLHome/tree/master/src/app/shared/components/checklist/checklist-validators.ts">
+            <img [src]="githubLogoPath" width="16" height="16">one item selection is required!</a>
+        </p>
+        <label class="text-danger">Known bug(s) When unselect a list item (just click on the row not on the check box) the form validation status remains VALID, but we can observe on the console the CheckListFormArray show the correct status which INVALID.</label>
         <form class="sub-topic" [formGroup]="exampleForm" (ngSubmit)="onSubmit(exampleForm)" novalidate autocomplete="off">
             <div>
                 <label>Selection mode</label>
@@ -51,12 +50,14 @@
             </div>            
             <div class="form-group row mb-2">
                 <app-checklist [checklistItems]="checklistItems"
-                    #checkListFormArray
+                    #checkListFormArrayControl
                     [selectionMode]="selectionMode"
                     [selectNormal]="selectNormal"
-                    [required]="true">
-                    <span *ngIf="exampleForm?.get('checkListFormArray')?.errors?.oneItemRequired" class="show-invalid-feedback">
-                        Minimum one row selection is required!
+                    [required]="true"
+                    formControlName="checkList"
+                    >
+                    <span *ngIf="exampleForm?.get('checkList')?.dirty && exampleForm?.get('checkList')?.errors?.invalidForm" class="show-invalid-feedback">
+                        {{ exampleForm?.get('checkList')?.errors?.invalidForm.message }}
                     </span>
                 </app-checklist>
             </div>
@@ -66,8 +67,9 @@
             <button class="btn btn-primary horizontal-gap" type="button" (click)="onUnselectAll()">Unselect All</button>
           </div>   
         <div>
+            <label class="sub-topic">Validation Status {{ exampleForm.status }} </label>
             <label class="sub-topic">Selected {{ showCheckedItems() | json }} </label>
         </div>
     </div>
-    <lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="1"></lk-form-validation-monitor-v4>
+    <!--lk-form-validation-monitor-v4 [mainFormGroup]="exampleForm" topGap="1"></lk-form-validation-monitor-v4-->
 </div>
