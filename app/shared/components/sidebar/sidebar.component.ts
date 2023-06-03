@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('04/23/2023 00:17 AM');
-  lastUpdateTooltip = 'package.json and CV. changes';
+  lastUpdate = new Date('06/3/2023 07:17 AM');
+  lastUpdateTooltip = 'Checklist component modification';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
