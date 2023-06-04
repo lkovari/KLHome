@@ -65,6 +65,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
+  // private formGroupDirective: FormGroupDirective can get parent FormGroup
   constructor(private formBuilder: FormBuilder) {}    
  
   ngOnInit(): void {
@@ -172,6 +173,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
 
   onChecklistItemClick(abstractControl: AbstractControl) {
     this.selectListItem(abstractControl);
+    this.onClick.emit(this.mainForm.controls.checkListFormArray);
   }
 
 

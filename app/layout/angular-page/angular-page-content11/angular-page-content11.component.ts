@@ -34,7 +34,7 @@ export class AngularPageContent11Component implements OnInit {
     this.exampleForm = this.formBuilder.group({
       selectionMode: this.formBuilder.control( { value: SelectionMode.SINGLE, disabled: false} ),
       selectNormal: this.formBuilder.control( { value: false, disabled: false } ),
-      checkList: this.formBuilder.control( null, [ Validators.required ] )
+      checkList: this.formBuilder.group( [ Validators.required ] )
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.exampleForm.get('selectionMode')?.valueChanges.subscribe((value) => {
@@ -72,5 +72,9 @@ export class AngularPageContent11Component implements OnInit {
 
   extractSelectionMode(control: FormControl): SelectionMode {
     return control.value;
+  }
+
+  onClick(event: any) {
+    console.log(event.value);
   }
 }
