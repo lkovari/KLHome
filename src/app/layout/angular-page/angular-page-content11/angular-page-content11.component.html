@@ -54,7 +54,7 @@
                     [selectionMode]="selectionMode"
                     [selectNormal]="selectNormal"
                     [required]="true"
-                    formControlName="checkList"
+                    formGroupName="checkList"
                     (onClick)="onClick($event)"
                     >
                     <span *ngIf="exampleForm?.get('checkList')?.dirty && exampleForm?.get('checkList')?.errors?.invalidForm" class="show-invalid-feedback">
