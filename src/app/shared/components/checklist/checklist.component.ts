@@ -172,6 +172,7 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
 
   onChecklistItemClick(abstractControl: AbstractControl) {
     this.selectListItem(abstractControl);
+    this.onClick.emit(this.mainForm.controls.checkListFormArray);
   }
 
 
