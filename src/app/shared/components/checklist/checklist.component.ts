@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, forwardRef, AfterViewInit } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
-import { FormGroup, FormBuilder, Validators, FormArray, ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR, FormGroupDirective } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
 import { SelectionMode } from './selection-mode.enum';
 import { ChecklistItem } from '../../models/checklist/checklist-item.model';
@@ -18,6 +18,7 @@ export const CHECKLIST_VALUE_ACCESSOR: any = {
 })
 export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterViewInit  {
   hoverIndex: any;
+  @Input() showErrorInside = false;
   private _values: any;
   @Input() 
   set checklistItems(v: Array<IChecklistItem>) {
@@ -61,18 +62,23 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
 
   isDisabled = false;
   mainForm: FormGroup;
+  parentForm: FormGroup;
 
   onModelChange: Function = () => { };
   onModelTouched: Function = () => { };
 
   // private formGroupDirective: FormGroupDirective can get parent FormGroup
-  constructor(private formBuilder: FormBuilder) {}    
+  constructor(private formBuilder: FormBuilder, private formGroupDirective: FormGroupDirective) {}    
  
   ngOnInit(): void {
     // define the checklist
     if (!this.mainForm) {
       this.createInternalForm();
     }
+    // get the parent form (FormGroup)
+    this.parentForm = this.formGroupDirective.control as FormGroup;
+    // replace the build checkList on the parent form with the checkListFormArray which built in this component
+    this.parentForm.setControl('checkList', this.mainForm.controls.checkListFormArray);
 
     // add items
     if (this.getCheckListFormArray().controls.length < 1) {
