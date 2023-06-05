@@ -45,10 +45,10 @@
         </div>
       </li>
       <span
-        *ngIf="getCheckListFormArray()?.errors?.invalidForm"
+        *ngIf="showErrorInside && getCheckListFormArray()?.errors?.invalidForm"
         class="show-invalid-feedback"
       >
-        {{ getCheckListFormArray()?.errors?.invalidForm.message }}
+        {{ getCheckListFormArray().errors?.invalidForm.message }}
       </span>
     </ul>
   </div>
