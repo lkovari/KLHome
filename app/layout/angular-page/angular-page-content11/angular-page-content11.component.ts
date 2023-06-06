@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChecklistItem } from 'src/app/shared/models/checklist/checklist-item.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ChecklistComponent } from 'src/app/shared/components/checklist/checklist.component';
@@ -23,8 +23,10 @@ export class AngularPageContent11Component implements OnInit {
   ];
   selectNormal = false;
   selectionMode = SelectionMode.SINGLE;
- 
-  @ViewChild('checkListFormArrayControl', { static: true }) checklistComponent: ChecklistComponent;
+  // pass the element ref into the component
+  @ViewChild('checkListRef', { read: ElementRef, static: true }) checkListReference: ElementRef; 
+  // checkListGroup for capture the component to manage selection etc.
+  @ViewChild('checkListGroup', { static: true }) checkListGroup: ChecklistComponent; 
   MULTISELECT = SelectionMode.MULTI;
   SINGLESELECT = SelectionMode.SINGLE;
 
@@ -58,15 +60,15 @@ export class AngularPageContent11Component implements OnInit {
   }
 
   showCheckedItems() {
-    return this.checklistComponent.getSelectedItems();
+    return this.checkListGroup.getSelectedItems();
   }
 
   onSelectAll() {
-    this.checklistComponent.selectAllItems();
+    this.checkListGroup.selectAllItems();
   }
 
   onUnselectAll() {
-    this.checklistComponent.unselectAllItems();
+    this.checkListGroup.unselectAllItems();
     this.selectNormal = false;
   }
 

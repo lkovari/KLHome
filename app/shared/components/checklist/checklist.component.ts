@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, forwardRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, forwardRef, AfterViewInit, ElementRef } from '@angular/core';
 import { IChecklistItem } from './../../models/checklist/checklist-item.interface';
 import { FormGroup, FormBuilder, Validators, FormArray, ControlValueAccessor, AbstractControl, NG_VALUE_ACCESSOR, FormGroupDirective } from '@angular/forms';
 import { ChecklistValidators } from './checklist-validators';
@@ -18,6 +18,7 @@ export const CHECKLIST_VALUE_ACCESSOR: any = {
 })
 export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterViewInit  {
   hoverIndex: any;
+  @Input() elementRef: ElementRef;
   @Input() showErrorInside = false;
   private _values: any;
   @Input() 
@@ -76,9 +77,12 @@ export class ChecklistComponent implements OnInit, ControlValueAccessor, AfterVi
       this.createInternalForm();
     }
     // get the parent form (FormGroup)
+
     this.parentForm = this.formGroupDirective.control as FormGroup;
+    // capture the elementRef to get formGroupName attributze to replace formgGroup wich in used by the component
+    let formGroupName = this.elementRef.nativeElement.getAttribute('formGroupName');
     // replace the build checkList on the parent form with the checkListFormArray which built in this component
-    this.parentForm.setControl('checkList', this.mainForm.controls.checkListFormArray);
+    this.parentForm.setControl(formGroupName, this.mainForm.controls.checkListFormArray);
 
     // add items
     if (this.getCheckListFormArray().controls.length < 1) {

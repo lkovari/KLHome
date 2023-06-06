@@ -49,7 +49,9 @@
             </div>            
             <div class="form-group row mb-2">
                 <app-checklist [checklistItems]="checklistItems"
-                    #checkListFormArrayControl
+                    #checkListGroup
+                    #checkListRef
+                    [elementRef]="checkListReference"
                     [selectionMode]="selectionMode"
                     [selectNormal]="selectNormal"
                     [required]="true"
