@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
   isActive = false;
   showMenu = '';
-  lastUpdate = new Date('06/6/2023 10:08 PM');
-  lastUpdateTooltip = 'Pass ElementRef of component to get binded formGroupName';
+  lastUpdate = new Date('06/8/2023 08:17 AM');
+  lastUpdateTooltip = 'Incluced Form Validation Monitor to Angular playground pagee #11';
 
   ngOnInit() {
     this.lastUpdateTooltip = this.lastUpdateTooltip + '';
