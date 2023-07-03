@@ -36,7 +36,7 @@ export class AngularPageContent11Component implements OnInit {
     this.exampleForm = this.formBuilder.group({
       selectionMode: this.formBuilder.control( { value: SelectionMode.SINGLE, disabled: false} ),
       selectNormal: this.formBuilder.control( { value: false, disabled: false } ),
-      checkList: this.formBuilder.group( [ Validators.required ] )
+      checkList: this.formBuilder.control( [ Validators.required ] )
     });
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
     this.exampleForm.get('selectionMode')?.valueChanges.subscribe((value) => {
