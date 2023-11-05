@@ -42,6 +42,7 @@ export class AngularPageContent7Component implements OnInit {
   roleTypes: Array<RoleTypeModel>;
   moduleTypes: Array<ModuleTypeModel>;
   todayDate: Date;
+  maxFormArrayItems = 5;
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -88,7 +89,7 @@ export class AngularPageContent7Component implements OnInit {
   }
 
   canAddMoreRow(): boolean {
-    return (<FormArray>this.mainForm?.get('userRoles')).controls.length < 3;
+    return (<FormArray>this.mainForm?.get('userRoles')).controls.length < this.maxFormArrayItems;
   }
 
   canAddThreeRows(): boolean {
@@ -240,7 +241,7 @@ export class AngularPageContent7Component implements OnInit {
     if (vs.indexOf('.') > -1) {
       const v_split = vs.split('.');
       const frac_s = v_split[1];
-      res = frac_s.length > fracNum; 
+      res = frac_s.length > fracNum;
     }
     return res;
   }
@@ -291,7 +292,7 @@ export class AngularPageContent7Component implements OnInit {
   isUserFieldInvalid(formControl: AbstractControl | null, field: string): boolean {
     // Not-null assertion operator
     // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
-    /* 
+    /*
      Original code before Angular 10 (ur?.get(field)!.touched || ur?.get(field)!.dirty) && !ur?.get(field)!.valid) : false);
      */
     let isInvalid = false;
