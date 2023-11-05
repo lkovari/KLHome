@@ -1,7 +1,7 @@
 import * as forms from '@angular/forms';
 import { FormArray } from '@angular/forms';
 
-export interface IDupEntry { 
+export interface IDupEntry {
     id: number;
     atrow: number;
     androw: number;
@@ -30,13 +30,13 @@ export class FormArrayCustomValidators {
 
     private static duplicationFound(duplications: IDupEntry[], item: IDupEntry): boolean {
         let revFound: IDupEntry | undefined;
-        let found = duplications.find((dupItem: IDupEntry) => {
+        const found = duplications.find((dupItem: IDupEntry) => {
             return dupItem.androw === item.androw && dupItem.atrow === item.atrow;
         });
         if (!found) {
             revFound = duplications.find((dupItem: IDupEntry) => {
                 return dupItem.androw === item.atrow && dupItem.atrow === item.androw;
-            });            
+            });
         }
         return !(found !== null && found !== undefined) && (revFound !== null && revFound !== undefined);
     }
@@ -45,10 +45,10 @@ export class FormArrayCustomValidators {
         if (c instanceof FormArray) {
             // let isDuplicatesFound = false;
             const userRoleForms = <forms.FormArray>c;
-            let ixRef = 0;
-            let rowIx = 0;
-            let duplications: { id: number, atrow: number, androw: number, atrowAsTx: string, androwAsTx: string }[] = [];
-            let dupCnt = 0;
+            let ixRef: number = 0;
+            let rowIx: number = 0;
+            const duplications: { id: number, atrow: number, androw: number, atrowAsTx: string, androwAsTx: string }[] = [];
+            let dupCnt: number = 0;
             for (ixRef; ixRef < userRoleForms.length; ixRef++) {
                 const formRef = userRoleForms.at(ixRef);
                 let ix = 0;
@@ -59,36 +59,22 @@ export class FormArrayCustomValidators {
                     const isModuleTypeEquals = formRef.get('moduleType')?.value === form.get('moduleType')?.value;
                     if ((isRoleTypeEquals && isModuleTypeEquals) && (ixRef !== ix)) {
                         rowIx = ix;
-                        // isDuplicatesFound = true;
-                        const item = { "id": dupCnt, "atrow": (ixRef + 1), "androw": (rowIx + 1), "atrowAsTx": ('' + ixRef + 1), "androwAsTx": ('' + rowIx + 1) };
+                        const item: IDupEntry = { 'id': dupCnt, 'atrow': (ixRef + 1), 'androw': (rowIx + 1), 'atrowAsTx': '' + (ixRef + 1), 'androwAsTx':  '' + (rowIx + 1) };
                         if (!FormArrayCustomValidators.duplicationFound(duplications, item)) {
                             duplications.push(item);
                             dupCnt = dupCnt + 1;
                         }
-                        // break;
                     }
                 }
-                /*
-                if (isDuplicatesFound) {
-                    break;
-                }
-                */
             }
-            /*
-            if (!isDuplicatesFound) {
-                return null;
-            }
-            */
            if (duplications.length === 0) {
                return null;
            }
-           // let retValue = { 'duplications': { values: [] } };
-           let retValue = { 'duplications': { values: Array<{ id: number, atrow: number, androw: number }>() } };
+           const retValue = { 'duplications': { values: Array<{ id: number, atrow: number, androw: number }>() } };
            retValue.duplications.values = new Array<{ id: number, atrow: number, androw: number }>();
            duplications.forEach((item: { id: number, atrow: number, androw: number }) => {
             retValue.duplications.values.push(item);
            });
-           // return { 'duplications': { value : '(at row ' + (ixRef + 1) + '. and row ' + (rowIx + 1) + '.)'} };
            return retValue;
         }
         return null;
