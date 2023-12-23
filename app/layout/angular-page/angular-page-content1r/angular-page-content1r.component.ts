@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { IUser } from '../angular-page-content1/user.interface';
 import { User } from '../angular-page-content1/user.model';
@@ -9,7 +9,7 @@ import { CustomValidators } from './custom-validators';
   templateUrl: './angular-page-content1r.component.html',
   styleUrls: ['./angular-page-content1r.component.scss']
 })
-export class AngularPageContent1rComponent implements OnInit {
+export class AngularPageContent1rComponent implements OnInit, OnDestroy {
   formValue: any;
   user: IUser;
   userNameMinLength = 5;
@@ -44,12 +44,18 @@ export class AngularPageContent1rComponent implements OnInit {
     });
     */
     // with FormBuilder
-    this.dataEntryForm.valueChanges.subscribe(
-      value => this.onValueChanged(value)
-    );
+    this.dataEntryForm.valueChanges.subscribe({  
+      next: (value: any) => this.onValueChanged(value),
+      error: (err: any) => console.log('>>>>>>>>>>>>>>>> Error during valueChanges! ' + err),
+      complete: () => console.log('>>>>>>>>>>>>>>>> valueChanges Completed!')
+    });
   }
 
-  onValueChanged(formValue) {
+  ngOnDestroy(): void {
+    console.log('Page1R OnDestroy executed!');
+  }
+
+  onValueChanged(formValue: any) {
     this.formValue = formValue;
     console.log(this.formValue);
   }
