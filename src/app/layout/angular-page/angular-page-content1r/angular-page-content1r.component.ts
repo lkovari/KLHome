@@ -25,6 +25,7 @@ export class AngularPageContent1rComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user = new User();
     this.githubLogoPath = 'assets/githubmark/GitHub-Mark-32px.png';
+    // with FormBuilder
     this.dataEntryForm = this.formBuilder.group({
       'userName': [ null, [
         Validators.required, Validators.minLength(this.userNameMinLength),
@@ -43,7 +44,6 @@ export class AngularPageContent1rComponent implements OnInit, OnDestroy {
       'phone': new FormControl(null, [Validators.required, Validators.pattern(this.usPhoneNumberPattern)])
     });
     */
-    // with FormBuilder
     this.dataEntryForm.valueChanges.subscribe({  
       next: (value: any) => this.onValueChanged(value),
       error: (err: any) => console.log('>>>>>>>>>>>>>>>> Error during valueChanges! ' + err),
