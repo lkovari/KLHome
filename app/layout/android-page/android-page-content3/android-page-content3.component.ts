@@ -7,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AndroidPageContent3Component implements OnInit {
   public imagePathArray = ['assets/images/dev-and-sen-01.jpg', 'assets/images/dev-and-sen-02.jpg', 'assets/images/dev-and-sen-03.jpg'];
+  public builtInSensorsPrivatePolicyPath: string = "assets/bigfiles/built-in-sensors-private-policy.pdf";
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
