@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TreeCalc — Expression tree calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Figtree:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #e8f0e9;
+      --paper: #f4f7f2;
+      --teal: #7ba3a8;
+      --rose: #c48b9f;
+      --ink: #1c2b24;
+      --muted: #4a6358;
+      --leaf: #a8c5b5;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--sage);
+      color: var(--ink);
+      font-family: Figtree, system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: 1.25rem 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+    }
+    nav a, .lang button {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      margin-left: 0.75rem;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .lang button[aria-pressed="true"] {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .hero {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+    h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      line-height: 1.15;
+      margin: 0 0 0.75rem;
+      font-weight: 700;
+    }
+    .lede {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+    .postfix {
+      margin: 2rem 0 1.5rem;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 1.05rem;
+      background: #fff;
+      display: inline-block;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      color: var(--ink);
+      box-shadow: 0 1px 0 rgba(28, 43, 36, 0.08);
+    }
+    .tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .row {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .node {
+      width: 3.1rem;
+      height: 3.1rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: "IBM Plex Mono", monospace;
+      font-weight: 500;
+      color: #f7fbfa;
+    }
+    .op { background: var(--teal); }
+    .leaf-a { background: var(--leaf); color: var(--ink); }
+    .leaf-b { background: var(--rose); }
+    .stem {
+      width: 2px;
+      height: 18px;
+      background: #5e8a7a;
+    }
+    .panel {
+      background: var(--paper);
+      border-radius: 1.1rem;
+      padding: 1.25rem 1.35rem;
+      margin-top: 1.1rem;
+    }
+    h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.35rem;
+      margin: 0 0 0.55rem;
+    }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 2rem 1rem 2.5rem;
+    }
+    a { color: #3d6f73; }
+    [data-lang] { display: none; }
+    html[lang="en"] [data-lang="en"],
+    html[lang="hu"] [data-lang="hu"] { display: block; }
+    html[lang="en"] span[data-lang="en"],
+    html[lang="hu"] span[data-lang="hu"] { display: inline; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">TreeCalc</div>
+    <div>
+      <nav>
+        <a href="treecalc-privacy-policy.html"><span data-lang="en">Privacy</span><span data-lang="hu">Adatvédelem</span></a>
+      </nav>
+      <span class="lang">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="hu" aria-pressed="false">HU</button>
+      </span>
+    </div>
+  </header>
+  <main class="hero">
+    <h1 data-lang="en">The number is only the last leaf.</h1>
+    <h1 data-lang="hu">A szám csak az utolsó levél.</h1>
+    <p class="lede" data-lang="en">TreeCalc is an Android calculator that turns what you type into postfix notation and an expression tree. The tree is the point — shown for demonstration, so operators stop being a black box.</p>
+    <p class="lede" data-lang="hu">A TreeCalc Android-számológép a begépelt kifejezést postfix jelöléssé és kifejezésfává alakítja. A fa a lényeg: bemutatás céljából jelenik meg, hogy a műveletek ne maradjanak fekete dobozban.</p>
+    <div class="postfix">9, 7, 6, ×, +</div>
+    <div class="tree" aria-hidden="true">
+      <div class="node op">+</div>
+      <div class="stem"></div>
+      <div class="row">
+        <div class="node leaf-a">9</div>
+        <div class="node op">×</div>
+      </div>
+      <div class="stem"></div>
+      <div class="row">
+        <div class="node leaf-a">7</div>
+        <div class="node leaf-b">6</div>
+      </div>
+    </div>
+    <section class="panel">
+      <h2 data-lang="en">What it does</h2>
+      <h2 data-lang="hu">Mit csinál</h2>
+      <p data-lang="en">Type an infix expression, press equals, then swipe to the tree. Bases 2, 8, 10 and 16 are supported. Light, dark, and auto themes follow your locale’s language automatically.</p>
+      <p data-lang="hu">Írj be egy infix kifejezést, nyomj egyenlőt, majd húzd el a képernyőt a fához. A 2-es, 8-as, 10-es és 16-os számrendszer támogatott. A világos, sötét és automatikus téma a telefon nyelvét követi a feliratokban.</p>
+    </section>
+    <section class="panel">
+      <h2 data-lang="en">Get the app</h2>
+      <h2 data-lang="hu">Az alkalmazás</h2>
+      <p data-lang="en">TreeCalc is published on Google Play by EKLSoft Trade LLC / László Kővári. Package: <code>com.lkovari.mobile.apps.treecalc</code>.</p>
+      <p data-lang="hu">A TreeCalc a Google Playen jelenik meg, kiadó: EKLSoft Trade LLC / Kővári László. Csomagnév: <code>com.lkovari.mobile.apps.treecalc</code>.</p>
+    </section>
+  </main>
+  <footer>
+    <span data-lang="en">© 2005 – 2026 László Kővári · laszlo.kovary@gmail.com</span>
+    <span data-lang="hu">© 2005 – 2026 Kővári László · laszlo.kovary@gmail.com</span>
+  </footer>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".lang button");
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        try { localStorage.setItem("treecalc-lang", lang); } catch (e) {}
+      }
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () { setLang(button.getAttribute("data-set")); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("treecalc-lang"); } catch (e) {}
+      if (saved === "hu" || saved === "en") {
+        setLang(saved);
+      } else if ((navigator.language || "").toLowerCase().indexOf("hu") === 0) {
+        setLang("hu");
+      } else {
+        setLang("en");
+      }
+    })();
+  </script>
+</body>
+</html>

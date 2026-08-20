@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TreeCalc — Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Figtree:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #e8f0e9;
+      --paper: #f4f7f2;
+      --teal: #7ba3a8;
+      --ink: #1c2b24;
+      --muted: #4a6358;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--sage);
+      color: var(--ink);
+      font-family: Figtree, system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      padding: 1.25rem 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      color: inherit;
+      text-decoration: none;
+    }
+    nav a, .lang button {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      margin-left: 0.75rem;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .lang button[aria-pressed="true"] {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    main {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+    h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 2rem;
+      margin: 0 0 0.4rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .meta code { font-family: "IBM Plex Mono", monospace; font-size: 0.85rem; }
+    .card {
+      background: var(--paper);
+      border-radius: 1.1rem;
+      padding: 1.2rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.2rem;
+      margin: 0 0 0.55rem;
+      color: #3d6f73;
+    }
+    ul { padding-left: 1.2rem; }
+    li { margin: 0.35rem 0; color: var(--muted); }
+    p { color: var(--muted); }
+    a { color: #3d6f73; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding-bottom: 2.5rem;
+    }
+    [data-lang] { display: none; }
+    html[lang="en"] [data-lang="en"],
+    html[lang="hu"] [data-lang="hu"] { display: block; }
+    html[lang="en"] span[data-lang="en"],
+    html[lang="hu"] span[data-lang="hu"] { display: inline; }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="treecalc-index.html">TreeCalc</a>
+    <div>
+      <nav>
+        <a href="treecalc-index.html"><span data-lang="en">Home</span><span data-lang="hu">Kezdőlap</span></a>
+      </nav>
+      <span class="lang">
+        <button type="button" data-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-set="hu" aria-pressed="false">HU</button>
+      </span>
+    </div>
+  </header>
+  <main>
+    <h1 data-lang="en">Privacy Policy</h1>
+    <h1 data-lang="hu">Adatvédelmi tájékoztató</h1>
+    <p class="meta" data-lang="en">App: TreeCalc (<code>com.lkovari.mobile.apps.treecalc</code>)<br />Last updated: 20 August 2026<br />Publisher: EKLSoft Trade LLC / László Kővári</p>
+    <p class="meta" data-lang="hu">Alkalmazás: TreeCalc (<code>com.lkovari.mobile.apps.treecalc</code>)<br />Utolsó frissítés: 2026. augusztus 20.<br />Kiadó: EKLSoft Trade LLC / Kővári László</p>
+
+    <section class="card">
+      <h2 data-lang="en">Summary</h2>
+      <h2 data-lang="hu">Összefoglaló</h2>
+      <p data-lang="en">TreeCalc evaluates arithmetic expressions on your device and shows postfix notation and an expression tree for demonstration. It does not require an account and does not send your calculations anywhere.</p>
+      <p data-lang="hu">A TreeCalc a készüléken értékeli ki a kifejezéseket, és bemutatás céljából megjeleníti a postfix jelölést és a kifejezésfát. Nem kér fiókot, és a számolásokat sehova nem küldi el.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Data on the device</h2>
+      <h2 data-lang="hu">Adatok a készüléken</h2>
+      <p data-lang="en">The app stores only local preferences, such as the selected light / dark / auto theme. Expression input exists in memory while you use the calculator and is not uploaded.</p>
+      <p data-lang="hu">Az alkalmazás csak helyi beállításokat tárol, például a világos / sötét / automatikus témát. A begépelt kifejezés a számolás idejére a memóriában van, és nem kerül feltöltésre.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">What we do not do</h2>
+      <h2 data-lang="hu">Amit nem csinálunk</h2>
+      <ul data-lang="en">
+        <li>No account or login</li>
+        <li>No advertising or third-party analytics SDKs</li>
+        <li>No sale or sharing of personal data</li>
+        <li>No network access required for calculation</li>
+      </ul>
+      <ul data-lang="hu">
+        <li>Nincs fiók és bejelentkezés</li>
+        <li>Nincs reklám és külső analitikai SDK</li>
+        <li>Személyes adatot nem adunk el és nem osztunk meg</li>
+        <li>A számoláshoz nincs szükség hálózatra</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Children</h2>
+      <h2 data-lang="hu">Gyermekek</h2>
+      <p data-lang="en">TreeCalc is a general educational utility and is not directed at children.</p>
+      <p data-lang="hu">A TreeCalc általános, oktató jellegű segédeszköz, és nem kifejezetten gyermekeknek készült.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Contact</h2>
+      <h2 data-lang="hu">Kapcsolat</h2>
+      <p data-lang="en">Questions: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a></p>
+      <p data-lang="hu">Kérdések: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a></p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Changes</h2>
+      <h2 data-lang="hu">Változások</h2>
+      <p data-lang="en">If data practices change, this page will be updated and the “Last updated” date will change.</p>
+      <p data-lang="hu">Ha az adatkezelés változik, ezt az oldalt frissítjük, és az „Utolsó frissítés” dátuma megváltozik.</p>
+    </section>
+  </main>
+  <footer>
+    <span data-lang="en">© 2005 – 2026 László Kővári</span>
+    <span data-lang="hu">© 2005 – 2026 Kővári László</span>
+  </footer>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".lang button");
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        try { localStorage.setItem("treecalc-lang", lang); } catch (e) {}
+      }
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () { setLang(button.getAttribute("data-set")); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("treecalc-lang"); } catch (e) {}
+      if (saved === "hu" || saved === "en") {
+        setLang(saved);
+      } else if ((navigator.language || "").toLowerCase().indexOf("hu") === 0) {
+        setLang("hu");
+      } else {
+        setLang("en");
+      }
+    })();
+  </script>
+</body>
+</html>
