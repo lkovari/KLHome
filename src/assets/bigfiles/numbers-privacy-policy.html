@@ -63,6 +63,12 @@
       font-weight: 700;
       font-size: 1.28rem;
     }
+    .lang {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      flex-shrink: 0;
+    }
     .lang button {
       background: transparent;
       border: 0;
@@ -160,6 +166,7 @@
     html[lang="hu"] [data-lang="hu"] { display: block; }
     html[lang="en"] span[data-lang="en"],
     html[lang="hu"] span[data-lang="hu"] { display: inline; }
+    [hidden] { display: none !important; }
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; }
     }
@@ -278,6 +285,9 @@
         document.documentElement.lang = lang;
         buttons.forEach(function (button) {
           button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        document.querySelectorAll("[data-lang]").forEach(function (el) {
+          el.hidden = el.getAttribute("data-lang") !== lang;
         });
         try { localStorage.setItem("numbers-lang", lang); } catch (e) {}
       }
