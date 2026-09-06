@@ -18,7 +18,8 @@ export class PoliciesPageComponent {
     { id: 'mnb', name: 'Mnb', path: 'assets/bigfiles/mnb-privacy-policy.html' },
     { id: 'treecalc', name: 'TreeCalc', path: 'assets/bigfiles/treecalc-privacy-policy.html' },
     { id: 'gtl', name: 'GTL', path: 'assets/bigfiles/gtl-privacy-policy.html' },
-    { id: 'numbers', name: 'Numbers', path: 'assets/bigfiles/numbers-privacy-policy.html' }
+    { id: 'numbers', name: 'Numbers', path: 'assets/bigfiles/numbers-privacy-policy.html' },
+    { id: 'trafficsignals', name: 'Traffic Signals', path: 'assets/bigfiles/trafficsignals-privacy-policy.html' }
   ];
   public selectedId: string;
   public selectedName: string;

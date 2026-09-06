@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hungarian Traffic Signals — Privacy Policy</title>
+  <style>
+    :root {
+      --asphalt: #1B1F24;
+      --paper: #F3F0E8;
+      --ink: #1B1F24;
+      --muted: #5C6370;
+      --red: #C8102E;
+      --blue: #0050A0;
+      --yellow: #F5C400;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 1.35rem 1.35rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: inherit;
+      text-decoration: none;
+    }
+    .brand-mark {
+      width: 2.2rem;
+      height: 2.2rem;
+      background: var(--yellow);
+      clip-path: polygon(50% 8%, 96% 92%, 4% 92%);
+    }
+    .brand-name {
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+    .lang {
+      display: flex;
+      gap: 0.15rem;
+    }
+    .lang button {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+    }
+    .lang button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--blue);
+      font-weight: 600;
+    }
+    main {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.35rem 2.5rem;
+    }
+    .stripe {
+      height: 8px;
+      background: var(--yellow);
+      margin: 0 0 1.2rem;
+    }
+    h1 {
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      margin: 0 0 0.4rem;
+    }
+    .meta {
+      color: var(--muted);
+      margin: 0 0 1.4rem;
+      font-size: 0.95rem;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd6c8;
+      border-radius: 0.75rem;
+      padding: 1.1rem 1.2rem;
+      margin-bottom: 0.9rem;
+    }
+    h2 {
+      font-size: 1.12rem;
+      margin: 0 0 0.5rem;
+      color: var(--blue);
+    }
+    p, li { color: var(--muted); }
+    p { margin: 0 0 0.65rem; }
+    p:last-child, ul:last-child { margin-bottom: 0; }
+    ul { margin: 0; padding-left: 1.15rem; }
+    li { margin: 0.32rem 0; }
+    a { color: var(--blue); }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 0 1.35rem 2.4rem;
+    }
+    [data-lang] { display: none; }
+    html[lang="en"] [data-lang="en"],
+    html[lang="hu"] [data-lang="hu"] { display: block; }
+    html[lang="en"] span[data-lang="en"],
+    html[lang="hu"] span[data-lang="hu"] { display: inline; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">
+        <span data-lang="en">Hungarian Traffic Signals</span>
+        <span data-lang="hu">Magyar Közlekedési Jelzések</span>
+      </span>
+    </span>
+    <span class="lang">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="hu" aria-pressed="false">HU</button>
+    </span>
+  </header>
+  <main>
+    <div class="stripe" aria-hidden="true"></div>
+    <h1 data-lang="en">Privacy Policy</h1>
+    <h1 data-lang="hu">Adatvédelmi tájékoztató</h1>
+    <p class="meta" data-lang="en">App: Hungarian Traffic Signals (<code>com.lkovari.mobile.apps.trafficsignals</code>)<br />Last updated: 6 September 2026<br />Publisher: László Kővári</p>
+    <p class="meta" data-lang="hu">Alkalmazás: Magyar Közlekedési Jelzések (<code>com.lkovari.mobile.apps.trafficsignals</code>)<br />Utolsó frissítés: 2026. szeptember 6.<br />Kiadó: Kővári László</p>
+
+    <section class="card">
+      <h2 data-lang="en">Summary</h2>
+      <h2 data-lang="hu">Összefoglaló</h2>
+      <p data-lang="en">This app is an offline catalog of Hungarian KRESZ traffic signs. It does not require an account. It does not collect personal data, does not use advertising or analytics SDKs, and does not send sign usage or device identifiers to our servers.</p>
+      <p data-lang="hu">Ez az alkalmazás a magyar KRESZ táblák offline katalógusa. Nincs fiók. Nem gyűjt személyes adatot, nem használ reklám- vagy analitikai SDK-t, és nem küld táblahasználatot vagy eszközazonosítót a szerverünkre.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Data on the device</h2>
+      <h2 data-lang="hu">Adatok a készüléken</h2>
+      <p data-lang="en">A single local preference stores whether you accepted the first-run license. Sign images and descriptions are bundled in the app. Android backup of app data is turned off in the manifest. No location, contacts, photos, or sensor data are read.</p>
+      <p data-lang="hu">Egyetlen helyi beállítás tárolja, hogy elfogadta-e a belépéskori licencet. A táblaképek és leírások az alkalmazásban vannak. Az alkalmazásadat Google-fiókos biztonsági mentése a manifestben ki van kapcsolva. Helyszínt, névjegyeket, fényképeket vagy szenzoradatot nem olvasunk.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Permissions and network</h2>
+      <h2 data-lang="hu">Engedélyek és hálózat</h2>
+      <p data-lang="en">The app declares no dangerous permissions. Browsing signs works offline. If you tap a link on the About screen (original Bitbucket source or this policy), Android opens it in your browser. That host then sees a normal web request (for example your IP address).</p>
+      <p data-lang="hu">Az alkalmazás nem kér veszélyes engedélyeket. A táblák böngészése offline működik. Ha a Névjegyen egy hivatkozásra koppint (eredeti Bitbucket-forrás vagy ez a tájékoztató), az Android a böngészőben nyitja meg. A fogadó oldal egy szokásos webes kérést lát (például IP-címet).</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">What we do not do</h2>
+      <h2 data-lang="hu">Amit nem csinálunk</h2>
+      <ul data-lang="en">
+        <li>No account, login, or registration</li>
+        <li>No ads or third-party analytics</li>
+        <li>No sale or sharing of personal data</li>
+        <li>No upload of catalog use to our servers</li>
+      </ul>
+      <ul data-lang="hu">
+        <li>Nincs fiók, bejelentkezés vagy regisztráció</li>
+        <li>Nincs reklám és külső analitika</li>
+        <li>Személyes adatot nem adunk el és nem osztunk meg</li>
+        <li>A katalógushasználatot nem töltjük fel a szerverünkre</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Children</h2>
+      <h2 data-lang="hu">Gyermekek</h2>
+      <p data-lang="en">The app is a general educational catalog of traffic signs and is not directed at children.</p>
+      <p data-lang="hu">Az alkalmazás általános oktató jellegű KRESZ-katalógus, és nem kifejezetten gyermekeknek készült.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Contact</h2>
+      <h2 data-lang="hu">Kapcsolat</h2>
+      <p data-lang="en">Questions: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a></p>
+      <p data-lang="hu">Kérdések: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a></p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Changes</h2>
+      <h2 data-lang="hu">Változások</h2>
+      <p data-lang="en">If data practices change, this page will be updated and the “Last updated” date will change.</p>
+      <p data-lang="hu">Ha az adatkezelés változik, ezt az oldalt frissítjük, és az „Utolsó frissítés” dátuma megváltozik.</p>
+    </section>
+  </main>
+  <footer>
+    <span data-lang="en">Copyright © 2016 - 2026 by László Kővári</span>
+    <span data-lang="hu">Copyright © 2016 - 2026 Kővári László</span>
+  </footer>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".lang button");
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        document.querySelectorAll("[data-lang]").forEach(function (el) {
+          el.hidden = el.getAttribute("data-lang") !== lang;
+        });
+        try { localStorage.setItem("trafficsignals-lang", lang); } catch (e) {}
+      }
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () { setLang(button.getAttribute("data-set")); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("trafficsignals-lang"); } catch (e) {}
+      if (saved === "hu" || saved === "en") {
+        setLang(saved);
+      } else if ((navigator.language || "").toLowerCase().indexOf("hu") === 0) {
+        setLang("hu");
+      } else {
+        setLang("en");
+      }
+    })();
+  </script>
+</body>
+</html>
