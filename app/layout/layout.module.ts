@@ -22,6 +22,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AwardsPageModule } from './awards-page/awards-page.module';
 import { DialogModule } from 'primeng/dialog';
 import { VuejsPageModule } from './vuejs-page/vuejs-page.module';
+import { PoliciesPageModule } from './policies-page/policies-page.module';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { VuejsPageModule } from './vuejs-page/vuejs-page.module';
     JavascriptPageModule,
     IosPageModule,
     AndroidPageModule,
+    PoliciesPageModule,
     J2eePageModule,
     J2sePageModule,
     CsharpPageModule,

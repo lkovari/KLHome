@@ -19,6 +19,9 @@ import { AndroidPageContent2Component } from './android-page/android-page-conten
 import { AndroidPageContent3Component } from './android-page/android-page-content3/android-page-content3.component';
 import { AndroidPageContent4Component } from './android-page/android-page-content4/android-page-content4.component';
 import { AndroidPageContent5Component } from './android-page/android-page-content5/android-page-content5.component';
+import { AndroidPageContent6Component } from './android-page/android-page-content6/android-page-content6.component';
+import { AndroidPageContent7Component } from './android-page/android-page-content7/android-page-content7.component';
+import { PoliciesPageComponent } from './policies-page/policies-page.component';
 
 import { J2eePageTitleComponent } from './j2ee-page/j2ee-page-title.component';
 import { J2eePageContent1Component } from './j2ee-page/j2ee-page-content1/j2ee-page-content1.component';
@@ -80,9 +83,13 @@ const routes: Routes = [
           { path: 'android-page-content2', component: AndroidPageContent2Component},
           { path: 'android-page-content3', component: AndroidPageContent3Component},
           { path: 'android-page-content4', component: AndroidPageContent4Component},
-          { path: 'android-page-content5', component: AndroidPageContent5Component}
+          { path: 'android-page-content5', component: AndroidPageContent5Component},
+          { path: 'android-page-content6', component: AndroidPageContent6Component},
+          { path: 'android-page-content7', component: AndroidPageContent7Component}
         ]
       },
+
+      { path: 'policies-page', component: PoliciesPageComponent},
 
       {path: 'j2ee-page', component: J2eePageTitleComponent,
         children: [

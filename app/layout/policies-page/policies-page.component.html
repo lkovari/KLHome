@@ -1,0 +1,26 @@
+<div class="policies-page">
+  <app-page-header pageTitle="Policies" pageSubtitle="" startTime="" endTime=""></app-page-header>
+  <fieldset class="policy-picker">
+    <legend class="policy-picker-title">App privacy policy</legend>
+    <div class="policy-picker-options" role="radiogroup" aria-label="App privacy policy">
+      <label
+        *ngFor="let policy of policies"
+        class="policy-option">
+        <input
+          type="radio"
+          name="policyApp"
+          [value]="policy.id"
+          [checked]="selectedId === policy.id"
+          (change)="onSelect(policy.id)">
+        <span>{{ policy.name }}</span>
+      </label>
+    </div>
+  </fieldset>
+  <div class="policy-frame-wrap">
+    <iframe
+      class="policy-frame"
+      [src]="selectedSrc"
+      [title]="selectedName + ' privacy policy'"></iframe>
+  </div>
+</div>
+

@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Privacy Policy – built-in sensors</title>
+  <title>MNB — Privacy Policy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --wash: #E7EEF2;
-      --paper: #F7FAFC;
-      --accent: #2F6F8F;
-      --accent-deep: #1E4F68;
-      --chip: #B9D0DC;
-      --ink: #12232C;
-      --muted: #4A6270;
+      --wash: #E8EEF2;
+      --paper: #F6F8F4;
+      --accent: #0B3D5C;
+      --accent-deep: #082C43;
+      --chip: #B7C9D4;
+      --ink: #102027;
+      --muted: #4A5C63;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; }
@@ -54,7 +54,7 @@
       place-items: center;
       font-family: Fraunces, Georgia, serif;
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 0.78rem;
     }
     .brand-name {
       font-family: Fraunces, Georgia, serif;
@@ -104,7 +104,7 @@
       border-radius: 1.15rem;
       padding: 1.15rem 1.25rem 1.2rem;
       margin-bottom: 0.9rem;
-      box-shadow: 0 10px 28px rgba(30, 79, 104, 0.08);
+      box-shadow: 0 10px 28px rgba(8, 44, 67, 0.08);
     }
     h2 {
       font-family: Fraunces, Georgia, serif;
@@ -138,8 +138,8 @@
 <body>
   <header>
     <span class="brand">
-      <span class="brand-mark">S</span>
-      <span class="brand-name">Sensors</span>
+      <span class="brand-mark">MNB</span>
+      <span class="brand-name">MNB</span>
     </span>
     <span class="lang">
       <button type="button" data-set="en" aria-pressed="true">EN</button>
@@ -149,79 +149,66 @@
   <main>
     <h1 data-lang="en">Privacy Policy</h1>
     <h1 data-lang="hu">Adatvédelmi tájékoztató</h1>
-    <p class="meta" data-lang="en">App: built-in sensors (<code>com.lkovari.mobile.apps.sensors</code>)<br />Last updated: 27 July 2026<br />Publisher: EKLSoft Trade LLC / László Kőváry</p>
-    <p class="meta" data-lang="hu">Alkalmazás: built-in sensors (<code>com.lkovari.mobile.apps.sensors</code>)<br />Utolsó frissítés: 2026. július 27.<br />Kiadó: EKLSoft Trade LLC / Kővári László</p>
+    <p class="meta" data-lang="en">App: MNB Daily Exchange Rates (<code>com.lkovari.mobile.apps.mnb</code>)<br />Last updated: 9 August 2026<br />Publisher: László Kővári</p>
+    <p class="meta" data-lang="hu">Alkalmazás: MNB napi árfolyamok (<code>com.lkovari.mobile.apps.mnb</code>)<br />Utolsó frissítés: 2026. augusztus 9.<br />Kiadó: Kővári László</p>
 
     <section class="card">
-      <h2 data-lang="en">Summary</h2>
-      <h2 data-lang="hu">Összefoglaló</h2>
-      <p data-lang="en">This app lists built-in device sensors and shows live readings on the screen. It does not send sensor data to a remote server, and it does not use analytics or advertising SDKs.</p>
-      <p data-lang="hu">Ez az alkalmazás a készülék beépített szenzorait listázza, és élő értékeket mutat a képernyőn. A szenzoradatokat nem küldi távoli szerverre, és nem használ analitikai vagy hirdetési SDK-kat.</p>
+      <h2 data-lang="en">About the app</h2>
+      <h2 data-lang="hu">Az alkalmazásról</h2>
+      <p data-lang="en"><strong>MNB Daily Exchange Rates</strong> (package <code>com.lkovari.mobile.apps.mnb</code>) is an Android app that displays the official daily foreign-exchange rates published by the National Bank of Hungary (MNB). Developer: László Kővári. This app is not an official MNB product.</p>
+      <p data-lang="hu">Az <strong>MNB napi árfolyamok</strong> (csomagnév: <code>com.lkovari.mobile.apps.mnb</code>) Android alkalmazás a Magyar Nemzeti Bank (MNB) által közzétett hivatalos napi devizaárfolyamokat jeleníti meg. Fejlesztő: László Kővári. Az alkalmazás nem hivatalos MNB-termék.</p>
     </section>
 
     <section class="card">
-      <h2 data-lang="en">Data we access on the device</h2>
-      <h2 data-lang="hu">Adatok a készüléken</h2>
+      <h2 data-lang="en">What data do we process?</h2>
+      <h2 data-lang="hu">Milyen adatokat kezelünk?</h2>
+      <p data-lang="en"><strong>We do not collect, store on a server, or share personal data with third parties.</strong></p>
+      <p data-lang="hu"><strong>Személyes adatot nem gyűjtünk, nem tárolunk szerveren, és nem osztunk meg harmadik féllel.</strong></p>
       <ul data-lang="en">
-        <li><strong>Body sensors</strong> (permission <code>BODY_SENSORS</code>) — for example heart-rate sensors, when present. Values are shown on screen only.</li>
-        <li><strong>Activity recognition</strong> (permission <code>ACTIVITY_RECOGNITION</code>) — for step and motion-related sensors, when present. Values are shown on screen only.</li>
+        <li>No accounts, sign-in, or registration.</li>
+        <li>No ads, analytics, crash reporting, or tracking SDKs.</li>
+        <li>The only network request is to the MNB public rates service to download exchange rates.</li>
+        <li>Continent filter preferences are stored only on the device (SharedPreferences) and are never uploaded.</li>
       </ul>
       <ul data-lang="hu">
-        <li><strong>Testérzékelők</strong> (engedély: <code>BODY_SENSORS</code>) — például pulzusérzékelők, ha vannak. Az értékek csak a képernyőn jelennek meg.</li>
-        <li><strong>Tevékenységfelismerés</strong> (engedély: <code>ACTIVITY_RECOGNITION</code>) — lépés- és mozgásérzékelőkhöz, ha vannak. Az értékek csak a képernyőn jelennek meg.</li>
+        <li>Nincs felhasználói fiók, bejelentkezés vagy regisztráció.</li>
+        <li>Nincs reklám, analitika, crash-riport vagy nyomkövető SDK.</li>
+        <li>Az egyetlen hálózati kérés az MNB nyilvános árfolyam-szolgáltatásának elérése az árfolyamok letöltéséhez.</li>
+        <li>A földrész szerinti szűrési beállítás csak a készüléken, helyben (SharedPreferences) marad, és nem kerül elküldésre.</li>
       </ul>
-      <p data-lang="en">These permissions are requested at runtime. Denying them only limits related sensors; the rest of the app remains usable.</p>
-      <p data-lang="hu">Ezeket az engedélyeket futásidőben kérjük. Az elutasítás csak a kapcsolódó szenzorokat korlátozza; a többi funkció használható marad.</p>
     </section>
 
     <section class="card">
-      <h2 data-lang="en">Local exports</h2>
-      <h2 data-lang="hu">Helyi export</h2>
-      <p data-lang="en">If you export sensor information, files are written to app-specific storage under <code>Android/data/com.lkovari.mobile.apps.sensors/files/exports/</code>. Exports stay on your device unless you copy or share them yourself.</p>
-      <p data-lang="hu">Ha szenzorinformációt exportálsz, a fájlok az alkalmazás saját tárhelyére kerülnek: <code>Android/data/com.lkovari.mobile.apps.sensors/files/exports/</code>. Az exportok a készüléken maradnak, hacsak te magad nem másolod vagy osztod meg őket.</p>
-    </section>
-
-    <section class="card">
-      <h2 data-lang="en">What we do not do</h2>
-      <h2 data-lang="hu">Amit nem csinálunk</h2>
-      <ul data-lang="en">
-        <li>No account or login</li>
-        <li>No transmission of health, activity, or other sensor data to our servers</li>
-        <li>No sale or sharing of personal data with third parties</li>
-        <li>No ads, no third-party analytics in the app</li>
-      </ul>
-      <ul data-lang="hu">
-        <li>Nincs fiók és bejelentkezés</li>
-        <li>Egészségügyi, tevékenység- vagy egyéb szenzoradatot nem küldünk a szerverünkre</li>
-        <li>Személyes adatot nem adunk el és nem osztunk meg harmadik féllel</li>
-        <li>Nincs reklám és külső analitika az appban</li>
-      </ul>
+      <h2 data-lang="en">Network access</h2>
+      <h2 data-lang="hu">Hálózati kapcsolat</h2>
+      <p data-lang="en">An internet connection is required to fetch rates. Requests go to the <code>mnb.hu</code> domain. The MNB service is currently available over HTTP; the app does not allow cleartext traffic to other domains.</p>
+      <p data-lang="hu">Az árfolyamok lekéréséhez internetkapcsolat szükséges. A kérés az <code>mnb.hu</code> domain felé megy. Az MNB szolgáltatás jelenleg HTTP-n érhető el; az alkalmazás más domainek felé nem enged cleartext forgalmat.</p>
     </section>
 
     <section class="card">
       <h2 data-lang="en">Children</h2>
       <h2 data-lang="hu">Gyermekek</h2>
-      <p data-lang="en">The app is a general utility and is not directed at children.</p>
-      <p data-lang="hu">Az alkalmazás általános segédeszköz, és nem kifejezetten gyermekeknek készült.</p>
+      <p data-lang="en">The app is not directed at children and does not knowingly collect data from users under 13.</p>
+      <p data-lang="hu">Az alkalmazás nem gyermekeknek készült, és nem gyűjt szándékosan 13 év alatti felhasználóktól adatot.</p>
     </section>
 
     <section class="card">
       <h2 data-lang="en">Contact</h2>
       <h2 data-lang="hu">Kapcsolat</h2>
-      <p data-lang="en">For privacy questions about this app, contact the publisher via the Google Play store listing contact details for <strong>built-in sensors</strong>.</p>
-      <p data-lang="hu">Adatvédelmi kérdés esetén a kiadót a Google Play-listázás kapcsolati adatain keresztül keresd a <strong>built-in sensors</strong> alkalmazáshoz.</p>
+      <p data-lang="en">Questions: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a></p>
+      <p data-lang="hu">Kérdés esetén: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a></p>
     </section>
 
     <section class="card">
       <h2 data-lang="en">Changes</h2>
       <h2 data-lang="hu">Változások</h2>
-      <p data-lang="en">We may update this policy when the app’s data practices change. The “Last updated” date at the top will change accordingly.</p>
-      <p data-lang="hu">Ha az adatkezelés változik, ezt a tájékoztatót frissítjük, és az „Utolsó frissítés” dátuma megváltozik.</p>
+      <p data-lang="en">If data practices change, this page will be updated and the “Last updated” date will change.</p>
+      <p data-lang="hu">Ha az adatkezelés változik, ezt az oldalt frissítjük, és az „Utolsó frissítés” dátuma megváltozik.</p>
     </section>
   </main>
   <footer>
-    <span data-lang="en">© 2010 – 2026 László Kővári</span>
-    <span data-lang="hu">© 2010 – 2026 Kővári László</span>
+    <span data-lang="en">© László Kővári</span>
+    <span data-lang="hu">© Kővári László</span>
   </footer>
   <script>
     (function () {
@@ -234,13 +221,13 @@
         document.querySelectorAll("[data-lang]").forEach(function (el) {
           el.hidden = el.getAttribute("data-lang") !== lang;
         });
-        try { localStorage.setItem("sensors-lang", lang); } catch (e) {}
+        try { localStorage.setItem("mnb-lang", lang); } catch (e) {}
       }
       buttons.forEach(function (button) {
         button.addEventListener("click", function () { setLang(button.getAttribute("data-set")); });
       });
       var saved = null;
-      try { saved = localStorage.getItem("sensors-lang"); } catch (e) {}
+      try { saved = localStorage.getItem("mnb-lang"); } catch (e) {}
       if (saved === "hu" || saved === "en") {
         setLang(saved);
       } else if ((navigator.language || "").toLowerCase().indexOf("hu") === 0) {

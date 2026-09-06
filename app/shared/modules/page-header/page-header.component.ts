@@ -18,6 +18,10 @@ export class PageHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if (!this.startTime) {
+      this.duration = '';
+      return;
+    }
     this.startDate = new Date(this.startTime);
     this.endDate = this.endTime ? new Date(this.endTime) : new Date();
     this.duration = this.dateDiff(this.startDate, this.endDate);
