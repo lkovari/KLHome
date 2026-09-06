@@ -10,15 +10,21 @@
   <style>
     :root {
       --sage: #e8f0e9;
+      --wash: #D8E4D4;
       --paper: #f4f7f2;
       --teal: #7ba3a8;
+      --chip: #B7D4CF;
       --ink: #1c2b24;
       --muted: #4a6358;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; }
     body {
-      background: var(--sage);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% -8%, #ffffff 0 18%, transparent 42%),
+        radial-gradient(circle at 108% 8%, var(--chip) 0 12%, transparent 38%),
+        var(--wash);
       color: var(--ink);
       font-family: Figtree, system-ui, sans-serif;
       line-height: 1.55;
@@ -36,18 +42,30 @@
       color: inherit;
       text-decoration: none;
     }
-    nav a, .lang button {
+    nav a {
       color: var(--muted);
       text-decoration: none;
       font-size: 0.92rem;
-      margin-left: 0.75rem;
-      background: none;
+      margin-right: 0.75rem;
+    }
+    .lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .lang button {
+      background: transparent;
       border: 0;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.92rem;
       cursor: pointer;
-      font-family: inherit;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
     }
     .lang button[aria-pressed="true"] {
-      color: var(--ink);
+      color: #fff;
+      background: #3d6f73;
       font-weight: 600;
     }
     main {
@@ -93,6 +111,7 @@
     html[lang="hu"] [data-lang="hu"] { display: block; }
     html[lang="en"] span[data-lang="en"],
     html[lang="hu"] span[data-lang="hu"] { display: inline; }
+    [hidden] { display: none !important; }
   </style>
 </head>
 <body>
@@ -177,6 +196,9 @@
         document.documentElement.lang = lang;
         buttons.forEach(function (button) {
           button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        document.querySelectorAll("[data-lang]").forEach(function (el) {
+          el.hidden = el.getAttribute("data-lang") !== lang;
         });
         try { localStorage.setItem("treecalc-lang", lang); } catch (e) {}
       }

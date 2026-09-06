@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy – built-in sensors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --wash: #E7EEF2;
+      --paper: #F7FAFC;
+      --accent: #2F6F8F;
+      --accent-deep: #1E4F68;
+      --chip: #B9D0DC;
+      --ink: #12232C;
+      --muted: #4A6270;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% -8%, #ffffff 0 18%, transparent 42%),
+        radial-gradient(circle at 108% 8%, var(--chip) 0 12%, transparent 38%),
+        var(--wash);
+      color: var(--ink);
+      font-family: Outfit, system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    header {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 1.35rem 1.35rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      color: inherit;
+    }
+    .brand-mark {
+      width: 2.15rem;
+      height: 2.15rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .brand-name {
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 700;
+      font-size: 1.28rem;
+    }
+    .lang {
+      display: flex;
+      align-items: center;
+      gap: 0.15rem;
+      flex-shrink: 0;
+    }
+    .lang button {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.92rem;
+      cursor: pointer;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+    }
+    .lang button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--accent);
+      font-weight: 600;
+    }
+    main {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: 1.5rem 1.35rem 2.5rem;
+    }
+    h1 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .meta {
+      color: var(--muted);
+      margin: 0 0 1.4rem;
+      font-size: 0.95rem;
+    }
+    .meta code { font-size: 0.86rem; }
+    .card {
+      background: var(--paper);
+      border-radius: 1.15rem;
+      padding: 1.15rem 1.25rem 1.2rem;
+      margin-bottom: 0.9rem;
+      box-shadow: 0 10px 28px rgba(30, 79, 104, 0.08);
+    }
+    h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.18rem;
+      margin: 0 0 0.5rem;
+      color: var(--accent-deep);
+    }
+    p, li { color: var(--muted); }
+    p { margin: 0 0 0.65rem; }
+    p:last-child, ul:last-child { margin-bottom: 0; }
+    ul { margin: 0; padding-left: 1.15rem; }
+    li { margin: 0.32rem 0; }
+    a { color: var(--accent-deep); }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 0 1.35rem 2.4rem;
+    }
+    [data-lang] { display: none; }
+    html[lang="en"] [data-lang="en"],
+    html[lang="hu"] [data-lang="hu"] { display: block; }
+    html[lang="en"] span[data-lang="en"],
+    html[lang="hu"] span[data-lang="hu"] { display: inline; }
+    [hidden] { display: none !important; }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="brand">
+      <span class="brand-mark">S</span>
+      <span class="brand-name">Sensors</span>
+    </span>
+    <span class="lang">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="hu" aria-pressed="false">HU</button>
+    </span>
+  </header>
+  <main>
+    <h1 data-lang="en">Privacy Policy</h1>
+    <h1 data-lang="hu">Adatvédelmi tájékoztató</h1>
+    <p class="meta" data-lang="en">App: built-in sensors (<code>com.lkovari.mobile.apps.sensors</code>)<br />Last updated: 27 July 2026<br />Publisher: EKLSoft Trade LLC / László Kőváry</p>
+    <p class="meta" data-lang="hu">Alkalmazás: built-in sensors (<code>com.lkovari.mobile.apps.sensors</code>)<br />Utolsó frissítés: 2026. július 27.<br />Kiadó: EKLSoft Trade LLC / Kővári László</p>
+
+    <section class="card">
+      <h2 data-lang="en">Summary</h2>
+      <h2 data-lang="hu">Összefoglaló</h2>
+      <p data-lang="en">This app lists built-in device sensors and shows live readings on the screen. It does not send sensor data to a remote server, and it does not use analytics or advertising SDKs.</p>
+      <p data-lang="hu">Ez az alkalmazás a készülék beépített szenzorait listázza, és élő értékeket mutat a képernyőn. A szenzoradatokat nem küldi távoli szerverre, és nem használ analitikai vagy hirdetési SDK-kat.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Data we access on the device</h2>
+      <h2 data-lang="hu">Adatok a készüléken</h2>
+      <ul data-lang="en">
+        <li><strong>Body sensors</strong> (permission <code>BODY_SENSORS</code>) — for example heart-rate sensors, when present. Values are shown on screen only.</li>
+        <li><strong>Activity recognition</strong> (permission <code>ACTIVITY_RECOGNITION</code>) — for step and motion-related sensors, when present. Values are shown on screen only.</li>
+      </ul>
+      <ul data-lang="hu">
+        <li><strong>Testérzékelők</strong> (engedély: <code>BODY_SENSORS</code>) — például pulzusérzékelők, ha vannak. Az értékek csak a képernyőn jelennek meg.</li>
+        <li><strong>Tevékenységfelismerés</strong> (engedély: <code>ACTIVITY_RECOGNITION</code>) — lépés- és mozgásérzékelőkhöz, ha vannak. Az értékek csak a képernyőn jelennek meg.</li>
+      </ul>
+      <p data-lang="en">These permissions are requested at runtime. Denying them only limits related sensors; the rest of the app remains usable.</p>
+      <p data-lang="hu">Ezeket az engedélyeket futásidőben kérjük. Az elutasítás csak a kapcsolódó szenzorokat korlátozza; a többi funkció használható marad.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Local exports</h2>
+      <h2 data-lang="hu">Helyi export</h2>
+      <p data-lang="en">If you export sensor information, files are written to app-specific storage under <code>Android/data/com.lkovari.mobile.apps.sensors/files/exports/</code>. Exports stay on your device unless you copy or share them yourself.</p>
+      <p data-lang="hu">Ha szenzorinformációt exportálsz, a fájlok az alkalmazás saját tárhelyére kerülnek: <code>Android/data/com.lkovari.mobile.apps.sensors/files/exports/</code>. Az exportok a készüléken maradnak, hacsak te magad nem másolod vagy osztod meg őket.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">What we do not do</h2>
+      <h2 data-lang="hu">Amit nem csinálunk</h2>
+      <ul data-lang="en">
+        <li>No account or login</li>
+        <li>No transmission of health, activity, or other sensor data to our servers</li>
+        <li>No sale or sharing of personal data with third parties</li>
+        <li>No ads, no third-party analytics in the app</li>
+      </ul>
+      <ul data-lang="hu">
+        <li>Nincs fiók és bejelentkezés</li>
+        <li>Egészségügyi, tevékenység- vagy egyéb szenzoradatot nem küldünk a szerverünkre</li>
+        <li>Személyes adatot nem adunk el és nem osztunk meg harmadik féllel</li>
+        <li>Nincs reklám és külső analitika az appban</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Children</h2>
+      <h2 data-lang="hu">Gyermekek</h2>
+      <p data-lang="en">The app is a general utility and is not directed at children.</p>
+      <p data-lang="hu">Az alkalmazás általános segédeszköz, és nem kifejezetten gyermekeknek készült.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Contact</h2>
+      <h2 data-lang="hu">Kapcsolat</h2>
+      <p data-lang="en">For privacy questions about this app, contact the publisher via the Google Play store listing contact details for <strong>built-in sensors</strong>.</p>
+      <p data-lang="hu">Adatvédelmi kérdés esetén a kiadót a Google Play-listázás kapcsolati adatain keresztül keresd a <strong>built-in sensors</strong> alkalmazáshoz.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Changes</h2>
+      <h2 data-lang="hu">Változások</h2>
+      <p data-lang="en">We may update this policy when the app’s data practices change. The “Last updated” date at the top will change accordingly.</p>
+      <p data-lang="hu">Ha az adatkezelés változik, ezt a tájékoztatót frissítjük, és az „Utolsó frissítés” dátuma megváltozik.</p>
+    </section>
+  </main>
+  <footer>
+    <span data-lang="en">© 2010 – 2026 László Kővári</span>
+    <span data-lang="hu">© 2010 – 2026 Kővári László</span>
+  </footer>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".lang button");
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        document.querySelectorAll("[data-lang]").forEach(function (el) {
+          el.hidden = el.getAttribute("data-lang") !== lang;
+        });
+        try { localStorage.setItem("sensors-lang", lang); } catch (e) {}
+      }
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () { setLang(button.getAttribute("data-set")); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("sensors-lang"); } catch (e) {}
+      if (saved === "hu" || saved === "en") {
+        setLang(saved);
+      } else if ((navigator.language || "").toLowerCase().indexOf("hu") === 0) {
+        setLang("hu");
+      } else {
+        setLang("en");
+      }
+    })();
+  </script>
+</body>
+</html>
