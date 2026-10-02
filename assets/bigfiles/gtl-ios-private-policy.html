@@ -175,8 +175,8 @@
     </div>
     <h1 data-lang="en">Privacy Policy</h1>
     <h1 data-lang="hu">Adatvédelmi tájékoztató</h1>
-    <p class="meta" data-lang="en">App: GPS Track Logger for iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Last updated: 28 September 2026<br />Publisher: László Kővári</p>
-    <p class="meta" data-lang="hu">Alkalmazás: GTL GPS útvonal napló, iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Utolsó frissítés: 2026. szeptember 28.<br />Kiadó: Kővári László</p>
+    <p class="meta" data-lang="en">App: GPS Track Logger for iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Version: 1.0.1<br />Last updated: 2 October 2026<br />Publisher: László Kővári</p>
+    <p class="meta" data-lang="hu">Alkalmazás: GTL GPS útvonal napló, iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Verzió: 1.0.1<br />Utolsó frissítés: 2026. október 2.<br />Kiadó: Kővári László</p>
 
     <section class="card">
       <h2 data-lang="en">Summary</h2>
@@ -188,8 +188,8 @@
     <section class="card">
       <h2 data-lang="en">Location</h2>
       <h2 data-lang="hu">Helymeghatározás</h2>
-      <p data-lang="en">The map, the GPS tab, the compass, and Start read precise location so the route can be recorded and shown. While a session is logging, and only after you allow location Always, recording can continue with the screen locked. iOS shows the location indicator during that time. Stop turns background location updates off. Points are stored in SQLite on the phone. They are not sent to our servers. This phone does not provide a satellite list or ambient temperature, so those are not stored.</p>
-      <p data-lang="hu">A térkép, a GPS fül, az iránytű és a Start precíz helyet olvas, hogy az útvonal rögzíthető és megjeleníthető legyen. Naplózás közben, és csak akkor, ha a helyet Mindig engedélyezed, a rögzítés zárolt képernyőn is folytatódhat. Ilyenkor az iOS helyjelzője látszik. A Stop leállítja a háttérben futó helyfrissítést. A pontok SQLite-ban maradnak a telefonon. A mi szerverünkre nem kerülnek. Ez a telefon nem ad műholdlistát és környezeti hőmérsékletet, ezért ezeket nem tároljuk.</p>
+      <p data-lang="en">The map, the GPS tab, the compass, and Start read precise location so the route can be recorded and shown. The first Start asks for location While Using the App. With that permission the app records while it is on screen, and locking the screen stops new points. Before the system asks for Always, Start shows a sheet that explains why: only with Always can a session keep recording with the screen locked. You can decline and record with the screen on. While a session records in the background, iOS shows the blue location indicator. Stop turns background location updates off. Outside a logging session the app never reads location in the background. Recording needs Precise Location; with reduced accuracy the app asks for temporary precise access for that route and does not start without it. The compass reads the heading sensor only while its tab is open, and the heading is not stored. The route, acceleration, and lean angle stay in SQLite on the phone. They are not sent to our servers. This phone does not provide a satellite list or ambient temperature, so those are not stored.</p>
+      <p data-lang="hu">A térkép, a GPS fül, az iránytű és a Start precíz helyet olvas, hogy az útvonal rögzíthető és megjeleníthető legyen. Az első Start a helyet „Az app használata közben” engedéllyel kéri. Ezzel az app akkor rögzít, amikor a képernyőn van, és a zárolás megállítja az új pontokat. Mielőtt a rendszer a Mindig engedélyt kérné, a Start egy lapon elmagyarázza, miért: a munkamenet csak Mindig engedéllyel rögzít tovább zárolt képernyőn. Ezt elutasíthatod, és bekapcsolt képernyővel rögzíthetsz. Amíg a munkamenet a háttérben rögzít, az iOS kék helyjelzője látszik. A Stop leállítja a háttérben futó helyfrissítést. Naplózási munkameneten kívül az app soha nem olvas helyet a háttérben. A rögzítéshez Pontos hely kell; csökkentett pontosságnál az app ideiglenes pontos hozzáférést kér az adott útvonalra, és enélkül nem indul el. Az iránytű csak akkor olvassa az irányszenzort, amikor a füle nyitva van, és az irányt nem tárolja. A nyomvonal, a gyorsulás és a dőlés SQLite-ban marad a telefonon. A mi szerverünkre nem kerülnek. Ez a telefon nem ad műholdlistát és környezeti hőmérsékletet, ezért ezeket nem tároljuk.</p>
     </section>
 
     <section class="card">
@@ -202,22 +202,29 @@
     <section class="card">
       <h2 data-lang="en">Data on the iPhone</h2>
       <h2 data-lang="hu">Adatok az iPhone-on</h2>
-      <p data-lang="en">Track sessions, GPS points, motion samples, barometric altitude, and settings stay on the phone. An iPhone backup, including iCloud, can include this database, because the app does not exclude it from backup. You can export GPX or KMZ from Saved tracks. The file is saved in the Files app under On My iPhone → GPS Track Logger → Exports, and the system share sheet can copy it elsewhere. Delete a track in Saved tracks. Deleting the app removes the on-device copy. A copy that is already in a backup remains until you remove it from that backup.</p>
-      <p data-lang="hu">Az útvonal-munkamenetek, a GPS-pontok, a mozgásminták, a barometrikus magasság és a beállítások a telefonon maradnak. Az iPhone mentése, az iCloudot is beleértve, tartalmazhatja ezt az adatbázist, mert az app nem zárja ki a mentésből. A Mentett útvonalakból GPX vagy KMZ exportálható. A fájl a Fájlok appban van: A(z) iPhone-omon → GPS Track Logger → Exports, és a rendszer megosztója máshova is másolhatja. Útvonalat a Mentett útvonalakban lehet törölni. Az app törlése a telefonon lévő példányt eltávolítja. A mentésben már ott lévő másolat addig marad, amíg onnan nem törlöd.</p>
+      <p data-lang="en">Track sessions, GPS points, speed, bearing, accuracy, acceleration, lean angle, barometric altitude and pressure, the usage type, and settings stay on the phone. An iPhone backup, including iCloud, can include this database, because the app does not exclude it from backup. Downloaded map files are excluded from that backup. You can export GPX or KMZ from Saved tracks. The file is saved in the Files app under On My iPhone → GPS Track Logger → Exports, and the system share sheet can copy it elsewhere. Delete a track in Saved tracks. Deleting the app removes the on-device copy. A copy that is already in a backup remains until you remove it from that backup.</p>
+      <p data-lang="hu">Az útvonal-munkamenetek, a GPS-pontok, a sebesség, az irányszög, a pontosság, a gyorsulás, a dőlés, a barometrikus magasság és a nyomás, a használati mód és a beállítások a telefonon maradnak. Az iPhone mentése, az iCloudot is beleértve, tartalmazhatja ezt az adatbázist, mert az app nem zárja ki a mentésből. A letöltött térképfájlok kimaradnak ebből a mentésből. A Mentett útvonalakból GPX vagy KMZ exportálható. A fájl a Fájlok appban van: A(z) iPhone-omon → GPS Track Logger → Exports, és a rendszer megosztója máshova is másolhatja. Útvonalat a Mentett útvonalakban lehet törölni. Az app törlése a telefonon lévő példányt eltávolítja. A mentésben már ott lévő másolat addig marad, amíg onnan nem törlöd.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Error log</h2>
+      <h2 data-lang="hu">Hibanapló</h2>
+      <p data-lang="en">When an operation fails, the app writes a line to an error log on the phone: the time, the operation, and the error text. The log holds no coordinates, is limited to about 256 KB per file, and is never sent anywhere. Tapping the version line on About seven times opens it, and Clear deletes it. Tapping a saved track three times shows the stored points of that track as a table that can be copied. Both screens only read data that is already on the phone.</p>
+      <p data-lang="hu">Ha egy művelet hibára fut, az app egy sort ír a telefonon lévő hibanaplóba: az időt, a műveletet és a hiba szövegét. A napló nem tartalmaz koordinátát, fájlonként kb. 256 KB-ra korlátozott, és sehova nem kerül elküldésre. A Névjegy verziósorára hétszer koppintva nyílik meg, és a Törlés gomb törli. Egy mentett útvonalra háromszor koppintva az útvonal tárolt pontjai másolható táblázatban jelennek meg. Mindkét képernyő csak a telefonon már meglévő adatot olvas.</p>
     </section>
 
     <section class="card">
       <h2 data-lang="en">Apple Maps, search, route, and address</h2>
       <h2 data-lang="hu">Apple térkép, keresés, útvonal és cím</h2>
-      <p data-lang="en">The Map tab uses Apple Maps: standard, satellite, and hybrid. A place search, a route to a point you tap, and an address lookup send Apple the coordinates or the map area needed for that request. The logged track database is not sent to Apple. Apple’s policy: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
-      <p data-lang="hu">A Térkép fül az Apple térképét használja: standard, műhold és hibrid. A helykeresés, a koppintott pontig kért útvonal és a címlekérdezés az Apple-nek küldi az ehhez szükséges koordinátát vagy térképablakot. A naplózott útvonal adatbázisa nem megy az Apple-hez. Az Apple tájékoztatója: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
+      <p data-lang="en">The Map tab uses Apple Maps: standard, satellite, and hybrid. A place search, a route to a point you tap, and an address lookup send Apple the coordinates or the map area needed for that request. On a downloaded offline map, place search runs on an index built on the phone and sends nothing; a route and an address lookup still go to Apple. The logged track database is not sent to Apple. Apple’s policy: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
+      <p data-lang="hu">A Térkép fül az Apple térképét használja: standard, műhold és hibrid. A helykeresés, a koppintott pontig kért útvonal és a címlekérdezés az Apple-nek küldi az ehhez szükséges koordinátát vagy térképablakot. Letöltött offline térképen a helykeresés a telefonon épített indexből dolgozik, és semmit nem küld el; az útvonal és a címlekérdezés ekkor is az Apple-höz megy. A naplózott útvonal adatbázisa nem megy az Apple-hez. Az Apple tájékoztatója: <a href="https://www.apple.com/legal/privacy/">apple.com/legal/privacy</a>.</p>
     </section>
 
     <section class="card">
       <h2 data-lang="en">Offline map downloads</h2>
       <h2 data-lang="hu">Offline térképletöltés</h2>
-      <p data-lang="en">If you download an OpenStreetMap region, the file comes over HTTPS from the Mapsforge download host and stays on the phone. If you download the Turistautak map, the only address used is <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. That host sees your IP address and that you requested this file. Map data on an OpenStreetMap file is © OpenStreetMap contributors, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. The Turistautak map is data from <a href="https://turistautak.hu">Turistautak.hu</a>.</p>
-      <p data-lang="hu">Ha OpenStreetMap-régiót töltesz le, a fájl HTTPS-en a Mapsforge letöltőhelyről jön, és a telefonon marad. Ha a Turistautak térképet töltöd le, az egyetlen cím ez: <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. Ez a kiszolgáló látja az IP-címedet és azt, hogy ezt a fájlt kérted. Az OpenStreetMap-fájl térképadatának jelzése: © OpenStreetMap közreműködők, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. A Turistautak térkép adata a <a href="https://turistautak.hu">Turistautak.hu</a> oldaláé.</p>
+      <p data-lang="en">If you download an OpenStreetMap region, the file comes over HTTPS from the Mapsforge download host (<a href="https://download.mapsforge.org">download.mapsforge.org</a>) and stays on the phone. On mobile data the app shows the file size and asks before it downloads. If you download the Turistautak map, the only address used is <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. The host you download from sees your IP address and which file you requested. The downloaded map is drawn on the phone, and drawing it makes no network request. Map data on an OpenStreetMap file is © OpenStreetMap contributors, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. The Turistautak map is data from <a href="https://turistautak.hu">Turistautak.hu</a>.</p>
+      <p data-lang="hu">Ha OpenStreetMap-régiót töltesz le, a fájl HTTPS-en a Mapsforge letöltőhelyről (<a href="https://download.mapsforge.org">download.mapsforge.org</a>) jön, és a telefonon marad. Mobilhálózaton az app kiírja a fájl méretét, és letöltés előtt megkérdez. Ha a Turistautak térképet töltöd le, az egyetlen cím ez: <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. A kiszolgáló, ahonnan letöltesz, látja az IP-címedet és azt, hogy melyik fájlt kérted. A letöltött térképet a telefon rajzolja, és a rajzolás nem indít hálózati kérést. Az OpenStreetMap-fájl térképadatának jelzése: © OpenStreetMap közreműködők, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. A Turistautak térkép adata a <a href="https://turistautak.hu">Turistautak.hu</a> oldaláé.</p>
     </section>
 
     <section class="card">
@@ -227,18 +234,27 @@
         <li>No account, login, or registration</li>
         <li>No IMEI, SIM serial, or phone-number collection</li>
         <li>No upload of the logged track to our servers</li>
-        <li>No ads or third-party analytics SDKs</li>
+        <li>No ads, tracking, or third-party analytics SDKs</li>
         <li>No sale of personal data</li>
         <li>No stored satellite list or ambient temperature</li>
+        <li>No crash report or usage statistics sent to us</li>
       </ul>
       <ul data-lang="hu">
         <li>Nincs fiók, bejelentkezés vagy regisztráció</li>
         <li>Nem gyűjtünk IMEI-t, SIM-azonosítót vagy telefonszámot</li>
         <li>A naplózott nyomvonalat nem töltjük fel a szerverünkre</li>
-        <li>Nincs reklám és külső analitikai SDK</li>
+        <li>Nincs reklám, követés és külső analitikai SDK</li>
         <li>Személyes adatot nem adunk el</li>
         <li>Nem tárolunk műholdlistát vagy környezeti hőmérsékletet</li>
+        <li>Nem kapunk összeomlási jelentést vagy használati statisztikát</li>
       </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Your choices</h2>
+      <h2 data-lang="hu">A te döntéseid</h2>
+      <p data-lang="en">Location and motion access can be changed or withdrawn at any time in the iPhone Settings; the app’s Location settings screen opens that page. Without location the app cannot record a route. Because we hold no copy of your data, a request to access, correct, or delete it is carried out on the phone: Saved tracks deletes a track, and deleting the app deletes everything it stored.</p>
+      <p data-lang="hu">A hely- és mozgáshozzáférés az iPhone Beállításaiban bármikor módosítható vagy visszavonható; az app Helyzet beállításai képernyője ezt az oldalt nyitja meg. Hely nélkül az app nem tud útvonalat rögzíteni. Mivel az adataidról nálunk nincs másolat, a hozzáférés, a javítás és a törlés a telefonon történik: a Mentett útvonalak töröl egy útvonalat, az app törlése pedig mindent töröl, amit az app tárolt.</p>
     </section>
 
     <section class="card">
@@ -263,8 +279,8 @@
     </section>
   </main>
   <footer>
-    <span data-lang="en">© 2014 – 2026 László Kővári</span>
-    <span data-lang="hu">© 2014 – 2026 Kővári László</span>
+    <span data-lang="en">© 2026 László Kővári</span>
+    <span data-lang="hu">© 2026 Kővári László</span>
   </footer>
   <script>
     (function () {
