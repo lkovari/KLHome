@@ -4,9 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GTL for iPhone — Privacy Policy</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --wash: #D8E4D4;
@@ -27,7 +24,7 @@
         radial-gradient(circle at 108% 8%, var(--chip) 0 12%, transparent 38%),
         var(--wash);
       color: var(--ink);
-      font-family: Outfit, system-ui, sans-serif;
+      font-family: ui-sans-serif, system-ui, sans-serif;
       line-height: 1.55;
     }
     header {
@@ -54,12 +51,12 @@
       color: #fff;
       display: grid;
       place-items: center;
-      font-family: Fraunces, Georgia, serif;
+      font-family: ui-serif, Georgia, serif;
       font-weight: 700;
       font-size: 1.05rem;
     }
     .brand-name {
-      font-family: Fraunces, Georgia, serif;
+      font-family: ui-serif, Georgia, serif;
       font-weight: 700;
       font-size: 1.28rem;
     }
@@ -107,7 +104,7 @@
       letter-spacing: 0.04em;
     }
     h1 {
-      font-family: Fraunces, Georgia, serif;
+      font-family: ui-serif, Georgia, serif;
       font-size: clamp(1.8rem, 4vw, 2.35rem);
       margin: 0 0 0.4rem;
       letter-spacing: -0.02em;
@@ -126,7 +123,7 @@
       box-shadow: 0 10px 28px rgba(15, 92, 88, 0.08);
     }
     h2 {
-      font-family: Fraunces, Georgia, serif;
+      font-family: ui-serif, Georgia, serif;
       font-size: 1.18rem;
       margin: 0 0 0.5rem;
       color: var(--teal-deep);
@@ -175,8 +172,8 @@
     </div>
     <h1 data-lang="en">Privacy Policy</h1>
     <h1 data-lang="hu">Adatvédelmi tájékoztató</h1>
-    <p class="meta" data-lang="en">App: GPS Track Logger for iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Version: 1.0.1<br />Last updated: 2 October 2026<br />Publisher: László Kővári</p>
-    <p class="meta" data-lang="hu">Alkalmazás: GTL GPS útvonal napló, iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Verzió: 1.0.1<br />Utolsó frissítés: 2026. október 2.<br />Kiadó: Kővári László</p>
+    <p class="meta" data-lang="en">App: GPS Track Logger for iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Version: 1.0.1<br />Last updated: 3 October 2026<br />Publisher: László Kővári</p>
+    <p class="meta" data-lang="hu">Alkalmazás: GTL GPS útvonal napló, iPhone (<code>com.lkovari.mobile.apps.gtl</code>)<br />Verzió: 1.0.1<br />Utolsó frissítés: 2026. október 3.<br />Kiadó: Kővári László</p>
 
     <section class="card">
       <h2 data-lang="en">Summary</h2>
@@ -188,8 +185,8 @@
     <section class="card">
       <h2 data-lang="en">Location</h2>
       <h2 data-lang="hu">Helymeghatározás</h2>
-      <p data-lang="en">The map, the GPS tab, the compass, and Start read precise location so the route can be recorded and shown. The first Start asks for location While Using the App. With that permission the app records while it is on screen, and locking the screen stops new points. Before the system asks for Always, Start shows a sheet that explains why: only with Always can a session keep recording with the screen locked. You can decline and record with the screen on. While a session records in the background, iOS shows the blue location indicator. Stop turns background location updates off. Outside a logging session the app never reads location in the background. Recording needs Precise Location; with reduced accuracy the app asks for temporary precise access for that route and does not start without it. The compass reads the heading sensor only while its tab is open, and the heading is not stored. The route, acceleration, and lean angle stay in SQLite on the phone. They are not sent to our servers. This phone does not provide a satellite list or ambient temperature, so those are not stored.</p>
-      <p data-lang="hu">A térkép, a GPS fül, az iránytű és a Start precíz helyet olvas, hogy az útvonal rögzíthető és megjeleníthető legyen. Az első Start a helyet „Az app használata közben” engedéllyel kéri. Ezzel az app akkor rögzít, amikor a képernyőn van, és a zárolás megállítja az új pontokat. Mielőtt a rendszer a Mindig engedélyt kérné, a Start egy lapon elmagyarázza, miért: a munkamenet csak Mindig engedéllyel rögzít tovább zárolt képernyőn. Ezt elutasíthatod, és bekapcsolt képernyővel rögzíthetsz. Amíg a munkamenet a háttérben rögzít, az iOS kék helyjelzője látszik. A Stop leállítja a háttérben futó helyfrissítést. Naplózási munkameneten kívül az app soha nem olvas helyet a háttérben. A rögzítéshez Pontos hely kell; csökkentett pontosságnál az app ideiglenes pontos hozzáférést kér az adott útvonalra, és enélkül nem indul el. Az iránytű csak akkor olvassa az irányszenzort, amikor a füle nyitva van, és az irányt nem tárolja. A nyomvonal, a gyorsulás és a dőlés SQLite-ban marad a telefonon. A mi szerverünkre nem kerülnek. Ez a telefon nem ad műholdlistát és környezeti hőmérsékletet, ezért ezeket nem tároljuk.</p>
+      <p data-lang="en">The map, the GPS tab, the compass, and Start read precise location so the route can be recorded and shown. The app asks only for location While Using the App; it never asks for Always. Recording starts only when you tap Start with the app on screen. After Start, the recording continues while the screen is locked or the app is in the background, until you tap Stop. During that time iOS shows the blue location indicator. Stop turns background location updates and the indicator off. Force quitting the app from the app switcher also stops the recording, and it does not restart on its own. Outside a logging session the app never reads location in the background. Recording needs Precise Location; with reduced accuracy the app asks for temporary precise access for that route and does not start without it. The compass reads the heading sensor only while its tab is open, and the heading is not stored. The route, acceleration, and lean angle stay in SQLite on the phone. They are not sent to us. The map, a search, a route, and an address still send Apple the coordinate needed for that request (see below). This phone does not provide a satellite list or ambient temperature, so those are not stored.</p>
+      <p data-lang="hu">A térkép, a GPS fül, az iránytű és az Indítás pontos helyet olvas, hogy az útvonal rögzíthető és megjeleníthető legyen. Az app csak „Az app használata közben” engedélyt kér, Mindig engedélyt soha. A rögzítés csak akkor indul, ha az Indítást a képernyőn lévő appban megnyomod. Az Indítás után a rögzítés zárolt képernyőn és háttérben is folytatódik, amíg a Leállítást meg nem nyomod. Ezalatt az iOS kék helyjelzője látszik. A Leállítás kikapcsolja a háttérben futó helyfrissítést és a jelzőt. Ha az appot az appváltóban kényszerítve bezárod, a rögzítés szintén leáll, és magától nem indul újra. Naplózási munkameneten kívül az app soha nem olvas helyet a háttérben. A rögzítéshez Pontos hely kell; csökkentett pontosságnál az app ideiglenes pontos hozzáférést kér az adott útvonalra, és enélkül nem indul el. Az iránytű csak akkor olvassa az irányszenzort, amikor a füle nyitva van, és az irányt nem tárolja. A nyomvonal, a gyorsulás és a dőlés SQLite-ban marad a telefonon. Hozzánk nem kerülnek. A térkép, a keresés, az útvonal és a cím továbbra is az Apple-nek küldi az ehhez szükséges koordinátát (lásd lent). Ez a telefon nem ad műholdlistát és környezeti hőmérsékletet, ezért ezeket nem tároljuk.</p>
     </section>
 
     <section class="card">
@@ -209,8 +206,8 @@
     <section class="card">
       <h2 data-lang="en">Error log</h2>
       <h2 data-lang="hu">Hibanapló</h2>
-      <p data-lang="en">When an operation fails, the app writes a line to an error log on the phone: the time, the operation, and the error text. The log holds no coordinates, is limited to about 256 KB per file, and is never sent anywhere. Tapping the version line on About seven times opens it, and Clear deletes it. Tapping a saved track three times shows the stored points of that track as a table that can be copied. Both screens only read data that is already on the phone.</p>
-      <p data-lang="hu">Ha egy művelet hibára fut, az app egy sort ír a telefonon lévő hibanaplóba: az időt, a műveletet és a hiba szövegét. A napló nem tartalmaz koordinátát, fájlonként kb. 256 KB-ra korlátozott, és sehova nem kerül elküldésre. A Névjegy verziósorára hétszer koppintva nyílik meg, és a Törlés gomb törli. Egy mentett útvonalra háromszor koppintva az útvonal tárolt pontjai másolható táblázatban jelennek meg. Mindkét képernyő csak a telefonon már meglévő adatot olvas.</p>
+      <p data-lang="en">When an operation fails, the app writes a line to an error log on the phone: the time, the operation, and the error text. The log holds no coordinates, is limited to about 256 KB per file, and is never sent anywhere. The Error log button on About opens it, and Clear deletes it. In Saved tracks, selecting one track and tapping Recorded points shows the stored points of that track as a table that can be copied. Both screens only read data that is already on the phone.</p>
+      <p data-lang="hu">Ha egy művelet hibára fut, az app egy sort ír a telefonon lévő hibanaplóba: az időt, a műveletet és a hiba szövegét. A napló nem tartalmaz koordinátát, fájlonként kb. 256 KB-ra korlátozott, és sehova nem kerül elküldésre. A Névjegy Hibanapló gombja nyitja meg, és a Törlés gomb törli. A Mentett útvonalakban egy útvonalat kijelölve a Rögzített pontok gomb az útvonal tárolt pontjait másolható táblázatban mutatja. Mindkét képernyő csak a telefonon már meglévő adatot olvas.</p>
     </section>
 
     <section class="card">
@@ -223,8 +220,8 @@
     <section class="card">
       <h2 data-lang="en">Offline map downloads</h2>
       <h2 data-lang="hu">Offline térképletöltés</h2>
-      <p data-lang="en">If you download an OpenStreetMap region, the file comes over HTTPS from the Mapsforge download host (<a href="https://download.mapsforge.org">download.mapsforge.org</a>) and stays on the phone. On mobile data the app shows the file size and asks before it downloads. If you download the Turistautak map, the only address used is <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. The host you download from sees your IP address and which file you requested. The downloaded map is drawn on the phone, and drawing it makes no network request. Map data on an OpenStreetMap file is © OpenStreetMap contributors, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. The Turistautak map is data from <a href="https://turistautak.hu">Turistautak.hu</a>.</p>
-      <p data-lang="hu">Ha OpenStreetMap-régiót töltesz le, a fájl HTTPS-en a Mapsforge letöltőhelyről (<a href="https://download.mapsforge.org">download.mapsforge.org</a>) jön, és a telefonon marad. Mobilhálózaton az app kiírja a fájl méretét, és letöltés előtt megkérdez. Ha a Turistautak térképet töltöd le, az egyetlen cím ez: <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. A kiszolgáló, ahonnan letöltesz, látja az IP-címedet és azt, hogy melyik fájlt kérted. A letöltött térképet a telefon rajzolja, és a rajzolás nem indít hálózati kérést. Az OpenStreetMap-fájl térképadatának jelzése: © OpenStreetMap közreműködők, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. A Turistautak térkép adata a <a href="https://turistautak.hu">Turistautak.hu</a> oldaláé.</p>
+      <p data-lang="en">If you download an OpenStreetMap region, the file comes over HTTPS from the Hochschule Esslingen mirror of the Mapsforge maps (<a href="https://ftp-stud.hs-esslingen.de/Mirrors/download.mapsforge.org">ftp-stud.hs-esslingen.de/Mirrors/download.mapsforge.org</a>) and stays on the phone. The mirror sees your IP address and which file you requested. On mobile data the app shows the file size and asks before it downloads. If you download the Turistautak map, the only address used is <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. The host you download from sees your IP address and which file you requested. The downloaded map is drawn on the phone, and drawing it makes no network request. Map data on an OpenStreetMap file is © OpenStreetMap contributors, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. The Turistautak map is data from <a href="https://turistautak.hu">Turistautak.hu</a>.</p>
+      <p data-lang="hu">Ha OpenStreetMap-régiót töltesz le, a fájl HTTPS-en a Mapsforge térképek Hochschule Esslingen-i tükréről (<a href="https://ftp-stud.hs-esslingen.de/Mirrors/download.mapsforge.org">ftp-stud.hs-esslingen.de/Mirrors/download.mapsforge.org</a>) jön, és a telefonon marad. A tükör látja az IP-címedet és azt, hogy melyik fájlt kérted. Mobilhálózaton az app kiírja a fájl méretét, és letöltés előtt megkérdez. Ha a Turistautak térképet töltöd le, az egyetlen cím ez: <a href="https://turistautak.elte.hu/tuhu/tuhu_mapsforge.zip">turistautak.elte.hu/tuhu/tuhu_mapsforge.zip</a>. A kiszolgáló, ahonnan letöltesz, látja az IP-címedet és azt, hogy melyik fájlt kérted. A letöltött térképet a telefon rajzolja, és a rajzolás nem indít hálózati kérést. Az OpenStreetMap-fájl térképadatának jelzése: © OpenStreetMap közreműködők, <a href="https://www.openstreetmap.org/copyright">ODbL</a>. A Turistautak térkép adata a <a href="https://turistautak.hu">Turistautak.hu</a> oldaláé.</p>
     </section>
 
     <section class="card">
