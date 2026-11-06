@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TreeCalc iOS version</title>
+  <style>
+    :root {
+      --paper: #e7eefc;
+      --card: #ffffff;
+      --ink: #1c2433;
+      --muted: #3d4a63;
+      --magenta: #e20074;
+      --line: #c9d4ea;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, sans-serif;
+      line-height: 1.55;
+    }
+    header, main, footer { max-width: 44rem; margin: 0 auto; }
+    header {
+      padding: 1.35rem 1.35rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .brand { font-weight: 700; font-size: 1.25rem; color: var(--magenta); }
+    .lang { display: flex; gap: 0.15rem; }
+    .lang button {
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+    .lang button[aria-pressed="true"] {
+      color: #fff;
+      background: var(--magenta);
+      font-weight: 600;
+    }
+    main { padding: 1.4rem 1.35rem 2.2rem; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.15rem); margin: 0 0 0.35rem; }
+    .meta { color: var(--muted); margin: 0 0 1.3rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 0.85rem;
+      padding: 1.05rem 1.15rem;
+      margin-bottom: 0.85rem;
+    }
+    h2 { font-size: 1.08rem; margin: 0 0 0.45rem; color: var(--magenta); }
+    p, li { color: var(--muted); }
+    p { margin: 0 0 0.65rem; }
+    p:last-child, ul:last-child { margin-bottom: 0; }
+    ul { margin: 0; padding-left: 1.15rem; }
+    li { margin: 0.3rem 0; }
+    a { color: var(--magenta); }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.92em; }
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 0 1.35rem 2.4rem;
+    }
+    [data-lang="hu"] { display: none; }
+    html[lang="hu"] [data-lang="en"] { display: none; }
+    html[lang="hu"] [data-lang="hu"] { display: block; }
+    html[lang="hu"] span[data-lang="hu"],
+    html[lang="en"] span[data-lang="en"] { display: inline; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">TreeCalc</div>
+    <div class="lang">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="hu" aria-pressed="false">HU</button>
+    </div>
+  </header>
+  <main>
+    <h1 data-lang="en">TreeCalc iOS version</h1>
+    <h1 data-lang="hu">TreeCalc iOS változat</h1>
+    <p class="meta" data-lang="en">Privacy policy<br />App: TreeCalc (<code>com.lkovari.mobile.apps.treecalc</code>)<br />Last updated: 6 November 2026<br />Developer: László Kővári</p>
+    <p class="meta" data-lang="hu">Adatvédelmi tájékoztató<br />Alkalmazás: TreeCalc (<code>com.lkovari.mobile.apps.treecalc</code>)<br />Utolsó frissítés: 2026. november 6.<br />Fejlesztő: Kővári László</p>
+
+    <section class="card">
+      <h2 data-lang="en">Summary</h2>
+      <h2 data-lang="hu">Összefoglaló</h2>
+      <p data-lang="en">TreeCalc for iOS is a calculator that runs entirely on your device. It does not require an account. It does not collect, sell, or share personal data. It has no advertising and no analytics. In App Store Connect the privacy answer is Data Not Collected.</p>
+      <p data-lang="hu">A TreeCalc iOS-re egy számológép, amely teljes egészében a készüléken fut. Nincs fiók. Személyes adatot nem gyűjt, nem ad el és nem oszt meg. Nincs hirdetés és nincs analitika. Az App Store Connect adatvédelmi válasza: nem gyűjtünk adatot.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Who is responsible</h2>
+      <h2 data-lang="hu">Ki a felelős</h2>
+      <p data-lang="en">The developer and, where the GDPR applies, the controller is László Kővári. Contact: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a>. This page describes the iOS app only. The Android TreeCalc app has its own policy.</p>
+      <p data-lang="hu">A fejlesztő, és ahol a GDPR alkalmazandó, az adatkezelő Kővári László. Elérhetőség: <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a>. Ez a lap csak az iOS alkalmazásra vonatkozik. Az Androidos TreeCalcnak külön tájékoztatója van.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Data stored on the device</h2>
+      <h2 data-lang="hu">A készüléken tárolt adat</h2>
+      <p data-lang="en">The only saved setting is the theme: Auto, Light, or Dark. iOS stores it in UserDefaults on the device. It is not linked to your identity, it is not used for tracking, and it is not sent to the developer. The app’s privacy manifest declares this UserDefaults access with reason code CA92.1 (access to read and write information that is only accessible to the app itself).</p>
+      <p data-lang="hu">Az egyetlen mentett beállítás a téma: automatikus, világos vagy sötét. Az iOS ezt a készüléken, a UserDefaultsban tárolja. Nincs a személyazonosságodhoz kötve, nem szolgál követésre, és nem kerül a fejlesztőhöz. Az alkalmazás adatvédelmi manifesztje ezt a UserDefaults-hozzáférést a CA92.1 okkóddal jelenti (olyan információ írása és olvasása, amely csak az alkalmazás számára elérhető).</p>
+      <p data-lang="en">Expressions, results, memory, and the expression tree exist only while you use the app. They are not uploaded.</p>
+      <p data-lang="hu">A kifejezések, az eredmények, a memória és a kifejezésfa csak használat közben léteznek. Nem töltődnek fel.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">What the app does not do</h2>
+      <h2 data-lang="hu">Amit az alkalmazás nem tesz</h2>
+      <ul>
+        <li data-lang="en">It does not ask you to sign in, and it does not create a profile.</li>
+        <li data-lang="hu">Nem kér bejelentkezést, és nem hoz létre profilt.</li>
+        <li data-lang="en">It does not use advertising, attribution, or analytics SDKs.</li>
+        <li data-lang="hu">Nem használ hirdetési, hozzárendelési vagy analitikai SDK-t.</li>
+        <li data-lang="en">It does not track you across apps or websites, and it does not access the advertising identifier.</li>
+        <li data-lang="hu">Nem követ más alkalmazások vagy weboldalak között, és nem fér hozzá a hirdetési azonosítóhoz.</li>
+        <li data-lang="en">It does not request access to location, contacts, photos, camera, microphone, Bluetooth, or health data.</li>
+        <li data-lang="hu">Nem kér hozzáférést a helyhez, a névjegyekhez, a fényképekhez, a kamerához, a mikrofonhoz, a Bluetoothhoz vagy az egészségügyi adatokhoz.</li>
+        <li data-lang="en">It does not sell or share personal information, including under the California Consumer Privacy Act.</li>
+        <li data-lang="hu">Személyes adatot nem ad el és nem oszt meg, a kaliforniai fogyasztóvédelmi törvény értelmében sem.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Links you choose to open</h2>
+      <h2 data-lang="hu">A linkek, amelyeket megnyitsz</h2>
+      <p data-lang="en">About can open this policy, the original desktop repository on GitHub, the page of the earlier iOS calculator, and an email to the developer. iOS then hands that address to Safari or Mail. TreeCalc does not receive the pages you visit or the contents of your email. The site or mail provider you reach handles that request under its own policy, and may see ordinary connection data such as an IP address.</p>
+      <p data-lang="hu">A Névjegy megnyithatja ezt a tájékoztatót, az eredeti asztali tárolót a GitHubon, a korábbi iOS számológép oldalát, és egy levelet a fejlesztőnek. Az iOS ezután a címet a Safarinak vagy a Mailnek adja. A TreeCalc nem kapja meg a meglátogatott oldalakat és a leveled tartalmát. Az elért oldal vagy levélszolgáltató a saját tájékoztatója szerint kezeli a kérést, és láthat szokásos kapcsolati adatot, például IP-címet.</p>
+      <p data-lang="en">If you email <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a>, that message is used only to answer you. It is not added to a mailing list.</p>
+      <p data-lang="hu">Ha a <a href="mailto:laszlo.kovary@gmail.com">laszlo.kovary@gmail.com</a> címre írsz, az üzenet csak a válaszadáshoz kell. Nem kerül hírlevéllistára.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Children</h2>
+      <h2 data-lang="hu">Gyermekek</h2>
+      <p data-lang="en">TreeCalc is a general-audience calculator. It is not directed at children under 13, and it does not knowingly collect personal information from anyone, including children. Because no account and no personal data are collected, there is no child profile to review or delete.</p>
+      <p data-lang="hu">A TreeCalc általános közönségnek szóló számológép. Nem gyermekeknek szól 13 év alatt, és senkitől, így gyermekektől sem gyűjt tudatosan személyes adatot. Mivel nincs fiók és nincs gyűjtött személyes adat, nincs gyermekprofil, amelyet át kellene nézni vagy törölni.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Encryption</h2>
+      <h2 data-lang="hu">Titkosítás</h2>
+      <p data-lang="en">The app does not implement its own encryption and does not use non-exempt encryption. App Store Connect is answered accordingly (<code>ITSAppUsesNonExemptEncryption</code> is false). When you open a web link, the browser may use ordinary HTTPS. That is the browser’s connection, not a feature of TreeCalc.</p>
+      <p data-lang="hu">Az alkalmazás nem valósít meg saját titkosítást, és nem használ mentesség alá nem eső titkosítást. Az App Store Connect válasza ennek megfelelő (az <code>ITSAppUsesNonExemptEncryption</code> hamis). Ha webes linket nyitsz, a böngésző használhat szokásos HTTPS-t. Az a böngésző kapcsolata, nem a TreeCalc szolgáltatása.</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Retention, deletion, and your rights</h2>
+      <h2 data-lang="hu">Megőrzés, törlés és a jogaid</h2>
+      <p data-lang="en">The theme setting stays on the device until you change it or delete TreeCalc. Deleting the app removes it. There is no server copy to export, correct, or erase, and there is no account to close.</p>
+      <p data-lang="hu">A témabeállítás a készüléken marad, amíg meg nem változtatod, vagy amíg nem törlöd a TreeCalcot. Az alkalmazás törlése ezt is törli. Nincs szerveren másolat, amelyet ki kellene adni, helyesbíteni vagy törölni, és nincs lezárandó fiók.</p>
+      <p data-lang="en">If you are in the European Economic Area or the United Kingdom, the GDPR rights of access, correction, erasure, restriction, and portability have no stored personal data to apply to. You may still ask a question at the email above. You may lodge a complaint with your supervisory authority. In Hungary that authority is the National Authority for Data Protection and Freedom of Information (NAIH).</p>
+      <p data-lang="hu">Ha az Európai Gazdasági Térségben vagy az Egyesült Királyságban élsz, a GDPR szerinti hozzáférési, helyesbítési, törlési, korlátozási és hordozhatósági jogoknak nincs tárolt személyes adata, amelyre vonatkoznának. Kérdést így is feltehetsz a fenti e-mail-címen. Panaszt tehetsz a felügyeleti hatóságnál. Magyarországon ez a Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH).</p>
+    </section>
+
+    <section class="card">
+      <h2 data-lang="en">Changes</h2>
+      <h2 data-lang="hu">Változások</h2>
+      <p data-lang="en">If this policy changes, the new text replaces this page and the date above changes. The copy in the app project is <code>docs/treecalc-ios-privacy-policy.html</code>. The address in the app stays this page.</p>
+      <p data-lang="hu">Ha a tájékoztató változik, az új szöveg lép ennek a lapnak a helyére, és a fenti dátum is változik. A másolat az alkalmazás projektjében a <code>docs/treecalc-ios-privacy-policy.html</code> fájl. Az alkalmazásban szereplő cím továbbra is ez a lap.</p>
+    </section>
+  </main>
+  <footer>
+    <span data-lang="en">László Kővári © 2005–2026</span>
+    <span data-lang="hu">Kővári László © 2005–2026</span>
+  </footer>
+  <script>
+    (function () {
+      var buttons = document.querySelectorAll(".lang button");
+      function setLang(lang) {
+        document.documentElement.lang = lang;
+        buttons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-set") === lang ? "true" : "false");
+        });
+        document.querySelectorAll("[data-lang]").forEach(function (el) {
+          el.hidden = el.getAttribute("data-lang") !== lang;
+        });
+        try { localStorage.setItem("treecalc-ios-lang", lang); } catch (e) {}
+      }
+      buttons.forEach(function (button) {
+        button.addEventListener("click", function () { setLang(button.getAttribute("data-set")); });
+      });
+      var saved = null;
+      try { saved = localStorage.getItem("treecalc-ios-lang"); } catch (e) {}
+      if (saved === "hu" || saved === "en") {
+        setLang(saved);
+      } else if ((navigator.language || "").toLowerCase().indexOf("hu") === 0) {
+        setLang("hu");
+      } else {
+        setLang("en");
+      }
+    })();
+  </script>
+</body>
+</html>
